@@ -18,6 +18,7 @@
 		91E7B6F82A0D4FC0004A757A /* _todo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F72A0D4FC0004A757A /* _todo.txt */; };
 		91E7B6FA2A0D507D004A757A /* InchCalc.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F92A0D507D004A757A /* InchCalc.png */; };
 		91E7B6FC2A0D5189004A757A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6FB2A0D5189004A757A /* README.md */; };
+		91E7B6FE2A0D5230004A757A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6FD2A0D522F004A757A /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		91E7B6F72A0D4FC0004A757A /* _todo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = _todo.txt; sourceTree = "<group>"; };
 		91E7B6F92A0D507D004A757A /* InchCalc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InchCalc.png; sourceTree = "<group>"; };
 		91E7B6FB2A0D5189004A757A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		91E7B6FD2A0D522F004A757A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +86,9 @@
 			children = (
 				91E7B6F72A0D4FC0004A757A /* _todo.txt */,
 				91E7B6FB2A0D5189004A757A /* README.md */,
-				91E7B6F52A0D4E52004A757A /* InchCalc.key */,
+				91E7B6FD2A0D522F004A757A /* LICENSE */,
 				91E7B6F92A0D507D004A757A /* InchCalc.png */,
+				91E7B6F52A0D4E52004A757A /* InchCalc.key */,
 				91E7B6CA2A0D4428004A757A /* InchCalc */,
 				91E7B6DB2A0D4430004A757A /* InchCalcTests */,
 				91E7B6E52A0D4430004A757A /* InchCalcUITests */,
@@ -246,6 +249,7 @@
 				91E7B6FC2A0D5189004A757A /* README.md in Resources */,
 				91E7B6FA2A0D507D004A757A /* InchCalc.png in Resources */,
 				91E7B6F82A0D4FC0004A757A /* _todo.txt in Resources */,
+				91E7B6FE2A0D5230004A757A /* LICENSE in Resources */,
 				91E7B6D32A0D442F004A757A /* Preview Assets.xcassets in Resources */,
 				91E7B6F62A0D4E52004A757A /* InchCalc.key in Resources */,
 				91E7B6D02A0D442F004A757A /* Assets.xcassets in Resources */,
