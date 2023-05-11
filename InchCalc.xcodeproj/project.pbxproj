@@ -15,6 +15,7 @@
 		91E7B6E72A0D4430004A757A /* InchCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6E62A0D4430004A757A /* InchCalcUITests.swift */; };
 		91E7B6E92A0D4430004A757A /* InchCalcUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6E82A0D4430004A757A /* InchCalcUITestsLaunchTests.swift */; };
 		91E7B6F62A0D4E52004A757A /* InchCalc.key in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F52A0D4E52004A757A /* InchCalc.key */; };
+		91E7B6F82A0D4FC0004A757A /* _todo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F72A0D4FC0004A757A /* _todo.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		91E7B6E62A0D4430004A757A /* InchCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcUITests.swift; sourceTree = "<group>"; };
 		91E7B6E82A0D4430004A757A /* InchCalcUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		91E7B6F52A0D4E52004A757A /* InchCalc.key */ = {isa = PBXFileReference; lastKnownFileType = file; path = InchCalc.key; sourceTree = "<group>"; };
+		91E7B6F72A0D4FC0004A757A /* _todo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = _todo.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		91E7B6BF2A0D4428004A757A = {
 			isa = PBXGroup;
 			children = (
+				91E7B6F72A0D4FC0004A757A /* _todo.txt */,
 				91E7B6F52A0D4E52004A757A /* InchCalc.key */,
 				91E7B6CA2A0D4428004A757A /* InchCalc */,
 				91E7B6DB2A0D4430004A757A /* InchCalcTests */,
@@ -234,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91E7B6F82A0D4FC0004A757A /* _todo.txt in Resources */,
 				91E7B6D32A0D442F004A757A /* Preview Assets.xcassets in Resources */,
 				91E7B6F62A0D4E52004A757A /* InchCalc.key in Resources */,
 				91E7B6D02A0D442F004A757A /* Assets.xcassets in Resources */,
