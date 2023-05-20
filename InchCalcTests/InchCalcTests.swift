@@ -1,10 +1,3 @@
-//
-//  InchCalcTests.swift
-//  InchCalcTests
-//
-//  Created by Bill Wake on 5/11/23.
-//
-
 import XCTest
 @testable import InchCalc
 
