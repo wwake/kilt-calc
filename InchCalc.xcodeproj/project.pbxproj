@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9116601F2A1952A500932BD2 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 9116601E2A1952A500932BD2 /* ViewInspector */; };
-		91E3C59E2A1BE8FB0098BAFC /* KeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C59D2A1BE8FB0098BAFC /* KeyTests.swift */; };
+		91E3C59E2A1BE8FB0098BAFC /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */; };
 		91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A02A1BF40F0098BAFC /* Key.swift */; };
 		91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A22A1BF4280098BAFC /* Keypad.swift */; };
+		91E3C5A52A1BF69F0098BAFC /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A42A1BF69F0098BAFC /* Calculator.swift */; };
 		91E7B6CC2A0D4428004A757A /* InchCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6CB2A0D4428004A757A /* InchCalcApp.swift */; };
 		91E7B6CE2A0D4428004A757A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6CD2A0D4428004A757A /* ContentView.swift */; };
 		91E7B6D02A0D442F004A757A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6CF2A0D442F004A757A /* Assets.xcassets */; };
 		91E7B6D32A0D442F004A757A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6D22A0D442F004A757A /* Preview Assets.xcassets */; };
-		91E7B6DD2A0D4430004A757A /* InchCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6DC2A0D4430004A757A /* InchCalcTests.swift */; };
 		91E7B6E72A0D4430004A757A /* InchCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6E62A0D4430004A757A /* InchCalcUITests.swift */; };
 		91E7B6E92A0D4430004A757A /* InchCalcUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6E82A0D4430004A757A /* InchCalcUITestsLaunchTests.swift */; };
 		91E7B6F62A0D4E52004A757A /* InchCalc.key in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F52A0D4E52004A757A /* InchCalc.key */; };
@@ -43,16 +43,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		91E3C59D2A1BE8FB0098BAFC /* KeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTests.swift; sourceTree = "<group>"; };
+		91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		91E3C5A02A1BF40F0098BAFC /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		91E3C5A22A1BF4280098BAFC /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
+		91E3C5A42A1BF69F0098BAFC /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		91E7B6C82A0D4428004A757A /* InchCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InchCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E7B6CB2A0D4428004A757A /* InchCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcApp.swift; sourceTree = "<group>"; };
 		91E7B6CD2A0D4428004A757A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		91E7B6CF2A0D442F004A757A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91E7B6D22A0D442F004A757A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91E7B6D82A0D442F004A757A /* InchCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InchCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		91E7B6DC2A0D4430004A757A /* InchCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcTests.swift; sourceTree = "<group>"; };
 		91E7B6E22A0D4430004A757A /* InchCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InchCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E7B6E62A0D4430004A757A /* InchCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcUITests.swift; sourceTree = "<group>"; };
 		91E7B6E82A0D4430004A757A /* InchCalcUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		91E3C59C2A1BE8B40098BAFC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				91E3C59D2A1BE8FB0098BAFC /* KeyTests.swift */,
+				91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -110,6 +110,7 @@
 			children = (
 				91E3C5A02A1BF40F0098BAFC /* Key.swift */,
 				91E3C5A22A1BF4280098BAFC /* Keypad.swift */,
+				91E3C5A42A1BF69F0098BAFC /* Calculator.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -163,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				91E3C59C2A1BE8B40098BAFC /* View */,
-				91E7B6DC2A0D4430004A757A /* InchCalcTests.swift */,
 			);
 			path = InchCalcTests;
 			sourceTree = "<group>";
@@ -321,6 +321,7 @@
 				91E7B6CE2A0D4428004A757A /* ContentView.swift in Sources */,
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
 				91E7B6CC2A0D4428004A757A /* InchCalcApp.swift in Sources */,
+				91E3C5A52A1BF69F0098BAFC /* Calculator.swift in Sources */,
 				91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,8 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91E7B6DD2A0D4430004A757A /* InchCalcTests.swift in Sources */,
-				91E3C59E2A1BE8FB0098BAFC /* KeyTests.swift in Sources */,
+				91E3C59E2A1BE8FB0098BAFC /* CalculatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
