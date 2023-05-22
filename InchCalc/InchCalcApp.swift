@@ -4,7 +4,7 @@ import SwiftUI
 struct InchCalcApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          ContentView(keypad: KeyPad(contents: []))
         }
     }
 }
