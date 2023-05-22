@@ -18,17 +18,23 @@ struct ContentView: View {
 
   var body: some View {
     VStack {
-
+      Text("0")
+        .padding(4)
+        .frame(width: 330, alignment: .trailing)
+        .border(Color.black)
       Grid {
         ForEach(keypad.contents, id:\.self) { row in
           GridRow {
             ForEach(row) { key in
               Text(key.name)
+                .frame(width: 60, height: 60)
+                .background(Color("KeyColor"))
             }
           }
         }
       }
     }
+    .font(.largeTitle)
     .padding()
   }
 }
@@ -38,7 +44,7 @@ struct ContentView_Previews: PreviewProvider {
     ContentView(keypad: KeyPad(contents:
       [
         [Key("C"), Key("("), Key(")"), Key("\u{232B}")],
-        [Key("yd"), Key("ft"), Key("in")]
+        [Key("yd"), Key("ft"), Key("in"), Key("+")]
       ]))
   }
 }
