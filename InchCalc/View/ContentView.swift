@@ -22,8 +22,8 @@ struct ContentView: View {
       Grid {
         ForEach(keypad.contents, id:\.self) { row in
           GridRow {
-            ForEach(row) {
-              Text($0.name)
+            ForEach(row) { key in
+              Text(key.name)
             }
           }
         }
