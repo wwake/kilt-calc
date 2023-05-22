@@ -1,7 +1,7 @@
 import Foundation
 
-struct Key: Identifiable {
-  let id = UUID()
+public struct Key: Identifiable {
+  public let id = UUID()
   let name: String
   let action: (String) -> Void
 
@@ -12,13 +12,13 @@ struct Key: Identifiable {
 }
 
 extension Key: Equatable {
-  static func == (lhs: Key, rhs: Key) -> Bool {
+  public static func == (lhs: Key, rhs: Key) -> Bool {
     lhs.id == rhs.id
   }
 }
 
 extension Key: Hashable {
-  func hash(into hasher: inout Hasher) {
+  public func hash(into hasher: inout Hasher) {
     hasher.combine(id)
   }
 }

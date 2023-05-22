@@ -1,11 +1,18 @@
 import SwiftUI
 
 struct ContentView: View {
-  let keypad: Keypad
+  @ObservedObject var calculator: Calculator
+
+  @StateObject var keypad: Keypad
+
+  init(calculator: Calculator) {
+    self.calculator = calculator
+    self._keypad = StateObject(wrappedValue: Keypad(calculator))
+  }
 
   var body: some View {
     VStack {
-      Text("0")
+      Text(calculator.display)
         .padding(4)
         .frame(width: 330, alignment: .trailing)
         .border(Color.black)
@@ -16,6 +23,9 @@ struct ContentView: View {
               Text(key.name)
                 .frame(width: 60, height: 60)
                 .background(Color("KeyColor"))
+                .onTapGesture {
+                  key.action(key.name)
+                }
             }
           }
         }
@@ -28,6 +38,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(keypad: Keypad.example)
+    ContentView(calculator: Calculator())
   }
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-class Calculator : ObservableObject {
+public class Calculator: ObservableObject {
   @Published public var display: String = "0"
   private var startingNewNumber = true
 
