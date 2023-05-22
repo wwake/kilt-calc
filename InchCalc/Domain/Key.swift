@@ -9,6 +9,10 @@ public struct Key: Identifiable {
     self.name = name
     self.action = action
   }
+
+  public func press() {
+    action(name)
+  }
 }
 
 extension Key: Equatable {

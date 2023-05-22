@@ -24,7 +24,7 @@ struct ContentView: View {
                 .frame(width: 60, height: 60)
                 .background(Color("KeyColor"))
                 .onTapGesture {
-                  key.action(key.name)
+                  key.press()
                 }
             }
           }
