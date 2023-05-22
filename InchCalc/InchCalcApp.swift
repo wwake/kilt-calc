@@ -13,7 +13,7 @@ struct InchCalcApp: App {
 
   var body: some Scene {
     WindowGroup {
-      ContentView(keypad: KeyPad(contents: keypad))
+      ContentView(keypad: Keypad(contents: keypad))
     }
   }
 }

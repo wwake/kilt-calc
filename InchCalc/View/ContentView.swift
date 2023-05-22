@@ -1,20 +1,7 @@
 import SwiftUI
 
-struct Key: Identifiable, Hashable {
-  let id = UUID()
-  let name: String
-
-  init(_ name: String) {
-    self.name = name
-  }
-}
-
-struct KeyPad {
-  let contents: [[Key]]
-}
-
 struct ContentView: View {
-  let keypad: KeyPad
+  let keypad: Keypad
 
   var body: some View {
     VStack {
@@ -41,10 +28,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(keypad: KeyPad(contents:
-      [
-        [Key("C"), Key("("), Key(")"), Key("\u{232B}")],
-        [Key("yd"), Key("ft"), Key("in"), Key("+")]
-      ]))
+    ContentView(keypad: Keypad.example)
   }
 }
