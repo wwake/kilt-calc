@@ -21,8 +21,8 @@ final class ContentViewTests: XCTestCase {
     try sut.inspect().vStack()[0].text()
   }
 
-  fileprivate func key(_ sut: ContentView, _ name: String) throws -> InspectableView<ViewType.Text> {
-    try sut.inspect().vStack()[1].find(text: name)
+  fileprivate func key(_ sut: ContentView, _ name: String) throws -> InspectableView<ViewType.Button> {
+    try sut.inspect().vStack()[1].find(button: name)
   }
 
   func testAllDigitKeyPresses() throws {
@@ -48,7 +48,7 @@ final class ContentViewTests: XCTestCase {
     let sut = ContentView(calculator: calculator)
     let key = try key(sut, keyName)
 
-    try key.callOnTapGesture()
+    try key.tap()
 
     XCTAssertEqual(try display(sut).string(), expectedDisplayText)
   }
@@ -58,11 +58,11 @@ final class ContentViewTests: XCTestCase {
 
     let sut = ContentView(calculator: calculator)
     let key4 = try key(sut, "4")
-    try key4.callOnTapGesture()
+    try key4.tap()
     XCTAssertEqual(try display(sut).string(), "4")
 
     let keyClear = try key(sut, "C")
-    try keyClear.callOnTapGesture()
+    try keyClear.tap()
 
     XCTAssertEqual(try display(sut).string(), "0")
   }

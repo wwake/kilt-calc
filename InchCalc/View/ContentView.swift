@@ -25,15 +25,11 @@ struct ContentView: View {
         ForEach(keypad.contents, id: \.self) { row in
           Group { // GridRow {
             ForEach(row) { key in
-              Text(key.name)
-                .accessibilityLabel(key.name)
-                .frame(width: 60, height: 60)
-                .background(Color("KeyColor"))
-                .onTapGesture {
-                  key.press()
-                }
-                .accessibility(addTraits: .isButton)
-                .accessibility(hint: Text("\(key.name)"))
+              Button(key.name) {
+                key.press()
+              }
+              .frame(width: 60, height: 60)
+              .background(Color("KeyColor"))
             }
           }
         }

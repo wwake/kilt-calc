@@ -1,4 +1,3 @@
-* Use Buttons on keys
 * What if you enter multiple leading zeros?
 * Allow entering yard/feet/inches
 * Set result type ('show as')
@@ -11,7 +10,7 @@ CALC-23-02: 2023-05-23 - ViewInspector Tests
 * Create ViewInspector test to check digit keypress
 * Make uncommitted number be in italics
 * Clear key
-
+* Use Buttons on keys
 
 CALC-23-01: 2023-05-22 - Introducing InchCalc
 InchCalc - new project
