@@ -1,8 +1,8 @@
-* Test Key.action
-
+* Make = properly reset the display
 
 CALC-23-01: 2023-05-22
 InchCalc - new project
 * Created Key, Keypad, and Calculator
 * Created initial view
 * Reorganize how Calculator and Keypad are owned
+* Test Key.action
