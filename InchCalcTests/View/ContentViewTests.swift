@@ -17,8 +17,8 @@ extension XCTestCase {
 }
 
 final class ContentViewTests: XCTestCase {
-  fileprivate func display(_ sut: ContentView) throws -> String {
-    try sut.inspect().vStack()[0].text().string()
+  fileprivate func display(_ sut: ContentView) throws -> InspectableView<ViewType.Text> {
+    try sut.inspect().vStack()[0].text()
   }
 
   fileprivate func key(_ sut: ContentView, _ name: String) throws -> InspectableView<ViewType.Text> {
@@ -50,6 +50,6 @@ final class ContentViewTests: XCTestCase {
 
     try key.callOnTapGesture()
 
-    XCTAssertEqual(try display(sut), expectedDisplayText)
+    XCTAssertEqual(try display(sut).string(), expectedDisplayText)
   }
 }

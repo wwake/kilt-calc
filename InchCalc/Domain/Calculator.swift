@@ -2,17 +2,17 @@ import Foundation
 
 public class Calculator: ObservableObject {
   @Published public var display: String = "0"
-  private var startingNewNumber = true
+  @Published private(set) var alreadyEnteringNewNumber = false
 
   public func digit(_ digit: String) {
-    if startingNewNumber {
+    if !alreadyEnteringNewNumber {
       display = ""
-      startingNewNumber = false
+      alreadyEnteringNewNumber = true
     }
     display.append(digit)
   }
 
   public func enter(_: String) {
-    startingNewNumber = true
+    alreadyEnteringNewNumber = false
   }
 }

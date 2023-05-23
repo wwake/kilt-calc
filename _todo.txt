@@ -1,5 +1,6 @@
-* Need to pass calculator to Keypad??
 * Make uncommitted number be in italics
+* Need to pass calculator to Keypad??
+* What if you enter multiple leading zeros?
 * Use Buttons on keys
 
 * Update EGTest to take new check() with try from ContentViewTests
