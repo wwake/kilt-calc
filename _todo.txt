@@ -2,6 +2,8 @@
 * Make uncommitted number be in italics
 * Use Buttons on keys
 
+* Update EGTest to take new check() with try from ContentViewTests
+
 CALC-23-02: 2023-05-23 - ViewInspector Tests
 * Off camera: installed SwiftLint, fixed its warnings
 * Off camera: remove unused UI tests
