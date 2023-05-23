@@ -1,0 +1,156 @@
+excluded:
+  - .idea
+  - Pods
+
+disabled_rules: # house style - turn these off
+  - force_cast # I only tend to use them when really needed
+  - identifier_name # I'm ok with short names when appropriate
+  - inert_defer  # they're not inert in constructors
+  - multiple_closures_with_trailing_closure  # I'm ok with these (but could be convinced otherwise)
+  - type_name    # I'm ok with _ in type names
+
+# Following are disabled while I decide whether to worry
+  - cyclomatic_complexity
+  - function_body_length
+  - type_body_length
+
+opt_in_rules:
+  - accessibility_label_for_image
+  - accessibility_trait_for_button
+#  - anonymous_argument_in_multiline_closure # house rule
+  - anyobject_protocol
+  - array_init
+  - attributes
+  - balanced_xctest_lifecycle
+#  - closure_body_length  # house rule esp for views
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - comma_inheritance
+#  - conditional_returns_on_newline  # house rule
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - convenience_type
+  - discarded_notification_center_observer
+  - discouraged_assert
+  - discouraged_none_name
+  - discouraged_object_literal
+  - discouraged_optional_boolean
+#  - discouraged_optional_collection  # House rule - parser can't necessarily produce empty collections
+  - empty_collection_literal
+#  - empty_count   # House rule - it complains about int vs 0
+  - empty_string
+  - empty_xctest_method
+  - enum_case_associated_values_count
+  - expiring_todo
+#  - explicit_acl   # house rule but could be convinced o.w.
+  - explicit_enum_raw_value
+  - explicit_init
+#  - explicit_top_level_acl  # house rule but could be convinced o.w.
+#  - explicit_type_interface  # house rule
+  - extension_access_modifier
+  - fallthrough
+  - fatal_error_message
+  - file_header
+#  - file_name   # should probably be enforced
+  - file_name_no_space
+#  - file_types_order  #should probably be enforced
+  - first_where
+  - flatmap_over_map_reduce
+#  - force_unwrapping   # house rule because it complains about valid situations
+#  - function_default_parameter_at_end  # house style
+  - ibinspectable_in_extension
+  - identical_operands
+  - implicit_return
+#  - implicitly_unwrapped_optional  # house rule
+#  - indentation_width  # house style is 2-space indent
+  - joined_default_parameter
+  - last_where
+  - legacy_multiple
+#  - legacy_objc_type   # house rule - NSNumber used when needed
+  - let_var_whitespace
+  - literal_expression_end_indentation
+  - local_doc_comment
+  - lower_acl_than_parent
+#  - missing_docs   # house rule
+  - modifier_order
+  - multiline_arguments
+  - multiline_arguments_brackets
+  - multiline_function_chains
+  - multiline_literal_brackets
+  - multiline_parameters
+  - multiline_parameters_brackets
+  - nimble_operator
+  - no_extension_access_modifier
+#  - no_grouping_extension  # house rule
+#  - no_magic_numbers  # house rule - SwiftLint is too picky
+  - nslocalizedstring_key
+  - nslocalizedstring_require_bundle
+  - number_separator
+  - object_literal
+  - operator_usage_whitespace
+  - optional_enum_case_matching
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+#  - prefer_nimble   # house rule - review at some point
+#  - prefer_self_in_static_references  # house rule
+  - prefer_self_type_over_type_of_self
+  - prefer_zero_over_explicit_init
+#  - prefixed_toplevel_constant  # house rule - don't need k on constants
+  - private_action
+  - private_outlet
+  - private_subject
+  - prohibited_interface_builder
+  - prohibited_super_call
+  - quick_discouraged_call
+  - quick_discouraged_focused_test
+  - quick_discouraged_pending_test
+  - raw_value_for_camel_cased_codable_enum
+  - reduce_into
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+#  - required_deinit  # house rule
+  - required_enum_case
+  - return_value_from_void_function
+  - self_binding
+  - shorthand_optional_binding
+#  - single_test_class   # house rule
+  - sorted_first_last
+  - sorted_imports
+  - static_operator
+#  - strict_fileprivate  # house rule (extract method adds fileprivate)
+  - strong_iboutlet
+  - switch_case_on_newline
+  - test_case_accessibility
+  - toggle_bool
+#  - trailing_closure  # house rule - doesn't apply with two closure arguments
+#  - type_contents_order  # house rule
+#  - unavailable_function  # house rule - sometimes need 'subclass responsibility'
+  - unneeded_parentheses_in_closure_argument
+  - unowned_variable_capture
+#  - untyped_error_in_catch  # house rule
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace_between_cases
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - weak_delegate
+#  - xct_specific_matcher  # house rule
+  - yoda_condition
+
+analyzer_rules:    # decide on these if using Obj-C; Xcode doesn't run analyzer for Swift
+  - explicit_self
+  - typesafe_array_init
+  - unused_declaration
+  - unused_import
+
+
+# Configuration
+file_length:
+  warning: 600
+  error: 1200
+
+trailing_comma:    # house rule
+  mandatory_comma: true

@@ -2,9 +2,9 @@
 import XCTest
 
 final class KeyTests: XCTestCase {
-  var savedString: String = ""
+  private var savedString: String = ""
 
-  func helper(_ string: String) {
+  private func helper(_ string: String) {
     savedString = string
   }
 

@@ -5,7 +5,7 @@ public struct Key: Identifiable {
   let name: String
   let action: (String) -> Void
 
-  init(_ name: String, _ action: @escaping (String) -> Void = {_ in }) {
+  init(_ name: String, _ action: @escaping (String) -> Void = { _ in }) {
     self.name = name
     self.action = action
   }

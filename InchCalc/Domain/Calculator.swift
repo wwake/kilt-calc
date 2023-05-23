@@ -12,7 +12,7 @@ public class Calculator: ObservableObject {
     display.append(digit)
   }
 
-  public func enter(_ : String) {
+  public func enter(_: String) {
     startingNewNumber = true
   }
 }

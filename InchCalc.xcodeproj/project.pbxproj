@@ -13,6 +13,7 @@
 		91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A22A1BF4280098BAFC /* Keypad.swift */; };
 		91E3C5A52A1BF69F0098BAFC /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A42A1BF69F0098BAFC /* Calculator.swift */; };
 		91E3C5A72A1C01300098BAFC /* KeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A62A1C01300098BAFC /* KeyTests.swift */; };
+		91E3C5A92A1C668D0098BAFC /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */; };
 		91E7B6CC2A0D4428004A757A /* InchCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6CB2A0D4428004A757A /* InchCalcApp.swift */; };
 		91E7B6CE2A0D4428004A757A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6CD2A0D4428004A757A /* ContentView.swift */; };
 		91E7B6D02A0D442F004A757A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6CF2A0D442F004A757A /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		91E3C5A22A1BF4280098BAFC /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
 		91E3C5A42A1BF69F0098BAFC /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		91E3C5A62A1C01300098BAFC /* KeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTests.swift; sourceTree = "<group>"; };
+		91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		91E7B6C82A0D4428004A757A /* InchCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InchCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E7B6CB2A0D4428004A757A /* InchCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcApp.swift; sourceTree = "<group>"; };
 		91E7B6CD2A0D4428004A757A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		91E7B6BF2A0D4428004A757A = {
 			isa = PBXGroup;
 			children = (
+				91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */,
 				91E7B6F72A0D4FC0004A757A /* _todo.txt */,
 				91E7B6FB2A0D5189004A757A /* README.md */,
 				91E7B6FD2A0D522F004A757A /* LICENSE */,
@@ -190,6 +193,7 @@
 				91E7B6C42A0D4428004A757A /* Sources */,
 				91E7B6C52A0D4428004A757A /* Frameworks */,
 				91E7B6C62A0D4428004A757A /* Resources */,
+				91E3C5AA2A1C677A0098BAFC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -290,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91E3C5A92A1C668D0098BAFC /* .swiftlint.yml in Resources */,
 				91E7B6FC2A0D5189004A757A /* README.md in Resources */,
 				91E7B6FA2A0D507D004A757A /* InchCalc.png in Resources */,
 				91E7B6F82A0D4FC0004A757A /* _todo.txt in Resources */,
@@ -315,6 +320,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		91E3C5AA2A1C677A0098BAFC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >>/dev/null; then\n  swiftlint\nelse\n  echo \"warning: swiftlint not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		91E7B6C42A0D4428004A757A /* Sources */ = {
