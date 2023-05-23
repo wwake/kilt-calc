@@ -5,8 +5,6 @@ import XCTest
 @testable import InchCalc
 
 final class ContentViewTests: XCTestCase {
-  @StateObject private var calculator = Calculator()
-
   fileprivate func display(_ sut: ContentView) throws -> String {
     try sut.inspect().vStack()[0].text().string()
   }
@@ -16,6 +14,8 @@ final class ContentViewTests: XCTestCase {
   }
 
   func testDigitKeyPress() throws {
+    @StateObject var calculator = Calculator()
+
     let sut = ContentView(calculator: calculator)
     let key = try key(sut, "8")
 
