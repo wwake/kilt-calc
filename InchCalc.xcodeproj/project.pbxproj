@@ -18,8 +18,6 @@
 		91E7B6CE2A0D4428004A757A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6CD2A0D4428004A757A /* ContentView.swift */; };
 		91E7B6D02A0D442F004A757A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6CF2A0D442F004A757A /* Assets.xcassets */; };
 		91E7B6D32A0D442F004A757A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6D22A0D442F004A757A /* Preview Assets.xcassets */; };
-		91E7B6E72A0D4430004A757A /* InchCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6E62A0D4430004A757A /* InchCalcUITests.swift */; };
-		91E7B6E92A0D4430004A757A /* InchCalcUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6E82A0D4430004A757A /* InchCalcUITestsLaunchTests.swift */; };
 		91E7B6F62A0D4E52004A757A /* InchCalc.key in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F52A0D4E52004A757A /* InchCalc.key */; };
 		91E7B6F82A0D4FC0004A757A /* _todo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F72A0D4FC0004A757A /* _todo.txt */; };
 		91E7B6FA2A0D507D004A757A /* InchCalc.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F92A0D507D004A757A /* InchCalc.png */; };
@@ -29,13 +27,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		91E7B6D92A0D442F004A757A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91E7B6C02A0D4428004A757A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 91E7B6C72A0D4428004A757A;
-			remoteInfo = InchCalc;
-		};
-		91E7B6E32A0D4430004A757A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 91E7B6C02A0D4428004A757A /* Project object */;
 			proxyType = 1;
@@ -57,9 +48,6 @@
 		91E7B6CF2A0D442F004A757A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91E7B6D22A0D442F004A757A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91E7B6D82A0D442F004A757A /* InchCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InchCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		91E7B6E22A0D4430004A757A /* InchCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InchCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		91E7B6E62A0D4430004A757A /* InchCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcUITests.swift; sourceTree = "<group>"; };
-		91E7B6E82A0D4430004A757A /* InchCalcUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		91E7B6F52A0D4E52004A757A /* InchCalc.key */ = {isa = PBXFileReference; lastKnownFileType = file; path = InchCalc.key; sourceTree = "<group>"; };
 		91E7B6F72A0D4FC0004A757A /* _todo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = _todo.txt; sourceTree = "<group>"; };
 		91E7B6F92A0D507D004A757A /* InchCalc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InchCalc.png; sourceTree = "<group>"; };
@@ -80,13 +68,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9116601F2A1952A500932BD2 /* ViewInspector in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		91E7B6DF2A0D4430004A757A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +112,6 @@
 				91E7B6F52A0D4E52004A757A /* InchCalc.key */,
 				91E7B6CA2A0D4428004A757A /* InchCalc */,
 				91E7B6DB2A0D4430004A757A /* InchCalcTests */,
-				91E7B6E52A0D4430004A757A /* InchCalcUITests */,
 				91E7B6C92A0D4428004A757A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -141,7 +121,6 @@
 			children = (
 				91E7B6C82A0D4428004A757A /* InchCalc.app */,
 				91E7B6D82A0D442F004A757A /* InchCalcTests.xctest */,
-				91E7B6E22A0D4430004A757A /* InchCalcUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,15 +151,6 @@
 				91E3C59C2A1BE8B40098BAFC /* View */,
 			);
 			path = InchCalcTests;
-			sourceTree = "<group>";
-		};
-		91E7B6E52A0D4430004A757A /* InchCalcUITests */ = {
-			isa = PBXGroup;
-			children = (
-				91E7B6E62A0D4430004A757A /* InchCalcUITests.swift */,
-				91E7B6E82A0D4430004A757A /* InchCalcUITestsLaunchTests.swift */,
-			);
-			path = InchCalcUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,24 +195,6 @@
 			productReference = 91E7B6D82A0D442F004A757A /* InchCalcTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		91E7B6E12A0D4430004A757A /* InchCalcUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 91E7B6F22A0D4430004A757A /* Build configuration list for PBXNativeTarget "InchCalcUITests" */;
-			buildPhases = (
-				91E7B6DE2A0D4430004A757A /* Sources */,
-				91E7B6DF2A0D4430004A757A /* Frameworks */,
-				91E7B6E02A0D4430004A757A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				91E7B6E42A0D4430004A757A /* PBXTargetDependency */,
-			);
-			name = InchCalcUITests;
-			productName = InchCalcUITests;
-			productReference = 91E7B6E22A0D4430004A757A /* InchCalcUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -257,10 +209,6 @@
 						CreatedOnToolsVersion = 14.3;
 					};
 					91E7B6D72A0D442F004A757A = {
-						CreatedOnToolsVersion = 14.3;
-						TestTargetID = 91E7B6C72A0D4428004A757A;
-					};
-					91E7B6E12A0D4430004A757A = {
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 91E7B6C72A0D4428004A757A;
 					};
@@ -284,7 +232,6 @@
 			targets = (
 				91E7B6C72A0D4428004A757A /* InchCalc */,
 				91E7B6D72A0D442F004A757A /* InchCalcTests */,
-				91E7B6E12A0D4430004A757A /* InchCalcUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -306,13 +253,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		91E7B6D62A0D442F004A757A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		91E7B6E02A0D4430004A757A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,15 +304,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		91E7B6DE2A0D4430004A757A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				91E7B6E92A0D4430004A757A /* InchCalcUITestsLaunchTests.swift in Sources */,
-				91E7B6E72A0D4430004A757A /* InchCalcUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -380,11 +311,6 @@
 			isa = PBXTargetDependency;
 			target = 91E7B6C72A0D4428004A757A /* InchCalc */;
 			targetProxy = 91E7B6D92A0D442F004A757A /* PBXContainerItemProxy */;
-		};
-		91E7B6E42A0D4430004A757A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 91E7B6C72A0D4428004A757A /* InchCalc */;
-			targetProxy = 91E7B6E32A0D4430004A757A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -601,42 +527,6 @@
 			};
 			name = Release;
 		};
-		91E7B6F32A0D4430004A757A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7B9VB3YTHK;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xp123.InchCalcUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = InchCalc;
-			};
-			name = Debug;
-		};
-		91E7B6F42A0D4430004A757A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7B9VB3YTHK;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xp123.InchCalcUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = InchCalc;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -663,15 +553,6 @@
 			buildConfigurations = (
 				91E7B6F02A0D4430004A757A /* Debug */,
 				91E7B6F12A0D4430004A757A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		91E7B6F22A0D4430004A757A /* Build configuration list for PBXNativeTarget "InchCalcUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				91E7B6F32A0D4430004A757A /* Debug */,
-				91E7B6F42A0D4430004A757A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
