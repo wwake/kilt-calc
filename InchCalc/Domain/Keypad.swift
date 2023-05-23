@@ -6,7 +6,7 @@ public class Keypad: ObservableObject {
   public init(_ calculator: Calculator) {
     self.contents = [
       [
-        Key("C"),
+        Key("C", Calculator.clear(calculator)),
         Key("("),
         Key(")"),
         Key("%"),

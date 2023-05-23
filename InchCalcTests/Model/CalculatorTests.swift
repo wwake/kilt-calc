@@ -21,4 +21,12 @@ final class CalculatorTests: XCTestCase {
     calc.digit("2")
     XCTAssertEqual(calc.display, "2")
   }
+
+  func test_ClearResetsDisplayAndEntering() {
+    let calc = Calculator()
+    calc.digit("4")
+    calc.clear("C")
+    XCTAssertEqual(calc.display, "0")
+    XCTAssertFalse(calc.alreadyEnteringNewNumber)
+  }
 }

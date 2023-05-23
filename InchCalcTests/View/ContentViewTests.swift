@@ -52,4 +52,18 @@ final class ContentViewTests: XCTestCase {
 
     XCTAssertEqual(try display(sut).string(), expectedDisplayText)
   }
+
+  func testClearResetsDisplay() throws {
+    @StateObject var calculator = Calculator()
+
+    let sut = ContentView(calculator: calculator)
+    let key4 = try key(sut, "4")
+    try key4.callOnTapGesture()
+    XCTAssertEqual(try display(sut).string(), "4")
+
+    let keyClear = try key(sut, "C")
+    try keyClear.callOnTapGesture()
+
+    XCTAssertEqual(try display(sut).string(), "0")
+  }
 }

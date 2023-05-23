@@ -1,8 +1,7 @@
-* Make uncommitted number be in italics
-* Need to pass calculator to Keypad??
-* What if you enter multiple leading zeros?
 * Use Buttons on keys
-
+* What if you enter multiple leading zeros?
+* Allow entering yard/feet/inches
+* Set result type ('show as')
 * Update EGTest to take new check() with try from ContentViewTests
 
 CALC-23-02: 2023-05-23 - ViewInspector Tests
@@ -10,6 +9,8 @@ CALC-23-02: 2023-05-23 - ViewInspector Tests
 * Off camera: remove unused UI tests
 * Check that = properly resets the display
 * Create ViewInspector test to check digit keypress
+* Make uncommitted number be in italics
+* Clear key
 
 
 CALC-23-01: 2023-05-22 - Introducing InchCalc
