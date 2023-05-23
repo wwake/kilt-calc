@@ -1,6 +1,6 @@
 import SwiftUI
-import XCTest
 import ViewInspector
+import XCTest
 
 @testable import InchCalc
 

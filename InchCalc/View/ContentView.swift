@@ -5,7 +5,7 @@ struct ContentView: View {
 
   @StateObject var keypad: Keypad
 
-  let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+  let columns = Array(repeating: GridItem(.flexible()), count: 5)
 
   init(calculator: Calculator) {
     self.calculator = calculator
