@@ -7,14 +7,20 @@ import XCTest
 final class ContentViewTests: XCTestCase {
   @StateObject private var calculator = Calculator()
 
-  func testStringValue() throws {
+  fileprivate func display(_ sut: ContentView) throws -> String {
+    try sut.inspect().vStack()[0].text().string()
+  }
+
+  fileprivate func key(_ sut: ContentView, _ name: String) throws -> InspectableView<ViewType.Text> {
+    try sut.inspect().find(text: name)
+  }
+
+  func testDigitKeyPress() throws {
     let sut = ContentView(calculator: calculator)
-    let key8 = try sut.inspect().find(text: "8")
+    let key = try key(sut, "8")
 
-    try key8.callOnTapGesture()
+    try key.callOnTapGesture()
 
-    let display = try sut.inspect().vStack()[0].text().string()
-
-    XCTAssertEqual(display, "8")
+    XCTAssertEqual(try display(sut), "8")
   }
 }
