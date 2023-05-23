@@ -1,6 +1,15 @@
-* Make = properly reset the display
+* ViewInspector Tests
+* Need to pass calculator to Keypad??
+* Make uncommitted number be in italics
+* Use Buttons on keys
 
-CALC-23-01: 2023-05-22
+CALC-23-02: 2023-05-23 - ViewInspector Tests
+* Off camera: installed SwiftLint, fixed its warnings
+* Off camera: remove unused UI tests
+* Check that = properly resets the display
+
+
+CALC-23-01: 2023-05-22 - Introducing InchCalc
 InchCalc - new project
 * Created Key, Keypad, and Calculator
 * Created initial view

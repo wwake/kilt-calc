@@ -5,6 +5,8 @@ struct ContentView: View {
 
   @StateObject var keypad: Keypad
 
+  let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+
   init(calculator: Calculator) {
     self.calculator = calculator
     self._keypad = StateObject(wrappedValue: Keypad(calculator))
@@ -13,14 +15,17 @@ struct ContentView: View {
   var body: some View {
     VStack {
       Text(calculator.display)
+        .accessibilityLabel("display")
         .padding(4)
         .frame(width: 330, alignment: .trailing)
         .border(Color.black)
-      Grid {
+
+      LazyVGrid(columns: columns) {
         ForEach(keypad.contents, id: \.self) { row in
-          GridRow {
+          Group { // GridRow {
             ForEach(row) { key in
               Text(key.name)
+                .accessibilityLabel(key.name)
                 .frame(width: 60, height: 60)
                 .background(Color("KeyColor"))
                 .onTapGesture {
