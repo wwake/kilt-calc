@@ -18,7 +18,7 @@ extension XCTestCase {
 
 final class ContentViewTests: XCTestCase {
   fileprivate func display(_ sut: ContentView) throws -> InspectableView<ViewType.Text> {
-    try sut.inspect().vStack()[0].text()
+    try sut.inspect().find(ViewType.Text.self)
   }
 
   fileprivate func key(_ sut: ContentView, _ name: String) throws -> InspectableView<ViewType.Button> {
