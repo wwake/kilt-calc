@@ -11,12 +11,13 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var value = Value.number(0)
 
+  let formatter = NumberFormatter()
+
   public var display: String {
     if !pending.isEmpty { return pending }
 
     switch value {
     case .number(let aNumber):
-      let formatter = NumberFormatter()
       return formatter.string(from: aNumber) ?? ""
     }
   }
@@ -35,7 +36,6 @@ public class Calculator: ObservableObject {
   }
 
   public func enter(_: String) {
-    let formatter = NumberFormatter()
     value = Value.number(formatter.number(from: pending)!)
     pending = ""
     alreadyEnteringNewNumber = false
