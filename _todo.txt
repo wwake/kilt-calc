@@ -1,6 +1,7 @@
 * Allow entering yard/feet/inches
 * Error handling on display side
 * Set result type ('show as')
+* Track down purple errors on view tests
 
 * Update EGTest to take new check() with try from ContentViewTests
 
@@ -10,6 +11,7 @@ CALC-23-03: 2023-05-24 - Enter Units
 * The = evaluates a pending into a value if needed
 * What if you enter multiple leading zeros? They go away when you hit =.
 * Handle invalid input
+* Allow entering inches
 
 CALC-23-02: 2023-05-23 - ViewInspector Tests
 * Off camera: installed SwiftLint, fixed its warnings
