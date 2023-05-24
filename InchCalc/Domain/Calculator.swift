@@ -3,7 +3,7 @@ import Foundation
 public enum Value {
   case error
   case number(NSNumber)
-  case unit(NSNumber)
+  case unit(NSNumber, NSNumber, NSNumber)
 }
 
 public class Calculator: ObservableObject {
@@ -25,7 +25,9 @@ public class Calculator: ObservableObject {
     case .number(let aNumber):
       return formatter.string(from: aNumber) ?? ""
 
-    case .unit(let theInches):
+    case let .unit(theYards, theFeet, theInches):
+      let yards = formatter.string(from: theYards) ?? ""
+      let feet = formatter.string(from: theFeet) ?? ""
       let inches = formatter.string(from: theInches) ?? ""
       return "\(inches) in"
     }
@@ -82,10 +84,10 @@ public class Calculator: ObservableObject {
             inches += possibleNumber.doubleValue
           }
         }
-        value = Value.unit(NSNumber(value: inches))
+        value = Value.unit(NSNumber(0), NSNumber(0), NSNumber(value: inches))
       }
     } catch {
-      // can't happen
+      // can't happen if split regexes are legal
     }
   }
 
