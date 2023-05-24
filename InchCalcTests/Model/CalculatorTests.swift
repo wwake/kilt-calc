@@ -66,4 +66,21 @@ final class CalculatorTests: XCTestCase {
     calc.enter("=")
     XCTAssertEqual(calc.display, "3 in")
   }
+
+  func test_InchesCanAccumulate() {
+    calc.digit("3")
+    calc.unit("in")
+    calc.digit("6")
+    calc.unit("in")
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "9 in")
+  }
+
+  func test_DigitsAndUnitsMustCorrespond() {
+    calc.digit("3")
+    calc.unit("in")
+    calc.digit("6")
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "error")
+  }
 }

@@ -57,18 +57,21 @@ public class Calculator: ObservableObject {
         value = Value.error
       } else if numbers.count == 1 && units.count == 0 {
         let possibleNumber = formatter.number(from: String(numbers[0]))
-        value = possibleNumber == nil ? Value.error : Value.number(possibleNumber!)
+        value = possibleNumber == nil ? .error : .number(possibleNumber!)
+      } else if numbers.count != units.count {
+        value = .error
       } else {
+        var inches = 0.0
         zip(numbers, units).forEach { number, unit in
           if unit == "in" {
             let possibleNumber = formatter.number(from: String(number))!
-
-            value = Value.unit(possibleNumber)
+            inches += possibleNumber.doubleValue
           }
         }
+        value = Value.unit(NSNumber(value: inches))
       }
     } catch {
-      //
+      // can't happen
     }
   }
 
