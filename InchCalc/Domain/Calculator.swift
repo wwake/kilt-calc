@@ -40,12 +40,16 @@ public class Calculator: ObservableObject {
     pending.append(digit)
   }
 
+  fileprivate func encodePendingValue() {
+    guard !pending.isEmpty else { return }
+
+    let possibleNumber = formatter.number(from: pending)
+    value = possibleNumber == nil ? Value.error : Value.number(possibleNumber!)
+    pending = ""
+  }
+
   public func enter(_: String) {
-    if !pending.isEmpty {
-      let possibleNumber = formatter.number(from: pending)
-      value = possibleNumber == nil ? Value.error : Value.number(possibleNumber!)
-      pending = ""
-    }
+    encodePendingValue()
 
     alreadyEnteringNewNumber = false
   }
