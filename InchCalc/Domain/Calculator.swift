@@ -2,15 +2,15 @@ import Foundation
 
 public class Calculator: ObservableObject {
   public var display: String {
-    pending
+    pending.isEmpty ? "0" : pending
   }
 
   @Published private(set) var alreadyEnteringNewNumber = false
 
-  @Published private(set) var pending: String = "0"
+  @Published private(set) var pending: String = ""
 
   public func clear(_: String) {
-    pending = "0"
+    pending = ""
     alreadyEnteringNewNumber = false
   }
 

@@ -45,6 +45,7 @@
 		91E3C5A62A1C01300098BAFC /* KeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTests.swift; sourceTree = "<group>"; };
 		91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		91E3C5AC2A1D39A30098BAFC /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
+		91E3C5B12A1E8ACF0098BAFC /* InchCalc.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = InchCalc.xctestplan; sourceTree = "<group>"; };
 		91E7B6C82A0D4428004A757A /* InchCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InchCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E7B6CB2A0D4428004A757A /* InchCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcApp.swift; sourceTree = "<group>"; };
 		91E7B6CD2A0D4428004A757A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 		91E7B6BF2A0D4428004A757A = {
 			isa = PBXGroup;
 			children = (
+				91E3C5B12A1E8ACF0098BAFC /* InchCalc.xctestplan */,
 				91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */,
 				91E7B6F72A0D4FC0004A757A /* _todo.txt */,
 				91E7B6FB2A0D5189004A757A /* README.md */,
