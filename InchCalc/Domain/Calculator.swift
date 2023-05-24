@@ -14,12 +14,11 @@ public class Calculator: ObservableObject {
   public var display: String {
     if !pending.isEmpty { return pending }
 
-    if case let .number(aNumber) = value {
+    switch value {
+    case .number(let aNumber):
       let formatter = NumberFormatter()
       return formatter.string(from: aNumber) ?? ""
     }
-
-    return "??" // can't happen
   }
 
   public func clear(_: String) {
