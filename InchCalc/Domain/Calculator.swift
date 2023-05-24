@@ -51,18 +51,29 @@ public class Calculator: ObservableObject {
     do {
       let numbers = try pending
         .split(separator: Regex("[a-z]+"))
-        .map {formatter.number(from: String($0))}
+        .map { formatter.number(from: String($0)) }
 
       let units = try pending.split(separator: Regex("[0-9]+"))
 
       pending = ""
+
+      if numbers.contains(nil) {
+        value = .error
+        return
+      }
+
       if numbers.isEmpty {
         value = Value.error
-      } else if numbers.count == 1 && units.count == 0 {
-        let possibleNumber = numbers[0]
-        value = possibleNumber == nil ? .error : .number(possibleNumber!)
-      } else if numbers.count != units.count {
-        value = .error
+        return
+      }
+
+      if numbers.count > 1 && numbers.count != units.count {
+        value = Value.error
+        return
+      }
+
+      if numbers.count == 1 && units.count == 0 {
+        value = .number(numbers[0]!)
       } else {
         var inches = 0.0
         zip(numbers, units).forEach { number, unit in
