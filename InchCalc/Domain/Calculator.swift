@@ -1,6 +1,7 @@
 import Foundation
 
 public enum Value {
+  case error
   case number(NSNumber)
 }
 
@@ -17,6 +18,9 @@ public class Calculator: ObservableObject {
     if !pending.isEmpty { return pending }
 
     switch value {
+    case .error:
+      return "error"
+
     case .number(let aNumber):
       return formatter.string(from: aNumber) ?? ""
     }
@@ -25,6 +29,7 @@ public class Calculator: ObservableObject {
   public func clear(_: String) {
     pending = ""
     alreadyEnteringNewNumber = false
+    value = .number(0)
   }
 
   public func digit(_ digit: String) {
@@ -37,7 +42,8 @@ public class Calculator: ObservableObject {
 
   public func enter(_: String) {
     if !pending.isEmpty {
-      value = Value.number(formatter.number(from: pending)!)
+      let possibleNumber = formatter.number(from: pending)
+      value = possibleNumber == nil ? Value.error : Value.number(possibleNumber!)
       pending = ""
     }
 

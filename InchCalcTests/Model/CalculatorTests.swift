@@ -43,4 +43,27 @@ final class CalculatorTests: XCTestCase {
     calc.enter("=")
     XCTAssertEqual(calc.display, "0")
   }
+
+  fileprivate func overflowValue(_ calc: Calculator) {
+    (1...350).forEach { _ in
+      calc.digit("9")
+    }
+  }
+
+  func test_OverflowValueYieldsError() {
+    let calc = Calculator()
+
+    overflowValue(calc)
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "error")
+  }
+
+  func test_ClearResetsError() {
+    let calc = Calculator()
+    overflowValue(calc)
+    calc.enter("=")
+
+    calc.clear("C")
+    XCTAssertEqual("0", calc.display)
+  }
 }
