@@ -29,4 +29,12 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.display, "0")
     XCTAssertFalse(calc.alreadyEnteringNewNumber)
   }
+
+  func test_EnterEvaluatesPendingString() {
+    let calc = Calculator()
+    calc.digit("0")
+    calc.digit("0")
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "0")
+  }
 }

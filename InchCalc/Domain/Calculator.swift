@@ -1,13 +1,17 @@
 import Foundation
 
-public class Calculator: ObservableObject {
-  public var display: String {
-    pending.isEmpty ? "0" : pending
-  }
+typealias Value = NSNumber
 
+public class Calculator: ObservableObject {
   @Published private(set) var alreadyEnteringNewNumber = false
 
   @Published private(set) var pending: String = ""
+
+  @Published private(set) var value = Value(0)
+
+  public var display: String {
+    pending.isEmpty ? "\(value)" : pending
+  }
 
   public func clear(_: String) {
     pending = ""
@@ -23,6 +27,9 @@ public class Calculator: ObservableObject {
   }
 
   public func enter(_: String) {
+    let formatter = NumberFormatter()
+    value = formatter.number(from: pending)!
+    pending = ""
     alreadyEnteringNewNumber = false
   }
 }

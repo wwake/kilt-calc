@@ -1,4 +1,5 @@
 * When do entered strings get evaluated?
+* Handle invalid input
 * What if you enter multiple leading zeros?
 * Allow entering yard/feet/inches
 * Set result type ('show as')
