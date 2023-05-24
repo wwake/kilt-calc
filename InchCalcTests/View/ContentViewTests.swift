@@ -22,7 +22,7 @@ final class ContentViewTests: XCTestCase {
   }
 
   fileprivate func key(_ sut: ContentView, _ name: String) throws -> InspectableView<ViewType.Button> {
-    try sut.inspect().vStack()[1].find(button: name)
+    try sut.inspect().find(button: name)
   }
 
   func testAllDigitKeyPresses() throws {
