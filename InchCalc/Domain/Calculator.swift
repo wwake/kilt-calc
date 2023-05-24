@@ -3,6 +3,7 @@ import Foundation
 public enum Value {
   case error
   case number(NSNumber)
+  case unit(NSNumber)
 }
 
 public class Calculator: ObservableObject {
@@ -23,6 +24,10 @@ public class Calculator: ObservableObject {
 
     case .number(let aNumber):
       return formatter.string(from: aNumber) ?? ""
+
+    case .unit(let theInches):
+      let inches = formatter.string(from: theInches) ?? ""
+      return "\(inches) in"
     }
   }
 
@@ -43,14 +48,36 @@ public class Calculator: ObservableObject {
   fileprivate func encodePendingValue() {
     guard !pending.isEmpty else { return }
 
-    let possibleNumber = formatter.number(from: pending)
-    value = possibleNumber == nil ? Value.error : Value.number(possibleNumber!)
-    pending = ""
+    do {
+      let numbers = try pending.split(separator: Regex("[a-z]+"))
+      let units = try pending.split(separator: Regex("[0-9]+"))
+
+      pending = ""
+      if numbers.isEmpty {
+        value = Value.error
+      } else if numbers.count == 1 && units.count == 0 {
+        let possibleNumber = formatter.number(from: String(numbers[0]))
+        value = possibleNumber == nil ? Value.error : Value.number(possibleNumber!)
+      } else {
+        zip(numbers, units).forEach { number, unit in
+          if unit == "in" {
+            let possibleNumber = formatter.number(from: String(number))!
+
+            value = Value.unit(possibleNumber)
+          }
+        }
+      }
+    } catch {
+      //
+    }
   }
 
   public func enter(_: String) {
     encodePendingValue()
-
     alreadyEnteringNewNumber = false
+  }
+
+  public func unit(_ value: String) {
+    pending.append(value)
   }
 }

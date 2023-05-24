@@ -15,7 +15,7 @@ public class Keypad: ObservableObject {
       [
         Key("yd"),
         Key("ft"),
-        Key("in"),
+        Key("in", Calculator.unit(calculator)),
         Key("/"),
         Key("\u{00f7}"),
       ],
