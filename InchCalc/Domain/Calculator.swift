@@ -36,8 +36,11 @@ public class Calculator: ObservableObject {
   }
 
   public func enter(_: String) {
-    value = Value.number(formatter.number(from: pending)!)
-    pending = ""
+    if !pending.isEmpty {
+      value = Value.number(formatter.number(from: pending)!)
+      pending = ""
+    }
+
     alreadyEnteringNewNumber = false
   }
 }

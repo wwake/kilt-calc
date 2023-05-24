@@ -37,4 +37,10 @@ final class CalculatorTests: XCTestCase {
     calc.enter("=")
     XCTAssertEqual(calc.display, "0")
   }
+
+  func test_EnterWithoutPendingUsesZero() {
+    let calc = Calculator()
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "0")
+  }
 }
