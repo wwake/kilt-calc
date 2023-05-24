@@ -1,7 +1,12 @@
+* When do entered strings get evaluated?
 * What if you enter multiple leading zeros?
 * Allow entering yard/feet/inches
 * Set result type ('show as')
+
 * Update EGTest to take new check() with try from ContentViewTests
+
+CALC-23-03: 2023-05-24 - Enter Units
+
 
 CALC-23-02: 2023-05-23 - ViewInspector Tests
 * Off camera: installed SwiftLint, fixed its warnings
