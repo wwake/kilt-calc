@@ -18,8 +18,7 @@ extension Value {
       return formatter.string(from: aNumber) ?? ""
 
     case let .unit(theInches):
-      let inches = formatter.string(from: theInches) ?? ""
-      return "\(inches) in"
+      return imperialFormatter(theInches)
     }
   }
 }
