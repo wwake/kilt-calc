@@ -5,6 +5,9 @@
 
 * Update EGTest to take new check() with try from ContentViewTests
 
+CALC-23-04: 2023-05-25 - Yards-Feet-Inches
+
+
 CALC-23-03: 2023-05-24 - Enter Units
 * Switched Calculator to separate "pending" (entered string) from display
 * Make display pull from either pending or value
