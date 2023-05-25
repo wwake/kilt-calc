@@ -25,7 +25,7 @@ extension Value: CustomStringConvertible {
 }
 
 extension Value {
-  static public func parse(_ input: String) -> Value {
+  static func parse(_ input: String) -> Value {
     let formatter = NumberFormatter()
 
     let numbers = input
