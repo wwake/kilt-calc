@@ -3,9 +3,11 @@ import Foundation
 public enum Value {
   case error
   case number(NSNumber)
-  case unit(NSNumber, NSNumber, NSNumber)
+  case unit(NSNumber)
+}
 
-  public var asString: String {
+extension Value: CustomStringConvertible {
+  public var description: String {
     let formatter = NumberFormatter()
 
     switch self {
@@ -15,9 +17,7 @@ public enum Value {
     case .number(let aNumber):
       return formatter.string(from: aNumber) ?? ""
 
-    case let .unit(theYards, theFeet, theInches):
-      let yards = formatter.string(from: theYards) ?? ""
-      let feet = formatter.string(from: theFeet) ?? ""
+    case let .unit(theInches):
       let inches = formatter.string(from: theInches) ?? ""
       return "\(inches) in"
     }

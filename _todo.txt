@@ -1,4 +1,7 @@
+* Put spaces in before and after units
+* Move parsing to Value
 * Allow entering yard/feet/inches
+* Introduce a formatter to display unit values properly
 * Error handling on display side
 * Set result type ('show as')
 * Track down purple errors on view tests
@@ -6,7 +9,8 @@
 * Update EGTest to take new check() with try from ContentViewTests
 
 CALC-23-04: 2023-05-25 - Yards-Feet-Inches
-
+* Changed Regex to use /notation/ and eliminate try-catch
+* Make all units in inches
 
 CALC-23-03: 2023-05-24 - Enter Units
 * Switched Calculator to separate "pending" (entered string) from display
