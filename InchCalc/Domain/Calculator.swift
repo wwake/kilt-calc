@@ -28,34 +28,27 @@ public class Calculator: ObservableObject {
     pending.append(digit)
   }
 
-  fileprivate func encodePendingValue() {
-    guard !pending.isEmpty else { return }
-
-    let numbers = pending
+  fileprivate func parse(_ input: String) -> Value {
+    let numbers = input
       .split(separator: Regex(/[a-z]+/))
       .map { formatter.number(from: String($0)) }
 
-    let units = pending.split(separator: Regex(/[0-9]+/))
-
-    pending = ""
+    let units = input.split(separator: Regex(/[0-9]+/))
 
     if numbers.contains(nil) {
-      value = .error
-      return
+      return .error
     }
 
     if numbers.isEmpty {
-      value = Value.error
-      return
+      return .error
     }
 
     if numbers.count > 1 && numbers.count != units.count {
-      value = Value.error
-      return
+      return .error
     }
 
     if numbers.count == 1 && units.count == 0 {
-      value = .number(numbers[0]!)
+      return .number(numbers[0]!)
     } else {
       var inches = 0.0
       zip(numbers, units).forEach { number, unit in
@@ -64,8 +57,14 @@ public class Calculator: ObservableObject {
           inches += possibleNumber.doubleValue
         }
       }
-      value = Value.unit(NSNumber(value: inches))
+      return Value.unit(NSNumber(value: inches))
     }
+  }
+
+  fileprivate func encodePendingValue() {
+    guard !pending.isEmpty else { return }
+    value = parse(pending)
+    pending = ""
   }
 
   public func enter(_: String) {
