@@ -15,12 +15,14 @@ public enum ImperialFormatter {
   }
 
   static func asFeetInches(_ theInches: NSNumber) -> String {
-    if theInches.doubleValue < inchesPerFoot {
+    let original = theInches.doubleValue
+
+    if original < inchesPerFoot {
       return asInches(theInches)
     }
 
-    let feet = floor(theInches.doubleValue / inchesPerFoot)
-    let inches = theInches.doubleValue - feet * inchesPerFoot
+    let feet = floor(original / inchesPerFoot)
+    let inches = original - feet * inchesPerFoot
 
     let feetString = formatter.string(from: NSNumber(value: feet)) ?? ""
     let inchString = formatter.string(from: NSNumber(value: inches)) ?? ""
@@ -30,12 +32,14 @@ public enum ImperialFormatter {
   }
 
   static func asYardFeetInches(_ theInches: NSNumber) -> String {
-    if theInches.doubleValue < inchesPerYard {
+    let original = theInches.doubleValue
+
+    if original < inchesPerYard {
       return asFeetInches(theInches)
     }
 
-    let yards = floor(theInches.doubleValue / inchesPerYard)
-    let inchesRemaining = theInches.doubleValue - yards * inchesPerYard
+    let yards = floor(original / inchesPerYard)
+    let inchesRemaining = original - yards * inchesPerYard
 
     let yardString = formatter.string(from: NSNumber(value: yards)) ?? ""
     let feetInchString = asFeetInches(NSNumber(value: inchesRemaining))
