@@ -11,7 +11,7 @@ public class Calculator: ObservableObject {
 
   public var display: String {
     if !pending.isEmpty { return pending }
-    return value.description()
+    return value.description(ImperialFormatter.asInches)
   }
 
   public func clear(_: String) {

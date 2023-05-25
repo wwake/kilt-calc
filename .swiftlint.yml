@@ -50,7 +50,7 @@ opt_in_rules:
   - explicit_init
 #  - explicit_top_level_acl  # house rule but could be convinced o.w.
 #  - explicit_type_interface  # house rule
-  - extension_access_modifier
+#  - extension_access_modifier # house rule - we got contradictory messages otherwise
   - fallthrough
   - fatal_error_message
   - file_header

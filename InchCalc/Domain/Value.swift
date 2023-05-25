@@ -1,6 +1,15 @@
 import Foundation
 
-typealias ImperialFormatterFunction = (Value) -> String
+public typealias ImperialFormatterFunction = (NSNumber) -> String
+
+public class ImperialFormatter {
+  static let formatter = NumberFormatter()
+
+  static func asInches(_ theInches: NSNumber) -> String {
+    let inches = formatter.string(from: theInches) ?? ""
+    return "\(inches) in"
+  }
+}
 
 public enum Value {
   case error
@@ -9,7 +18,7 @@ public enum Value {
 }
 
 extension Value {
-  public func description() -> String {
+  public func description(_ imperialFormatter: ImperialFormatterFunction) -> String {
     let formatter = NumberFormatter()
 
     switch self {
