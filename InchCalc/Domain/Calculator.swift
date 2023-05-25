@@ -28,42 +28,9 @@ public class Calculator: ObservableObject {
     pending.append(digit)
   }
 
-  fileprivate func parse(_ input: String) -> Value {
-    let numbers = input
-      .split(separator: Regex(/[a-z]+/))
-      .map { formatter.number(from: String($0)) }
-
-    let units = input.split(separator: Regex(/[0-9]+/))
-
-    if numbers.contains(nil) {
-      return .error
-    }
-
-    if numbers.isEmpty {
-      return .error
-    }
-
-    if numbers.count > 1 && numbers.count != units.count {
-      return .error
-    }
-
-    if numbers.count == 1 && units.count == 0 {
-      return .number(numbers[0]!)
-    } else {
-      var inches = 0.0
-      zip(numbers, units).forEach { number, unit in
-        if unit == "in" {
-          let possibleNumber = number!
-          inches += possibleNumber.doubleValue
-        }
-      }
-      return Value.unit(NSNumber(value: inches))
-    }
-  }
-
   fileprivate func encodePendingValue() {
     guard !pending.isEmpty else { return }
-    value = parse(pending)
+    value = Value.parse(pending)
     pending = ""
   }
 
