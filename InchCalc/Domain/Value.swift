@@ -1,13 +1,15 @@
 import Foundation
 
+typealias ImperialFormatterFunction = (Value) -> String
+
 public enum Value {
   case error
   case number(NSNumber)
   case unit(NSNumber)
 }
 
-extension Value: CustomStringConvertible {
-  public var description: String {
+extension Value {
+  public func description() -> String {
     let formatter = NumberFormatter()
 
     switch self {
