@@ -14,36 +14,25 @@ public enum ImperialFormatter {
     return "\(inches) in"
   }
 
-  static func asFeetInches(_ theInches: NSNumber) -> String {
-    let original = theInches.doubleValue
-
-    if original < inchesPerFoot {
-      return asInches(theInches)
-    }
-
-    let feet = floor(original / inchesPerFoot)
-    let inches = original - feet * inchesPerFoot
-
-    let feetString = formatter.string(from: NSNumber(value: feet)) ?? ""
-    let inchString = formatter.string(from: NSNumber(value: inches)) ?? ""
-
-    if inches == 0 { return "\(feetString) ft" }
-    return "\(feetString) ft \(inchString) in"
-  }
-
   static func asYardFeetInches(_ theInches: NSNumber) -> String {
-    let original = theInches.doubleValue
+    let yfi = [(inchesPerYard, "yd"), (inchesPerFoot, "ft"), (1, "in")]
 
-    if original < inchesPerYard {
-      return asFeetInches(theInches)
+    var remaining = theInches.doubleValue
+
+    var partials: [(Double, String)] = []
+
+    yfi.forEach { minorUnitsPerMajor, label in
+      let major = floor(remaining / minorUnitsPerMajor)
+      remaining -= major * minorUnitsPerMajor
+
+      if major != 0.0 { partials.append((major, label)) }
     }
 
-    let yards = floor(original / inchesPerYard)
-    let inchesRemaining = original - yards * inchesPerYard
+    if partials.isEmpty { return "0 in" }
 
-    let yardString = formatter.string(from: NSNumber(value: yards)) ?? ""
-    let feetInchString = asFeetInches(NSNumber(value: inchesRemaining))
-
-    return inchesRemaining == 0 ? "\(yardString) yd" : "\(yardString) yd \(feetInchString)"
+    return partials.map { number, label in
+      "\(formatter.string(from: NSNumber(value: number)) ?? "") \(label)"
+    }
+    .joined(separator: " ")
   }
 }
