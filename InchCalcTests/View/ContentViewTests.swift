@@ -21,8 +21,12 @@ final class ContentViewTests: XCTestCase {
     try sut.inspect().find(ViewType.Text.self)
   }
 
-  fileprivate func key(_ sut: ContentView, _ name: String) throws -> InspectableView<ViewType.Button> {
-    try sut.inspect().find(button: name)
+  fileprivate func key(_ sut: ContentView, _ name: String) -> InspectableView<ViewType.Button> {
+    do {
+      return try sut.inspect().find(button: name)
+    } catch {
+      fatalError("ContentViewTests - referenced unknown key \(name)")
+    }
   }
 
   func testAllDigitKeyPresses() throws {
@@ -46,7 +50,7 @@ final class ContentViewTests: XCTestCase {
     @StateObject var calculator = Calculator()
 
     let sut = ContentView(calculator: calculator)
-    let key = try key(sut, keyName)
+    let key = key(sut, keyName)
 
     try key.tap()
 
@@ -57,13 +61,30 @@ final class ContentViewTests: XCTestCase {
     @StateObject var calculator = Calculator()
 
     let sut = ContentView(calculator: calculator)
-    let key4 = try key(sut, "4")
+    let key4 = key(sut, "4")
     try key4.tap()
     XCTAssertEqual(try display(sut).string(), "4")
 
-    let keyClear = try key(sut, "C")
+    let keyClear = key(sut, "C")
     try keyClear.tap()
 
     XCTAssertEqual(try display(sut).string(), "0")
+  }
+
+  func testCanEnterAllUnits() throws {
+    @StateObject var calculator = Calculator()
+
+    let sut = ContentView(calculator: calculator)
+    try key(sut, "1").tap()
+    try key(sut, "yd").tap()
+    try key(sut, "5").tap()
+    try key(sut, "ft").tap()
+    try key(sut, "1").tap()
+    try key(sut, "1").tap()
+    try key(sut, "in").tap()
+
+    try key(sut, "=").tap()
+
+    XCTAssertEqual(try display(sut).string(), "2 yd 2 ft 11 in")
   }
 }

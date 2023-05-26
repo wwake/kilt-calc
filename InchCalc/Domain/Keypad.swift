@@ -13,8 +13,8 @@ public class Keypad: ObservableObject {
         Key("\u{232B}"),
       ],
       [
-        Key("yd"),
-        Key("ft"),
+        Key("yd", Calculator.unit(calculator)),
+        Key("ft", Calculator.unit(calculator)),
         Key("in", Calculator.unit(calculator)),
         Key("/"),
         Key("\u{00f7}"),
