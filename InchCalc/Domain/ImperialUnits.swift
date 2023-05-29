@@ -10,7 +10,7 @@ public enum ImperialUnits {
     "in": inchesPerInch,
   ]
 
-  static func ratioFor(_ unit: String) -> Double {
-    ratios[unit] ?? 1.0
+  static func asInches(_ number: Double, _ unit: String) -> Double {
+    number * (ratios[unit] ?? 1.0)
   }
 }

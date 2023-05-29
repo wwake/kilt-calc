@@ -50,7 +50,7 @@ extension Value {
     } else {
       var inches = 0.0
       zip(numbers, units).forEach { number, unit in
-        inches += number!.doubleValue * ImperialUnits.ratioFor(String(unit))
+        inches += ImperialUnits.asInches(number!.doubleValue, String(unit))
       }
       return Value.unit(NSNumber(value: inches))
     }
