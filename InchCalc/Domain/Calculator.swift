@@ -29,7 +29,7 @@ public class Calculator: ObservableObject {
   }
 
   fileprivate func encodePendingValue() {
-    guard !pending.isEmpty else { return }
+    if pending.isEmpty { return }
     operands = [Value.parse(pending)]
     pending = ""
   }
