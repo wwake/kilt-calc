@@ -1,16 +1,16 @@
-* Parse yard/feet/inches
-* Write test documenting that "ft 3 in 2" == "3 ft 2 in" for input
+* Make "ft 3 in 2" == "3 ft 2 in" for input
 * Add spaces before and after units
 * What about "3 yd ft 2 in"? (Should only take last unit?)
 * Error handling on display side - give .error a string
 * Set result type ('show as')
 * Track down purple errors on view tests
-* Error(String) for different messages
+
 * Addition
 
 * Update EGTest to take new check() with try from ContentViewTests
 
 CALC-23-05: 2023-05-29 - Yards-Feet-Inches Input
+* Parse yard/feet/inches
 
 
 CALC-23-04: 2023-05-25 - Yards-Feet-Inches
