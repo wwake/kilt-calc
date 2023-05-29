@@ -5,19 +5,19 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var pending: String = ""
 
-  @Published private(set) var value = Value.number(0)
+  @Published private(set) var operands = [Value.number(0)]
 
   let formatter = NumberFormatter()
 
   public var display: String {
     if !pending.isEmpty { return pending }
-    return value.format(ImperialFormatter.asYardFeetInches)
+    return operands.last!.format(ImperialFormatter.asYardFeetInches)
   }
 
   public func clear(_: String) {
     pending = ""
     alreadyEnteringNewNumber = false
-    value = .number(0)
+    operands = [.number(0)]
   }
 
   public func digit(_ digit: String) {
@@ -30,7 +30,7 @@ public class Calculator: ObservableObject {
 
   fileprivate func encodePendingValue() {
     guard !pending.isEmpty else { return }
-    value = Value.parse(pending)
+    operands = [Value.parse(pending)]
     pending = ""
   }
 

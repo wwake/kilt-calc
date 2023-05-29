@@ -6,6 +6,8 @@
 * Track down purple errors on view tests
 
 * Addition
+* Other operators
+* Show last operator in the display?
 
 * Update EGTest to take new check() with try from ContentViewTests
 
