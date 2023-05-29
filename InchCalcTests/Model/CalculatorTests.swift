@@ -109,4 +109,14 @@ final class CalculatorTests: XCTestCase {
     calc.enter("=")
     XCTAssertEqual(calc.display, "error - mixing inches and numbers")
   }
+
+  func test_InchesPlusInchesIsInches() {
+    calc.digit("9")
+    calc.unit("in")
+    calc.op("+")
+    calc.digit("6")
+    calc.unit("in")
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "1 ft 3 in")
+  }
 }

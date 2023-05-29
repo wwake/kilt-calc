@@ -33,9 +33,7 @@ extension Value {
         return .error("error - mixing inches and numbers")
 
       case .inches(let b):
-        return .error("error - mixing inches and numbers")
-//        return .number(NSNumber(value: a.doubleValue + b.doubleValue))
-
+        return .inches(NSNumber(value: a.doubleValue + b.doubleValue))
       }
     }
   }
