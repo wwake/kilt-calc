@@ -50,6 +50,14 @@ extension Value {
     } else {
       var inches = 0.0
       zip(numbers, units).forEach { number, unit in
+        if unit == "yd" {
+          let possibleNumber = number!
+          inches += possibleNumber.doubleValue * ImperialFormatter.inchesPerYard
+        }
+        if unit == "ft" {
+          let possibleNumber = number!
+          inches += possibleNumber.doubleValue * ImperialFormatter.inchesPerFoot
+        }
         if unit == "in" {
           let possibleNumber = number!
           inches += possibleNumber.doubleValue
