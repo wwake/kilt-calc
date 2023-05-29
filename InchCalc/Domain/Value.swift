@@ -50,16 +50,7 @@ extension Value {
     } else {
       var inches = 0.0
       zip(numbers, units).forEach { number, unit in
-        if unit == "yd" {
-          let possibleNumber = number!
-          inches += possibleNumber.doubleValue * ImperialFormatter.inchesPerYard
-        } else if unit == "ft" {
-          let possibleNumber = number!
-          inches += possibleNumber.doubleValue * ImperialFormatter.inchesPerFoot
-        } else if unit == "in" {
-          let possibleNumber = number!
-          inches += possibleNumber.doubleValue
-        }
+        inches += number!.doubleValue * ImperialUnits.ratioFor(String(unit))
       }
       return Value.unit(NSNumber(value: inches))
     }
