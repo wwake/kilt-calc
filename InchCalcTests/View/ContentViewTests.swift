@@ -86,6 +86,9 @@ final class ContentViewTests: XCTestCase {
       case "i":
         try key(sut, "in").tap()
 
+      case "d", "t", "n":  // ignore second letter of unit
+        break
+
       default:
         try key(sut, String(keyName)).tap()
       }
@@ -94,7 +97,7 @@ final class ContentViewTests: XCTestCase {
 
   func testCalculations() throws {
     try check([
-      EG("1y 5f 11i =", expect: "2 yd 2 ft 11 in", "all units"),
+      EG("1yd 5ft 11in =", expect: "2 yd 2 ft 11 in", "all units"),
       EG("1+5=", expect: "6", "Number addition"),
     ]) {
       @StateObject var calculator = Calculator()

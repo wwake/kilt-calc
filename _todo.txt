@@ -1,9 +1,7 @@
-* Simplify our system tests
 * Subtraction - check that associativity is right
 * Other operators
 * Show last operator in the display?
 * How are we handling the initial "0"?
-
 
 * Make "ft 3 in 2" == "3 ft 2 in" for input
 * Add spaces before and after units
@@ -18,6 +16,7 @@ CALC-23-05: 2023-05-29 - Yards-Feet-Inches Input
 * Parse yard/feet/inches
 * Error handling on display side - give .error a string
 * Addition with units
+* Simplify our system tests
 
 
 CALC-23-04: 2023-05-25 - Yards-Feet-Inches
