@@ -1,5 +1,3 @@
-* Error handling on display side - give .error a string
-* Addition with units
 * Simplify our system tests
 * Subtraction - check that associativity is right
 * Other operators
@@ -18,6 +16,8 @@
 
 CALC-23-05: 2023-05-29 - Yards-Feet-Inches Input
 * Parse yard/feet/inches
+* Error handling on display side - give .error a string
+* Addition with units
 
 
 CALC-23-04: 2023-05-25 - Yards-Feet-Inches

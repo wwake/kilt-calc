@@ -71,32 +71,38 @@ final class ContentViewTests: XCTestCase {
     XCTAssertEqual(try display(sut).string(), "0")
   }
 
-  func testCanEnterAllUnits() throws {
-    @StateObject var calculator = Calculator()
+  private func tap(_ sut: ContentView, _ input: String) throws {
+    try input.forEach { keyName in
+      switch keyName {
+      case " ":
+        break
 
-    let sut = ContentView(calculator: calculator)
-    try key(sut, "1").tap()
-    try key(sut, "yd").tap()
-    try key(sut, "5").tap()
-    try key(sut, "ft").tap()
-    try key(sut, "1").tap()
-    try key(sut, "1").tap()
-    try key(sut, "in").tap()
+      case "y":
+        try key(sut, "yd").tap()
 
-    try key(sut, "=").tap()
+      case "f":
+        try key(sut, "ft").tap()
 
-    XCTAssertEqual(try display(sut).string(), "2 yd 2 ft 11 in")
+      case "i":
+        try key(sut, "in").tap()
+
+      default:
+        try key(sut, String(keyName)).tap()
+      }
+    }
   }
 
-  func testSimpleNumberAddition() throws {
-    @StateObject var calculator = Calculator()
+  func testCalculations() throws {
+    try check([
+      EG("1y 5f 11i =", expect: "2 yd 2 ft 11 in", "all units"),
+      EG("1+5=", expect: "6", "Number addition"),
+    ]) {
+      @StateObject var calculator = Calculator()
 
-    let sut = ContentView(calculator: calculator)
-    try key(sut, "1").tap()
-    try key(sut, "+").tap()
-    try key(sut, "5").tap()
-    try key(sut, "=").tap()
+      let sut = ContentView(calculator: calculator)
+      try tap(sut, $0.input)
 
-    XCTAssertEqual(try display(sut).string(), "6")
+      XCTAssertEqual(try display(sut).string(), $0.expect, $0.message)
+    }
   }
 }
