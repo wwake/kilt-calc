@@ -53,12 +53,10 @@ extension Value {
         if unit == "yd" {
           let possibleNumber = number!
           inches += possibleNumber.doubleValue * ImperialFormatter.inchesPerYard
-        }
-        if unit == "ft" {
+        } else if unit == "ft" {
           let possibleNumber = number!
           inches += possibleNumber.doubleValue * ImperialFormatter.inchesPerFoot
-        }
-        if unit == "in" {
+        } else if unit == "in" {
           let possibleNumber = number!
           inches += possibleNumber.doubleValue
         }
