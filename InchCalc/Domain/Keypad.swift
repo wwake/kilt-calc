@@ -31,7 +31,7 @@ public class Keypad: ObservableObject {
         Key("4", Calculator.digit(calculator)),
         Key("5", Calculator.digit(calculator)),
         Key("6", Calculator.digit(calculator)),
-        Key("-"),
+        Key("-", Calculator.op(calculator)),
       ],
       [
         Key("M-"),

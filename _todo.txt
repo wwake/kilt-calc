@@ -1,4 +1,7 @@
 * Subtraction - check that associativity is right
+* Multiplication - check that precedence is right
+* Division
+* Display negative numbers
 * Other operators
 * Show last operator in the display?
 * How are we handling the initial "0"?
@@ -7,7 +10,8 @@
 * Add spaces before and after units
 * What about "3 yd ft 2 in"? (Should only take last unit?)
 * Set result type ('show as')
-* Track down purple errors on view tests
+
+* Track down purple errors on view tests: Try passing Calculator and Keypad from App or tests
 
 
 * Update EGTest to take new check() with try from ContentViewTests
@@ -17,7 +21,7 @@ CALC-23-05: 2023-05-29 - Yards-Feet-Inches Input
 * Error handling on display side - give .error a string
 * Addition with units
 * Simplify our system tests
-
+* Tried but failed to eliminate purple errors - made Keypad press pass the calculator instead of doing it in the init
 
 CALC-23-04: 2023-05-25 - Yards-Feet-Inches
 * Changed Regex to use /notation/ and eliminate try-catch

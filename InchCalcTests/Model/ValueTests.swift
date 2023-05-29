@@ -17,4 +17,12 @@ final class ValueTests: XCTestCase {
   func test_ValueWithYardFeetInchFormatter() throws {
     XCTAssertEqual(Value.inches(63).format(ImperialFormatter.asYardFeetInches), "1 yd 2 ft 3 in")
   }
+
+  func test_NumberMinusNumber() {
+    XCTAssertEqual(Value.number(5).minus(Value.number(2)).format(ImperialFormatter.asInches), "3")
+  }
+
+  func test_InchesMinusInches() {
+    XCTAssertEqual(Value.inches(5).minus(Value.inches(2)).format(ImperialFormatter.asInches), "3 in")
+  }
 }

@@ -7,6 +7,23 @@ public enum Value {
 }
 
 extension Value {
+  public func negate() -> Value {
+    switch self {
+    case .error:
+      return self
+
+    case .number(let value):
+      return .number(NSNumber(value: -value.doubleValue))
+
+    case .inches(let value):
+      return .inches(NSNumber(value: -value.doubleValue))
+    }
+  }
+
+  public func minus(_ other: Value) -> Value {
+    plus(other.negate())
+  }
+
   public func plus(_ other: Value) -> Value {
     switch self {
     case .error:

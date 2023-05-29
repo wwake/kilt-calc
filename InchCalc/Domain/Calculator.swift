@@ -44,7 +44,17 @@ public class Calculator: ObservableObject {
       let top = operators.removeLast()
       let b = operands.removeLast()
       let a = operands.removeLast()
-      operands.append(a.plus(b))
+
+      switch top {
+      case "+":
+        operands.append(a.plus(b))
+
+      case "-":
+        operands.append(a.minus(b))
+
+      default:
+        break
+      }
     }
   }
 
