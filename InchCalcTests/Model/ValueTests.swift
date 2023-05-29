@@ -3,7 +3,7 @@ import XCTest
 
 final class ValueTests: XCTestCase {
   func test_error() {
-    XCTAssertEqual(Value.error.format(ImperialFormatter.asInches), "error")
+    XCTAssertEqual(Value.error("error message").format(ImperialFormatter.asInches), "error message")
   }
 
   func test_numberWithoutUnits() {

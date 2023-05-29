@@ -49,7 +49,7 @@ final class CalculatorTests: XCTestCase {
   func test_OverflowValueYieldsError() {
     overflowValue(calc)
     calc.enter("=")
-    XCTAssertEqual(calc.display, "error")
+    XCTAssertEqual(calc.display, "number too big or too small")
   }
 
   func test_ClearResetsError() {
@@ -81,6 +81,23 @@ final class CalculatorTests: XCTestCase {
     calc.unit("in")
     calc.digit("6")
     calc.enter("=")
-    XCTAssertEqual(calc.display, "error")
+    XCTAssertEqual(calc.display, "numbers and units don't match")
+  }
+
+  func test_DigitPlusDigit() {
+    calc.digit("3")
+    calc.op("+")
+    calc.digit("6")
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "9")
+  }
+
+  func test_DigitPlusInches() {
+    calc.digit("3")
+    calc.op("+")
+    calc.digit("6")
+    calc.unit("in")
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "error - mixing inches and numbers")
   }
 }

@@ -7,6 +7,8 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var operands = [Value.number(0)]
 
+  @Published private(set) var operators: [String] = []
+
   let formatter = NumberFormatter()
 
   public var display: String {
@@ -30,16 +32,28 @@ public class Calculator: ObservableObject {
 
   fileprivate func encodePendingValue() {
     if pending.isEmpty { return }
-    operands = [Value.parse(pending)]
+    operands.append(Value.parse(pending))
     pending = ""
   }
 
   public func enter(_: String) {
     encodePendingValue()
     alreadyEnteringNewNumber = false
+
+    while !operators.isEmpty {
+      let top = operators.removeLast()
+      let b = operands.removeLast()
+      let a = operands.removeLast()
+      operands.append(a.plus(b))
+    }
   }
 
   public func unit(_ value: String) {
     pending.append(value)
+  }
+
+  public func op(_ op: String) {
+    encodePendingValue()
+    operators.append(op)
   }
 }

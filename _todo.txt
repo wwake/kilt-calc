@@ -1,13 +1,18 @@
+* Error handling on display side - give .error a string
+* Addition with units
+* Simplify our system tests
+* Subtraction - check that associativity is right
+* Other operators
+* Show last operator in the display?
+* How are we handling the initial "0"?
+
+
 * Make "ft 3 in 2" == "3 ft 2 in" for input
 * Add spaces before and after units
 * What about "3 yd ft 2 in"? (Should only take last unit?)
-* Error handling on display side - give .error a string
 * Set result type ('show as')
 * Track down purple errors on view tests
 
-* Addition
-* Other operators
-* Show last operator in the display?
 
 * Update EGTest to take new check() with try from ContentViewTests
 

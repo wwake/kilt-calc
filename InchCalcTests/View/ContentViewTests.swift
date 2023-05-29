@@ -87,4 +87,16 @@ final class ContentViewTests: XCTestCase {
 
     XCTAssertEqual(try display(sut).string(), "2 yd 2 ft 11 in")
   }
+
+  func testSimpleNumberAddition() throws {
+    @StateObject var calculator = Calculator()
+
+    let sut = ContentView(calculator: calculator)
+    try key(sut, "1").tap()
+    try key(sut, "+").tap()
+    try key(sut, "5").tap()
+    try key(sut, "=").tap()
+
+    XCTAssertEqual(try display(sut).string(), "6")
+  }
 }
