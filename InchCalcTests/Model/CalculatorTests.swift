@@ -84,7 +84,7 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.display, "numbers and units don't match")
   }
 
-  func test_DigitPlusDigit() {
+  func test_NumberPlusNumber() {
     calc.digit("3")
     calc.op("+")
     calc.digit("6")
@@ -92,11 +92,20 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.display, "9")
   }
 
-  func test_DigitPlusInches() {
+  func test_NumberPlusInchesIsError() {
     calc.digit("3")
     calc.op("+")
     calc.digit("6")
     calc.unit("in")
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "error - mixing inches and numbers")
+  }
+
+  func test_InchesPlusNumberIsError() {
+    calc.digit("3")
+    calc.unit("in")
+    calc.op("+")
+    calc.digit("6")
     calc.enter("=")
     XCTAssertEqual(calc.display, "error - mixing inches and numbers")
   }
