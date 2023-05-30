@@ -13,7 +13,7 @@ public class Calculator: ObservableObject {
 
   public var display: String {
     if !pending.isEmpty { return pending }
-    return operands.last!.format(ImperialFormatter.asYardFeetInches)
+    return operands.top.format(ImperialFormatter.asYardFeetInches)
   }
 
   public func clear(_: String) {
@@ -41,9 +41,9 @@ public class Calculator: ObservableObject {
     alreadyEnteringNewNumber = false
 
     while !operators.isEmpty {
-      let top = operators.removeLast()
-      let b = operands.removeLast()
-      let a = operands.removeLast()
+      let top = operators.pop()
+      let b = operands.pop()
+      let a = operands.pop()
 
       switch top {
       case "+":

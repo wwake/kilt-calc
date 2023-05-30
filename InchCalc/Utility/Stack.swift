@@ -5,11 +5,15 @@ typealias Stack<T> = [T]
 //}
 
 extension Array {
+  var top: Element {
+    last!
+  }
+
   mutating func push(_ value: Element) {
     append(value)
   }
 
-//  func top<Element>() -> Element {
-//
-//  }
+  mutating func pop() -> Element {
+    removeLast()
+  }
 }
