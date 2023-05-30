@@ -29,20 +29,15 @@ extension Value {
     case (.error, _):
       return self
 
-    case (.number, .error):
+    case (_, .error):
         return other
-
-    case (.inches, .error):
-      return other
 
     case let (.number(a), .number(b)):
       return .number(NSNumber(value: a.doubleValue + b.doubleValue))
 
-    case (.number, .inches):
+    case (.number, .inches),
+          (.inches, .number):
         return .error("error - mixing inches and numbers")
-
-    case (.inches, .number):
-      return .error("error - mixing inches and numbers")
 
     case let (.inches(a), .inches(b)):
         return .inches(NSNumber(value: a.doubleValue + b.doubleValue))
@@ -54,10 +49,7 @@ extension Value {
     case (.error, _):
       return self
 
-    case (.number, .error):
-      return other
-
-    case (.inches, .error):
+    case (_, .error):
       return other
 
     case let (.number(a), .number(b)):
@@ -79,10 +71,7 @@ extension Value {
     case (.error, _):
       return self
 
-    case (.number, .error):
-      return other
-
-    case (.inches, .error):
+    case (_, .error):
       return other
 
     case let (.number(a), .number(b)):
