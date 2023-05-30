@@ -42,19 +42,17 @@ final class ContentViewTests: XCTestCase {
       EG("8", expect: "8"),
       EG("9", expect: "9"),
     ]) {
-      try checkDigitKeyPress($0.input, $0.expect)
+      try checkDigitKeyPress($0)
     }
   }
 
-  private func checkDigitKeyPress(_ keyName: String, _ expectedDisplayText: String) throws {
+  private func checkDigitKeyPress(_ eg: EG<String, String>) throws {
     @StateObject var calculator = Calculator()
-
     let sut = ContentView(calculator: calculator)
-    let key = key(sut, keyName)
 
-    try key.tap()
+    try key(sut, eg.input).tap()
 
-    XCTAssertEqual(try display(sut).string(), expectedDisplayText)
+    XCTAssertEqual(try display(sut).string(), eg.expect, file: eg.file, line: eg.line)
   }
 
   func testClearResetsDisplay() throws {
@@ -126,7 +124,7 @@ final class ContentViewTests: XCTestCase {
       let sut = ContentView(calculator: calculator)
       try tap(sut, $0.input)
 
-      XCTAssertEqual(try display(sut).string(), $0.expect, $0.message)
+      XCTAssertEqual(try display(sut).string(), $0.expect, $0.message, file: $0.file, line: $0.line)
     }
   }
 }
