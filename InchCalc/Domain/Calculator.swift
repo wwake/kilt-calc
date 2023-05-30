@@ -5,7 +5,9 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var pending: String = ""
 
-  @Published private(set) var operands = Stack([Value.number(0)])
+  @Published private(set) var result = Value.number(0)
+
+  @Published private(set) var operands: Stack<Value> = Stack()
 
   @Published private(set) var operators: Stack<Operator> = Stack()
 
@@ -13,7 +15,10 @@ public class Calculator: ObservableObject {
 
   public var display: String {
     if !pending.isEmpty { return pending }
-    return operands.top.format(ImperialFormatter.asYardFeetInches)
+    if !operands.isEmpty {
+      return operands.top.format(ImperialFormatter.asYardFeetInches)
+    }
+    return result.format(ImperialFormatter.asYardFeetInches)
   }
 
   public func clear(_: String) {
@@ -40,6 +45,9 @@ public class Calculator: ObservableObject {
     encodePendingValue()
     alreadyEnteringNewNumber = false
     evaluate(atLeast: 0)
+    if !operands.isEmpty {
+      result = operands.pop()
+    }
   }
 
   public func unit(_ value: String) {
