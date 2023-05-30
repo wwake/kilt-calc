@@ -1,8 +1,9 @@
-* Subtraction - check that associativity is right
-* Display negative numbers
+* Value.plus
 * Stack object
 * Operator objects
-* Multiplication - check that precedence is right
+* Subtraction - check that associativity is correct
+* Display negative numbers
+* Multiplication - check that precedence is correct
 * Division
 * Show most recent operator in the display?
 * How are we handling the initial "0"?

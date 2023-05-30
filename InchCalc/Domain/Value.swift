@@ -25,33 +25,27 @@ extension Value {
   }
 
   public func plus(_ other: Value) -> Value {
-    switch self {
-    case .error:
+    switch (self, other) {
+    case (.error, _):
       return self
 
-    case .number(let a):
-      switch other {
-      case .error:
+    case (.number, .error):
         return other
 
-      case .number(let b):
-        return .number(NSNumber(value: a.doubleValue + b.doubleValue))
+    case let (.number(a), .number(b)):
+      return .number(NSNumber(value: a.doubleValue + b.doubleValue))
 
-      case .inches:
-        return .error("error - mixing inches and numbers")
-      }
-
-    case .inches(let a):
-      switch other {
-      case .error:
-        return other
-
-      case .number:
+    case (.number, .inches):
         return .error("error - mixing inches and numbers")
 
-      case .inches(let b):
+    case (.inches, .error):
+      return other
+
+    case (.inches, .number):
+      return .error("error - mixing inches and numbers")
+
+    case let (.inches(a), .inches(b)):
         return .inches(NSNumber(value: a.doubleValue + b.doubleValue))
-      }
     }
   }
 }
