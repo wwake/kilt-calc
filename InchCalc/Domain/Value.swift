@@ -32,20 +32,70 @@ extension Value {
     case (.number, .error):
         return other
 
+    case (.inches, .error):
+      return other
+
     case let (.number(a), .number(b)):
       return .number(NSNumber(value: a.doubleValue + b.doubleValue))
 
     case (.number, .inches):
         return .error("error - mixing inches and numbers")
 
-    case (.inches, .error):
-      return other
-
     case (.inches, .number):
       return .error("error - mixing inches and numbers")
 
     case let (.inches(a), .inches(b)):
         return .inches(NSNumber(value: a.doubleValue + b.doubleValue))
+    }
+  }
+
+  public func times(_ other: Value) -> Value {
+    switch (self, other) {
+    case (.error, _):
+      return self
+
+    case (.number, .error):
+      return other
+
+    case (.inches, .error):
+      return other
+
+    case let (.number(a), .number(b)):
+      return .number(NSNumber(value: a.doubleValue * b.doubleValue))
+
+    case let (.number(a), .inches(b)):
+      return .inches(NSNumber(value: a.doubleValue * b.doubleValue))
+
+    case let (.inches(a), .number(b)):
+      return .inches(NSNumber(value: a.doubleValue * b.doubleValue))
+
+    case (.inches, .inches):
+      return .error("error - can't handle square inches")
+    }
+  }
+
+  public func divide(_ other: Value) -> Value {
+    switch (self, other) {
+    case (.error, _):
+      return self
+
+    case (.number, .error):
+      return other
+
+    case (.inches, .error):
+      return other
+
+    case let (.number(a), .number(b)):
+      return .number(NSNumber(value: a.doubleValue / b.doubleValue))
+
+    case (.number, .inches):
+      return .error("error - can't divide number by inches")
+
+    case let (.inches(a), .number(b)):
+      return .inches(NSNumber(value: a.doubleValue / b.doubleValue))
+
+    case let (.inches(a), .inches(b)):
+      return .number(NSNumber(value: a.doubleValue / b.doubleValue))
     }
   }
 }

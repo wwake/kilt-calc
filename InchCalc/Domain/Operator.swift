@@ -11,8 +11,11 @@ public struct Operator {
     case "-":
       return Operator(name: name, precedence: 3, evaluate: { a, b in a.minus(b) })
 
+    case "\(Keypad.multiply)":
+      return Operator(name: name, precedence: 5, evaluate: { a, b in a.times(b) })
+
     default:
-      return Operator(name: "?", precedence: 0, evaluate: { a, _ in a })
+      return Operator(name: "?", precedence: 1, evaluate: { a, _ in a })
     }
   }
 }

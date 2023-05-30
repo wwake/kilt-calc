@@ -1,6 +1,5 @@
 import Foundation
 
-
 public class Calculator: ObservableObject {
   @Published private(set) var alreadyEnteringNewNumber = false
 
@@ -40,21 +39,14 @@ public class Calculator: ObservableObject {
   public func enter(_: String) {
     encodePendingValue()
     alreadyEnteringNewNumber = false
-
-    while !operators.isEmpty {
-      let top = operators.pop()
-      let b = operands.pop()
-      let a = operands.pop()
-
-      operands.push(top.evaluate(a, b))
-    }
+    evaluate(atLeast: 0)
   }
 
   public func unit(_ value: String) {
     pending.append(value)
   }
 
-  private func evaluate(notLessThan precedence: Int) {
+  private func evaluate(atLeast precedence: Int) {
     while !operators.isEmpty && operators.top.precedence >= precedence {
       let top = operators.pop()
       let b = operands.pop()
@@ -67,7 +59,7 @@ public class Calculator: ObservableObject {
   public func op(_ op: String) {
     encodePendingValue()
     let theOperator = Operator.make(op)
-    evaluate(notLessThan: theOperator.precedence)
+    evaluate(atLeast: theOperator.precedence)
     operators.push(theOperator)
   }
 }

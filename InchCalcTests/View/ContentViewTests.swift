@@ -77,6 +77,21 @@ final class ContentViewTests: XCTestCase {
       case " ":
         break
 
+      case "<":
+        try key(sut, "\(Keypad.backspace)").tap()
+
+      case "*":
+        try key(sut, "\(Keypad.multiply)").tap()
+
+      case ":":
+        try key(sut, "\(Keypad.divide)").tap()
+
+      case ".":
+        try key(sut, "\(Keypad.dot)").tap()
+
+      case "~":
+        try key(sut, "\(Keypad.plusOrMinus)").tap()
+
       case "y", "f", "i", "M":
         firstLetter = keyName
 
@@ -118,6 +133,9 @@ final class ContentViewTests: XCTestCase {
       EG("1+5=", expect: "6", "Number addition"),
       EG("5-1=", expect: "4", "Number subtraction"),
       EG("5-3-2=", expect: "0", "Associativity of -"),
+      EG("5*3*2=", expect: "30", "Associativity of *"),
+      EG("5+3*2=", expect: "11", "Precedence of * over +"),
+//      EG("6:3=", expect: "2", "Number division"),
     ]) {
       @StateObject var calculator = Calculator()
 

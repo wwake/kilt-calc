@@ -1,9 +1,8 @@
-* Subtraction - check that associativity is correct
-* Display negative numbers
-* Multiplication - check that precedence is correct
 * Division
+* Display negative numbers
 * Show most recent operator in the display?
 * How are we handling the initial "0"?
+* Overflow/underflow for operators
 
 * Make "ft 3 in 2" == "3 ft 2 in" for input
 * Add spaces before and after units
@@ -19,6 +18,8 @@ CALC-23-06: 2023-05-30 - Associativity
 * Simplify Value.plus
 * Stack object
 * Operator objects
+* Subtraction - check that associativity is correct
+* Multiplication - check that precedence is correct
 
 
 CALC-23-05: 2023-05-29 - Yards-Feet-Inches Input

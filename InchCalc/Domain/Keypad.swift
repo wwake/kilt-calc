@@ -1,6 +1,12 @@
 import Foundation
 
 public class Keypad: ObservableObject {
+  static let backspace = "\u{232B}"
+  static let divide = "\u{00f7}"
+  static let multiply = "\u{00d7}"
+  static let dot = "\u{22c5}"
+  static let plusOrMinus = "\u{00b1}"
+
   let contents: [[Key]]
 
   public init(_ calculator: Calculator) {
@@ -24,7 +30,7 @@ public class Keypad: ObservableObject {
         Key("7", Calculator.digit(calculator)),
         Key("8", Calculator.digit(calculator)),
         Key("9", Calculator.digit(calculator)),
-        Key("\u{00d7}"),
+        Key("\u{00d7}", Calculator.op(calculator)),
       ],
       [
         Key("MR"),
