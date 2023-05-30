@@ -7,7 +7,7 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var operands = Stack([Value.number(0)])
 
-  @Published private(set) var operators: [String] = Stack([])
+  @Published private(set) var operators: Stack<String> = Stack()
 
   let formatter = NumberFormatter()
 

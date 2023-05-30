@@ -1,19 +1,23 @@
-typealias Stack<T> = [T]
+public struct Stack<Element> {
+  var elements: [Element]
 
-//public class Stack<T> {
-//
-//}
+  init(_ elements: [Element] = []) {
+    self.elements = elements
+  }
 
-extension Array {
+  var isEmpty: Bool {
+    elements.count == 0
+  }
+
   var top: Element {
-    last!
+    elements.last!
   }
 
   mutating func push(_ value: Element) {
-    append(value)
+    elements.append(value)
   }
 
   mutating func pop() -> Element {
-    removeLast()
+    elements.removeLast()
   }
 }
