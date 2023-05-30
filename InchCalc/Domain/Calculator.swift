@@ -1,5 +1,24 @@
 import Foundation
 
+public struct Operator {
+  var name: String
+  var precedence: Int
+  var evaluate: (Value, Value) -> Value
+
+  public static func make(_ name: String) -> Operator {
+    switch name {
+    case "+":
+      return Operator(name: name, precedence: 3, evaluate: { a, b in a.plus(b)})
+
+    case "-":
+      return Operator(name: name, precedence: 3, evaluate: { a, b in a.minus(b)})
+
+    default:
+      return Operator(name: "?", precedence: 0, evaluate: {a, _ in a})
+    }
+  }
+}
+
 public class Calculator: ObservableObject {
   @Published private(set) var alreadyEnteringNewNumber = false
 
@@ -7,7 +26,7 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var operands = Stack([Value.number(0)])
 
-  @Published private(set) var operators: Stack<String> = Stack()
+  @Published private(set) var operators: Stack<Operator> = Stack()
 
   let formatter = NumberFormatter()
 
@@ -45,7 +64,7 @@ public class Calculator: ObservableObject {
       let b = operands.pop()
       let a = operands.pop()
 
-      switch top {
+      switch top.name {
       case "+":
         operands.push(a.plus(b))
 
@@ -64,6 +83,6 @@ public class Calculator: ObservableObject {
 
   public func op(_ op: String) {
     encodePendingValue()
-    operators.push(op)
+    operators.push(Operator.make(op))
   }
 }
