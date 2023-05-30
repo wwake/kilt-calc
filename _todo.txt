@@ -1,4 +1,3 @@
-* Value.plus
 * Stack object
 * Operator objects
 * Subtraction - check that associativity is correct
@@ -19,6 +18,7 @@
 
 CALC-23-06: 2023-05-30 - Associativity
 * [Off camera] Improve system tests to accept all keystrokes and show file/line of errors
+* Simplify Value.plus
 
 CALC-23-05: 2023-05-29 - Yards-Feet-Inches Input
 * Parse yard/feet/inches

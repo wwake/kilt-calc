@@ -5,9 +5,9 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var pending: String = ""
 
-  @Published private(set) var operands = [Value.number(0)]
+  @Published private(set) var operands = Stack([Value.number(0)])
 
-  @Published private(set) var operators: [String] = []
+  @Published private(set) var operators: [String] = Stack([])
 
   let formatter = NumberFormatter()
 
@@ -19,7 +19,7 @@ public class Calculator: ObservableObject {
   public func clear(_: String) {
     pending = ""
     alreadyEnteringNewNumber = false
-    operands = [.number(0)]
+    operands = Stack([.number(0)])
   }
 
   public func digit(_ digit: String) {
@@ -32,7 +32,7 @@ public class Calculator: ObservableObject {
 
   fileprivate func encodePendingValue() {
     if pending.isEmpty { return }
-    operands.append(Value.parse(pending))
+    operands.push(Value.parse(pending))
     pending = ""
   }
 
@@ -47,10 +47,10 @@ public class Calculator: ObservableObject {
 
       switch top {
       case "+":
-        operands.append(a.plus(b))
+        operands.push(a.plus(b))
 
       case "-":
-        operands.append(a.minus(b))
+        operands.push(a.minus(b))
 
       default:
         break
@@ -64,6 +64,6 @@ public class Calculator: ObservableObject {
 
   public func op(_ op: String) {
     encodePendingValue()
-    operators.append(op)
+    operators.push(op)
   }
 }

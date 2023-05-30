@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9116601F2A1952A500932BD2 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 9116601E2A1952A500932BD2 /* ViewInspector */; };
 		916AF6602A252460009484DA /* ImperialUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF65F2A252460009484DA /* ImperialUnits.swift */; };
+		916AF6632A267528009484DA /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6622A267528009484DA /* Stack.swift */; };
 		91E3C59E2A1BE8FB0098BAFC /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */; };
 		91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A02A1BF40F0098BAFC /* Key.swift */; };
 		91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A22A1BF4280098BAFC /* Keypad.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		916AF65F2A252460009484DA /* ImperialUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialUnits.swift; sourceTree = "<group>"; };
+		916AF6622A267528009484DA /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		91E3C5A02A1BF40F0098BAFC /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		91E3C5A22A1BF4280098BAFC /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
@@ -89,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		916AF6612A267517009484DA /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				916AF6622A267528009484DA /* Stack.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		91E3C59B2A1BE86D0098BAFC /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +167,7 @@
 		91E7B6CA2A0D4428004A757A /* InchCalc */ = {
 			isa = PBXGroup;
 			children = (
+				916AF6612A267517009484DA /* Utility */,
 				91E3C59F2A1BF4030098BAFC /* Domain */,
 				91E3C59B2A1BE86D0098BAFC /* View */,
 				91E7B6CB2A0D4428004A757A /* InchCalcApp.swift */,
@@ -320,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91E7B6CE2A0D4428004A757A /* ContentView.swift in Sources */,
+				916AF6632A267528009484DA /* Stack.swift in Sources */,
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
 				91E7B6CC2A0D4428004A757A /* InchCalcApp.swift in Sources */,
 				91E3C5B72A1FE18D0098BAFC /* ImperialFormatter.swift in Sources */,
