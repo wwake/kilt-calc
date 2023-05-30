@@ -72,22 +72,41 @@ final class ContentViewTests: XCTestCase {
   }
 
   private func tap(_ sut: ContentView, _ input: String) throws {
+    var firstLetter: Character = " "
+
     try input.forEach { keyName in
       switch keyName {
       case " ":
         break
 
-      case "y":
-        try key(sut, "yd").tap()
+      case "y", "f", "i", "M":
+        firstLetter = keyName
 
-      case "f":
-        try key(sut, "ft").tap()
+      case "d":
+        if firstLetter == "y" {
+          try key(sut, "yd").tap()
+          firstLetter = " "
+        }
 
-      case "i":
-        try key(sut, "in").tap()
+      case "t":
+        if firstLetter == "f" {
+          try key(sut, "ft").tap()
+          firstLetter = " "
+        }
 
-      case "d", "t", "n":  // ignore second letter of unit
-        break
+      case "n":
+        if firstLetter == "i" {
+          try key(sut, "in").tap()
+          firstLetter = " "
+        }
+
+      case "C", "R", "+", "-":
+        if firstLetter == "M" {
+          try key(sut, "M\(keyName)").tap()
+          firstLetter = " "
+        } else {
+          try key(sut, String(keyName)).tap()
+        }
 
       default:
         try key(sut, String(keyName)).tap()

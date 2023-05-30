@@ -13,13 +13,13 @@
 
 * Track down purple errors on view tests: Try passing Calculator and Keypad from App or tests
 
-
 * Update EGTest to take new check() with try from ContentViewTests
 
 CALC-23-05: 2023-05-29 - Yards-Feet-Inches Input
 * Parse yard/feet/inches
 * Error handling on display side - give .error a string
 * Addition with units
+* Simple subtraction (no associativity yet)
 * Simplify our system tests
 * Tried but failed to eliminate purple errors - made Keypad press pass the calculator instead of doing it in the init
 
