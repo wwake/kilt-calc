@@ -8,13 +8,13 @@ public struct Operator {
   public static func make(_ name: String) -> Operator {
     switch name {
     case "+":
-      return Operator(name: name, precedence: 3, evaluate: { a, b in a.plus(b)})
+      return Operator(name: name, precedence: 3, evaluate: { a, b in a.plus(b) })
 
     case "-":
-      return Operator(name: name, precedence: 3, evaluate: { a, b in a.minus(b)})
+      return Operator(name: name, precedence: 3, evaluate: { a, b in a.minus(b) })
 
     default:
-      return Operator(name: "?", precedence: 0, evaluate: {a, _ in a})
+      return Operator(name: "?", precedence: 0, evaluate: { a, _ in a })
     }
   }
 }
@@ -64,16 +64,7 @@ public class Calculator: ObservableObject {
       let b = operands.pop()
       let a = operands.pop()
 
-      switch top.name {
-      case "+":
-        operands.push(a.plus(b))
-
-      case "-":
-        operands.push(a.minus(b))
-
-      default:
-        break
-      }
+      operands.push(top.evaluate(a, b))
     }
   }
 
