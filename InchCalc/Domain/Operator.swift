@@ -14,6 +14,9 @@ public struct Operator {
     case "\(Keypad.multiply)":
       return Operator(name: name, precedence: 5, evaluate: { a, b in a.times(b) })
 
+    case "\(Keypad.divide)":
+      return Operator(name: name, precedence: 5, evaluate: { a, b in a.divide(b) })
+
     default:
       return Operator(name: "?", precedence: 1, evaluate: { a, _ in a })
     }

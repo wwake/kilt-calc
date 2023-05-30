@@ -23,7 +23,7 @@ public class Keypad: ObservableObject {
         Key("ft", Calculator.unit(calculator)),
         Key("in", Calculator.unit(calculator)),
         Key("/"),
-        Key("\u{00f7}"),
+        Key("\u{00f7}", Calculator.op(calculator)),
       ],
       [
         Key("MC"),
