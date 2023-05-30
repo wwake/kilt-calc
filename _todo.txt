@@ -1,9 +1,10 @@
 * Subtraction - check that associativity is right
+* Display negative numbers
+* Stack object
+* Operator objects
 * Multiplication - check that precedence is right
 * Division
-* Display negative numbers
-* Other operators
-* Show last operator in the display?
+* Show most recent operator in the display?
 * How are we handling the initial "0"?
 
 * Make "ft 3 in 2" == "3 ft 2 in" for input
@@ -14,6 +15,9 @@
 * Track down purple errors on view tests: Try passing Calculator and Keypad from App or tests
 
 * Update EGTest to take new check() with try from ContentViewTests
+
+CALC-23-06: 2023-05-30 - Associativity
+* [Off camera] Improve system tests to accept all keystrokes and show file/line of errors
 
 CALC-23-05: 2023-05-29 - Yards-Feet-Inches Input
 * Parse yard/feet/inches
