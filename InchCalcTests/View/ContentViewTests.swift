@@ -117,7 +117,7 @@ final class ContentViewTests: XCTestCase {
       EG("1yd 5ft 11in =", expect: "2 yd 2 ft 11 in", "all units"),
       EG("1+5=", expect: "6", "Number addition"),
       EG("5-1=", expect: "4", "Number subtraction"),
-//      EG("5-3-2=", expect: "0", "Associativity of -"),
+      EG("5-3-2=", expect: "0", "Associativity of -"),
     ]) {
       @StateObject var calculator = Calculator()
 

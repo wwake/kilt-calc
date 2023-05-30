@@ -54,8 +54,20 @@ public class Calculator: ObservableObject {
     pending.append(value)
   }
 
+  private func evaluate(notLessThan precedence: Int) {
+    while !operators.isEmpty && operators.top.precedence >= precedence {
+      let top = operators.pop()
+      let b = operands.pop()
+      let a = operands.pop()
+
+      operands.push(top.evaluate(a, b))
+    }
+  }
+
   public func op(_ op: String) {
     encodePendingValue()
-    operators.push(Operator.make(op))
+    let theOperator = Operator.make(op)
+    evaluate(notLessThan: theOperator.precedence)
+    operators.push(theOperator)
   }
 }
