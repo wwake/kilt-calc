@@ -1,4 +1,3 @@
-* "ft=" should be error
 * What about "3 yd ft 2 in"? (Should only take last unit?)
 * What about "5 ft 2" - should be an error?
 
@@ -13,7 +12,6 @@
 * Track down purple errors on view tests - if any:
   + Try passing Calculator and Keypad from App or tests
 
-
 * Update EGTest to take new check() with try from ContentViewTests
 
 CALC-23-07: 2023-05-31 - Full Unit Input
@@ -21,6 +19,7 @@ CALC-23-07: 2023-05-31 - Full Unit Input
 * Try to eliminate purple runtime errors by removing @StateObject from ContentViewTests
 * Add spaces before and after units
 * Make "ft 3 in 2" == "3 ft 2 in" for input
+* "ft=" should be error
 
 CALC-23-06: 2023-05-30 - Associativity
 * [Off camera] Improve system tests to accept all keystrokes and show file/line of errors

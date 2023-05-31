@@ -47,6 +47,9 @@ public class Calculator: ObservableObject {
       alreadyEnteringNewNumber = true
     }
 
+    if pending.hasSuffix(" ") {
+      pending = String(pending.dropLast(4))
+    }
     pending.append(" \(value) ")
   }
 
