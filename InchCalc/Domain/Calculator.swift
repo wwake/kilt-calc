@@ -22,11 +22,8 @@ public class Calculator: ObservableObject {
       return pending.trimmingCharacters(in: .whitespaces)
     }
     if !operands.isEmpty {
-      if lastOperator.isEmpty {
-        return operands.top.format(ImperialFormatter.asYardFeetInches)
-      } else {
-        return "\(operands.top.format(ImperialFormatter.asYardFeetInches)) \(lastOperator)"
-      }
+      let operandString = operands.top.format(ImperialFormatter.asYardFeetInches)
+      return lastOperator.isEmpty ? operandString : "\(operandString) \(lastOperator)"
     }
     return result.format(ImperialFormatter.asYardFeetInches)
   }
