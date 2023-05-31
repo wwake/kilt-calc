@@ -48,6 +48,8 @@ public class Calculator: ObservableObject {
     if !operands.isEmpty {
       result = operands.pop()
     }
+    assert(operands.isEmpty)
+    assert(operators.isEmpty)
   }
 
   public func unit(_ value: String) {

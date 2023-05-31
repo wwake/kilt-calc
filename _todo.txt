@@ -1,4 +1,3 @@
-* How are we handling the initial "0"?
 * Make "ft 3 in 2" == "3 ft 2 in" for input
 * Add spaces before and after units
 * What about "3 yd ft 2 in"? (Should only take last unit?)
@@ -6,6 +5,8 @@
 * Display negative numbers
 * Show most recent operator in the display?
 * Overflow/underflow for operators
+* If you start with an operator, you should load the previous result as the first operand
+* If you hit two operators in a row, the last one should win
 
 * Set result type ('show as')
 
@@ -20,6 +21,7 @@ CALC-23-06: 2023-05-30 - Associativity
 * Operator objects
 * Subtraction - check that associativity is correct
 * Multiplication - check that precedence is correct
+* Split out a separate result so the display shows it when the operand stack is empty - and that result starts with 0.
 
 CALC-23-05: 2023-05-29 - Yards-Feet-Inches Input
 * Parse yard/feet/inches
