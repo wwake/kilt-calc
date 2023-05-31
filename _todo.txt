@@ -1,3 +1,8 @@
+* Make Keypad a struct
+* Track down purple errors on view tests:
+  + Try passing Calculator and Keypad from App or tests
+  + Eliminate @StateObject from ContentViewTests
+
 * Make "ft 3 in 2" == "3 ft 2 in" for input
 * Add spaces before and after units
 * What about "3 yd ft 2 in"? (Should only take last unit?)
@@ -10,7 +15,6 @@
 
 * Set result type ('show as')
 
-* Track down purple errors on view tests: Try passing Calculator and Keypad from App or tests
 
 * Update EGTest to take new check() with try from ContentViewTests
 

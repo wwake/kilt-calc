@@ -3,13 +3,13 @@ import SwiftUI
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
 
-  @StateObject var keypad: Keypad
+  var keypad: Keypad
 
   let columns = Array(repeating: GridItem(.flexible()), count: 5)
 
   init(calculator: Calculator) {
     self.calculator = calculator
-    self._keypad = StateObject(wrappedValue: Keypad(calculator))
+    self.keypad = Keypad(calculator)
   }
 
   var body: some View {

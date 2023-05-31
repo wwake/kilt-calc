@@ -1,6 +1,4 @@
-import Foundation
-
-public class Keypad: ObservableObject {
+public struct Keypad {
   static let backspace = "\u{232B}"
   static let divide = "\u{00f7}"
   static let multiply = "\u{00d7}"
