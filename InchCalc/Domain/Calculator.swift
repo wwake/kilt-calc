@@ -53,7 +53,7 @@ public class Calculator: ObservableObject {
   }
 
   public func unit(_ value: String) {
-    pending.append(value)
+    pending.append(" \(value) ")
   }
 
   private func evaluate(atLeast precedence: Int) {

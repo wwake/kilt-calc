@@ -111,10 +111,11 @@ extension Value {
     let formatter = NumberFormatter()
 
     let numbers = input
-      .split(separator: Regex(/[a-z]+/))
+      .split(separator: Regex(/[a-z ]+/))
       .map { formatter.number(from: String($0)) }
 
     let units = input.split(separator: Regex(/[0-9]+/))
+      .map { $0.trimmingCharacters(in: .whitespaces) }
 
     if numbers.contains(nil) { return .error("number too big or too small") }
 
