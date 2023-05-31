@@ -20,4 +20,8 @@ public struct Stack<Element> {
   mutating func pop() -> Element {
     elements.removeLast()
   }
+
+  mutating func clear() {
+    elements.removeAll()
+  }
 }

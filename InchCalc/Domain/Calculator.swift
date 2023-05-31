@@ -65,7 +65,7 @@ public class Calculator: ObservableObject {
   }
 
   fileprivate func handleOperator(_ op: String) {
-    if lastOperator == "" { return }
+    if lastOperator.isEmpty { return }
     let theOperator = Operator.make(op)
     evaluate(atLeast: theOperator.precedence)
     operators.push(theOperator)
@@ -79,12 +79,18 @@ public class Calculator: ObservableObject {
 
   public func enter(_: String) {
     encodePendingValue()
-    evaluate(atLeast: 0)
-    if !operands.isEmpty {
-      result = operands.pop()
+    if !lastOperator.isEmpty {
+      result = .error("expression can't end with an operator")
+    } else {
+      evaluate(atLeast: 0)
+      if !operands.isEmpty {
+        result = operands.pop()
+      }
+      assert(operands.isEmpty)
+      assert(operators.isEmpty)
     }
     lastOperator = ""
-    assert(operands.isEmpty)
-    assert(operators.isEmpty)
+    operands.clear()
+    operators.clear()
   }
 }

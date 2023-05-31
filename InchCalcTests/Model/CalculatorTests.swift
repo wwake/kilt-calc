@@ -134,4 +134,11 @@ final class CalculatorTests: XCTestCase {
     calc.enter("=")
     XCTAssertEqual(calc.display, "12")
   }
+
+  func test_TrailingBinaryOperatorIsAnError() {
+    calc.digit("9")
+    calc.op("*")
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "expression can't end with an operator")
+  }
 }
