@@ -1,8 +1,8 @@
+* Show most recent operator in the display
+* If you hit two operators in a row, the last one should win
 * Display negative numbers
-* Show most recent operator in the display?
 * Overflow/underflow for operators
 * If you start with an operator, you should load the previous result as the first operand
-* If you hit two operators in a row, the last one should win
 
 * Set result type ('show as')
 

@@ -119,4 +119,10 @@ final class CalculatorTests: XCTestCase {
     calc.enter("=")
     XCTAssertEqual(calc.display, "1 ft 3 in")
   }
+
+  func test_OperatorShowsInDisplay() {
+    calc.digit("9")
+    calc.op("+")
+    XCTAssertEqual(calc.display, "9 +")
+  }
 }

@@ -13,6 +13,8 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var operators: Stack<Operator> = Stack()
 
+  @Published private(set) var lastOperator: String = ""
+
   let formatter = NumberFormatter()
 
   public var display: String {
@@ -20,7 +22,11 @@ public class Calculator: ObservableObject {
       return pending.trimmingCharacters(in: .whitespaces)
     }
     if !operands.isEmpty {
-      return operands.top.format(ImperialFormatter.asYardFeetInches)
+      if lastOperator.isEmpty {
+        return operands.top.format(ImperialFormatter.asYardFeetInches)
+      } else {
+        return "\(operands.top.format(ImperialFormatter.asYardFeetInches)) \(lastOperator)"
+      }
     }
     return result.format(ImperialFormatter.asYardFeetInches)
   }
@@ -32,12 +38,7 @@ public class Calculator: ObservableObject {
 
   public func digit(_ digit: String) {
     pending.append(digit)
-  }
-
-  fileprivate func encodePendingValue() {
-    if pending.isEmpty { return }
-    operands.push(Value.parse(pending))
-    pending = ""
+    lastOperator = ""
   }
 
   public func unit(_ value: String) {
@@ -45,6 +46,13 @@ public class Calculator: ObservableObject {
       pending = String(pending.dropLast(4))
     }
     pending.append(" \(value) ")
+    lastOperator = ""
+  }
+
+  fileprivate func encodePendingValue() {
+    if pending.isEmpty { return }
+    operands.push(Value.parse(pending))
+    pending = ""
   }
 
   private func evaluate(atLeast precedence: Int) {
@@ -59,6 +67,7 @@ public class Calculator: ObservableObject {
 
   public func op(_ op: String) {
     encodePendingValue()
+    lastOperator = op
     let theOperator = Operator.make(op)
     evaluate(atLeast: theOperator.precedence)
     operators.push(theOperator)
@@ -70,6 +79,7 @@ public class Calculator: ObservableObject {
     if !operands.isEmpty {
       result = operands.pop()
     }
+    lastOperator = ""
     assert(operands.isEmpty)
     assert(operators.isEmpty)
   }
