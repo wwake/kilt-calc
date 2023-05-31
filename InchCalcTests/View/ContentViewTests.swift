@@ -47,8 +47,7 @@ final class ContentViewTests: XCTestCase {
   }
 
   private func checkDigitKeyPress(_ eg: EG<String, String>) throws {
-    @StateObject var calculator = Calculator()
-    let sut = ContentView(calculator: calculator)
+    let sut = ContentView(calculator: Calculator())
 
     try key(sut, eg.input).tap()
 
@@ -56,9 +55,7 @@ final class ContentViewTests: XCTestCase {
   }
 
   func testClearResetsDisplay() throws {
-    @StateObject var calculator = Calculator()
-
-    let sut = ContentView(calculator: calculator)
+    let sut = ContentView(calculator: Calculator())
     let key4 = key(sut, "4")
     try key4.tap()
     XCTAssertEqual(try display(sut).string(), "4")
@@ -137,9 +134,7 @@ final class ContentViewTests: XCTestCase {
       EG("5+3*2=", expect: "11", "Precedence of * over +"),
       EG("6:3=", expect: "2", "Number division"),
     ]) {
-      @StateObject var calculator = Calculator()
-
-      let sut = ContentView(calculator: calculator)
+      let sut = ContentView(calculator: Calculator())
       try tap(sut, $0.input)
 
       XCTAssertEqual(try display(sut).string(), $0.expect, $0.message, file: $0.file, line: $0.line)

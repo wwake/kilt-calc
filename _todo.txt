@@ -1,4 +1,3 @@
-* Make Keypad a struct
 * Track down purple errors on view tests:
   + Try passing Calculator and Keypad from App or tests
   + Eliminate @StateObject from ContentViewTests
@@ -17,6 +16,9 @@
 
 
 * Update EGTest to take new check() with try from ContentViewTests
+
+CALC-23-07: 2023-05-31 - Full Unit Input
+* Make Keypad a struct
 
 CALC-23-06: 2023-05-30 - Associativity
 * [Off camera] Improve system tests to accept all keystrokes and show file/line of errors
