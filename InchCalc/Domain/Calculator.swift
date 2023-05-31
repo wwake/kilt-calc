@@ -15,6 +15,8 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var lastOperator: String = ""
 
+  @Published private(set) var input: String = ""
+
   let formatter = NumberFormatter()
 
   public var display: String {
@@ -32,11 +34,13 @@ public class Calculator: ObservableObject {
     pending = ""
     operands = Stack([.number(0)])
     lastOperator = ""
+    input = ""
   }
 
   public func digit(_ digit: String) {
     handleOperator(lastOperator)
     pending.append(digit)
+    input.append(digit)
   }
 
   public func unit(_ value: String) {
@@ -44,8 +48,10 @@ public class Calculator: ObservableObject {
 
     if pending.hasSuffix(" ") {
       pending = String(pending.dropLast(4))
+      input = String(pending.dropLast(4))
     }
     pending.append(" \(value) ")
+    input.append(" \(value) ")
   }
 
   fileprivate func encodePendingValue() {
@@ -75,6 +81,15 @@ public class Calculator: ObservableObject {
   public func op(_ op: String) {
     encodePendingValue()
     lastOperator = op
+
+    if input.last != nil {
+      let lastChar = String(input.last!)
+      if ["+", "-", Keypad.multiply, Keypad.divide].contains(lastChar) {
+        input = String(input.dropLast())
+      }
+    }
+
+    input.append(op)
   }
 
   public func enter(_: String) {
@@ -92,5 +107,6 @@ public class Calculator: ObservableObject {
     lastOperator = ""
     operands.clear()
     operators.clear()
+    input = ""
   }
 }

@@ -34,6 +34,12 @@ struct ContentView: View {
           }
         }
       }
+
+//      Text(calculator.input)
+//        .accessibilityLabel("input")
+//        .padding(4)
+//        .frame(width: 330, alignment: .trailing)
+//        .border(Color.orange)
     }
     .font(.largeTitle)
     .padding()
