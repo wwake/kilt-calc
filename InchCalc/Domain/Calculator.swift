@@ -25,14 +25,12 @@ public class Calculator: ObservableObject {
 
   public func clear(_: String) {
     pending = ""
-//    alreadyEnteringNewNumber = false
     operands = Stack([.number(0)])
   }
 
   public func digit(_ digit: String) {
     if !alreadyEnteringNewNumber {
       pending = ""
-//      alreadyEnteringNewNumber = true
     }
     pending.append(digit)
   }
@@ -41,13 +39,11 @@ public class Calculator: ObservableObject {
     if pending.isEmpty { return }
     operands.push(Value.parse(pending))
     pending = ""
-//    alreadyEnteringNewNumber = false
   }
 
   public func unit(_ value: String) {
     if !alreadyEnteringNewNumber {
       pending = ""
-//      alreadyEnteringNewNumber = true
     }
 
     if pending.hasSuffix(" ") {
