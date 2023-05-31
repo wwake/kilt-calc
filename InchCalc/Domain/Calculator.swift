@@ -41,18 +41,12 @@ public class Calculator: ObservableObject {
     pending = ""
   }
 
-  public func enter(_: String) {
-    encodePendingValue()
-    alreadyEnteringNewNumber = false
-    evaluate(atLeast: 0)
-    if !operands.isEmpty {
-      result = operands.pop()
-    }
-    assert(operands.isEmpty)
-    assert(operators.isEmpty)
-  }
-
   public func unit(_ value: String) {
+    if !alreadyEnteringNewNumber {
+      pending = ""
+      alreadyEnteringNewNumber = true
+    }
+
     pending.append(" \(value) ")
   }
 
@@ -71,5 +65,16 @@ public class Calculator: ObservableObject {
     let theOperator = Operator.make(op)
     evaluate(atLeast: theOperator.precedence)
     operators.push(theOperator)
+  }
+
+  public func enter(_: String) {
+    encodePendingValue()
+    alreadyEnteringNewNumber = false
+    evaluate(atLeast: 0)
+    if !operands.isEmpty {
+      result = operands.pop()
+    }
+    assert(operands.isEmpty)
+    assert(operators.isEmpty)
   }
 }

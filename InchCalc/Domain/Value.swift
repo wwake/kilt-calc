@@ -117,16 +117,16 @@ extension Value {
     let units = input.split(separator: Regex(/[0-9]+/))
       .map { $0.trimmingCharacters(in: .whitespaces) }
 
-    if numbers.contains(nil) { return .error("number too big or too small") }
-
     if numbers.isEmpty { return .error("no value found") }
 
-    if numbers.count > 1 && numbers.count != units.count {
-      return .error("numbers and units don't match")
-    }
+    if numbers.contains(nil) { return .error("number too big or too small") }
 
     if numbers.count == 1 && units.count == 0 {
       return .number(numbers[0]!)
+    }
+
+    if numbers.count != units.count {
+      return .error("numbers and units don't match")
     }
 
     var inches = 0.0

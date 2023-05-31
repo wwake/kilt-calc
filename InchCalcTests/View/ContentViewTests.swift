@@ -135,6 +135,7 @@ final class ContentViewTests: XCTestCase {
       EG("6:3=", expect: "2", "Number division"),
       EG("5ft", expect: "5 ft", "Typing unit inserts spaces"),
       EG("2yd5ft", expect: "2 yd 5 ft", "Typing unit inserts spaces"),
+      EG("ft 3 in 2=", expect: "1 yd 2 in", "Units may precede numbers"),
     ]) {
       let sut = ContentView(calculator: Calculator())
       try tap(sut, $0.input)
