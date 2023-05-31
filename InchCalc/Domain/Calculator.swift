@@ -20,12 +20,8 @@ public class Calculator: ObservableObject {
   let formatter = NumberFormatter()
 
   public var display: String {
-    if !pending.isEmpty {
-      return pending.trimmingCharacters(in: .whitespaces)
-    }
-    if !operands.isEmpty {
-      let operandString = operands.top.format(ImperialFormatter.asYardFeetInches)
-      return lastOperator.isEmpty ? operandString : "\(operandString) \(lastOperator)"
+    if !input.isEmpty {
+      return input.trimmingCharacters(in: .whitespaces)
     }
     return result.format(ImperialFormatter.asYardFeetInches)
   }
@@ -34,6 +30,7 @@ public class Calculator: ObservableObject {
     pending = ""
     operands = Stack([.number(0)])
     lastOperator = ""
+    result = .number(0)
     input = ""
   }
 
@@ -48,8 +45,11 @@ public class Calculator: ObservableObject {
 
     if pending.hasSuffix(" ") {
       pending = String(pending.dropLast(4))
-      input = String(pending.dropLast(4))
     }
+    if input.hasSuffix(" ") {
+      input = String(input.dropLast(4))
+    }
+
     pending.append(" \(value) ")
     input.append(" \(value) ")
   }

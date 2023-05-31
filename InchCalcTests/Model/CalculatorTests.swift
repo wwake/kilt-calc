@@ -123,7 +123,7 @@ final class CalculatorTests: XCTestCase {
   func test_OperatorShowsInDisplay() {
     calc.digit("9")
     calc.op("+")
-    XCTAssertEqual(calc.display, "9 +")
+    XCTAssertEqual(calc.display, "9+")
   }
 
   func test_LastOperatorWins() {
