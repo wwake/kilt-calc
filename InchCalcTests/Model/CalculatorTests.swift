@@ -125,4 +125,13 @@ final class CalculatorTests: XCTestCase {
     calc.op("+")
     XCTAssertEqual(calc.display, "9 +")
   }
+
+  func test_LastOperatorWins() {
+    calc.digit("9")
+    calc.op("*")
+    calc.op("+")
+    calc.digit("3")
+    calc.enter("=")
+    XCTAssertEqual(calc.display, "12")
+  }
 }

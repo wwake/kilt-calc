@@ -31,19 +31,21 @@ public class Calculator: ObservableObject {
   public func clear(_: String) {
     pending = ""
     operands = Stack([.number(0)])
-  }
-
-  public func digit(_ digit: String) {
-    pending.append(digit)
     lastOperator = ""
   }
 
+  public func digit(_ digit: String) {
+    handleOperator(lastOperator)
+    pending.append(digit)
+  }
+
   public func unit(_ value: String) {
+    handleOperator(lastOperator)
+
     if pending.hasSuffix(" ") {
       pending = String(pending.dropLast(4))
     }
     pending.append(" \(value) ")
-    lastOperator = ""
   }
 
   fileprivate func encodePendingValue() {
@@ -62,12 +64,17 @@ public class Calculator: ObservableObject {
     }
   }
 
-  public func op(_ op: String) {
-    encodePendingValue()
-    lastOperator = op
+  fileprivate func handleOperator(_ op: String) {
+    if lastOperator == "" { return }
     let theOperator = Operator.make(op)
     evaluate(atLeast: theOperator.precedence)
     operators.push(theOperator)
+    lastOperator = ""
+  }
+
+  public func op(_ op: String) {
+    encodePendingValue()
+    lastOperator = op
   }
 
   public func enter(_: String) {

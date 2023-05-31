@@ -1,5 +1,5 @@
-* Show most recent operator in the display
 * If you hit two operators in a row, the last one should win
+* Should you type the whole thing before = evaluates?
 * Display negative numbers
 * Overflow/underflow for operators
 * If you start with an operator, you should load the previous result as the first operand
@@ -19,6 +19,7 @@ CALC-23-07: 2023-05-31 - Full Unit Input
 * "ft=" should be error
 * What about "3 yd ft 2 in"? (Should only take last unit?)
 * What about "5 ft 2" - is an error
+* Show most recent operator in the display
 
 CALC-23-06: 2023-05-30 - Associativity
 * [Off camera] Improve system tests to accept all keystrokes and show file/line of errors
