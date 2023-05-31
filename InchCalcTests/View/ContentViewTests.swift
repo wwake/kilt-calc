@@ -138,6 +138,7 @@ final class ContentViewTests: XCTestCase {
       EG("ft 3 in 2=", expect: "1 yd 2 in", "Units may precede numbers"),
       EG("2 yd ft", expect: "2 ft", "Last unit takes precedence"),
       EG("2 yd ft =", expect: "2 ft", "Last unit takes precedence"),
+      EG("5 ft 2 =", expect: "numbers and units don't match", "more numbers than units"),
     ]) {
       let sut = ContentView(calculator: Calculator())
       try tap(sut, $0.input)

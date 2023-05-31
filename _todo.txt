@@ -1,6 +1,3 @@
-* What about "3 yd ft 2 in"? (Should only take last unit?)
-* What about "5 ft 2" - should be an error?
-
 * Display negative numbers
 * Show most recent operator in the display?
 * Overflow/underflow for operators
@@ -20,6 +17,8 @@ CALC-23-07: 2023-05-31 - Full Unit Input
 * Add spaces before and after units
 * Make "ft 3 in 2" == "3 ft 2 in" for input
 * "ft=" should be error
+* What about "3 yd ft 2 in"? (Should only take last unit?)
+* What about "5 ft 2" - is an error
 
 CALC-23-06: 2023-05-30 - Associativity
 * [Off camera] Improve system tests to accept all keystrokes and show file/line of errors
