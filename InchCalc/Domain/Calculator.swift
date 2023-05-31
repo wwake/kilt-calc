@@ -16,7 +16,9 @@ public class Calculator: ObservableObject {
   let formatter = NumberFormatter()
 
   public var display: String {
-    if !pending.isEmpty { return pending.trimmingCharacters(in: .whitespaces) }
+    if !pending.isEmpty {
+      return pending.trimmingCharacters(in: .whitespaces)
+    }
     if !operands.isEmpty {
       return operands.top.format(ImperialFormatter.asYardFeetInches)
     }
@@ -29,9 +31,6 @@ public class Calculator: ObservableObject {
   }
 
   public func digit(_ digit: String) {
-    if !alreadyEnteringNewNumber {
-      pending = ""
-    }
     pending.append(digit)
   }
 
@@ -42,10 +41,6 @@ public class Calculator: ObservableObject {
   }
 
   public func unit(_ value: String) {
-    if !alreadyEnteringNewNumber {
-      pending = ""
-    }
-
     if pending.hasSuffix(" ") {
       pending = String(pending.dropLast(4))
     }
