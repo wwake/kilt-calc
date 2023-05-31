@@ -39,6 +39,7 @@ public class Calculator: ObservableObject {
     if pending.isEmpty { return }
     operands.push(Value.parse(pending))
     pending = ""
+    alreadyEnteringNewNumber = false
   }
 
   public func unit(_ value: String) {
@@ -72,7 +73,6 @@ public class Calculator: ObservableObject {
 
   public func enter(_: String) {
     encodePendingValue()
-    alreadyEnteringNewNumber = false
     evaluate(atLeast: 0)
     if !operands.isEmpty {
       result = operands.pop()
