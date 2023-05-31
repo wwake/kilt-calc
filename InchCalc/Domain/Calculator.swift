@@ -14,7 +14,7 @@ public class Calculator: ObservableObject {
   let formatter = NumberFormatter()
 
   public var display: String {
-    if !pending.isEmpty { return pending }
+    if !pending.isEmpty { return pending.trimmingCharacters(in: .whitespaces) }
     if !operands.isEmpty {
       return operands.top.format(ImperialFormatter.asYardFeetInches)
     }
