@@ -18,7 +18,6 @@ opt_in_rules:
   - accessibility_label_for_image
   - accessibility_trait_for_button
 #  - anonymous_argument_in_multiline_closure # house rule
-  - anyobject_protocol
   - array_init
   - attributes
   - balanced_xctest_lifecycle
