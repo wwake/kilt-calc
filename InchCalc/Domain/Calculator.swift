@@ -1,9 +1,9 @@
 import Foundation
 
-public struct InputBuffer<Element> {
-  var elements: [Element]
+public struct InputBuffer {
+  var elements: [String]
 
-  public init(_ elements: [Element] = []) {
+  public init(_ elements: [String] = []) {
     self.elements = elements
   }
 
@@ -11,24 +11,22 @@ public struct InputBuffer<Element> {
     elements.count == 0
   }
 
-  public var top: Element {
+  public var top: String {
     elements.last!
   }
 
-  public mutating func push(_ value: Element) {
+  public mutating func push(_ value: String) {
     elements.append(value)
   }
 
-  public mutating func pop() -> Element {
+  public mutating func pop() -> String {
     elements.removeLast()
   }
 
   public mutating func clear() {
     elements.removeAll()
   }
-}
 
-extension InputBuffer<String> {
   public func joined() -> String {
     elements.joined()
   }
@@ -36,7 +34,7 @@ extension InputBuffer<String> {
 
 public class Calculator: ObservableObject {
   @Published private(set) var result = Value.number(0)
-  @Published private(set) var input = InputBuffer<String>()
+  @Published private(set) var input = InputBuffer()
 
   let formatter = NumberFormatter()
 
