@@ -98,27 +98,64 @@ public class Calculator: ObservableObject {
     input.push(op)
   }
 
-//  private func evaluate2(_ input: Stack<String>) -> Value {
-//    input.elements.forEach { command in
-//      switch command {
-//        case "0"..."9":
-//      }
-//    }
-//    return Value.error("tbd")
-//  }
+  private func enter2(_ input: Stack<String>) -> Value {
+    if input.isEmpty { return Value.number(0) }
+
+    var operands: Stack<Value> = Stack()
+    var operators: Stack<Operator> = Stack()
+
+    var pending = ""
+
+    input.elements.forEach { command in
+      switch command {
+      case "0"..."9", " yd ", " ft ", " in ":
+        pending.append(command)
+
+      case "+", "-", Keypad.multiply, Keypad.divide:
+        operands.push(Value.parse(pending))
+        pending = ""
+
+        let theOperator = Operator.make(command)
+        while !operators.isEmpty && operators.top.precedence >= theOperator.precedence {
+          let top = operators.pop()
+          let b = operands.pop()
+          let a = operands.pop()
+
+          operands.push(top.evaluate(a, b))
+        }
+
+        operators.push(theOperator)
+
+      default:
+        break
+      }
+    }
+
+    operands.push(Value.parse(pending))
+
+    while !operators.isEmpty && operators.top.precedence >= 0 {
+      let top = operators.pop()
+      let b = operands.pop()
+      let a = operands.pop()
+
+      operands.push(top.evaluate(a, b))
+    }
+
+    return operands.pop()
+  }
 
   public func enter(_: String) {
     encodePendingValue()
-  //  print(evaluate2(input))
     if !lastOperator.isEmpty {
       result = .error("expression can't end with an operator")
     } else {
-      evaluate(atLeast: 0)
-      if !operands.isEmpty {
-        result = operands.pop()
-      }
-      assert(operands.isEmpty)
-      assert(operators.isEmpty)
+//      evaluate(atLeast: 0)
+//      if !operands.isEmpty {
+//        result = operands.pop()
+//      }
+      result = enter2(input)
+//      assert(operands.isEmpty)
+//      assert(operators.isEmpty)
     }
     lastOperator = ""
     operands.clear()
