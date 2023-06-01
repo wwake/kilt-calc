@@ -17,8 +17,6 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var operands: Stack<Value> = Stack()
 
-  @Published private(set) var operators: Stack<Operator> = Stack()
-
   @Published private(set) var lastOperator: String = ""
 
   @Published private(set) var input = Stack<String>()
@@ -66,21 +64,9 @@ public class Calculator: ObservableObject {
     pending = ""
   }
 
-  private func evaluate(atLeast precedence: Int) {
-    while !operators.isEmpty && operators.top.precedence >= precedence {
-      let top = operators.pop()
-      let b = operands.pop()
-      let a = operands.pop()
-
-      operands.push(top.evaluate(a, b))
-    }
-  }
-
   fileprivate func handleOperator(_ op: String) {
     if lastOperator.isEmpty { return }
     let theOperator = Operator.make(op)
-    evaluate(atLeast: theOperator.precedence)
-    operators.push(theOperator)
     lastOperator = ""
   }
 
@@ -149,17 +135,10 @@ public class Calculator: ObservableObject {
     if !lastOperator.isEmpty {
       result = .error("expression can't end with an operator")
     } else {
-//      evaluate(atLeast: 0)
-//      if !operands.isEmpty {
-//        result = operands.pop()
-//      }
       result = enter2(input)
-//      assert(operands.isEmpty)
-//      assert(operators.isEmpty)
     }
     lastOperator = ""
     operands.clear()
-    operators.clear()
     input.clear()
   }
 }
