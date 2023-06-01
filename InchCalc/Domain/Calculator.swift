@@ -7,7 +7,7 @@ extension Stack<String> {
 }
 
 public class Calculator: ObservableObject {
-  @Published private(set) var pending: String = ""
+//  @Published private(set) var pending: String = ""
 
   @Published private(set) var result = Value.number(0)
 
@@ -25,7 +25,7 @@ public class Calculator: ObservableObject {
   }
 
   public func clear(_: String) {
-    pending = ""
+//    pending = ""
     lastOperator = ""
     result = .number(0)
     input.clear()
@@ -33,28 +33,26 @@ public class Calculator: ObservableObject {
 
   public func digit(_ digit: String) {
     handleOperator(lastOperator)
-    pending.append(digit)
+//    pending.append(digit)
     input.push(digit)
   }
 
   public func unit(_ value: String) {
     handleOperator(lastOperator)
 
-    if pending.hasSuffix(" ") {
-      pending = String(pending.dropLast(4))
-    }
+//    if pending.hasSuffix(" ") {
+//      pending = String(pending.dropLast(4))
+//    }
     if !input.isEmpty && input.top.hasSuffix(" ") {
       _ = input.pop()
     }
 
-    pending.append(" \(value) ")
+//    pending.append(" \(value) ")
     input.push(" \(value) ")
   }
 
   fileprivate func encodePendingValue() {
-    if !pending.isEmpty {
-      pending = ""
-    }
+//
   }
 
   fileprivate func handleOperator(_ op: String) {
