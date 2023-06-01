@@ -1,8 +1,12 @@
-public struct InputBuffer {
-  var elements: [String]
+public struct InputBuffer : Sequence {
+  private var elements: [String]
 
   public init(_ elements: [String] = []) {
     self.elements = elements
+  }
+
+  public func makeIterator() -> IndexingIterator<[String]> {
+    elements.makeIterator()
   }
 
   public var isEmpty: Bool {

@@ -22,7 +22,7 @@ public class Expression {
 
     var pending = ""
 
-    input.elements.forEach { command in
+    input.forEach { command in
       switch command {
       case "0"..."9", " yd ", " ft ", " in ":
         pending.append(command)
