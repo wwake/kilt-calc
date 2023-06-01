@@ -15,13 +15,13 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var lastOperator: String = ""
 
-  @Published private(set) var input: String = ""
+  @Published private(set) var input = [String]()
 
   let formatter = NumberFormatter()
 
   public var display: String {
     if !input.isEmpty {
-      return input.trimmingCharacters(in: .whitespaces)
+      return input.joined().trimmingCharacters(in: .whitespaces)
     }
     return result.format(ImperialFormatter.asYardFeetInches)
   }
@@ -31,7 +31,7 @@ public class Calculator: ObservableObject {
     operands = Stack([.number(0)])
     lastOperator = ""
     result = .number(0)
-    input = ""
+    input = []
   }
 
   public func digit(_ digit: String) {
@@ -46,8 +46,8 @@ public class Calculator: ObservableObject {
     if pending.hasSuffix(" ") {
       pending = String(pending.dropLast(4))
     }
-    if input.hasSuffix(" ") {
-      input = String(input.dropLast(4))
+    if input.count > 0 && input.last!.hasSuffix(" ") {
+      input = input.dropLast()
     }
 
     pending.append(" \(value) ")
@@ -85,7 +85,7 @@ public class Calculator: ObservableObject {
     if input.last != nil {
       let lastChar = String(input.last!)
       if ["+", "-", Keypad.multiply, Keypad.divide].contains(lastChar) {
-        input = String(input.dropLast())
+        input = input.dropLast()
       }
     }
 
@@ -107,6 +107,6 @@ public class Calculator: ObservableObject {
     lastOperator = ""
     operands.clear()
     operators.clear()
-    input = ""
+    input = []
   }
 }

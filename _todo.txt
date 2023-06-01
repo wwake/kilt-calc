@@ -1,3 +1,5 @@
+* Change input as String to [String]
+* Question - should input be a Stack?
 * Type the whole expression before = evaluates
 * Do we need pending any more?
 
@@ -12,6 +14,9 @@
   + Try passing Calculator and Keypad from App or tests
 
 * Update EGTest to take new check() with try from ContentViewTests
+
+CALC-23-08: 2023-06-01  Parse and Evaluate at '='
+
 
 CALC-23-07: 2023-05-31 - Full Unit Input
 * Make Keypad a struct
