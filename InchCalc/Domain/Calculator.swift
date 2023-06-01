@@ -7,8 +7,6 @@ extension Stack<String> {
 }
 
 public class Calculator: ObservableObject {
-//  @Published private(set) var pending: String = ""
-
   @Published private(set) var result = Value.number(0)
 
   @Published private(set) var lastOperator: String = ""
@@ -25,7 +23,6 @@ public class Calculator: ObservableObject {
   }
 
   public func clear(_: String) {
-//    pending = ""
     lastOperator = ""
     result = .number(0)
     input.clear()
@@ -33,26 +30,17 @@ public class Calculator: ObservableObject {
 
   public func digit(_ digit: String) {
     handleOperator(lastOperator)
-//    pending.append(digit)
     input.push(digit)
   }
 
   public func unit(_ value: String) {
     handleOperator(lastOperator)
 
-//    if pending.hasSuffix(" ") {
-//      pending = String(pending.dropLast(4))
-//    }
     if !input.isEmpty && input.top.hasSuffix(" ") {
       _ = input.pop()
     }
 
-//    pending.append(" \(value) ")
     input.push(" \(value) ")
-  }
-
-  fileprivate func encodePendingValue() {
-//
   }
 
   fileprivate func handleOperator(_ op: String) {
@@ -62,7 +50,6 @@ public class Calculator: ObservableObject {
   }
 
   public func op(_ op: String) {
-    encodePendingValue()
     lastOperator = op
 
     if !input.isEmpty {
@@ -122,7 +109,6 @@ public class Calculator: ObservableObject {
   }
 
   public func enter(_: String) {
-    encodePendingValue()
     if !lastOperator.isEmpty {
       result = .error("expression can't end with an operator")
     } else {
