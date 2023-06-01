@@ -16,7 +16,6 @@ struct ContentView: View {
     VStack {
       Text(calculator.display)
         .accessibilityLabel("display")
-        .italic(calculator.alreadyEnteringNewNumber)
         .padding(4)
         .frame(width: 330, alignment: .trailing)
         .border(Color.black)

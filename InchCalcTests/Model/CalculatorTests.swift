@@ -25,7 +25,6 @@ final class CalculatorTests: XCTestCase {
     calc.digit("4")
     calc.clear("C")
     XCTAssertEqual(calc.display, "0")
-    XCTAssertFalse(calc.alreadyEnteringNewNumber)
   }
 
   func test_EnterEvaluatesPendingString() {

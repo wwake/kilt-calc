@@ -7,15 +7,9 @@ extension Stack<String> {
 }
 
 public class Calculator: ObservableObject {
-  public var alreadyEnteringNewNumber: Bool {
-    !pending.isEmpty
-  }
-
   @Published private(set) var pending: String = ""
 
   @Published private(set) var result = Value.number(0)
-
-  //@Published private(set) var operands: Stack<Value> = Stack()
 
   @Published private(set) var lastOperator: String = ""
 
@@ -58,14 +52,15 @@ public class Calculator: ObservableObject {
   }
 
   fileprivate func encodePendingValue() {
-    if pending.isEmpty { return }
-    pending = ""
+    if !pending.isEmpty {
+      pending = ""
+    }
   }
 
   fileprivate func handleOperator(_ op: String) {
-    if lastOperator.isEmpty { return }
-    let theOperator = Operator.make(op)
-    lastOperator = ""
+    if !lastOperator.isEmpty {
+      lastOperator = ""
+    }
   }
 
   public func op(_ op: String) {
