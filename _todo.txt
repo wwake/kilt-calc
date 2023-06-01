@@ -1,4 +1,4 @@
-* Type the whole expression before = evaluates
+* Type the whole expression before = evaluates  
 * Do we need pending any more?
 
 * If you start with an operator, you should load the previous result as the first operand
