@@ -1,27 +1,27 @@
 public struct Stack<Element> {
   var elements: [Element]
 
-  init(_ elements: [Element] = []) {
+  public init(_ elements: [Element] = []) {
     self.elements = elements
   }
 
-  var isEmpty: Bool {
+  public var isEmpty: Bool {
     elements.count == 0
   }
 
-  var top: Element {
+  public var top: Element {
     elements.last!
   }
 
-  mutating func push(_ value: Element) {
+  public mutating func push(_ value: Element) {
     elements.append(value)
   }
 
-  mutating func pop() -> Element {
+  public mutating func pop() -> Element {
     elements.removeLast()
   }
 
-  mutating func clear() {
+  public mutating func clear() {
     elements.removeAll()
   }
 }

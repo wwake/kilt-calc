@@ -6,54 +6,6 @@ extension Stack<String> {
   }
 }
 
-public class Expression {
-  public func evaluate(_ input: Stack<String>) -> Value {
-    if input.isEmpty { return Value.number(0) }
-
-    var operands: Stack<Value> = Stack()
-    var operators: Stack<Operator> = Stack()
-
-    var pending = ""
-
-    input.elements.forEach { command in
-      switch command {
-      case "0"..."9", " yd ", " ft ", " in ":
-        pending.append(command)
-
-      case "+", "-", Keypad.multiply, Keypad.divide:
-        operands.push(Value.parse(pending))
-        pending = ""
-
-        let theOperator = Operator.make(command)
-        while !operators.isEmpty && operators.top.precedence >= theOperator.precedence {
-          let top = operators.pop()
-          let b = operands.pop()
-          let a = operands.pop()
-
-          operands.push(top.evaluate(a, b))
-        }
-
-        operators.push(theOperator)
-
-      default:
-        break
-      }
-    }
-
-    operands.push(Value.parse(pending))
-
-    while !operators.isEmpty && operators.top.precedence >= 0 {
-      let top = operators.pop()
-      let b = operands.pop()
-      let a = operands.pop()
-
-      operands.push(top.evaluate(a, b))
-    }
-
-    return operands.pop()
-  }
-}
-
 public class Calculator: ObservableObject {
   @Published private(set) var result = Value.number(0)
   @Published private(set) var input = Stack<String>()
@@ -103,7 +55,7 @@ public class Calculator: ObservableObject {
     if !input.isEmpty && isOperator(input.top) {
       result = .error("expression can't end with an operator")
     } else {
-      result = Expression().evaluate(input)
+      result = Expression(input).evaluate()
     }
     input.clear()
   }
