@@ -1,12 +1,12 @@
-* Change input as String to [String]
-* Question - should input be a Stack?
 * Type the whole expression before = evaluates
 * Do we need pending any more?
+* Implement the backspace key
 
 * If you start with an operator, you should load the previous result as the first operand
 * Display negative numbers
 * Overflow/underflow for operators
 * Separate error field, so we can keep editing?
+* move Keypad constants to Operator?
 
 * Set result type ('show as')
 
@@ -16,7 +16,8 @@
 * Update EGTest to take new check() with try from ContentViewTests
 
 CALC-23-08: 2023-06-01  Parse and Evaluate at '='
-
+* Change input as String to [String]
+* Change input to be a Stack<String>
 
 CALC-23-07: 2023-05-31 - Full Unit Input
 * Make Keypad a struct

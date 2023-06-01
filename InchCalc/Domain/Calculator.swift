@@ -1,5 +1,11 @@
 import Foundation
 
+extension Stack<String> {
+  public func joined() -> String {
+    elements.joined()
+  }
+}
+
 public class Calculator: ObservableObject {
   public var alreadyEnteringNewNumber: Bool {
     !pending.isEmpty
@@ -15,7 +21,7 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var lastOperator: String = ""
 
-  @Published private(set) var input = [String]()
+  @Published private(set) var input = Stack<String>()
 
   let formatter = NumberFormatter()
 
@@ -31,13 +37,13 @@ public class Calculator: ObservableObject {
     operands = Stack([.number(0)])
     lastOperator = ""
     result = .number(0)
-    input = []
+    input.clear()
   }
 
   public func digit(_ digit: String) {
     handleOperator(lastOperator)
     pending.append(digit)
-    input.append(digit)
+    input.push(digit)
   }
 
   public func unit(_ value: String) {
@@ -46,12 +52,12 @@ public class Calculator: ObservableObject {
     if pending.hasSuffix(" ") {
       pending = String(pending.dropLast(4))
     }
-    if input.count > 0 && input.last!.hasSuffix(" ") {
-      input = input.dropLast()
+    if !input.isEmpty && input.top.hasSuffix(" ") {
+      _ = input.pop()
     }
 
     pending.append(" \(value) ")
-    input.append(" \(value) ")
+    input.push(" \(value) ")
   }
 
   fileprivate func encodePendingValue() {
@@ -82,18 +88,28 @@ public class Calculator: ObservableObject {
     encodePendingValue()
     lastOperator = op
 
-    if input.last != nil {
-      let lastChar = String(input.last!)
+    if !input.isEmpty {
+      let lastChar = input.top
       if ["+", "-", Keypad.multiply, Keypad.divide].contains(lastChar) {
-        input = input.dropLast()
+        _ = input.pop()
       }
     }
 
-    input.append(op)
+    input.push(op)
   }
+
+//  private func evaluate2(_ input: Stack<String>) -> Value {
+//    input.elements.forEach { command in
+//      switch command {
+//        case "0"..."9":
+//      }
+//    }
+//    return Value.error("tbd")
+//  }
 
   public func enter(_: String) {
     encodePendingValue()
+  //  print(evaluate2(input))
     if !lastOperator.isEmpty {
       result = .error("expression can't end with an operator")
     } else {
@@ -107,6 +123,6 @@ public class Calculator: ObservableObject {
     lastOperator = ""
     operands.clear()
     operators.clear()
-    input = []
+    input.clear()
   }
 }
