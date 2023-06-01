@@ -9,8 +9,6 @@ extension Stack<String> {
 public class Calculator: ObservableObject {
   @Published private(set) var result = Value.number(0)
 
-  @Published private(set) var lastOperator: String = ""
-
   @Published private(set) var input = Stack<String>()
 
   let formatter = NumberFormatter()
@@ -23,19 +21,15 @@ public class Calculator: ObservableObject {
   }
 
   public func clear(_: String) {
-    lastOperator = ""
     result = .number(0)
     input.clear()
   }
 
   public func digit(_ digit: String) {
-    handleOperator(lastOperator)
     input.push(digit)
   }
 
   public func unit(_ value: String) {
-    handleOperator(lastOperator)
-
     if !input.isEmpty && input.top.hasSuffix(" ") {
       _ = input.pop()
     }
@@ -43,15 +37,11 @@ public class Calculator: ObservableObject {
     input.push(" \(value) ")
   }
 
-  fileprivate func handleOperator(_ op: String) {
-    if !lastOperator.isEmpty {
-      lastOperator = ""
-    }
+  private func isOperator(_ string: String) -> Bool {
+    ["+", "-", Keypad.multiply, Keypad.divide].contains(string)
   }
 
   public func op(_ op: String) {
-    lastOperator = op
-
     if !input.isEmpty {
       let lastChar = input.top
       if ["+", "-", Keypad.multiply, Keypad.divide].contains(lastChar) {
@@ -109,12 +99,11 @@ public class Calculator: ObservableObject {
   }
 
   public func enter(_: String) {
-    if !lastOperator.isEmpty {
+    if !input.isEmpty && isOperator(input.top) {
       result = .error("expression can't end with an operator")
     } else {
       result = enter2(input)
     }
-    lastOperator = ""
     input.clear()
   }
 }

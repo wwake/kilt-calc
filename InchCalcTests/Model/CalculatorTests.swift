@@ -127,7 +127,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_LastOperatorWins() {
     calc.digit("9")
-    calc.op("*")
+    calc.op(Keypad.multiply)
     calc.op("+")
     calc.digit("3")
     calc.enter("=")
@@ -136,7 +136,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_TrailingBinaryOperatorIsAnError() {
     calc.digit("9")
-    calc.op("*")
+    calc.op(Keypad.multiply)
     calc.enter("=")
     XCTAssertEqual(calc.display, "expression can't end with an operator")
   }
