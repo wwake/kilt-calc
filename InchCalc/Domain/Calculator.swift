@@ -1,6 +1,34 @@
 import Foundation
 
-extension Stack<String> {
+public struct InputBuffer<Element> {
+  var elements: [Element]
+
+  public init(_ elements: [Element] = []) {
+    self.elements = elements
+  }
+
+  public var isEmpty: Bool {
+    elements.count == 0
+  }
+
+  public var top: Element {
+    elements.last!
+  }
+
+  public mutating func push(_ value: Element) {
+    elements.append(value)
+  }
+
+  public mutating func pop() -> Element {
+    elements.removeLast()
+  }
+
+  public mutating func clear() {
+    elements.removeAll()
+  }
+}
+
+extension InputBuffer<String> {
   public func joined() -> String {
     elements.joined()
   }
@@ -8,7 +36,7 @@ extension Stack<String> {
 
 public class Calculator: ObservableObject {
   @Published private(set) var result = Value.number(0)
-  @Published private(set) var input = Stack<String>()
+  @Published private(set) var input = InputBuffer<String>()
 
   let formatter = NumberFormatter()
 

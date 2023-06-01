@@ -1,9 +1,9 @@
 public class Expression {
-  var input: Stack<String>
+  var input: InputBuffer<String>
   var operands: Stack<Value> = Stack()
   var operators: Stack<Operator> = Stack()
 
-  init(_ input: Stack<String>) {
+  init(_ input: InputBuffer<String>) {
     self.input = input
   }
 
