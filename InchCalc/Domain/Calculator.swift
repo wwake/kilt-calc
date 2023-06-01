@@ -11,23 +11,25 @@ public struct InputBuffer {
     elements.count == 0
   }
 
-  public var top: String {
+  public var last: String {
     elements.last!
   }
 
-  public mutating func push(_ value: String) {
+  public mutating func add(_ value: String) {
     elements.append(value)
   }
 
-  public mutating func pop() -> String {
-    elements.removeLast()
+  public mutating func removeLastIf(_ condition: (String) -> Bool) {
+    if !isEmpty && condition(last) {
+      elements.removeLast()
+    }
   }
 
   public mutating func clear() {
     elements.removeAll()
   }
 
-  public func joined() -> String {
+  public func toString() -> String {
     elements.joined()
   }
 }
@@ -40,9 +42,17 @@ public class Calculator: ObservableObject {
 
   public var display: String {
     if !input.isEmpty {
-      return input.joined().trimmingCharacters(in: .whitespaces)
+      return input.toString().trimmingCharacters(in: .whitespaces)
     }
     return result.format(ImperialFormatter.asYardFeetInches)
+  }
+
+  public func isUnit(_ value: String) -> Bool {
+    value.hasSuffix(" ")
+  }
+
+  private func isOperator(_ string: String) -> Bool {
+    ["+", "-", Keypad.multiply, Keypad.divide].contains(string)
   }
 
   public func clear(_: String) {
@@ -51,34 +61,21 @@ public class Calculator: ObservableObject {
   }
 
   public func digit(_ digit: String) {
-    input.push(digit)
+    input.add(digit)
   }
 
   public func unit(_ value: String) {
-    if !input.isEmpty && input.top.hasSuffix(" ") {
-      _ = input.pop()
-    }
-
-    input.push(" \(value) ")
-  }
-
-  private func isOperator(_ string: String) -> Bool {
-    ["+", "-", Keypad.multiply, Keypad.divide].contains(string)
+    input.removeLastIf(isUnit)
+    input.add(" \(value) ")
   }
 
   public func op(_ op: String) {
-    if !input.isEmpty {
-      let lastChar = input.top
-      if ["+", "-", Keypad.multiply, Keypad.divide].contains(lastChar) {
-        _ = input.pop()
-      }
-    }
-
-    input.push(op)
+    input.removeLastIf(isOperator)
+    input.add(op)
   }
 
   public func enter(_: String) {
-    if !input.isEmpty && isOperator(input.top) {
+    if !input.isEmpty && isOperator(input.last) {
       result = .error("expression can't end with an operator")
     } else {
       result = Expression(input).evaluate()
