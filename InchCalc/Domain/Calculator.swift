@@ -15,7 +15,7 @@ public class Calculator: ObservableObject {
 
   @Published private(set) var result = Value.number(0)
 
-  @Published private(set) var operands: Stack<Value> = Stack()
+  //@Published private(set) var operands: Stack<Value> = Stack()
 
   @Published private(set) var lastOperator: String = ""
 
@@ -32,7 +32,6 @@ public class Calculator: ObservableObject {
 
   public func clear(_: String) {
     pending = ""
-    operands = Stack([.number(0)])
     lastOperator = ""
     result = .number(0)
     input.clear()
@@ -60,7 +59,6 @@ public class Calculator: ObservableObject {
 
   fileprivate func encodePendingValue() {
     if pending.isEmpty { return }
-    operands.push(Value.parse(pending))
     pending = ""
   }
 
@@ -138,7 +136,6 @@ public class Calculator: ObservableObject {
       result = enter2(input)
     }
     lastOperator = ""
-    operands.clear()
     input.clear()
   }
 }
