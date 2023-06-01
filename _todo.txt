@@ -9,7 +9,6 @@
 * Introduce an enum for the types of elements like number or operator
 * Parentheses
 
-
 * Set result type ('show as')
 
 * Update EGTest to take new check() with try from ContentViewTests

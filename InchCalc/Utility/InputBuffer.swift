@@ -1,4 +1,4 @@
-public struct InputBuffer : Sequence {
+public struct InputBuffer: Sequence {
   private var elements: [String]
 
   public init(_ elements: [String] = []) {
