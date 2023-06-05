@@ -26,6 +26,10 @@ public class Calculator: ObservableObject {
     input.clear()
   }
 
+  public func backspace(_: String) {
+    input.removeLastIf({ _ in true })
+  }
+
   public func digit(_ digit: String) {
     input.add(digit)
   }

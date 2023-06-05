@@ -14,7 +14,7 @@ public struct Keypad {
         Key("("),
         Key(")"),
         Key("%"),
-        Key("\u{232B}"),
+        Key("\u{232B}", Calculator.backspace(calculator)),
       ],
       [
         Key("yd", Calculator.unit(calculator)),
