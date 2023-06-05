@@ -11,6 +11,7 @@
 		916AF6602A252460009484DA /* ImperialUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF65F2A252460009484DA /* ImperialUnits.swift */; };
 		916AF6632A267528009484DA /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6622A267528009484DA /* Stack.swift */; };
 		916AF6652A267B8F009484DA /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6642A267B8F009484DA /* Operator.swift */; };
+		918628C92A2E6FF000FA781D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918628C82A2E6FF000FA781D /* Entry.swift */; };
 		9190F7AD2A292CA60008E40A /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9190F7AC2A292CA60008E40A /* Expression.swift */; };
 		9190F7AF2A29331F0008E40A /* InputBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9190F7AE2A29331F0008E40A /* InputBuffer.swift */; };
 		91E3C59E2A1BE8FB0098BAFC /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */; };
@@ -50,6 +51,7 @@
 		916AF65F2A252460009484DA /* ImperialUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialUnits.swift; sourceTree = "<group>"; };
 		916AF6622A267528009484DA /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		916AF6642A267B8F009484DA /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
+		918628C82A2E6FF000FA781D /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		9190F7AC2A292CA60008E40A /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		9190F7AE2A29331F0008E40A /* InputBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBuffer.swift; sourceTree = "<group>"; };
 		91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				916AF65F2A252460009484DA /* ImperialUnits.swift */,
 				916AF6642A267B8F009484DA /* Operator.swift */,
 				9190F7AC2A292CA60008E40A /* Expression.swift */,
+				918628C82A2E6FF000FA781D /* Entry.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			files = (
 				91E7B6CE2A0D4428004A757A /* ContentView.swift in Sources */,
 				916AF6632A267528009484DA /* Stack.swift in Sources */,
+				918628C92A2E6FF000FA781D /* Entry.swift in Sources */,
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
 				91E7B6CC2A0D4428004A757A /* InchCalcApp.swift in Sources */,
 				91E3C5B72A1FE18D0098BAFC /* ImperialFormatter.swift in Sources */,
