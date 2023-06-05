@@ -1,4 +1,8 @@
 public enum ImperialUnits {
+  case inch
+  case foot
+  case yard
+
   static let inchesPerInch = 1.0
   static let inchesPerFoot = 12.0
   static let inchesPerYard = 36.0
