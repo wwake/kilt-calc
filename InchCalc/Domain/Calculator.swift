@@ -13,14 +13,6 @@ public class Calculator: ObservableObject {
     return result.format(ImperialFormatter.asYardFeetInches)
   }
 
-  private func isUnit(_ value: String) -> Bool {
-    value.hasSuffix(" ")
-  }
-
-  private func isOperator(_ string: String) -> Bool {
-    ["+", "-", Keypad.multiply, Keypad.divide].contains(string)
-  }
-
   private func clear() {
     result = .number(0)
     input.clear()
@@ -35,17 +27,17 @@ public class Calculator: ObservableObject {
   }
 
   private func enterUnit(_ entry: Entry) {
-    input.removeLastIf(isUnit)
+    input.removeLastIf { $0.isUnit() }
     input.add(entry)
   }
 
   private func op(_ entry: Entry) {
-    input.removeLastIf(isOperator)
+    input.removeLastIf { $0.isOperator() }
     input.add(entry)
   }
 
    private func equals() {
-     if !input.isEmpty && isOperator(input.last.description) {
+     if !input.isEmpty && input.last.isOperator() {
       result = .error("expression can't end with an operator")
     } else {
       result = Expression(input).evaluate()

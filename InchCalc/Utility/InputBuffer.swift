@@ -21,8 +21,8 @@ public struct InputBuffer: Sequence {
     elements.append(value)
   }
 
-  public mutating func removeLastIf(_ condition: (String) -> Bool) {
-    if !isEmpty && condition(last.description) {
+  public mutating func removeLastIf(_ condition: (Entry) -> Bool) {
+    if !isEmpty && condition(last) {
       elements.removeLast()
     }
   }

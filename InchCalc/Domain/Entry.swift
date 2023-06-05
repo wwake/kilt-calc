@@ -24,6 +24,16 @@ public enum Entry {
     return "X"
   }
 
+  public func isOperator() -> Bool {
+    switch self {
+    case .add, .subtract, .multiply, .divide:
+      return true
+
+    default:
+      return false
+    }
+  }
+
   public func op() -> Operator {
     switch self {
     case .add:
@@ -41,6 +51,11 @@ public enum Entry {
     default:
       return Operator.make("?")
     }
+  }
+
+  public func isUnit() -> Bool {
+    if case .unit = self { return true }
+    return false
   }
 }
 
