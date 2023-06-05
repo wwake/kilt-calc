@@ -30,8 +30,8 @@ public class Calculator: ObservableObject {
     input.removeLastIf({ _ in true })
   }
 
-  private func digit(_ digit: String) {
-    input.add(digit)
+  private func digit(_ entry: Entry) {
+    input.add("\(entry.asDigit())")
   }
 
   private func enterUnit(_ entry: Entry) {
@@ -72,8 +72,8 @@ public class Calculator: ObservableObject {
     case .add, .subtract, .multiply, .divide:
       op(entry)
 
-    case .digit(let value):
-      digit("\(value)")
+    case .digit:
+      digit(entry)
     }
   }
 }

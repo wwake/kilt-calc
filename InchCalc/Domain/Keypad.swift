@@ -16,6 +16,13 @@ public enum Entry {
     return .unspecified
   }
 
+  public func asDigit() -> String {
+    if case let .digit(value) = self {
+      return "\(value)"
+    }
+    return "X"
+  }
+
   public func op() -> Operator {
     switch self {
     case .add:
