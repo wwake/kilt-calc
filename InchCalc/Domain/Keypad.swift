@@ -3,6 +3,10 @@ public enum Entry {
   case backspace
   case equals
   case unit(ImperialUnits)
+  case add
+  case subtract
+  case multiply
+  case divide
 }
 
 public struct Keypad {
@@ -28,28 +32,28 @@ public struct Keypad {
         Key("ft", { _ in calculator.enter(.unit(.foot)) }),
         Key("in", { _ in calculator.enter(.unit(.inch)) }),
         Key("/"),
-        Key("\u{00f7}", Calculator.op(calculator)),
+        Key("\u{00f7}", { _ in calculator.enter(.divide) }),
       ],
       [
         Key("MC"),
         Key("7", Calculator.digit(calculator)),
         Key("8", Calculator.digit(calculator)),
         Key("9", Calculator.digit(calculator)),
-        Key("\u{00d7}", Calculator.op(calculator)),
+        Key("\u{00d7}", { _ in calculator.enter(.multiply) }),
       ],
       [
         Key("MR"),
         Key("4", Calculator.digit(calculator)),
         Key("5", Calculator.digit(calculator)),
         Key("6", Calculator.digit(calculator)),
-        Key("-", Calculator.op(calculator)),
+        Key("-", { _ in calculator.enter(.subtract) }),
       ],
       [
         Key("M-"),
         Key("1", Calculator.digit(calculator) ),
         Key("2", Calculator.digit(calculator)),
         Key("3", Calculator.digit(calculator)),
-        Key("+", Calculator.op(calculator)),
+        Key("+", { _ in calculator.enter(.add) }),
       ],
       [
         Key("M+"),

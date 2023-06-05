@@ -85,7 +85,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_NumberPlusNumber() {
     calc.digit("3")
-    calc.op("+")
+    calc.enter(.add)
     calc.digit("6")
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "9")
@@ -93,7 +93,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_NumberPlusInchesIsError() {
     calc.digit("3")
-    calc.op("+")
+    calc.enter(.add)
     calc.digit("6")
     calc.enter(.unit(.inch))
     calc.enter(.equals)
@@ -103,7 +103,7 @@ final class CalculatorTests: XCTestCase {
   func test_InchesPlusNumberIsError() {
     calc.digit("3")
     calc.enter(.unit(.inch))
-    calc.op("+")
+    calc.enter(.add)
     calc.digit("6")
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "error - mixing inches and numbers")
@@ -112,7 +112,7 @@ final class CalculatorTests: XCTestCase {
   func test_InchesPlusInchesIsInches() {
     calc.digit("9")
     calc.enter(.unit(.inch))
-    calc.op("+")
+    calc.enter(.add)
     calc.digit("6")
     calc.enter(.unit(.inch))
     calc.enter(.equals)
@@ -121,14 +121,14 @@ final class CalculatorTests: XCTestCase {
 
   func test_OperatorShowsInDisplay() {
     calc.digit("9")
-    calc.op("+")
+    calc.enter(.add)
     XCTAssertEqual(calc.display, "9+")
   }
 
   func test_LastOperatorWins() {
     calc.digit("9")
-    calc.op(Keypad.multiply)
-    calc.op("+")
+    calc.enter(.multiply)
+    calc.enter(.add)
     calc.digit("3")
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "12")
@@ -136,7 +136,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_TrailingBinaryOperatorIsAnError() {
     calc.digit("9")
-    calc.op(Keypad.multiply)
+    calc.enter(.multiply)
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "expression can't end with an operator")
   }

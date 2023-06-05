@@ -39,7 +39,7 @@ public class Calculator: ObservableObject {
     input.add(" \(unit.description) ")
   }
 
-  public func op(_ op: String) {
+  private func op(_ op: String) {
     input.removeLastIf(isOperator)
     input.add(op)
   }
@@ -66,6 +66,18 @@ public class Calculator: ObservableObject {
 
     case .unit(let unit):
       enterUnit(unit)
+
+    case .add:
+      op("+")
+
+    case .subtract:
+      op("-")
+
+    case .multiply:
+      op(Keypad.multiply)
+
+    case .divide:
+      op(Keypad.divide)
     }
   }
 }
