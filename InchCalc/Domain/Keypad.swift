@@ -8,6 +8,13 @@ public enum Entry {
   case multiply
   case divide
   case digit(Int)
+
+  public func asUnit() -> ImperialUnits {
+    if case let .unit(value) = self {
+      return value
+    }
+    return .unspecified
+  }
 }
 
 public struct Keypad {

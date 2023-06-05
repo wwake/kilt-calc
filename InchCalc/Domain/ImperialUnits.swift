@@ -1,4 +1,5 @@
 public enum ImperialUnits {
+  case unspecified
   case inch
   case foot
   case yard
@@ -9,6 +10,7 @@ public enum ImperialUnits {
   static let feetPerYard = 3.0
 
   static var ratios = [
+    "": 1.0,
     "yd": inchesPerYard,
     "ft": inchesPerFoot,
     "in": inchesPerInch,
@@ -22,6 +24,8 @@ public enum ImperialUnits {
 extension ImperialUnits: CustomStringConvertible {
   public var description: String {
     switch self {
+    case .unspecified:
+      return ""
     case .inch:
       return "in"
     case .foot:
