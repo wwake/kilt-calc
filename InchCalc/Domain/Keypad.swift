@@ -1,6 +1,7 @@
 public enum Entry {
   case clear
   case backspace
+  case equals
 }
 
 public struct Keypad {
@@ -54,7 +55,7 @@ public struct Keypad {
         Key("0", Calculator.digit(calculator)),
         Key("\u{22c5}"),
         Key("\u{00b1}"),
-        Key("=", Calculator.enter(calculator)),
+        Key("=", { _ in calculator.enter(.equals) }),
       ],
     ]
   }

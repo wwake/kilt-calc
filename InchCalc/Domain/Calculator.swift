@@ -44,7 +44,7 @@ public class Calculator: ObservableObject {
     input.add(op)
   }
 
-  public func enter(_: String) {
+  public func equals(_: String = "") {
     if !input.isEmpty && isOperator(input.last) {
       result = .error("expression can't end with an operator")
     } else {
@@ -60,6 +60,9 @@ public class Calculator: ObservableObject {
 
     case .backspace:
       backspace()
+
+    case .equals:
+      equals()
     }
   }
 }

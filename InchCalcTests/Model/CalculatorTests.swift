@@ -16,7 +16,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_EqualsEvaluatesTheCurrentDisplay() {
     calc.digit("4")
-    calc.enter("=")
+    calc.equals("=")
     calc.digit("2")
     XCTAssertEqual(calc.display, "2")
   }
@@ -30,12 +30,12 @@ final class CalculatorTests: XCTestCase {
   func test_EnterEvaluatesPendingString() {
     calc.digit("0")
     calc.digit("0")
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "0")
   }
 
   func test_EnterWithoutPendingUsesZero() {
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "0")
   }
 
@@ -47,13 +47,13 @@ final class CalculatorTests: XCTestCase {
 
   func test_OverflowValueYieldsError() {
     overflowValue(calc)
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "number too big or too small")
   }
 
   func test_ClearResetsError() {
     overflowValue(calc)
-    calc.enter("=")
+    calc.equals("=")
 
     calc.enter(.clear)
     XCTAssertEqual("0", calc.display)
@@ -62,7 +62,7 @@ final class CalculatorTests: XCTestCase {
   func test_InchesCreatesValueWithUnits() {
     calc.digit("3")
     calc.unit("in")
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "3 in")
   }
 
@@ -71,7 +71,7 @@ final class CalculatorTests: XCTestCase {
     calc.unit("in")
     calc.digit("6")
     calc.unit("in")
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "9 in")
   }
 
@@ -79,7 +79,7 @@ final class CalculatorTests: XCTestCase {
     calc.digit("3")
     calc.unit("in")
     calc.digit("6")
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "numbers and units don't match")
   }
 
@@ -87,7 +87,7 @@ final class CalculatorTests: XCTestCase {
     calc.digit("3")
     calc.op("+")
     calc.digit("6")
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "9")
   }
 
@@ -96,7 +96,7 @@ final class CalculatorTests: XCTestCase {
     calc.op("+")
     calc.digit("6")
     calc.unit("in")
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "error - mixing inches and numbers")
   }
 
@@ -105,7 +105,7 @@ final class CalculatorTests: XCTestCase {
     calc.unit("in")
     calc.op("+")
     calc.digit("6")
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "error - mixing inches and numbers")
   }
 
@@ -115,7 +115,7 @@ final class CalculatorTests: XCTestCase {
     calc.op("+")
     calc.digit("6")
     calc.unit("in")
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "1 ft 3 in")
   }
 
@@ -130,14 +130,14 @@ final class CalculatorTests: XCTestCase {
     calc.op(Keypad.multiply)
     calc.op("+")
     calc.digit("3")
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "12")
   }
 
   func test_TrailingBinaryOperatorIsAnError() {
     calc.digit("9")
     calc.op(Keypad.multiply)
-    calc.enter("=")
+    calc.equals("=")
     XCTAssertEqual(calc.display, "expression can't end with an operator")
   }
 }
