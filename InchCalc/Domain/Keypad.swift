@@ -1,3 +1,7 @@
+public enum Entry {
+  case clear
+}
+
 public struct Keypad {
   static let backspace = "\u{232B}"
   static let divide = "\u{00f7}"
@@ -10,7 +14,7 @@ public struct Keypad {
   public init(_ calculator: Calculator) {
     self.contents = [
       [
-        Key("C", Calculator.clear(calculator)),
+        Key("C", { _ in calculator.handle(.clear) }),
         Key("("),
         Key(")"),
         Key("%"),
