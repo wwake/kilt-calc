@@ -14,7 +14,7 @@ public struct Keypad {
   public init(_ calculator: Calculator) {
     self.contents = [
       [
-        Key("C", { _ in calculator.handle(.clear) }),
+        Key("C", { _ in calculator.enter(.clear) }),
         Key("("),
         Key(")"),
         Key("%"),

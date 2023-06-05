@@ -21,7 +21,7 @@ public class Calculator: ObservableObject {
     ["+", "-", Keypad.multiply, Keypad.divide].contains(string)
   }
 
-  public func clear(_: String = "") {
+  private func clear() {
     result = .number(0)
     input.clear()
   }
@@ -53,7 +53,7 @@ public class Calculator: ObservableObject {
     input.clear()
   }
 
-  public func handle(_ entry: Entry) {
+  public func enter(_ entry: Entry) {
     switch entry {
     case .clear:
       clear()

@@ -23,7 +23,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_ClearResetsDisplayAndEntering() {
     calc.digit("4")
-    calc.clear("C")
+    calc.enter(.clear)
     XCTAssertEqual(calc.display, "0")
   }
 
@@ -55,7 +55,7 @@ final class CalculatorTests: XCTestCase {
     overflowValue(calc)
     calc.enter("=")
 
-    calc.clear("C")
+    calc.enter(.clear)
     XCTAssertEqual("0", calc.display)
   }
 
