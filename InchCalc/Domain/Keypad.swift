@@ -15,6 +15,25 @@ public enum Entry {
     }
     return .unspecified
   }
+
+  public func op() -> Operator {
+    switch self {
+    case .add:
+      return Operator.make("+")
+
+    case .subtract:
+      return Operator.make("-")
+
+    case .multiply:
+      return Operator.make(Keypad.multiply)
+
+    case .divide:
+      return Operator.make(Keypad.divide)
+
+    default:
+      return Operator.make("?")
+    }
+  }
 }
 
 public struct Keypad {
