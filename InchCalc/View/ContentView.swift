@@ -7,10 +7,6 @@ struct ContentView: View {
 
   let columns = Array(repeating: GridItem(.flexible()), count: 5)
 
-  init(calculator: Calculator) {
-    self.calculator = calculator
-  }
-
   var body: some View {
     VStack {
       Text(calculator.display)
