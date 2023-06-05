@@ -26,7 +26,7 @@ public class Calculator: ObservableObject {
     input.clear()
   }
 
-  public func backspace(_: String = "") {
+  private func backspace() {
     input.removeLastIf({ _ in true })
   }
 
@@ -44,7 +44,7 @@ public class Calculator: ObservableObject {
     input.add(op)
   }
 
-  public func equals(_: String = "") {
+   private func equals() {
     if !input.isEmpty && isOperator(input.last) {
       result = .error("expression can't end with an operator")
     } else {
