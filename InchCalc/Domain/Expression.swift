@@ -23,15 +23,15 @@ public class Expression {
     var pending = ""
 
     input.forEach { command in
-      switch command {
+      switch command.description {
       case "0"..."9", " yd ", " ft ", " in ":
-        pending.append(command)
+        pending.append(command.description)
 
       case "+", "-", Keypad.multiply, Keypad.divide:
         operands.push(Value.parse(pending))
         pending = ""
 
-        let theOperator = Operator.make(command)
+        let theOperator = Operator.make(command.description)
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
 

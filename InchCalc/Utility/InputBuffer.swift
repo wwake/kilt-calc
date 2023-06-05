@@ -1,11 +1,11 @@
 public struct InputBuffer: Sequence {
-  private var elements: [String]
+  private var elements: [Entry]
 
-  public init(_ elements: [String] = []) {
+  public init(_ elements: [Entry] = []) {
     self.elements = elements
   }
 
-  public func makeIterator() -> IndexingIterator<[String]> {
+  public func makeIterator() -> IndexingIterator<[Entry]> {
     elements.makeIterator()
   }
 
@@ -13,16 +13,16 @@ public struct InputBuffer: Sequence {
     elements.count == 0
   }
 
-  public var last: String {
+  public var last: Entry {
     elements.last!
   }
 
-  public mutating func add(_ value: String) {
+  public mutating func add(_ value: Entry) {
     elements.append(value)
   }
 
   public mutating func removeLastIf(_ condition: (String) -> Bool) {
-    if !isEmpty && condition(last) {
+    if !isEmpty && condition(last.description) {
       elements.removeLast()
     }
   }
@@ -32,6 +32,8 @@ public struct InputBuffer: Sequence {
   }
 
   public func toString() -> String {
-    elements.joined()
+    elements
+      .map { $0.description }
+      .joined()
   }
 }

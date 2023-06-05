@@ -31,23 +31,21 @@ public class Calculator: ObservableObject {
   }
 
   private func digit(_ entry: Entry) {
-    input.add("\(entry.asDigit())")
+    input.add(entry)
   }
 
   private func enterUnit(_ entry: Entry) {
-    let unit = entry.asUnit()
     input.removeLastIf(isUnit)
-    input.add(" \(unit.description) ")
+    input.add(entry)
   }
 
   private func op(_ entry: Entry) {
-    let name = entry.op().name
     input.removeLastIf(isOperator)
-    input.add(name)
+    input.add(entry)
   }
 
    private func equals() {
-    if !input.isEmpty && isOperator(input.last) {
+     if !input.isEmpty && isOperator(input.last.description) {
       result = .error("expression can't end with an operator")
     } else {
       result = Expression(input).evaluate()

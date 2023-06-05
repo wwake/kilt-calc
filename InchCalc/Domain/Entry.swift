@@ -43,3 +43,33 @@ public enum Entry {
     }
   }
 }
+
+extension Entry: CustomStringConvertible {
+  public var description: String {
+    switch self {
+    case .tbd:
+      return "TBD"
+
+    case .clear, .backspace, .equals:
+      return ""
+
+    case .unit(let unit):
+      return " \(unit.description) "
+
+    case .add:
+      return "+"
+
+    case .subtract:
+      return "-"
+
+    case .multiply:
+      return Keypad.multiply
+
+    case .divide:
+      return Keypad.divide
+
+    case .digit(let digit):
+      return "\(digit)"
+    }
+  }
+}
