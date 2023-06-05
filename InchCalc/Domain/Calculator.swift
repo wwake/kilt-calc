@@ -13,7 +13,7 @@ public class Calculator: ObservableObject {
     return result.format(ImperialFormatter.asYardFeetInches)
   }
 
-  public func isUnit(_ value: String) -> Bool {
+  private func isUnit(_ value: String) -> Bool {
     value.hasSuffix(" ")
   }
 

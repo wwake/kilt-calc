@@ -1,10 +1,9 @@
-* Implement the backspace key
-
+* Display negative numbers - 0in-17in=  -1 ft -5 in or -(1ft 5 in); -1 ft 5 in
+* Plus-or-minus -  5 +/- => -5
 * Overflow/underflow for operators
-* Display negative numbers
 * If you start with an operator, you should load the previous result as the first operand
 * Separate error field, so we can keep editing?
-* move Keypad constants to Operator?
+* Move Keypad constants to Operator?
 
 * Introduce an enum for the types of elements like number or operator
 * Parentheses
@@ -13,7 +12,10 @@
 
 * Update EGTest to take new check() with try from ContentViewTests
 
-CALC-23-08: 2023-06-01  Parse and Evaluate at '='
+CALC-23-09: 2023-06-05 - Backspace
+* Implement the backspace key
+
+CALC-23-08: 2023-06-01 - Parse and Evaluate at '='
 * Change input as String to [String]
 * Change input to be a Stack<String>
 * Type the whole expression before = evaluates
