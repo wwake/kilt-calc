@@ -30,7 +30,7 @@ public class Calculator: ObservableObject {
     input.removeLastIf({ _ in true })
   }
 
-  public func digit(_ digit: String) {
+  private func digit(_ digit: String) {
     input.add(digit)
   }
 
@@ -78,6 +78,9 @@ public class Calculator: ObservableObject {
 
     case .divide:
       op(Keypad.divide)
+
+    case .digit(let value):
+      digit("\(value)")
     }
   }
 }

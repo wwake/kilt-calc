@@ -7,6 +7,7 @@ public enum Entry {
   case subtract
   case multiply
   case divide
+  case digit(Int)
 }
 
 public struct Keypad {
@@ -36,28 +37,28 @@ public struct Keypad {
       ],
       [
         Key("MC"),
-        Key("7", Calculator.digit(calculator)),
-        Key("8", Calculator.digit(calculator)),
-        Key("9", Calculator.digit(calculator)),
+        Key("7", { _ in calculator.enter(.digit(7)) }),
+        Key("8", { _ in calculator.enter(.digit(8)) }),
+        Key("9", { _ in calculator.enter(.digit(9)) }),
         Key("\u{00d7}", { _ in calculator.enter(.multiply) }),
       ],
       [
         Key("MR"),
-        Key("4", Calculator.digit(calculator)),
-        Key("5", Calculator.digit(calculator)),
-        Key("6", Calculator.digit(calculator)),
+        Key("4", { _ in calculator.enter(.digit(4)) }),
+        Key("5", { _ in calculator.enter(.digit(5)) }),
+        Key("6", { _ in calculator.enter(.digit(6)) }),
         Key("-", { _ in calculator.enter(.subtract) }),
       ],
       [
         Key("M-"),
-        Key("1", Calculator.digit(calculator) ),
-        Key("2", Calculator.digit(calculator)),
-        Key("3", Calculator.digit(calculator)),
+        Key("1", { _ in calculator.enter(.digit(1)) }),
+        Key("2", { _ in calculator.enter(.digit(2)) }),
+        Key("3", { _ in calculator.enter(.digit(3)) }),
         Key("+", { _ in calculator.enter(.add) }),
       ],
       [
         Key("M+"),
-        Key("0", Calculator.digit(calculator)),
+        Key("0", { _ in calculator.enter(.digit(0)) }),
         Key("\u{22c5}"),
         Key("\u{00b1}"),
         Key("=", { _ in calculator.enter(.equals) }),
