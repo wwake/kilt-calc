@@ -2,6 +2,7 @@ public enum Entry {
   case clear
   case backspace
   case equals
+  case unit(ImperialUnits)
 }
 
 public struct Keypad {
@@ -23,9 +24,9 @@ public struct Keypad {
         Key("\u{232B}", { _ in calculator.enter(.backspace) }),
       ],
       [
-        Key("yd", Calculator.unit(calculator)),
-        Key("ft", Calculator.unit(calculator)),
-        Key("in", Calculator.unit(calculator)),
+        Key("yd", { _ in calculator.enter(.unit(.yard)) }),
+        Key("ft", { _ in calculator.enter(.unit(.foot)) }),
+        Key("in", { _ in calculator.enter(.unit(.inch)) }),
         Key("/"),
         Key("\u{00f7}", Calculator.op(calculator)),
       ],

@@ -34,9 +34,9 @@ public class Calculator: ObservableObject {
     input.add(digit)
   }
 
-  public func unit(_ value: String) {
+  private func enterUnit(_ unit: ImperialUnits) {
     input.removeLastIf(isUnit)
-    input.add(" \(value) ")
+    input.add(" \(unit.description) ")
   }
 
   public func op(_ op: String) {
@@ -63,6 +63,9 @@ public class Calculator: ObservableObject {
 
     case .equals:
       equals()
+
+    case .unit(let unit):
+      enterUnit(unit)
     }
   }
 }

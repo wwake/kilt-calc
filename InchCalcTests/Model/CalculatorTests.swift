@@ -61,23 +61,23 @@ final class CalculatorTests: XCTestCase {
 
   func test_InchesCreatesValueWithUnits() {
     calc.digit("3")
-    calc.unit("in")
+    calc.enter(.unit(.inch))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "3 in")
   }
 
   func test_InchesCanAccumulate() {
     calc.digit("3")
-    calc.unit("in")
+    calc.enter(.unit(.inch))
     calc.digit("6")
-    calc.unit("in")
+    calc.enter(.unit(.inch))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "9 in")
   }
 
   func test_DigitsAndUnitsMustCorrespond() {
     calc.digit("3")
-    calc.unit("in")
+    calc.enter(.unit(.inch))
     calc.digit("6")
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "numbers and units don't match")
@@ -95,14 +95,14 @@ final class CalculatorTests: XCTestCase {
     calc.digit("3")
     calc.op("+")
     calc.digit("6")
-    calc.unit("in")
+    calc.enter(.unit(.inch))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "error - mixing inches and numbers")
   }
 
   func test_InchesPlusNumberIsError() {
     calc.digit("3")
-    calc.unit("in")
+    calc.enter(.unit(.inch))
     calc.op("+")
     calc.digit("6")
     calc.enter(.equals)
@@ -111,10 +111,10 @@ final class CalculatorTests: XCTestCase {
 
   func test_InchesPlusInchesIsInches() {
     calc.digit("9")
-    calc.unit("in")
+    calc.enter(.unit(.inch))
     calc.op("+")
     calc.digit("6")
-    calc.unit("in")
+    calc.enter(.unit(.inch))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "1 ft 3 in")
   }

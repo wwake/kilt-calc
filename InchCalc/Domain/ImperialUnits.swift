@@ -18,3 +18,16 @@ public enum ImperialUnits {
     number * (ratios[unit] ?? 1.0)
   }
 }
+
+extension ImperialUnits: CustomStringConvertible {
+  public var description: String {
+    switch self {
+    case .inch:
+      return "in"
+    case .foot:
+      return "ft"
+    case .yard:
+      return "yd"
+    }
+  }
+}
