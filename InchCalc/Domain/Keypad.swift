@@ -1,7 +1,9 @@
 public struct Keypad {
   static let backspace = "\u{232B}"
-  static let divide = "\u{00f7}"
+  static let add = "\u{002b}"
+  static let subtract = "\u{2212}"
   static let multiply = "\u{00d7}"
+  static let divide = "\u{00f7}"
   static let dot = "\u{22c5}"
   static let plusOrMinus = "\u{00b1}"
 
@@ -11,41 +13,41 @@ public struct Keypad {
       Key("("),
       Key(")"),
       Key("%"),
-      Key("\u{232B}", .backspace),
+      Key("\(backspace)", .backspace),
     ],
     [
       Key("yd", .unit(.yard)),
       Key("ft", .unit(.foot)),
       Key("in", .unit(.inch)),
       Key("/"),
-      Key("\u{00f7}", .divide),
+      Key("\(divide)", .divide),
     ],
     [
       Key("MC"),
       Key("7", .digit(7)),
       Key("8", .digit(8)),
       Key("9", .digit(9)),
-      Key("\u{00d7}", .multiply),
+      Key("\(multiply)", .multiply),
     ],
     [
       Key("MR"),
       Key("4", .digit(4)),
       Key("5", .digit(5)),
       Key("6", .digit(6)),
-      Key("-", .subtract),
+      Key("\(subtract)", .subtract),
     ],
     [
       Key("M-"),
       Key("1", .digit(1)),
       Key("2", .digit(2)),
       Key("3", .digit(3)),
-      Key("+", .add),
+      Key("\(add)", .add),
     ],
     [
       Key("M+"),
       Key("0", .digit(0)),
-      Key("\u{22c5}"),
-      Key("\u{00b1}"),
+      Key("\(dot)"),
+      Key("\(plusOrMinus)"),
       Key("=", .equals),
     ],
   ]

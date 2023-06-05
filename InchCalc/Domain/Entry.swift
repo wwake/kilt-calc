@@ -34,22 +34,16 @@ public enum Entry {
     }
   }
 
-  public func op() -> Operator {
+  public func precedenceValue() -> Int {
     switch self {
-    case .add:
-      return Operator.make("+")
+    case .add, .subtract:
+      return 3
 
-    case .subtract:
-      return Operator.make("-")
-
-    case .multiply:
-      return Operator.make(Keypad.multiply)
-
-    case .divide:
-      return Operator.make(Keypad.divide)
+    case .multiply, .divide:
+      return 5
 
     default:
-      return Operator.make("?")
+      return 1
     }
   }
 

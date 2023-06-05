@@ -14,6 +14,8 @@ public enum ImperialFormatter {
     let yfi = [(ImperialUnit.inchesPerYard, "yd"), (ImperialUnit.inchesPerFoot, "ft"), (1, "in")]
 
     var remaining = theInches.doubleValue
+    let sign = remaining < 0 ? "-" : ""
+    remaining = abs(remaining)
 
     var partials: [(Double, String)] = []
 
@@ -27,7 +29,7 @@ public enum ImperialFormatter {
     if partials.isEmpty { return "0 in" }
 
     return partials.map { number, label in
-      "\(formatter.string(from: NSNumber(value: number)) ?? "") \(label)"
+      "\(sign)\(formatter.string(from: NSNumber(value: number)) ?? "") \(label)"
     }
     .joined(separator: " ")
   }

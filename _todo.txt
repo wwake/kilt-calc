@@ -1,11 +1,11 @@
-* Display negative numbers - 0in-17in=  -1 ft -5 in or -(1ft 5 in); -1 ft 5 in
+* Merge Operator into Entry
+* Input negative numbers - with - or +/-?
 * Plus-or-minus -  5 +/- => -5
 * Overflow/underflow for operators
 * If you start with an operator, you should load the previous result as the first operand
 * Separate error field, so we can keep editing?
 * Move Keypad constants to Operator?
 
-* Introduce an enum for the types of elements like number or operator
 * Parentheses
 
 * Set result type ('show as')
@@ -14,6 +14,10 @@
 
 CALC-23-09: 2023-06-05 - Backspace
 * Implement the backspace key
+* Introduce an "Entry" enum for the types of elements like number or operator
+* Reorganize Keypad to return an Entry, Calculator to use it and store it in InputBuffer.
+* Display negative numbers - 0in-17in=  -1 ft -5 in
+* Started moving Operator into Entry
 
 CALC-23-08: 2023-06-01 - Parse and Evaluate at '='
 * Change input as String to [String]

@@ -22,16 +22,16 @@ public class Expression {
 
     var pending = ""
 
-    input.forEach { command in
-      switch command.description {
-      case "0"..."9", " yd ", " ft ", " in ":
-        pending.append(command.description)
+    input.forEach { entry in
+      switch entry {
+      case .digit, .unit:
+        pending.append(entry.description)
 
-      case "+", "-", Keypad.multiply, Keypad.divide:
+      case .add, .subtract, .multiply, .divide:
         operands.push(Value.parse(pending))
         pending = ""
 
-        let theOperator = Operator.make(command.description)
+        let theOperator = Operator.make(entry.description)
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
 
