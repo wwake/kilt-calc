@@ -57,6 +57,9 @@ public class Calculator: ObservableObject {
 
   public func enter(_ entry: Entry) {
     switch entry {
+    case .tbd:
+      print("TBD")
+
     case .clear:
       clear()
 

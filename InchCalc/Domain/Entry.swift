@@ -1,4 +1,5 @@
 public enum Entry {
+  case tbd
   case clear
   case backspace
   case equals

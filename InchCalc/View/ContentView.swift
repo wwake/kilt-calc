@@ -25,7 +25,7 @@ struct ContentView: View {
           Group { // GridRow {
             ForEach(row) { key in
               Button(key.name) {
-                key.press()
+                calculator.enter(key.entry)
               }
               .frame(width: 60, height: 60)
               .background(Color("KeyColor"))
@@ -33,12 +33,6 @@ struct ContentView: View {
           }
         }
       }
-
-//      Text(calculator.input)
-//        .accessibilityLabel("input")
-//        .padding(4)
-//        .frame(width: 330, alignment: .trailing)
-//        .border(Color.orange)
     }
     .font(.largeTitle)
     .padding()

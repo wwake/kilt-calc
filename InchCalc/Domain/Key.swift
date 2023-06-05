@@ -2,16 +2,12 @@ import Foundation
 
 public struct Key: Identifiable {
   public let id = UUID()
-  let name: String
-  let action: (String) -> Void
+  public let name: String
+  public let entry: Entry
 
-  init(_ name: String, _ action: @escaping (String) -> Void = { _ in }) {
+  init(_ name: String, _ entry: Entry = .tbd) {
     self.name = name
-    self.action = action
-  }
-
-  public func press() {
-    action(name)
+    self.entry = entry
   }
 }
 

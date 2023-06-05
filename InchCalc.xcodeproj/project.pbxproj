@@ -18,7 +18,6 @@
 		91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A02A1BF40F0098BAFC /* Key.swift */; };
 		91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A22A1BF4280098BAFC /* Keypad.swift */; };
 		91E3C5A52A1BF69F0098BAFC /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A42A1BF69F0098BAFC /* Calculator.swift */; };
-		91E3C5A72A1C01300098BAFC /* KeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A62A1C01300098BAFC /* KeyTests.swift */; };
 		91E3C5A92A1C668D0098BAFC /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */; };
 		91E3C5AD2A1D39A30098BAFC /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5AC2A1D39A30098BAFC /* ContentViewTests.swift */; };
 		91E3C5B02A1D48D40098BAFC /* EGTest in Frameworks */ = {isa = PBXBuildFile; productRef = 91E3C5AF2A1D48D40098BAFC /* EGTest */; };
@@ -58,7 +57,6 @@
 		91E3C5A02A1BF40F0098BAFC /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		91E3C5A22A1BF4280098BAFC /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
 		91E3C5A42A1BF69F0098BAFC /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
-		91E3C5A62A1C01300098BAFC /* KeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTests.swift; sourceTree = "<group>"; };
 		91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		91E3C5AC2A1D39A30098BAFC /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
 		91E3C5B12A1E8ACF0098BAFC /* InchCalc.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = InchCalc.xctestplan; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */,
-				91E3C5A62A1C01300098BAFC /* KeyTests.swift */,
 				91E3C5B42A1EAB4A0098BAFC /* ValueTests.swift */,
 				91E3C5B82A1FE1F20098BAFC /* ImperialFormatterTests.swift */,
 			);
@@ -365,7 +362,6 @@
 				91E3C5AD2A1D39A30098BAFC /* ContentViewTests.swift in Sources */,
 				91E3C5B92A1FE1F20098BAFC /* ImperialFormatterTests.swift in Sources */,
 				91E3C59E2A1BE8FB0098BAFC /* CalculatorTests.swift in Sources */,
-				91E3C5A72A1C01300098BAFC /* KeyTests.swift in Sources */,
 				91E3C5B52A1EAB4A0098BAFC /* ValueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
