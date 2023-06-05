@@ -1,4 +1,4 @@
-public enum ImperialUnits {
+public enum ImperialUnit {
   case unspecified
   case inch
   case foot
@@ -21,7 +21,7 @@ public enum ImperialUnits {
   }
 }
 
-extension ImperialUnits: CustomStringConvertible {
+extension ImperialUnit: CustomStringConvertible {
   public var description: String {
     switch self {
     case .unspecified:

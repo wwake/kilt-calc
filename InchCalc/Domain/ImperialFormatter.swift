@@ -11,7 +11,7 @@ public enum ImperialFormatter {
   }
 
   static func asYardFeetInches(_ theInches: NSNumber) -> String {
-    let yfi = [(ImperialUnits.inchesPerYard, "yd"), (ImperialUnits.inchesPerFoot, "ft"), (1, "in")]
+    let yfi = [(ImperialUnit.inchesPerYard, "yd"), (ImperialUnit.inchesPerFoot, "ft"), (1, "in")]
 
     var remaining = theInches.doubleValue
 

@@ -3,14 +3,14 @@ public enum Entry {
   case clear
   case backspace
   case equals
-  case unit(ImperialUnits)
+  case unit(ImperialUnit)
   case add
   case subtract
   case multiply
   case divide
   case digit(Int)
 
-  public func asUnit() -> ImperialUnits {
+  public func asUnit() -> ImperialUnit {
     if case let .unit(value) = self {
       return value
     }

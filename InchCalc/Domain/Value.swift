@@ -131,7 +131,7 @@ extension Value {
 
     var inches = 0.0
     zip(numbers, units).forEach { number, unit in
-      inches += ImperialUnits.asInches(number!.doubleValue, String(unit))
+      inches += ImperialUnit.asInches(number!.doubleValue, String(unit))
     }
     return Value.inches(NSNumber(value: inches))
   }
