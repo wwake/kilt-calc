@@ -1,5 +1,6 @@
 public enum Entry {
   case clear
+  case backspace
 }
 
 public struct Keypad {
@@ -18,7 +19,7 @@ public struct Keypad {
         Key("("),
         Key(")"),
         Key("%"),
-        Key("\u{232B}", Calculator.backspace(calculator)),
+        Key("\u{232B}", { _ in calculator.enter(.backspace) }),
       ],
       [
         Key("yd", Calculator.unit(calculator)),
