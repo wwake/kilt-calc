@@ -1,16 +1,19 @@
-* Merge Operator into Entry
+* Infinity and NaN for operators
+* Parentheses
+
+* Figure out Operator vs Entry
 * Input negative numbers - with - or +/-?
 * Plus-or-minus -  5 +/- => -5
-* Overflow/underflow for operators
 * If you start with an operator, you should load the previous result as the first operand
 * Separate error field, so we can keep editing?
 * Move Keypad constants to Operator?
 
-* Parentheses
 
 * Set result type ('show as')
 
 * Update EGTest to take new check() with try from ContentViewTests
+* Add EGAssert(actual, eg)
+* Let check use varargs rather than []
 
 CALC-23-09: 2023-06-05 - Backspace
 * Implement the backspace key
@@ -33,7 +36,7 @@ CALC-23-07: 2023-05-31 - Full Unit Input
 * Add spaces before and after units
 * Make "ft 3 in 2" == "3 ft 2 in" for input
 * "ft=" should be error
-* What about "3 yd ft 2 in"? (Should only take last unit?)
+* What about "3 yd ft 2 in"? (Should only take last unit)
 * What about "5 ft 2" - is an error
 * Show most recent operator in the display
 * If you hit two operators in a row, the last one should win

@@ -86,6 +86,12 @@ final class ContentViewTests: XCTestCase {
       case ".":
         try key(sut, "\(Keypad.dot)").tap()
 
+      case "-":
+        try key(sut, "\(Keypad.subtract)").tap()
+
+      case "+":
+        try key(sut, "\(Keypad.add)").tap()
+
       case "~":
         try key(sut, "\(Keypad.plusOrMinus)").tap()
 
@@ -110,7 +116,7 @@ final class ContentViewTests: XCTestCase {
           firstLetter = " "
         }
 
-      case "C", "R", "+", "-":
+      case "C", "R":
         if firstLetter == "M" {
           try key(sut, "M\(keyName)").tap()
           firstLetter = " "
@@ -139,8 +145,9 @@ final class ContentViewTests: XCTestCase {
       EG("2 yd ft", expect: "2 ft", "Last unit takes precedence"),
       EG("2 yd ft =", expect: "2 ft", "Last unit takes precedence"),
       EG("5 ft 2 =", expect: "numbers and units don't match", "more numbers than units"),
-      EG("5 ft 2 in <<12 in=", expect: "2 yd"),
-      EG("<<12 in=", expect: "1 ft"),
+
+      EG("5 ft 2 in <<12 in=", expect: "2 yd", "Backspace"),
+      EG("<<12 in=", expect: "1 ft", "Backspace at start"),
     ]) {
       let sut = ContentView(calculator: Calculator())
       try tap(sut, $0.input)

@@ -101,7 +101,7 @@ extension Value {
       return formatter.string(from: aNumber) ?? ""
 
     case let .inches(theInches):
-      return imperialFormatter(theInches)
+      return imperialFormatter(theInches.doubleValue)
     }
   }
 }

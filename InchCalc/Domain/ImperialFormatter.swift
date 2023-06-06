@@ -1,21 +1,27 @@
 import Foundation
 
-public typealias ImperialFormatterFunction = (NSNumber) -> String
+public typealias ImperialFormatterFunction = (Double) -> String
 
 public enum ImperialFormatter {
   static let formatter = NumberFormatter()
 
-  static func asInches(_ theInches: NSNumber) -> String {
-    let inches = formatter.string(from: theInches) ?? ""
-    return "\(inches) in"
+  static func formatNumber(_ value: Double) -> String {
+    if value.isInfinite {
+      return "result too large"
+    }
+    let result = formatter.string(from: NSNumber(value: value)) ?? ""
+    return "\(result)"
   }
 
-  static func asYardFeetInches(_ theInches: NSNumber) -> String {
+  static func asInches(_ inches: Double) -> String {
+    "\(formatNumber(inches)) in"
+  }
+
+  static func asYardFeetInches(_ inches: Double) -> String {
     let yfi = [(ImperialUnit.inchesPerYard, "yd"), (ImperialUnit.inchesPerFoot, "ft"), (1, "in")]
 
-    var remaining = theInches.doubleValue
-    let sign = remaining < 0 ? "-" : ""
-    remaining = abs(remaining)
+    let sign = inches < 0 ? "-" : ""
+    var remaining = abs(inches)
 
     var partials: [(Double, String)] = []
 
@@ -29,7 +35,8 @@ public enum ImperialFormatter {
     if partials.isEmpty { return "0 in" }
 
     return partials.map { number, label in
-      "\(sign)\(formatter.string(from: NSNumber(value: number)) ?? "") \(label)"
+      let numericPart = formatNumber(number)
+      return "\(sign)\(numericPart) \(label)"
     }
     .joined(separator: " ")
   }
