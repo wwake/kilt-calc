@@ -4,10 +4,11 @@ public enum Entry {
   case backspace
   case equals
   case unit(ImperialUnit)
-  case add
-  case subtract
-  case multiply
-  case divide
+  case binary(Operator)
+  case add(Operator)
+  case subtract(Operator)
+  case multiply(Operator)
+  case divide(Operator)
   case digit(Int)
 
   public func asUnit() -> ImperialUnit {
@@ -64,6 +65,9 @@ extension Entry: CustomStringConvertible {
 
     case .unit(let unit):
       return " \(unit.description) "
+
+    case .binary(let theOperator):
+      return theOperator.name
 
     case .add:
       return Keypad.add

@@ -6,6 +6,24 @@ public enum Value {
   case inches(Double)
 }
 
+extension Value {
+  static func + (lhs: Value, rhs: Value) -> Value {
+    lhs.plus(rhs)
+  }
+
+  static func - (lhs: Value, rhs: Value) -> Value {
+    lhs.minus(rhs)
+  }
+
+  static func * (lhs: Value, rhs: Value) -> Value {
+    lhs.times(rhs)
+  }
+
+  static func / (lhs: Value, rhs: Value) -> Value {
+    lhs.divide(rhs)
+  }
+}
+
 extension Value: Equatable {
   public func negate() -> Value {
     switch self {

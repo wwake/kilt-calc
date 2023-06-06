@@ -27,6 +27,13 @@ public class Expression {
       case .digit, .unit:
         pending.append(entry.description)
 
+      case .binary(let theOperator):
+        operands.push(Value.parse(pending))
+        pending = ""
+
+        evaluateAtLeast(theOperator.precedence)
+        operators.push(theOperator)
+
       case .add, .subtract, .multiply, .divide:
         operands.push(Value.parse(pending))
         pending = ""

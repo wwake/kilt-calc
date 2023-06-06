@@ -1,23 +1,27 @@
 public struct Operator {
+  var name: String
   var precedence: Int
   var evaluate: (Value, Value) -> Value
 
   public static func make(_ entry: Entry) -> Operator {
     switch entry {
+    case .binary(let theOperator):
+      return theOperator
+
     case .add:
-      return Operator(precedence: 3, evaluate: { a, b in a.plus(b) })
+      return Operator(name: "+", precedence: 3, evaluate: +)
 
     case .subtract:
-      return Operator(precedence: 3, evaluate: { a, b in a.minus(b) })
+      return Operator(name: "-", precedence: 3, evaluate: -)
 
     case .multiply:
-      return Operator(precedence: 5, evaluate: { a, b in a.times(b) })
+      return Operator(name: "*", precedence: 5, evaluate: *)
 
     case .divide:
-      return Operator(precedence: 5, evaluate: { a, b in a.divide(b) })
+      return Operator(name: "/", precedence: 5, evaluate: /)
 
     default:
-      return Operator(precedence: 1, evaluate: { a, _ in a })
+      return Operator(name: "?", precedence: 1, evaluate: { a, _ in a })
     }
   }
 }

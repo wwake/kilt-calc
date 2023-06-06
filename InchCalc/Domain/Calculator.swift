@@ -61,6 +61,9 @@ public class Calculator: ObservableObject {
     case .unit:
       enterUnit(entry)
 
+    case .binary:
+      op(entry)
+
     case .add, .subtract, .multiply, .divide:
       op(entry)
 

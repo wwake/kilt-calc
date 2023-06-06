@@ -3,6 +3,8 @@ import XCTest
 
 final class CalculatorTests: XCTestCase {
   private let calc = Calculator()
+  private let addOp = Entry.add(Operator(name: "+", precedence: 3, evaluate: +))
+  private let multiplyOp = Entry.add(Operator(name: "*", precedence: 5, evaluate: *))
 
   func test_calculatorStartsZero() throws {
     XCTAssertEqual(calc.display, "0")
@@ -85,7 +87,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_NumberPlusNumber() {
     calc.enter(.digit(3))
-    calc.enter(.add)
+    calc.enter(addOp)
     calc.enter(.digit(6))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "9")
@@ -93,7 +95,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_NumberPlusInchesIsError() {
     calc.enter(.digit(3))
-    calc.enter(.add)
+    calc.enter(addOp)
     calc.enter(.digit(6))
     calc.enter(.unit(.inch))
     calc.enter(.equals)
@@ -103,7 +105,7 @@ final class CalculatorTests: XCTestCase {
   func test_InchesPlusNumberIsError() {
     calc.enter(.digit(3))
     calc.enter(.unit(.inch))
-    calc.enter(.add)
+    calc.enter(addOp)
     calc.enter(.digit(6))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "error - mixing inches and numbers")
@@ -112,7 +114,7 @@ final class CalculatorTests: XCTestCase {
   func test_InchesPlusInchesIsInches() {
     calc.enter(.digit(9))
     calc.enter(.unit(.inch))
-    calc.enter(.add)
+    calc.enter(addOp)
     calc.enter(.digit(6))
     calc.enter(.unit(.inch))
     calc.enter(.equals)
@@ -121,14 +123,14 @@ final class CalculatorTests: XCTestCase {
 
   func test_OperatorShowsInDisplay() {
     calc.enter(.digit(9))
-    calc.enter(.add)
+    calc.enter(addOp)
     XCTAssertEqual(calc.display, "9+")
   }
 
   func test_LastOperatorWins() {
     calc.enter(.digit(9))
-    calc.enter(.multiply)
-    calc.enter(.add)
+    calc.enter(multiplyOp)
+    calc.enter(addOp)
     calc.enter(.digit(3))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "12")
@@ -136,7 +138,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_TrailingBinaryOperatorIsAnError() {
     calc.enter(.digit(9))
-    calc.enter(.multiply)
+    calc.enter(multiplyOp)
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "expression can't end with an operator")
   }
