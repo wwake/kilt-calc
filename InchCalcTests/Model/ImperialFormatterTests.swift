@@ -9,7 +9,7 @@ final class ImperialFormatterTests: XCTestCase {
       EG(13, expect: "13 in"),
       EG(39, expect: "39 in"),
     ]) {
-      XCTAssertEqual(ImperialFormatter.asInches($0.input), $0.expect, file: $0.file, line: $0.line)
+      XCTAssertEqual(ImperialFormatter.asInches(NumberFormatter(), $0.input), $0.expect, file: $0.file, line: $0.line)
     }
   }
 
@@ -24,7 +24,12 @@ final class ImperialFormatterTests: XCTestCase {
       EG(60, expect: "1 yd 2 ft"),
       EG(63, expect: "1 yd 2 ft 3 in"),
     ]) {
-      XCTAssertEqual(ImperialFormatter.asYardFeetInches($0.input), $0.expect, file: $0.file, line: $0.line)
+      XCTAssertEqual(
+        ImperialFormatter.asYardFeetInches(NumberFormatter(), $0.input),
+        $0.expect,
+        file: $0.file,
+        line: $0.line
+      )
     }
   }
 
@@ -39,7 +44,12 @@ final class ImperialFormatterTests: XCTestCase {
       EG(-48, expect: "-1 yd -1 ft"),
       EG(-50, expect: "-1 yd -1 ft -2 in"),
     ]) {
-      XCTAssertEqual(ImperialFormatter.asYardFeetInches($0.input), $0.expect, file: $0.file, line: $0.line)
+      XCTAssertEqual(
+        ImperialFormatter.asYardFeetInches(NumberFormatter(), $0.input),
+        $0.expect,
+        file: $0.file,
+        line: $0.line
+      )
     }
   }
 }
