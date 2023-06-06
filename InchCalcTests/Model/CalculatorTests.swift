@@ -140,21 +140,4 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "expression can't end with an operator")
   }
-
-  func test_DividePositiveByZeroYieldsPlusInfinity() {
-    calc.enter(.digit(9))
-    calc.enter(.divide)
-    calc.enter(.digit(0))
-    calc.enter(.equals)
-    XCTAssertEqual(calc.display, "result too large")
-  }
-
-  func test_DivideNegativeByZeroYieldsMinusInfinity() {
-    calc.enter(.subtract)
-    calc.enter(.digit(9))
-    calc.enter(.divide)
-    calc.enter(.digit(0))
-    calc.enter(.equals)
-    XCTAssertEqual(calc.display, "-infinity")
-  }
 }

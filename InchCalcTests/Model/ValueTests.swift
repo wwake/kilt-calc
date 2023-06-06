@@ -1,3 +1,4 @@
+import EGTest
 @testable import InchCalc
 import XCTest
 
@@ -77,5 +78,15 @@ final class ValueTests: XCTestCase {
 
   func test_InchesDividedByInches_isNumber() {
     XCTAssertEqual(Value.inches(15).divide(Value.inches(3)).format(ImperialFormatter.asInches), "5")
+  }
+
+  func test_ExceptionalNumbers() {
+    check([
+      EG(Value.number(9.0 / 0), expect: "result too large"),
+      EG(Value.number(-9.0 / 0), expect: "result too large"),
+      EG(Value.number(0.0 / 0), expect: "result can't be determined"),
+    ]) {
+      XCTAssertEqual($0.input.format(ImperialFormatter.asInches), $0.expect, file: $0.file, line: $0.line)
+    }
   }
 }

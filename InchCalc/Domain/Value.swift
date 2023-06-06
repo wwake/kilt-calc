@@ -93,6 +93,8 @@ extension Value {
   public func format(_ imperialFormatter: ImperialFormatterFunction) -> String {
     let formatter = NumberFormatter()
     formatter.positiveInfinitySymbol = "result too large"
+    formatter.negativeInfinitySymbol = "result too large"
+    formatter.notANumberSymbol = "result can't be determined"
 
     switch self {
     case .error(let message):
