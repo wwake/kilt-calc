@@ -90,6 +90,14 @@ extension Value {
 }
 
 extension Value {
+  static func formatNumber(_ formatter: NumberFormatter, _ value: Double) -> String {
+    if value.isInfinite {
+      return "result too large"
+    }
+    let result = formatter.string(from: NSNumber(value: value)) ?? ""
+    return "\(result)"
+  }
+
   public func format(_ imperialFormatter: ImperialFormatterFunction) -> String {
     let formatter = NumberFormatter()
 
@@ -98,7 +106,7 @@ extension Value {
       return message
 
     case .number(let aNumber):
-      return formatter.string(from: NSNumber(value: aNumber)) ?? ""
+      return Value.formatNumber(formatter, aNumber)
 
     case .inches(let theInches):
       return imperialFormatter(theInches)

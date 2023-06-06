@@ -19,8 +19,7 @@
   "testTargets" : [
     {
       "skippedTests" : [
-        "CalculatorTests\/test_DivideNegativeByZeroYieldsMinusInfinity()",
-        "CalculatorTests\/test_DividePositiveByZeroYieldsPlusInfinity()"
+        "CalculatorTests\/test_DivideNegativeByZeroYieldsMinusInfinity()"
       ],
       "target" : {
         "containerPath" : "container:InchCalc.xcodeproj",
