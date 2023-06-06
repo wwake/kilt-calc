@@ -2,8 +2,8 @@ import Foundation
 
 public enum Value {
   case error(String)
-  case number(NSNumber)
-  case inches(NSNumber)
+  case number(Double)
+  case inches(Double)
 }
 
 extension Value {
@@ -13,10 +13,10 @@ extension Value {
       return self
 
     case .number(let value):
-      return .number(NSNumber(value: -value.doubleValue))
+      return .number(-value)
 
     case .inches(let value):
-      return .inches(NSNumber(value: -value.doubleValue))
+      return .inches(-value)
     }
   }
 
@@ -33,14 +33,14 @@ extension Value {
         return other
 
     case let (.number(a), .number(b)):
-      return .number(NSNumber(value: a.doubleValue + b.doubleValue))
+      return .number(a + b)
 
     case (.number, .inches),
           (.inches, .number):
         return .error("error - mixing inches and numbers")
 
     case let (.inches(a), .inches(b)):
-        return .inches(NSNumber(value: a.doubleValue + b.doubleValue))
+        return .inches(a + b)
     }
   }
 
@@ -53,13 +53,13 @@ extension Value {
       return other
 
     case let (.number(a), .number(b)):
-      return .number(NSNumber(value: a.doubleValue * b.doubleValue))
+      return .number(a * b)
 
     case let (.number(a), .inches(b)):
-      return .inches(NSNumber(value: a.doubleValue * b.doubleValue))
+      return .inches(a * b)
 
     case let (.inches(a), .number(b)):
-      return .inches(NSNumber(value: a.doubleValue * b.doubleValue))
+      return .inches(a * b)
 
     case (.inches, .inches):
       return .error("error - can't handle square inches")
@@ -75,16 +75,16 @@ extension Value {
       return other
 
     case let (.number(a), .number(b)):
-      return .number(NSNumber(value: a.doubleValue / b.doubleValue))
+      return .number(a / b)
 
     case (.number, .inches):
       return .error("error - can't divide number by inches")
 
     case let (.inches(a), .number(b)):
-      return .inches(NSNumber(value: a.doubleValue / b.doubleValue))
+      return .inches(a / b)
 
     case let (.inches(a), .inches(b)):
-      return .number(NSNumber(value: a.doubleValue / b.doubleValue))
+      return .number(a / b)
     }
   }
 }
@@ -98,10 +98,10 @@ extension Value {
       return message
 
     case .number(let aNumber):
-      return formatter.string(from: aNumber) ?? ""
+      return formatter.string(from: NSNumber(value: aNumber)) ?? ""
 
-    case let .inches(theInches):
-      return imperialFormatter(theInches.doubleValue)
+    case .inches(let theInches):
+      return imperialFormatter(theInches)
     }
   }
 }
@@ -112,7 +112,7 @@ extension Value {
 
     let numbers = input
       .split(separator: Regex(/[a-z ]+/))
-      .map { formatter.number(from: String($0)) }
+      .map { formatter.number(from: String($0))?.doubleValue }
 
     let units = input.split(separator: Regex(/[0-9]+/))
       .map { $0.trimmingCharacters(in: .whitespaces) }
@@ -131,8 +131,8 @@ extension Value {
 
     var inches = 0.0
     zip(numbers, units).forEach { number, unit in
-      inches += ImperialUnit.asInches(number!.doubleValue, String(unit))
+      inches += ImperialUnit.asInches(number!, String(unit))
     }
-    return Value.inches(NSNumber(value: inches))
+    return Value.inches(inches)
   }
 }
