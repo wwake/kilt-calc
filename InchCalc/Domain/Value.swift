@@ -6,7 +6,7 @@ public enum Value {
   case inches(Double)
 }
 
-extension Value {
+extension Value: Equatable {
   public func negate() -> Value {
     switch self {
     case .error:
@@ -90,27 +90,6 @@ extension Value {
 }
 
 extension Value {
-  public func format(_ imperialFormatter: ImperialFormatterFunction) -> String {
-    let formatter = NumberFormatter()
-    formatter.positiveInfinitySymbol = "result too large"
-    formatter.negativeInfinitySymbol = "result too large"
-    formatter.notANumberSymbol = "result can't be determined"
-
-    switch self {
-    case .error(let message):
-      return message
-
-    case .number(let aNumber):
-      let result = formatter.string(from: NSNumber(value: aNumber)) ?? "internal error"
-      return "\(result)"
-
-    case .inches(let theInches):
-      return imperialFormatter(formatter, theInches)
-    }
-  }
-}
-
-extension Value {
   static func parse(_ input: String) -> Value {
     let formatter = NumberFormatter()
 
@@ -138,5 +117,37 @@ extension Value {
       inches += ImperialUnit.asInches(number!, String(unit))
     }
     return Value.inches(inches)
+  }
+}
+
+extension Value {
+  public func format(_ imperialFormatter: ImperialFormatterFunction) -> String {
+    ValueFormatter().format(imperialFormatter, self)
+  }
+}
+
+public struct ValueFormatter {
+  let formatter: NumberFormatter
+
+  public init() {
+    let formatter = NumberFormatter()
+    formatter.positiveInfinitySymbol = "result too large"
+    formatter.negativeInfinitySymbol = "result too large"
+    formatter.notANumberSymbol = "result can't be determined"
+    self.formatter = formatter
+  }
+
+  public func format(_ imperialFormatter: ImperialFormatterFunction, _ value: Value) -> String {
+    switch value {
+    case .error(let message):
+      return message
+
+    case .number(let aNumber):
+      let result = formatter.string(from: NSNumber(value: aNumber)) ?? "internal error"
+      return "\(result)"
+
+    case .inches(let theInches):
+      return imperialFormatter(formatter, theInches)
+    }
   }
 }

@@ -3,22 +3,24 @@ import Foundation
 public typealias ImperialFormatterFunction = (NumberFormatter, Double) -> String
 
 public enum ImperialFormatter {
-  static func formatNumber(_ formatter: NumberFormatter, _ value: Double) -> String {
-    if value.isInfinite {
-      return "result too large"
+  static func formatNumber(_ formatter: NumberFormatter, _ value: Double, _ label: String) -> String {
+    let result = formatter.string(from: NSNumber(value: value)) ?? "internal error"
+
+    if value.isInfinite || value.isNaN {
+      return result
     }
-    let result = formatter.string(from: NSNumber(value: value)) ?? ""
-    return "\(result)"
+
+    return "\(result) \(label)"
   }
 
   static func asInches(_ formatter: NumberFormatter, _ inches: Double) -> String {
-    "\(formatNumber(formatter, inches)) in"
+    formatNumber(formatter, inches, "in")
   }
 
   static func asYardFeetInches(_ formatter: NumberFormatter, _ inches: Double) -> String {
     let yfi = [(ImperialUnit.inchesPerYard, "yd"), (ImperialUnit.inchesPerFoot, "ft"), (1, "in")]
 
-    let sign = inches < 0 ? "-" : ""
+    let sign = inches < 0 ? -1.0 : 1.0
     var remaining = abs(inches)
 
     var partials: [(Double, String)] = []
@@ -33,8 +35,7 @@ public enum ImperialFormatter {
     if partials.isEmpty { return "0 in" }
 
     return partials.map { number, label in
-      let numericPart = formatNumber(formatter, number)
-      return "\(sign)\(numericPart) \(label)"
+      formatNumber(formatter, sign * number, label)
     }
     .joined(separator: " ")
   }
