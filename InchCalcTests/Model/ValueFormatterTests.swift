@@ -44,7 +44,7 @@ final class ValueFormatterTests: XCTestCase {
       EG(Value.number(0.0 / 0), expect: "result can't be determined"),
       EG(Value.inches(0.0 / 0), expect: "result can't be determined"),
     ]) {
-      XCTAssertEqual($0.input.format(ImperialFormatter.asInches), $0.expect, file: $0.file, line: $0.line)
+      XCTAssertEqual(formatter.format(ImperialFormatter.asInches, $0.input), $0.expect, file: $0.file, line: $0.line)
     }
   }
 }

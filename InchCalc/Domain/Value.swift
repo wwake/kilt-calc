@@ -120,12 +120,6 @@ extension Value {
   }
 }
 
-extension Value {
-  public func format(_ imperialFormatter: ImperialFormatterFunction) -> String {
-    ValueFormatter().format(imperialFormatter, self)
-  }
-}
-
 public struct ValueFormatter {
   let formatter: NumberFormatter
 
