@@ -1,24 +1,23 @@
 public struct Operator {
-  var name: String
   var precedence: Int
   var evaluate: (Value, Value) -> Value
 
-  public static func make(_ name: String) -> Operator {
-    switch name {
-    case "+":
-      return Operator(name: name, precedence: 3, evaluate: { a, b in a.plus(b) })
+  public static func make(_ entry: Entry) -> Operator {
+    switch entry {
+    case .add:
+      return Operator(precedence: 3, evaluate: { a, b in a.plus(b) })
 
-    case "-":
-      return Operator(name: name, precedence: 3, evaluate: { a, b in a.minus(b) })
+    case .subtract:
+      return Operator(precedence: 3, evaluate: { a, b in a.minus(b) })
 
-    case "\(Keypad.multiply)":
-      return Operator(name: name, precedence: 5, evaluate: { a, b in a.times(b) })
+    case .multiply:
+      return Operator(precedence: 5, evaluate: { a, b in a.times(b) })
 
-    case "\(Keypad.divide)":
-      return Operator(name: name, precedence: 5, evaluate: { a, b in a.divide(b) })
+    case .divide:
+      return Operator(precedence: 5, evaluate: { a, b in a.divide(b) })
 
     default:
-      return Operator(name: "?", precedence: 1, evaluate: { a, _ in a })
+      return Operator(precedence: 1, evaluate: { a, _ in a })
     }
   }
 }

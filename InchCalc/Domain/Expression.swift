@@ -31,7 +31,7 @@ public class Expression {
         operands.push(Value.parse(pending))
         pending = ""
 
-        let theOperator = Operator.make(entry.description)
+        let theOperator = Operator.make(entry)
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
 

@@ -66,10 +66,10 @@ extension Entry: CustomStringConvertible {
       return " \(unit.description) "
 
     case .add:
-      return "+"
+      return Keypad.add
 
     case .subtract:
-      return "-"
+      return Keypad.subtract
 
     case .multiply:
       return Keypad.multiply
