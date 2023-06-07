@@ -64,9 +64,6 @@ public class Calculator: ObservableObject {
     case .binary, .unary:
       op(entry)
 
-    case .add, .subtract, .multiply, .divide:
-      op(entry)
-
     case .digit:
       let previousEntry = input.isEmpty ? nil : input.last
       if previousEntry != nil, previousEntry!.isUnaryOperator {

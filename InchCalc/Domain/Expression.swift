@@ -46,15 +46,6 @@ public class Expression {
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
 
-      case .add(let theOperator), .subtract(let theOperator), .multiply(let theOperator), .divide(let theOperator):
-        if !pending.isEmpty {
-          operands.push(Value.parse(pending))
-        }
-        pending = ""
-
-        evaluateAtLeast(theOperator.precedence)
-        operators.push(theOperator)
-
       default:
         break
       }
