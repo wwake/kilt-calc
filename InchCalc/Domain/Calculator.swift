@@ -73,6 +73,12 @@ public class Calculator: ObservableObject {
       } else {
         digit(entry)
       }
+
+    case .leftParend:
+      input.add(entry)
+
+    case .rightParend:
+      input.add(entry)
     }
   }
 }

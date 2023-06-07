@@ -7,6 +7,8 @@ public enum Entry {
   case binary(Operator)
   case unary(Operator)
   case digit(Int)
+  case leftParend
+  case rightParend
 
   public func asUnit() -> ImperialUnit {
     if case let .unit(value) = self {
@@ -55,6 +57,12 @@ extension Entry: CustomStringConvertible {
 
     case .digit(let digit):
       return "\(digit)"
+
+    case .leftParend:
+      return "("
+
+    case .rightParend:
+      return ")"
     }
   }
 }

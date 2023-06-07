@@ -1,13 +1,9 @@
-* Plus-or-minus -  5 +/- => -5
-* What about +/- first or after an operator?
+* Parentheses
+* Test +/- with 0
 * Make evaluate use one-item lookahead?
-* Replace .add etc with .binary
-* Remove Operator.make()
 
-* Input negative numbers - with - or +/-?
 * If you start with an operator, you should load the previous result as the first operand
 * Separate error field, so we can keep editing?
-* Parentheses
 
 * Set result type ('show as')
 
@@ -16,6 +12,10 @@
 * Let check use varargs rather than []
 
 CALC-23-11: 2023-06-07 - Negation
+* Remove Operator.make()
+* Plus-or-minus -  5 +/- => -5
+* Error for +/- first or after an operator
+* Replace .add etc with .binary
 
 CALC-23-10: 2023-06-06 - Exceptional Numbers
 * Infinity and NaN for operators

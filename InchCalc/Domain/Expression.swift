@@ -46,6 +46,19 @@ public class Expression {
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
 
+      case .leftParend:
+        operators.push(Operator(name: "(", precedence: 0, evaluate: { a, _ in a }))
+
+      case .rightParend:
+        if !pending.isEmpty {
+          operands.push(Value.parse(pending))
+        }
+        pending = ""
+
+        evaluateAtLeast(1)
+        // should have ( on top of stack
+        _ = operators.pop()
+
       default:
         break
       }

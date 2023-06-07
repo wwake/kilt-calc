@@ -10,8 +10,8 @@ public struct Keypad {
   let contents: [[Key]] = [
     [
       Key("C", .clear),
-      Key("("),
-      Key(")"),
+      Key("(", .leftParend),
+      Key(")", .rightParend),
       Key("%"),
       Key(backspace, .backspace),
     ],
