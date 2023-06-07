@@ -158,4 +158,12 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "-64")
   }
+
+  func test_UnitValueThenUnaryOp() {
+    calc.enter(.digit(6))
+    calc.enter(.unit(.inch))
+    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "-6 in")
+  }
 }
