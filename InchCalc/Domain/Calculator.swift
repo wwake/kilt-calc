@@ -31,12 +31,12 @@ public class Calculator: ObservableObject {
   }
 
   private func op(_ entry: Entry) {
-    input.removeLastIf { $0.isOperator() }
+    input.removeLastIf { $0.isBinaryOperator() }
     input.add(entry)
   }
 
    private func equals() {
-     if !input.isEmpty && input.last.isOperator() {
+     if !input.isEmpty && input.last.isBinaryOperator() {
       result = .error("expression can't end with an operator")
     } else {
       result = Expression(input).evaluate()
@@ -61,14 +61,21 @@ public class Calculator: ObservableObject {
     case .unit:
       enterUnit(entry)
 
-    case .binary:
+    case .binary, .unary:
       op(entry)
 
     case .add, .subtract, .multiply, .divide:
       op(entry)
 
     case .digit:
-      digit(entry)
+      let previousEntry = input.isEmpty ? nil : input.last
+      if previousEntry != nil, previousEntry!.isUnaryOperator {
+        input.removeLastIf { _ in true }
+        digit(entry)
+        input.add(previousEntry!)
+      } else {
+        digit(entry)
+      }
     }
   }
 }

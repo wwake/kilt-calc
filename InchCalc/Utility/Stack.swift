@@ -9,6 +9,10 @@ public struct Stack<Element> {
     elements.count == 0
   }
 
+  public var count: Int {
+    elements.count
+  }
+
   public var top: Element {
     elements.last!
   }

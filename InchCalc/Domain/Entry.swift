@@ -9,6 +9,7 @@ public enum Entry {
   case subtract(Operator)
   case multiply(Operator)
   case divide(Operator)
+  case unary(Operator)
   case digit(Int)
 
   public func asUnit() -> ImperialUnit {
@@ -25,7 +26,7 @@ public enum Entry {
     return "X"
   }
 
-  public func isOperator() -> Bool {
+  public func isBinaryOperator() -> Bool {
     switch self {
     case .add, .subtract, .multiply, .divide:
       return true
@@ -33,6 +34,11 @@ public enum Entry {
     default:
       return false
     }
+  }
+
+  public var isUnaryOperator: Bool {
+    if case .unary = self { return true}
+    return false
   }
 
   public func precedenceValue() -> Int {
@@ -66,7 +72,7 @@ extension Entry: CustomStringConvertible {
     case .unit(let unit):
       return " \(unit.description) "
 
-    case .binary(let theOperator):
+    case .binary(let theOperator), .unary(let theOperator):
       return theOperator.name
 
     case .add:

@@ -17,6 +17,11 @@ public class Expression {
     }
   }
 
+  fileprivate func evaluateUnary(_ unaryOp: Operator) {
+    let a = operands.pop()
+    operands.push(unaryOp.evaluate(a, .error("Unary op has no second argument")))
+  }
+
   public func evaluate() -> Value {
     if input.isEmpty { return Value.number(0) }
 
@@ -26,6 +31,11 @@ public class Expression {
       switch entry {
       case .digit, .unit:
         pending.append(entry.description)
+
+      case .unary(let theOperator):
+        operands.push(Value.parse(pending))
+        pending = ""
+        evaluateUnary(theOperator)
 
       case .binary(let theOperator):
         operands.push(Value.parse(pending))
@@ -46,10 +56,15 @@ public class Expression {
       }
     }
 
-    operands.push(Value.parse(pending))
+    if !pending.isEmpty {
+      operands.push(Value.parse(pending))
+    }
 
     evaluateAtLeast(0)
 
+    if operands.count != 1 {
+      return .error("error - operators missing between values")
+    }
     return operands.pop()
   }
 }

@@ -4,7 +4,7 @@ import XCTest
 final class CalculatorTests: XCTestCase {
   private let calc = Calculator()
   private let addOp = Entry.add(Operator(name: "+", precedence: 3, evaluate: +))
-  private let multiplyOp = Entry.add(Operator(name: "*", precedence: 5, evaluate: *))
+  private let multiplyOp = Entry.multiply(Operator(name: "*", precedence: 5, evaluate: *))
 
   func test_calculatorStartsZero() throws {
     XCTAssertEqual(calc.display, "0")
@@ -141,5 +141,21 @@ final class CalculatorTests: XCTestCase {
     calc.enter(multiplyOp)
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "expression can't end with an operator")
+  }
+
+  func test_PlusOrMinusOnNumber() {
+    calc.enter(.digit(6))
+    calc.enter(.digit(4))
+    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "-64")
+  }
+
+  func test_DigitAfterUnaryOpIsPlacedBeforeIt() {
+    calc.enter(.digit(6))
+    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(.digit(4))
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "-64")
   }
 }
