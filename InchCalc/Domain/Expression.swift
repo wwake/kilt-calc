@@ -34,11 +34,10 @@ public class Expression {
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
 
-      case .add, .subtract, .multiply, .divide:
+      case .add(let theOperator), .subtract(let theOperator), .multiply(let theOperator), .divide(let theOperator):
         operands.push(Value.parse(pending))
         pending = ""
 
-        let theOperator = Operator.make(entry)
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
 
