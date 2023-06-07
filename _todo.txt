@@ -1,4 +1,6 @@
 * Plus-or-minus -  5 +/- => -5
+* What about +/- first or after an operator?
+* Make evaluate use one-item lookahead?
 * Replace .add etc with .binary
 * Remove Operator.make()
 
@@ -12,6 +14,8 @@
 * Update EGTest to take new check() with try from ContentViewTests
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-11: 2023-06-07 - Negation
 
 CALC-23-10: 2023-06-06 - Exceptional Numbers
 * Infinity and NaN for operators

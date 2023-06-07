@@ -18,9 +18,6 @@
   },
   "testTargets" : [
     {
-      "skippedTests" : [
-        "CalculatorTests\/test_DivideNegativeByZeroYieldsMinusInfinity()"
-      ],
       "target" : {
         "containerPath" : "container:InchCalc.xcodeproj",
         "identifier" : "91E7B6D72A0D442F004A757A",

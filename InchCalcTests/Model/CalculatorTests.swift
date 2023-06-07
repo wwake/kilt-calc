@@ -177,4 +177,19 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "numbers and units don't match")
   }
+
+  func test_DigitPlusOrMinusAddDigit_ShouldNegateAndAdd() {
+    calc.enter(.digit(6))
+    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(addOp)
+    calc.enter(.digit(4))
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "-2")
+  }
+
+  func test_PlusOrMinusFirst_IsError() {
+    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "no value found")
+  }
 }

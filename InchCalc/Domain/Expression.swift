@@ -38,14 +38,18 @@ public class Expression {
         evaluateUnary(theOperator)
 
       case .binary(let theOperator):
-        operands.push(Value.parse(pending))
+        if !pending.isEmpty {
+          operands.push(Value.parse(pending))
+        }
         pending = ""
 
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
 
       case .add(let theOperator), .subtract(let theOperator), .multiply(let theOperator), .divide(let theOperator):
-        operands.push(Value.parse(pending))
+        if !pending.isEmpty {
+          operands.push(Value.parse(pending))
+        }
         pending = ""
 
         evaluateAtLeast(theOperator.precedence)

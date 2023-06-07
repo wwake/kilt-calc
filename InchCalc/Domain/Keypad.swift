@@ -47,7 +47,7 @@ public struct Keypad {
       Key("M+"),
       Key("0", .digit(0)),
       Key(dot),
-      Key(plusOrMinus),
+      Key(plusOrMinus, .unary(Operator(name: plusOrMinus, precedence: 99, evaluate: { a, _ in a.negate() }))),
       Key("=", .equals),
     ],
   ]

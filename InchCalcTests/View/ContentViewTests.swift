@@ -148,6 +148,8 @@ final class ContentViewTests: XCTestCase {
 
       EG("5 ft 2 in <<12 in=", expect: "2 yd", "Backspace"),
       EG("<<12 in=", expect: "1 ft", "Backspace at start"),
+
+      EG("12~=", expect: "-12"),
     ]) {
       let sut = ContentView(calculator: Calculator())
       try tap(sut, $0.input)
