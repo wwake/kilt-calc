@@ -28,7 +28,7 @@ public enum Entry {
 
   public func isBinaryOperator() -> Bool {
     switch self {
-    case .add, .subtract, .multiply, .divide:
+    case .binary, .add, .subtract, .multiply, .divide:
       return true
 
     default:
@@ -41,18 +41,18 @@ public enum Entry {
     return false
   }
 
-  public func precedenceValue() -> Int {
-    switch self {
-    case .add, .subtract:
-      return 3
-
-    case .multiply, .divide:
-      return 5
-
-    default:
-      return 1
-    }
-  }
+//  public func precedenceValue() -> Int {
+//    switch self {
+//    case .add, .subtract:
+//      return 3
+//
+//    case .multiply, .divide:
+//      return 5
+//
+//    default:
+//      return 1
+//    }
+//  }
 
   public func isUnit() -> Bool {
     if case .unit = self { return true }

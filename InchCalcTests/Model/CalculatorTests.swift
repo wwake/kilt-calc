@@ -3,8 +3,8 @@ import XCTest
 
 final class CalculatorTests: XCTestCase {
   private let calc = Calculator()
-  private let addOp = Entry.add(Operator(name: "+", precedence: 3, evaluate: +))
-  private let multiplyOp = Entry.multiply(Operator(name: "*", precedence: 5, evaluate: *))
+  private let addOp = Entry.binary(Operator(name: "+", precedence: 3, evaluate: +))
+  private let multiplyOp = Entry.binary(Operator(name: "*", precedence: 5, evaluate: *))
 
   func test_calculatorStartsZero() throws {
     XCTAssertEqual(calc.display, "0")
