@@ -168,4 +168,13 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "-1 yd -2 ft -3 in")
   }
+
+  func test_DigitAfterUnaryOpOnUnitIsLeftThere() {
+    calc.enter(.digit(6))
+    calc.enter(.unit(.inch))
+    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(.digit(4))
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "numbers and units don't match")
+  }
 }
