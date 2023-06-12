@@ -52,9 +52,16 @@ public class Expression {
         pending.append(entry.description)
 
       case .unary(let theOperator):
-        operands.push(Value.parse(pending))
+        if !pending.isEmpty {
+          operands.push(Value.parse(pending))
+        }
         pending = ""
-        evaluateUnary(theOperator)
+
+        if operands.isEmpty {
+          operands.push(.error("no value found"))
+        } else {
+          evaluateUnary(theOperator)
+        }
 
       case .binary(let theOperator):
         if !pending.isEmpty {
