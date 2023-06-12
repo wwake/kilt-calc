@@ -5,6 +5,10 @@ public struct InputBuffer: Sequence {
     self.elements = elements
   }
 
+  public var count: Int {
+    elements.count
+  }
+
   public func makeIterator() -> IndexingIterator<[Entry]> {
     elements.makeIterator()
   }
@@ -35,5 +39,9 @@ public struct InputBuffer: Sequence {
     elements
       .map { $0.description }
       .joined()
+  }
+
+  public subscript(_ index: Int) -> Entry {
+    elements[index]
   }
 }

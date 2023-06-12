@@ -79,6 +79,9 @@ public class Calculator: ObservableObject {
 
     case .rightParend:
       input.add(entry)
+
+    case .ending:
+      print("\(#file) \(#line) can't happen")
     }
   }
 }

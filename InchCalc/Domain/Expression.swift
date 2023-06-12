@@ -27,7 +27,13 @@ public class Expression {
 
     var pending = ""
 
-    input.forEach { entry in
+    input.add(.ending)
+
+    var index = 0
+    while index < input.count {
+      let entry = input[index]
+//    }
+//    input.forEach { entry in
       switch entry {
       case .digit, .unit:
         pending.append(entry.description)
@@ -64,9 +70,14 @@ public class Expression {
           _ = operators.pop()
         }
 
+      case .ending:
+        break
+
       default:
         break
       }
+
+      index += 1
     }
 
     if !pending.isEmpty {

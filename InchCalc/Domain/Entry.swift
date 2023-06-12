@@ -9,6 +9,7 @@ public enum Entry {
   case digit(Int)
   case leftParend
   case rightParend
+  case ending
 
   public func asUnit() -> ImperialUnit {
     if case let .unit(value) = self {
@@ -63,6 +64,9 @@ extension Entry: CustomStringConvertible {
 
     case .rightParend:
       return ")"
+
+    case .ending:
+      return "$"
     }
   }
 }

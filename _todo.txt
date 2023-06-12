@@ -1,4 +1,3 @@
-* Parenthesis error checking
 * Make evaluate use one-item lookahead
 
 * If you start with an operator, you should load the previous result as the first operand
@@ -15,6 +14,9 @@
 * Update EGTest to take new check() with try from ContentViewTests
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-12: 2023-06-12 - (Unbalanced Parentheses))
+* Parenthesis error checking
 
 CALC-23-11: 2023-06-07 - Negation
 * Remove Operator.make()
