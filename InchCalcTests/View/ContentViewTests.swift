@@ -163,6 +163,10 @@ final class ContentViewTests: XCTestCase {
       EG("(2*(((12):4)+2))=", expect: "10"),
       EG("(11 in-1 in)*3=", expect: "2 ft 6 in"),
       EG("7in + (11 in+1 in)*3=", expect: "1 yd 7 in"),
+
+      EG("1+(3+4))=", expect: "error - unbalanced parentheses"),
+      EG(")1+2=", expect: "error - unbalanced parentheses"),
+      EG(")1+2(=", expect: "error - unbalanced parentheses"),
     ]) {
       let sut = ContentView(calculator: Calculator())
       try tap(sut, $0.input)

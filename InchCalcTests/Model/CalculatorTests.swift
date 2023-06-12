@@ -192,4 +192,16 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "no value found")
   }
+
+  func test_TooManyLeftParends() {
+    calc.enter(.leftParend)
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "error - unbalanced parentheses")
+  }
+
+  func test_TooManyRightParends() {
+    calc.enter(.rightParend)
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "error - unbalanced parentheses")
+  }
 }

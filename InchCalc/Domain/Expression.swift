@@ -56,8 +56,13 @@ public class Expression {
         pending = ""
 
         evaluateAtLeast(1)
-        // should have ( on top of stack
-        _ = operators.pop()
+
+        if operators.isEmpty {
+          operands.clear()
+          operands.push(.error("error - unbalanced parentheses"))
+        } else {
+          _ = operators.pop()
+        }
 
       default:
         break
@@ -68,10 +73,14 @@ public class Expression {
       operands.push(Value.parse(pending))
     }
 
-    evaluateAtLeast(0)
+    evaluateAtLeast(1)
+
+    if operators.count != 0 {
+      return .error("error - unbalanced parentheses")
+    }
 
     if operands.count != 1 {
-      return .error("error - operators missing between values")
+      return .error("error - unbalanced parentheses")
     }
     return operands.pop()
   }
