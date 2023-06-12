@@ -56,13 +56,10 @@ public class Expression {
           nextEntry()
           entry = current()
         }
-
-      case .unary(let theOperator):
-        if !pending.isEmpty {
-          operands.push(Value.parse(pending))
-        }
+        operands.push(Value.parse(pending))
         pending = ""
 
+      case .unary(let theOperator):
         if operands.isEmpty {
           operands.push(.error("no value found"))
         } else {
@@ -72,11 +69,6 @@ public class Expression {
         entry = current()
 
       case .binary(let theOperator):
-        if !pending.isEmpty {
-          operands.push(Value.parse(pending))
-        }
-        pending = ""
-
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
         nextEntry()
@@ -88,11 +80,6 @@ public class Expression {
         entry = current()
 
       case .rightParend:
-        if !pending.isEmpty {
-          operands.push(Value.parse(pending))
-        }
-        pending = ""
-
         evaluateAtLeast(1)
 
         if operators.isEmpty {
