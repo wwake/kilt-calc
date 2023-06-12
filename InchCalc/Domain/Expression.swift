@@ -44,9 +44,9 @@ public class Expression {
     input.add(.ending)
 
     index = 0
-    while index < input.count {
-      let entry = current()
+    var entry = current()
 
+  outer: while index < input.count {
       switch entry {
       case .digit, .unit:
         pending.append(entry.description)
@@ -84,13 +84,14 @@ public class Expression {
         }
 
       case .ending:
-        break
+        break outer
 
       default:
         break
       }
 
       nextEntry()
+      entry = current()
     }
 
     if !pending.isEmpty {
