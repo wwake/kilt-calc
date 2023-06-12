@@ -24,10 +24,6 @@ public class Expression {
     operands.push(unaryOp.evaluate(a, .error("Unary op has no second argument")))
   }
 
-  private func current() -> Entry {
-    input[index]
-  }
-
   private func nextEntry() -> Entry {
     if index < input.count {
       index += 1
