@@ -28,10 +28,11 @@ public class Expression {
     input[index]
   }
 
-  private func nextEntry() {
+  private func nextEntry() -> Entry {
     if index < input.count {
       index += 1
     }
+    return input[index]
   }
 
   public func evaluate() -> Value {
@@ -39,8 +40,8 @@ public class Expression {
 
     input.add(.ending)
 
-    index = 0
-    var entry = current()
+    index = -1
+    var entry = nextEntry()
 
   outer: while index < input.count {
       switch entry {
@@ -48,30 +49,26 @@ public class Expression {
         var pending = ""
         while entry.isOperand() {
           pending.append(entry.description)
-          nextEntry()
-          entry = current()
+          entry = nextEntry()
         }
         operands.push(Value.parse(pending))
 
       case .unary(let theOperator):
         if operands.isEmpty {
           operands.push(.error("no value found"))
-        } else {
-          evaluateUnary(theOperator)
         }
-        nextEntry()
-        entry = current()
+        evaluateUnary(theOperator)
+
+        entry = nextEntry()
 
       case .binary(let theOperator):
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
-        nextEntry()
-        entry = current()
+        entry = nextEntry()
 
       case .leftParend:
         operators.push(Operator(name: "(", precedence: 0, evaluate: { a, _ in a }))
-        nextEntry()
-        entry = current()
+        entry = nextEntry()
 
       case .rightParend:
         evaluateAtLeast(1)
@@ -82,15 +79,13 @@ public class Expression {
         } else {
           _ = operators.pop()
         }
-        nextEntry()
-        entry = current()
+        entry = nextEntry()
 
       case .ending:
         break outer
 
       default:
-        nextEntry()
-        entry = current()
+        entry = nextEntry()
       }
     }
 
