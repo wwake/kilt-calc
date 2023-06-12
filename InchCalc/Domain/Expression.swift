@@ -33,7 +33,9 @@ public class Expression {
   }
 
   private func nextEntry() {
-    index += 1
+    if index < input.count {
+      index += 1
+    }
   }
 
   public func evaluate() -> Value {
@@ -49,7 +51,11 @@ public class Expression {
   outer: while index < input.count {
       switch entry {
       case .digit, .unit:
-        pending.append(entry.description)
+        while entry.isOperand() {
+          pending.append(entry.description)
+          nextEntry()
+          entry = current()
+        }
 
       case .unary(let theOperator):
         if !pending.isEmpty {
@@ -62,6 +68,8 @@ public class Expression {
         } else {
           evaluateUnary(theOperator)
         }
+        nextEntry()
+        entry = current()
 
       case .binary(let theOperator):
         if !pending.isEmpty {
@@ -71,9 +79,13 @@ public class Expression {
 
         evaluateAtLeast(theOperator.precedence)
         operators.push(theOperator)
+        nextEntry()
+        entry = current()
 
       case .leftParend:
         operators.push(Operator(name: "(", precedence: 0, evaluate: { a, _ in a }))
+        nextEntry()
+        entry = current()
 
       case .rightParend:
         if !pending.isEmpty {
@@ -89,16 +101,16 @@ public class Expression {
         } else {
           _ = operators.pop()
         }
+        nextEntry()
+        entry = current()
 
       case .ending:
         break outer
 
       default:
-        break
+        nextEntry()
+        entry = current()
       }
-
-      nextEntry()
-      entry = current()
     }
 
     if !pending.isEmpty {
