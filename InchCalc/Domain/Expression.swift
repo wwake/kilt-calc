@@ -28,10 +28,6 @@ public class Expression {
     input[index]
   }
 
-  private func lookahead(_ index: Int) -> Entry {
-    input[index + 1]
-  }
-
   private func nextEntry() {
     if index < input.count {
       index += 1
@@ -41,8 +37,6 @@ public class Expression {
   public func evaluate() -> Value {
     if input.isEmpty { return Value.number(0) }
 
-    var pending = ""
-
     input.add(.ending)
 
     index = 0
@@ -51,13 +45,13 @@ public class Expression {
   outer: while index < input.count {
       switch entry {
       case .digit, .unit:
+        var pending = ""
         while entry.isOperand() {
           pending.append(entry.description)
           nextEntry()
           entry = current()
         }
         operands.push(Value.parse(pending))
-        pending = ""
 
       case .unary(let theOperator):
         if operands.isEmpty {
@@ -98,10 +92,6 @@ public class Expression {
         nextEntry()
         entry = current()
       }
-    }
-
-    if !pending.isEmpty {
-      operands.push(Value.parse(pending))
     }
 
     evaluateAtLeast(1)
