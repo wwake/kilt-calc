@@ -3,6 +3,8 @@ public class Expression {
   var operands: Stack<Value> = Stack()
   var operators: Stack<Operator> = Stack()
 
+  var index = 0
+
   init(_ input: InputBuffer) {
     self.input = input
   }
@@ -22,6 +24,18 @@ public class Expression {
     operands.push(unaryOp.evaluate(a, .error("Unary op has no second argument")))
   }
 
+  private func current() -> Entry {
+    input[index]
+  }
+
+  private func lookahead(_ index: Int) -> Entry {
+    input[index + 1]
+  }
+
+  private func nextEntry() {
+    index += 1
+  }
+
   public func evaluate() -> Value {
     if input.isEmpty { return Value.number(0) }
 
@@ -29,11 +43,10 @@ public class Expression {
 
     input.add(.ending)
 
-    var index = 0
+    index = 0
     while index < input.count {
-      let entry = input[index]
-//    }
-//    input.forEach { entry in
+      let entry = current()
+
       switch entry {
       case .digit, .unit:
         pending.append(entry.description)
@@ -77,7 +90,7 @@ public class Expression {
         break
       }
 
-      index += 1
+      nextEntry()
     }
 
     if !pending.isEmpty {
