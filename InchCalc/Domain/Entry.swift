@@ -39,6 +39,12 @@ public enum Entry {
     if case .unit = self { return true }
     return false
   }
+
+  public func isOperand() -> Bool {
+    if case .digit = self { return true }
+    if case .unit = self { return true }
+    return false
+  }
 }
 
 extension Entry: CustomStringConvertible {
