@@ -1,5 +1,5 @@
 import EGTest
-@testable import InchCalc
+@testable import KiltCalc
 import XCTest
 
 final class ImperialFormatterTests: XCTestCase {

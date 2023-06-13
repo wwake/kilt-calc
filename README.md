@@ -1,4 +1,4 @@
-# inch-calc
+# kilt-calc
 
-A calculator for working with yards, feet, and inches - for kilt-makers and quilters
+A calculator for working with yards, feet, and inches - especially for kilt-makers 
 

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "91E7B6C72A0D4428004A757A"
-               BuildableName = "InchCalc.app"
-               BlueprintName = "InchCalc"
-               ReferencedContainer = "container:InchCalc.xcodeproj">
+               BuildableName = "KiltCalc.app"
+               BlueprintName = "KiltCalc"
+               ReferencedContainer = "container:KiltCalc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:InchCalc.xctestplan"
+            reference = "container:KiltCalc.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -40,9 +40,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "91E7B6D72A0D442F004A757A"
-               BuildableName = "InchCalcTests.xctest"
-               BlueprintName = "InchCalcTests"
-               ReferencedContainer = "container:InchCalc.xcodeproj">
+               BuildableName = "KiltCalcTests.xctest"
+               BlueprintName = "KiltCalcTests"
+               ReferencedContainer = "container:KiltCalc.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -53,7 +53,7 @@
                BlueprintIdentifier = "91E7B6E12A0D4430004A757A"
                BuildableName = "InchCalcUITests.xctest"
                BlueprintName = "InchCalcUITests"
-               ReferencedContainer = "container:InchCalc.xcodeproj">
+               ReferencedContainer = "container:KiltCalc.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -73,9 +73,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "91E7B6C72A0D4428004A757A"
-            BuildableName = "InchCalc.app"
-            BlueprintName = "InchCalc"
-            ReferencedContainer = "container:InchCalc.xcodeproj">
+            BuildableName = "KiltCalc.app"
+            BlueprintName = "KiltCalc"
+            ReferencedContainer = "container:KiltCalc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -90,9 +90,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "91E7B6C72A0D4428004A757A"
-            BuildableName = "InchCalc.app"
-            BlueprintName = "InchCalc"
-            ReferencedContainer = "container:InchCalc.xcodeproj">
+            BuildableName = "KiltCalc.app"
+            BlueprintName = "KiltCalc"
+            ReferencedContainer = "container:KiltCalc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

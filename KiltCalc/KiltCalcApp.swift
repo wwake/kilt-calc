@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct InchCalcApp: App {
+struct KiltCalcApp: App {
   @StateObject var calculator = Calculator()
 
   var body: some Scene {

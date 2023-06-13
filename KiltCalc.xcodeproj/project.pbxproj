@@ -27,13 +27,13 @@
 		91E3C5B52A1EAB4A0098BAFC /* ValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5B42A1EAB4A0098BAFC /* ValueTests.swift */; };
 		91E3C5B72A1FE18D0098BAFC /* ImperialFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5B62A1FE18D0098BAFC /* ImperialFormatter.swift */; };
 		91E3C5B92A1FE1F20098BAFC /* ImperialFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5B82A1FE1F20098BAFC /* ImperialFormatterTests.swift */; };
-		91E7B6CC2A0D4428004A757A /* InchCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6CB2A0D4428004A757A /* InchCalcApp.swift */; };
+		91E7B6CC2A0D4428004A757A /* KiltCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6CB2A0D4428004A757A /* KiltCalcApp.swift */; };
 		91E7B6CE2A0D4428004A757A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7B6CD2A0D4428004A757A /* ContentView.swift */; };
 		91E7B6D02A0D442F004A757A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6CF2A0D442F004A757A /* Assets.xcassets */; };
 		91E7B6D32A0D442F004A757A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6D22A0D442F004A757A /* Preview Assets.xcassets */; };
-		91E7B6F62A0D4E52004A757A /* InchCalc.key in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F52A0D4E52004A757A /* InchCalc.key */; };
+		91E7B6F62A0D4E52004A757A /* KiltCalc.key in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F52A0D4E52004A757A /* KiltCalc.key */; };
 		91E7B6F82A0D4FC0004A757A /* _todo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F72A0D4FC0004A757A /* _todo.txt */; };
-		91E7B6FA2A0D507D004A757A /* InchCalc.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F92A0D507D004A757A /* InchCalc.png */; };
+		91E7B6FA2A0D507D004A757A /* KiltCalc.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6F92A0D507D004A757A /* KiltCalc.png */; };
 		91E7B6FC2A0D5189004A757A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6FB2A0D5189004A757A /* README.md */; };
 		91E7B6FE2A0D5230004A757A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6FD2A0D522F004A757A /* LICENSE */; };
 /* End PBXBuildFile section */
@@ -63,20 +63,20 @@
 		91E3C5A42A1BF69F0098BAFC /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		91E3C5AC2A1D39A30098BAFC /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
-		91E3C5B12A1E8ACF0098BAFC /* InchCalc.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = InchCalc.xctestplan; sourceTree = "<group>"; };
+		91E3C5B12A1E8ACF0098BAFC /* KiltCalc.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KiltCalc.xctestplan; sourceTree = "<group>"; };
 		91E3C5B22A1EAAD10098BAFC /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		91E3C5B42A1EAB4A0098BAFC /* ValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTests.swift; sourceTree = "<group>"; };
 		91E3C5B62A1FE18D0098BAFC /* ImperialFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialFormatter.swift; sourceTree = "<group>"; };
 		91E3C5B82A1FE1F20098BAFC /* ImperialFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialFormatterTests.swift; sourceTree = "<group>"; };
-		91E7B6C82A0D4428004A757A /* InchCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InchCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		91E7B6CB2A0D4428004A757A /* InchCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InchCalcApp.swift; sourceTree = "<group>"; };
+		91E7B6C82A0D4428004A757A /* KiltCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KiltCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		91E7B6CB2A0D4428004A757A /* KiltCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KiltCalcApp.swift; sourceTree = "<group>"; };
 		91E7B6CD2A0D4428004A757A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		91E7B6CF2A0D442F004A757A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91E7B6D22A0D442F004A757A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		91E7B6D82A0D442F004A757A /* InchCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InchCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		91E7B6F52A0D4E52004A757A /* InchCalc.key */ = {isa = PBXFileReference; lastKnownFileType = file; path = InchCalc.key; sourceTree = "<group>"; };
+		91E7B6D82A0D442F004A757A /* KiltCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiltCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		91E7B6F52A0D4E52004A757A /* KiltCalc.key */ = {isa = PBXFileReference; lastKnownFileType = file; path = KiltCalc.key; sourceTree = "<group>"; };
 		91E7B6F72A0D4FC0004A757A /* _todo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = _todo.txt; sourceTree = "<group>"; };
-		91E7B6F92A0D507D004A757A /* InchCalc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InchCalc.png; sourceTree = "<group>"; };
+		91E7B6F92A0D507D004A757A /* KiltCalc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KiltCalc.png; sourceTree = "<group>"; };
 		91E7B6FB2A0D5189004A757A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		91E7B6FD2A0D522F004A757A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,15 +157,15 @@
 		91E7B6BF2A0D4428004A757A = {
 			isa = PBXGroup;
 			children = (
-				91E3C5B12A1E8ACF0098BAFC /* InchCalc.xctestplan */,
+				91E3C5B12A1E8ACF0098BAFC /* KiltCalc.xctestplan */,
 				91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */,
 				91E7B6F72A0D4FC0004A757A /* _todo.txt */,
 				91E7B6FB2A0D5189004A757A /* README.md */,
 				91E7B6FD2A0D522F004A757A /* LICENSE */,
-				91E7B6F92A0D507D004A757A /* InchCalc.png */,
-				91E7B6F52A0D4E52004A757A /* InchCalc.key */,
-				91E7B6CA2A0D4428004A757A /* InchCalc */,
-				91E7B6DB2A0D4430004A757A /* InchCalcTests */,
+				91E7B6F92A0D507D004A757A /* KiltCalc.png */,
+				91E7B6F52A0D4E52004A757A /* KiltCalc.key */,
+				91E7B6CA2A0D4428004A757A /* KiltCalc */,
+				91E7B6DB2A0D4430004A757A /* KiltCalcTests */,
 				91E7B6C92A0D4428004A757A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -173,23 +173,23 @@
 		91E7B6C92A0D4428004A757A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				91E7B6C82A0D4428004A757A /* InchCalc.app */,
-				91E7B6D82A0D442F004A757A /* InchCalcTests.xctest */,
+				91E7B6C82A0D4428004A757A /* KiltCalc.app */,
+				91E7B6D82A0D442F004A757A /* KiltCalcTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		91E7B6CA2A0D4428004A757A /* InchCalc */ = {
+		91E7B6CA2A0D4428004A757A /* KiltCalc */ = {
 			isa = PBXGroup;
 			children = (
 				916AF6612A267517009484DA /* Utility */,
 				91E3C59F2A1BF4030098BAFC /* Domain */,
 				91E3C59B2A1BE86D0098BAFC /* View */,
-				91E7B6CB2A0D4428004A757A /* InchCalcApp.swift */,
+				91E7B6CB2A0D4428004A757A /* KiltCalcApp.swift */,
 				91E7B6CF2A0D442F004A757A /* Assets.xcassets */,
 				91E7B6D12A0D442F004A757A /* Preview Content */,
 			);
-			path = InchCalc;
+			path = KiltCalc;
 			sourceTree = "<group>";
 		};
 		91E7B6D12A0D442F004A757A /* Preview Content */ = {
@@ -200,21 +200,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		91E7B6DB2A0D4430004A757A /* InchCalcTests */ = {
+		91E7B6DB2A0D4430004A757A /* KiltCalcTests */ = {
 			isa = PBXGroup;
 			children = (
 				91E3C5AB2A1D39550098BAFC /* Model */,
 				91E3C59C2A1BE8B40098BAFC /* View */,
 			);
-			path = InchCalcTests;
+			path = KiltCalcTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		91E7B6C72A0D4428004A757A /* InchCalc */ = {
+		91E7B6C72A0D4428004A757A /* KiltCalc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91E7B6EC2A0D4430004A757A /* Build configuration list for PBXNativeTarget "InchCalc" */;
+			buildConfigurationList = 91E7B6EC2A0D4430004A757A /* Build configuration list for PBXNativeTarget "KiltCalc" */;
 			buildPhases = (
 				91E7B6C42A0D4428004A757A /* Sources */,
 				91E7B6C52A0D4428004A757A /* Frameworks */,
@@ -225,14 +225,14 @@
 			);
 			dependencies = (
 			);
-			name = InchCalc;
+			name = KiltCalc;
 			productName = InchCalc;
-			productReference = 91E7B6C82A0D4428004A757A /* InchCalc.app */;
+			productReference = 91E7B6C82A0D4428004A757A /* KiltCalc.app */;
 			productType = "com.apple.product-type.application";
 		};
-		91E7B6D72A0D442F004A757A /* InchCalcTests */ = {
+		91E7B6D72A0D442F004A757A /* KiltCalcTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91E7B6EF2A0D4430004A757A /* Build configuration list for PBXNativeTarget "InchCalcTests" */;
+			buildConfigurationList = 91E7B6EF2A0D4430004A757A /* Build configuration list for PBXNativeTarget "KiltCalcTests" */;
 			buildPhases = (
 				91E7B6D42A0D442F004A757A /* Sources */,
 				91E7B6D52A0D442F004A757A /* Frameworks */,
@@ -243,13 +243,13 @@
 			dependencies = (
 				91E7B6DA2A0D442F004A757A /* PBXTargetDependency */,
 			);
-			name = InchCalcTests;
+			name = KiltCalcTests;
 			packageProductDependencies = (
 				9116601E2A1952A500932BD2 /* ViewInspector */,
 				91E3C5AF2A1D48D40098BAFC /* EGTest */,
 			);
 			productName = InchCalcTests;
-			productReference = 91E7B6D82A0D442F004A757A /* InchCalcTests.xctest */;
+			productReference = 91E7B6D82A0D442F004A757A /* KiltCalcTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -271,7 +271,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 91E7B6C32A0D4428004A757A /* Build configuration list for PBXProject "InchCalc" */;
+			buildConfigurationList = 91E7B6C32A0D4428004A757A /* Build configuration list for PBXProject "KiltCalc" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -288,8 +288,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				91E7B6C72A0D4428004A757A /* InchCalc */,
-				91E7B6D72A0D442F004A757A /* InchCalcTests */,
+				91E7B6C72A0D4428004A757A /* KiltCalc */,
+				91E7B6D72A0D442F004A757A /* KiltCalcTests */,
 			);
 		};
 /* End PBXProject section */
@@ -301,11 +301,11 @@
 			files = (
 				91E3C5A92A1C668D0098BAFC /* .swiftlint.yml in Resources */,
 				91E7B6FC2A0D5189004A757A /* README.md in Resources */,
-				91E7B6FA2A0D507D004A757A /* InchCalc.png in Resources */,
+				91E7B6FA2A0D507D004A757A /* KiltCalc.png in Resources */,
 				91E7B6F82A0D4FC0004A757A /* _todo.txt in Resources */,
 				91E7B6FE2A0D5230004A757A /* LICENSE in Resources */,
 				91E7B6D32A0D442F004A757A /* Preview Assets.xcassets in Resources */,
-				91E7B6F62A0D4E52004A757A /* InchCalc.key in Resources */,
+				91E7B6F62A0D4E52004A757A /* KiltCalc.key in Resources */,
 				91E7B6D02A0D442F004A757A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,7 +349,7 @@
 				916AF6632A267528009484DA /* Stack.swift in Sources */,
 				918628C92A2E6FF000FA781D /* Entry.swift in Sources */,
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
-				91E7B6CC2A0D4428004A757A /* InchCalcApp.swift in Sources */,
+				91E7B6CC2A0D4428004A757A /* KiltCalcApp.swift in Sources */,
 				91E3C5B72A1FE18D0098BAFC /* ImperialFormatter.swift in Sources */,
 				9190F7AD2A292CA60008E40A /* Expression.swift in Sources */,
 				916AF6602A252460009484DA /* ImperialUnit.swift in Sources */,
@@ -379,7 +379,7 @@
 /* Begin PBXTargetDependency section */
 		91E7B6DA2A0D442F004A757A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 91E7B6C72A0D4428004A757A /* InchCalc */;
+			target = 91E7B6C72A0D4428004A757A /* KiltCalc */;
 			targetProxy = 91E7B6D92A0D442F004A757A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -506,7 +506,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"InchCalc/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"KiltCalc/Preview Content\"";
 				DEVELOPMENT_TEAM = 7B9VB3YTHK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -520,7 +520,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xp123.InchCalc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xp123.KiltCalc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -535,7 +535,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"InchCalc/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"KiltCalc/Preview Content\"";
 				DEVELOPMENT_TEAM = 7B9VB3YTHK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -549,7 +549,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xp123.InchCalc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xp123.KiltCalc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -568,12 +568,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xp123.InchCalcTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xp123.KiltCalcTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InchCalc.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InchCalc";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KiltCalc.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KiltCalc";
 			};
 			name = Debug;
 		};
@@ -588,19 +588,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xp123.InchCalcTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xp123.KiltCalcTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InchCalc.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InchCalc";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KiltCalc.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KiltCalc";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		91E7B6C32A0D4428004A757A /* Build configuration list for PBXProject "InchCalc" */ = {
+		91E7B6C32A0D4428004A757A /* Build configuration list for PBXProject "KiltCalc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91E7B6EA2A0D4430004A757A /* Debug */,
@@ -609,7 +609,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91E7B6EC2A0D4430004A757A /* Build configuration list for PBXNativeTarget "InchCalc" */ = {
+		91E7B6EC2A0D4430004A757A /* Build configuration list for PBXNativeTarget "KiltCalc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91E7B6ED2A0D4430004A757A /* Debug */,
@@ -618,7 +618,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91E7B6EF2A0D4430004A757A /* Build configuration list for PBXNativeTarget "InchCalcTests" */ = {
+		91E7B6EF2A0D4430004A757A /* Build configuration list for PBXNativeTarget "KiltCalcTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91E7B6F02A0D4430004A757A /* Debug */,

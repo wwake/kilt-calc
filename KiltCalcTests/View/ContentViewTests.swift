@@ -3,7 +3,7 @@ import SwiftUI
 import ViewInspector
 import XCTest
 
-@testable import InchCalc
+@testable import KiltCalc
 
 extension XCTestCase {
   func check<Input, Output>(

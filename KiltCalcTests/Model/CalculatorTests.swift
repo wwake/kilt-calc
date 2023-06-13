@@ -1,4 +1,4 @@
-@testable import InchCalc
+@testable import KiltCalc
 import XCTest
 
 final class CalculatorTests: XCTestCase {

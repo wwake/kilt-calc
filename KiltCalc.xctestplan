@@ -11,17 +11,17 @@
   "defaultOptions" : {
     "codeCoverage" : false,
     "targetForVariableExpansion" : {
-      "containerPath" : "container:InchCalc.xcodeproj",
+      "containerPath" : "container:KiltCalc.xcodeproj",
       "identifier" : "91E7B6C72A0D4428004A757A",
-      "name" : "InchCalc"
+      "name" : "KiltCalc"
     }
   },
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:InchCalc.xcodeproj",
+        "containerPath" : "container:KiltCalc.xcodeproj",
         "identifier" : "91E7B6D72A0D442F004A757A",
-        "name" : "InchCalcTests"
+        "name" : "KiltCalcTests"
       }
     }
   ],
