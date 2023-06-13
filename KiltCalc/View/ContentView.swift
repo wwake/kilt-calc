@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches
+
   internal var didAppear: ((Self) -> Void)? // for ViewInspector
 
   var keypad = Keypad()

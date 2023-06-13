@@ -18,7 +18,7 @@
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
 
-CALC-23-13: 2023-06-13 - Show As
+CALC-23-13: 2023-06-13 - Choose Units for Display
 * [Off camera: Tweak "Show As" wording]
 * [Off camera: rename to KiltCalc]
 * [Off camera: Add onDisplay() as per ViewInspector instructions about @State - but still have intermittent failures]

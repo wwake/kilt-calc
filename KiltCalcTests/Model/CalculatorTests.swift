@@ -204,4 +204,26 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "error - unbalanced parentheses")
   }
+
+  func test_DefaultsToDisplayInches() {
+    calc.imperialFormat = ImperialFormatter.yardFeetInches
+    calc.enter(.digit(6))
+    calc.enter(.digit(3))
+    calc.enter(.unit(.inch))
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "1 yd 2 ft 3 in")
+  }
+
+  func test_ChangingUnitDisplay() {
+    calc.imperialFormat = ImperialFormatter.inches
+
+    calc.enter(.digit(6))
+    calc.enter(.digit(3))
+    calc.enter(.unit(.inch))
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "63 in")
+
+    calc.imperialFormat = ImperialFormatter.yardFeetInches
+    XCTAssertEqual(calc.display, "1 yd 2 ft 3 in")
+  }
 }

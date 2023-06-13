@@ -3,13 +3,16 @@ import Foundation
 public class Calculator: ObservableObject {
   @Published private(set) var result = Value.number(0)
   @Published private(set) var input = InputBuffer()
+
+  @Published public var imperialFormat = ImperialFormatter.yardFeetInches
+
   let valueFormatter = ValueFormatter()
 
   public var display: String {
     if !input.isEmpty {
       return input.toString().trimmingCharacters(in: .whitespaces)
     }
-    return valueFormatter.format(ImperialFormatter.asYardFeetInches, result)
+    return valueFormatter.format(imperialFormat.formatter, result)
   }
 
   private func clear() {
