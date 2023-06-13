@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedShowAs: ImperialFormatter = .inches
+  internal var didAppear: ((Self) -> Void)? // for ViewInspector
 
   var keypad = Keypad()
 
@@ -16,12 +17,12 @@ struct ContentView: View {
         .frame(width: 330, alignment: .trailing)
         .border(Color.black)
 
-      Picker("Flavor", selection: $selectedShowAs) {
-        ForEach(ImperialFormatter.allCases) {
-          Text($0.rawValue)
+        Picker("Flavor", selection: $selectedShowAs) {
+          ForEach(ImperialFormatter.allCases) {
+            Text($0.rawValue)
+          }
         }
-      }
-      .pickerStyle(.menu)
+              .pickerStyle(.menu)
 
       LazyVGrid(columns: columns) {
         ForEach(keypad.contents, id: \.self) { row in
@@ -37,6 +38,7 @@ struct ContentView: View {
         }
       }
     }
+    .onAppear { self.didAppear?(self) } // for ViewInspector
     .font(.largeTitle)
     .padding()
   }
