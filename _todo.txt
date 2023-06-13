@@ -1,5 +1,23 @@
-* Set result type ('show as')
-* Rounding
+* Rounding picker (1/8, 1/16 to start)
+* Round to 8ths
+* Show "scoosh" characters - ⊕ (rounded down), ⊖ (rounded up)
+* Use unicode eighths eg ⅜
+* Round to 16ths, format them somehow
+Rounding
+
+0.125 = 1/8
+0.135 in   => 1/8   (+ 0.1 in)
+0.2 => 2/8    (-0.05 in)
+0.25 = 2/8
+
+30" waist - 15"
+
+50 * 0.1 in = 5 in
+
+1/8 in (+) ⊕
+2/8 in (-) ⊖
+
+Round: 1/8, 1/16, 0.1, 0.01
 
 * Make calculator have a state machine for valid expressions (not including balancing parentheses) - or state machine plus parenthesis counter
 * Disable calculator buttons that can't be used (e.g., no ')' if there's not been a '(')
@@ -22,6 +40,11 @@ CALC-23-13: 2023-06-13 - Choose Units for Display
 * [Off camera: Tweak "Show As" wording]
 * [Off camera: rename to KiltCalc]
 * [Off camera: Add onDisplay() as per ViewInspector instructions about @State - but still have intermittent failures]
+
+Unit Display
+* Set unit display format with picker; default to inches
+
+Rounding
 
 CALC-23-12: 2023-06-12 - (Unbalanced Parentheses))
 * Parenthesis error checking

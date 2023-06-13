@@ -3,12 +3,15 @@ import SwiftUI
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches
+  @State private var selectedRounding: Int = 8
 
   internal var didAppear: ((Self) -> Void)? // for ViewInspector
 
   var keypad = Keypad()
 
   let columns = Array(repeating: GridItem(.flexible()), count: 5)
+
+  let roundingDenominators = [8, 16]
 
   var body: some View {
     VStack {
@@ -18,6 +21,7 @@ struct ContentView: View {
         .frame(width: 330, alignment: .trailing)
         .border(Color.black)
 
+      HStack {
         Picker("Unit Format", selection: $selectedUnitFormat) {
           ForEach(ImperialFormatter.allCases) {
             Text($0.rawValue)
@@ -28,6 +32,18 @@ struct ContentView: View {
         }
         .accessibilityLabel("unitFormat")
         .pickerStyle(.menu)
+
+        Picker("Rounding", selection: $selectedRounding) {
+          ForEach(roundingDenominators, id: \.self) {
+            Text("Round: 1/\($0)").tag($0)
+          }
+        }
+        .onChange(of: selectedRounding) {
+          print($0)
+        }
+        .accessibilityLabel("rounding")
+        .pickerStyle(.menu)
+      }
 
       LazyVGrid(columns: columns) {
         ForEach(keypad.contents, id: \.self) { row in
