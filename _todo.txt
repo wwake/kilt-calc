@@ -20,6 +20,7 @@
 
 CALC-23-13: 2023-06-13 - Show As
 * [Off camera: Tweak "Show As" wording]
+* [Off camera: rename to KiltCalc]
 
 CALC-23-12: 2023-06-12 - (Unbalanced Parentheses))
 * Parenthesis error checking
