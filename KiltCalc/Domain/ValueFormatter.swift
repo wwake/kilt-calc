@@ -2,6 +2,7 @@ import Foundation
 
 public struct ValueFormatter {
   let formatter: NumberFormatter
+  let roundingDenominator = 8
 
   public init() {
     let formatter = NumberFormatter()
@@ -11,13 +12,29 @@ public struct ValueFormatter {
     self.formatter = formatter
   }
 
+  fileprivate func formatWithFraction(_ aNumber: (Double)) -> String {
+    let nonFractionString = formatter.string(from: NSNumber(value: aNumber)) ?? "internal error"
+    if nonFractionString.wholeMatch(of: /.*[A-Za-z]$/) != nil { return nonFractionString }
+
+    let fraction = aNumber.truncatingRemainder(dividingBy: 1)
+    let numerator = Int(round(fraction * Double(roundingDenominator)))
+
+    if numerator == 0 || numerator == roundingDenominator {
+      return nonFractionString
+    }
+    if nonFractionString == "0" {
+      return "\(numerator)/\(roundingDenominator)"
+    }
+    return "\(nonFractionString)·\(numerator)/\(roundingDenominator)"
+  }
+
   public func format(_ imperialFormatter: ImperialFormatterFunction, _ value: Value) -> String {
     switch value {
     case .error(let message):
       return message
 
     case .number(let aNumber):
-      let result = formatter.string(from: NSNumber(value: aNumber)) ?? "internal error"
+      let result = formatWithFraction(aNumber)
       return "\(result)"
 
     case .inches(let theInches):

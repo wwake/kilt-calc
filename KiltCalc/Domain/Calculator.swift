@@ -5,6 +5,7 @@ public class Calculator: ObservableObject {
   @Published private(set) var input = InputBuffer()
 
   @Published public var imperialFormat = ImperialFormatter.inches
+  @Published public var roundingDenominator = 8
 
   let valueFormatter = ValueFormatter()
 

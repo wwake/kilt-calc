@@ -1,8 +1,8 @@
-* Rounding picker (1/8, 1/16 to start)
-* Round to 8ths
+* Round to 8ths - does number formatter also round?
 * Show "scoosh" characters - ⊕ (rounded down), ⊖ (rounded up)
 * Use unicode eighths eg ⅜
 * Round to 16ths, format them somehow
+* Rounding should be to 16ths, but simplifying any even 8ths (12/16 => 6/8)
 Rounding
 
 0.125 = 1/8
@@ -45,6 +45,9 @@ Unit Display
 * Set unit display format with picker; default to inches
 
 Rounding
+* Rounding picker (1/8, 1/16 to start)
+* Rounding to 8ths mostly done - still need to test corner cases
+* [Off camera: make CalculatorTests use number() where it simplifies tests]
 
 CALC-23-12: 2023-06-12 - (Unbalanced Parentheses))
 * Parenthesis error checking
