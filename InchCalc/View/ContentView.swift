@@ -18,7 +18,7 @@ struct ContentView: View {
 
       Picker("Flavor", selection: $selectedShowAs) {
         ForEach(ImperialFormatter.allCases) {
-          Text($0.rawValue.capitalized)
+          Text($0.rawValue)
         }
       }
       .pickerStyle(.menu)
@@ -28,7 +28,7 @@ struct ContentView: View {
           Group { // GridRow {
             ForEach(row) { key in
               Button(key.name) {
-                calculator.enter(key.entry)
+               calculator.enter(key.entry)
               }
               .frame(width: 60, height: 60)
               .background(Color("KeyColor"))

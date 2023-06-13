@@ -4,7 +4,7 @@
 * Make calculator have a state machine for valid expressions (not including balancing parentheses) - or state machine plus parenthesis counter
 * Disable calculator buttons that can't be used (e.g., no ')' if there's not been a '(')
 * Ways to show parends need work - hint counter? grayed-out right parends? long press to close all? automatically insert?
-* If you start with an operator, you should load the previous result as the first operand
+* If you start with an operator, you should load the previous result as the first operand (?) - or pointing hand to previous result ?
 * Separate error field, so we can keep editing?
 
 
@@ -18,10 +18,14 @@
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
 
+CALC-23-13: 2023-06-13 - Show As
+* [Off camera: Tweak "Show As" wording]
+
 CALC-23-12: 2023-06-12 - (Unbalanced Parentheses))
 * Parenthesis error checking
-* Make evaluate pull sequence of number and unit into a value, so all the operands don't have to check for it
+* Make evaluate pull sequence of number and unit into a value, so all the operators don't have to check for it
 * Did a little exploration of why UI tests are slow (inconclusive)
+* Add a picker for "show as" - either inches or yards-feet-inches (UI only)
 
 CALC-23-11: 2023-06-07 - Negation
 * Remove Operator.make()

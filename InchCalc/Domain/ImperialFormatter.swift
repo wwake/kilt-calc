@@ -5,8 +5,8 @@ public typealias ImperialFormatterFunction = (NumberFormatter, Double) -> String
 public enum ImperialFormatter: String, CaseIterable, Identifiable {
   public var id: Self { self }
 
-  case inches = "inches"
-  case yardFeetInches = "yard-feet-inches"
+  case inches = "Display: in"
+  case yardFeetInches = "Display: yd·ft·in"
 
   static func formatNumber(_ formatter: NumberFormatter, _ value: Double, _ label: String) -> String {
     let result = formatter.string(from: NSNumber(value: value)) ?? "internal error"
