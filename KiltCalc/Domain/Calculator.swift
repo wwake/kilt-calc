@@ -4,7 +4,7 @@ public class Calculator: ObservableObject {
   @Published private(set) var result = Value.number(0)
   @Published private(set) var input = InputBuffer()
 
-  @Published public var imperialFormat = ImperialFormatter.yardFeetInches
+  @Published public var imperialFormat = ImperialFormatter.inches
 
   let valueFormatter = ValueFormatter()
 

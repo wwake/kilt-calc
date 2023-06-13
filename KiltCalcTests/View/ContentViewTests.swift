@@ -130,7 +130,7 @@ final class ContentViewTests: XCTestCase {
     }
   }
 
-  func testCalculations() throws {
+  func testCalculationsDisplayingYardFeetInches() throws {
     try check([
       EG("1=", expect: "1"),
       EG("1yd 5ft 11in =", expect: "2 yd 2 ft 11 in", "all units"),
@@ -169,7 +169,9 @@ final class ContentViewTests: XCTestCase {
       EG(")1+2=", expect: "error - unbalanced parentheses"),
       EG(")1+2(=", expect: "error - unbalanced parentheses"),
     ]) {
-      let sut = ContentView(calculator: Calculator())
+      let calculator = Calculator()
+      calculator.imperialFormat = .yardFeetInches
+      let sut = ContentView(calculator: calculator)
       try tap(sut, $0.input)
 
       XCTAssertEqual(try display(sut).string(), $0.expect, $0.message, file: $0.file, line: $0.line)

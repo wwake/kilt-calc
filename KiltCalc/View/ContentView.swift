@@ -23,6 +23,10 @@ struct ContentView: View {
             Text($0.rawValue)
           }
         }
+        .onChange(of: selectedUnitFormat) {
+          calculator.imperialFormat = $0
+        }
+        .accessibilityLabel("unitFormat")
         .pickerStyle(.menu)
 
       LazyVGrid(columns: columns) {

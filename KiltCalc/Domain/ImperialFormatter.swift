@@ -2,7 +2,7 @@ import Foundation
 
 public typealias ImperialFormatterFunction = (NumberFormatter, Double) -> String
 
-public enum ImperialFormatter: String, CaseIterable, Identifiable {
+public enum ImperialFormatter: String, CaseIterable, Equatable, Identifiable {
   public var id: Self { self }
 
   case inches = "Display: in"

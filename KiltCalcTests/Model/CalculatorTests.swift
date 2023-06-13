@@ -118,7 +118,7 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.digit(6))
     calc.enter(.unit(.inch))
     calc.enter(.equals)
-    XCTAssertEqual(calc.display, "1 ft 3 in")
+    XCTAssertEqual(calc.display, "15 in")
   }
 
   func test_OperatorShowsInDisplay() {
@@ -166,7 +166,7 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.unit(.inch))
     calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
     calc.enter(.equals)
-    XCTAssertEqual(calc.display, "-1 yd -2 ft -3 in")
+    XCTAssertEqual(calc.display, "-63 in")
   }
 
   func test_DigitAfterUnaryOpOnUnitIsLeftThere() {
@@ -206,24 +206,24 @@ final class CalculatorTests: XCTestCase {
   }
 
   func test_DefaultsToDisplayInches() {
-    calc.imperialFormat = ImperialFormatter.yardFeetInches
-    calc.enter(.digit(6))
-    calc.enter(.digit(3))
-    calc.enter(.unit(.inch))
-    calc.enter(.equals)
-    XCTAssertEqual(calc.display, "1 yd 2 ft 3 in")
-  }
-
-  func test_ChangingUnitDisplay() {
     calc.imperialFormat = ImperialFormatter.inches
-
     calc.enter(.digit(6))
     calc.enter(.digit(3))
     calc.enter(.unit(.inch))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "63 in")
+  }
 
+  func test_ChangingUnitDisplay() {
     calc.imperialFormat = ImperialFormatter.yardFeetInches
+
+    calc.enter(.digit(6))
+    calc.enter(.digit(3))
+    calc.enter(.unit(.inch))
+    calc.enter(.equals)
     XCTAssertEqual(calc.display, "1 yd 2 ft 3 in")
+
+    calc.imperialFormat = ImperialFormatter.inches
+    XCTAssertEqual(calc.display, "63 in")
   }
 }
