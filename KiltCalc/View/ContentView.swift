@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
-  @State private var selectedShowAs: ImperialFormatter = .inches
+  @State private var selectedUnitFormat: ImperialFormatter = .inches
   internal var didAppear: ((Self) -> Void)? // for ViewInspector
 
   var keypad = Keypad()
@@ -17,12 +17,12 @@ struct ContentView: View {
         .frame(width: 330, alignment: .trailing)
         .border(Color.black)
 
-        Picker("Flavor", selection: $selectedShowAs) {
+        Picker("Unit Format", selection: $selectedUnitFormat) {
           ForEach(ImperialFormatter.allCases) {
             Text($0.rawValue)
           }
         }
-              .pickerStyle(.menu)
+        .pickerStyle(.menu)
 
       LazyVGrid(columns: columns) {
         ForEach(keypad.contents, id: \.self) { row in
