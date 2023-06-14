@@ -32,17 +32,6 @@ struct ContentView: View {
         }
         .accessibilityLabel("unitFormat")
         .pickerStyle(.menu)
-
-        Picker("Rounding", selection: $selectedRounding) {
-          ForEach(roundingDenominators, id: \.self) {
-            Text("Round: 1/\($0)").tag($0)
-          }
-        }
-        .onChange(of: selectedRounding) {
-          print($0)
-        }
-        .accessibilityLabel("rounding")
-        .pickerStyle(.menu)
       }
 
       LazyVGrid(columns: columns) {
