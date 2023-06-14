@@ -8,7 +8,7 @@ final class CalculatorTests: XCTestCase {
   private let divideOp = Entry.binary(Operator(name: "÷", precedence: 5, evaluate: /))
   private let negate = Entry.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() }))
 
-  private func number(_ digits: String) {
+  private func enter(_ digits: String) {
     digits.forEach { c in
       calc.enter(.digit(Int(String(c))!))
     }
@@ -19,7 +19,7 @@ final class CalculatorTests: XCTestCase {
   }
 
   func test_displayChangesWhenDigitsAdded() {
-    number("42")
+    enter("42")
     XCTAssertEqual(calc.display, "42")
   }
 
@@ -151,7 +151,7 @@ final class CalculatorTests: XCTestCase {
   }
 
   func test_PlusOrMinusOnNumber() {
-    number("64")
+    enter("64")
     calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "-64")
@@ -168,7 +168,7 @@ final class CalculatorTests: XCTestCase {
   func test_UnitValueThenUnaryOp() {
     calc.enter(.digit(1))
     calc.enter(.unit(.yard))
-    number("27")
+    enter("27")
     calc.enter(.unit(.inch))
     calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
     calc.enter(.equals)
@@ -213,7 +213,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_DefaultsToDisplayInches() {
     calc.imperialFormat = ImperialFormatter.inches
-    number("63")
+    enter("63")
     calc.enter(.unit(.inch))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "63 in")
@@ -222,7 +222,7 @@ final class CalculatorTests: XCTestCase {
   func test_ChangingUnitDisplay() {
     calc.imperialFormat = ImperialFormatter.yardFeetInches
 
-    number("63")
+    enter("63")
     calc.enter(.unit(.inch))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "1 yd 2 ft 3 in")
@@ -241,7 +241,7 @@ final class CalculatorTests: XCTestCase {
   }
 
   func test_RoundingTo8thsWithIntegerPart() {
-    number("25")
+    enter("25")
     calc.enter(divideOp)
     calc.enter(.digit(8))
     calc.enter(.equals)
@@ -250,38 +250,38 @@ final class CalculatorTests: XCTestCase {
   }
 
   func test_RoundingTo8thsWithNumeratorRoundedTo8() {
-    number("199")
+    enter("199")
     calc.enter(divideOp)
-    number("100")
+    enter("100")
     calc.enter(.equals)
 
     XCTAssertEqual(calc.display, "2")
   }
 
   func test_RoundingNegativeNumbers() {
-    number("199")
+    enter("199")
     calc.enter(negate)
     calc.enter(divideOp)
-    number("100")
+    enter("100")
     calc.enter(.equals)
 
     XCTAssertEqual(calc.display, "-2")
   }
 
   func test_RoundingFractionOnlyNegativeNumbers() {
-    number("99")
+    enter("99")
     calc.enter(negate)
     calc.enter(divideOp)
-    number("100")
+    enter("100")
     calc.enter(.equals)
 
     XCTAssertEqual(calc.display, "-1")
   }
 
   func test_RoundingTo16thsWithIntegerPart() {
-    number("15")
+    enter("15")
     calc.enter(divideOp)
-    number("16")
+    enter("16")
     calc.enter(.equals)
 
     XCTAssertEqual(calc.display, "15/16")
