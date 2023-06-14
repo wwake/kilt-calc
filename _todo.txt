@@ -1,4 +1,5 @@
 * Show "skosh" characters - ⊕ (rounded down), ⊖ (rounded up)
+* Make unit formatter use the new numeric formatting
 Rounding
 
 0.125 = 1/8
@@ -36,6 +37,7 @@ CALC-23-14: 2023-06-14 - Rounding to 8ths and 16ths
 * modf
 * Round to 8ths and 16ths
 * Rounding should be to 16ths, but simplifying any even 8ths (12/16 => 6/8)
+* Show "skosh" characters - ⊕ (rounded down), ⊖ (rounded up)
 
 
 CALC-23-13: 2023-06-13 - Choose Units for Display

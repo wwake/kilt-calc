@@ -69,16 +69,16 @@ public struct ValueFormatter {
 
     let signMarker = signum < 0 ? "-" : ""
 
+    var result = signMarker
     if numerator == 0 || numerator == denominator {
-      return "\(signMarker)\(wholeNumber)\(adjustment)"
-    }
-//    if numerator == denominator {
-//      return "\(signMarker)\(wholeNumber + signum)\(adjustment)"
-//    }
+      result += "\(wholeNumber)"
+    } else
     if wholeNumber == 0 {
-      return "\(signMarker)\(numerator)/\(denominator)\(adjustment)"
+      result += "\(numerator)/\(denominator)"
+    } else {
+      result += "\(wholeNumber)·\(numerator)/\(denominator)"
     }
-    return "\(signMarker)\(wholeNumber)·\(numerator)/\(denominator)\(adjustment)"
+    return result + adjustment
   }
 
   public func format(_ imperialFormatter: ImperialFormatterFunction, _ value: Value) -> String {
