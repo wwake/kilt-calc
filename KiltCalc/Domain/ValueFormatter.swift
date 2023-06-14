@@ -27,7 +27,7 @@ public struct ValueFormatter {
     if wholeNumber == 0 {
       return "\(numerator)/\(roundingDenominator)"
     }
-    return "\(nonFractionString)·\(numerator)/\(roundingDenominator)"
+    return "\(wholeNumber)·\(numerator)/\(roundingDenominator)"
   }
 
   public func format(_ imperialFormatter: ImperialFormatterFunction, _ value: Value) -> String {
