@@ -153,7 +153,7 @@ final class ContentViewTests: XCTestCase {
       EG("12~=", expect: "-12"),
 
       EG("0=", expect: "0"),
-      EG("0~=", expect: "-0"),
+      EG("0~=", expect: "0"),
       EG("0in~=", expect: "0 in"),
 
       EG("(2+1)*3=", expect: "9"),

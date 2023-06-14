@@ -13,16 +13,20 @@ public struct ValueFormatter {
   }
 
   fileprivate func formatWithFraction(_ aNumber: (Double)) -> String {
-    let nonFractionString = formatter.string(from: NSNumber(value: aNumber)) ?? "internal error"
-    if nonFractionString.wholeMatch(of: /.*[A-Za-z]$/) != nil { return nonFractionString }
+    if aNumber.isNaN || aNumber.isInfinite {
+      return formatter.string(from: NSNumber(value: aNumber)) ?? "internal error"
+    }
 
     let (whole, fraction) = modf(aNumber)
     let wholeNumber = Int(whole)
 
     let numerator = Int(round(fraction * Double(roundingDenominator)))
 
-    if numerator == 0 || numerator == roundingDenominator {
-      return nonFractionString
+    if numerator == 0 {
+      return "\(wholeNumber)"
+    }
+    if numerator == roundingDenominator {
+      return "\(wholeNumber + 1)"
     }
     if wholeNumber == 0 {
       return "\(numerator)/\(roundingDenominator)"
