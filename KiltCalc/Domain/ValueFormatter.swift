@@ -16,13 +16,15 @@ public struct ValueFormatter {
     let nonFractionString = formatter.string(from: NSNumber(value: aNumber)) ?? "internal error"
     if nonFractionString.wholeMatch(of: /.*[A-Za-z]$/) != nil { return nonFractionString }
 
-    let fraction = aNumber.truncatingRemainder(dividingBy: 1)
+    let (whole, fraction) = modf(aNumber)
+    let wholeNumber = Int(whole)
+
     let numerator = Int(round(fraction * Double(roundingDenominator)))
 
     if numerator == 0 || numerator == roundingDenominator {
       return nonFractionString
     }
-    if nonFractionString == "0" {
+    if wholeNumber == 0 {
       return "\(numerator)/\(roundingDenominator)"
     }
     return "\(nonFractionString)·\(numerator)/\(roundingDenominator)"

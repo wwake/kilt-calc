@@ -1,8 +1,9 @@
-* Round to 8ths - does number formatter also round?
-* Show "scoosh" characters - ⊕ (rounded down), ⊖ (rounded up)
-* Use unicode eighths eg ⅜
-* Round to 16ths, format them somehow
+* modf
+* Round to 8ths and 16ths
 * Rounding should be to 16ths, but simplifying any even 8ths (12/16 => 6/8)
+* Show "scoosh" characters - ⊕ (rounded down), ⊖ (rounded up)
+* Round to 8ths - does number formatter also round?
+* Plug-ins for rounding eg whole number or decimal
 Rounding
 
 0.125 = 1/8
@@ -35,6 +36,9 @@ Round: 1/8, 1/16, 0.1, 0.01
 * Update EGTest to take new check() with try from ContentViewTests
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-14: 2023-06-14 - Rounding to 8ths and 16ths
+
 
 CALC-23-13: 2023-06-13 - Choose Units for Display
 * [Off camera: Tweak "Show As" wording]
