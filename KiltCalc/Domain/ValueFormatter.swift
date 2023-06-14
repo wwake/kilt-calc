@@ -2,7 +2,7 @@ import Foundation
 
 public struct ValueFormatter {
   let formatter: NumberFormatter
-  let roundingDenominator = 8
+  let roundingDenominator = 16
 
   public init() {
     let formatter = NumberFormatter()
@@ -21,19 +21,25 @@ public struct ValueFormatter {
     let sign = aNumber < 0 ? -1 : 1
     let wholeNumber = Int(whole)
 
-    let numerator = Int(round(abs(fraction) * Double(roundingDenominator)))
+    var denominator = roundingDenominator
+    var numerator = Int(round(abs(fraction) * Double(denominator)))
+
+    if numerator.isMultiple(of: 2) {
+      numerator /= 2
+      denominator /= 2
+    }
 
     if numerator == 0 {
       return "\(wholeNumber)"
     }
-    if numerator == roundingDenominator {
+    if numerator == denominator {
       return "\(wholeNumber + sign)"
     }
     if wholeNumber == 0 {
       let signMarker = sign < 0 ? "-" : ""
-      return "\(signMarker)\(numerator)/\(roundingDenominator)"
+      return "\(signMarker)\(numerator)/\(denominator)"
     }
-    return "\(wholeNumber)·\(numerator)/\(roundingDenominator)"
+    return "\(wholeNumber)·\(numerator)/\(denominator)"
   }
 
   public func format(_ imperialFormatter: ImperialFormatterFunction, _ value: Value) -> String {

@@ -277,4 +277,13 @@ final class CalculatorTests: XCTestCase {
 
     XCTAssertEqual(calc.display, "-1")
   }
+
+  func test_RoundingTo16thsWithIntegerPart() {
+    number("15")
+    calc.enter(divideOp)
+    number("16")
+    calc.enter(.equals)
+
+    XCTAssertEqual(calc.display, "15/16")
+  }
 }
