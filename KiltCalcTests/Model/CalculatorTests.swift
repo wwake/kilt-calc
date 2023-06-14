@@ -6,6 +6,7 @@ final class CalculatorTests: XCTestCase {
   private let addOp = Entry.binary(Operator(name: "+", precedence: 3, evaluate: +))
   private let multiplyOp = Entry.binary(Operator(name: "*", precedence: 5, evaluate: *))
   private let divideOp = Entry.binary(Operator(name: "÷", precedence: 5, evaluate: /))
+  private let negate = Entry.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() }))
 
   private func number(_ digits: String) {
     digits.forEach { c in
@@ -177,7 +178,7 @@ final class CalculatorTests: XCTestCase {
   func test_DigitAfterUnaryOpOnUnitIsLeftThere() {
     calc.enter(.digit(6))
     calc.enter(.unit(.inch))
-    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(negate)
     calc.enter(.digit(4))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "numbers and units don't match")
@@ -255,5 +256,25 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.equals)
 
     XCTAssertEqual(calc.display, "2")
+  }
+
+  func test_RoundingNegativeNumbers() {
+    number("199")
+    calc.enter(negate)
+    calc.enter(divideOp)
+    number("100")
+    calc.enter(.equals)
+
+    XCTAssertEqual(calc.display, "-2")
+  }
+
+  func test_RoundingFractionOnlyNegativeNumbers() {
+    number("99")
+    calc.enter(negate)
+    calc.enter(divideOp)
+    number("100")
+    calc.enter(.equals)
+
+    XCTAssertEqual(calc.display, "-1")
   }
 }

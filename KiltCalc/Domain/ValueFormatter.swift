@@ -18,18 +18,20 @@ public struct ValueFormatter {
     }
 
     let (whole, fraction) = modf(aNumber)
+    let sign = aNumber < 0 ? -1 : 1
     let wholeNumber = Int(whole)
 
-    let numerator = Int(round(fraction * Double(roundingDenominator)))
+    let numerator = Int(round(abs(fraction) * Double(roundingDenominator)))
 
     if numerator == 0 {
       return "\(wholeNumber)"
     }
     if numerator == roundingDenominator {
-      return "\(wholeNumber + 1)"
+      return "\(wholeNumber + sign)"
     }
     if wholeNumber == 0 {
-      return "\(numerator)/\(roundingDenominator)"
+      let signMarker = sign < 0 ? "-" : ""
+      return "\(signMarker)\(numerator)/\(roundingDenominator)"
     }
     return "\(wholeNumber)·\(numerator)/\(roundingDenominator)"
   }
