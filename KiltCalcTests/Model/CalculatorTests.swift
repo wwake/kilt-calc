@@ -152,14 +152,14 @@ final class CalculatorTests: XCTestCase {
 
   func test_PlusOrMinusOnNumber() {
     enter("64")
-    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(negate)
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "-64")
   }
 
   func test_DigitAfterUnaryOpIsPlacedBeforeIt() {
     calc.enter(.digit(6))
-    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(negate)
     calc.enter(.digit(4))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "-64")
@@ -170,7 +170,7 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.unit(.yard))
     enter("27")
     calc.enter(.unit(.inch))
-    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(negate)
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "-63 in")
   }
@@ -186,7 +186,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_DigitPlusOrMinusAddDigit_ShouldNegateAndAdd() {
     calc.enter(.digit(6))
-    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(negate)
     calc.enter(addOp)
     calc.enter(.digit(4))
     calc.enter(.equals)
@@ -194,7 +194,7 @@ final class CalculatorTests: XCTestCase {
   }
 
   func test_PlusOrMinusFirst_IsError() {
-    calc.enter(.unary(Operator(name: "plusOrMinus", precedence: 99, evaluate: { a, _ in a.negate() })))
+    calc.enter(negate)
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "no value found")
   }
@@ -255,7 +255,7 @@ final class CalculatorTests: XCTestCase {
     enter("100")
     calc.enter(.equals)
 
-    XCTAssertEqual(calc.display, "2")
+    XCTAssertEqual(calc.display, "2⊖")
   }
 
   func test_RoundingNegativeNumbers() {
@@ -265,7 +265,17 @@ final class CalculatorTests: XCTestCase {
     enter("100")
     calc.enter(.equals)
 
-    XCTAssertEqual(calc.display, "-2")
+    XCTAssertEqual(calc.display, "-2⊕")
+  }
+
+  func test_RoundingNegativeNumbersSlightlyBig() {
+    enter("201")
+    calc.enter(negate)
+    calc.enter(divideOp)
+    enter("100")
+    calc.enter(.equals)
+
+    XCTAssertEqual(calc.display, "-2⊖")
   }
 
   func test_RoundingFractionOnlyNegativeNumbers() {
@@ -275,7 +285,7 @@ final class CalculatorTests: XCTestCase {
     enter("100")
     calc.enter(.equals)
 
-    XCTAssertEqual(calc.display, "-1")
+    XCTAssertEqual(calc.display, "-1⊕")
   }
 
   func test_RoundingTo16thsWithIntegerPart() {
@@ -285,5 +295,23 @@ final class CalculatorTests: XCTestCase {
     calc.enter(.equals)
 
     XCTAssertEqual(calc.display, "15/16")
+  }
+
+  func test_RoundingTo16thsWithPlus() {
+    enter("154")
+    calc.enter(divideOp)
+    enter("160")
+    calc.enter(.equals)
+
+    XCTAssertEqual(calc.display, "15/16⊕")
+  }
+
+  func test_RoundingTo16thsWithMinus() {
+    enter("148")
+    calc.enter(divideOp)
+    enter("160")
+    calc.enter(.equals)
+
+    XCTAssertEqual(calc.display, "15/16⊖")
   }
 }

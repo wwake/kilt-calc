@@ -4,6 +4,10 @@ public struct SplitDouble {
   public var signum: Int
   public var wholeNumber: Int
   public var fraction: Double
+
+  public var asDouble: Double {
+    Double(signum) * (Double(wholeNumber) + fraction)
+  }
 }
 
 public struct ValueFormatter {
@@ -22,7 +26,18 @@ public struct ValueFormatter {
     let (whole, fraction) = modf(aNumber)
     let sign = aNumber < 0 ? -1 : 1
     let wholeNumber = Int(whole)
-    return SplitDouble(signum: sign, wholeNumber: wholeNumber, fraction: fraction)
+    return SplitDouble(signum: sign, wholeNumber: abs(wholeNumber), fraction: abs(fraction))
+  }
+
+  fileprivate func findAdjustment(_ aNumber: Double, _ split: SplitDouble) -> String {
+    let computed = split.asDouble
+    if computed < aNumber {
+      return "⊕"
+    }
+    if computed > aNumber {
+      return "⊖"
+    }
+    return ""
   }
 
   fileprivate func formatWithFraction(_ aNumber: (Double)) -> String {
@@ -32,28 +47,38 @@ public struct ValueFormatter {
 
     let splitNumber = split(aNumber)
     let signum = splitNumber.signum
-    let wholeNumber = splitNumber.wholeNumber
+    var wholeNumber = splitNumber.wholeNumber
     let fraction = splitNumber.fraction
 
     var denominator = roundingDenominator
-    var numerator = Int(round(abs(fraction) * Double(denominator)))
+    var numerator = Int(round(fraction * Double(denominator)))
 
     if numerator.isMultiple(of: 2) {
       numerator /= 2
       denominator /= 2
     }
 
-    if numerator == 0 {
-      return "\(wholeNumber)"
-    }
     if numerator == denominator {
-      return "\(wholeNumber + signum)"
+      wholeNumber += 1
     }
+
+    let adjustment = findAdjustment(
+      aNumber,
+      SplitDouble(signum: signum, wholeNumber: wholeNumber, fraction: Double(numerator) / Double(denominator))
+    )
+
+    let signMarker = signum < 0 ? "-" : ""
+
+    if numerator == 0 || numerator == denominator {
+      return "\(signMarker)\(wholeNumber)\(adjustment)"
+    }
+//    if numerator == denominator {
+//      return "\(signMarker)\(wholeNumber + signum)\(adjustment)"
+//    }
     if wholeNumber == 0 {
-      let signMarker = signum < 0 ? "-" : ""
-      return "\(signMarker)\(numerator)/\(denominator)"
+      return "\(signMarker)\(numerator)/\(denominator)\(adjustment)"
     }
-    return "\(wholeNumber)·\(numerator)/\(denominator)"
+    return "\(signMarker)\(wholeNumber)·\(numerator)/\(denominator)\(adjustment)"
   }
 
   public func format(_ imperialFormatter: ImperialFormatterFunction, _ value: Value) -> String {
