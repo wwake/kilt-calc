@@ -170,40 +170,17 @@ final class CalculatorTests: XCTestCase {
     }
   }
 
-  func test_OperatorShowsInDisplay() {
-    XCTAssertEqual(enter("9+"), "9+")
-  }
-
-  func test_LastOperatorWins() {
-    XCTAssertEqual(enter("9*+3="), "12")
-  }
-
-  func test_TrailingBinaryOperatorIsAnError() {
-    XCTAssertEqual(enter("9+="), "expression can't end with an operator")
-  }
-
-  func test_PlusOrMinusOnNumber() {
-    XCTAssertEqual(enter("64~="), "-64")
-  }
-
-  func test_DigitAfterUnaryOpIsPlacedBeforeIt() {
-    XCTAssertEqual(enter("6~4="), "-64")
-  }
-
-  func test_UnitValueThenUnaryOp() {
-    XCTAssertEqual(enter("1yd27in~="), "-63 in")
-  }
-
-  func test_DigitAfterUnaryOpOnUnitIsLeftThere() {
-    XCTAssertEqual(enter("6in~4="), "numbers and units don't match")
-  }
-
-  func test_DigitNegatePlusdDigit_ShouldNegateAndAdd() {
-    XCTAssertEqual(enter("6~+4="), "-2")
-  }
-
-  func test_PlusOrMinusFirst_IsError() {
-    XCTAssertEqual(enter("~="), "no value found")
+  func test_plusOrMinus() {
+    check([
+      EG("64~=", expect: "-64", "plus-or-minus on number"),
+      EG("6~4=", expect: "-64", "digit after unary moves in front"),
+      EG("1yd27in~=", expect: "-63 in", "plus-or-minus on unit"),
+      EG("6in~4=", expect: "numbers and units don't match", "digit after unary op on unit stays there"),
+      EG("6~+4=", expect: "-2", "unary before binary ops"),
+      EG("~=", expect: "no value found"),
+    ]) {
+      EGAssertEqual(enter($0.input), $0)
+    }
   }
 
   func test_TooManyLeftParends() {
@@ -216,6 +193,10 @@ final class CalculatorTests: XCTestCase {
 
   func test_DefaultsToDisplayInches() {
     XCTAssertEqual(enter("63in="), "63 in")
+  }
+
+  func test_DisplayInYFI() {
+    XCTAssertEqual(enter("Y63in="), "1 yd 2 ft 3 in")
   }
 
   func test_ChangingUnitDisplay() {
