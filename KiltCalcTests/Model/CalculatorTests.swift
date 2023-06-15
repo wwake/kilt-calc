@@ -201,44 +201,18 @@ final class CalculatorTests: XCTestCase {
     }
   }
 
-  func test_RoundingTo8thsWithNoIntegerPart() {
-    XCTAssertEqual(enter("3:8="), "3/8")
-  }
-
-  func test_RoundingTo8thsWithIntegerPart() {
-    XCTAssertEqual(enter("25:8="), "3·1/8")
-  }
-
-  func test_RoundingTo8thsWithNumeratorRoundedTo8() {
-    XCTAssertEqual(enter("199:100="), "2⊖")
-  }
-
-  func test_RoundingNegativeNumbers() {
-    XCTAssertEqual(enter("199~:100="), "-2⊕")
-  }
-
-  func test_RoundingNegativeNumbersSlightlyBig() {
-    XCTAssertEqual(enter("201~:100="), "-2⊖")
-  }
-
-  func test_RoundingFractionOnlyNegativeNumbers() {
-    XCTAssertEqual(enter("99~:100="), "-1⊕")
-  }
-
-  func test_RoundingTo16thsWithNoIntegerPart() {
-    XCTAssertEqual(enter("15:16="), "15/16")
-  }
-
-  func test_RoundingTo16thsWithPlus() {
-    XCTAssertEqual(enter("154:160="), "15/16⊕")
-  }
-
-  func test_RoundingTo16thsWithMinus() {
-    XCTAssertEqual(enter("148:160="), "15/16⊖")
-  }
-
   func test_Rounding() {
     check([
+      EG("3:8=", expect: "3/8", "round to 8ths w/no int part"),
+      EG("25:8=", expect: "3·1/8", "round to 8ths w/int part"),
+      EG("199:100=", expect: "2⊖", "round to 8ths w/numerator rounded to whole number"),
+      EG("199~:100=", expect: "-2⊕", "round to 8ths w/negative"),
+      EG("201~:100=", expect: "-2⊖", "round 8ths to whole number, slightly big"),
+      EG("99~:100=", expect: "-1⊕", "round negative to whole number, slightly small"),
+      EG("15:16=", expect: "15/16", "round to 16ths, no int part"),
+      EG("154:160=", expect: "15/16⊕", "round to 16ths, slightly small"),
+      EG("148:160=", expect: "15/16⊖", "round to 16ths, slightly big"),
+
       EG("I154in:160=", expect: "15/16⊕ in", "round with units - inches"),
       EG("Y5914in:160=", expect: "1 yd 15/16⊕ in", "round with units yd-ft-in"),
     ]) {
