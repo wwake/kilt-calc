@@ -237,9 +237,10 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(enter("148:160="), "15/16⊖")
   }
 
-  func test_RoundingUnits() {
+  func test_Rounding() {
     check([
-      EG("154in:160=", expect: "15/16⊕ in", "round with units"),
+      EG("I154in:160=", expect: "15/16⊕ in", "round with units - inches"),
+      EG("Y5914in:160=", expect: "1 yd 15/16⊕ in", "round with units yd-ft-in"),
     ]) {
       EGAssertEqual(enter($0.input), $0)
     }
