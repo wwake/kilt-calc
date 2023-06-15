@@ -1,5 +1,12 @@
+import EGTest
 @testable import KiltCalc
 import XCTest
+
+public func EGAssertEqual<T: Equatable, Input>(_ actual: T, _ expected: EG<Input, T>) {
+  XCTAssertEqual(
+    actual, expected.expect, expected.message, file: expected.file, line: expected.line
+  )
+}
 
 final class CalculatorTests: XCTestCase {
   private let calc = Calculator()
@@ -11,7 +18,8 @@ final class CalculatorTests: XCTestCase {
 
   private let overflowValue = String(repeating: "9", count: 350)
 
-  private func enter(_ input: String) {
+  private func enter(_ input: String) -> String {
+    let calc = Calculator()
     var firstLetter: Character = " "
 
     input.forEach { keyName in
@@ -78,201 +86,175 @@ final class CalculatorTests: XCTestCase {
       case "~":
         calc.enter(negate)
 
+      case "I":
+        calc.imperialFormat = ImperialFormatter.inches
+
+      case "Y":
+        calc.imperialFormat = ImperialFormatter.yardFeetInches
+
       default:
         // TBD: %, ., M-, M+
         calc.enter(.tbd("\(firstLetter)\(keyName)"))
         firstLetter = " "
       }
     }
+    return calc.display
   }
 
   func test_calculatorStartsZero() throws {
-    XCTAssertEqual(calc.display, "0")
+    XCTAssertEqual(Calculator().display, "0")
   }
 
-  func test_displayChangesWhenDigitsAdded() {
-    enter("42")
-    XCTAssertEqual(calc.display, "42")
+  func test_editing() {
+    check([
+      EG("", expect: "0", "display starts with 0"),
+      EG("42", expect: "42", "display changes when digits added"),
+    ]) {
+      EGAssertEqual(enter($0.input), $0)
+    }
   }
 
   func test_EqualsEvaluatesTheCurrentDisplay() {
-    enter("4=2")
-    XCTAssertEqual(calc.display, "2")
+    XCTAssertEqual(enter("4=2"), "2")
   }
 
   func test_ClearResetsDisplayAndEntering() {
-    enter("4C")
-    XCTAssertEqual(calc.display, "0")
+    XCTAssertEqual(enter("4C"), "0")
   }
 
   func test_EnterEvaluatesPendingString() {
-    enter("00=")
-    XCTAssertEqual(calc.display, "0")
+    XCTAssertEqual(enter("00="), "0")
   }
 
   func test_EnterWithoutPendingUsesZero() {
-    enter("=")
-    XCTAssertEqual(calc.display, "0")
+    XCTAssertEqual(enter("="), "0")
   }
 
-  func test_ParsingOverflowValueYieldsError() {
-    enter(overflowValue + "=")
-    XCTAssertEqual(calc.display, "number too big or too small")
+  func test_overflowHandling() {
+    check([
+      EG(overflowValue + "=", expect: "number too big or too small", "overflow"),
+      EG(overflowValue + "=C", expect: "0", "clear resets overflow"),
+    ]) {
+      EGAssertEqual(enter($0.input), $0)
+    }
   }
 
-  func test_ClearResetsError() {
-    enter(overflowValue + "=C")
-    XCTAssertEqual("0", calc.display)
+  func test_enteringUnits() {
+    check([
+      EG("3in=", expect: "3 in", "inch creates unit"),
+      EG("3in6in=", expect: "9 in", "inches can accumulate"),
+      EG("3in6=", expect: "numbers and units don't match"),
+    ]) {
+      EGAssertEqual(enter($0.input), $0)
+    }
   }
 
-  func test_InchesCreatesValueWithUnits() {
-    enter("3in=")
-    XCTAssertEqual(calc.display, "3 in")
+  func test_addition() {
+    check([
+      EG("3+6=", expect: "9", "number + number"),
+      EG("9in+6in=", expect: "15 in", "inches + inches"),
+      EG("3+6in=", expect: "error - mixing inches and numbers"),
+      EG("3in+6=", expect: "error - mixing inches and numbers"),
+    ]) {
+      EGAssertEqual(enter($0.input), $0)
+    }
   }
 
-  func test_InchesCanAccumulate() {
-    enter("3in6in=")
-    XCTAssertEqual(calc.display, "9 in")
-  }
-
-  func test_DigitsAndUnitsMustCorrespond() {
-    enter("3in6=")
-    XCTAssertEqual(calc.display, "numbers and units don't match")
-  }
-
-  func test_NumberPlusNumber() {
-    enter("3+6=")
-    XCTAssertEqual(calc.display, "9")
-  }
-
-  func test_NumberPlusInchesIsError() {
-    enter("3+6in=")
-    XCTAssertEqual(calc.display, "error - mixing inches and numbers")
-  }
-
-  func test_InchesPlusNumberIsError() {
-    enter("3in+6=")
-    XCTAssertEqual(calc.display, "error - mixing inches and numbers")
-  }
-
-  func test_InchesPlusInchesIsInches() {
-    enter("9in+6in=")
-    XCTAssertEqual(calc.display, "15 in")
+  func test_enteringOperators() {
+    check([
+      EG("9+", expect: "9+", "operator shows in display"),
+      EG("9*+3=", expect: "12", "last operator wins"),
+      EG("9*=", expect: "expression can't end with an operator"),
+    ]) {
+      EGAssertEqual(enter($0.input), $0)
+    }
   }
 
   func test_OperatorShowsInDisplay() {
-    enter("9+")
-    XCTAssertEqual(calc.display, "9+")
+    XCTAssertEqual(enter("9+"), "9+")
   }
 
   func test_LastOperatorWins() {
-    enter("9*+3=")
-    XCTAssertEqual(calc.display, "12")
+    XCTAssertEqual(enter("9*+3="), "12")
   }
 
   func test_TrailingBinaryOperatorIsAnError() {
-    enter("9*=")
-    XCTAssertEqual(calc.display, "expression can't end with an operator")
+    XCTAssertEqual(enter("9+="), "expression can't end with an operator")
   }
 
   func test_PlusOrMinusOnNumber() {
-    enter("64~=")
-    XCTAssertEqual(calc.display, "-64")
+    XCTAssertEqual(enter("64~="), "-64")
   }
 
   func test_DigitAfterUnaryOpIsPlacedBeforeIt() {
-    enter("6~4=")
-    XCTAssertEqual(calc.display, "-64")
+    XCTAssertEqual(enter("6~4="), "-64")
   }
 
   func test_UnitValueThenUnaryOp() {
-    enter("1yd27in~=")
-    XCTAssertEqual(calc.display, "-63 in")
+    XCTAssertEqual(enter("1yd27in~="), "-63 in")
   }
 
   func test_DigitAfterUnaryOpOnUnitIsLeftThere() {
-    enter("6in~4=")
-    XCTAssertEqual(calc.display, "numbers and units don't match")
+    XCTAssertEqual(enter("6in~4="), "numbers and units don't match")
   }
 
   func test_DigitNegatePlusdDigit_ShouldNegateAndAdd() {
-    enter("6~+4=")
-    XCTAssertEqual(calc.display, "-2")
+    XCTAssertEqual(enter("6~+4="), "-2")
   }
 
   func test_PlusOrMinusFirst_IsError() {
-    enter("~=")
-    XCTAssertEqual(calc.display, "no value found")
+    XCTAssertEqual(enter("~="), "no value found")
   }
 
   func test_TooManyLeftParends() {
-    enter("(=")
-    XCTAssertEqual(calc.display, "error - unbalanced parentheses")
+    XCTAssertEqual(enter("(="), "error - unbalanced parentheses")
   }
 
   func test_TooManyRightParends() {
-    enter(")=")
-    XCTAssertEqual(calc.display, "error - unbalanced parentheses")
+    XCTAssertEqual(enter(")="), "error - unbalanced parentheses")
   }
 
   func test_DefaultsToDisplayInches() {
-    calc.imperialFormat = ImperialFormatter.inches
-    enter("63in=")
-    XCTAssertEqual(calc.display, "63 in")
+    XCTAssertEqual(enter("63in="), "63 in")
   }
 
   func test_ChangingUnitDisplay() {
-    calc.imperialFormat = ImperialFormatter.yardFeetInches
-
-    enter("63in=")
-    XCTAssertEqual(calc.display, "1 yd 2 ft 3 in")
-
-    calc.imperialFormat = ImperialFormatter.inches
-    XCTAssertEqual(calc.display, "63 in")
+    XCTAssertEqual(enter("Y63in=I"), "63 in")
   }
 
   func test_RoundingTo8thsWithNoIntegerPart() {
-    enter("3:8=")
-    XCTAssertEqual(calc.display, "3/8")
+    XCTAssertEqual(enter("3:8="), "3/8")
   }
 
   func test_RoundingTo8thsWithIntegerPart() {
-    enter("25:8=")
-    XCTAssertEqual(calc.display, "3·1/8")
+    XCTAssertEqual(enter("25:8="), "3·1/8")
   }
 
   func test_RoundingTo8thsWithNumeratorRoundedTo8() {
-    enter("199:100=")
-    XCTAssertEqual(calc.display, "2⊖")
+    XCTAssertEqual(enter("199:100="), "2⊖")
   }
 
   func test_RoundingNegativeNumbers() {
-    enter("199~:100=")
-    XCTAssertEqual(calc.display, "-2⊕")
+    XCTAssertEqual(enter("199~:100="), "-2⊕")
   }
 
   func test_RoundingNegativeNumbersSlightlyBig() {
-    enter("201~:100=")
-    XCTAssertEqual(calc.display, "-2⊖")
+    XCTAssertEqual(enter("201~:100="), "-2⊖")
   }
 
   func test_RoundingFractionOnlyNegativeNumbers() {
-    enter("99~:100=")
-    XCTAssertEqual(calc.display, "-1⊕")
+    XCTAssertEqual(enter("99~:100="), "-1⊕")
   }
 
   func test_RoundingTo16thsWithNoIntegerPart() {
-    enter("15:16=")
-    XCTAssertEqual(calc.display, "15/16")
+    XCTAssertEqual(enter("15:16="), "15/16")
   }
 
   func test_RoundingTo16thsWithPlus() {
-    enter("154:160=")
-    XCTAssertEqual(calc.display, "15/16⊕")
+    XCTAssertEqual(enter("154:160="), "15/16⊕")
   }
 
   func test_RoundingTo16thsWithMinus() {
-    enter("148:160=")
-    XCTAssertEqual(calc.display, "15/16⊖")
+    XCTAssertEqual(enter("148:160="), "15/16⊖")
   }
 }

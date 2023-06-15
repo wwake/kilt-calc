@@ -1,3 +1,4 @@
+[off camera] Gave CalculatorTests a mini-language for expressions (like ContentViewTests has)
 * Make unit formatter use the new numeric formatting
 Rounding
 
@@ -35,7 +36,6 @@ CALC-23-14: 2023-06-14 - Rounding to 8ths and 16ths
 * Round to 8ths and 16ths
 * Rounding should be to 16ths, but simplifying any even 8ths (12/16 => 6/8)
 * Show "skosh" characters - ⊕ (rounded down), ⊖ (rounded up)
-
 
 CALC-23-13: 2023-06-13 - Choose Units for Display
 * [Off camera: Tweak "Show As" wording]
