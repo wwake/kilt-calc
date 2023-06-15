@@ -23,7 +23,7 @@ final class CalculatorTests: XCTestCase {
     return answer
   }
 
-  private func expressionResult(_ input: String) -> (String, String) {
+  private func expressionResult(_ input: String) -> ((String, String), String) {
     let calc = Calculator()
     var firstLetter: Character = " "
 
@@ -103,7 +103,7 @@ final class CalculatorTests: XCTestCase {
         firstLetter = " "
       }
     }
-    return (calc.expression, calc.display)
+    return (calc.previous, calc.display)
   }
 
   func test_calculatorStartsZero() throws {
@@ -136,7 +136,10 @@ final class CalculatorTests: XCTestCase {
   }
 
   func test_EqualsSavesExpressionText() {
-    XCTAssertEqual(display("1+2="), "3")
+    let (expression, display) = expressionResult("1+2=")
+    XCTAssertEqual(expression.0, "1+2")
+    XCTAssertEqual(expression.1, "3")
+    XCTAssertEqual(display, "3")
   }
 
   func test_overflowHandling() {

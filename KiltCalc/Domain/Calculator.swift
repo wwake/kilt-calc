@@ -2,8 +2,10 @@ import Foundation
 
 public class Calculator: ObservableObject {
   @Published private(set) var input = InputBuffer()
-  @Published private(set) var expression = "9"
+  @Published private(set) var previous = ("0", "0")
   @Published private(set) var result = Value.number(0)
+
+  @Published private(set) var formattedResult = "0"
 
   @Published public var imperialFormat = ImperialFormatter.inches
   @Published public var roundingDenominator = 8
@@ -43,10 +45,11 @@ public class Calculator: ObservableObject {
 
    private func equals() {
      if !input.isEmpty && input.last.isBinaryOperator() {
-      result = .error("expression can't end with an operator")
+       result = .error("expression can't end with an operator")
     } else {
       result = Expression(input).evaluate()
     }
+     previous = (input.toString(),  valueFormatter.format(imperialFormat.formatter,  result))
     input.clear()
   }
 

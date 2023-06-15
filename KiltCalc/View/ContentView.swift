@@ -22,7 +22,7 @@ struct ContentView: View {
         .ignoresSafeArea()
 
       VStack {
-        Text(calculator.expression)
+        Text("\(calculator.previous.0) = \(calculator.previous.1)")
           .accessibilityIdentifier("previous")
           .accessibilityLabel("previous")
           .font(.footnote)
