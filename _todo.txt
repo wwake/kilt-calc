@@ -1,10 +1,12 @@
+* [off camera] Converted all ContentViewTests to CalculatorTests
+* [off camera] Moved EG extensions to EGTest+extensions.swift
 * . and / for fractions
+* Eliminate ViewInspector
 * History (open scrollable view with all expressions)
 
 * MC, MR, M+, M-
 * %
 * Pleat calculator
-* Eliminate ViewInspector
 
 * Make calculator have a state machine for valid expressions (not including balancing parentheses) - or state machine plus parenthesis counter
 * Disable calculator buttons that can't be used (e.g., no ')' if there's not been a '(')
