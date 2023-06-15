@@ -2,12 +2,6 @@ import EGTest
 @testable import KiltCalc
 import XCTest
 
-public func EGAssertEqual<T: Equatable, Input>(_ actual: T, _ expected: EG<Input, T>) {
-  XCTAssertEqual(
-    actual, expected.expect, expected.message, file: expected.file, line: expected.line
-  )
-}
-
 final class CalculatorTests: XCTestCase {
   private let calc = Calculator()
   private let addOp = Entry.binary(Operator(name: "+", precedence: 3, evaluate: +))

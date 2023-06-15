@@ -118,14 +118,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		91E3C59C2A1BE8B40098BAFC /* View */ = {
-			isa = PBXGroup;
-			children = (
-				91E3C5AC2A1D39A30098BAFC /* EGTests+extensions.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		91E3C59F2A1BF4030098BAFC /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,8 +195,8 @@
 		91E7B6DB2A0D4430004A757A /* KiltCalcTests */ = {
 			isa = PBXGroup;
 			children = (
+				91E3C5AC2A1D39A30098BAFC /* EGTests+extensions.swift */,
 				91E3C5AB2A1D39550098BAFC /* Model */,
-				91E3C59C2A1BE8B40098BAFC /* View */,
 			);
 			path = KiltCalcTests;
 			sourceTree = "<group>";

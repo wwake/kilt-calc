@@ -13,3 +13,9 @@ extension XCTestCase {
     }
   }
 }
+
+public func EGAssertEqual<T: Equatable, Input>(_ actual: T, _ expected: EG<Input, T>) {
+  XCTAssertEqual(
+    actual, expected.expect, expected.message, file: expected.file, line: expected.line
+  )
+}
