@@ -1,6 +1,6 @@
 import Foundation
 
-public typealias ImperialFormatterFunction = (NumberFormatter, Double) -> String
+public typealias ImperialFormatterFunction = (FractionFormatter, Double) -> String
 
 public enum ImperialFormatter: String, CaseIterable, Equatable, Identifiable {
   public var id: Self { self }
@@ -18,8 +18,9 @@ public enum ImperialFormatter: String, CaseIterable, Equatable, Identifiable {
     }
   }
 
-  static func formatNumber(_ formatter: NumberFormatter, _ value: Double, _ label: String) -> String {
-    let result = formatter.string(from: NSNumber(value: value)) ?? "internal error"
+  static func formatNumber(_ formatter: FractionFormatter, _ value: Double, _ label: String) -> String {
+    let result = formatter.format(value)
+//    let result = formatter.string(from: NSNumber(value: value)) ?? "internal error"
 
     if value.isInfinite || value.isNaN {
       return result
@@ -28,11 +29,11 @@ public enum ImperialFormatter: String, CaseIterable, Equatable, Identifiable {
     return "\(result) \(label)"
   }
 
-  static func asInches(_ formatter: NumberFormatter, _ inches: Double) -> String {
+  static func asInches(_ formatter: FractionFormatter, _ inches: Double) -> String {
     formatNumber(formatter, inches, "in")
   }
 
-  static func asYardFeetInches(_ formatter: NumberFormatter, _ inches: Double) -> String {
+  static func asYardFeetInches(_ formatter: FractionFormatter, _ inches: Double) -> String {
     let yfi = [(ImperialUnit.inchesPerYard, "yd"), (ImperialUnit.inchesPerFoot, "ft"), (1, "in")]
 
     let sign = inches < 0 ? -1.0 : 1.0

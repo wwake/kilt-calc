@@ -106,7 +106,6 @@ public struct FractionFormatter {
 
 public struct ValueFormatter {
   let formatter: NumberFormatter
-  let roundingDenominator = 16
 
   public init() {
     let formatter = NumberFormatter()
@@ -126,7 +125,7 @@ public struct ValueFormatter {
       return "\(result)"
 
     case .inches(let theInches):
-      return imperialFormatter(formatter, theInches)
+      return imperialFormatter(FractionFormatter(), theInches)
     }
   }
 }
