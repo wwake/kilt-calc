@@ -62,6 +62,7 @@ struct ContentView: View {
                 .disabled(disabledKeys.contains(key.name))
                 .frame(width: 60, height: 60)
                 .background(Color("KeyColor"))
+                .border(Color("AccentColor"), width: 1)
               }
             }
           }

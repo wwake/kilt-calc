@@ -49,7 +49,7 @@ public class Calculator: ObservableObject {
     } else {
       result = Expression(input).evaluate()
     }
-     previous = (input.toString(),  valueFormatter.format(imperialFormat.formatter,  result))
+     previous = (input.toString(), valueFormatter.format(imperialFormat.formatter, result))
     input.clear()
   }
 
