@@ -5,7 +5,7 @@ public struct Key: Identifiable {
   public let name: String
   public let entry: Entry
 
-  init(_ name: String, _ entry: Entry = .tbd) {
+  init(_ name: String, _ entry: Entry = .tbd("?")) {
     self.name = name
     self.entry = entry
   }

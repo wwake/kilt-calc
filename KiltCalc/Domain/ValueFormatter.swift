@@ -91,9 +91,9 @@ public struct ValueFormatter {
       wholeNumber += 1
     }
 
-    var signMarker = signum < 0 ? "-" : ""
+    let signMarker = signum < 0 ? "-" : ""
 
-    var formattedNumber = formatWholeAndFraction(wholeNumber, numerator, denominator)
+    let formattedNumber = formatWholeAndFraction(wholeNumber, numerator, denominator)
 
     let adjustment = findAdjustment(
       aNumber,

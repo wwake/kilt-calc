@@ -50,8 +50,8 @@ public class Calculator: ObservableObject {
 
   public func enter(_ entry: Entry) {
     switch entry {
-    case .tbd:
-      print("TBD")
+    case .tbd(let ch):
+      print("\(#file) \(#line) TBD(\(ch)")
 
     case .clear:
       clear()

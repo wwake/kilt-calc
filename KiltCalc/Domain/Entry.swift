@@ -1,5 +1,5 @@
 public enum Entry {
-  case tbd
+  case tbd(String)
   case clear
   case backspace
   case equals
@@ -50,11 +50,17 @@ public enum Entry {
 extension Entry: CustomStringConvertible {
   public var description: String {
     switch self {
-    case .tbd:
-      return "TBD"
+    case .tbd(let ch):
+      return "TBD(\(ch))"
 
-    case .clear, .backspace, .equals:
-      return ""
+    case .clear:
+      return "CLEAR"
+
+    case .backspace:
+      return "BACKSPACE"
+
+    case .equals:
+      return "="
 
     case .unit(let unit):
       return " \(unit.description) "
