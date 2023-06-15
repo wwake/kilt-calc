@@ -1,6 +1,3 @@
-[off camera] Gave CalculatorTests a mini-language for expressions (like ContentViewTests has); switched to EG tests
-[off camera] Made EGAssert that takes actual value and EG
-[off camera] Added background
 * Make unit formatter use the new numeric formatting
 Rounding
 
@@ -33,6 +30,11 @@ Round: 1/8, 1/16, 0.1, 0.01
 * Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-15: 2023-06-15 - Rounding Units
+[off camera] Gave CalculatorTests a mini-language for expressions (like ContentViewTests has); switched to EG tests
+[off camera] Made EGAssert that takes actual value and EG
+[off camera] Added background
 
 CALC-23-14: 2023-06-14 - Rounding to 8ths and 16ths
 * modf

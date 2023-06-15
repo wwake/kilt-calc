@@ -36,6 +36,75 @@ public struct SplitDouble {
   }
 }
 
+public struct FractionFormatter {
+  let roundingDenominator = 16
+  let formatter : NumberFormatter
+
+  public init() {
+    let formatter = NumberFormatter()
+    formatter.positiveInfinitySymbol = "result too large"
+    formatter.negativeInfinitySymbol = "result too large"
+    formatter.notANumberSymbol = "result can't be determined"
+    self.formatter = formatter
+  }
+
+  fileprivate func findAdjustment(_ aNumber: Double, _ split: SplitDouble) -> String {
+    let computed = split.asDouble
+    if computed < aNumber {
+      return "⊕"
+    }
+    if computed > aNumber {
+      return "⊖"
+    }
+    return ""
+  }
+
+  fileprivate func formatWholeAndFraction(_ wholeNumber: Int, _ numerator: Int, _ denominator: Int) -> String {
+    let hasFraction = numerator != 0 && numerator != denominator
+
+    var result = ""
+    if wholeNumber != 0 || !hasFraction {
+      result += "\(wholeNumber)"
+    }
+
+    if hasFraction {
+      if wholeNumber != 0 {
+        result += "·"
+      }
+      result += "\(numerator)/\(denominator)"
+    }
+    return result
+  }
+
+  public func format(_ aNumber: (Double)) -> String {
+    if aNumber.isNaN || aNumber.isInfinite {
+      return formatter.string(from: NSNumber(value: aNumber)) ?? "internal error"
+    }
+
+    let splitNumber = SplitDouble(aNumber)
+    let signum = splitNumber.signum
+    var wholeNumber = splitNumber.wholeNumber
+
+    let (numerator, denominator) = splitNumber.fractionParts(roundingDenominator)
+
+    if numerator == denominator {
+      wholeNumber += 1
+    }
+
+    let signMarker = signum < 0 ? "-" : ""
+
+    let formattedNumber = formatWholeAndFraction(wholeNumber, numerator, denominator)
+
+    let adjustment = findAdjustment(
+      aNumber,
+      SplitDouble(signum: signum, wholeNumber: wholeNumber, numerator: numerator, denominator: denominator)
+    )
+
+    return signMarker + formattedNumber + adjustment
+  }
+
+}
+
 public struct ValueFormatter {
   let formatter: NumberFormatter
   let roundingDenominator = 16
@@ -109,7 +178,7 @@ public struct ValueFormatter {
       return message
 
     case .number(let aNumber):
-      let result = formatWithFraction(aNumber)
+      let result = FractionFormatter().format(aNumber)
       return "\(result)"
 
     case .inches(let theInches):

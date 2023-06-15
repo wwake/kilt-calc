@@ -191,16 +191,14 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(enter(")="), "error - unbalanced parentheses")
   }
 
-  func test_DefaultsToDisplayInches() {
-    XCTAssertEqual(enter("63in="), "63 in")
-  }
-
-  func test_DisplayInYFI() {
-    XCTAssertEqual(enter("Y63in="), "1 yd 2 ft 3 in")
-  }
-
-  func test_ChangingUnitDisplay() {
-    XCTAssertEqual(enter("Y63in=I"), "63 in")
+  func test_UnitDisplayMode() {
+    check([
+      EG("63in=", expect: "63 in", "default is inches"),
+      EG("Y63in=", expect: "1 yd 2 ft 3 in", "yd-ft-in"),
+      EG("Y63in=I", expect: "63 in", "can change mode"),
+    ]) {
+      EGAssertEqual(enter($0.input), $0)
+    }
   }
 
   func test_RoundingTo8thsWithNoIntegerPart() {
@@ -237,5 +235,13 @@ final class CalculatorTests: XCTestCase {
 
   func test_RoundingTo16thsWithMinus() {
     XCTAssertEqual(enter("148:160="), "15/16⊖")
+  }
+
+  func test_RoundingUnits() {
+    check([
+//      EG("154in:160=", expect: "15/16⊕ in", "round with units"),
+    ]) {
+      EGAssertEqual(enter($0.input), $0)
+    }
   }
 }
