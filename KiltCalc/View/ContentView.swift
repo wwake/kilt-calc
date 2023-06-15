@@ -13,8 +13,6 @@ struct ContentView: View {
 
   let columns = Array(repeating: GridItem(.flexible()), count: 5)
 
-  let roundingDenominators = [8, 16]
-
   var body: some View {
     ZStack {
       Image(decorative: "Background")
