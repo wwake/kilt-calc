@@ -1,5 +1,6 @@
 [off camera] Gave CalculatorTests a mini-language for expressions (like ContentViewTests has); switched to EG tests
 [off camera] Made EGAssert that takes actual value and EG
+[off camera] Added background
 * Make unit formatter use the new numeric formatting
 Rounding
 
