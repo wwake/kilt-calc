@@ -114,25 +114,24 @@ final class CalculatorTests: XCTestCase {
     check([
       EG("", expect: "0", "display starts with 0"),
       EG("42", expect: "42", "display changes when digits added"),
+      EG("9876543210", expect: "9876543210", "all digits"),
     ]) {
       EGAssertEqual(display($0.input), $0)
     }
-  }
-
-  func test_EqualsEvaluatesTheCurrentDisplay() {
-    XCTAssertEqual(display("4=2"), "2")
   }
 
   func test_ClearResetsDisplayAndEntering() {
     XCTAssertEqual(display("4C"), "0")
   }
 
-  func test_EnterEvaluatesPendingString() {
-    XCTAssertEqual(display("00="), "0")
-  }
-
-  func test_EnterWithoutPendingUsesZero() {
-    XCTAssertEqual(display("="), "0")
+  func test_Evaluation() {
+    check([
+      EG("4=2", expect: "2", "display shows new expression"),
+      EG("00=", expect: "0", "a number evaluates to itself"),
+      EG("=", expect: "0", "nothing pending => 0"),
+    ]) {
+      EGAssertEqual(display($0.input), $0)
+    }
   }
 
   func test_EqualsSavesExpressionText() {

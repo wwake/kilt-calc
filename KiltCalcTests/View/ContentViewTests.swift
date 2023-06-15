@@ -33,43 +33,6 @@ final class ContentViewTests: XCTestCase {
     }
   }
 
-  func testAllDigitKeyPresses() throws {
-    try check([
-      EG("0", expect: "0"),
-      EG("1", expect: "1"),
-      EG("2", expect: "2"),
-      EG("3", expect: "3"),
-      EG("4", expect: "4"),
-      EG("5", expect: "5"),
-      EG("6", expect: "6"),
-      EG("7", expect: "7"),
-      EG("8", expect: "8"),
-      EG("9", expect: "9"),
-    ]) {
-      try checkDigitKeyPress($0)
-    }
-  }
-
-  private func checkDigitKeyPress(_ eg: EG<String, String>) throws {
-    let sut = ContentView(calculator: Calculator())
-
-    try key(sut, eg.input).tap()
-
-    XCTAssertEqual(try display(sut).string(), eg.expect, file: eg.file, line: eg.line)
-  }
-
-  func testClearResetsDisplay() throws {
-    let sut = ContentView(calculator: Calculator())
-    let key4 = key(sut, "4")
-    try key4.tap()
-    XCTAssertEqual(try display(sut).string(), "4")
-
-    let keyClear = key(sut, "C")
-    try keyClear.tap()
-
-    XCTAssertEqual(try display(sut).string(), "0")
-  }
-
   private func tap(_ sut: ContentView, _ input: String) throws {
     var firstLetter: Character = " "
 
