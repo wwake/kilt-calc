@@ -1,8 +1,9 @@
 import Foundation
 
 public class Calculator: ObservableObject {
-  @Published private(set) var result = Value.number(0)
   @Published private(set) var input = InputBuffer()
+  @Published private(set) var expression = "9"
+  @Published private(set) var result = Value.number(0)
 
   @Published public var imperialFormat = ImperialFormatter.inches
   @Published public var roundingDenominator = 8
@@ -10,8 +11,9 @@ public class Calculator: ObservableObject {
   let valueFormatter = ValueFormatter()
 
   public var display: String {
+    let trimmedInput = input.toString().trimmingCharacters(in: .whitespaces)
     if !input.isEmpty {
-      return input.toString().trimmingCharacters(in: .whitespaces)
+      return trimmedInput
     }
     return valueFormatter.format(imperialFormat.formatter, result)
   }

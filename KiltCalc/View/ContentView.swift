@@ -5,6 +5,8 @@ struct ContentView: View {
   @State private var selectedUnitFormat: ImperialFormatter = .inches
   @State private var selectedRounding: Int = 8
 
+  let disabledKeys = Set(["MC", "MR", "M+", "M-", "%", "/", Keypad.dot])
+
   internal var didAppear: ((Self) -> Void)? // for ViewInspector
 
   var keypad = Keypad()
@@ -20,7 +22,17 @@ struct ContentView: View {
         .ignoresSafeArea()
 
       VStack {
+        Text(calculator.expression)
+          .accessibilityIdentifier("previous")
+          .accessibilityLabel("previous")
+          .font(.footnote)
+          .padding(4)
+          .frame(width: 330, alignment: .trailing)
+          .background(Color.white)
+          .border(Color.black)
+
         Text(calculator.display)
+          .accessibilityIdentifier("display")
           .accessibilityLabel("display")
           .padding(4)
           .frame(width: 330, alignment: .trailing)
@@ -47,6 +59,7 @@ struct ContentView: View {
                 Button(key.name) {
                   calculator.enter(key.entry)
                 }
+                .disabled(disabledKeys.contains(key.name))
                 .frame(width: 60, height: 60)
                 .background(Color("KeyColor"))
               }

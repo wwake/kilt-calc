@@ -1,19 +1,4 @@
-* Make unit formatter use the new numeric formatting
-Rounding
 
-0.125 = 1/8
-0.135 in   => 1/8   (+ 0.1 in)
-0.2 => 2/8    (-0.05 in)
-0.25 = 2/8
-
-30" waist - 15"
-
-50 * 0.1 in = 5 in
-
-1/8 in (+) ⊕
-2/8 in (-) ⊖
-
-Round: 1/8, 1/16, 0.1, 0.01
 
 * Make calculator have a state machine for valid expressions (not including balancing parentheses) - or state machine plus parenthesis counter
 * Disable calculator buttons that can't be used (e.g., no ')' if there's not been a '(')
@@ -35,6 +20,7 @@ CALC-23-15: 2023-06-15 - Rounding Units
 [off camera] Gave CalculatorTests a mini-language for expressions (like ContentViewTests has); switched to EG tests
 [off camera] Made EGAssert that takes actual value and EG
 [off camera] Added background
+* Rounding: Make unit formatter use the new numeric formatting
 
 CALC-23-14: 2023-06-14 - Rounding to 8ths and 16ths
 * modf

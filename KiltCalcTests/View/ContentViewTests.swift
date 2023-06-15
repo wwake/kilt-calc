@@ -17,8 +17,12 @@ extension XCTestCase {
 }
 
 final class ContentViewTests: XCTestCase {
+  fileprivate func expression(_ sut: ContentView) throws -> InspectableView<ViewType.Text> {
+    try sut.inspect().find(viewWithAccessibilityIdentifier: "previous").text(0)
+  }
+
   fileprivate func display(_ sut: ContentView) throws -> InspectableView<ViewType.Text> {
-    try sut.inspect().find(ViewType.Text.self)
+    try sut.inspect().find(viewWithAccessibilityIdentifier: "display").text(0)
   }
 
   fileprivate func key(_ sut: ContentView, _ name: String) -> InspectableView<ViewType.Button> {

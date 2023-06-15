@@ -18,7 +18,12 @@ final class CalculatorTests: XCTestCase {
 
   private let overflowValue = String(repeating: "9", count: 350)
 
-  private func enter(_ input: String) -> String {
+  private func display(_ input: String) -> String {
+    let (_, answer) = expressionResult(input)
+    return answer
+  }
+
+  private func expressionResult(_ input: String) -> (String, String) {
     let calc = Calculator()
     var firstLetter: Character = " "
 
@@ -98,7 +103,7 @@ final class CalculatorTests: XCTestCase {
         firstLetter = " "
       }
     }
-    return calc.display
+    return (calc.expression, calc.display)
   }
 
   func test_calculatorStartsZero() throws {
@@ -110,24 +115,28 @@ final class CalculatorTests: XCTestCase {
       EG("", expect: "0", "display starts with 0"),
       EG("42", expect: "42", "display changes when digits added"),
     ]) {
-      EGAssertEqual(enter($0.input), $0)
+      EGAssertEqual(display($0.input), $0)
     }
   }
 
   func test_EqualsEvaluatesTheCurrentDisplay() {
-    XCTAssertEqual(enter("4=2"), "2")
+    XCTAssertEqual(display("4=2"), "2")
   }
 
   func test_ClearResetsDisplayAndEntering() {
-    XCTAssertEqual(enter("4C"), "0")
+    XCTAssertEqual(display("4C"), "0")
   }
 
   func test_EnterEvaluatesPendingString() {
-    XCTAssertEqual(enter("00="), "0")
+    XCTAssertEqual(display("00="), "0")
   }
 
   func test_EnterWithoutPendingUsesZero() {
-    XCTAssertEqual(enter("="), "0")
+    XCTAssertEqual(display("="), "0")
+  }
+
+  func test_EqualsSavesExpressionText() {
+    XCTAssertEqual(display("1+2="), "3")
   }
 
   func test_overflowHandling() {
@@ -135,7 +144,7 @@ final class CalculatorTests: XCTestCase {
       EG(overflowValue + "=", expect: "number too big or too small", "overflow"),
       EG(overflowValue + "=C", expect: "0", "clear resets overflow"),
     ]) {
-      EGAssertEqual(enter($0.input), $0)
+      EGAssertEqual(display($0.input), $0)
     }
   }
 
@@ -145,7 +154,7 @@ final class CalculatorTests: XCTestCase {
       EG("3in6in=", expect: "9 in", "inches can accumulate"),
       EG("3in6=", expect: "numbers and units don't match"),
     ]) {
-      EGAssertEqual(enter($0.input), $0)
+      EGAssertEqual(display($0.input), $0)
     }
   }
 
@@ -156,7 +165,7 @@ final class CalculatorTests: XCTestCase {
       EG("3+6in=", expect: "error - mixing inches and numbers"),
       EG("3in+6=", expect: "error - mixing inches and numbers"),
     ]) {
-      EGAssertEqual(enter($0.input), $0)
+      EGAssertEqual(display($0.input), $0)
     }
   }
 
@@ -166,7 +175,7 @@ final class CalculatorTests: XCTestCase {
       EG("9*+3=", expect: "12", "last operator wins"),
       EG("9*=", expect: "expression can't end with an operator"),
     ]) {
-      EGAssertEqual(enter($0.input), $0)
+      EGAssertEqual(display($0.input), $0)
     }
   }
 
@@ -179,16 +188,16 @@ final class CalculatorTests: XCTestCase {
       EG("6~+4=", expect: "-2", "unary before binary ops"),
       EG("~=", expect: "no value found"),
     ]) {
-      EGAssertEqual(enter($0.input), $0)
+      EGAssertEqual(display($0.input), $0)
     }
   }
 
   func test_TooManyLeftParends() {
-    XCTAssertEqual(enter("(="), "error - unbalanced parentheses")
+    XCTAssertEqual(display("(="), "error - unbalanced parentheses")
   }
 
   func test_TooManyRightParends() {
-    XCTAssertEqual(enter(")="), "error - unbalanced parentheses")
+    XCTAssertEqual(display(")="), "error - unbalanced parentheses")
   }
 
   func test_UnitDisplayMode() {
@@ -197,7 +206,7 @@ final class CalculatorTests: XCTestCase {
       EG("Y63in=", expect: "1 yd 2 ft 3 in", "yd-ft-in"),
       EG("Y63in=I", expect: "63 in", "can change mode"),
     ]) {
-      EGAssertEqual(enter($0.input), $0)
+      EGAssertEqual(display($0.input), $0)
     }
   }
 
@@ -216,7 +225,7 @@ final class CalculatorTests: XCTestCase {
       EG("I154in:160=", expect: "15/16⊕ in", "round with units - inches"),
       EG("Y5914in:160=", expect: "1 yd 15/16⊕ in", "round with units yd-ft-in"),
     ]) {
-      EGAssertEqual(enter($0.input), $0)
+      EGAssertEqual(display($0.input), $0)
     }
   }
 }
