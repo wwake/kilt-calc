@@ -1,4 +1,5 @@
-[off camera] Gave CalculatorTests a mini-language for expressions (like ContentViewTests has)
+[off camera] Gave CalculatorTests a mini-language for expressions (like ContentViewTests has); switched to EG tests
+[off camera] Made EGAssert that takes actual value and EG
 * Make unit formatter use the new numeric formatting
 Rounding
 
@@ -28,6 +29,7 @@ Round: 1/8, 1/16, 0.1, 0.01
 * Pleat calculator
 
 * Update EGTest to take new check() with try from ContentViewTests
+* Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
 
