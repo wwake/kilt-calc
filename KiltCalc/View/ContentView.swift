@@ -3,7 +3,6 @@ import SwiftUI
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches
-  @State private var selectedRounding: Int = 8
 
   let disabledKeys = Set(["MC", "MR", "M+", "M-", "%", "/", Keypad.dot])
 
@@ -46,7 +45,7 @@ struct ContentView: View {
           .onChange(of: selectedUnitFormat) {
             calculator.imperialFormat = $0
           }
-          .accessibilityLabel("unitFormat")
+          .accessibilityIdentifier("unitFormat")
           .pickerStyle(.menu)
         }
 
