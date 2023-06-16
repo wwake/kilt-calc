@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9116601F2A1952A500932BD2 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 9116601E2A1952A500932BD2 /* ViewInspector */; };
 		916AF6602A252460009484DA /* ImperialUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF65F2A252460009484DA /* ImperialUnit.swift */; };
 		916AF6632A267528009484DA /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6622A267528009484DA /* Stack.swift */; };
 		916AF6652A267B8F009484DA /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6642A267B8F009484DA /* Operator.swift */; };
@@ -94,7 +93,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				91E3C5B02A1D48D40098BAFC /* EGTest in Frameworks */,
-				9116601F2A1952A500932BD2 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +235,6 @@
 			);
 			name = KiltCalcTests;
 			packageProductDependencies = (
-				9116601E2A1952A500932BD2 /* ViewInspector */,
 				91E3C5AF2A1D48D40098BAFC /* EGTest */,
 			);
 			productName = InchCalcTests;
@@ -273,7 +270,6 @@
 			);
 			mainGroup = 91E7B6BF2A0D4428004A757A;
 			packageReferences = (
-				9116601D2A1952A500932BD2 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 				91E3C5AE2A1D48D40098BAFC /* XCRemoteSwiftPackageReference "EGTest" */,
 			);
 			productRefGroup = 91E7B6C92A0D4428004A757A /* Products */;
@@ -622,14 +618,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9116601D2A1952A500932BD2 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nalexn/ViewInspector";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.6;
-			};
-		};
 		91E3C5AE2A1D48D40098BAFC /* XCRemoteSwiftPackageReference "EGTest" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/wwake/EGTest.git";
@@ -641,11 +629,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9116601E2A1952A500932BD2 /* ViewInspector */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9116601D2A1952A500932BD2 /* XCRemoteSwiftPackageReference "ViewInspector" */;
-			productName = ViewInspector;
-		};
 		91E3C5AF2A1D48D40098BAFC /* EGTest */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 91E3C5AE2A1D48D40098BAFC /* XCRemoteSwiftPackageReference "EGTest" */;
