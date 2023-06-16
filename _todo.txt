@@ -25,6 +25,8 @@ CALC-23-15: 2023-06-15 - Rounding Units
 [off camera] Made EGAssert that takes actual value and EG
 [off camera] Added background
 * Rounding: Make unit formatter use the new numeric formatting
+* Added a one-expression history display
+* Tweaked look of background and buttons
 
 CALC-23-14: 2023-06-14 - Rounding to 8ths and 16ths
 * modf

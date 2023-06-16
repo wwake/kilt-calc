@@ -6,8 +6,6 @@ struct ContentView: View {
 
   let disabledKeys = Set(["MC", "MR", "M+", "M-", "%", "/", Keypad.dot])
 
-  internal var didAppear: ((Self) -> Void)? // for ViewInspector
-
   var keypad = Keypad()
 
   let columns = Array(repeating: GridItem(.flexible()), count: 5)
@@ -65,7 +63,6 @@ struct ContentView: View {
           }
         }
       }
-      .onAppear { self.didAppear?(self) } // for ViewInspector
       .font(.largeTitle)
       .padding()
     }
