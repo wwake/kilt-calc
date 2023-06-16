@@ -47,9 +47,9 @@ struct ContentView: View {
           .pickerStyle(.menu)
         }
 
-        LazyVGrid(columns: columns) {
+        Grid {
           ForEach(keypad.contents, id: \.self) { row in
-            Group { // GridRow {
+            GridRow {
               ForEach(row) { key in
                 Button(key.name) {
                   calculator.enter(key.entry)
