@@ -1,6 +1,7 @@
 * [off camera] Converted all ContentViewTests to CalculatorTests
 * [off camera] Moved EG extensions to EGTest+extensions.swift
-* [off camera] Eliminate ViewInspector
+* [off camera] Eliminate ViewInspector and restore Grid
+
 * . and / for fractions
 * History (open scrollable view with all expressions)
 
