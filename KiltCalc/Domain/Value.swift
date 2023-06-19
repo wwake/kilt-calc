@@ -115,7 +115,7 @@ extension Value {
       return (nil, "can't start with '/'")
     }
 
-    let matches = string.matches(of: /^([0-9]+)(\/*)([0-9]*)$/)
+    let matches = string.matches(of: /^([0-9.]+)(\/*)([0-9]*)$/)
     if matches.isEmpty {
       return (nil, "use \u{00f7} for complicated fractions")
     }
@@ -158,8 +158,10 @@ extension Value {
   }
 
   static func parse(_ input: String) -> Value {
+    let numberCharacters = /[0-9\/.]+/
+    let unitCharacters = /[a-z ]+/
     let potentialNumbers = input
-      .split(separator: Regex(/[a-z ]+/))
+      .split(separator: unitCharacters)
       .map { Self.parseNumber(String($0)) }
 
     if potentialNumbers.isEmpty { return .error("no value found") }
@@ -172,7 +174,7 @@ extension Value {
 
     let numbers = potentialNumbers.map { $0.0 }
 
-    let units = input.split(separator: Regex(/[0-9\/]+/))
+    let units = input.split(separator: numberCharacters)
       .map { $0.trimmingCharacters(in: .whitespaces) }
 
     if numbers.count == 1 && units.count == 0 {

@@ -70,6 +70,9 @@ public class Calculator: ObservableObject {
     case .unit:
       enterUnit(entry)
 
+    case .dot:
+      operand(entry)
+
     case .binary, .unary:
       op(entry)
 

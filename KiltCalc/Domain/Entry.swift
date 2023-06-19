@@ -7,6 +7,7 @@ public enum Entry {
   case binary(Operator)
   case unary(Operator)
   case digit(Int)
+  case dot
   case slash
   case leftParend
   case rightParend
@@ -43,6 +44,7 @@ public enum Entry {
 
   public func isOperand() -> Bool {
     if case .digit = self { return true }
+    if case .dot = self { return true }
     if case .unit = self { return true }
     if case .slash = self { return true }
     return false
@@ -72,6 +74,9 @@ extension Entry: CustomStringConvertible {
 
     case .digit(let digit):
       return "\(digit)"
+
+    case .dot:
+      return "."
 
     case .slash:
       return "/"
