@@ -67,8 +67,17 @@ final class ValueTests: XCTestCase {
     XCTAssertEqual(Value.inches(15).divide(Value.inches(3)), Value.number(5))
   }
 
+  func test_NoNumberIsError() {
+    XCTAssertEqual(Value.parse(""), .error("no value found"))
+  }
+  
   func test_NumberThenSlash_Is8ths() {
-    XCTAssertEqual(Value.parse("3/"), .number(0.375))
-    // test where regex fails
+    check([
+      EG("3/", expect: .number(0.375), "implicit 8ths"),
+      EG("1//", expect: .number(0.0625), "implicit 16ths"),
+      EG("1///", expect: .error("Too many '/' (at most 2)")),
+    ]) {
+      EGAssertEqual(Value.parse($0.input), $0)
+    }
   }
 }

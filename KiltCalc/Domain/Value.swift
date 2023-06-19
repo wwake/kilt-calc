@@ -108,7 +108,7 @@ extension Value: Equatable {
 }
 
 extension Value {
-  fileprivate static func parseNumber(_ string: String.SubSequence) -> Double? {
+  fileprivate static func parseNumber(_ string: String) -> (Double?, String) {
     let formatter = NumberFormatter()
 
     let matches = string.matches(of: /^([0-9]+)(\/*)$/)
@@ -116,28 +116,40 @@ extension Value {
     let numberString = String(matches[0].output.1)
     var numberPart = formatter.number(from: numberString)?.doubleValue
     if numberPart == nil {
-      return numberPart
+      return (nil, "number too big or too small")
     }
 
     let slashes = matches[0].output.2
-    if slashes == "/" {
-      numberPart = numberPart! / 8.0
+    if !slashes.isEmpty {
+      if slashes == "/" {
+        numberPart = numberPart! / 8.0
+      } else if slashes == "//" {
+        numberPart = numberPart! / 16.0
+      } else {
+        return (nil, "Too many '/' (at most 2)")
+      }
     }
 
-    return numberPart
+    return (numberPart, "")
   }
 
   static func parse(_ input: String) -> Value {
-    let numbers = input
+    let potentialNumbers = input
       .split(separator: Regex(/[a-z ]+/))
-      .map { Self.parseNumber($0) }
+      .map { Self.parseNumber(String($0)) }
+
+    if potentialNumbers.isEmpty { return .error("no value found") }
+
+    let firstError = potentialNumbers
+      .first(where: { $0.0 == nil })
+    if firstError != nil {
+      return .error(firstError!.1)
+    }
+
+    let numbers = potentialNumbers.map { $0.0 }
 
     let units = input.split(separator: Regex(/[0-9\/]+/))
       .map { $0.trimmingCharacters(in: .whitespaces) }
-
-    if numbers.isEmpty { return .error("no value found") }
-
-    if numbers.contains(nil) { return .error("number too big or too small") }
 
     if numbers.count == 1 && units.count == 0 {
       return .number(numbers[0]!)
