@@ -1,8 +1,9 @@
-* [off camera] Converted all ContentViewTests to CalculatorTests
-* [off camera] Moved EG extensions to EGTest+extensions.swift
-* [off camera] Eliminate ViewInspector and restore Grid
+Switch "/" and "+/-"
 
-* . and / for fractions
+Entering Fractions
+* . for decimal fractions
+* . and / for "real" fractions
+
 * History (open scrollable view with all expressions)
 
 * MC, MR, M+, M-
@@ -20,6 +21,14 @@
 * Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-16: 2023-06-19 - Entering Fractions
+* [off camera] Converted all ContentViewTests to CalculatorTests
+* [off camera] Moved EG extensions to EGTest+extensions.swift
+* [off camera] Eliminated ViewInspector and restored Grid
+* [off camera] Tweaked logo - red stripes, yellow text
+* [off camera] Released beta to my (one:) user
+
 
 CALC-23-15: 2023-06-15 - Rounding Units
 [off camera] Gave CalculatorTests a mini-language for expressions (like ContentViewTests has); switched to EG tests

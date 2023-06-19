@@ -19,7 +19,7 @@ public struct Keypad {
       Key("yd", .unit(.yard)),
       Key("ft", .unit(.foot)),
       Key("in", .unit(.inch)),
-      Key("/"),
+      Key(plusOrMinus, .unary(Operator(name: plusOrMinus, precedence: 99, evaluate: { a, _ in a.negate() }))),
       Key(divide, .binary(Operator(name: divide, precedence: 5, evaluate: /))),
     ],
     [
@@ -47,7 +47,7 @@ public struct Keypad {
       Key("M+"),
       Key("0", .digit(0)),
       Key(dot),
-      Key(plusOrMinus, .unary(Operator(name: plusOrMinus, precedence: 99, evaluate: { a, _ in a.negate() }))),
+      Key("/"),
       Key("=", .equals),
     ],
   ]
