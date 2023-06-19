@@ -26,13 +26,15 @@ struct ContentView: View {
           .background(Color.white)
           .border(Color.black)
 
-        Text(calculator.display)
-          .accessibilityIdentifier("display")
-          .accessibilityLabel("display")
-          .padding(4)
-          .frame(width: 330, alignment: .trailing)
-          .background(Color.white)
-          .border(Color.black)
+        ScrollView {
+          Text(calculator.display)
+            .accessibilityIdentifier("display")
+            .accessibilityLabel("display")
+            .padding(4)
+            .frame(width: 330, alignment: .trailing)
+            .background(Color.white)
+            .border(Color.black)
+        }
 
         HStack {
           Picker("Unit Format", selection: $selectedUnitFormat) {

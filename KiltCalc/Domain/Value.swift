@@ -117,7 +117,7 @@ extension Value {
 
     let matches = string.matches(of: /^([0-9]+)(\/*)([0-9]*)$/)
     if matches.isEmpty {
-      return (nil, "can't happen")
+      return (nil, "use \u{00f7} for complicated fractions")
     }
 
     let numberString = String(matches[0].output.1)

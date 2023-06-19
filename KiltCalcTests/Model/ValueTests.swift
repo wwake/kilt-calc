@@ -81,6 +81,7 @@ final class ValueTests: XCTestCase {
 
       EG("3/4", expect: .number(0.75), "numerator and denominator"),
       EG("3//4", expect: .error("at most one '/' between digits")),
+      EG("1/2/3", expect: .error("use \u{00f7} for complicated fractions")),
     ]) {
       EGAssertEqual(Value.parse($0.input), $0)
     }
