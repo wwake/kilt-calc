@@ -66,4 +66,9 @@ final class ValueTests: XCTestCase {
   func test_InchesDividedByInches_isNumber() {
     XCTAssertEqual(Value.inches(15).divide(Value.inches(3)), Value.number(5))
   }
+
+  func test_NumberThenSlash_Is8ths() {
+    XCTAssertEqual(Value.parse("3/"), .number(0.375))
+    // test where regex fails
+  }
 }

@@ -108,14 +108,31 @@ extension Value: Equatable {
 }
 
 extension Value {
-  static func parse(_ input: String) -> Value {
+  fileprivate static func parseNumber(_ string: String.SubSequence) -> Double? {
     let formatter = NumberFormatter()
 
+    let matches = string.matches(of: /^([0-9]+)(\/*)$/)
+
+    let numberString = String(matches[0].output.1)
+    var numberPart = formatter.number(from: numberString)?.doubleValue
+    if numberPart == nil {
+      return numberPart
+    }
+
+    let slashes = matches[0].output.2
+    if slashes == "/" {
+      numberPart = numberPart! / 8.0
+    }
+
+    return numberPart
+  }
+
+  static func parse(_ input: String) -> Value {
     let numbers = input
       .split(separator: Regex(/[a-z ]+/))
-      .map { formatter.number(from: String($0))?.doubleValue }
+      .map { Self.parseNumber($0) }
 
-    let units = input.split(separator: Regex(/[0-9]+/))
+    let units = input.split(separator: Regex(/[0-9\/]+/))
       .map { $0.trimmingCharacters(in: .whitespaces) }
 
     if numbers.isEmpty { return .error("no value found") }
