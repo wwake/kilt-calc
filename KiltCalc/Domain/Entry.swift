@@ -7,6 +7,7 @@ public enum Entry {
   case binary(Operator)
   case unary(Operator)
   case digit(Int)
+  case slash
   case leftParend
   case rightParend
   case ending
@@ -70,6 +71,9 @@ extension Entry: CustomStringConvertible {
 
     case .digit(let digit):
       return "\(digit)"
+
+    case .slash:
+      return "/"
 
     case .leftParend:
       return "("

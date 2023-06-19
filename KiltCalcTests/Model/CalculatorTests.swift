@@ -43,6 +43,9 @@ final class CalculatorTests: XCTestCase {
       case "0"..."9":
         calc.enter(.digit(Int(String(keyName))!))
 
+      case "/":
+        calc.enter(.slash)
+
       case "y", "f", "i", "M":
         firstLetter = keyName
 
@@ -263,6 +266,15 @@ final class CalculatorTests: XCTestCase {
 
       EG("I154in:160=", expect: "15/16⊕ in", "round with units - inches"),
       EG("Y5914in:160=", expect: "1 yd 15/16⊕ in", "round with units yd-ft-in"),
+    ]) {
+      EGAssertEqual(display($0.input), $0)
+    }
+  }
+
+  func test_Fractions() {
+    check([
+//      EG("3/=", expect: "3/8", "trailing slash implies 8ths"),
+//      EG("7//=", expect: "7/16", "trailing slash-slash implies 16ths"),
     ]) {
       EGAssertEqual(display($0.input), $0)
     }

@@ -41,7 +41,7 @@ public class Expression {
 
   outer: while index < input.count {
       switch entry {
-      case .digit, .unit:
+      case .digit, .unit, .slash:
         var pending = ""
         while entry.isOperand() {
           pending.append(entry.description)
@@ -81,6 +81,7 @@ public class Expression {
         break outer
 
       default:
+        print("ignored \(entry)")
         entry = nextEntry()
       }
     }

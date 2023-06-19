@@ -29,7 +29,7 @@ public class Calculator: ObservableObject {
     input.removeLastIf({ _ in true })
   }
 
-  private func digit(_ entry: Entry) {
+  private func operand(_ entry: Entry) {
     input.add(entry)
   }
 
@@ -77,11 +77,14 @@ public class Calculator: ObservableObject {
       let previousEntry = input.isEmpty ? nil : input.last
       if previousEntry != nil, previousEntry!.isUnaryOperator {
         input.removeLastIf { _ in true }
-        digit(entry)
+        operand(entry)
         input.add(previousEntry!)
       } else {
-        digit(entry)
+        operand(entry)
       }
+
+    case .slash:
+      operand(entry)
 
     case .leftParend:
       input.add(entry)
