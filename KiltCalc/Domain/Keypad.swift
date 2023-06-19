@@ -47,7 +47,7 @@ public struct Keypad {
       Key("M+"),
       Key("0", .digit(0)),
       Key(dot),
-      Key("/"),
+      Key("/", .slash),
       Key("=", .equals),
     ],
   ]

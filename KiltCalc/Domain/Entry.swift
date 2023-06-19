@@ -44,6 +44,7 @@ public enum Entry {
   public func isOperand() -> Bool {
     if case .digit = self { return true }
     if case .unit = self { return true }
+    if case .slash = self { return true }
     return false
   }
 }

@@ -4,7 +4,7 @@ struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches
 
-  let disabledKeys = Set(["MC", "MR", "M+", "M-", "%", "/", Keypad.dot])
+  let disabledKeys = Set(["MC", "MR", "M+", "M-", "%", Keypad.dot])
 
   var keypad = Keypad()
 
