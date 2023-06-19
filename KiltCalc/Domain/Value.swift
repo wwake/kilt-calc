@@ -112,10 +112,10 @@ extension Value {
     let formatter = NumberFormatter()
 
     if string.starts(with: /\//) {
-      return (nil, "can't start with /")
+      return (nil, "can't start with '/'")
     }
 
-    let matches = string.matches(of: /^([0-9]+)(\/*)$/)
+    let matches = string.matches(of: /^([0-9]+)(\/*)([0-9]*)$/)
     if matches.isEmpty {
       return (nil, "can't happen")
     }
@@ -127,15 +127,32 @@ extension Value {
     }
 
     let slashes = matches[0].output.2
+    let fractionString = String(matches[0].output.3)
+
+    var divisor = 1.0
     if !slashes.isEmpty {
       if slashes == "/" {
-        numberPart = numberPart! / 8.0
+        divisor = 8.0
+
+        if !fractionString.isEmpty {
+          let fractionPart = formatter.number(from: fractionString)?.doubleValue
+          if fractionPart == nil {
+            return (nil, "number too big or too small")
+          }
+          divisor = fractionPart!
+        }
       } else if slashes == "//" {
-        numberPart = numberPart! / 16.0
+        divisor = 16.0
+
+        if !fractionString.isEmpty {
+          return (nil, "at most one '/' between digits")
+        }
       } else {
         return (nil, "Too many '/' (at most 2)")
       }
     }
+
+    numberPart = numberPart! / divisor
 
     return (numberPart, "")
   }

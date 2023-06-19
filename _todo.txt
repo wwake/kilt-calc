@@ -1,16 +1,13 @@
-Entering Fractions
-* implicit 16ths - 314//
-* implicit 8ths - 314/
-
-* 314.15        — decimal point
 * 314/15        — explicit fraction
-
+* 314.15        — decimal point
 * 314.1/          — implicit 8ths
 * 314.1//         — implicit 16ths
 * 314.1/5        — explicit fraction
 * . for decimal fractions
 * . and / for "real" fractions
+Entering Fractions
 
+* Bold "display in"
 * History (open scrollable view with all expressions)
 
 * MC, MR, M+, M-
@@ -36,6 +33,8 @@ CALC-23-16: 2023-06-19 - Entering Fractions
 * [off camera] Tweaked logo - red stripes, yellow text
 * [off camera] Released beta to my (one:) user
 * Switch "/" and "+/-"
+* implicit 16ths - 314//
+* implicit 8ths - 314/
 
 
 CALC-23-15: 2023-06-15 - Rounding Units
