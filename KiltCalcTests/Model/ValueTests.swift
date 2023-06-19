@@ -70,12 +70,14 @@ final class ValueTests: XCTestCase {
   func test_NoNumberIsError() {
     XCTAssertEqual(Value.parse(""), .error("no value found"))
   }
-  
+
   func test_NumberThenSlash_Is8ths() {
     check([
       EG("3/", expect: .number(0.375), "implicit 8ths"),
       EG("1//", expect: .number(0.0625), "implicit 16ths"),
       EG("1///", expect: .error("Too many '/' (at most 2)")),
+      EG("/", expect: .error("can't start with /")),
+      EG("/31", expect: .error("can't start with /")),
     ]) {
       EGAssertEqual(Value.parse($0.input), $0)
     }

@@ -111,7 +111,14 @@ extension Value {
   fileprivate static func parseNumber(_ string: String) -> (Double?, String) {
     let formatter = NumberFormatter()
 
+    if string.starts(with: /\//) {
+      return (nil, "can't start with /")
+    }
+
     let matches = string.matches(of: /^([0-9]+)(\/*)$/)
+    if matches.isEmpty {
+      return (nil, "can't happen")
+    }
 
     let numberString = String(matches[0].output.1)
     var numberPart = formatter.number(from: numberString)?.doubleValue
