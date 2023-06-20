@@ -69,7 +69,7 @@ public struct FractionFormatter {
 
     if hasFraction {
       if wholeNumber != 0 {
-        result += "·"
+        result += "\u{2022}"
       }
       result += "\(numerator)/\(denominator)"
     }

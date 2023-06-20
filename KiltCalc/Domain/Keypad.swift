@@ -4,7 +4,7 @@ public struct Keypad {
   static let subtract = "\u{2212}"
   static let multiply = "\u{00d7}"
   static let divide = "\u{00f7}"
-  static let dot = "\u{22c5}"
+  static let dot = "\u{2022}" // was "\u{22c5}" (middle dot)
   static let plusOrMinus = "\u{00b1}"
 
   let contents: [[Key]] = [
@@ -46,7 +46,7 @@ public struct Keypad {
     [
       Key("M+"),
       Key("0", .digit(0)),
-      Key(dot),
+      Key(dot, .dot),
       Key("/", .slash),
       Key("=", .equals),
     ],

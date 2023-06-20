@@ -118,34 +118,34 @@ extension Value {
     }
     return (numberPart, "")
   }
-  
+
   fileprivate static func parseNumber(_ string: String) -> (Double?, String) {
     if string.starts(with: /\//) {
       return (nil, "can't start with '/'")
     }
-    
+
     let numberOfSlashes = string.filter { $0 == "/" }.count
     if numberOfSlashes >= 3 {
       return (nil, "too many '/' (at most 2)")
     }
-    
+
     let numberOfDots = string.filter { $0 == "." }.count
     if numberOfDots > 1 {
       return (nil, "too many '.'")
     }
-    
+
     if let justNumberMatch = string.wholeMatch(of: /[0-9]+\.?[0-9]*/) {
       return wholeOrDecimalNumber(justNumberMatch)
     }
-    
+
     guard let numberMatch = string.wholeMatch(of:
                                                 /(?<wholeNumber>[0-9]+)(|\.(?<numerator>[0-9]+))(?<slashes>\/+)(?<denominator>[0-9]*)/
     ) else {
       return (nil, "use \u{00f7} for complicated fractions")
     }
-    
+
     let formatter = NumberFormatter()
-    
+
     let wholeNumberString = String(numberMatch.wholeNumber)
     var numeratorString = String(numberMatch.numerator ?? "")
     let slashes = String(numberMatch.slashes)
@@ -154,21 +154,21 @@ extension Value {
     guard var wholeNumber = formatter.number(from: wholeNumberString)?.doubleValue else {
       return (nil, "number too big or too small")
     }
-    
+
     if numeratorString.isEmpty {
       wholeNumber = 0
       numeratorString = wholeNumberString
     }
-    
+
     guard let numerator = formatter.number(from: numeratorString)?.doubleValue else {
       return (nil, "number too big or too small")
     }
-    
+
     var divisor = 1.0
-    
+
     if slashes == "/" {
       divisor = 8.0
-      
+
       if !denominatorString.isEmpty {
         let fractionPart = formatter.number(from: denominatorString)?.doubleValue
         if fractionPart == nil {
