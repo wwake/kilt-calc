@@ -48,17 +48,17 @@ extension Value: Equatable {
       return self
 
     case (_, .error):
-        return other
+      return other
 
     case let (.number(a), .number(b)):
       return .number(a + b)
 
     case (.number, .inches),
-          (.inches, .number):
-        return .error("error - mixing inches and numbers")
+      (.inches, .number):
+      return .error("error - mixing inches and numbers")
 
     case let (.inches(a), .inches(b)):
-        return .inches(a + b)
+      return .inches(a + b)
     }
   }
 
@@ -119,47 +119,55 @@ extension Value {
       return (nil, "too many '.'")
     }
 
-    if let numberMatch = string.wholeMatch(of: /(?<digits1>[0-9.]+)(?<slashes>\/*)(?<digits2>[0-9]*)/) {
-      let digits1 = String(numberMatch.digits1)
+    if let justNumberMatch = string.wholeMatch(of: /[0-9]+\.?[0-9]*/) {
       let formatter = NumberFormatter()
-      var numberPart = formatter.number(from: digits1)?.doubleValue
+      let numberPart = formatter.number(from: String(justNumberMatch.0))?.doubleValue
       if numberPart == nil {
         return (nil, "number too big or too small")
       }
-
-      let slashes = String(numberMatch.slashes)
-      let fractionString = String(numberMatch.digits2)
-
-      var divisor = 1.0
-      if !slashes.isEmpty {
-        if slashes == "/" {
-          divisor = 8.0
-
-          if !fractionString.isEmpty {
-            let fractionPart = formatter.number(from: fractionString)?.doubleValue
-            if fractionPart == nil {
-              return (nil, "number too big or too small")
-            }
-            divisor = fractionPart!
-          }
-        } else if slashes == "//" {
-          divisor = 16.0
-
-          if !fractionString.isEmpty {
-            return (nil, "at most one '/' between digits")
-          }
-        } else {
-          return (nil, "Too many '/' (at most 2)")
-        }
-      }
-
-      numberPart = numberPart! / divisor
-
       return (numberPart, "")
+    }
 
-    } else {
+    guard let numberMatch = string.wholeMatch(of: /(?<digits1>[0-9.]+)(?<slashes>\/*)(?<digits2>[0-9]*)/) else {
       return (nil, "use \u{00f7} for complicated fractions")
     }
+
+    let digits1 = String(numberMatch.digits1)
+    let formatter = NumberFormatter()
+    var numberPart = formatter.number(from: digits1)?.doubleValue
+    if numberPart == nil {
+      return (nil, "number too big or too small")
+    }
+
+    let slashes = String(numberMatch.slashes)
+    let fractionString = String(numberMatch.digits2)
+
+    var divisor = 1.0
+    if !slashes.isEmpty {
+      if slashes == "/" {
+        divisor = 8.0
+
+        if !fractionString.isEmpty {
+          let fractionPart = formatter.number(from: fractionString)?.doubleValue
+          if fractionPart == nil {
+            return (nil, "number too big or too small")
+          }
+          divisor = fractionPart!
+        }
+      } else if slashes == "//" {
+        divisor = 16.0
+
+        if !fractionString.isEmpty {
+          return (nil, "at most one '/' between digits")
+        }
+      } else {
+        return (nil, "Too many '/' (at most 2)")
+      }
+    }
+
+    numberPart = numberPart! / divisor
+
+    return (numberPart, "")
   }
 
   static func parse(_ input: String) -> Value {
