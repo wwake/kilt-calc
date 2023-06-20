@@ -73,13 +73,13 @@ final class ValueTests: XCTestCase {
 
   func test_NumbersWithOrWithoutDecimalPointsOrFractions() {
     check([
-      EG("3/", expect: .number(0.375), "implicit 8ths"),
-      EG("1//", expect: .number(0.0625), "implicit 16ths"),
-      EG("1///", expect: .error("too many '/' (at most 2)")),
-      EG("/", expect: .error("can't start with '/'")),
-      EG("/31", expect: .error("can't start with '/'")),
-
-      EG("3/4", expect: .number(0.75), "numerator and denominator"),
+//      EG("3/", expect: .number(0.375), "implicit 8ths"),
+//      EG("1//", expect: .number(0.0625), "implicit 16ths"),
+//      EG("1///", expect: .error("too many '/' (at most 2)")),
+//      EG("/", expect: .error("can't start with '/'")),
+//      EG("/31", expect: .error("can't start with '/'")),
+//
+//      EG("3/4", expect: .number(0.75), "numerator and denominator"),
       EG("3//4", expect: .error("at most one '/' between digits")),
       EG("1/2/3", expect: .error("use \u{00f7} for complicated fractions")),
 

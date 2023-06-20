@@ -100,7 +100,7 @@ extension Value: Equatable {
       
     case let (.inches(a), .number(b)):
       return .inches(a / b)
-      
+
     case let (.inches(a), .inches(b)):
       return .number(a / b)
     }
@@ -109,7 +109,7 @@ extension Value: Equatable {
 
 extension Value {
   typealias NumberMatch = Regex<Regex<Substring>.RegexOutput>.Match
-  
+
   fileprivate static func wholeOrDecimalNumber(_ justNumberMatch: NumberMatch) -> (Double?, String) {
     let formatter = NumberFormatter()
     let numberPart = formatter.number(from: String(justNumberMatch.0))?.doubleValue
@@ -178,14 +178,12 @@ extension Value {
       }
     } else if slashes == "//" {
       divisor = 16.0
-      
+
       if !denominatorString.isEmpty {
         return (nil, "at most one '/' between digits")
       }
-    } else {
-      return (nil, "Too many '/' (at most 2)")
     }
-    
+
     let result = wholeNumber + numerator / divisor
     
     return (result, "")
@@ -205,16 +203,16 @@ extension Value {
     if firstError != nil {
       return .error(firstError!.1)
     }
-    
+
     let numbers = potentialNumbers.map { $0.0 }
-    
+
     let units = input.split(separator: numberCharacters)
       .map { $0.trimmingCharacters(in: .whitespaces) }
-    
+
     if numbers.count == 1 && units.count == 0 {
       return .number(numbers[0]!)
     }
-    
+
     if numbers.count != units.count {
       return .error("numbers and units don't match")
     }
