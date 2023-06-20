@@ -86,6 +86,8 @@ final class ValueTests: XCTestCase {
       EG("1.25", expect: .number(1.25), "simple decimal"),
       EG("1..25", expect: .error("too many '.'")),
       EG("1.2.3", expect: .error("too many '.'")),
+
+      EG("314.1/", expect: .number(314.125), "implicit 8ths"),
     ]) {
       EGAssertEqual(Value.parse($0.input), $0)
     }

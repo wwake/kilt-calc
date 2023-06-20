@@ -128,20 +128,31 @@ extension Value {
       return (numberPart, "")
     }
 
-    guard let numberMatch = string.wholeMatch(of: /(?<digits1>[0-9]+)(|\.(?<digits2>[0-9]+))(?<slashes>\/+)(?<digits3>[0-9]*)/) else {
+    guard let numberMatch = string.wholeMatch(of:
+/(?<wholeNumber>[0-9]+)(|\.(?<numerator>[0-9]+))(?<slashes>\/+)(?<denominator>[0-9]*)/
+    ) else {
       return (nil, "use \u{00f7} for complicated fractions")
     }
 
-    let digits1 = String(numberMatch.digits1)
     let formatter = NumberFormatter()
-    var numberPart = formatter.number(from: digits1)?.doubleValue
 
-    if numberPart == nil {
+    let wholeNumberString = String(numberMatch.wholeNumber)
+    var numeratorString = String(numberMatch.numerator ?? "")
+    let slashes = String(numberMatch.slashes)
+    let denominatorString = String(numberMatch.denominator)
+
+    guard var wholeNumber = formatter.number(from: wholeNumberString)?.doubleValue else {
       return (nil, "number too big or too small")
     }
 
-    let slashes = String(numberMatch.slashes)
-    let fractionString = String(numberMatch.digits3)
+    if numeratorString.isEmpty {
+      wholeNumber = 0
+      numeratorString = wholeNumberString
+    }
+
+    guard let numerator = formatter.number(from: numeratorString)?.doubleValue else {
+      return (nil, "number too big or too small")
+    }
 
     var divisor = 1.0
 
@@ -149,8 +160,8 @@ extension Value {
       if slashes == "/" {
         divisor = 8.0
 
-        if !fractionString.isEmpty {
-          let fractionPart = formatter.number(from: fractionString)?.doubleValue
+        if !denominatorString.isEmpty {
+          let fractionPart = formatter.number(from: denominatorString)?.doubleValue
           if fractionPart == nil {
             return (nil, "number too big or too small")
           }
@@ -159,7 +170,7 @@ extension Value {
       } else if slashes == "//" {
         divisor = 16.0
 
-        if !fractionString.isEmpty {
+        if !denominatorString.isEmpty {
           return (nil, "at most one '/' between digits")
         }
       } else {
@@ -167,9 +178,9 @@ extension Value {
       }
     }
 
-    numberPart = numberPart! / divisor
+    let result = wholeNumber + numerator / divisor
 
-    return (numberPart, "")
+    return (result, "")
   }
 
   static func parse(_ input: String) -> Value {
