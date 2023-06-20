@@ -120,15 +120,15 @@ extension Value {
     }
 
     if let numberMatch = string.wholeMatch(of: /(?<digits1>[0-9.]+)(?<slashes>\/*)(?<digits2>[0-9]*)/) {
-      let numberString = String(numberMatch.output.1)
+      let digits1 = String(numberMatch.digits1)
       let formatter = NumberFormatter()
-      var numberPart = formatter.number(from: numberString)?.doubleValue
+      var numberPart = formatter.number(from: digits1)?.doubleValue
       if numberPart == nil {
         return (nil, "number too big or too small")
       }
 
-      let slashes = numberMatch.output.2
-      let fractionString = String(numberMatch.output.3)
+      let slashes = String(numberMatch.slashes)
+      let fractionString = String(numberMatch.digits2)
 
       var divisor = 1.0
       if !slashes.isEmpty {
