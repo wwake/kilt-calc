@@ -128,21 +128,23 @@ extension Value {
       return (numberPart, "")
     }
 
-    guard let numberMatch = string.wholeMatch(of: /(?<digits1>[0-9.]+)(?<slashes>\/*)(?<digits2>[0-9]*)/) else {
+    guard let numberMatch = string.wholeMatch(of: /(?<digits1>[0-9]+)(|\.(?<digits2>[0-9]+))(?<slashes>\/+)(?<digits3>[0-9]*)/) else {
       return (nil, "use \u{00f7} for complicated fractions")
     }
 
     let digits1 = String(numberMatch.digits1)
     let formatter = NumberFormatter()
     var numberPart = formatter.number(from: digits1)?.doubleValue
+
     if numberPart == nil {
       return (nil, "number too big or too small")
     }
 
     let slashes = String(numberMatch.slashes)
-    let fractionString = String(numberMatch.digits2)
+    let fractionString = String(numberMatch.digits3)
 
     var divisor = 1.0
+
     if !slashes.isEmpty {
       if slashes == "/" {
         divisor = 8.0
