@@ -108,24 +108,34 @@ extension Value: Equatable {
 }
 
 extension Value {
+  typealias NumberMatch = Regex<Regex<Substring>.RegexOutput>.Match
+
+  fileprivate static func wholeOrDecimalNumber(_ justNumberMatch: NumberMatch) -> (Double?, String) {
+    let formatter = NumberFormatter()
+    let numberPart = formatter.number(from: String(justNumberMatch.0))?.doubleValue
+    if numberPart == nil {
+      return (nil, "number too big or too small")
+    }
+    return (numberPart, "")
+  }
+
   fileprivate static func parseNumber(_ string: String) -> (Double?, String) {
     if string.starts(with: /\//) {
       return (nil, "can't start with '/'")
     }
 
-    let doubleDotMatches = string.matches(of: /\..*\./)
+    let numberOfSlashes = string.filter { $0 == "/" }.count
+    if numberOfSlashes >= 3 {
+      return (nil, "too many '/' (at most 2)")
+    }
 
-    if !doubleDotMatches.isEmpty {
+    let numberOfDots = string.filter { $0 == "." }.count
+    if numberOfDots > 1 {
       return (nil, "too many '.'")
     }
 
     if let justNumberMatch = string.wholeMatch(of: /[0-9]+\.?[0-9]*/) {
-      let formatter = NumberFormatter()
-      let numberPart = formatter.number(from: String(justNumberMatch.0))?.doubleValue
-      if numberPart == nil {
-        return (nil, "number too big or too small")
-      }
-      return (numberPart, "")
+      return wholeOrDecimalNumber(justNumberMatch)
     }
 
     guard let numberMatch = string.wholeMatch(of:

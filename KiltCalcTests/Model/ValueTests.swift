@@ -75,7 +75,7 @@ final class ValueTests: XCTestCase {
     check([
       EG("3/", expect: .number(0.375), "implicit 8ths"),
       EG("1//", expect: .number(0.0625), "implicit 16ths"),
-      EG("1///", expect: .error("Too many '/' (at most 2)")),
+      EG("1///", expect: .error("too many '/' (at most 2)")),
       EG("/", expect: .error("can't start with '/'")),
       EG("/31", expect: .error("can't start with '/'")),
 
