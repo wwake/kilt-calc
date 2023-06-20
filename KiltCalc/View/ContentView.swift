@@ -40,6 +40,7 @@ struct ContentView: View {
               Text($0.rawValue)
             }
           }
+          .scaleEffect(1.25)
           .onChange(of: selectedUnitFormat) {
             calculator.imperialFormat = $0
           }

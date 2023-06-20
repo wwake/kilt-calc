@@ -1,11 +1,7 @@
-* implicit 16ths - 314.1//
-* explicit fraction - 314.1/5
-* . and / for "real" fractions
-Entering Fractions
-
 * Bold "display in"
 * History (open scrollable view with all expressions)
 
+* Refactor Value handling of fractions - can we use Regex transform?
 * MC, MR, M+, M-
 * %
 * Pleat calculator
@@ -23,8 +19,11 @@ Entering Fractions
 * Let check use varargs rather than []
 
 CALC-23-17: 2023-06-20 - Whole Numbers and Fractions
+Entering Fractions
 * decimal point - 314.15
 * implicit 8ths - 314.1/
+* implicit 16ths - 314.1//
+* explicit fraction - 314.1/5
 
 
 CALC-23-16: 2023-06-19 - Entering Fractions
