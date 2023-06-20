@@ -1,4 +1,3 @@
-* implicit 8ths - 314.1/
 * implicit 16ths - 314.1//
 * explicit fraction - 314.1/5
 * . and / for "real" fractions
@@ -25,6 +24,7 @@ Entering Fractions
 
 CALC-23-17: 2023-06-20 - Whole Numbers and Fractions
 * decimal point - 314.15
+* implicit 8ths - 314.1/
 
 
 CALC-23-16: 2023-06-19 - Entering Fractions

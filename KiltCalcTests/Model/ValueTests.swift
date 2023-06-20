@@ -71,7 +71,7 @@ final class ValueTests: XCTestCase {
     XCTAssertEqual(Value.parse(""), .error("no value found"))
   }
 
-  func test_NumberThenSlash_Is8ths() {
+  func test_NumbersWithOrWithoutDecimalPointsOrFractions() {
     check([
       EG("3/", expect: .number(0.375), "implicit 8ths"),
       EG("1//", expect: .number(0.0625), "implicit 16ths"),
@@ -88,6 +88,8 @@ final class ValueTests: XCTestCase {
       EG("1.2.3", expect: .error("too many '.'")),
 
       EG("314.1/", expect: .number(314.125), "implicit 8ths"),
+      EG("314.1//", expect: .number(314.0625), "implicit 16ths"),
+      EG("314.1/2", expect: .number(314.5), "explicit fraction"),
     ]) {
       EGAssertEqual(Value.parse($0.input), $0)
     }
