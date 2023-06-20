@@ -1,7 +1,8 @@
-* 314.15        — decimal point
-* 314.1/          — implicit 8ths
-* 314.1//         — implicit 16ths
-* 314.1/5        — explicit fraction
+
+* decimal point - 314.15
+* implicit 8ths - 314.1/
+* implicit 16ths - 314.1//
+* explicit fraction - 314.1/5
 * . and / for "real" fractions
 Entering Fractions
 
@@ -34,7 +35,7 @@ CALC-23-16: 2023-06-19 - Entering Fractions
 * implicit 16ths - 314//
 * implicit 8ths - 314/
 * 314/15        — explicit fraction (note that 1/2/3 is error)
-
+* Started on point
 
 CALC-23-15: 2023-06-15 - Rounding Units
 [off camera] Gave CalculatorTests a mini-language for expressions (like ContentViewTests has); switched to EG tests

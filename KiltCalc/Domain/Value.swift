@@ -115,6 +115,12 @@ extension Value {
       return (nil, "can't start with '/'")
     }
 
+    let doubleDotMatches = string.matches(of: /\..*\./)
+
+    if !doubleDotMatches.isEmpty {
+      return (nil, "too many '.'")
+    }
+
     let matches = string.matches(of: /^([0-9.]+)(\/*)([0-9]*)$/)
     if matches.isEmpty {
       return (nil, "use \u{00f7} for complicated fractions")

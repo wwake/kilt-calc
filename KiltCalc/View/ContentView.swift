@@ -3,19 +3,19 @@ import SwiftUI
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches
-  
+
   let disabledKeys = Set(["MC", "MR", "M+", "M-", "%", Keypad.dot])
-  
+
   var keypad = Keypad()
-  
+
   let columns = Array(repeating: GridItem(.flexible()), count: 5)
-  
+
   var body: some View {
     ZStack {
       Image(decorative: "Background")
         .resizable()
         .ignoresSafeArea()
-      
+
       VStack {
         Text("\(calculator.previous.0) = \(calculator.previous.1)")
           .accessibilityIdentifier("previous")
@@ -25,7 +25,7 @@ struct ContentView: View {
           .frame(width: 330, alignment: .trailing)
           .background(Color.white)
           .border(Color.black)
-        
+
         Text(calculator.display)
           .accessibilityIdentifier("display")
           .accessibilityLabel("display")
@@ -33,7 +33,7 @@ struct ContentView: View {
           .frame(width: 330, alignment: .trailing)
           .background(Color.white)
           .border(Color.black)
-        
+
         HStack {
           Picker("Unit Format", selection: $selectedUnitFormat) {
             ForEach(ImperialFormatter.allCases) {
@@ -46,7 +46,7 @@ struct ContentView: View {
           .accessibilityIdentifier("unitFormat")
           .pickerStyle(.menu)
         }
-        
+
         Grid {
           ForEach(keypad.contents, id: \.self) { row in
             GridRow {
