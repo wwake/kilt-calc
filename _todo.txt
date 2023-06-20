@@ -1,4 +1,3 @@
-
 * decimal point - 314.15
 * implicit 8ths - 314.1/
 * implicit 16ths - 314.1//
