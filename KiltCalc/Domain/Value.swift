@@ -10,15 +10,15 @@ extension Value {
   static func + (lhs: Value, rhs: Value) -> Value {
     lhs.plus(rhs)
   }
-  
+
   static func - (lhs: Value, rhs: Value) -> Value {
     lhs.minus(rhs)
   }
-  
+
   static func * (lhs: Value, rhs: Value) -> Value {
     lhs.times(rhs)
   }
-  
+
   static func / (lhs: Value, rhs: Value) -> Value {
     lhs.divide(rhs)
   }
@@ -29,75 +29,75 @@ extension Value: Equatable {
     switch self {
     case .error:
       return self
-      
+
     case .number(let value):
       return .number(-value)
-      
+
     case .inches(let value):
       return .inches(-value)
     }
   }
-  
+
   public func minus(_ other: Value) -> Value {
     plus(other.negate())
   }
-  
+
   public func plus(_ other: Value) -> Value {
     switch (self, other) {
     case (.error, _):
       return self
-      
+
     case (_, .error):
       return other
-      
+
     case let (.number(a), .number(b)):
       return .number(a + b)
-      
+
     case (.number, .inches),
       (.inches, .number):
       return .error("error - mixing inches and numbers")
-      
+
     case let (.inches(a), .inches(b)):
       return .inches(a + b)
     }
   }
-  
+
   public func times(_ other: Value) -> Value {
     switch (self, other) {
     case (.error, _):
       return self
-      
+
     case (_, .error):
       return other
-      
+
     case let (.number(a), .number(b)):
       return .number(a * b)
-      
+
     case let (.number(a), .inches(b)):
       return .inches(a * b)
-      
+
     case let (.inches(a), .number(b)):
       return .inches(a * b)
-      
+
     case (.inches, .inches):
       return .error("error - can't handle square inches")
     }
   }
-  
+
   public func divide(_ other: Value) -> Value {
     switch (self, other) {
     case (.error, _):
       return self
-      
+
     case (_, .error):
       return other
-      
+
     case let (.number(a), .number(b)):
       return .number(a / b)
-      
+
     case (.number, .inches):
       return .error("error - can't divide number by inches")
-      
+
     case let (.inches(a), .number(b)):
       return .inches(a / b)
 
@@ -150,7 +150,7 @@ extension Value {
     var numeratorString = String(numberMatch.numerator ?? "")
     let slashes = String(numberMatch.slashes)
     let denominatorString = String(numberMatch.denominator)
-    
+
     guard var wholeNumber = formatter.number(from: wholeNumberString)?.doubleValue else {
       return (nil, "number too big or too small")
     }
@@ -185,19 +185,19 @@ extension Value {
     }
 
     let result = wholeNumber + numerator / divisor
-    
+
     return (result, "")
   }
-  
+
   static func parse(_ input: String) -> Value {
     let numberCharacters = /[0-9\/.]+/
     let unitCharacters = /[a-z ]+/
     let potentialNumbers = input
       .split(separator: unitCharacters)
       .map { Self.parseNumber(String($0)) }
-    
+
     if potentialNumbers.isEmpty { return .error("no value found") }
-    
+
     let firstError = potentialNumbers
       .first(where: { $0.0 == nil })
     if firstError != nil {
@@ -216,7 +216,7 @@ extension Value {
     if numbers.count != units.count {
       return .error("numbers and units don't match")
     }
-    
+
     var inches = 0.0
     zip(numbers, units).forEach { number, unit in
       inches += ImperialUnit.asInches(number!, String(unit))
