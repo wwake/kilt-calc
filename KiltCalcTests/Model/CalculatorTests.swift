@@ -255,7 +255,7 @@ final class CalculatorTests: XCTestCase {
   func test_Rounding() {
     check([
       EG("3:8=", expect: "3/8", "round to 8ths w/no int part"),
-      EG("25:8=", expect: "3·1/8", "round to 8ths w/int part"),
+      EG("25:8=", expect: "3\u{2022}1/8", "round to 8ths w/int part"),
       EG("199:100=", expect: "2⊖", "round to 8ths w/numerator rounded to whole number"),
       EG("199~:100=", expect: "-2⊕", "round to 8ths w/negative"),
       EG("201~:100=", expect: "-2⊖", "round 8ths to whole number, slightly big"),
@@ -266,15 +266,6 @@ final class CalculatorTests: XCTestCase {
 
       EG("I154in:160=", expect: "15/16⊕ in", "round with units - inches"),
       EG("Y5914in:160=", expect: "1 yd 15/16⊕ in", "round with units yd-ft-in"),
-    ]) {
-      EGAssertEqual(display($0.input), $0)
-    }
-  }
-
-  func test_Fractions() {
-    check([
-//      EG("3/=", expect: "3/8", "trailing slash implies 8ths"),
-//      EG("7//=", expect: "7/16", "trailing slash-slash implies 16ths"),
     ]) {
       EGAssertEqual(display($0.input), $0)
     }
