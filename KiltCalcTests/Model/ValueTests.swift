@@ -73,22 +73,23 @@ final class ValueTests: XCTestCase {
 
   func test_NumbersWithOrWithoutDecimalPointsOrFractions() {
     check([
-      EG("3/", expect: .number(0.375), "missing denominator"),
-      EG("1//", expect: .error("simple fractions only (at most one '/'")),
-      EG("1///", expect: .error("simple fractions only (at most one '/'")),
       EG("/", expect: .error("can't start with '/'")),
       EG("/31", expect: .error("can't start with '/'")),
+      EG("3/", expect: .error("missing denominator")),
+      EG("314.1/", expect: .error("missing denominator")),
 
-      EG("3/4", expect: .number(0.75), "numerator and denominator"),
+      EG("1//", expect: .error("simple fractions only (at most one '/'")),
+      EG("1///", expect: .error("simple fractions only (at most one '/'")),
+      EG("314.1//", expect: .error("simple fractions only (at most one '/'")),
       EG("3//4", expect: .error("simple fractions only (at most one '/'")),
       EG("1/2/3", expect: .error("simple fractions only (at most one '/'")),
+
+      EG("3/4", expect: .number(0.75), "numerator and denominator"),
 
       EG("1.25", expect: .number(1.25), "simple decimal"),
       EG("1..25", expect: .error("too many '.'")),
       EG("1.2.3", expect: .error("too many '.'")),
 
-      EG("314.1/", expect: .number(314.125), "missing denominator"),
-      EG("314.1//", expect: .error("simple fractions only (at most one '/'")),
       EG("314.1/2", expect: .number(314.5), "explicit fraction"),
     ]) {
       EGAssertEqual(Value.parse($0.input), $0)

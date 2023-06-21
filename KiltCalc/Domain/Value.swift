@@ -139,7 +139,7 @@ extension Value {
     }
 
     guard let numberMatch = string.wholeMatch(
-      of: /(?<whole>[0-9]+)(|\.(?<num>[0-9]+))(?<slashes>\/+)(?<denom>[0-9]*)/
+      of: /(?<whole>[0-9]+)(|\.(?<num>[0-9]+))(?<slashes>\/)(?<denom>[0-9]*)/
     ) else {
       return (nil, "use \u{00f7} for complicated fractions")
     }
@@ -164,25 +164,17 @@ extension Value {
       return (nil, "number too big or too small")
     }
 
+    if slashes == "/" && denominatorString.isEmpty {
+      return (nil, "missing denominator")
+    }
+
     var divisor = 1.0
 
-    if slashes == "/" {
-      divisor = 8.0
-
-      if !denominatorString.isEmpty {
-        let fractionPart = formatter.number(from: denominatorString)?.doubleValue
-        if fractionPart == nil {
-          return (nil, "number too big or too small")
-        }
-        divisor = fractionPart!
-      }
-    } else if slashes == "//" {
-      divisor = 16.0
-
-      if !denominatorString.isEmpty {
-        return (nil, "at most one '/' between digits")
-      }
+    let fractionPart = formatter.number(from: denominatorString)?.doubleValue
+    if fractionPart == nil {
+      return (nil, "number too big or too small")
     }
+    divisor = fractionPart!
 
     let result = wholeNumber + numerator / divisor
 
