@@ -1,5 +1,6 @@
-* Don't show history after start or clear
 * History (open scrollable view with all expressions)
+* Let users type into history?
+* Store history in local storage
 * MC, MR, M+, M-
 
 * Refactor Value handling of fractions - can we use Regex transform?
@@ -22,8 +23,8 @@
 * Let check use varargs rather than []
 
 CALC-23-18: 2023-06-21 - History
-* Drop %
-
+* Drop % [off camera]
+* Don't show history after start
 
 CALC-23-17: 2023-06-20 - Whole Numbers and Fractions
 Entering Fractions

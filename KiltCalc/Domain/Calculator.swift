@@ -20,7 +20,7 @@ public class Calculator: ObservableObject {
     return valueFormatter.format(imperialFormat.formatter, result)
   }
 
-  private func clear() {
+  func clear() {
     result = .number(0)
     input.clear()
   }

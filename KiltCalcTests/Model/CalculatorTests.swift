@@ -12,13 +12,12 @@ final class CalculatorTests: XCTestCase {
 
   private let overflowValue = String(repeating: "9", count: 350)
 
-  private func display(_ input: String) -> String {
+  private func display(_ input: String, _ calc: Calculator = Calculator()) -> String {
     let (_, answer) = expressionResult(input)
     return answer
   }
 
-  private func expressionResult(_ input: String) -> ([(String, String)], String) {
-    let calc = Calculator()
+  private func expressionResult(_ input: String, _ calc: Calculator = Calculator()) -> ([(String, String)], String) {
     var firstLetter: Character = " "
 
     input.forEach { keyName in
@@ -121,18 +120,6 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(display("4C"), "0")
   }
 
-  func test_HistoryIsEmptyOnStartup() {
-    let calc = Calculator()
-    XCTAssertTrue(calc.history.isEmpty)
-  }
-
-  func test_EnteringEquation_PutsPreviousEntryInHistory() {
-    let (history, current) = expressionResult("1+1=")
-    XCTAssertEqual(history.last!.0, "1+1")
-    XCTAssertEqual(history.last!.1, "2")
-    XCTAssertEqual(current, "2")
-  }
-
   func test_UnitsAndOperations() {
     check([
       EG("1=", expect: "1"),
@@ -187,10 +174,40 @@ final class CalculatorTests: XCTestCase {
   }
 
   func test_EqualsSavesExpressionText() {
-    let (expression, display) = expressionResult("1+2=")
-    XCTAssertEqual(expression.last!.0, "1+2")
-    XCTAssertEqual(expression.last!.1, "3")
+    let (history, display) = expressionResult("1+2=")
+    XCTAssertEqual(history.last!.0, "1+2")
+    XCTAssertEqual(history.last!.1, "3")
     XCTAssertEqual(display, "3")
+  }
+
+  func test_HistoryIsEmptyOnStartup() {
+    let calc = Calculator()
+    XCTAssertTrue(calc.history.isEmpty)
+  }
+
+  func test_ClearDoesntChangeHistoryOnStartup() {
+    let calc = Calculator()
+    calc.clear()
+    XCTAssertTrue(calc.history.isEmpty)
+  }
+
+  func test_EnteringEquation_PutsPreviousEntryInHistory() {
+    let (history, current) = expressionResult("1+1=")
+    XCTAssertEqual(history.last!.0, "1+1")
+    XCTAssertEqual(history.last!.1, "2")
+    XCTAssertEqual(current, "2")
+  }
+
+  func test_HistoryIsMaintained() {
+    let calc = Calculator()
+    _ = expressionResult("1+2=", calc)
+    let (history, _) = expressionResult("2*3=", calc)
+
+    XCTAssertEqual(history.count, 2)
+    XCTAssertEqual(history[0].0, "1+2")
+    XCTAssertEqual(history[0].1, "3")
+    XCTAssertEqual(history[1].0, "2*3")
+    XCTAssertEqual(history[1].1, "6")
   }
 
   func test_overflowHandling() {
