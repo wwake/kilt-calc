@@ -1,5 +1,35 @@
 import SwiftUI
 
+public struct ButtonModifier: ViewModifier {
+  public func body(content: Content) -> some View {
+    content
+      .background(Color("KeyColor"))
+      .border(Color("AccentColor"), width: 1)
+  }
+}
+
+extension View {
+  public func buttonFormat() -> some View {
+    modifier(ButtonModifier())
+  }
+}
+
+public struct ValueModifier: ViewModifier {
+  public func body(content: Content) -> some View {
+    content
+      .padding(4)
+      .frame(width: 330, alignment: .trailing)
+      .background(Color.white)
+      .border(Color.black)
+  }
+}
+
+extension View {
+  public func valueFormat() -> some View {
+    modifier(ValueModifier())
+  }
+}
+
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches
@@ -24,54 +54,26 @@ struct ContentView: View {
             ? ""
             : "\(calculator.history.last!.expression) = \(calculator.history.last!.value)"
           )
-            .accessibilityIdentifier("previous")
-            .accessibilityLabel("previous")
-            .font(.footnote)
-            .padding(4)
-            .frame(width: 330, alignment: .trailing)
-            .background(Color.white)
-            .border(Color.black)
+          .font(.footnote)
+          .valueFormat()
 
           HStack {
             Button(action: {
               showHistory = true
             }) {
               Image(systemName: "text.magnifyingglass")
-                .scaleEffect(0.75)
+                .scaleEffect(0.5)
                 .padding([.leading], 2)
             }
             Spacer()
           }
         }
         .sheet(isPresented: $showHistory) {
-          VStack {
-            Text("History")
-              .font(.title)
-
-            List(calculator.history) {
-              Text("\($0.expression) = \($0.value)")
-            }
-            Spacer()
-
-            HStack {
-              Button("Clear") {
-                calculator.clearAllHistory()
-              }
-
-              Button("Done") {
-                showHistory = false
-              }
-            }
-          }
+          HistoryView(calculator: calculator)
         }
 
         Text(calculator.display)
-          .accessibilityIdentifier("display")
-          .accessibilityLabel("display")
-          .padding(4)
-          .frame(width: 330, alignment: .trailing)
-          .background(Color.white)
-          .border(Color.black)
+          .valueFormat()
 
         HStack {
           Picker("Unit Format", selection: $selectedUnitFormat) {
@@ -83,7 +85,6 @@ struct ContentView: View {
           .onChange(of: selectedUnitFormat) {
             calculator.imperialFormat = $0
           }
-          .accessibilityIdentifier("unitFormat")
           .pickerStyle(.menu)
         }
 
@@ -96,8 +97,7 @@ struct ContentView: View {
                 }
                 .disabled(disabledKeys.contains(key.name))
                 .frame(width: 60, height: 60)
-                .background(Color("KeyColor"))
-                .border(Color("AccentColor"), width: 1)
+                .buttonFormat()
               }
             }
           }
