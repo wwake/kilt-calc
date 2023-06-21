@@ -1,8 +1,14 @@
 import Foundation
 
+public struct HistoryItem: Identifiable {
+  public var id = UUID()
+  let expression: String
+  let value: String
+}
+
 public class Calculator: ObservableObject {
   @Published private(set) var input = InputBuffer()
-  @Published private(set) var history = [(String, String)]()
+  @Published private(set) var history = [HistoryItem]()
   @Published private(set) var result = Value.number(0)
 
   @Published private(set) var formattedResult = "0"
@@ -49,7 +55,10 @@ public class Calculator: ObservableObject {
     } else {
       result = Expression(input).evaluate()
     }
-     history.append((input.toString(), valueFormatter.format(imperialFormat.formatter, result)))
+     history.append(HistoryItem(
+      expression: input.toString(),
+      value: valueFormatter.format(imperialFormat.formatter, result)
+     ))
     input.clear()
   }
 

@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches
+  @State private var showHistory = false
 
   let disabledKeys = Set(["MC", "MR", "M+", "M-", "?"])
 
@@ -17,14 +18,43 @@ struct ContentView: View {
         .ignoresSafeArea()
 
       VStack {
-        Text(calculator.history.isEmpty ? "" : "\(calculator.history.last!.0) = \(calculator.history.last!.1)")
-          .accessibilityIdentifier("previous")
-          .accessibilityLabel("previous")
-          .font(.footnote)
-          .padding(4)
-          .frame(width: 330, alignment: .trailing)
-          .background(Color.white)
-          .border(Color.black)
+        ZStack {
+          Text(
+            calculator.history.isEmpty
+            ? ""
+            : "\(calculator.history.last!.expression) = \(calculator.history.last!.value)"
+          )
+            .accessibilityIdentifier("previous")
+            .accessibilityLabel("previous")
+            .font(.footnote)
+            .padding(4)
+            .frame(width: 330, alignment: .trailing)
+            .background(Color.white)
+            .border(Color.black)
+
+          HStack {
+            Button(action: {
+              showHistory = true
+            }) {
+              Image(systemName: "text.magnifyingglass")
+                .scaleEffect(0.75)
+                .padding([.leading], 2)
+            }
+            Spacer()
+          }
+        }
+        .sheet(isPresented: $showHistory) {
+          Text("History")
+            .font(.title)
+
+          Text("the history")
+//          List(calculator.history) {
+//            Text("\($0)")
+//          }
+          Button("Done") {
+            showHistory = false
+          }
+        }
 
         Text(calculator.display)
           .accessibilityIdentifier("display")

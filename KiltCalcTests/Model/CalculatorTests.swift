@@ -17,7 +17,7 @@ final class CalculatorTests: XCTestCase {
     return answer
   }
 
-  private func expressionResult(_ input: String, _ calc: Calculator = Calculator()) -> ([(String, String)], String) {
+  private func expressionResult(_ input: String, _ calc: Calculator = Calculator()) -> ([HistoryItem], String) {
     var firstLetter: Character = " "
 
     input.forEach { keyName in
@@ -175,8 +175,8 @@ final class CalculatorTests: XCTestCase {
 
   func test_EqualsSavesExpressionText() {
     let (history, display) = expressionResult("1+2=")
-    XCTAssertEqual(history.last!.0, "1+2")
-    XCTAssertEqual(history.last!.1, "3")
+    XCTAssertEqual(history.last!.expression, "1+2")
+    XCTAssertEqual(history.last!.value, "3")
     XCTAssertEqual(display, "3")
   }
 
@@ -193,8 +193,8 @@ final class CalculatorTests: XCTestCase {
 
   func test_EnteringEquation_PutsPreviousEntryInHistory() {
     let (history, current) = expressionResult("1+1=")
-    XCTAssertEqual(history.last!.0, "1+1")
-    XCTAssertEqual(history.last!.1, "2")
+    XCTAssertEqual(history.last!.expression, "1+1")
+    XCTAssertEqual(history.last!.value, "2")
     XCTAssertEqual(current, "2")
   }
 
@@ -204,10 +204,10 @@ final class CalculatorTests: XCTestCase {
     let (history, _) = expressionResult("2*3=", calc)
 
     XCTAssertEqual(history.count, 2)
-    XCTAssertEqual(history[0].0, "1+2")
-    XCTAssertEqual(history[0].1, "3")
-    XCTAssertEqual(history[1].0, "2*3")
-    XCTAssertEqual(history[1].1, "6")
+    XCTAssertEqual(history[0].expression, "1+2")
+    XCTAssertEqual(history[0].value, "3")
+    XCTAssertEqual(history[1].expression, "2*3")
+    XCTAssertEqual(history[1].value, "6")
   }
 
   func test_overflowHandling() {
