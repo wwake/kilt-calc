@@ -135,21 +135,21 @@ extension Value {
     }
 
     if let justNumberMatch = string.wholeMatch(of: /[0-9]+\.?[0-9]*/) {
-      return wholeOrDecimalNumber(justNumberMatch)
+      return wholeOrDecimalNumber(justNumberMatch) // swiftlint:disable:this implicit_return
     }
 
-    guard let numberMatch = string.wholeMatch(of:
-                                                /(?<wholeNumber>[0-9]+)(|\.(?<numerator>[0-9]+))(?<slashes>\/+)(?<denominator>[0-9]*)/
+    guard let numberMatch = string.wholeMatch(
+      of: /(?<whole>[0-9]+)(|\.(?<num>[0-9]+))(?<slashes>\/+)(?<denom>[0-9]*)/
     ) else {
       return (nil, "use \u{00f7} for complicated fractions")
     }
 
     let formatter = NumberFormatter()
 
-    let wholeNumberString = String(numberMatch.wholeNumber)
-    var numeratorString = String(numberMatch.numerator ?? "")
+    let wholeNumberString = String(numberMatch.whole)
+    var numeratorString = String(numberMatch.num ?? "")
     let slashes = String(numberMatch.slashes)
-    let denominatorString = String(numberMatch.denominator)
+    let denominatorString = String(numberMatch.denom)
 
     guard var wholeNumber = formatter.number(from: wholeNumberString)?.doubleValue else {
       return (nil, "number too big or too small")
