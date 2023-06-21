@@ -44,15 +44,24 @@ struct ContentView: View {
           }
         }
         .sheet(isPresented: $showHistory) {
-          Text("History")
-            .font(.title)
+          VStack {
+            Text("History")
+              .font(.title)
 
-          List(calculator.history) {
-            Text("\($0.expression) = \($0.value)")
-          }
-          Spacer()
-          Button("Done") {
-            showHistory = false
+            List(calculator.history) {
+              Text("\($0.expression) = \($0.value)")
+            }
+            Spacer()
+
+            HStack {
+              Button("Clear") {
+                calculator.clearAllHistory()
+              }
+
+              Button("Done") {
+                showHistory = false
+              }
+            }
           }
         }
 

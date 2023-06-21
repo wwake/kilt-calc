@@ -1,4 +1,4 @@
-* Clear history
+* Delete individual history items
 * Print history
 * Let users type into history?
 * Store history in local storage
@@ -29,6 +29,7 @@ CALC-23-18: 2023-06-21 - History
 * Drop % [off camera]
 * Don't show history after start
 * History (a scrollable view with all expressions)
+* Clear history
 
 CALC-23-17: 2023-06-20 - Whole Numbers and Fractions
 Entering Fractions

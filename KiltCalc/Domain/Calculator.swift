@@ -31,8 +31,12 @@ public class Calculator: ObservableObject {
     input.clear()
   }
 
-  func clearHistory() {
+  func clearAllHistory() {
     history = []
+  }
+
+  func deleteHistory(at indexSet: IndexSet) {
+    history.remove(atOffsets: indexSet)
   }
 
   private func backspace() {

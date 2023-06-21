@@ -213,8 +213,19 @@ final class CalculatorTests: XCTestCase {
   func test_ClearHistory() {
     let calc = Calculator()
     _ = expressionResult("1+2=", calc)
-    calc.clearHistory()
+    calc.clearAllHistory()
     XCTAssertTrue(calc.history.isEmpty)
+  }
+
+  func test_ClearHistoryItems() {
+    let calc = Calculator()
+    _ = expressionResult("1+2=", calc)
+    _ = expressionResult("1+3=", calc)
+    _ = expressionResult("1+4=", calc)
+    let indexSet = IndexSet(integersIn: 0...1)
+    calc.deleteHistory(at: indexSet)
+    XCTAssertEqual(calc.history.count, 1)
+    XCTAssertEqual(calc.history.last!.expression, "1+4")
   }
 
   func test_overflowHandling() {
