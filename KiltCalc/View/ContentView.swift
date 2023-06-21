@@ -47,10 +47,10 @@ struct ContentView: View {
           Text("History")
             .font(.title)
 
-          Text("the history")
-//          List(calculator.history) {
-//            Text("\($0)")
-//          }
+          List(calculator.history) {
+            Text("\($0.expression) = \($0.value)")
+          }
+          Spacer()
           Button("Done") {
             showHistory = false
           }
