@@ -17,7 +17,7 @@ struct ContentView: View {
         .ignoresSafeArea()
 
       VStack {
-        Text("\(calculator.previous.0) = \(calculator.previous.1)")
+        Text(calculator.history.isEmpty ? "" : "\(calculator.history.last!.0) = \(calculator.history.last!.1)")
           .accessibilityIdentifier("previous")
           .accessibilityLabel("previous")
           .font(.footnote)

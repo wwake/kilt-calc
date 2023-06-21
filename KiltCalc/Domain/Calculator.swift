@@ -2,7 +2,7 @@ import Foundation
 
 public class Calculator: ObservableObject {
   @Published private(set) var input = InputBuffer()
-  @Published private(set) var previous = ("0", "0")
+  @Published private(set) var history = [(String, String)]()
   @Published private(set) var result = Value.number(0)
 
   @Published private(set) var formattedResult = "0"
@@ -49,7 +49,7 @@ public class Calculator: ObservableObject {
     } else {
       result = Expression(input).evaluate()
     }
-     previous = (input.toString(), valueFormatter.format(imperialFormat.formatter, result))
+     history.append((input.toString(), valueFormatter.format(imperialFormat.formatter, result)))
     input.clear()
   }
 

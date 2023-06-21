@@ -1,4 +1,4 @@
-
+* Don't show history after start or clear
 * History (open scrollable view with all expressions)
 * MC, MR, M+, M-
 
