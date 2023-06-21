@@ -1,10 +1,13 @@
-* Bold "display in"
+
 * History (open scrollable view with all expressions)
+* MC, MR, M+, M-
 
 * Refactor Value handling of fractions - can we use Regex transform?
-* MC, MR, M+, M-
-* %
-* Pleat calculator
+  + Drop / or // only (enter fractions)
+  + work backwards?
+  + split big regex?
+
+* Pleat calculator ("Z"?)
 
 * Make calculator have a state machine for valid expressions (not including balancing parentheses) - or state machine plus parenthesis counter
 * Disable calculator buttons that can't be used (e.g., no ')' if there's not been a '(')
@@ -18,6 +21,10 @@
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
 
+CALC-23-18: 2023-06-21 - History
+* Drop %
+
+
 CALC-23-17: 2023-06-20 - Whole Numbers and Fractions
 Entering Fractions
 * decimal point - 314.15
@@ -25,6 +32,8 @@ Entering Fractions
 * implicit 16ths - 314.1//
 * explicit fraction - 314.1/5
 
+Look and Feel
+* Bold "display in"
 
 CALC-23-16: 2023-06-19 - Entering Fractions
 * [off camera] Converted all ContentViewTests to CalculatorTests

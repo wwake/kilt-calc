@@ -12,7 +12,7 @@ public struct Keypad {
       Key("C", .clear),
       Key("(", .leftParend),
       Key(")", .rightParend),
-      Key("%"),
+      Key("?"),
       Key(backspace, .backspace),
     ],
     [
