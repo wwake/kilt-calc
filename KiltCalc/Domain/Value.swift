@@ -120,6 +120,8 @@ extension Value {
   }
 
   fileprivate static func parseNumber(_ string: String) -> (Double?, String) {
+    let formatter = NumberFormatter()
+
     if string.starts(with: /\//) {
       return (nil, "can't start with '/'")
     }
@@ -138,13 +140,29 @@ extension Value {
       return wholeOrDecimalNumber(justNumberMatch) // swiftlint:disable:this implicit_return
     }
 
+    if let wholePlusFraction = string.wholeMatch(of: /(?<whole>[0-9]+)\/(?<denom>[0-9]+)/) {
+      let numeratorString = String(wholePlusFraction.whole)
+      let denominatorString = String(wholePlusFraction.denom)
+
+      guard var numerator = formatter.number(from: numeratorString)?.doubleValue else {
+        return (nil, "number too big or too small")
+      }
+
+      let denominator = formatter.number(from: denominatorString)?.doubleValue
+      if denominator == nil {
+        return (nil, "number too big or too small")
+      }
+
+      let result = numerator / denominator!
+
+      return (result, "")
+    }
+
     guard let numberMatch = string.wholeMatch(
       of: /(?<whole>[0-9]+)(|\.(?<num>[0-9]+))(?<slashes>\/)(?<denom>[0-9]*)/
     ) else {
       return (nil, "use \u{00f7} for complicated fractions")
     }
-
-    let formatter = NumberFormatter()
 
     let wholeNumberString = String(numberMatch.whole)
     var numeratorString = String(numberMatch.num ?? "")

@@ -1,7 +1,6 @@
-+ Drop / or // only (enter fractions)
+* split big regex?
+* work backwards?
 * Refactor Value handling of fractions - can we use Regex transform?
-  + work backwards?
-  + split big regex?
 
 * MC, MR, M+, M-
 
@@ -34,6 +33,10 @@ History
 * History (a scrollable view with all expressions)
 * Clear history
 * Delete individual history items
+
+Refactor Fractions
+* Drop / or // only (enter fractions)
+
 
 CALC-23-17: 2023-06-20 - Whole Numbers and Fractions
 Entering Fractions
