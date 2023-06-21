@@ -159,42 +159,24 @@ extension Value {
     }
 
     guard let numberMatch = string.wholeMatch(
-      of: /(?<whole>[0-9]+)(|\.(?<num>[0-9]+))(?<slashes>\/)(?<denom>[0-9]*)/
+      of: /(?<whole>[0-9]+)\.(?<num>[0-9]+)\/(?<denom>[0-9]+)/
     ) else {
-      return (nil, "use \u{00f7} for complicated fractions")
-    }
-
-    let wholeNumberString = String(numberMatch.whole)
-    var numeratorString = String(numberMatch.num ?? "")
-    let slashes = String(numberMatch.slashes)
-    let denominatorString = String(numberMatch.denom)
-
-    guard var wholeNumber = formatter.number(from: wholeNumberString)?.doubleValue else {
-      return (nil, "number too big or too small")
-    }
-
-    if numeratorString.isEmpty {
-      wholeNumber = 0
-      numeratorString = wholeNumberString
-    }
-
-    guard let numerator = formatter.number(from: numeratorString)?.doubleValue else {
-      return (nil, "number too big or too small")
-    }
-
-    if slashes == "/" && denominatorString.isEmpty {
       return (nil, "missing denominator")
     }
 
-    var divisor = 1.0
-
-    let fractionPart = formatter.number(from: denominatorString)?.doubleValue
-    if fractionPart == nil {
+    guard var wholeNumber = formatter.number(from: String(numberMatch.whole))?.doubleValue else {
       return (nil, "number too big or too small")
     }
-    divisor = fractionPart!
 
-    let result = wholeNumber + numerator / divisor
+    guard let numerator = formatter.number(from: String(numberMatch.num))?.doubleValue else {
+      return (nil, "number too big or too small")
+    }
+
+    guard let denominator = formatter.number(from: String(numberMatch.denom))?.doubleValue else {
+      return (nil, "number too big or too small")
+    }
+
+    let result = wholeNumber + numerator / denominator
 
     return (result, "")
   }

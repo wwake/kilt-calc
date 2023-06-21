@@ -1,11 +1,12 @@
-* split big regex?
-* work backwards?
+* Can we eliminate duplication of converting values? Possibly try try.
 * Refactor Value handling of fractions - can we use Regex transform?
 
 * MC, MR, M+, M-
 
 * Comma in long numbers
 * Print history
+  + https://www.hackingwithswift.com/example-code/uikit/how-to-print-using-uiactivityviewcontroller
+  
 * Let users type into history?
 
 * Store history, restore on app restart
@@ -33,6 +34,7 @@ History
 * History (a scrollable view with all expressions)
 * Clear history
 * Delete individual history items
+* split big regex
 
 Refactor Fractions
 * Drop / or // only (enter fractions)
