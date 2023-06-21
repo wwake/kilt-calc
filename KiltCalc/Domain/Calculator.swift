@@ -31,6 +31,10 @@ public class Calculator: ObservableObject {
     input.clear()
   }
 
+  func clearHistory() {
+    history = []
+  }
+
   private func backspace() {
     input.removeLastIf({ _ in true })
   }

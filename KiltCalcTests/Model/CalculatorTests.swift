@@ -210,6 +210,13 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(history[1].value, "6")
   }
 
+  func test_ClearHistory() {
+    let calc = Calculator()
+    _ = expressionResult("1+2=", calc)
+    calc.clearHistory()
+    XCTAssertTrue(calc.history.isEmpty)
+  }
+
   func test_overflowHandling() {
     check([
       EG(overflowValue + "=", expect: "number too big or too small", "overflow"),
