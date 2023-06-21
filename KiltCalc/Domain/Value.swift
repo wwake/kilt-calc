@@ -125,8 +125,8 @@ extension Value {
     }
 
     let numberOfSlashes = string.filter { $0 == "/" }.count
-    if numberOfSlashes >= 3 {
-      return (nil, "too many '/' (at most 2)")
+    if numberOfSlashes > 1 {
+      return (nil, "simple fractions only (at most one '/'")
     }
 
     let numberOfDots = string.filter { $0 == "." }.count

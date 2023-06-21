@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 public struct HistoryItem: Identifiable {
   public var id = UUID()

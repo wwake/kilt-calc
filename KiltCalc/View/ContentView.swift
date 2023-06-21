@@ -1,35 +1,5 @@
 import SwiftUI
 
-public struct ButtonModifier: ViewModifier {
-  public func body(content: Content) -> some View {
-    content
-      .background(Color("KeyColor"))
-      .border(Color("AccentColor"), width: 1)
-  }
-}
-
-extension View {
-  public func buttonFormat() -> some View {
-    modifier(ButtonModifier())
-  }
-}
-
-public struct ValueModifier: ViewModifier {
-  public func body(content: Content) -> some View {
-    content
-      .padding(4)
-      .frame(width: 330, alignment: .trailing)
-      .background(Color.white)
-      .border(Color.black)
-  }
-}
-
-extension View {
-  public func valueFormat() -> some View {
-    modifier(ValueModifier())
-  }
-}
-
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches

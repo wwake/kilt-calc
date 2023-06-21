@@ -37,6 +37,8 @@
 		91E7B6FE2A0D5230004A757A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 91E7B6FD2A0D522F004A757A /* LICENSE */; };
 		91F2AF322A40E685008A1063 /* EntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2AF312A40E685008A1063 /* EntryTests.swift */; };
 		91F2AF4E2A4382CC008A1063 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2AF4D2A4382CC008A1063 /* HistoryView.swift */; };
+		91F2AF502A438909008A1063 /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2AF4F2A438909008A1063 /* ButtonModifier.swift */; };
+		91F2AF522A438932008A1063 /* ValueModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2AF512A438932008A1063 /* ValueModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		91E7B6FD2A0D522F004A757A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		91F2AF312A40E685008A1063 /* EntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTests.swift; sourceTree = "<group>"; };
 		91F2AF4D2A4382CC008A1063 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		91F2AF4F2A438909008A1063 /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
+		91F2AF512A438932008A1063 /* ValueModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +119,10 @@
 		91E3C59B2A1BE86D0098BAFC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				91F2AF4F2A438909008A1063 /* ButtonModifier.swift */,
 				91E7B6CD2A0D4428004A757A /* ContentView.swift */,
 				91F2AF4D2A4382CC008A1063 /* HistoryView.swift */,
+				91F2AF512A438932008A1063 /* ValueModifier.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,10 +351,12 @@
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
 				91E7B6CC2A0D4428004A757A /* KiltCalcApp.swift in Sources */,
 				91E3C5B72A1FE18D0098BAFC /* ImperialFormatter.swift in Sources */,
+				91F2AF522A438932008A1063 /* ValueModifier.swift in Sources */,
 				9190F7AD2A292CA60008E40A /* Expression.swift in Sources */,
 				91F2AF4E2A4382CC008A1063 /* HistoryView.swift in Sources */,
 				916AF6602A252460009484DA /* ImperialUnit.swift in Sources */,
 				91E3C5A52A1BF69F0098BAFC /* Calculator.swift in Sources */,
+				91F2AF502A438909008A1063 /* ButtonModifier.swift in Sources */,
 				916AF6652A267B8F009484DA /* Operator.swift in Sources */,
 				91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */,
 				9190F7AF2A29331F0008E40A /* InputBuffer.swift in Sources */,

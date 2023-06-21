@@ -22,6 +22,8 @@ public struct HistoryView: View {
       Spacer()
 
       HStack {
+        Spacer()
+
         Button(role: .destructive) {
           calculator.clearAllHistory()
         } label: {
@@ -30,11 +32,15 @@ public struct HistoryView: View {
         .padding(8)
         .buttonFormat()
 
+        Spacer()
+
         Button("Done") {
           dismiss()
         }
         .padding(8)
         .buttonFormat()
+
+        Spacer()
       }
       .font(.title)
       .padding()

@@ -1,14 +1,15 @@
-* Print history
-* Let users type into history?
-* Store history in local storage
++ Drop / or // only (enter fractions)
+* Refactor Value handling of fractions - can we use Regex transform?
+  + work backwards?
+  + split big regex?
+
 * MC, MR, M+, M-
 
 * Comma in long numbers
+* Print history
+* Let users type into history?
 
-* Refactor Value handling of fractions - can we use Regex transform?
-  + Drop / or // only (enter fractions)
-  + work backwards?
-  + split big regex?
+* Store history, restore on app restart
 
 * Pleat calculator ("Z"?)
 
