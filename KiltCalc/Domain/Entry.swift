@@ -1,5 +1,4 @@
 public enum Entry {
-  case tbd(String)
   case clear
   case backspace
   case equals
@@ -17,6 +16,7 @@ public enum Entry {
   case memoryAdd
   case memorySubtract
 
+  case pleat
   case ending
 
   public func asUnit() -> ImperialUnit {
@@ -60,9 +60,6 @@ public enum Entry {
 extension Entry: CustomStringConvertible {
   public var description: String {
     switch self {
-    case .tbd(let ch):
-      return "TBD(\(ch))"
-
     case .clear:
       return "CLEAR"
 
@@ -104,6 +101,9 @@ extension Entry: CustomStringConvertible {
 
     case .memorySubtract:
       return "M-"
+
+    case .pleat:
+      return "Z"
 
     case .ending:
       return "$"

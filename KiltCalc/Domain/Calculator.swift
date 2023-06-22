@@ -74,9 +74,6 @@ public class Calculator: ObservableObject {
 
   public func enter(_ entry: Entry) {
     switch entry {
-    case .tbd(let ch):
-      print("\(#file) \(#line) TBD(\(ch)")
-
     case .clear:
       clear()
 
@@ -116,6 +113,9 @@ public class Calculator: ObservableObject {
 
     case .memoryClear, .memoryRecall, .memoryAdd, .memorySubtract:
       print("\(#file) \(#line) memory not implemented")
+
+    case .pleat:
+      print("\(#file) \(#line) pleat not implemented")
 
     case .ending:
       print("\(#file) \(#line) can't happen")

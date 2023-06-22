@@ -109,10 +109,11 @@ final class CalculatorTests: XCTestCase {
       case "Y":
         calc.imperialFormat = ImperialFormatter.yardFeetInches
 
+      case "Z":
+        print("Z - Pleat not yet implemented")
+
       default:
-        // TBD: ?
-        calc.enter(.tbd("\(firstLetter)\(keyName)"))
-        firstLetter = " "
+        print("Unknown keyname - shouldn't happen")
       }
     }
     return (calc.history, calc.display)
