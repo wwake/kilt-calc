@@ -169,39 +169,37 @@ extension Value {
   }
 
   static func parse(_ input: String) -> Value {
-    let numberCharacters = /[0-9\/.]+/
-    let unitCharacters = /[a-z ]+/
-
-    var numbers: [Double?] = []
-
     do {
-      let potentialNumbers = try input
+      let numberCharacters = /[0-9\/.]+/
+      let unitCharacters = /[a-z ]+/
+
+      let numbers = try input
         .split(separator: unitCharacters)
         .map { try Self.parseNumber(String($0)) }
 
-      if potentialNumbers.isEmpty { return .error("no value found") }
+      if numbers.isEmpty { return .error("no value found") }
 
-      numbers = potentialNumbers
+      let units = input.split(separator: numberCharacters)
+        .map { $0.trimmingCharacters(in: .whitespaces) }
+
+      if numbers.count == 1 && units.count == 0 {
+        return .number(numbers[0])
+      }
+
+      if numbers.count != units.count {
+        return .error("numbers and units don't match")
+      }
+
+      var inches = 0.0
+      zip(numbers, units).forEach { number, unit in
+        inches += ImperialUnit.asInches(number, String(unit))
+      }
+
+      return Value.inches(inches)
     } catch ParseError.error(let errorString) {
       return .error(errorString)
     } catch {
+      return .error("internal error")
     }
-
-    let units = input.split(separator: numberCharacters)
-      .map { $0.trimmingCharacters(in: .whitespaces) }
-
-    if numbers.count == 1 && units.count == 0 {
-      return .number(numbers[0]!)
-    }
-
-    if numbers.count != units.count {
-      return .error("numbers and units don't match")
-    }
-
-    var inches = 0.0
-    zip(numbers, units).forEach { number, unit in
-      inches += ImperialUnit.asInches(number!, String(unit))
-    }
-    return Value.inches(inches)
   }
 }
