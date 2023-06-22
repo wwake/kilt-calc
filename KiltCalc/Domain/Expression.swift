@@ -32,7 +32,13 @@ public class Expression {
   }
 
   public func evaluate() -> Value {
-    if input.isEmpty { return Value.number(0) }
+    if input.isEmpty {
+      return Value.number(0)
+    }
+
+    if input.last.isBinaryOperator() {
+      return .error("expression can't end with an operator")
+    }
 
     input.add(.ending)
 

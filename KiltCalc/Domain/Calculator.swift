@@ -59,17 +59,16 @@ public class Calculator: ObservableObject {
     input.add(entry)
   }
 
-   private func equals() {
-     if !input.isEmpty && input.last.isBinaryOperator() {
-       result = .error("expression can't end with an operator")
-    } else {
-      result = Expression(input).evaluate()
-    }
-     history.append(HistoryItem(
+  private func equals() {
+    result = Expression(input).evaluate()
+    history.append(HistoryItem(
       expression: input.toString(),
       value: valueFormatter.format(imperialFormat.formatter, result)
-     ))
+    ))
     input.clear()
+  }
+
+  public func memoryAdd() {
   }
 
   public func enter(_ entry: Entry) {
@@ -111,7 +110,10 @@ public class Calculator: ObservableObject {
     case .rightParend:
       input.add(entry)
 
-    case .memoryClear, .memoryRecall, .memoryAdd, .memorySubtract:
+    case .memoryAdd:
+      memoryAdd()
+
+    case .memoryClear, .memoryRecall, .memorySubtract:
       print("\(#file) \(#line) memory not implemented")
 
     case .pleat:

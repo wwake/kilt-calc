@@ -335,4 +335,26 @@ final class CalculatorTests: XCTestCase {
       EGAssertEqual(display($0.input), $0)
     }
   }
+
+  func test_MemoryStartsWith0() {
+    XCTAssertEqual(Calculator().memory, .number(0))
+  }
+
+//  func test_MemoryClearResetsItTo0() {
+//    let calc = Calculator()
+////    calc.memoryPl = .inches(42)
+//    calc.memoryClear()
+//    XCTAssertEqual(Calculator().memory, .number(0))
+//  }
+
+//  func test_Memory() {
+//    check([
+//      EG("42M+", expect: "42", "Memory can add value"),
+//    ]) {
+//      let calc = Calculator()
+//      _ = display($0.input, calc)
+//      let memory = ValueFormatter().format(ImperialFormatter.asInches, calc.memory)
+//      EGAssertEqual(memory, $0)
+//    }
+//  }
 }
