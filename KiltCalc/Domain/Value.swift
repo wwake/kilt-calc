@@ -123,7 +123,7 @@ extension Value {
     return numberPart!
   }
 
-  fileprivate static func parseNumber(_ string: String) throws -> (Double?, String) {
+  fileprivate static func parseNumber(_ string: String) throws -> Double {
     let formatter = NumberFormatter()
 
     if string.starts(with: /\//) {
@@ -141,7 +141,7 @@ extension Value {
     }
 
     if let justNumberMatch = string.wholeMatch(of: /[0-9]+\.?[0-9]*/) {
-      return try (wholeOrDecimalNumber(justNumberMatch), "") // swiftlint:disable:this implicit_return
+      return try wholeOrDecimalNumber(justNumberMatch) // swiftlint:disable:this implicit_return
     }
 
     if let wholePlusFraction = string.wholeMatch(of: /(?<whole>[0-9]+)\/(?<denom>[0-9]+)/) {
@@ -159,7 +159,7 @@ extension Value {
 
       let result = numerator / denominator!
 
-      return (result, "")
+      return result
     }
 
     guard let numberMatch = string.wholeMatch(
@@ -182,7 +182,7 @@ extension Value {
 
     let result = wholeNumber + numerator / denominator
 
-    return (result, "")
+    return result
   }
 
   static func parse(_ input: String) -> Value {
@@ -198,12 +198,7 @@ extension Value {
 
       if potentialNumbers.isEmpty { return .error("no value found") }
 
-      let firstError = potentialNumbers
-        .first(where: { $0.0 == nil })
-      if firstError != nil {
-        return .error(firstError!.1)
-      }
-      numbers = potentialNumbers.map { $0.0 }
+      numbers = potentialNumbers
     } catch ParseError.error(let errorString) {
       return .error(errorString)
     } catch {
