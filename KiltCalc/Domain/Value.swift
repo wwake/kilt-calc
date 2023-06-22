@@ -4,6 +4,8 @@ public enum Value {
   case error(String)
   case number(Double)
   case inches(Double)
+
+  static let formatter = NumberFormatter()
 }
 
 extension Value {
@@ -114,9 +116,8 @@ enum ParseError: Error {
 extension Value {
   typealias NumberMatch = Regex<Regex<Substring>.RegexOutput>.Match
 
-  fileprivate static func wholeOrDecimalNumber(_ justNumberMatch: NumberMatch) throws -> Double {
-    let formatter = NumberFormatter()
-    let numberPart = formatter.number(from: String(justNumberMatch.0))?.doubleValue
+  fileprivate static func parseDouble(_ string: Substring) throws -> Double {
+    let numberPart = formatter.number(from: String(string))?.doubleValue
     if numberPart == nil {
       throw ParseError.error("number too big or too small")
     }
@@ -141,23 +142,14 @@ extension Value {
     }
 
     if let justNumberMatch = string.wholeMatch(of: /[0-9]+\.?[0-9]*/) {
-      return try wholeOrDecimalNumber(justNumberMatch) // swiftlint:disable:this implicit_return
+      return try parseDouble(justNumberMatch.0) // swiftlint:disable:this implicit_return
     }
 
     if let wholePlusFraction = string.wholeMatch(of: /(?<whole>[0-9]+)\/(?<denom>[0-9]+)/) {
-      let numeratorString = String(wholePlusFraction.whole)
-      let denominatorString = String(wholePlusFraction.denom)
+      let numerator = try parseDouble(wholePlusFraction.whole)
+      let denominator = try parseDouble(wholePlusFraction.denom)
 
-      guard var numerator = formatter.number(from: numeratorString)?.doubleValue else {
-        throw ParseError.error("number too big or too small")
-      }
-
-      let denominator = formatter.number(from: denominatorString)?.doubleValue
-      if denominator == nil {
-        throw ParseError.error("number too big or too small")
-      }
-
-      return numerator / denominator!
+      return numerator / denominator
     }
 
     guard let numberMatch = string.wholeMatch(
