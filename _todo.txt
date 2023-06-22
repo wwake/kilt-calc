@@ -1,5 +1,3 @@
-
-* [off camera] Updated test template from @qcoding
 * Can we eliminate duplication of converting values? Possibly try try.
 * Refactor Value handling of fractions - can we use Regex transform?
 
@@ -27,6 +25,10 @@
 * Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-19: 2023-06-22 - Refactor Value; Add Memory
+* [off camera] Updated test template from @qcoding
+
 
 CALC-23-18: 2023-06-21 - History
 Off Camera

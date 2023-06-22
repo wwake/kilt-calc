@@ -107,6 +107,10 @@ extension Value: Equatable {
   }
 }
 
+enum ParseError: Error {
+  case error(String)
+}
+
 extension Value {
   typealias NumberMatch = Regex<Regex<Substring>.RegexOutput>.Match
 
@@ -119,21 +123,21 @@ extension Value {
     return (numberPart, "")
   }
 
-  fileprivate static func parseNumber(_ string: String) -> (Double?, String) {
+  fileprivate static func parseNumber(_ string: String) throws -> (Double?, String) {
     let formatter = NumberFormatter()
 
     if string.starts(with: /\//) {
-      return (nil, "can't start with '/'")
+      throw ParseError.error("can't start with '/'")
     }
 
     let numberOfSlashes = string.filter { $0 == "/" }.count
     if numberOfSlashes > 1 {
-      return (nil, "simple fractions only (at most one '/'")
+      throw ParseError.error("simple fractions only (at most one '/'")
     }
 
     let numberOfDots = string.filter { $0 == "." }.count
     if numberOfDots > 1 {
-      return (nil, "too many '.'")
+      throw ParseError.error("too many '.'")
     }
 
     if let justNumberMatch = string.wholeMatch(of: /[0-9]+\.?[0-9]*/) {
@@ -145,12 +149,12 @@ extension Value {
       let denominatorString = String(wholePlusFraction.denom)
 
       guard var numerator = formatter.number(from: numeratorString)?.doubleValue else {
-        return (nil, "number too big or too small")
+        throw ParseError.error("number too big or too small")
       }
 
       let denominator = formatter.number(from: denominatorString)?.doubleValue
       if denominator == nil {
-        return (nil, "number too big or too small")
+        throw ParseError.error("number too big or too small")
       }
 
       let result = numerator / denominator!
@@ -161,19 +165,19 @@ extension Value {
     guard let numberMatch = string.wholeMatch(
       of: /(?<whole>[0-9]+)\.(?<num>[0-9]+)\/(?<denom>[0-9]+)/
     ) else {
-      return (nil, "missing denominator")
+      throw ParseError.error("missing denominator")
     }
 
     guard var wholeNumber = formatter.number(from: String(numberMatch.whole))?.doubleValue else {
-      return (nil, "number too big or too small")
+      throw ParseError.error("number too big or too small")
     }
 
     guard let numerator = formatter.number(from: String(numberMatch.num))?.doubleValue else {
-      return (nil, "number too big or too small")
+      throw ParseError.error("number too big or too small")
     }
 
     guard let denominator = formatter.number(from: String(numberMatch.denom))?.doubleValue else {
-      return (nil, "number too big or too small")
+      throw ParseError.error("number too big or too small")
     }
 
     let result = wholeNumber + numerator / denominator
@@ -184,19 +188,26 @@ extension Value {
   static func parse(_ input: String) -> Value {
     let numberCharacters = /[0-9\/.]+/
     let unitCharacters = /[a-z ]+/
-    let potentialNumbers = input
-      .split(separator: unitCharacters)
-      .map { Self.parseNumber(String($0)) }
 
-    if potentialNumbers.isEmpty { return .error("no value found") }
+    var numbers: [Double?] = []
 
-    let firstError = potentialNumbers
-      .first(where: { $0.0 == nil })
-    if firstError != nil {
-      return .error(firstError!.1)
+    do {
+      let potentialNumbers = try input
+        .split(separator: unitCharacters)
+        .map { try Self.parseNumber(String($0)) }
+
+      if potentialNumbers.isEmpty { return .error("no value found") }
+
+      let firstError = potentialNumbers
+        .first(where: { $0.0 == nil })
+      if firstError != nil {
+        return .error(firstError!.1)
+      }
+      numbers = potentialNumbers.map { $0.0 }
+    } catch ParseError.error(let errorString) {
+      return .error(errorString)
+    } catch {
     }
-
-    let numbers = potentialNumbers.map { $0.0 }
 
     let units = input.split(separator: numberCharacters)
       .map { $0.trimmingCharacters(in: .whitespaces) }
