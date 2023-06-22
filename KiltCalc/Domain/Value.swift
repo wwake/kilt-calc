@@ -114,13 +114,13 @@ enum ParseError: Error {
 extension Value {
   typealias NumberMatch = Regex<Regex<Substring>.RegexOutput>.Match
 
-  fileprivate static func wholeOrDecimalNumber(_ justNumberMatch: NumberMatch) throws -> Double? {
+  fileprivate static func wholeOrDecimalNumber(_ justNumberMatch: NumberMatch) throws -> Double {
     let formatter = NumberFormatter()
     let numberPart = formatter.number(from: String(justNumberMatch.0))?.doubleValue
     if numberPart == nil {
       throw ParseError.error("number too big or too small")
     }
-    return numberPart
+    return numberPart!
   }
 
   fileprivate static func parseNumber(_ string: String) throws -> (Double?, String) {
