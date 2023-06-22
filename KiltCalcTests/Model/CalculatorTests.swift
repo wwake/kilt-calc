@@ -42,6 +42,9 @@ final class CalculatorTests: XCTestCase {
       case "0"..."9":
         calc.enter(.digit(Int(String(keyName))!))
 
+      case ".":
+        calc.enter(.dot)
+
       case "/":
         calc.enter(.slash)
 
@@ -94,7 +97,7 @@ final class CalculatorTests: XCTestCase {
         calc.imperialFormat = ImperialFormatter.yardFeetInches
 
       default:
-        // TBD: %, ., M-, M+
+        // TBD: ?, M-, M+
         calc.enter(.tbd("\(firstLetter)\(keyName)"))
         firstLetter = " "
       }
@@ -310,6 +313,7 @@ final class CalculatorTests: XCTestCase {
       EG("15:16=", expect: "15/16", "round to 16ths, no int part"),
       EG("154:160=", expect: "15/16⊕", "round to 16ths, slightly small"),
       EG("148:160=", expect: "15/16⊖", "round to 16ths, slightly big"),
+      EG("1.99=", expect: "2⊖", "decimal rounded to whole number"),
 
       EG("I154in:160=", expect: "15/16⊕ in", "round with units - inches"),
       EG("Y5914in:160=", expect: "1 yd 15/16⊕ in", "round with units yd-ft-in"),
