@@ -168,19 +168,28 @@ extension Value {
     return wholeNumber + fraction
   }
 
+  static func splitNumbers(_ input: String) throws -> [Double] {
+    let unitCharacters = /[a-z ]+/
+
+    let numbers = try input
+      .split(separator: unitCharacters)
+      .map { try Self.parseNumber(String($0)) }
+
+    if numbers.isEmpty { throw ParseError.error("no value found") }
+
+    return numbers
+  }
+
+  static func splitUnits(_ input: String) throws -> [String] {
+    let numberCharacters = /[0-9\/.]+/
+    return input.split(separator: numberCharacters)
+      .map { $0.trimmingCharacters(in: .whitespaces) }
+  }
+
   static func parse(_ input: String) -> Value {
     do {
-      let numberCharacters = /[0-9\/.]+/
-      let unitCharacters = /[a-z ]+/
-
-      let numbers = try input
-        .split(separator: unitCharacters)
-        .map { try Self.parseNumber(String($0)) }
-
-      if numbers.isEmpty { return .error("no value found") }
-
-      let units = input.split(separator: numberCharacters)
-        .map { $0.trimmingCharacters(in: .whitespaces) }
+      let numbers = try splitNumbers(input)
+      let units = try splitUnits(input)
 
       if numbers.count == 1 && units.count == 0 {
         return .number(numbers[0])
