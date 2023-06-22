@@ -24,7 +24,7 @@ public struct HistoryView: View {
       HStack {
         Spacer()
 
-        Button(role: .destructive) {
+        Button(role: .destructive) { // swiftlint:disable:this multiline_arguments
           calculator.clearAllHistory()
         } label: {
           Text("Clear")

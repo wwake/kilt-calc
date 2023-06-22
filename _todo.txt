@@ -1,3 +1,5 @@
+
+* [off camera] Updated test template from @qcoding
 * Can we eliminate duplication of converting values? Possibly try try.
 * Refactor Value handling of fractions - can we use Regex transform?
 
@@ -6,7 +8,8 @@
 * Comma in long numbers
 * Print history
   + https://www.hackingwithswift.com/example-code/uikit/how-to-print-using-uiactivityviewcontroller
-  
+  + https://thomas.skowron.eu/blog/printing-with-swiftui/
+
 * Let users type into history?
 
 * Store history, restore on app restart
@@ -16,7 +19,7 @@
 * Make calculator have a state machine for valid expressions (not including balancing parentheses) - or state machine plus parenthesis counter
 * Disable calculator buttons that can't be used (e.g., no ')' if there's not been a '(')
 * Ways to show parends need work - hint counter? grayed-out right parends? long press to close all? automatically insert?
-* If you start with an operator, you should load the previous result as the first operand (?) - or pointing hand to previous result ?
+* If you start with an operator, you should load the previous result as the first operand (?) - or pointing hand to previous result?
 
 * Separate error field, so we can keep editing?
 
@@ -35,10 +38,10 @@ History
 * Clear history
 * Delete individual history items
 * split big regex
+* Punted on storing or printing history
 
 Refactor Fractions
 * Drop / or // only (enter fractions)
-
 
 CALC-23-17: 2023-06-20 - Whole Numbers and Fractions
 Entering Fractions
