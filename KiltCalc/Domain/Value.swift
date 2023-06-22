@@ -124,9 +124,14 @@ extension Value {
     return numberPart!
   }
 
-  fileprivate static func parseNumber(_ string: String) throws -> Double {
-    let formatter = NumberFormatter()
+  fileprivate static func parseFraction(_ numeratorString: Substring, _ denominatorString: Substring) throws -> Double {
+    let numerator = try parseDouble(numeratorString)
+    let denominator = try parseDouble(denominatorString)
 
+    return numerator / denominator
+  }
+
+  fileprivate static func parseNumber(_ string: String) throws -> Double {
     if string.starts(with: /\//) {
       throw ParseError.error("can't start with '/'")
     }
@@ -145,11 +150,8 @@ extension Value {
       return try parseDouble(justNumberMatch.0) // swiftlint:disable:this implicit_return
     }
 
-    if let wholePlusFraction = string.wholeMatch(of: /(?<whole>[0-9]+)\/(?<denom>[0-9]+)/) {
-      let numerator = try parseDouble(wholePlusFraction.whole)
-      let denominator = try parseDouble(wholePlusFraction.denom)
-
-      return numerator / denominator
+    if let numAndDenom = string.wholeMatch(of: /(?<whole>[0-9]+)\/(?<denom>[0-9]+)/) {
+      return try parseFraction(numAndDenom.whole, numAndDenom.denom) // swiftlint:disable:this implicit_return
     }
 
     guard let numberMatch = string.wholeMatch(
@@ -158,19 +160,10 @@ extension Value {
       throw ParseError.error("missing denominator")
     }
 
-    guard var wholeNumber = formatter.number(from: String(numberMatch.whole))?.doubleValue else {
-      throw ParseError.error("number too big or too small")
-    }
+    let wholeNumber = try parseDouble(numberMatch.whole)
+    let fraction = try parseFraction(numberMatch.num, numberMatch.denom)
 
-    guard let numerator = formatter.number(from: String(numberMatch.num))?.doubleValue else {
-      throw ParseError.error("number too big or too small")
-    }
-
-    guard let denominator = formatter.number(from: String(numberMatch.denom))?.doubleValue else {
-      throw ParseError.error("number too big or too small")
-    }
-
-    return wholeNumber + numerator / denominator
+    return wholeNumber + fraction
   }
 
   static func parse(_ input: String) -> Value {
