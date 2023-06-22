@@ -114,11 +114,11 @@ enum ParseError: Error {
 extension Value {
   typealias NumberMatch = Regex<Regex<Substring>.RegexOutput>.Match
 
-  fileprivate static func wholeOrDecimalNumber(_ justNumberMatch: NumberMatch) -> (Double?, String) {
+  fileprivate static func wholeOrDecimalNumber(_ justNumberMatch: NumberMatch) throws -> (Double?, String) {
     let formatter = NumberFormatter()
     let numberPart = formatter.number(from: String(justNumberMatch.0))?.doubleValue
     if numberPart == nil {
-      return (nil, "number too big or too small")
+      throw ParseError.error("number too big or too small")
     }
     return (numberPart, "")
   }
@@ -141,7 +141,7 @@ extension Value {
     }
 
     if let justNumberMatch = string.wholeMatch(of: /[0-9]+\.?[0-9]*/) {
-      return wholeOrDecimalNumber(justNumberMatch) // swiftlint:disable:this implicit_return
+      return try wholeOrDecimalNumber(justNumberMatch) // swiftlint:disable:this implicit_return
     }
 
     if let wholePlusFraction = string.wholeMatch(of: /(?<whole>[0-9]+)\/(?<denom>[0-9]+)/) {
