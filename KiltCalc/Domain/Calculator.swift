@@ -33,6 +33,10 @@ public class Calculator: ObservableObject {
     input.clear()
   }
 
+  func memoryClear() {
+    memory = .number(0)
+  }
+
   func clearAllHistory() {
     history = []
   }
@@ -111,6 +115,9 @@ public class Calculator: ObservableObject {
 
     case .rightParend:
       input.add(entry)
+
+    case .memoryClear:
+      memoryClear()
 
     case .memoryAdd:
       memoryAdd()

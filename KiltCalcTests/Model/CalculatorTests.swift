@@ -350,6 +350,8 @@ final class CalculatorTests: XCTestCase {
   func test_Memory() {
     check([
       EG("42M+", expect: "42", "Memory can add value"),
+      EG("42M+MC", expect: "0", "Memory can clear"),
+      EG("9M+C", expect: "9", "Clear doesn't clear Memory"),
     ]) {
       let calc = Calculator()
       _ = display($0.input, calc)
