@@ -13,11 +13,11 @@ final class CalculatorTests: XCTestCase {
   private let overflowValue = String(repeating: "9", count: 350)
 
   private func display(_ input: String, _ calc: Calculator = Calculator()) -> String {
-    let (_, answer) = expressionResult(input)
+    let (_, answer) = expressionResult(input, calc)
     return answer
   }
 
-  private func expressionResult(_ input: String, _ calc: Calculator = Calculator()) -> ([HistoryItem], String) {
+  private func expressionResult(_ input: String, _ calc: Calculator) -> ([HistoryItem], String) {
     var firstLetter: Character = " "
 
     input.forEach { keyName in
@@ -191,7 +191,7 @@ final class CalculatorTests: XCTestCase {
   }
 
   func test_EqualsSavesExpressionText() {
-    let (history, display) = expressionResult("1+2=")
+    let (history, display) = expressionResult("1+2=", Calculator())
     XCTAssertEqual(history.last!.expression, "1+2")
     XCTAssertEqual(history.last!.value, "3")
     XCTAssertEqual(display, "3")
@@ -209,7 +209,7 @@ final class CalculatorTests: XCTestCase {
   }
 
   func test_EnteringEquation_PutsPreviousEntryInHistory() {
-    let (history, current) = expressionResult("1+1=")
+    let (history, current) = expressionResult("1+1=", Calculator())
     XCTAssertEqual(history.last!.expression, "1+1")
     XCTAssertEqual(history.last!.value, "2")
     XCTAssertEqual(current, "2")
@@ -347,14 +347,14 @@ final class CalculatorTests: XCTestCase {
 //    XCTAssertEqual(Calculator().memory, .number(0))
 //  }
 
-//  func test_Memory() {
-//    check([
-//      EG("42M+", expect: "42", "Memory can add value"),
-//    ]) {
-//      let calc = Calculator()
-//      _ = display($0.input, calc)
-//      let memory = ValueFormatter().format(ImperialFormatter.asInches, calc.memory)
-//      EGAssertEqual(memory, $0)
-//    }
-//  }
+  func test_Memory() {
+    check([
+      EG("42M+", expect: "42", "Memory can add value"),
+    ]) {
+      let calc = Calculator()
+      _ = display($0.input, calc)
+      let memory = ValueFormatter().format(ImperialFormatter.asInches, calc.memory)
+      EGAssertEqual(memory, $0)
+    }
+  }
 }

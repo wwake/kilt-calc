@@ -1,3 +1,6 @@
+* M+
+* History should note it added to memory
+
 * MC, MR, M+, M-
 Memory Keys
 

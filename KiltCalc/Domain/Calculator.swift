@@ -69,6 +69,8 @@ public class Calculator: ObservableObject {
   }
 
   public func memoryAdd() {
+    equals()
+    memory = (memory + result)
   }
 
   public func enter(_ entry: Entry) {
