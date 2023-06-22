@@ -32,8 +32,11 @@ final class CalculatorTests: XCTestCase {
         calc.enter(.backspace)
 
       case "C", "R":
-        if firstLetter == "M" {
-          calc.enter(.tbd("M\(keyName)"))
+        if firstLetter == "M" && keyName == "C" {
+          calc.enter(.memoryClear)
+          firstLetter = " "
+        } else if firstLetter == "M" && keyName == "R" {
+          calc.enter(.memoryRecall)
           firstLetter = " "
         } else {
           calc.enter(.clear)
@@ -76,10 +79,20 @@ final class CalculatorTests: XCTestCase {
         calc.enter(.rightParend)
 
       case "+":
-        calc.enter(addOp)
+        if firstLetter == "M" {
+          calc.enter(.memoryAdd)
+          firstLetter = " "
+        } else {
+          calc.enter(addOp)
+        }
 
       case "-":
-        calc.enter(subtractOp)
+        if firstLetter == "M" {
+          calc.enter(.memorySubtract)
+          firstLetter = " "
+        } else {
+          calc.enter(subtractOp)
+        }
 
       case "*":
         calc.enter(multiplyOp)
@@ -97,7 +110,7 @@ final class CalculatorTests: XCTestCase {
         calc.imperialFormat = ImperialFormatter.yardFeetInches
 
       default:
-        // TBD: ?, M-, M+
+        // TBD: ?
         calc.enter(.tbd("\(firstLetter)\(keyName)"))
         firstLetter = " "
       }
