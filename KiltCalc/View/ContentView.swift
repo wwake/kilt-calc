@@ -5,7 +5,7 @@ struct ContentView: View {
   @State private var selectedUnitFormat: ImperialFormatter = .inches
   @State private var showHistory = false
 
-  let disabledKeys = Set(["MC", "MR", "M+", "M-", "?"])
+  let disabledKeys = Set(["?"])
 
   var keypad = Keypad()
 

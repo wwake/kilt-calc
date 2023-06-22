@@ -11,6 +11,12 @@ public enum Entry {
   case slash
   case leftParend
   case rightParend
+
+  case memoryClear
+  case memoryRecall
+  case memoryAdd
+  case memorySubtract
+
   case ending
 
   public func asUnit() -> ImperialUnit {
@@ -86,6 +92,18 @@ extension Entry: CustomStringConvertible {
 
     case .rightParend:
       return ")"
+
+    case .memoryClear:
+      return "MC"
+
+    case .memoryRecall:
+      return "MR"
+
+    case .memoryAdd:
+      return "M+"
+
+    case .memorySubtract:
+      return "M-"
 
     case .ending:
       return "$"

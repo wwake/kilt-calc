@@ -11,6 +11,7 @@ public class Calculator: ObservableObject {
   @Published private(set) var input = InputBuffer()
   @Published private(set) var history = [HistoryItem]()
   @Published private(set) var result = Value.number(0)
+  @Published private(set) var memory = Value.number(0)
 
   @Published private(set) var formattedResult = "0"
 
@@ -112,6 +113,9 @@ public class Calculator: ObservableObject {
 
     case .rightParend:
       input.add(entry)
+
+    case .memoryClear, .memoryRecall, .memoryAdd, .memorySubtract:
+      print("\(#file) \(#line) memory not implemented")
 
     case .ending:
       print("\(#file) \(#line) can't happen")

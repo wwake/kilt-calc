@@ -1,7 +1,5 @@
-* Can we eliminate duplication of converting values? Possibly try try.
-* Refactor Value handling of fractions - can we use Regex transform?
-
 * MC, MR, M+, M-
+Memory Keys
 
 * Comma in long numbers
 * Print history
@@ -28,7 +26,7 @@
 
 CALC-23-19: 2023-06-22 - Refactor Value; Add Memory
 * [off camera] Updated test template from @qcoding
-
+* Refactor parse-related methods in Value
 
 CALC-23-18: 2023-06-21 - History
 Off Camera
