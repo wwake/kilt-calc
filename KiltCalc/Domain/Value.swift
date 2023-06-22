@@ -157,9 +157,7 @@ extension Value {
         throw ParseError.error("number too big or too small")
       }
 
-      let result = numerator / denominator!
-
-      return result
+      return numerator / denominator!
     }
 
     guard let numberMatch = string.wholeMatch(
@@ -180,9 +178,7 @@ extension Value {
       throw ParseError.error("number too big or too small")
     }
 
-    let result = wholeNumber + numerator / denominator
-
-    return result
+    return wholeNumber + numerator / denominator
   }
 
   static func parse(_ input: String) -> Value {
