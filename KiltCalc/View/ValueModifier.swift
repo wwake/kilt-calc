@@ -7,6 +7,7 @@ public struct ValueModifier: ViewModifier {
       .frame(width: 330, alignment: .trailing)
       .background(Color.white)
       .border(Color.black)
+      .foregroundColor(Color("AccentColor"))
   }
 }
 
