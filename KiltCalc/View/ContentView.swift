@@ -5,7 +5,7 @@ struct ContentView: View {
   @State private var selectedUnitFormat: ImperialFormatter = .inches
   @State private var showHistory = false
 
-  let disabledKeys = Set(["?"])
+  let disabledKeys = Set(["Z"])
 
   var keypad = Keypad()
 
@@ -33,8 +33,9 @@ struct ContentView: View {
             }) {
               Image(systemName: "text.magnifyingglass")
                 .scaleEffect(0.5)
-                .padding([.leading], 2)
+                .padding([.leading], 20)
             }
+
             Spacer()
           }
         }
