@@ -179,8 +179,9 @@ final class CalculatorTests: XCTestCase {
       EG("(11 in-1 in)*3=", expect: "2 ft 6 in"),
       EG("7in + (11 in+1 in)*3=", expect: "1 yd 7 in"),
 
+      EG("((3+2)=", expect: "error - unbalanced parentheses"),
       EG("1+(3+4))=", expect: "error - unbalanced parentheses"),
-      EG(")1+2=", expect: "error - unbalanced parentheses"),
+      EG(")1+2=", expect: "error - unbalanced parentheses or missing operators"),
       EG(")1+2(=", expect: "error - unbalanced parentheses"),
     ]) {
       EGAssertEqual(display("Y" + $0.input), $0)
@@ -357,8 +358,9 @@ final class CalculatorTests: XCTestCase {
   func test_MemoryAndResult() {
     check([
       EG("1+2=", expect: ("0", "3"), "Result doesn't change memory"),
-      EG("7M+MR", expect: ("7", "7"), "MR shows value"),
+      EG("7M+MRMR", expect: ("7", "7 7"), "MR shows value"),
       EG("9M+18+MR=", expect: ("9", "27"), "MR includes value"),
+      EG("9M+MR7=", expect: ("9", "error - unbalanced parentheses or missing operators")),
     ]) {
       let calc = Calculator()
       let formatter = ImperialFormatter.asInches

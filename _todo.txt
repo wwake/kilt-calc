@@ -1,5 +1,5 @@
-* [off camera] Add today command to twitch stream
-* MR
+* MR - for integers
+* MR - with units
 * History should note it added to memory
 
 * MC, M+, M-
@@ -28,6 +28,9 @@ Memory Keys
 * Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-20: 2023-06-26 - Memory Keys
+* [off camera] Add today command to twitch stream
 
 CALC-23-19: 2023-06-22 - Refactor Value; Add Memory
 * [off camera] Updated test template from @qcoding

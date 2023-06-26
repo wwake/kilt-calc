@@ -80,7 +80,7 @@ public class Calculator: ObservableObject {
   public func memoryRecall() {
     input.add(.value(
       memory,
-      valueFormatter.format(imperialFormat.formatter, memory)
+      "\(valueFormatter.format(imperialFormat.formatter, memory)) "
     ))
   }
 

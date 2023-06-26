@@ -103,8 +103,9 @@ public class Expression {
     }
 
     if operands.count != 1 {
-      return .error("error - unbalanced parentheses")
+      return .error("error - unbalanced parentheses or missing operators")
     }
+
     return operands.pop()
   }
 }
