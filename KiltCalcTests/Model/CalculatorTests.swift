@@ -138,8 +138,8 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(display("4C"), "0")
   }
 
-  func test_value() {
-    calc.enter(.value(Value.number(33)))
+  func test_valueEvaluatesToItself() {
+    calc.enter(.value(Value.number(33), "33"))
     calc.enter(.equals)
     XCTAssertEqual(calc.display, "33")
   }
@@ -357,14 +357,15 @@ final class CalculatorTests: XCTestCase {
   func test_MemoryAndResult() {
     check([
       EG("1+2=", expect: ("0", "3"), "Result doesn't change memory"),
-//      EG("9M+18+MR=", expect: ("9", "27"), "MR includes value"),
+      EG("7M+MR", expect: ("7", "7"), "MR shows value"),
+      EG("9M+18+MR=", expect: ("9", "27"), "MR includes value"),
     ]) {
       let calc = Calculator()
       let formatter = ImperialFormatter.asInches
 
       _ = display($0.input, calc)
       let memory = ValueFormatter().format(formatter, calc.memory)
-      let result = ValueFormatter().format(formatter, calc.result)
+      let result = calc.display
 
       XCTAssertEqual(memory, $0.expect.0, file: $0.file, line: $0.line)
       XCTAssertEqual(result, $0.expect.1, file: $0.file, line: $0.line)

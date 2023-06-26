@@ -55,7 +55,7 @@ public class Expression {
         }
         operands.push(Value.parse(pending))
 
-      case .value(let value):
+      case .value(let value, _):
         operands.push(value)
         entry = nextEntry()
 
