@@ -55,6 +55,10 @@ public class Expression {
         }
         operands.push(Value.parse(pending))
 
+      case .value(let value):
+        operands.push(value)
+        entry = nextEntry()
+
       case .unary(let theOperator):
         if operands.isEmpty {
           operands.push(.error("no value found"))

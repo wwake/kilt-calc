@@ -6,6 +6,7 @@ public enum Entry {
   case binary(Operator)
   case unary(Operator)
   case digit(Int)
+  case value(Value)
   case dot
   case slash
   case leftParend
@@ -77,6 +78,10 @@ extension Entry: CustomStringConvertible {
 
     case .digit(let digit):
       return "\(digit)"
+
+    case .value(let value):
+      print("value not implemented")
+      return "value"
 
     case .dot:
       return "."

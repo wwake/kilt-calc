@@ -77,6 +77,10 @@ public class Calculator: ObservableObject {
     memory = (memory + result)
   }
 
+  public func memoryRecall() {
+
+  }
+
   public func enter(_ entry: Entry) {
     switch entry {
     case .clear:
@@ -107,6 +111,9 @@ public class Calculator: ObservableObject {
         operand(entry)
       }
 
+    case .value:
+      input.add(entry)
+
     case .slash:
       operand(entry)
 
@@ -123,7 +130,7 @@ public class Calculator: ObservableObject {
       memoryAdd()
 
     case .memoryRecall:
-      print("\(#file) \(#line) MR not implemented")
+      memoryRecall()
 
     case .memorySubtract:
       print("\(#file) \(#line) M- not implemented")

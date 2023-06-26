@@ -4,6 +4,7 @@ import XCTest
 
 final class CalculatorTests: XCTestCase {
   private let calc = Calculator()
+
   private let addOp = Entry.binary(Operator(name: "+", precedence: 3, evaluate: +))
   private let subtractOp = Entry.binary(Operator(name: "-", precedence: 3, evaluate: -))
   private let multiplyOp = Entry.binary(Operator(name: "*", precedence: 5, evaluate: *))
@@ -135,6 +136,12 @@ final class CalculatorTests: XCTestCase {
 
   func test_ClearResetsDisplayAndEntering() {
     XCTAssertEqual(display("4C"), "0")
+  }
+
+  func test_value() {
+    calc.enter(.value(Value.number(33)))
+    calc.enter(.equals)
+    XCTAssertEqual(calc.display, "33")
   }
 
   func test_UnitsAndOperations() {
