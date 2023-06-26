@@ -347,11 +347,30 @@ final class CalculatorTests: XCTestCase {
 //    XCTAssertEqual(Calculator().memory, .number(0))
 //  }
 
+  func test_MemoryAndResult() {
+    check([
+      EG("1+2=", expect: ("0", "3"), "Result doesn't change memory"),
+//      EG("9M+18+MR=", expect: ("9", "27"), "MR includes value"),
+    ]) {
+      let calc = Calculator()
+      let formatter = ImperialFormatter.asInches
+
+      _ = display($0.input, calc)
+      let memory = ValueFormatter().format(formatter, calc.memory)
+      let result = ValueFormatter().format(formatter, calc.result)
+
+      XCTAssertEqual(memory, $0.expect.0, file: $0.file, line: $0.line)
+      XCTAssertEqual(result, $0.expect.1, file: $0.file, line: $0.line)
+    }
+  }
+
   func test_Memory() {
     check([
       EG("42M+", expect: "42", "Memory can add value"),
       EG("42M+MC", expect: "0", "Memory can clear"),
       EG("9M+C", expect: "9", "Clear doesn't clear Memory"),
+
+      EG("9M+18+MR=", expect: "9", "Clear doesn't clear Memory"),
     ]) {
       let calc = Calculator()
       _ = display($0.input, calc)

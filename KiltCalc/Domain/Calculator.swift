@@ -122,8 +122,11 @@ public class Calculator: ObservableObject {
     case .memoryAdd:
       memoryAdd()
 
-    case .memoryClear, .memoryRecall, .memorySubtract:
-      print("\(#file) \(#line) memory not implemented")
+    case .memoryRecall:
+      print("\(#file) \(#line) MR not implemented")
+
+    case .memorySubtract:
+      print("\(#file) \(#line) M- not implemented")
 
     case .pleat:
       print("\(#file) \(#line) pleat not implemented")

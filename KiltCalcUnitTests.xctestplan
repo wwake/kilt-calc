@@ -1,20 +1,15 @@
 {
   "configurations" : [
     {
-      "id" : "F9D42CD6-DD1F-4BB5-8390-EF3CC760DA2F",
-      "name" : "Test Scheme Action",
+      "id" : "23865B0D-9AA3-43B3-8216-69F0F1F5E0DA",
+      "name" : "Configuration 1",
       "options" : {
 
       }
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
-    "targetForVariableExpansion" : {
-      "containerPath" : "container:KiltCalc.xcodeproj",
-      "identifier" : "91E7B6C72A0D4428004A757A",
-      "name" : "KiltCalc"
-    }
+    "testTimeoutsEnabled" : true
   },
   "testTargets" : [
     {

@@ -60,13 +60,13 @@
 		918628CC2A2FC57300FA781D /* ValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatter.swift; sourceTree = "<group>"; };
 		9190F7AC2A292CA60008E40A /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		9190F7AE2A29331F0008E40A /* InputBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBuffer.swift; sourceTree = "<group>"; };
+		91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KiltCalcUnitTests.xctestplan; sourceTree = "<group>"; };
 		91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		91E3C5A02A1BF40F0098BAFC /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		91E3C5A22A1BF4280098BAFC /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
 		91E3C5A42A1BF69F0098BAFC /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		91E3C5AC2A1D39A30098BAFC /* EGTest+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EGTest+extensions.swift"; sourceTree = "<group>"; };
-		91E3C5B12A1E8ACF0098BAFC /* KiltCalc.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KiltCalc.xctestplan; sourceTree = "<group>"; };
 		91E3C5B22A1EAAD10098BAFC /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		91E3C5B42A1EAB4A0098BAFC /* ValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTests.swift; sourceTree = "<group>"; };
 		91E3C5B62A1FE18D0098BAFC /* ImperialFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialFormatter.swift; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 		91E7B6BF2A0D4428004A757A = {
 			isa = PBXGroup;
 			children = (
+				91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */,
 				91E7B6F72A0D4FC0004A757A /* _todo.txt */,
-				91E3C5B12A1E8ACF0098BAFC /* KiltCalc.xctestplan */,
 				91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */,
 				91E7B6FB2A0D5189004A757A /* README.md */,
 				91E7B6FD2A0D522F004A757A /* LICENSE */,

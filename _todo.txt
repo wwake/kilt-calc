@@ -1,7 +1,8 @@
-* M+
+* [off camera] Add today command to twitch stream
+* MR
 * History should note it added to memory
 
-* MC, MR, M+, M-
+* MC, M+, M-
 Memory Keys
 
 * Comma in long numbers
@@ -21,6 +22,7 @@ Memory Keys
 * If you start with an operator, you should load the previous result as the first operand (?) - or pointing hand to previous result?
 
 * Separate error field, so we can keep editing?
+* Dark or light mode
 
 * Update EGTest to take new check() with try from ContentViewTests
 * Update EGTest with EGAssert
@@ -30,6 +32,8 @@ Memory Keys
 CALC-23-19: 2023-06-22 - Refactor Value; Add Memory
 * [off camera] Updated test template from @qcoding
 * Refactor parse-related methods in Value
+* M+
+* Started MR
 
 CALC-23-18: 2023-06-21 - History
 Off Camera
