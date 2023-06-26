@@ -59,13 +59,6 @@ final class ValueTests: XCTestCase {
     }
   }
 
-  func test_InchesMinusInches() {
-    XCTAssertEqual(
-      Value.inches(5).minus(Value.inches(2)),
-      Value.inches(3)
-    )
-  }
-
   func test_ErrorsTimesAnythingIsError() {
     XCTAssertEqual(Value.error("a").times(Value.error("b")), Value.error("a"))
     XCTAssertEqual(Value.error("a").times(Value.number(2)), Value.error("a"))
@@ -79,9 +72,15 @@ final class ValueTests: XCTestCase {
     XCTAssertEqual(Value.number(5).times(Value.number(2)), Value.number(10))
   }
 
-  func test_NumberTimesInches() {
+  func test_NumberTimesInchesOrViceVersa() {
     XCTAssertEqual(Value.number(5).times(Value.inches(2)), Value.inches(10))
     XCTAssertEqual(Value.inches(5).times(Value.number(2)), Value.inches(10))
+
+    XCTAssertEqual(Value.number(0).times(Value.inches(2)), Value.number(0))
+    XCTAssertEqual(Value.number(3).times(Value.inches(0)), Value.number(0))
+
+    XCTAssertEqual(Value.inches(0).times(Value.number(2)), Value.number(0))
+    XCTAssertEqual(Value.inches(2).times(Value.number(0)), Value.number(0))
   }
 
   func test_InchesTimesInches_isErrorExcept0() {
@@ -114,15 +113,30 @@ final class ValueTests: XCTestCase {
     XCTAssertEqual(Value.number(10).divide(Value.number(2)), Value.number(5))
   }
 
-  func test_NumberDividedByInches_isError() {
+  func test_NumberDividedByZero() {
+    XCTAssertEqual(Value.number(10).divide(Value.number(0)), Value.number(10 / 0))
+
+    if case let Value.number(value) = Value.number(0).divide(Value.number(0)) {
+      XCTAssertTrue(value.isNaN)
+    } else {
+      XCTFail("Should have found NaN")
+    }
+  }
+
+  func test_NumberDividedByInches_isErrorExcept0() {
     XCTAssertEqual(
       Value.number(52).divide(Value.inches(2)),
       Value.error("error - can't divide number by inches")
+    )
+    XCTAssertEqual(
+      Value.number(0).divide(Value.inches(2)),
+      Value.number(0)
     )
   }
 
   func test_InchesDividedByNumber() {
     XCTAssertEqual(Value.inches(52).divide(Value.number(4)), Value.inches(13))
+    XCTAssertEqual(Value.inches(0).divide(Value.number(4)), Value.number(0))
   }
 
   func test_InchesDividedByInches_isNumber() {

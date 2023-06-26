@@ -350,18 +350,19 @@ final class CalculatorTests: XCTestCase {
 
 //  func test_MemoryClearResetsItTo0() {
 //    let calc = Calculator()
-////    calc.memoryPl = .inches(42)
+//    calc.memory = .inches(42)
 //    calc.memoryClear()
 //    XCTAssertEqual(Calculator().memory, .number(0))
 //  }
 
   func test_MemoryAndResult() {
     check([
-      EG("1+2=", expect: ("0", "3"), "Result doesn't change memory"),
-      EG("7M+MRMR", expect: ("7", "7 7"), "MR shows value"),
-      EG("9M+18+MR=", expect: ("9", "27"), "MR includes value"),
-      EG("9M+MR7=", expect: ("9", "error - unbalanced parentheses or missing operators")),
-      EG("9M+7MR=", expect: ("9", "error - unbalanced parentheses or missing operators")),
+      EG("1+2=", expect: ("0", "3", ""), "Result doesn't change memory"),
+      EG("7M+MRMR", expect: ("7", "7 7", ""), "MR shows value"),
+      EG("9M+18+MR=", expect: ("9", "27", ""), "MR includes value"),
+      EG("9M+MR7=", expect: ("9", "error - unbalanced parentheses or missing operators", "")),
+      EG("9M+7MR=", expect: ("9", "error - unbalanced parentheses or missing operators", "")),
+  //    EG("9M+7inM+", expect: ("9", "7 in", "error - mixing inches and numbers")),
     ]) {
       let calc = Calculator()
       let formatter = ImperialFormatter.asInches
@@ -369,9 +370,11 @@ final class CalculatorTests: XCTestCase {
       _ = display($0.input, calc)
       let memory = ValueFormatter().format(formatter, calc.memory)
       let result = calc.display
+      let errorMessage = calc.errorMessage
 
-      XCTAssertEqual(memory, $0.expect.0, file: $0.file, line: $0.line)
-      XCTAssertEqual(result, $0.expect.1, file: $0.file, line: $0.line)
+      XCTAssertEqual(memory, $0.expect.0, "memory", file: $0.file, line: $0.line)
+      XCTAssertEqual(result, $0.expect.1, "result", file: $0.file, line: $0.line)
+      XCTAssertEqual(errorMessage, $0.expect.2, "error message", file: $0.file, line: $0.line)
     }
   }
 

@@ -12,6 +12,7 @@ public class Calculator: ObservableObject {
   @Published private(set) var history = [HistoryItem]()
   @Published private(set) var result = Value.number(0)
   @Published private(set) var memory = Value.number(0)
+  @Published private(set) var errorMessage = ""
 
   @Published private(set) var formattedResult = "0"
 

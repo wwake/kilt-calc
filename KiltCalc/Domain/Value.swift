@@ -91,9 +91,15 @@ extension Value: Equatable {
       return .number(a * b)
 
     case let (.number(a), .inches(b)):
+      if a.isZero || b.isZero {
+        return .number(0)
+      }
       return .inches(a * b)
 
     case let (.inches(a), .number(b)):
+      if a.isZero || b.isZero {
+        return .number(0)
+      }
       return .inches(a * b)
 
     case let (.inches(a), .inches(b)):
@@ -115,10 +121,16 @@ extension Value: Equatable {
     case let (.number(a), .number(b)):
       return .number(a / b)
 
-    case (.number, .inches):
+    case let (.number(a), .inches):
+      if a.isZero {
+        return .number(0)
+      }
       return .error("error - can't divide number by inches")
 
     case let (.inches(a), .number(b)):
+      if a.isZero {
+        return .number(0)
+      }
       return .inches(a / b)
 
     case let (.inches(a), .inches(b)):

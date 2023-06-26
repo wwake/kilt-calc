@@ -1,7 +1,6 @@
-* Handle zero mixed with units
-* M+ / M- shouldn't mix numbers & units
-* MR - with units
+* M+ / M- shouldn't mix numbers & units (already worked)
 * History should note it added to memory
+* How do error messages interact with history?
 
 * MC, M+, M-
 Memory Keys
@@ -33,6 +32,8 @@ Memory Keys
 CALC-23-20: 2023-06-26 - Memory Keys
 * [off camera] Add today command to twitch stream
 * MR - for integers
+* Handle zero mixed with units
+* MR - with units
 
 CALC-23-19: 2023-06-22 - Refactor Value; Add Memory
 * [off camera] Updated test template from @qcoding
