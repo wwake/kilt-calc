@@ -1,4 +1,5 @@
-* MR - for integers
+* Handle zero mixed with units
+* M+ / M- shouldn't mix numbers & units
 * MR - with units
 * History should note it added to memory
 
@@ -31,6 +32,7 @@ Memory Keys
 
 CALC-23-20: 2023-06-26 - Memory Keys
 * [off camera] Add today command to twitch stream
+* MR - for integers
 
 CALC-23-19: 2023-06-22 - Refactor Value; Add Memory
 * [off camera] Updated test template from @qcoding

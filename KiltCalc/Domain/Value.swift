@@ -55,11 +55,26 @@ extension Value: Equatable {
     case let (.number(a), .number(b)):
       return .number(a + b)
 
-    case (.number, .inches),
-      (.inches, .number):
+    case let (.number(a), .inches(b)):
+      if b == 0 {
+        return self
+      } else if a == 0 {
+        return other
+      }
+      return .error("error - mixing inches and numbers")
+
+    case let (.inches(a), .number(b)):
+      if a == 0 {
+        return other
+      } else if b == 0 {
+        return self
+      }
       return .error("error - mixing inches and numbers")
 
     case let (.inches(a), .inches(b)):
+      if (a + b).isZero {
+        return .number(0)
+      }
       return .inches(a + b)
     }
   }
@@ -81,7 +96,10 @@ extension Value: Equatable {
     case let (.inches(a), .number(b)):
       return .inches(a * b)
 
-    case (.inches, .inches):
+    case let (.inches(a), .inches(b)):
+      if a.isZero || b.isZero {
+        return .number(0)
+      }
       return .error("error - can't handle square inches")
     }
   }
