@@ -361,6 +361,7 @@ final class CalculatorTests: XCTestCase {
       EG("7M+MRMR", expect: ("7", "7 7"), "MR shows value"),
       EG("9M+18+MR=", expect: ("9", "27"), "MR includes value"),
       EG("9M+MR7=", expect: ("9", "error - unbalanced parentheses or missing operators")),
+      EG("9M+7MR=", expect: ("9", "error - unbalanced parentheses or missing operators")),
     ]) {
       let calc = Calculator()
       let formatter = ImperialFormatter.asInches
