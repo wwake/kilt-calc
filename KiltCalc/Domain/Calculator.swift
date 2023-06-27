@@ -94,10 +94,8 @@ public class Calculator: ObservableObject {
     }
 
     history.append(HistoryItem(
-      "\(input.toString()) = \(valueFormatter.format(imperialFormat.formatter, result))"
+      "\(input.toString()) = \(valueFormatter.format(imperialFormat.formatter, result)) ⇒M+"
     ))
-
-    history.append(HistoryItem("↳ M+"))
 
     memory = temp
     input.clear()

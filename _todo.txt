@@ -1,4 +1,3 @@
-* Make M+ (and M-) add "↳ M+" to history
 * Make all errors report to calculator.errorMessage
 * M+ / M- shouldn't mix numbers & units - report error
 *
@@ -36,6 +35,8 @@ CALC-23-21: 2023-06-27 - Memory Errors
 Memory Keys
 * M+ error messages to message field; shown as alert
 * Make HistoryItem hold one string only
+* Make M+ add "↳ M+" to history
+* Change history to put =>M+ at end of line for M+
 
 CALC-23-20: 2023-06-26 - Memory Keys
 * [off camera] Add !today command to twitch stream
