@@ -23,7 +23,7 @@ struct ContentView: View {
           Text(
             calculator.history.isEmpty
             ? ""
-            : "\(calculator.history.last!.expression) = \(calculator.history.last!.value)"
+            : calculator.history.last!.item
           )
           .font(.footnote)
           .valueFormat()

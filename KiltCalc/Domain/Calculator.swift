@@ -3,8 +3,11 @@ import SwiftUI
 
 public struct HistoryItem: Identifiable {
   public var id = UUID()
-  let expression: String
-  let value: String
+  let item: String
+
+  init(_ item: String) {
+    self.item = item
+  }
 }
 
 public class Calculator: ObservableObject {
@@ -68,8 +71,7 @@ public class Calculator: ObservableObject {
   private func equals() {
     result = Expression(input).evaluate()
     history.append(HistoryItem(
-      expression: input.toString(),
-      value: valueFormatter.format(imperialFormat.formatter, result)
+      "\(input.toString()) = \(valueFormatter.format(imperialFormat.formatter, result))"
     ))
     input.clear()
   }
@@ -92,8 +94,7 @@ public class Calculator: ObservableObject {
     }
 
     history.append(HistoryItem(
-      expression: input.toString(),
-      value: valueFormatter.format(imperialFormat.formatter, result)
+      "\(input.toString()) = \(valueFormatter.format(imperialFormat.formatter, result))"
     ))
 
     memory = temp

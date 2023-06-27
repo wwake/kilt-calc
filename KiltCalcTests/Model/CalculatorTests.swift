@@ -4,7 +4,7 @@ import XCTest
 
 extension HistoryItem: Equatable {
   public static func == (lhs: HistoryItem, rhs: HistoryItem) -> Bool {
-    lhs.expression == rhs.expression && lhs.value == rhs.value
+    lhs.item == rhs.item
   }
 }
 
@@ -206,8 +206,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_EqualsSavesExpressionText() {
     let (history, display) = expressionResult("1+2=", Calculator())
-    XCTAssertEqual(history.last!.expression, "1+2")
-    XCTAssertEqual(history.last!.value, "3")
+    XCTAssertEqual(history.last!.item, "1+2 = 3")
     XCTAssertEqual(display, "3")
   }
 
@@ -224,8 +223,7 @@ final class CalculatorTests: XCTestCase {
 
   func test_EnteringEquation_PutsPreviousEntryInHistory() {
     let (history, current) = expressionResult("1+1=", Calculator())
-    XCTAssertEqual(history.last!.expression, "1+1")
-    XCTAssertEqual(history.last!.value, "2")
+    XCTAssertEqual(history.last!.item, "1+1 = 2")
     XCTAssertEqual(current, "2")
   }
 
@@ -235,10 +233,8 @@ final class CalculatorTests: XCTestCase {
     let (history, _) = expressionResult("2*3=", calc)
 
     XCTAssertEqual(history.count, 2)
-    XCTAssertEqual(history[0].expression, "1+2")
-    XCTAssertEqual(history[0].value, "3")
-    XCTAssertEqual(history[1].expression, "2*3")
-    XCTAssertEqual(history[1].value, "6")
+    XCTAssertEqual(history[0].item, "1+2 = 3")
+    XCTAssertEqual(history[1].item, "2*3 = 6")
   }
 
   func test_ClearHistory() {
@@ -256,7 +252,7 @@ final class CalculatorTests: XCTestCase {
     let indexSet = IndexSet(integersIn: 0...1)
     calc.deleteHistory(at: indexSet)
     XCTAssertEqual(calc.history.count, 1)
-    XCTAssertEqual(calc.history.last!.expression, "1+4")
+    XCTAssertEqual(calc.history.last!.item, "1+4 = 5")
   }
 
   func test_overflowHandling() {
@@ -395,12 +391,11 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.errorMessage, "")
 
     XCTAssertEqual(calc.history.count, 1)
-    XCTAssertEqual(calc.history[0], HistoryItem(expression: "7", value: "7"))
+    XCTAssertEqual(calc.history[0].item, "7 = 7")
   }
 
   func test_UnsuccessfulExpressionOnMemoryPlus_DoesNotGoToHistory() {
     let calc = Calculator()
-    let formatter = ImperialFormatter.asInches
 
     _ = expressionResult("7in+4M+", calc)
 

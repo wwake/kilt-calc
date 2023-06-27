@@ -13,7 +13,7 @@ public struct HistoryView: View {
 
       List {
         ForEach(calculator.history) {
-          Text("\($0.expression) = \($0.value)")
+          Text($0.item)
         }
         .onDelete {
           calculator.deleteHistory(at: $0)
