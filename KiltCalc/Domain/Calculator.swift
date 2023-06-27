@@ -85,16 +85,16 @@ public class Calculator: ObservableObject {
       return
     }
 
-    history.append(HistoryItem(
-      expression: input.toString(),
-      value: valueFormatter.format(imperialFormat.formatter, result)
-    ))
-
     let temp = memory + result
     if case let .error(message) = temp {
       errorMessage = "\(message); memory left unchanged"
       return
     }
+
+    history.append(HistoryItem(
+      expression: input.toString(),
+      value: valueFormatter.format(imperialFormat.formatter, result)
+    ))
 
     memory = temp
     input.clear()

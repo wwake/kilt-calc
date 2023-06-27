@@ -398,6 +398,31 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.history[0], HistoryItem(expression: "7", value: "7"))
   }
 
+  func test_UnsuccessfulExpressionOnMemoryPlus_DoesNotGoToHistory() {
+    let calc = Calculator()
+    let formatter = ImperialFormatter.asInches
+
+    _ = expressionResult("7in+4M+", calc)
+
+    XCTAssertEqual(calc.display, "7 in +4")
+    XCTAssertEqual(calc.memory, Value.number(0))
+    XCTAssertEqual(calc.errorMessage, "error - mixing inches and numbers")
+
+    XCTAssertEqual(calc.history.count, 0)
+  }
+
+  func test_MemoryPlusThatMixesUnitsAndNumbers_DoesNotGoToHistory() {
+    let calc = Calculator()
+
+    _ = expressionResult("7inM+4M+", calc)
+
+    XCTAssertEqual(calc.display, "4")
+    XCTAssertEqual(calc.memory, Value.inches(7))
+    XCTAssertEqual(calc.errorMessage, "error - mixing inches and numbers; memory left unchanged")
+
+    XCTAssertEqual(calc.history.count, 1)
+  }
+
   func test_Memory() {
     check([
       EG("42M+", expect: "42", "Memory can add value"),
