@@ -350,14 +350,31 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(Calculator().memory, .number(0))
   }
 
-//  func test_MemoryClearResetsItTo0() {
-//    let calc = Calculator()
-//    calc.memory = .inches(42)
-//    calc.memoryClear()
-//    XCTAssertEqual(Calculator().memory, .number(0))
-//  }
+  func test_MemoryClearResetsItTo0() {
+    let calc = Calculator()
+    _ = display("42inM+", calc)
 
-  func test_MemoryAndResult() {
+    calc.memoryClear()
+
+    XCTAssertEqual(Calculator().memory, .number(0))
+  }
+
+  func test_Memory() {
+    check([
+      EG("42M+", expect: "42", "Memory can add value"),
+      EG("42M+MC", expect: "0", "Memory can clear"),
+      EG("9M+C", expect: "9", "Clear doesn't clear Memory"),
+
+      EG("9M+18+MR=", expect: "9", "Clear doesn't clear Memory"),
+    ]) {
+      let calc = Calculator()
+      _ = display($0.input, calc)
+      let memory = ValueFormatter().format(ImperialFormatter.asInches, calc.memory)
+      EGAssertEqual(memory, $0)
+    }
+  }
+
+  func test_MemoryPlusMinusAndResult() {
     check([
       EG("1+2=", expect: ("0", "3", ""), "Result doesn't change memory"),
       EG("7M+MRMR", expect: ("7", "7 7", ""), "MR shows value"),
@@ -365,6 +382,9 @@ final class CalculatorTests: XCTestCase {
       EG("9M+MR7=", expect: ("9", "error - unbalanced parentheses or missing operators", "")),
       EG("9M+7MR=", expect: ("9", "error - unbalanced parentheses or missing operators", "")),
       EG("9M+7inM+", expect: ("9", "7 in", "error - mixing inches and numbers; memory left unchanged")),
+
+      EG("9M+7M+=", expect: ("16", "0", "")),
+      EG("9M+7M-=", expect: ("2", "0", "")),
     ]) {
       let calc = Calculator()
       let formatter = ImperialFormatter.asInches
@@ -380,18 +400,23 @@ final class CalculatorTests: XCTestCase {
     }
   }
 
-  func test_SuccessfulMemoryPlusGoesToHistory() {
-    let calc = Calculator()
-    let formatter = ImperialFormatter.asInches
+  func test_SuccessfulMemoryPlusMinusGoesToHistory() {
+    check([
+      EG("7M+", expect: (7, "M+")),
+      EG("7M-", expect: (-7, "M-")),
+    ]) {
+      let calc = Calculator()
 
-    _ = expressionResult("7M+", calc)
+      _ = expressionResult($0.input, calc)
+      let inputChar = $0.input.first!
 
-    XCTAssertEqual(calc.display, "7")
-    XCTAssertEqual(calc.memory, Value.number(7))
-    XCTAssertEqual(calc.errorMessage, "")
+      XCTAssertEqual(calc.display, "\(inputChar)", file: $0.file, line: $0.line)
+      XCTAssertEqual(calc.memory, Value.number(Double($0.expect.0)), file: $0.file, line: $0.line)
+      XCTAssertEqual(calc.errorMessage, "", file: $0.file, line: $0.line)
 
-    XCTAssertEqual(calc.history.count, 1)
-    XCTAssertEqual(calc.history[0].item, "7 = 7 ⇒M+")
+      XCTAssertEqual(calc.history.count, 1, file: $0.file, line: $0.line)
+      XCTAssertEqual(calc.history[0].item, "\(inputChar) = \(inputChar) ⇒\($0.expect.1)", file: $0.file, line: $0.line)
+    }
   }
 
   func test_UnsuccessfulExpressionOnMemoryPlus_DoesNotGoToHistory() {
@@ -416,20 +441,5 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.errorMessage, "error - mixing inches and numbers; memory left unchanged")
 
     XCTAssertEqual(calc.history.count, 1)
-  }
-
-  func test_Memory() {
-    check([
-      EG("42M+", expect: "42", "Memory can add value"),
-      EG("42M+MC", expect: "0", "Memory can clear"),
-      EG("9M+C", expect: "9", "Clear doesn't clear Memory"),
-
-      EG("9M+18+MR=", expect: "9", "Clear doesn't clear Memory"),
-    ]) {
-      let calc = Calculator()
-      _ = display($0.input, calc)
-      let memory = ValueFormatter().format(ImperialFormatter.asInches, calc.memory)
-      EGAssertEqual(memory, $0)
-    }
   }
 }

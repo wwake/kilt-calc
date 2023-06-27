@@ -1,11 +1,7 @@
-* Make all errors report to calculator.errorMessage
-* M+ / M- shouldn't mix numbers & units - report error
-*
-* History should note it added to memory
-* How do error messages interact with history?
-
-* MC, M+, M-
-Memory Keys
+* Error messages to errorMessage in Calculator
+* How do error messages interact with history? No history when there was an error, and input still there so you can revise it
+* Idea: show memory value in history too
+Error Handling
 
 * Comma in long numbers
 * Print history
@@ -33,10 +29,12 @@ Memory Keys
 
 CALC-23-21: 2023-06-27 - Memory Errors
 Memory Keys
+* M+ / M- shouldn't mix numbers & units - report error
 * M+ error messages to message field; shown as alert
 * Make HistoryItem hold one string only
 * Make M+ add "↳ M+" to history
 * Change history to put =>M+ at end of line for M+
+* M-
 
 CALC-23-20: 2023-06-26 - Memory Keys
 * [off camera] Add !today command to twitch stream

@@ -81,20 +81,28 @@ public class Calculator: ObservableObject {
   }
 
   public func memoryAdd() {
+    memoryCombine(+, "+")
+  }
+
+  public func memorySubtract() {
+    memoryCombine(-, "-")
+  }
+
+  fileprivate func memoryCombine(_ op: (Value, Value) -> Value, _ opName: String) {
     result = Expression(input).evaluate()
     if case let .error(message) = result {
       errorMessage = message
       return
     }
 
-    let temp = memory + result
+    let temp = op(memory, result)
     if case let .error(message) = temp {
       errorMessage = "\(message); memory left unchanged"
       return
     }
 
     history.append(HistoryItem(
-      "\(input.toString()) = \(valueFormatter.format(imperialFormat.formatter, result)) ⇒M+"
+      "\(input.toString()) = \(valueFormatter.format(imperialFormat.formatter, result)) ⇒M\(opName)"
     ))
 
     memory = temp
@@ -156,11 +164,11 @@ public class Calculator: ObservableObject {
     case .memoryAdd:
       memoryAdd()
 
+    case .memorySubtract:
+      memorySubtract()
+
     case .memoryRecall:
       memoryRecall()
-
-    case .memorySubtract:
-      print("\(#file) \(#line) M- not implemented")
 
     case .pleat:
       print("\(#file) \(#line) pleat not implemented")
