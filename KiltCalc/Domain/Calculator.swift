@@ -97,6 +97,8 @@ public class Calculator: ObservableObject {
       "\(input.toString()) = \(valueFormatter.format(imperialFormat.formatter, result))"
     ))
 
+    history.append(HistoryItem("↳ M+"))
+
     memory = temp
     input.clear()
   }

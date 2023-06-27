@@ -390,8 +390,9 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.memory, Value.number(7))
     XCTAssertEqual(calc.errorMessage, "")
 
-    XCTAssertEqual(calc.history.count, 1)
+    XCTAssertEqual(calc.history.count, 2)
     XCTAssertEqual(calc.history[0].item, "7 = 7")
+    XCTAssertEqual(calc.history[1].item, "↳ M+")
   }
 
   func test_UnsuccessfulExpressionOnMemoryPlus_DoesNotGoToHistory() {
@@ -415,7 +416,7 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.memory, Value.inches(7))
     XCTAssertEqual(calc.errorMessage, "error - mixing inches and numbers; memory left unchanged")
 
-    XCTAssertEqual(calc.history.count, 1)
+    XCTAssertEqual(calc.history.count, 2)
   }
 
   func test_Memory() {
