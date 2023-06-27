@@ -1,7 +1,4 @@
-* Error messages to errorMessage in Calculator
-* How do error messages interact with history? No history when there was an error, and input still there so you can revise it
 * Idea: show memory value in history too
-Error Handling
 
 * Comma in long numbers
 * Print history
@@ -19,7 +16,6 @@ Error Handling
 * Ways to show parends need work - hint counter? grayed-out right parends? long press to close all? automatically insert?
 * If you start with an operator, you should load the previous result as the first operand (?) - or pointing hand to previous result?
 
-* Separate error field, so we can keep editing?
 * Dark or light mode
 
 * Update EGTest to take new check() with try from ContentViewTests
@@ -35,6 +31,10 @@ Memory Keys
 * Make M+ add "↳ M+" to history
 * Change history to put =>M+ at end of line for M+
 * M-
+
+Error Reporting
+* Error messages to errorMessage in Calculator
+* How do error messages interact with history? No history when there was an error, and input still there so you can revise it
 
 CALC-23-20: 2023-06-26 - Memory Keys
 * [off camera] Add !today command to twitch stream
