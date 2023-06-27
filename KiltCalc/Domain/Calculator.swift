@@ -70,6 +70,12 @@ public class Calculator: ObservableObject {
 
   private func equals() {
     result = Expression(input).evaluate()
+
+    if case let .error(message) = result {
+      errorMessage = message
+      return
+    }
+
     history.append(HistoryItem(
       "\(input.toString()) = \(valueFormatter.format(imperialFormat.formatter, result))"
     ))

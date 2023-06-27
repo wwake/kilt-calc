@@ -190,7 +190,13 @@ final class CalculatorTests: XCTestCase {
       EG(")1+2=", expect: "error - unbalanced parentheses or missing operators"),
       EG(")1+2(=", expect: "error - unbalanced parentheses"),
     ]) {
-      EGAssertEqual(display("Y" + $0.input), $0)
+      if $0.expect.starts(with: /[-0-9]/) {
+        EGAssertEqual(display("Y" + $0.input), $0)
+      } else {
+        let calc = Calculator()
+        _ = display($0.input, calc)
+        XCTAssertEqual(calc.errorMessage, $0.expect, file: $0.file, line: $0.line)
+      }
     }
   }
 
@@ -258,30 +264,44 @@ final class CalculatorTests: XCTestCase {
   func test_overflowHandling() {
     check([
       EG(overflowValue + "=", expect: "number too big or too small", "overflow"),
+    ]) {
+      let calc = Calculator()
+      _ = display($0.input, calc)
+      EGAssertEqual(calc.errorMessage, $0)
+    }
+  }
+
+  func test_clearOverflow() {
+    check([
       EG(overflowValue + "=C", expect: "0", "clear resets overflow"),
     ]) {
       EGAssertEqual(display($0.input), $0)
     }
   }
 
-  func test_enteringUnits() {
+  func test_validComputations() {
     check([
       EG("3in=", expect: "3 in", "inch creates unit"),
       EG("3in6in=", expect: "9 in", "inches can accumulate"),
-      EG("3in6=", expect: "numbers and units don't match"),
+      EG("3+6=", expect: "9", "number + number"),
+      EG("9in+6in=", expect: "15 in", "inches + inches"),
     ]) {
       EGAssertEqual(display($0.input), $0)
     }
   }
 
-  func test_addition() {
+  func test_invalidComputations() {
     check([
-      EG("3+6=", expect: "9", "number + number"),
-      EG("9in+6in=", expect: "15 in", "inches + inches"),
+      EG("3in6=", expect: "numbers and units don't match"),
       EG("3+6in=", expect: "error - mixing inches and numbers"),
       EG("3in+6=", expect: "error - mixing inches and numbers"),
+      EG("9*=", expect: "expression can't end with an operator"),
+      EG("6in~4=", expect: "numbers and units don't match", "digit after unary op on unit stays there"),
+      EG("~=", expect: "no value found"),
     ]) {
-      EGAssertEqual(display($0.input), $0)
+      let calc = Calculator()
+      _ = display($0.input, calc)
+      EGAssertEqual(calc.errorMessage, $0)
     }
   }
 
@@ -289,7 +309,6 @@ final class CalculatorTests: XCTestCase {
     check([
       EG("9+", expect: "9+", "operator shows in display"),
       EG("9*+3=", expect: "12", "last operator wins"),
-      EG("9*=", expect: "expression can't end with an operator"),
     ]) {
       EGAssertEqual(display($0.input), $0)
     }
@@ -300,20 +319,22 @@ final class CalculatorTests: XCTestCase {
       EG("64~=", expect: "-64", "plus-or-minus on number"),
       EG("6~4=", expect: "-64", "digit after unary moves in front"),
       EG("1yd27in~=", expect: "-63 in", "plus-or-minus on unit"),
-      EG("6in~4=", expect: "numbers and units don't match", "digit after unary op on unit stays there"),
       EG("6~+4=", expect: "-2", "unary before binary ops"),
-      EG("~=", expect: "no value found"),
     ]) {
       EGAssertEqual(display($0.input), $0)
     }
   }
 
   func test_TooManyLeftParends() {
-    XCTAssertEqual(display("(="), "error - unbalanced parentheses")
+    let calc = Calculator()
+    _ = display("(=", calc)
+    XCTAssertEqual(calc.errorMessage, "error - unbalanced parentheses")
   }
 
   func test_TooManyRightParends() {
-    XCTAssertEqual(display(")="), "error - unbalanced parentheses")
+    let calc = Calculator()
+    _ = display(")=", calc)
+    XCTAssertEqual(calc.errorMessage, "error - unbalanced parentheses")
   }
 
   func test_UnitDisplayMode() {
@@ -379,8 +400,8 @@ final class CalculatorTests: XCTestCase {
       EG("1+2=", expect: ("0", "3", ""), "Result doesn't change memory"),
       EG("7M+MRMR", expect: ("7", "7 7", ""), "MR shows value"),
       EG("9M+18+MR=", expect: ("9", "27", ""), "MR includes value"),
-      EG("9M+MR7=", expect: ("9", "error - unbalanced parentheses or missing operators", "")),
-      EG("9M+7MR=", expect: ("9", "error - unbalanced parentheses or missing operators", "")),
+      EG("9M+MR7=", expect: ("9", "9 7", "error - unbalanced parentheses or missing operators")),
+      EG("9M+7MR=", expect: ("9", "79", "error - unbalanced parentheses or missing operators")),
       EG("9M+7inM+", expect: ("9", "7 in", "error - mixing inches and numbers; memory left unchanged")),
 
       EG("9M+7M+=", expect: ("16", "0", "")),
