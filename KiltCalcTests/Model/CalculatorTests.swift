@@ -2,6 +2,12 @@ import EGTest
 @testable import KiltCalc
 import XCTest
 
+extension HistoryItem: Equatable {
+  public static func == (lhs: HistoryItem, rhs: HistoryItem) -> Bool {
+    lhs.expression == rhs.expression && lhs.value == rhs.value
+  }
+}
+
 final class CalculatorTests: XCTestCase {
   private let calc = Calculator()
 
@@ -376,6 +382,20 @@ final class CalculatorTests: XCTestCase {
       XCTAssertEqual(result, $0.expect.1, "result", file: $0.file, line: $0.line)
       XCTAssertEqual(errorMessage, $0.expect.2, "error message", file: $0.file, line: $0.line)
     }
+  }
+
+  func test_SuccessfulMemoryPlusGoesToHistory() {
+    let calc = Calculator()
+    let formatter = ImperialFormatter.asInches
+
+    _ = expressionResult("7M+", calc)
+
+    XCTAssertEqual(calc.display, "7")
+    XCTAssertEqual(calc.memory, Value.number(7))
+    XCTAssertEqual(calc.errorMessage, "")
+
+    XCTAssertEqual(calc.history.count, 1)
+    XCTAssertEqual(calc.history[0], HistoryItem(expression: "7", value: "7"))
   }
 
   func test_Memory() {
