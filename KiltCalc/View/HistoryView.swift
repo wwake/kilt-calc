@@ -14,7 +14,7 @@ public struct HistoryView: View {
       List {
         ForEach(calculator.history) {
           Text($0.item)
-            .font(.body)
+            .font(.title3)
         }
         .onDelete {
           calculator.deleteHistory(at: $0)
