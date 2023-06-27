@@ -4,6 +4,7 @@ struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches
   @State private var showHistory = false
+  @State private var showError = false
 
   let disabledKeys = Set(["Z"])
 
@@ -65,6 +66,7 @@ struct ContentView: View {
               ForEach(row) { key in
                 Button(key.name) {
                   calculator.enter(key.entry)
+                  showError = !calculator.errorMessage.isEmpty
                 }
                 .disabled(disabledKeys.contains(key.name))
                 .frame(width: 60, height: 60)
@@ -76,6 +78,17 @@ struct ContentView: View {
       }
       .font(.largeTitle)
       .padding()
+    }
+    .alert(
+      "Error",
+      isPresented: $showError
+    ) {
+      Button("OK", role: .cancel) {
+        calculator.resetError()
+      }
+    } message: {
+      Text(calculator.errorMessage)
+        .font(.title)
     }
   }
 }

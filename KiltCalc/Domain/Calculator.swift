@@ -12,6 +12,7 @@ public class Calculator: ObservableObject {
   @Published private(set) var history = [HistoryItem]()
   @Published private(set) var result = Value.number(0)
   @Published private(set) var memory = Value.number(0)
+
   @Published private(set) var errorMessage = ""
 
   @Published private(set) var formattedResult = "0"
@@ -34,12 +35,12 @@ public class Calculator: ObservableObject {
     input.clear()
   }
 
-  func memoryClear() {
-    memory = .number(0)
-  }
-
   func clearAllHistory() {
     history = []
+  }
+
+  func resetError() {
+    errorMessage = ""
   }
 
   func deleteHistory(at indexSet: IndexSet) {
@@ -73,9 +74,30 @@ public class Calculator: ObservableObject {
     input.clear()
   }
 
+  func memoryClear() {
+    memory = .number(0)
+  }
+
   public func memoryAdd() {
-    equals()
-    memory = (memory + result)
+    result = Expression(input).evaluate()
+    if case let .error(message) = result {
+      errorMessage = message
+      return
+    }
+
+    history.append(HistoryItem(
+      expression: input.toString(),
+      value: valueFormatter.format(imperialFormat.formatter, result)
+    ))
+
+    let temp = memory + result
+    if case let .error(message) = temp {
+      errorMessage = "\(message); memory left unchanged"
+      return
+    }
+
+    memory = temp
+    input.clear()
   }
 
   public func memoryRecall() {

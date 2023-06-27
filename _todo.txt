@@ -1,4 +1,6 @@
-* M+ / M- shouldn't mix numbers & units (already worked)
+* Error messages to message field
+* M+ / M- shouldn't mix numbers & units - report error
+*
 * History should note it added to memory
 * How do error messages interact with history?
 
@@ -29,14 +31,21 @@ Memory Keys
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
 
+CALC-23-21: 2023-06-27 - Memory Errors
+Memory Keys
+
 CALC-23-20: 2023-06-26 - Memory Keys
-* [off camera] Add today command to twitch stream
-* MR - for integers
+* [off camera] Add !today command to twitch stream
+
+Memory Keys
+* M+ and MR - for integers - add a .value Entry
 * Handle zero mixed with units
-* MR - with units
+* M+ and MR - with units
 
 CALC-23-19: 2023-06-22 - Refactor Value; Add Memory
 * [off camera] Updated test template from @qcoding
+
+Memory Keys
 * Refactor parse-related methods in Value
 * M+
 * Started MR
