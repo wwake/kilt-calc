@@ -26,18 +26,18 @@ struct PleatView: View {
       VStack {
         Form {
           LabeledContent {
-            TextField("Notes", text: $notes, prompt: Text("Name, tartan, or other notes"))
+            TextField("Notes", text: $designer.notes, prompt: Text("Name, tartan, or other notes"))
               .lineLimit(3)
           } label: {
             Text("Notes")
           }
 
-          field("Hip to Hip (rear)", $hipToHipMeasure)
-          field("Sett", $sett)
-          field("Setts/Pleat", $settsPerPleat)
-          field("Pleat Width", $pleatWidth)
-          field("#Pleats", $pleatCount)
-          field("Gap", $gap)
+          field("Hip to Hip (rear)", $designer.hipToHipMeasure)
+          field("Sett", $designer.sett)
+          field("Setts/Pleat", $designer.settsPerPleat)
+          field("Pleat Width", $designer.pleatWidth)
+          field("Gap", $designer.gap)
+          field("#Pleats", $designer.pleatCount)
         }
 
         PleatDrawing()
