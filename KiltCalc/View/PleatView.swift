@@ -13,6 +13,13 @@ struct PleatView: View {
     }
   }
 
+  func formatOptional(_ value: Double?) -> String {
+    if value == nil {
+      return "?"
+    }
+    return "\(value!)"
+  }
+
   var body: some View {
     NavigationView {
       VStack {
@@ -31,7 +38,7 @@ struct PleatView: View {
           field("Gap", $designer.gap)
 
           LabeledContent {
-            Text(verbatim: "\(designer.pleatCount)")
+            Text(verbatim: formatOptional(designer.pleatCount))
               .multilineTextAlignment(.trailing)
           } label: {
             Text("#Pleats")
