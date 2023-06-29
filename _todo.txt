@@ -1,3 +1,17 @@
+* Figure out how to make form respond to changes
+* Compute labeled picture from form changes
+* Save scenarios
+Pleat calculator ("Z"?) rectangle.split.3x1
+
+Hip to Hip
+(rear)"	inches	input
+Sett	inches	input
+Setts/Pleat	fraction	input
+Pleat Width	inches	in/out (?)
+# Pleats	count	in/out (?)
+Gap	inches	in/out
+
+* A/P: Apron/Pleat
 * Idea: show memory value in history too
 
 * Comma in long numbers
@@ -9,7 +23,6 @@
 
 * Store history, restore on app restart
 
-* Pleat calculator ("Z"?)
 
 * Make calculator have a state machine for valid expressions (not including balancing parentheses) - or state machine plus parenthesis counter
 * Disable calculator buttons that can't be used (e.g., no ')' if there's not been a '(')
@@ -22,6 +35,11 @@
 * Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-22: 2023-06-28 - Box Pleats
+* We built a simple form with the fields needed for pleat calculations
+* We built a drawing of a single pleat
+* We left off drawing extension lines for it
 
 CALC-23-21: 2023-06-27 - Memory Errors
 Memory Keys

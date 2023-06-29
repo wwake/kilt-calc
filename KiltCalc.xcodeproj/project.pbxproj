@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		911857A72A4CB50F0020F16E /* PleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A62A4CB50F0020F16E /* PleatView.swift */; };
+		911857A92A4CC0C20020F16E /* PleatDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A82A4CC0C20020F16E /* PleatDrawing.swift */; };
 		916AF6602A252460009484DA /* ImperialUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF65F2A252460009484DA /* ImperialUnit.swift */; };
 		916AF6632A267528009484DA /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6622A267528009484DA /* Stack.swift */; };
 		916AF6652A267B8F009484DA /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6642A267B8F009484DA /* Operator.swift */; };
@@ -52,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		911857A62A4CB50F0020F16E /* PleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatView.swift; sourceTree = "<group>"; };
+		911857A82A4CC0C20020F16E /* PleatDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatDrawing.swift; sourceTree = "<group>"; };
 		916AF65F2A252460009484DA /* ImperialUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialUnit.swift; sourceTree = "<group>"; };
 		916AF6622A267528009484DA /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		916AF6642A267B8F009484DA /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
@@ -123,11 +127,13 @@
 				91E7B6CD2A0D4428004A757A /* ContentView.swift */,
 				91F2AF4D2A4382CC008A1063 /* HistoryView.swift */,
 				91F2AF512A438932008A1063 /* ValueModifier.swift */,
+				911857A62A4CB50F0020F16E /* PleatView.swift */,
+				911857A82A4CC0C20020F16E /* PleatDrawing.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		91E3C59F2A1BF4030098BAFC /* Domain */ = {
+		91E3C59F2A1BF4030098BAFC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
 				91E3C5A02A1BF40F0098BAFC /* Key.swift */,
@@ -141,10 +147,10 @@
 				918628C82A2E6FF000FA781D /* Entry.swift */,
 				918628CC2A2FC57300FA781D /* ValueFormatter.swift */,
 			);
-			path = Domain;
+			path = Calculator;
 			sourceTree = "<group>";
 		};
-		91E3C5AB2A1D39550098BAFC /* Model */ = {
+		91E3C5AB2A1D39550098BAFC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
 				91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */,
@@ -153,7 +159,7 @@
 				918628CA2A2FC4D600FA781D /* ValueFormatterTests.swift */,
 				91F2AF312A40E685008A1063 /* EntryTests.swift */,
 			);
-			path = Model;
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 		91E7B6BF2A0D4428004A757A = {
@@ -185,7 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				916AF6612A267517009484DA /* Utility */,
-				91E3C59F2A1BF4030098BAFC /* Domain */,
+				91E3C59F2A1BF4030098BAFC /* Calculator */,
 				91E3C59B2A1BE86D0098BAFC /* View */,
 				91E7B6CB2A0D4428004A757A /* KiltCalcApp.swift */,
 				91E7B6CF2A0D442F004A757A /* Assets.xcassets */,
@@ -206,7 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				91E3C5AC2A1D39A30098BAFC /* EGTest+extensions.swift */,
-				91E3C5AB2A1D39550098BAFC /* Model */,
+				91E3C5AB2A1D39550098BAFC /* Calculator */,
 			);
 			path = KiltCalcTests;
 			sourceTree = "<group>";
@@ -359,9 +365,11 @@
 				91F2AF502A438909008A1063 /* ButtonModifier.swift in Sources */,
 				916AF6652A267B8F009484DA /* Operator.swift in Sources */,
 				91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */,
+				911857A92A4CC0C20020F16E /* PleatDrawing.swift in Sources */,
 				9190F7AF2A29331F0008E40A /* InputBuffer.swift in Sources */,
 				918628CD2A2FC57300FA781D /* ValueFormatter.swift in Sources */,
 				91E3C5B32A1EAAD10098BAFC /* Value.swift in Sources */,
+				911857A72A4CB50F0020F16E /* PleatView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
