@@ -9,6 +9,8 @@ struct PleatView: View {
   @State private var pleatCount = 2.0
   @State private var gap = 0.0
 
+  @StateObject private var designer = PleatDesigner()
+
   func field(_ label: String, _ boundDouble: Binding<Double>) -> some View {
     LabeledContent {
       TextField(label, value: boundDouble, format: .number)
