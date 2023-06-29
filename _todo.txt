@@ -1,6 +1,7 @@
 * Figure out how to make form respond to changes
 * Compute labeled picture from form changes
 * Save scenarios
+* Mark missing fields with red etc
 * Improve navigation to pleat view
 * Lock some fields during pleat design?
 Pleat calculator ("Z"?) rectangle.split.3x1

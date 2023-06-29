@@ -29,7 +29,13 @@ struct PleatView: View {
           field("Setts/Pleat", $designer.settsPerPleat)
           field("Pleat Width", $designer.pleatWidth)
           field("Gap", $designer.gap)
-          field("#Pleats", $designer.pleatCount)
+
+          LabeledContent {
+            Text(verbatim: "\(designer.pleatCount)")
+              .multilineTextAlignment(.trailing)
+          } label: {
+            Text("#Pleats")
+          }
         }
 
         PleatDrawing()
