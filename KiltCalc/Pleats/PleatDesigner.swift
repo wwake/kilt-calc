@@ -28,6 +28,10 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var pleatWidth: Double? {
     didSet {
+      if pleatWidth == nil {
+        gap = nil
+        return
+      }
       gap = 0.0 // (sett! * settsPerPleat!) - pleatWidth!
     }
   }
