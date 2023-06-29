@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91184E972A4E00A500D5841E /* PleatDesignerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91184E962A4E00A500D5841E /* PleatDesignerTests.swift */; };
+		91184E9A2A4E017E00D5841E /* PleatDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91184E992A4E017E00D5841E /* PleatDesigner.swift */; };
 		911857A72A4CB50F0020F16E /* PleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A62A4CB50F0020F16E /* PleatView.swift */; };
 		911857A92A4CC0C20020F16E /* PleatDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A82A4CC0C20020F16E /* PleatDrawing.swift */; };
 		916AF6602A252460009484DA /* ImperialUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF65F2A252460009484DA /* ImperialUnit.swift */; };
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		91184E962A4E00A500D5841E /* PleatDesignerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatDesignerTests.swift; sourceTree = "<group>"; };
+		91184E992A4E017E00D5841E /* PleatDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatDesigner.swift; sourceTree = "<group>"; };
 		911857A62A4CB50F0020F16E /* PleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatView.swift; sourceTree = "<group>"; };
 		911857A82A4CC0C20020F16E /* PleatDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatDrawing.swift; sourceTree = "<group>"; };
 		916AF65F2A252460009484DA /* ImperialUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialUnit.swift; sourceTree = "<group>"; };
@@ -111,6 +115,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91184E952A4E007000D5841E /* Pleats */ = {
+			isa = PBXGroup;
+			children = (
+				91184E962A4E00A500D5841E /* PleatDesignerTests.swift */,
+			);
+			path = Pleats;
+			sourceTree = "<group>";
+		};
+		91184E982A4E016800D5841E /* Pleats */ = {
+			isa = PBXGroup;
+			children = (
+				91184E992A4E017E00D5841E /* PleatDesigner.swift */,
+			);
+			path = Pleats;
+			sourceTree = "<group>";
+		};
 		916AF6612A267517009484DA /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +210,7 @@
 		91E7B6CA2A0D4428004A757A /* KiltCalc */ = {
 			isa = PBXGroup;
 			children = (
+				91184E982A4E016800D5841E /* Pleats */,
 				916AF6612A267517009484DA /* Utility */,
 				91E3C59F2A1BF4030098BAFC /* Calculator */,
 				91E3C59B2A1BE86D0098BAFC /* View */,
@@ -211,8 +232,9 @@
 		91E7B6DB2A0D4430004A757A /* KiltCalcTests */ = {
 			isa = PBXGroup;
 			children = (
-				91E3C5AC2A1D39A30098BAFC /* EGTest+extensions.swift */,
 				91E3C5AB2A1D39550098BAFC /* Calculator */,
+				91184E952A4E007000D5841E /* Pleats */,
+				91E3C5AC2A1D39A30098BAFC /* EGTest+extensions.swift */,
 			);
 			path = KiltCalcTests;
 			sourceTree = "<group>";
@@ -356,6 +378,7 @@
 				918628C92A2E6FF000FA781D /* Entry.swift in Sources */,
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
 				91E7B6CC2A0D4428004A757A /* KiltCalcApp.swift in Sources */,
+				91184E9A2A4E017E00D5841E /* PleatDesigner.swift in Sources */,
 				91E3C5B72A1FE18D0098BAFC /* ImperialFormatter.swift in Sources */,
 				91F2AF522A438932008A1063 /* ValueModifier.swift in Sources */,
 				9190F7AD2A292CA60008E40A /* Expression.swift in Sources */,
@@ -383,6 +406,7 @@
 				91E3C59E2A1BE8FB0098BAFC /* CalculatorTests.swift in Sources */,
 				91E3C5B52A1EAB4A0098BAFC /* ValueTests.swift in Sources */,
 				918628CB2A2FC4D600FA781D /* ValueFormatterTests.swift in Sources */,
+				91184E972A4E00A500D5841E /* PleatDesignerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
