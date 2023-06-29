@@ -1,14 +1,6 @@
 import SwiftUI
 
 struct PleatView: View {
-  @State private var notes: String = ""
-  @State private var hipToHipMeasure: Double? = 20
-  @State private var sett: Double? = 7.0
-  @State private var settsPerPleat: Double? = 1.0
-  @State private var pleatWidth: Double? = 2.0
-  @State private var pleatCount: Double? = 2.0
-  @State private var gap: Double? = 0.0
-
   @StateObject private var designer = PleatDesigner()
 
   func field(_ label: String, _ boundDouble: Binding<Double?>) -> some View {
