@@ -1,6 +1,7 @@
 * Figure out how to make form respond to changes
 * Compute labeled picture from form changes
 * Save scenarios
+* Improve navigation to pleat view
 Pleat calculator ("Z"?) rectangle.split.3x1
 
 Hip to Hip

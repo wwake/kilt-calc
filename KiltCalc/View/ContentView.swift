@@ -6,8 +6,6 @@ struct ContentView: View {
   @State private var showHistory = false
   @State private var showError = false
 
-  let disabledKeys = Set(["Z"])
-
   var keypad = Keypad()
 
   let columns = Array(repeating: GridItem(.flexible()), count: 5)
@@ -68,7 +66,6 @@ struct ContentView: View {
                   calculator.enter(key.entry)
                   showError = !calculator.errorMessage.isEmpty
                 }
-                .disabled(disabledKeys.contains(key.name))
                 .frame(width: 60, height: 60)
                 .buttonFormat()
               }
@@ -89,6 +86,9 @@ struct ContentView: View {
     } message: {
       Text(calculator.errorMessage)
         .font(.title)
+    }
+    .sheet(isPresented: $calculator.showPleatDesigner) {
+      PleatView()
     }
   }
 }
