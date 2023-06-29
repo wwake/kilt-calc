@@ -1,18 +1,17 @@
-* Figure out how to make form respond to changes
+* Error situations
+ - values nil
+ - pleat width >= sett*sett/pleat
+ - gap < 0
+ - gap > pleat
+ - negative values
+* Is gap an output only? Yes
+* Round to at most 3 digits
 * Compute labeled picture from form changes
 * Save scenarios
 * Mark missing fields with red etc
 * Improve navigation to pleat view
 * Lock some fields during pleat design?
 Pleat calculator ("Z"?) rectangle.split.3x1
-
-Hip to Hip
-(rear)"	inches	input
-Sett	inches	input
-Setts/Pleat	fraction	input
-Pleat Width	inches	in/out (?)
-# Pleats	count	in/out (?)
-Gap	inches	in/out
 
 * A/P: Apron/Pleat
 * Idea: show memory value in history too
@@ -38,6 +37,8 @@ Gap	inches	in/out
 * Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-23: 2023-06-29 - Box Pleat Calculations
 
 CALC-23-22: 2023-06-28 - Box Pleats
 * We built a simple form with the fields needed for pleat calculations

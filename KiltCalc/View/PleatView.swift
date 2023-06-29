@@ -40,6 +40,7 @@ struct PleatView: View {
           LabeledContent {
             Text(verbatim: formatOptional(designer.pleatCount))
               .multilineTextAlignment(.trailing)
+              .foregroundColor(.black)
           } label: {
             Text("#Pleats")
           }

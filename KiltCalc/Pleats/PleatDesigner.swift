@@ -32,7 +32,8 @@ public class PleatDesigner: ObservableObject {
         gap = nil
         return
       }
-      gap = 0.0 // (sett! * settsPerPleat!) - pleatWidth!
+      let fabricForPleat = sett! * settsPerPleat!
+      gap = (3 * pleatWidth! - fabricForPleat) / 2.0
     }
   }
 
