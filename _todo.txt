@@ -6,6 +6,8 @@
  - negative values
 * Is gap an output only? Yes
 * Round to at most 3 digits
+* Can we get fractions?
+* Total fabric used
 * Compute labeled picture from form changes
 * Save scenarios
 * Mark missing fields with red etc
@@ -39,6 +41,9 @@ Pleat calculator ("Z"?) rectangle.split.3x1
 * Let check use varargs rather than []
 
 CALC-23-23: 2023-06-29 - Box Pleat Calculations
+* Moved our calculation fields into a new PleatDesigner object
+* Made the form depend on a PleatDesigner
+* We added didSet methods to fields to maintain the constraints
 
 CALC-23-22: 2023-06-28 - Box Pleats
 * We built a simple form with the fields needed for pleat calculations

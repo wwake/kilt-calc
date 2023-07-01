@@ -7,7 +7,7 @@ struct PleatView: View {
     LabeledContent {
       TextField(label, value: boundDouble, format: .number)
         .multilineTextAlignment(.trailing)
-        .keyboardType(.numberPad)
+        .keyboardType(.decimalPad)
     } label: {
       Text(label)
     }
