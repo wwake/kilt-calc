@@ -13,7 +13,7 @@ public class PleatDesigner: ObservableObject {
     if needsRequiredValues {
       pleatFabric = nil
       pleatWidth = nil
-      pleatWidth = nil
+      gap = nil
       pleatCount = nil
       return
     }
