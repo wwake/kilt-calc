@@ -20,6 +20,8 @@
 		9190F7AD2A292CA60008E40A /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9190F7AC2A292CA60008E40A /* Expression.swift */; };
 		9190F7AF2A29331F0008E40A /* InputBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9190F7AE2A29331F0008E40A /* InputBuffer.swift */; };
 		91B0F2B82A53737C00423289 /* ApronPleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B72A53737C00423289 /* ApronPleatView.swift */; };
+		91B0F2BA2A5373FA00423289 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B92A5373FA00423289 /* CalculatorView.swift */; };
+		91B0F2BC2A53754E00423289 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2BB2A53754E00423289 /* CalculatorView.swift */; };
 		91E3C59E2A1BE8FB0098BAFC /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */; };
 		91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A02A1BF40F0098BAFC /* Key.swift */; };
 		91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A22A1BF4280098BAFC /* Keypad.swift */; };
@@ -70,6 +72,8 @@
 		9190F7AC2A292CA60008E40A /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		9190F7AE2A29331F0008E40A /* InputBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBuffer.swift; sourceTree = "<group>"; };
 		91B0F2B72A53737C00423289 /* ApronPleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApronPleatView.swift; sourceTree = "<group>"; };
+		91B0F2B92A5373FA00423289 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
+		91B0F2BB2A53754E00423289 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KiltCalcUnitTests.xctestplan; sourceTree = "<group>"; };
 		91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		91E3C5A02A1BF40F0098BAFC /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				91E7B6CD2A0D4428004A757A /* ContentView.swift */,
 				91F2AF4D2A4382CC008A1063 /* HistoryView.swift */,
 				91F2AF512A438932008A1063 /* ValueModifier.swift */,
+				91B0F2BB2A53754E00423289 /* CalculatorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,15 +171,16 @@
 		91E3C59F2A1BF4030098BAFC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				91E3C5A02A1BF40F0098BAFC /* Key.swift */,
-				91E3C5A22A1BF4280098BAFC /* Keypad.swift */,
 				91E3C5A42A1BF69F0098BAFC /* Calculator.swift */,
-				91E3C5B22A1EAAD10098BAFC /* Value.swift */,
+				91B0F2B92A5373FA00423289 /* CalculatorView.swift */,
+				918628C82A2E6FF000FA781D /* Entry.swift */,
+				9190F7AC2A292CA60008E40A /* Expression.swift */,
 				91E3C5B62A1FE18D0098BAFC /* ImperialFormatter.swift */,
 				916AF65F2A252460009484DA /* ImperialUnit.swift */,
+				91E3C5A02A1BF40F0098BAFC /* Key.swift */,
+				91E3C5A22A1BF4280098BAFC /* Keypad.swift */,
 				916AF6642A267B8F009484DA /* Operator.swift */,
-				9190F7AC2A292CA60008E40A /* Expression.swift */,
-				918628C82A2E6FF000FA781D /* Entry.swift */,
+				91E3C5B22A1EAAD10098BAFC /* Value.swift */,
 				918628CC2A2FC57300FA781D /* ValueFormatter.swift */,
 			);
 			path = Calculator;
@@ -389,6 +395,7 @@
 				918628C92A2E6FF000FA781D /* Entry.swift in Sources */,
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
 				91E7B6CC2A0D4428004A757A /* KiltCalcApp.swift in Sources */,
+				91B0F2BA2A5373FA00423289 /* CalculatorView.swift in Sources */,
 				91184E9A2A4E017E00D5841E /* PleatDesigner.swift in Sources */,
 				91E3C5B72A1FE18D0098BAFC /* ImperialFormatter.swift in Sources */,
 				91F2AF522A438932008A1063 /* ValueModifier.swift in Sources */,
@@ -396,6 +403,7 @@
 				91F2AF4E2A4382CC008A1063 /* HistoryView.swift in Sources */,
 				916AF6602A252460009484DA /* ImperialUnit.swift in Sources */,
 				91E3C5A52A1BF69F0098BAFC /* Calculator.swift in Sources */,
+				91B0F2BC2A53754E00423289 /* CalculatorView.swift in Sources */,
 				91F2AF502A438909008A1063 /* ButtonModifier.swift in Sources */,
 				916AF6652A267B8F009484DA /* Operator.swift in Sources */,
 				91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */,
