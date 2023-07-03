@@ -46,6 +46,7 @@ struct PleatView: View {
             .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
             .disabled(designer.needsRequiredValues)
         }
+
         PleatDrawing()
 
         Spacer()

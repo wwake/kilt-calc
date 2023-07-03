@@ -8,13 +8,26 @@ public class PleatDesigner: ObservableObject {
   }
 
   @Published public var notes = ""
-  @Published public var hipToHipMeasure: Double?
+
+  @Published public var hipToHipMeasure: Double? {
+    didSet {
+      if needsRequiredValues {
+        pleatFabric = nil
+        pleatWidth = nil
+        pleatWidth = nil
+        pleatCount = nil
+        return
+      }
+    }
+  }
 
   @Published public var sett: Double? {
     didSet {
-      if sett == nil || settsPerPleat == nil {
+      if needsRequiredValues {
         pleatFabric = nil
         pleatWidth = nil
+        pleatWidth = nil
+        pleatCount = nil
         return
       }
 
@@ -25,9 +38,11 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var settsPerPleat: Double? = 1.0 {
     didSet {
-      if settsPerPleat == nil || sett == nil {
+      if needsRequiredValues {
         pleatFabric = nil
         pleatWidth = nil
+        pleatWidth = nil
+        pleatCount = nil
         return
       }
 
