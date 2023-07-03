@@ -1,5 +1,12 @@
 import SwiftUI
 
+struct ApronPleatView: View {
+  var body: some View {
+    Text("TBD")
+      .font(.largeTitle)
+  }
+}
+
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches
@@ -89,11 +96,21 @@ struct ContentView: View {
     }
   }
 
+  init(calculator: Calculator) {
+    self.calculator = calculator
+    UITabBar.appearance().backgroundColor = UIColor(.white).withAlphaComponent(0.5)
+  }
+
   var body: some View {
     TabView {
       CalculatorView()
         .tabItem {
           Label("Calculator", systemImage: "grid")
+        }
+
+      ApronPleatView()
+        .tabItem {
+          Label("Apron/Pleat", systemImage: "circle.bottomhalf.filled")
         }
 
       PleatView()
