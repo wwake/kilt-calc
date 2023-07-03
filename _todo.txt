@@ -1,5 +1,5 @@
-* Set the sett
-
+* Set pleatWidth, pleatCount
+* Set hip
 Calculate total yardage for pleats
 
 * Error situations
@@ -52,6 +52,7 @@ Syntax
 CALC-23-24: 2023-07-03 - Box Pleat Constraints
 * Is gap an output only? Yes
 * Make Calculator and Pleats be separate tabs
+* Set the sett, settsPerPleat
 
 CALC-23-23: 2023-06-29 - Box Pleat Calculations
 * Moved our calculation fields into a new PleatDesigner object

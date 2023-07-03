@@ -1,6 +1,8 @@
 import Foundation
 
 public class PleatDesigner: ObservableObject {
+  private var updateInProgress = false
+
   @Published public var notes = ""
   @Published public var hipToHipMeasure: Double?
 
@@ -34,20 +36,33 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var pleatWidth: Double? {
     didSet {
-      if pleatWidth == nil {
+      if pleatWidth == nil || pleatFabric == nil {
         gap = nil
         return
       }
-      let fabricForPleat = sett! * settsPerPleat!
-      gap = (3 * pleatWidth! - fabricForPleat) / 2.0
+
+      gap = (3 * pleatWidth! - pleatFabric!) / 2.0
+
+      if !updateInProgress {
+        updateInProgress = true
+        pleatCount = hipToHipMeasure == nil ? nil : hipToHipMeasure! / pleatWidth!
+        updateInProgress = false
+      }
     }
   }
 
-  public var pleatCount: Double? {
-    if hipToHipMeasure == nil || pleatWidth == nil {
-      return nil
+  @Published public var pleatCount: Double? {
+    didSet {
+      if pleatCount == nil || hipToHipMeasure == nil {
+        return
+      }
+
+      if !updateInProgress {
+        updateInProgress = true
+        pleatWidth = hipToHipMeasure! / pleatCount!
+        updateInProgress = false
+      }
     }
-    return hipToHipMeasure! / pleatWidth!
   }
 
   @Published public var gap: Double?
