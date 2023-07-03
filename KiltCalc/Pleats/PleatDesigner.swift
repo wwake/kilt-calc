@@ -3,6 +3,10 @@ import Foundation
 public class PleatDesigner: ObservableObject {
   private var updateInProgress = false
 
+  public var needsRequiredValues: Bool {
+    hipToHipMeasure == nil || sett == nil || settsPerPleat == nil
+  }
+
   @Published public var notes = ""
   @Published public var hipToHipMeasure: Double?
 

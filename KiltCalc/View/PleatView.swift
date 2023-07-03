@@ -34,16 +34,17 @@ struct PleatView: View {
           field("Hip to Hip (rear)", $designer.hipToHipMeasure)
           field("Sett", $designer.sett)
           field("Setts/Pleat", $designer.settsPerPleat)
-          field("Pleat Width", $designer.pleatWidth)
-          field("Gap", $designer.gap)
 
-          LabeledContent {
-            Text(verbatim: formatOptional(designer.pleatCount))
-              .multilineTextAlignment(.trailing)
-              .foregroundColor(.black)
-          } label: {
-            Text("#Pleats")
-          }
+          field("Pleat Width", $designer.pleatWidth)
+            .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+            .disabled(designer.needsRequiredValues)
+          field("Gap", $designer.gap)
+            .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+            .disabled(designer.needsRequiredValues)
+
+          field("#Pleats", $designer.pleatCount)
+            .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+            .disabled(designer.needsRequiredValues)
         }
         PleatDrawing()
 
