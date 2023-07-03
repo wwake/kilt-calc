@@ -1,12 +1,5 @@
 import SwiftUI
 
-struct ApronPleatView: View {
-  var body: some View {
-    Text("TBD")
-      .font(.largeTitle)
-  }
-}
-
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @State private var selectedUnitFormat: ImperialFormatter = .inches
