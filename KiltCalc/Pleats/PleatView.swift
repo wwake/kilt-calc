@@ -10,6 +10,7 @@ struct PleatView: View {
         .keyboardType(.decimalPad)
     } label: {
       Text(label)
+        .bold()
     }
   }
 
@@ -29,6 +30,7 @@ struct PleatView: View {
               .lineLimit(3)
           } label: {
             Text("Notes")
+              .bold()
           }
 
           field("Hip to Hip (rear)", $designer.hipToHipMeasure)

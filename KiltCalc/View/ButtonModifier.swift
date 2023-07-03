@@ -3,8 +3,11 @@ import SwiftUI
 public struct ButtonModifier: ViewModifier {
   public func body(content: Content) -> some View {
     content
-      .background(Color("KeyColor"))
-      .border(Color("AccentColor"), width: 1)
+      .background(
+        RoundedRectangle(cornerRadius: 10)
+          .fill(Color("KeyColor"))
+          .shadow(color: .gray, radius: 2, x: 3, y: 3)
+      )
   }
 }
 
