@@ -23,8 +23,6 @@ public class Calculator: ObservableObject {
   @Published public var imperialFormat = ImperialFormatter.inches
   @Published public var roundingDenominator = 8
 
-  @Published public var showPleatDesigner = false
-
   let valueFormatter = ValueFormatter()
 
   public var display: String {
@@ -179,7 +177,7 @@ public class Calculator: ObservableObject {
       memoryRecall()
 
     case .pleat:
-      showPleatDesigner = true
+      print("TBD - not sure what to do with this key")
 
     case .ending:
       print("\(#file) \(#line) can't happen")

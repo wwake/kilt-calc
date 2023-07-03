@@ -10,7 +10,7 @@ struct ContentView: View {
 
   let columns = Array(repeating: GridItem(.flexible()), count: 5)
 
-  var body: some View {
+  fileprivate func CalculatorView() -> some View {
     ZStack {
       Image(decorative: "Background")
         .resizable()
@@ -87,8 +87,19 @@ struct ContentView: View {
       Text(calculator.errorMessage)
         .font(.title)
     }
-    .sheet(isPresented: $calculator.showPleatDesigner) {
+  }
+
+  var body: some View {
+    TabView {
+      CalculatorView()
+        .tabItem {
+          Label("Calculator", systemImage: "grid")
+        }
+
       PleatView()
+        .tabItem {
+          Label("Pleats", systemImage: "rectangle.split.3x1")
+        }
     }
   }
 }

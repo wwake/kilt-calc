@@ -45,9 +45,9 @@ struct PleatView: View {
             Text("#Pleats")
           }
         }
-
         PleatDrawing()
 
+        Spacer()
         Spacer()
       }
       .navigationTitle("Pleats")
