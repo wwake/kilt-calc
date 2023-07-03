@@ -9,45 +9,38 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var notes = ""
 
+  fileprivate func establishNonRequiredVariables() {
+    if needsRequiredValues {
+      pleatFabric = nil
+      pleatWidth = nil
+      pleatWidth = nil
+      pleatCount = nil
+      return
+    }
+
+    updateInProgress = true
+    pleatFabric = sett! * settsPerPleat!
+    pleatWidth = pleatFabric! / 3
+    gap = 0
+    pleatCount = hipToHipMeasure! / pleatWidth!
+    updateInProgress = false
+  }
+
   @Published public var hipToHipMeasure: Double? {
     didSet {
-      if needsRequiredValues {
-        pleatFabric = nil
-        pleatWidth = nil
-        pleatWidth = nil
-        pleatCount = nil
-        return
-      }
+      establishNonRequiredVariables()
     }
   }
 
   @Published public var sett: Double? {
     didSet {
-      if needsRequiredValues {
-        pleatFabric = nil
-        pleatWidth = nil
-        pleatWidth = nil
-        pleatCount = nil
-        return
-      }
-
-      pleatFabric = sett! * settsPerPleat!
-      pleatWidth = pleatFabric! / 3
+      establishNonRequiredVariables()
     }
   }
 
   @Published public var settsPerPleat: Double? = 1.0 {
     didSet {
-      if needsRequiredValues {
-        pleatFabric = nil
-        pleatWidth = nil
-        pleatWidth = nil
-        pleatCount = nil
-        return
-      }
-
-      pleatFabric = sett! * settsPerPleat!
-      pleatWidth = pleatFabric! / 3
+      establishNonRequiredVariables()
     }
   }
 
