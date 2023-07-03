@@ -6,25 +6,31 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var sett: Double? {
     didSet {
-      if sett == nil {
+      if sett == nil || settsPerPleat == nil {
+        pleatFabric = nil
         pleatWidth = nil
         return
       }
 
-      pleatWidth = (sett! * settsPerPleat!) / 3
+      pleatFabric = sett! * settsPerPleat!
+      pleatWidth = pleatFabric! / 3
     }
   }
 
   @Published public var settsPerPleat: Double? = 1.0 {
     didSet {
-      if settsPerPleat == nil {
+      if settsPerPleat == nil || sett == nil {
+        pleatFabric = nil
         pleatWidth = nil
         return
       }
 
-      pleatWidth = (sett! * settsPerPleat!) / 3
+      pleatFabric = sett! * settsPerPleat!
+      pleatWidth = pleatFabric! / 3
     }
   }
+
+  @Published public var pleatFabric: Double?
 
   @Published public var pleatWidth: Double? {
     didSet {
