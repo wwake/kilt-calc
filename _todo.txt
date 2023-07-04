@@ -9,6 +9,8 @@
  - gap > pleat
  - negative values
 
+* Messages
+
 * Round to at most 3 digits
 * Can we get fractions?
 * Compute labeled picture from form changes
@@ -47,7 +49,7 @@ EGTest
 * Let check use varargs rather than []
 
 CALC-23-25: 2023-07-04 - Pleat Width and Count
-* [off camera] Tweak button look, add empty page for Apron/Pleat
+* [off camera] Tweak button look, add animation, and add empty page for Apron/Pleat
 
 
 CALC-23-24: 2023-07-03 - Box Pleat Constraints

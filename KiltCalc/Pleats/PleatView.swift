@@ -37,16 +37,22 @@ struct PleatView: View {
           field("Sett", $designer.sett)
           field("Setts/Pleat", $designer.settsPerPleat)
 
-          field("Pleat Width", $designer.pleatWidth)
-            .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-            .disabled(designer.needsRequiredValues)
-          field("Gap", $designer.gap)
-            .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-            .disabled(designer.needsRequiredValues)
-
           field("#Pleats", $designer.pleatCount)
             .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
             .disabled(designer.needsRequiredValues)
+
+          field("Pleat Width", $designer.pleatWidth)
+            .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+            .disabled(designer.needsRequiredValues)
+
+          LabeledContent {
+            Text(formatOptional(designer.gap))
+          } label: {
+            Text("Gap")
+          //    .bold()
+          }
+          .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+          .disabled(designer.needsRequiredValues)
         }
 
         PleatDrawing()

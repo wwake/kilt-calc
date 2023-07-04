@@ -3,17 +3,16 @@ import Foundation
 public class PleatDesigner: ObservableObject {
   private var updateInProgress = false
 
+  @Published public var notes = ""
+
   public var needsRequiredValues: Bool {
     hipToHipMeasure == nil || sett == nil || settsPerPleat == nil
   }
-
-  @Published public var notes = ""
 
   fileprivate func establishNonRequiredVariables() {
     if needsRequiredValues {
       pleatFabric = nil
       pleatWidth = nil
-      gap = nil
       pleatCount = nil
       return
     }
@@ -21,7 +20,6 @@ public class PleatDesigner: ObservableObject {
     updateInProgress = true
     pleatFabric = sett! * settsPerPleat!
     pleatWidth = pleatFabric! / 3
-    gap = 0
     pleatCount = hipToHipMeasure! / pleatWidth!
     updateInProgress = false
   }
@@ -46,23 +44,6 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var pleatFabric: Double?
 
-  @Published public var pleatWidth: Double? {
-    didSet {
-      if pleatWidth == nil || pleatFabric == nil {
-        gap = nil
-        return
-      }
-
-      gap = (3 * pleatWidth! - pleatFabric!) / 2.0
-
-      if !updateInProgress {
-        updateInProgress = true
-        pleatCount = hipToHipMeasure == nil ? nil : hipToHipMeasure! / pleatWidth!
-        updateInProgress = false
-      }
-    }
-  }
-
   @Published public var pleatCount: Double? {
     didSet {
       if pleatCount == nil || hipToHipMeasure == nil {
@@ -77,5 +58,22 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  @Published public var gap: Double?
+  @Published public var pleatWidth: Double? {
+    didSet {
+      if pleatWidth == nil || pleatFabric == nil {
+        return
+      }
+
+      if !updateInProgress {
+        updateInProgress = true
+        pleatCount = hipToHipMeasure == nil ? nil : hipToHipMeasure! / pleatWidth!
+        updateInProgress = false
+      }
+    }
+  }
+
+  public var gap: Double? {
+    if needsRequiredValues { return nil }
+    return (3 * pleatWidth! - pleatFabric!) / 2.0
+  }
 }
