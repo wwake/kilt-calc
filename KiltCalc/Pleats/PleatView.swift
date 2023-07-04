@@ -27,10 +27,10 @@ struct PleatView: View {
         VStack {
           Form {
             LabeledContent {
-              TextField("Notes", text: $designer.notes, prompt: Text("Name, tartan, or other notes"))
+              TextField("Title", text: $designer.notes, prompt: Text("Name, tartan, or other notes"))
                 .lineLimit(3)
             } label: {
-              Text("Notes")
+              Text("Title")
                 .bold()
             }
 
