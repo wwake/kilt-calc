@@ -47,7 +47,7 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var pleatCount: Double? {
     didSet {
-      if pleatCount == nil || hipToHipMeasure == nil {
+      if needsRequiredValues {
         return
       }
 
@@ -61,7 +61,7 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var pleatWidth: Double? {
     didSet {
-      if pleatWidth == nil || pleatFabric == nil {
+      if needsRequiredValues {
         return
       }
 
