@@ -77,4 +77,9 @@ public class PleatDesigner: ObservableObject {
     if needsRequiredValues { return nil }
     return (3 * pleatWidth! - pleatFabric!) / 2.0
   }
+
+  public var totalFabric: Double? {
+    if needsRequiredValues { return nil }
+    return pleatFabric! * pleatCount!
+  }
 }

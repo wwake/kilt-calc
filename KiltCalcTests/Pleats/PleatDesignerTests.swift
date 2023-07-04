@@ -180,4 +180,16 @@ final class PleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.gap, 0)
     XCTAssertEqual(designer.pleatCount, 5)
   }
+
+  func test_WhenRequiredFieldsNotSet_totalYardageIsNil() {
+    let designer = PleatDesigner()
+    XCTAssertEqual(designer.totalFabric, nil)
+  }
+
+  func test_WhenRequiredFieldsPresent_totalYardageIsCalculated() {
+    let designer = PleatDesigner()
+    designer.hipToHipMeasure = 20
+    designer.sett = 6
+    XCTAssertEqual(designer.totalFabric, 60)
+  }
 }
