@@ -6,7 +6,10 @@ public class PleatDesigner: ObservableObject {
   @Published public var notes = ""
 
   public var message: String {
-    "Type not determined"
+    if gap != nil && gap!.isZero {
+      return "Box Pleat"
+    }
+    return "Type Can't Be Determined"
   }
 
   public var needsRequiredValues: Bool {

@@ -219,6 +219,14 @@ final class PleatDesignerTests: XCTestCase {
 
   func test_Message_None() {
     let designer = PleatDesigner()
-    XCTAssertEqual(designer.message, "Type not determined")
+    XCTAssertEqual(designer.message, "Type Can't Be Determined")
+  }
+
+  func test_Message_BoxPleat() {
+    let designer = PleatDesigner()
+    designer.hipToHipMeasure = 10
+    designer.sett = 3
+
+    XCTAssertEqual(designer.message, "Box Pleat")
   }
 }
