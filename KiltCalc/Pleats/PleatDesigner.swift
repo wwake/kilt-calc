@@ -11,14 +11,12 @@ public class PleatDesigner: ObservableObject {
 
   fileprivate func establishNonRequiredVariables() {
     if needsRequiredValues {
-      pleatFabric = nil
       pleatWidth = nil
       pleatCount = nil
       return
     }
 
     updateInProgress = true
-    pleatFabric = sett! * settsPerPleat!
     pleatWidth = pleatFabric! / 3
     pleatCount = hipToHipMeasure! / pleatWidth!
     updateInProgress = false
@@ -42,7 +40,10 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  @Published public var pleatFabric: Double?
+  public var pleatFabric: Double? {
+    if needsRequiredValues { return nil }
+    return sett! * settsPerPleat!
+  }
 
   @Published public var pleatCount: Double? {
     didSet {
