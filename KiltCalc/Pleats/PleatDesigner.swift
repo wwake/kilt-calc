@@ -6,10 +6,19 @@ public class PleatDesigner: ObservableObject {
   @Published public var notes = ""
 
   public var message: String {
-    if gap != nil && gap!.isZero {
-      return "Box Pleat"
+    if gap == nil {
+      return "Type Can't Be Determined"
     }
-    return "Type Can't Be Determined"
+    if gap!.isZero {
+      return "Box Pleat"
+    } else if gap! < 0 && gap! > -0.5 {
+      return "Box Pleat with Overlap"
+    } else if gap! <= -0.5 {
+      return "Military Box Pleat"
+    } else if gap! > 0 && gap! < 0.5 {
+      return "Box Pleat with Gap"
+    }
+    return "Box Pleat with Too-Large Gap"
   }
 
   public var needsRequiredValues: Bool {

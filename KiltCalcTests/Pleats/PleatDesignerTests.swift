@@ -229,4 +229,40 @@ final class PleatDesignerTests: XCTestCase {
 
     XCTAssertEqual(designer.message, "Box Pleat")
   }
+
+  func test_Message_BoxPleatWithSmallGap() {
+    let designer = PleatDesigner()
+    designer.hipToHipMeasure = 10
+    designer.sett = 6
+    designer.pleatWidth = 2.3
+
+    XCTAssertEqual(designer.message, "Box Pleat with Gap")
+  }
+
+  func test_Message_BoxPleatWithOverlap() {
+    let designer = PleatDesigner()
+    designer.hipToHipMeasure = 20
+    designer.sett = 6
+    designer.pleatWidth = 1.7
+
+    XCTAssertEqual(designer.message, "Box Pleat with Overlap")
+  }
+
+  func test_Message_MilitaryBoxPleat() {
+    let designer = PleatDesigner()
+    designer.hipToHipMeasure = 20
+    designer.sett = 6
+    designer.pleatWidth = 1.5
+
+    XCTAssertEqual(designer.message, "Military Box Pleat")
+  }
+
+  func test_Message_TooLargeGap() {
+    let designer = PleatDesigner()
+    designer.hipToHipMeasure = 20
+    designer.sett = 6
+    designer.pleatWidth = 3
+
+    XCTAssertEqual(designer.message, "Box Pleat with Too-Large Gap")
+  }
 }
