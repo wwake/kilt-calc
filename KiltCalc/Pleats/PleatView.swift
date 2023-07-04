@@ -56,9 +56,14 @@ struct PleatView: View {
               } label: {
                 Text("Gap")
               }
-              .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-              .disabled(designer.needsRequiredValues)
+
+              LabeledContent {
+                Text(formatOptional(designer.totalFabric))
+              } label: {
+                Text("Total Fabric for Pleats (in)")
+              }
             }
+            .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
           }
           .frame(height: 550)
 
