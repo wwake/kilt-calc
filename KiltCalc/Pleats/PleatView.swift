@@ -62,10 +62,13 @@ struct PleatView: View {
               } label: {
                 Text("Total Fabric for Pleats (in)")
               }
+
+              Text(designer.message)
+                .font(.title)
             }
             .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
           }
-          .frame(height: 550)
+          .frame(height: 600)
 
           PleatDrawing()
 

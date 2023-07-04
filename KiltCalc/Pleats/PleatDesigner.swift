@@ -6,7 +6,7 @@ public class PleatDesigner: ObservableObject {
   @Published public var notes = ""
 
   public var message: String {
-    ""
+    "Type not determined"
   }
 
   public var needsRequiredValues: Bool {

@@ -219,6 +219,6 @@ final class PleatDesignerTests: XCTestCase {
 
   func test_Message_None() {
     let designer = PleatDesigner()
-    XCTAssertEqual(designer.message, "")
+    XCTAssertEqual(designer.message, "Type not determined")
   }
 }
