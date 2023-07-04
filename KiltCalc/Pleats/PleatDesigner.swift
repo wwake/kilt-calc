@@ -67,7 +67,7 @@ public class PleatDesigner: ObservableObject {
 
       if !updateInProgress {
         updateInProgress = true
-        pleatCount = hipToHipMeasure == nil ? nil : hipToHipMeasure! / pleatWidth!
+        pleatCount = hipToHipMeasure! / pleatWidth!
         updateInProgress = false
       }
     }
