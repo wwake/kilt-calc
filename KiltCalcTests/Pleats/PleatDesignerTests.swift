@@ -216,4 +216,9 @@ final class PleatDesignerTests: XCTestCase {
     designer.sett = 6
     XCTAssertEqual(designer.totalFabric, 60)
   }
+
+  func test_Message_None() {
+    let designer = PleatDesigner()
+    XCTAssertEqual(designer.message, "")
+  }
 }

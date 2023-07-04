@@ -5,6 +5,10 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var notes = ""
 
+  public var message: String {
+    ""
+  }
+
   public var needsRequiredValues: Bool {
     hipToHipMeasure == nil || sett == nil || settsPerPleat == nil
   }
