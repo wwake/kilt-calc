@@ -71,8 +71,7 @@ struct CalculatorView: View {
                   calculator.enter(key.entry)
                   showError = !calculator.errorMessage.isEmpty
                 }
-                .frame(width: 60, height: 60)
-                .buttonFormat()
+                .shrinking()
               }
             }
           }
@@ -98,5 +97,24 @@ struct CalculatorView: View {
 struct CalculatorView_Previews: PreviewProvider {
   static var previews: some View {
     CalculatorView(calculator: Calculator())
+  }
+}
+
+struct ShrinkingButton: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .frame(width: 64, height: 64)
+      .background(Color("KeyColor"))
+      .foregroundColor(Color("AccentColor"))
+      .clipShape(RoundedRectangle(cornerRadius: 15))
+      .shadow(color: .gray, radius: 2, x: 3, y: 3)
+      .scaleEffect(configuration.isPressed ? 0.9 : 1)
+      .animation(.easeInOut(duration: 0.2), value: configuration.isPressed)
+  }
+}
+
+extension View {
+  public func shrinking() -> some View {
+    buttonStyle(ShrinkingButton())
   }
 }

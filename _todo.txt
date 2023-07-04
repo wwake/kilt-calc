@@ -34,7 +34,6 @@ Syntax
 * If you start with an operator, you should load the previous result as the first operand (?) - or pointing hand to previous result?
 
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
-* Slight shadow on buttons?
 * Slight animation on button press
 
 * Dark or light mode
