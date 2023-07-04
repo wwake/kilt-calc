@@ -1,11 +1,8 @@
-* Messages
-
+* Gap vs overlap - negative gap is an overlap (change the label)
 * Error situations
  - pleat width >= sett*sett/pleat - can we bound it?
  - |gap| > pleat
  - negative values for any required values, #pleats, pleat width
-
-* Gap vs overlap - negative gap is an overlap (change the label)
 
 * Round to at most 3 digits
 * Can we get fractions?
@@ -49,7 +46,7 @@ CALC-23-25: 2023-07-04 - Pleat Width and Count
 * Calculate gap and pleatFabric on the fly?
 * Look at pleatWidth and pleatCount for cases where nil involved
 * Calculate total yardage for pleats
-
+* Messages - type of pleat
 
 CALC-23-24: 2023-07-03 - Box Pleat Constraints
 * Is gap an output only? Yes
