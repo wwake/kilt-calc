@@ -1,3 +1,4 @@
+import EGTest
 @testable import KiltCalc
 import XCTest
 
@@ -205,12 +206,12 @@ final class PleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.pleatCount, 5)
   }
 
-  func test_WhenRequiredFieldsNotSet_totalYardageIsNil() {
+  func test_WhenRequiredFieldsNotSet_totalFabricIsNil() {
     let designer = PleatDesigner()
     XCTAssertEqual(designer.totalFabric, nil)
   }
 
-  func test_WhenRequiredFieldsPresent_totalYardageIsCalculated() {
+  func test_WhenRequiredFieldsPresent_totalFabricIsCalculated() {
     let designer = PleatDesigner()
     designer.hipToHipMeasure = 20
     designer.sett = 6
@@ -222,47 +223,19 @@ final class PleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.message, "Type Can't Be Determined")
   }
 
-  func test_Message_BoxPleat() {
-    let designer = PleatDesigner()
-    designer.hipToHipMeasure = 10
-    designer.sett = 3
-
-    XCTAssertEqual(designer.message, "Box Pleat")
-  }
-
-  func test_Message_BoxPleatWithSmallGap() {
-    let designer = PleatDesigner()
-    designer.hipToHipMeasure = 10
-    designer.sett = 6
-    designer.pleatWidth = 2.3
-
-    XCTAssertEqual(designer.message, "Box Pleat with Gap")
-  }
-
-  func test_Message_BoxPleatWithOverlap() {
-    let designer = PleatDesigner()
-    designer.hipToHipMeasure = 20
-    designer.sett = 6
-    designer.pleatWidth = 1.7
-
-    XCTAssertEqual(designer.message, "Box Pleat with Overlap")
-  }
-
-  func test_Message_MilitaryBoxPleat() {
-    let designer = PleatDesigner()
-    designer.hipToHipMeasure = 20
-    designer.sett = 6
-    designer.pleatWidth = 1.5
-
-    XCTAssertEqual(designer.message, "Military Box Pleat")
-  }
-
-  func test_Message_TooLargeGap() {
-    let designer = PleatDesigner()
-    designer.hipToHipMeasure = 20
-    designer.sett = 6
-    designer.pleatWidth = 3
-
-    XCTAssertEqual(designer.message, "Box Pleat with Too-Large Gap")
+  func test_Message() {
+    check([
+      eg(2, expect: "Box Pleat"),
+      eg(2.1, expect: "Box Pleat with Gap"),
+      eg(1.7, expect: "Box Pleat with Overlap"),
+      eg(1.5, expect: "Military Box Pleat"),
+      eg(3, expect: "Box Pleat with Too-Large Gap"),
+    ]) {
+      let designer = PleatDesigner()
+      designer.hipToHipMeasure = 20
+      designer.sett = 6
+      designer.pleatWidth = $0.input
+      EGAssertEqual(designer.message, $0)
+    }
   }
 }

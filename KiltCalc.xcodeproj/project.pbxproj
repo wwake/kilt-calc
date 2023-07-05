@@ -198,7 +198,6 @@
 		91E7B6BF2A0D4428004A757A = {
 			isa = PBXGroup;
 			children = (
-				91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */,
 				91E7B6F72A0D4FC0004A757A /* _todo.txt */,
 				91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */,
 				91E7B6FB2A0D5189004A757A /* README.md */,
@@ -246,6 +245,7 @@
 		91E7B6DB2A0D4430004A757A /* KiltCalcTests */ = {
 			isa = PBXGroup;
 			children = (
+				91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */,
 				91E3C5AB2A1D39550098BAFC /* Calculator */,
 				91184E952A4E007000D5841E /* Pleats */,
 				91E3C5AC2A1D39A30098BAFC /* EGTest+extensions.swift */,

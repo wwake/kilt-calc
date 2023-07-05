@@ -41,12 +41,15 @@ EGTest
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
 
+CALC-23-26: 2023-07-05 - Pleat Errors
+
+
 CALC-23-25: 2023-07-04 - Pleat Width and Count
 * [off camera] Tweak button look, add animation, and add empty page for Apron/Pleat
-* Calculate gap and pleatFabric on the fly?
-* Look at pleatWidth and pleatCount for cases where nil involved
+* Calculate gap and pleatFabric on demand
+* Straighten out pleatWidth and pleatCount for cases where nil involved
 * Calculate total yardage for pleats
-* Messages - type of pleat
+* Messages - Identify the type of pleat (box pleat etc.)
 
 CALC-23-24: 2023-07-03 - Box Pleat Constraints
 * Is gap an output only? Yes
