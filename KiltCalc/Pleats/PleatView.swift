@@ -43,11 +43,11 @@ struct PleatView: View {
             }
 
             Section("Adjustable") {
-              field("#Pleats", $designer.pleatCount, "")
+              field("#Pleats", $designer.pleatCount, designer.pleatCountError)
                 .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
                 .disabled(designer.needsRequiredValues)
 
-              field("Pleat Width", $designer.pleatWidth, "")
+              field("Pleat Width", $designer.pleatWidth, designer.pleatWidthError)
                 .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
                 .disabled(designer.needsRequiredValues)
             }
