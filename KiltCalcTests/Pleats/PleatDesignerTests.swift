@@ -320,14 +320,25 @@ final class PleatDesignerTests: XCTestCase {
   }
 
   func test_PleatCountErrorMessage() {
-    let designer = PleatDesigner()
-
     check([
       eg(nil, expect: ""),
       eg(20.0, expect: ""),
       eg(0, expect: "Pleat count must be positive"),
       eg(-20.0, expect: "Pleat count must be positive"),
     ]) {
+      let designer = PleatDesigner()
+      designer.pleatCount = $0.input
+      EGAssertEqual(designer.pleatCountError, $0)
+    }
+  }
+
+  func test_PleatCountFractionalErrorMessage() {
+    check([
+      eg(nil, expect: ""),
+      eg(20.0, expect: ""),
+      eg(20.00001, expect: "Pleat count must not have a fraction"),
+    ]) {
+      let designer = PleatDesigner()
       designer.pleatCount = $0.input
       EGAssertEqual(designer.pleatCountError, $0)
     }

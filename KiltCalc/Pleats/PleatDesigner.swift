@@ -21,8 +21,12 @@ public enum PleatValidator {
     required(value, name).and(positive(value, name))
   }
 
-  static func positiveSmaller(_ value1: Double?, _ name1: String, _ value2: Double?) -> String {
-    positive(value1, name1).and(smaller(value1, name1, value2))
+  static func positiveSmaller(_ value1: Double?, _ name: String, _ value2: Double?) -> String {
+    positive(value1, name).and(smaller(value1, name, value2))
+  }
+
+  static func positiveInteger(_ value: Double?, _ name: String) -> String {
+    positive(value, name).and(integral(value, name))
   }
 
   static func required(_ value: Double?, _ name: String) -> String {
@@ -45,12 +49,26 @@ public enum PleatValidator {
     }
     return "\(name) too large"
   }
+
+  static func integral(_ value: Double?, _ name: String) -> String {
+    if value == nil || value!.isInteger {
+      return ""
+    }
+    return "\(name) must not have a fraction"
+  }
 }
 
 extension String {
   fileprivate func and(_ other: String) -> String {
     if !self.isEmpty { return self }
     return other
+  }
+}
+
+extension Double {
+  fileprivate var isInteger: Bool {
+    let (_, fractionPart) = modf(self)
+    return fractionPart.isZero
   }
 }
 
@@ -130,7 +148,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var pleatCountError: String {
-    PleatValidator.positive(pleatCount, "Pleat count")
+    PleatValidator.positiveInteger(pleatCount, "Pleat count")
   }
 
   @Published public var pleatWidth: Double? {
