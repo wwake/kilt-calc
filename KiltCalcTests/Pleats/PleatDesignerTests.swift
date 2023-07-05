@@ -253,57 +253,68 @@ final class PleatDesignerTests: XCTestCase {
   }
 
   func test_HipErrorMessage() {
-    let designer = PleatDesigner()
-
     check([
       eg(nil, expect: "Hip measure is required"),
       eg(20, expect: ""),
       eg(0, expect: "Hip measure must be positive"),
       eg(-20, expect: "Hip measure must be positive"),
     ]) {
+      let designer = PleatDesigner()
       designer.hipToHipMeasure = $0.input
       EGAssertEqual(designer.hipError, $0)
     }
   }
 
   func test_SettErrorMessage() {
-    let designer = PleatDesigner()
-
     check([
       eg(nil, expect: "Sett is required"),
       eg(20, expect: ""),
       eg(0, expect: "Sett must be positive"),
       eg(-20, expect: "Sett must be positive"),
     ]) {
+      let designer = PleatDesigner()
       designer.sett = $0.input
       EGAssertEqual(designer.settError, $0)
     }
   }
 
   func test_SettsPerPleatErrorMessage() {
-    let designer = PleatDesigner()
-
     check([
       eg(nil, expect: "Setts/pleat is required"),
       eg(20.0, expect: ""),
       eg(0, expect: "Setts/pleat must be positive"),
       eg(-20.0, expect: "Setts/pleat must be positive"),
     ]) {
+      let designer = PleatDesigner()
       designer.settsPerPleat = $0.input
       EGAssertEqual(designer.settsPerPleatError, $0)
     }
   }
 
   func test_PleatWidthErrorMessage() {
-    let designer = PleatDesigner()
-
     check([
       eg(nil, expect: ""),
       eg(20.0, expect: ""),
       eg(0, expect: "Pleat width must be positive"),
       eg(-20.0, expect: "Pleat width must be positive"),
     ]) {
+      let designer = PleatDesigner()
       designer.pleatWidth = $0.input
+      EGAssertEqual(designer.pleatWidthError, $0)
+    }
+  }
+
+  func test_PleatWidthTooBigErrorMessage() {
+    let designer = PleatDesigner()
+
+    check([
+      eg((nil, 10.0), expect: ""),
+      eg((9.9, 10.0), expect: ""),
+      eg((10.0, 10.0), expect: "Pleat width too large"),
+    ]) {
+      designer.hipToHipMeasure = 15
+      designer.sett = $0.input.1
+      designer.pleatWidth = $0.input.0
       EGAssertEqual(designer.pleatWidthError, $0)
     }
   }
