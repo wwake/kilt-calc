@@ -17,20 +17,29 @@ public enum PleatValidator {
     return "Box Pleat with Too-Large Gap"
   }
 
-  static func requiredPositive(_ value: Double?, _ name: String) -> String {
+  static func required(_ value: Double?, _ name: String) -> String {
     if value == nil {
       return "\(name) is required"
-    } else if value! <= 0 {
-      return "\(name) must be positive"
     }
     return ""
   }
 
-  static func optionalPositive(_ value: Double?, _ name: String) -> String {
+  static func requiredPositive(_ value: Double?, _ name: String) -> String {
+    required(value, name).and(positive(value, name))
+  }
+
+  static func positive(_ value: Double?, _ name: String) -> String {
     if value == nil || value! > 0 {
       return ""
     }
     return "\(name) must be positive"
+  }
+}
+
+extension String {
+  fileprivate func and(_ other: String) -> String {
+    if !self.isEmpty { return self }
+    return other
   }
 }
 
@@ -110,7 +119,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var pleatCountError: String {
-    PleatValidator.optionalPositive(pleatCount, "Pleat count")
+    PleatValidator.positive(pleatCount, "Pleat count")
   }
 
   @Published public var pleatWidth: Double? {
@@ -128,7 +137,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var pleatWidthError: String {
-    PleatValidator.optionalPositive(pleatWidth, "Pleat width")
+    PleatValidator.positive(pleatWidth, "Pleat width")
   }
 
   public var gap: Double? {
