@@ -1,11 +1,7 @@
 import Foundation
 
-public class PleatDesigner: ObservableObject {
-  private var updateInProgress = false
-
-  @Published public var notes = ""
-
-  public var message: String {
+public enum PleatValidator {
+  static func gapMessage(_ gap: Double?) -> String {
     if gap == nil {
       return "Type Can't Be Determined"
     }
@@ -19,6 +15,25 @@ public class PleatDesigner: ObservableObject {
       return "Box Pleat with Gap"
     }
     return "Box Pleat with Too-Large Gap"
+  }
+
+  static func requiredPositive(_ value: Double?, _ name: String) -> String {
+    if value == nil {
+      return "\(name) is required"
+    } else if value! <= 0 {
+      return "\(name) must be positive"
+    }
+    return ""
+  }
+}
+
+public class PleatDesigner: ObservableObject {
+  private var updateInProgress = false
+
+  @Published public var notes = ""
+
+  public var message: String {
+    PleatValidator.gapMessage(gap)
   }
 
   public var needsRequiredValues: Bool {
@@ -45,12 +60,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var hipError: String {
-    if hipToHipMeasure == nil {
-      return "Hip measure is required"
-    } else if hipToHipMeasure! < 0 {
-      return "Hip measure can't be negative"
-    }
-    return ""
+    PleatValidator.requiredPositive(hipToHipMeasure, "Hip measure")
   }
 
   @Published public var sett: Double? {
@@ -59,10 +69,18 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
+  public var settError: String {
+    PleatValidator.requiredPositive(sett, "Sett")
+  }
+
   @Published public var settsPerPleat: Double? = 1.0 {
     didSet {
       establishNonRequiredVariables()
     }
+  }
+
+  public var settsPerPleatError: String {
+    PleatValidator.requiredPositive(settsPerPleat, "Setts/pleat")
   }
 
   public var pleatFabric: Double? {

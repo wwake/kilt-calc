@@ -3,7 +3,7 @@ import SwiftUI
 struct PleatView: View {
   @StateObject private var designer = PleatDesigner()
 
-  func field(_ label: String, _ boundDouble: Binding<Double?>) -> some View {
+  func field(_ label: String, _ boundDouble: Binding<Double?>, _ message: String) -> some View {
     LabeledContent {
       TextField(label, value: boundDouble, format: .number)
         .multilineTextAlignment(.trailing)
@@ -12,6 +12,8 @@ struct PleatView: View {
       Text(label)
         .bold()
     }
+    .padding(message.isEmpty ? 0 : 8)
+    .border(Color.red, width: message.isEmpty ? 0 : 1)
   }
 
   func formatOptional(_ value: Double?) -> String {
@@ -35,17 +37,17 @@ struct PleatView: View {
             }
 
             Section("Required") {
-              field("Hip to Hip (rear)", $designer.hipToHipMeasure)
-              field("Sett", $designer.sett)
-              field("Setts/Pleat", $designer.settsPerPleat)
+              field("Hip to Hip (rear)", $designer.hipToHipMeasure, designer.hipError)
+              field("Sett", $designer.sett, designer.settError)
+              field("Setts/Pleat", $designer.settsPerPleat, designer.settsPerPleatError)
             }
 
             Section("Adjustable") {
-              field("#Pleats", $designer.pleatCount)
+              field("#Pleats", $designer.pleatCount, "")
                 .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
                 .disabled(designer.needsRequiredValues)
 
-              field("Pleat Width", $designer.pleatWidth)
+              field("Pleat Width", $designer.pleatWidth, "")
                 .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
                 .disabled(designer.needsRequiredValues)
             }

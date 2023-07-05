@@ -258,10 +258,39 @@ final class PleatDesignerTests: XCTestCase {
     check([
       eg(nil, expect: "Hip measure is required"),
       eg(20, expect: ""),
-      eg(-20, expect: "Hip measure can't be negative"),
+      eg(0, expect: "Hip measure must be positive"),
+      eg(-20, expect: "Hip measure must be positive"),
     ]) {
       designer.hipToHipMeasure = $0.input
       EGAssertEqual(designer.hipError, $0)
+    }
+  }
+
+  func test_SettErrorMessage() {
+    let designer = PleatDesigner()
+
+    check([
+      eg(nil, expect: "Sett is required"),
+      eg(20, expect: ""),
+      eg(0, expect: "Sett must be positive"),
+      eg(-20, expect: "Sett must be positive"),
+    ]) {
+      designer.sett = $0.input
+      EGAssertEqual(designer.settError, $0)
+    }
+  }
+
+  func test_SettsPerPleatErrorMessage() {
+    let designer = PleatDesigner()
+
+    check([
+      eg(nil, expect: "Setts/pleat is required"),
+      eg(20.0, expect: ""),
+      eg(0, expect: "Setts/pleat must be positive"),
+      eg(-20.0, expect: "Setts/pleat must be positive"),
+    ]) {
+      designer.settsPerPleat = $0.input
+      EGAssertEqual(designer.settsPerPleatError, $0)
     }
   }
 }
