@@ -25,6 +25,13 @@ public enum PleatValidator {
     }
     return ""
   }
+
+  static func optionalPositive(_ value: Double?, _ name: String) -> String {
+    if value == nil || value! > 0 {
+      return ""
+    }
+    return "\(name) must be positive"
+  }
 }
 
 public class PleatDesigner: ObservableObject {
@@ -114,6 +121,10 @@ public class PleatDesigner: ObservableObject {
         updateInProgress = false
       }
     }
+  }
+
+  public var pleatWidthError: String {
+    PleatValidator.optionalPositive(pleatWidth, "Pleat width")
   }
 
   public var gap: Double? {

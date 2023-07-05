@@ -293,4 +293,18 @@ final class PleatDesignerTests: XCTestCase {
       EGAssertEqual(designer.settsPerPleatError, $0)
     }
   }
+
+  func test_PleatWidthErrorMessage() {
+    let designer = PleatDesigner()
+
+    check([
+      eg(nil, expect: ""),
+      eg(20.0, expect: ""),
+      eg(0, expect: "Pleat width must be positive"),
+      eg(-20.0, expect: "Pleat width must be positive"),
+    ]) {
+      designer.pleatWidth = $0.input
+      EGAssertEqual(designer.pleatWidthError, $0)
+    }
+  }
 }
