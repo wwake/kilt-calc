@@ -1,14 +1,12 @@
-* Show message when error string non-empty
-Error situations
 
 * Editing fractions
+* Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
 
-* Round to at most 3 digits
-* Can we get fractions?
 * Compute labeled picture from form changes
-* Save scenarios
 
 * A/P: Apron/Pleat
+
+* Save scenarios
 
 * Idea: show memory value in history too
 
@@ -27,7 +25,6 @@ Syntax
 * Ways to show parends need work - hint counter? grayed-out right parends? long press to close all? automatically insert?
 * If you start with an operator, you should load the previous result as the first operand (?) - or pointing hand to previous result?
 
-* Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
 * Slight animation on button press
 
 * Dark or light mode
@@ -53,6 +50,7 @@ CALC-23-25: 2023-07-04 - Pleat Width and Count
 * Straighten out pleatWidth and pleatCount for cases where nil involved
 * Calculate total yardage for pleats
 * Messages - Identify the type of pleat (box pleat etc.)
+* Show message when error string non-empty
 
 CALC-23-24: 2023-07-03 - Box Pleat Constraints
 * Is gap an output only? Yes
