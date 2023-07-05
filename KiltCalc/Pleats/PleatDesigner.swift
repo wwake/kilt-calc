@@ -109,6 +109,10 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
+  public var pleatCountError: String {
+    PleatValidator.optionalPositive(pleatCount, "Pleat count")
+  }
+
   @Published public var pleatWidth: Double? {
     didSet {
       if needsRequiredValues || pleatWidth == nil {
