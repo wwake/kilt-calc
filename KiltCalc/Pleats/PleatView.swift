@@ -4,16 +4,24 @@ struct PleatView: View {
   @StateObject private var designer = PleatDesigner()
 
   func field(_ label: String, _ boundDouble: Binding<Double?>, _ message: String) -> some View {
-    LabeledContent {
-      TextField(label, value: boundDouble, format: .number)
-        .multilineTextAlignment(.trailing)
-        .keyboardType(.decimalPad)
-    } label: {
-      Text(label)
-        .bold()
+    VStack {
+      LabeledContent {
+        TextField(label, value: boundDouble, format: .number)
+          .multilineTextAlignment(.trailing)
+          .keyboardType(.decimalPad)
+      } label: {
+        Text(label)
+          .bold()
+      }
+      .padding(message.isEmpty ? 0 : 8)
+      .border(Color.red, width: message.isEmpty ? 0 : 1)
+
+      if !message.isEmpty {
+        Text(message)
+          .font(.footnote)
+          .foregroundColor(Color.red)
+      }
     }
-    .padding(message.isEmpty ? 0 : 8)
-    .border(Color.red, width: message.isEmpty ? 0 : 1)
   }
 
   func formatOptional(_ value: Double?) -> String {
