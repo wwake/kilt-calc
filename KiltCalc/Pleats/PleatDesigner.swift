@@ -44,6 +44,15 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
+  public var hipError: String {
+    if hipToHipMeasure == nil {
+      return "Hip measure is required"
+    } else if hipToHipMeasure! < 0 {
+      return "Hip measure can't be negative"
+    }
+    return ""
+  }
+
   @Published public var sett: Double? {
     didSet {
       establishNonRequiredVariables()
@@ -92,6 +101,18 @@ public class PleatDesigner: ObservableObject {
   public var gap: Double? {
     if needsRequiredValues || pleatWidth == nil { return nil }
     return (3 * pleatWidth! - pleatFabric!) / 2.0
+  }
+
+  public var absoluteGap: Double? {
+    if gap == nil { return nil }
+    return abs(gap!)
+  }
+
+  public var gapLabel: String {
+    if gap == nil || gap! >= 0 {
+      return "Gap"
+    }
+    return "Overlap"
   }
 
   public var totalFabric: Double? {

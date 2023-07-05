@@ -167,7 +167,20 @@ final class PleatDesignerTests: XCTestCase {
 
     XCTAssertEqual(designer.pleatWidth, 2)
     XCTAssertEqual(designer.gap, 0.5)
+    XCTAssertEqual(designer.absoluteGap, 0.5)
+    XCTAssertEqual(designer.gapLabel, "Gap")
     XCTAssertEqual(designer.pleatCount, 10)
+  }
+
+  func test_setPleatWidth_SetsGapOverlapAndPleatCount() {
+    let designer = PleatDesigner()
+    designer.hipToHipMeasure = 20
+    designer.sett = 6
+    designer.pleatWidth = 1.75
+
+    XCTAssertEqual(designer.gap, -0.375)
+    XCTAssertEqual(designer.absoluteGap, 0.375)
+    XCTAssertEqual(designer.gapLabel, "Overlap")
   }
 
   func test_setPleatCount_SetsPleatFabric_Pleat_Gap() {
@@ -236,6 +249,19 @@ final class PleatDesignerTests: XCTestCase {
       designer.sett = 6
       designer.pleatWidth = $0.input
       EGAssertEqual(designer.message, $0)
+    }
+  }
+
+  func test_HipErrorMessage() {
+    let designer = PleatDesigner()
+
+    check([
+      eg(nil, expect: "Hip measure is required"),
+      eg(20, expect: ""),
+      eg(-20, expect: "Hip measure can't be negative"),
+    ]) {
+      designer.hipToHipMeasure = $0.input
+      EGAssertEqual(designer.hipError, $0)
     }
   }
 }

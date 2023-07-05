@@ -52,9 +52,9 @@ struct PleatView: View {
 
             Section {
               LabeledContent {
-                Text(formatOptional(designer.gap))
+                Text(formatOptional(designer.absoluteGap))
               } label: {
-                Text("Gap")
+                Text(designer.gapLabel)
               }
 
               LabeledContent {

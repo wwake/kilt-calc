@@ -1,8 +1,9 @@
-* Gap vs overlap - negative gap is an overlap (change the label)
 * Error situations
  - pleat width >= sett*sett/pleat - can we bound it?
- - |gap| > pleat
  - negative values for any required values, #pleats, pleat width
+ - non-integral pleat count
+
+* Editing fractions
 
 * Round to at most 3 digits
 * Can we get fractions?
@@ -42,6 +43,7 @@ EGTest
 * Let check use varargs rather than []
 
 CALC-23-26: 2023-07-05 - Pleat Errors
+* Gap vs overlap - negative gap is an overlap (change the label & show the absolute value)
 
 
 CALC-23-25: 2023-07-04 - Pleat Width and Count
