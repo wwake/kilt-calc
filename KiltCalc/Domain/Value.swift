@@ -5,8 +5,9 @@ public enum Value {
   case number(Double)
   case inches(Double)
 
-  static let formatter = NumberFormatter()
   static let parseStrategy = ValueParseStrategy()
+  static let valueFormatter = ValueFormatter()
+  public static var imperialFormatter = ImperialFormatter.inches
 }
 
 extension Value {
@@ -151,3 +152,19 @@ extension Value {
     }
   }
 }
+
+extension Value {
+  public struct ValueFormatStyle: ParseableFormatStyle {
+    public var parseStrategy: ValueParseStrategy {
+      ValueParseStrategy()
+    }
+
+    public func format(_ value: Value) -> String {
+      valueFormatter.format(Value.imperialFormatter.formatter, value)
+    }
+  }
+}
+
+extension Value: Codable {}
+
+extension Value: Hashable {}
