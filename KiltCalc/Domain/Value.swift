@@ -168,3 +168,15 @@ extension Value {
 extension Value: Codable {}
 
 extension Value: Hashable {}
+
+extension Value {
+   public func formatted(_ formatStyle: ValueFormatStyle) -> String {
+    formatStyle.format(self)
+  }
+}
+
+extension FormatStyle where Self == Value.ValueFormatStyle {
+   public static var imperial: Value.ValueFormatStyle {
+    Value.ValueFormatStyle()
+  }
+}

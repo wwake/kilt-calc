@@ -30,7 +30,8 @@ public class Calculator: ObservableObject {
     if !input.isEmpty {
       return trimmedInput
     }
-    return valueFormatter.format(imperialFormat.formatter, result)
+    return // result.formatted(.imperial)
+    valueFormatter.format(imperialFormat.formatter, result)
   }
 
   func clear() {
