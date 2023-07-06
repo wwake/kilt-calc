@@ -1,3 +1,4 @@
+* Make Value's parser conform to ParseStrategy
 * Editing fractions
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
 

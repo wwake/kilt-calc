@@ -122,6 +122,10 @@
 		91183F602A573DA0009F4D47 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				91E3C5B62A1FE18D0098BAFC /* ImperialFormatter.swift */,
+				916AF65F2A252460009484DA /* ImperialUnit.swift */,
+				91E3C5B22A1EAAD10098BAFC /* Value.swift */,
+				918628CC2A2FC57300FA781D /* ValueFormatter.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -179,13 +183,9 @@
 				91B0F2B92A5373FA00423289 /* CalculatorView.swift */,
 				918628C82A2E6FF000FA781D /* Entry.swift */,
 				9190F7AC2A292CA60008E40A /* Expression.swift */,
-				91E3C5B62A1FE18D0098BAFC /* ImperialFormatter.swift */,
-				916AF65F2A252460009484DA /* ImperialUnit.swift */,
 				91E3C5A02A1BF40F0098BAFC /* Key.swift */,
 				91E3C5A22A1BF4280098BAFC /* Keypad.swift */,
 				916AF6642A267B8F009484DA /* Operator.swift */,
-				91E3C5B22A1EAAD10098BAFC /* Value.swift */,
-				918628CC2A2FC57300FA781D /* ValueFormatter.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
