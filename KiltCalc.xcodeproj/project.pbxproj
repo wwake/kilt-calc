@@ -119,6 +119,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91183F602A573DA0009F4D47 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		91184E952A4E007000D5841E /* Pleats */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +229,7 @@
 		91E7B6CA2A0D4428004A757A /* KiltCalc */ = {
 			isa = PBXGroup;
 			children = (
+				91183F602A573DA0009F4D47 /* Domain */,
 				91E3C59F2A1BF4030098BAFC /* Calculator */,
 				91B0F2B62A53735800423289 /* ApronPleats */,
 				91184E982A4E016800D5841E /* Pleats */,

@@ -6,6 +6,7 @@ public enum Value {
   case inches(Double)
 
   static let formatter = NumberFormatter()
+  static let parseStrategy = ValueParseStrategy()
 }
 
 extension Value {
@@ -144,21 +145,66 @@ enum ParseError: Error {
 }
 
 extension Value {
-  typealias NumberMatch = Regex<Regex<Substring>.RegexOutput>.Match
-
-  fileprivate static func parseDouble(_ string: Substring) throws -> Double {
-    let numberPart = formatter.number(from: String(string))?.doubleValue
-    if numberPart == nil {
-      throw ParseError.error("number too big or too small")
+  static func parse(_ input: String) -> Value {
+    do {
+      return try parseStrategy.parse(input)
+    } catch ParseError.error(let errorString) {
+      return .error(errorString)
+    } catch {
+      return .error("internal error")
     }
-    return numberPart!
+  }
+}
+
+public struct ValueParseStrategy: ParseStrategy {
+  static let formatter = NumberFormatter()
+
+  public func parse(_ value: String) throws -> Value {
+    Self.parse(value)
   }
 
-  fileprivate static func parseFraction(_ numeratorString: Substring, _ denominatorString: Substring) throws -> Double {
-    let numerator = try parseDouble(numeratorString)
-    let denominator = try parseDouble(denominatorString)
+  static func parse(_ input: String) -> Value {
+    do {
+      let numbers = try splitNumbers(input)
+      let units = try splitUnits(input)
 
-    return numerator / denominator
+      if numbers.count == 1 && units.count == 0 {
+        return .number(numbers[0])
+      }
+
+      if numbers.count != units.count {
+        return .error("numbers and units don't match")
+      }
+
+      var inches = 0.0
+      zip(numbers, units).forEach { number, unit in
+        inches += ImperialUnit.asInches(number, String(unit))
+      }
+
+      return Value.inches(inches)
+    } catch ParseError.error(let errorString) {
+      return .error(errorString)
+    } catch {
+      return .error("internal error")
+    }
+  }
+
+  static func splitNumbers(_ input: String) throws -> [Double] {
+    let unitCharacters = /[a-z ]+/
+
+    let numbers = try input
+      .split(separator: unitCharacters)
+      .map { try Self.parseNumber(String($0)) }
+
+    if numbers.isEmpty { throw ParseError.error("no value found") }
+
+    return numbers
+  }
+
+  static func splitUnits(_ input: String) throws -> [String] {
+    let numberCharacters = /[0-9\/.]+/
+    return input.split(separator: numberCharacters)
+      .map { $0.trimmingCharacters(in: .whitespaces) }
   }
 
   fileprivate static func parseNumber(_ string: String) throws -> Double {
@@ -198,47 +244,18 @@ extension Value {
     return wholeNumber + fraction
   }
 
-  static func splitNumbers(_ input: String) throws -> [Double] {
-    let unitCharacters = /[a-z ]+/
-
-    let numbers = try input
-      .split(separator: unitCharacters)
-      .map { try Self.parseNumber(String($0)) }
-
-    if numbers.isEmpty { throw ParseError.error("no value found") }
-
-    return numbers
-  }
-
-  static func splitUnits(_ input: String) throws -> [String] {
-    let numberCharacters = /[0-9\/.]+/
-    return input.split(separator: numberCharacters)
-      .map { $0.trimmingCharacters(in: .whitespaces) }
-  }
-
-  static func parse(_ input: String) -> Value {
-    do {
-      let numbers = try splitNumbers(input)
-      let units = try splitUnits(input)
-
-      if numbers.count == 1 && units.count == 0 {
-        return .number(numbers[0])
-      }
-
-      if numbers.count != units.count {
-        return .error("numbers and units don't match")
-      }
-
-      var inches = 0.0
-      zip(numbers, units).forEach { number, unit in
-        inches += ImperialUnit.asInches(number, String(unit))
-      }
-
-      return Value.inches(inches)
-    } catch ParseError.error(let errorString) {
-      return .error(errorString)
-    } catch {
-      return .error("internal error")
+  fileprivate static func parseDouble(_ string: Substring) throws -> Double {
+    let numberPart = formatter.number(from: String(string))?.doubleValue
+    if numberPart == nil {
+      throw ParseError.error("number too big or too small")
     }
+    return numberPart!
+  }
+
+  fileprivate static func parseFraction(_ numeratorString: Substring, _ denominatorString: Substring) throws -> Double {
+    let numerator = try parseDouble(numeratorString)
+    let denominator = try parseDouble(denominatorString)
+
+    return numerator / denominator
   }
 }

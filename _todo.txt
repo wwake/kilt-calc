@@ -1,4 +1,3 @@
-
 * Editing fractions
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
 
@@ -37,12 +36,14 @@ EGTest
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
 
+CALC-23-27: 2023-07-06 - Fractions on the Pleat Tab
+
+
 CALC-23-26: 2023-07-05 - Pleat Errors
 * Gap vs overlap - negative gap is an overlap (change the label & show the absolute value)
- - negative values for any required values, #pleats, pleat width
- - pleat width must be < sett*sett/pleat
- - non-integral pleat count
-
+* negative values for any required values, #pleats, pleat width
+* pleat width must be < sett*sett/pleat
+* non-integral pleat count
 
 CALC-23-25: 2023-07-04 - Pleat Width and Count
 * [off camera] Tweak button look, add animation, and add empty page for Apron/Pleat
