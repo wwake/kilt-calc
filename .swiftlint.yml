@@ -45,7 +45,7 @@ opt_in_rules:
   - enum_case_associated_values_count
   - expiring_todo
 #  - explicit_acl   # house rule but could be convinced o.w.
-  - explicit_enum_raw_value
+#  - explicit_enum_raw_value # house rule because it complains about 'case type = "type"'
   - explicit_init
 #  - explicit_top_level_acl  # house rule but could be convinced o.w.
 #  - explicit_type_interface  # house rule

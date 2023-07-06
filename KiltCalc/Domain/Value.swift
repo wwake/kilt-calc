@@ -155,6 +155,17 @@ extension Value {
 
 extension Value {
   public struct ValueFormatStyle: ParseableFormatStyle {
+    enum ValueFormatType: Codable {
+      case inches
+      case yardFeetInches
+    }
+
+    var type: ValueFormatType
+
+    init(_ type: ValueFormatType) {
+      self.type = type
+    }
+
     public var parseStrategy: ValueParseStrategy {
       ValueParseStrategy()
     }
@@ -165,9 +176,27 @@ extension Value {
   }
 }
 
-extension Value: Codable {}
+extension Value.ValueFormatStyle: Codable {
+  enum CodingKeys: String, CodingKey {
+    case type
+  }
 
-extension Value: Hashable {}
+  public init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    if let newType = try? container.decodeIfPresent(ValueFormatType.self, forKey: .type) {
+      type = newType
+    } else {
+      type = .inches
+    }
+  }
+
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    try container.encode(type, forKey: .type)
+  }
+}
+
+extension Value.ValueFormatStyle: Hashable {}
 
 extension Value {
    public func formatted(_ formatStyle: ValueFormatStyle) -> String {
@@ -176,7 +205,11 @@ extension Value {
 }
 
 extension FormatStyle where Self == Value.ValueFormatStyle {
-   public static var imperial: Value.ValueFormatStyle {
-    Value.ValueFormatStyle()
+  public static var inches: Value.ValueFormatStyle {
+    Value.ValueFormatStyle(.inches)
+  }
+
+  public static var yardFeetInches: Value.ValueFormatStyle {
+    Value.ValueFormatStyle(.yardFeetInches)
   }
 }
