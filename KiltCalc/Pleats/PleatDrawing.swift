@@ -1,67 +1,141 @@
 import SwiftUI
 
-private struct MyPoint {
-  let x: Double
-  let y: Double
+extension Shape {
+  func flipped() -> ScaledShape<Self> {
+    scale(x: -1, y: 1, anchor: .center)
+  }
 }
 
-struct Pleaty: Shape {
-  static let gap = CGFloat(20)
-  static let previousPleat = CGFloat(75)
-  static let pleatHeight = CGFloat(50)
+private struct Pleaty: Shape {
+  var gap: CGFloat
+  var pleat: CGFloat
+
+  init(pleat: CGFloat, gap: CGFloat) {
+    self.pleat = pleat
+    self.gap = gap
+  }
 
   func path(in rect: CGRect) -> Path {
     var path = Path()
 
     path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
-    path.addLine(to: CGPoint(x: rect.midX - Self.gap, y: rect.maxY))
-    path.addLine(to: CGPoint(x: rect.minX + Self.previousPleat, y: rect.minY))
-    path.addLine(to: CGPoint(x: rect.maxX - Self.previousPleat, y: rect.minY))
-    path.addLine(to: CGPoint(x: rect.midX + Self.gap, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rect.midX - gap / 2, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rect.midX - pleat / 2, y: rect.minY))
+    path.addLine(to: CGPoint(x: rect.midX + pleat / 2, y: rect.minY))
+    path.addLine(to: CGPoint(x: rect.midX + gap / 2, y: rect.maxY))
     path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
     return path
   }
 }
 
-struct Guideline: Shape {
-  let length: CGFloat
+private struct DimensionLine: View {
+  var color: Color
 
-  let height = CGFloat(10)
+  init(_ color: Color = Color.cyan) {
+    self.color = color
+  }
 
+  var body: some View {
+    DoubleArrow(color: color)
+      .frame(height: 10)
+      .overlay(
+        VerticalLine()
+          .stroke(color, lineWidth: 2)
+          .frame(height: 24)
+      )
+      .overlay(
+        VerticalLine().flipped()
+          .stroke(color, lineWidth: 2)
+          .frame(height: 24)
+      )
+  }
+}
+
+private struct DoubleArrow: View {
+  var color: Color
+
+  var body: some View {
+    HorizontalLine()
+      .stroke(color, lineWidth: 2)
+      .overlay(
+        ArrowHead()
+          .stroke(color, lineWidth: 2)
+      )
+      .overlay(
+        ArrowHead()
+          .flipped()
+          .stroke(color, lineWidth: 2)
+      )
+  }
+}
+
+private struct ArrowHead: Shape {
   func path(in rect: CGRect) -> Path {
     var path = Path()
 
-    path.move(to: CGPoint(x: rect.midX - length / 2, y: rect.midY))
-    path.addLine(to: CGPoint(x: rect.midX + length / 2, y: rect.midY))
+    let arrowWidth = rect.height
+    if arrowWidth >= rect.width / 2 {
+      return path
+    }
+
+    path.move(to: CGPoint(x: rect.minX + arrowWidth, y: rect.minY))
+
+    path.addLine(to: CGPoint(x: rect.minX, y: rect.midY))
+
+    path.addLine(to: CGPoint(x: rect.minX + arrowWidth, y: rect.maxY))
 
     return path
   }
 }
 
+private struct HorizontalLine: Shape {
+  func path(in rect: CGRect) -> Path {
+    var path = Path()
+    path.move(to: CGPoint(x: rect.minX, y: rect.midY))
+    path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+    return path
+  }
+}
+
+private struct VerticalLine: Shape {
+  func path(in rect: CGRect) -> Path {
+    var path = Path()
+    path.move(to: CGPoint(x: rect.minX, y: rect.minY))
+    path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+    return path
+  }
+}
+
 struct PleatDrawing: View {
-  fileprivate let size = MyPoint(x: 100, y: 200)
+  var pleat: CGFloat
+  var gap: CGFloat
 
   var body: some View {
     VStack(alignment: .center) {
-      Text("2 in")
+      // Text("2 in")
       Text("pleat")
-      Guideline(length: 240.0)
-        .stroke(Color.blue, lineWidth: 3)
-        .frame(height: 10)
-      Pleaty()
+
+      DimensionLine()
+        .frame(width: pleat, height: 10)
+        .padding([.bottom], 8)
+
+      Pleaty(pleat: pleat, gap: gap)
         .stroke(Color.green, lineWidth: 4.0)
-        .frame(height: Pleaty.pleatHeight)
-      Guideline(length: Pleaty.gap)
-        .stroke(Color.blue, lineWidth: 3)
-        .frame(height: 20)
+        .frame(height: 50)
+
+      DimensionLine()
+        .frame(width: gap, height: 10)
+        .padding([.top], 8)
+
       Text("gap")
-      Text("0 in")
+      // Text("0 in")
     }
+    .padding()
   }
 }
 
 struct PleatDrawing_Previews: PreviewProvider {
-    static var previews: some View {
-      PleatDrawing()
-    }
+  static var previews: some View {
+    PleatDrawing(pleat: 150, gap: 22)
+  }
 }

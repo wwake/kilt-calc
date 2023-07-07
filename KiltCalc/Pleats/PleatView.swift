@@ -82,7 +82,7 @@ struct PleatView: View {
             .multilineTextAlignment(.center)
             .padding(.bottom, 4)
 
-          PleatDrawing()
+          PleatDrawing(pleat: 200, gap: 40)
 
           Spacer()
           Spacer()

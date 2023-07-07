@@ -191,10 +191,9 @@ extension Value.ValueFormatStyle: Codable {
 
   public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
+    type = .inches
     if let newType = try? container.decodeIfPresent(ValueFormatType.self, forKey: .type) {
       type = newType
-    } else {
-      type = .inches
     }
   }
 

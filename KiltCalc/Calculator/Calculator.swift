@@ -33,7 +33,7 @@ public class Calculator: ObservableObject {
       return trimmedInput
     }
     return result.formatted(imperialFormatType)
-    //valueFormatter.format(imperialFormat.formatter, result) // result.formatted(.imperial)
+    // valueFormatter.format(imperialFormat.formatter, result)
   }
 
   func clear() {
