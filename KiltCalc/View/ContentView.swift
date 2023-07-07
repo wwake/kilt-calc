@@ -5,20 +5,31 @@ struct ContentView: View {
 
   var body: some View {
     TabView {
-      CalculatorView(calculator: calculator)
-        .tabItem {
-          Label("Calculator", systemImage: "grid")
-        }
+      ZStack {
+        Image(decorative: "Background")
+          .resizable()
+          .ignoresSafeArea()
+        CalculatorView(calculator: calculator)
+      }
+      .tabItem {
+        Label("Calculator", systemImage: "grid")
+      }
 
-      ApronPleatView()
-        .tabItem {
-          Label("Apron/Pleat", systemImage: "circle.bottomhalf.filled")
-        }
+      ZStack {
+        Image(decorative: "Background")
+          .resizable()
+          .ignoresSafeArea()
+
+        ApronPleatView()
+      }
+      .tabItem {
+        Label("Apron/Pleat", systemImage: "circle.bottomhalf.filled")
+      }
 
       PleatView()
-        .tabItem {
-          Label("Pleats", systemImage: "rectangle.split.3x1")
-        }
+      .tabItem {
+        Label("Pleats", systemImage: "rectangle.split.3x1")
+      }
     }
   }
 }
