@@ -59,6 +59,7 @@ struct CalculatorView: View {
           .scaleEffect(1.25)
           .onChange(of: selectedUnitFormat) {
             calculator.imperialFormat = $0
+            calculator.imperialFormatType = $0 == ImperialFormatter.inches ? Value.ValueFormatStyle.inches : Value.ValueFormatStyle.yardFeetInches
           }
           .pickerStyle(.menu)
         }

@@ -171,7 +171,15 @@ extension Value {
     }
 
     public func format(_ value: Value) -> String {
-      valueFormatter.format(Value.imperialFormatter.formatter, value)
+      switch type {
+      case .inches:
+        Value.imperialFormatter = ImperialFormatter.inches
+
+      case .yardFeetInches:
+        Value.imperialFormatter = ImperialFormatter.yardFeetInches
+      }
+
+      return valueFormatter.format(Value.imperialFormatter.formatter, value)
     }
   }
 }

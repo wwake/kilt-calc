@@ -21,6 +21,8 @@ public class Calculator: ObservableObject {
   @Published private(set) var formattedResult = "0"
 
   @Published public var imperialFormat = ImperialFormatter.inches
+  @Published public var imperialFormatType = Value.ValueFormatStyle.inches
+
   @Published public var roundingDenominator = 8
 
   let valueFormatter = ValueFormatter()
@@ -30,7 +32,8 @@ public class Calculator: ObservableObject {
     if !input.isEmpty {
       return trimmedInput
     }
-    return valueFormatter.format(imperialFormat.formatter, result) // result.formatted(.imperial)
+    return result.formatted(imperialFormatType)
+    //valueFormatter.format(imperialFormat.formatter, result) // result.formatted(.imperial)
   }
 
   func clear() {

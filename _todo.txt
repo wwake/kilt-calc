@@ -1,5 +1,9 @@
-* Make Value's parser conform to ParseStrategy
-* Editing fractions
+
+* [bonus session] Debugged issue with yard-feet-inch formatter not working
+* Use new formatter approach throughout calculator & UI
+* Refactor!! :)
+
+* Editing fractions in TextField
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
 
 * Compute labeled picture from form changes
@@ -38,7 +42,11 @@ EGTest
 * Let check use varargs rather than []
 
 CALC-23-27: 2023-07-06 - Fractions on the Pleat Tab
-
+* Make Value's parser conform to ParseStrategy
+* Add ValueFormatStyle inside Value
+* Make ValueFormatStyle support ParseableFormatStyle
+* Try to switch UI to use the new approach [got stuck debugging at end of session]
+* Fix it so value formatter uses the right formatter [bonus session]
 
 CALC-23-26: 2023-07-05 - Pleat Errors
 * Gap vs overlap - negative gap is an overlap (change the label & show the absolute value)
