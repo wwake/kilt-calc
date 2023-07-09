@@ -31,6 +31,7 @@ struct ContentView: View {
         Label("Pleats", systemImage: "rectangle.split.3x1")
       }
     }
+    .preferredColorScheme(.light)
   }
 }
 

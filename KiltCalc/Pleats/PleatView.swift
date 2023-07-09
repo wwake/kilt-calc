@@ -3,12 +3,27 @@ import SwiftUI
 struct PleatView: View {
   @StateObject private var designer = PleatDesigner()
 
-  func field(_ label: String, _ boundDouble: Binding<Double?>, _ message: String) -> some View {
+  // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
+  enum PleatField: Int, CaseIterable {
+    case title, hipToHip, sett, settsPerPleat, numberOfPleats, pleatWidth
+  }
+
+  @State private var title = ""
+  @State private var hipToHip = ""
+  @State private var sett = ""
+  @State private var settsPerPleat = ""
+  @State private var numberOfPleats = ""
+  @State private var pleatWidth = ""
+
+  @FocusState private var focusedField: PleatField?
+
+  func field(_ label: String, focus: PleatField, _ boundDouble: Binding<Double?>, _ message: String) -> some View {
     VStack {
       LabeledContent {
         TextField(label, value: boundDouble, format: .number)
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
+          .focused($focusedField, equals: focus)
       } label: {
         Text(label)
           .bold()
@@ -38,6 +53,7 @@ struct PleatView: View {
           Form {
             LabeledContent {
               TextField("Title", text: $designer.notes, prompt: Text("Name, tartan, or other notes"))
+                .focused($focusedField, equals: .title)
                 .lineLimit(3)
             } label: {
               Text("Title")
@@ -45,17 +61,17 @@ struct PleatView: View {
             }
 
             Section("Required") {
-              field("Hip to Hip (rear)", $designer.hipToHipMeasure, designer.hipError)
-              field("Sett", $designer.sett, designer.settError)
-              field("Setts/Pleat", $designer.settsPerPleat, designer.settsPerPleatError)
+              field("Hip to Hip (rear)", focus: .hipToHip, $designer.hipToHipMeasure, designer.hipError)
+              field("Sett", focus: .sett, $designer.sett, designer.settError)
+              field("Setts/Pleat", focus: .settsPerPleat, $designer.settsPerPleat, designer.settsPerPleatError)
             }
 
             Section("Adjustable") {
-              field("#Pleats", $designer.pleatCount, designer.pleatCountError)
+              field("#Pleats", focus: .numberOfPleats, $designer.pleatCount, designer.pleatCountError)
                 .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
                 .disabled(designer.needsRequiredValues)
 
-              field("Pleat Width", $designer.pleatWidth, designer.pleatWidthError)
+              field("Pleat Width", focus: .pleatWidth, $designer.pleatWidth, designer.pleatWidthError)
                 .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
                 .disabled(designer.needsRequiredValues)
             }
@@ -75,7 +91,14 @@ struct PleatView: View {
             }
             .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
           }
-          .frame(height: 600)
+          .frame(height: 650)
+          .toolbar {
+            ToolbarItem(placement: .keyboard) {
+              Button("Done") {
+                focusedField = nil
+              }
+            }
+          }
 
           Text(designer.message)
             .font(.title)
