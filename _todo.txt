@@ -1,13 +1,12 @@
-* [bonus session] Debugged issue with yard-feet-inch formatter not working
-* [off camera] Hip can flex, #pleats stays a whole number (user feedback)
-
+* Input vs output format
+* How to show error
+* Convert pleat designer to work in Value, not int/double
+* Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
 * Use new formatter approach throughout calculator & UI
+
 * Refactor!! :)
 Editing fractions in TextField
 
-Unfocus keyboard when tapping away, or Done button on it
-
-* Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
 
 * Compute labeled picture from form changes (animate?)
 
@@ -42,6 +41,10 @@ EGTest
 * Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-28: 2023-07-10 - Textfield with Fractions
+* [bonus session] Debugged issue with yard-feet-inch formatter not working
+* [off camera] Hip can flex, #pleats stays a whole number (user feedback)
 
 CALC-23-27: 2023-07-06 - Fractions on the Pleat Tab
 * Make Value's parser conform to ParseStrategy
