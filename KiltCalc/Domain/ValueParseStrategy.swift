@@ -11,7 +11,10 @@ public struct ValueParseStrategy: ParseStrategy {
     Self.parse(value)
   }
 
-  static func parse(_ input: String) -> Value {
+  static func parse(_ rawInput: String) -> Value {
+    var input = rawInput
+    input.replace("•", with: ".")
+
     do {
       let numbers = try splitNumbers(input)
       let units = try splitUnits(input)

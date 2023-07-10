@@ -97,6 +97,8 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
+  @Published public var hipToHipValue: Value? = Value.inches(21.5)
+
   @Published public var hipToHipMeasure: Double? {
     didSet {
       establishNonRequiredVariables()

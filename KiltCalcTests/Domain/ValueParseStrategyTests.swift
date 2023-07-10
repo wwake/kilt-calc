@@ -57,4 +57,20 @@ final class ValueParseStrategyTests: XCTestCase {
       EGAssertEqual(try ValueParseStrategy().parse($0.input), $0)
     }
   }
+
+  func test_InchesWithMidDotInsteadOfDecimalPoint() throws {
+    try check([
+      EG("314•1/in", expect: .error("missing denominator")),
+
+      EG("314•1//in", expect: .error("simple fractions only (at most one '/'")),
+
+      EG("1•25in", expect: .inches(1.25), "simple decimal"),
+      EG("1••25in", expect: .error("too many '.'")),
+      EG("1•2•3in", expect: .error("too many '.'")),
+
+      EG("314•1/2in", expect: .inches(314.5), "explicit fraction"),
+    ]) {
+      EGAssertEqual(try ValueParseStrategy().parse($0.input), $0)
+    }
+  }
 }

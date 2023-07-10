@@ -72,6 +72,8 @@ struct PleatView: View {
     NavigationView {
       ScrollView(.vertical) {
         VStack {
+          TextField("Spike", value: $designer.hipToHipValue, format: .inches, prompt: Text("spike prompt"))
+
           Form {
             LabeledContent {
               TextField("Title", text: $designer.notes, prompt: Text("Name, tartan, or other notes"))
