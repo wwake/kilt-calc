@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Value {
+public enum Value: Equatable {
   case error(String)
   case number(Double)
   case inches(Double)
@@ -28,7 +28,7 @@ extension Value {
   }
 }
 
-extension Value: Equatable {
+extension Value {
   public func negate() -> Value {
     switch self {
     case .error:
@@ -137,6 +137,16 @@ extension Value: Equatable {
 
     case let (.inches(a), .inches(b)):
       return .number(a / b)
+    }
+  }
+
+  var asDouble: Double {
+    switch self {
+    case .error:
+      return 0.0
+
+    case .number(let value), .inches(let value):
+      return value
     }
   }
 }

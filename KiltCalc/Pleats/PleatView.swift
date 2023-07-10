@@ -61,6 +61,28 @@ struct PleatView: View {
     }
   }
 
+  func field(_ label: String, focus: PleatField, _ boundValue: Binding<Value?>, _ message: String) -> some View {
+    VStack {
+      LabeledContent {
+        TextField(label, value: boundValue, format: .inches)
+          .multilineTextAlignment(.trailing)
+          .keyboardType(.numberPad)
+          .focused($focusedField, equals: focus)
+      } label: {
+        Text(label)
+          .bold()
+      }
+      .padding(message.isEmpty ? 0 : 8)
+      .border(Color.red, width: message.isEmpty ? 0 : 1)
+
+      if !message.isEmpty {
+        Text(message)
+          .font(.footnote)
+          .foregroundColor(Color.red)
+      }
+    }
+  }
+
   func formatOptional(_ value: Double?) -> String {
     if value == nil {
       return "?"
@@ -72,7 +94,7 @@ struct PleatView: View {
     NavigationView {
       ScrollView(.vertical) {
         VStack {
-          TextField("Spike", value: $designer.hipToHipValue, format: .inches, prompt: Text("spike prompt"))
+//          TextField("Spike", value: $designer.hipToHipValue, format: .inches, prompt: Text("spike prompt"))
 
           Form {
             LabeledContent {

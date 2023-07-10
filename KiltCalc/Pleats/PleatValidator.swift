@@ -22,6 +22,10 @@ public enum PleatValidator {
     return "Box Pleat with Too-Large Gap"
   }
 
+  static func requiredPositive(_ value: Value?, _ name: String) -> String {
+    required(value, name).and(positive(value, name))
+  }
+
   static func requiredPositive(_ value: Double?, _ name: String) -> String {
     required(value, name).and(positive(value, name))
   }
@@ -30,12 +34,10 @@ public enum PleatValidator {
     positive(value1, name).and(smaller(value1, name, value2))
   }
 
-  static func required(_ value: Double?, _ name: String) -> String {
-    if value == nil {
-      return "\(name) is required"
-    }
-    return ""
+  static func required<T>(_ value: T?, _ name: String) -> String {
+    value == nil ? "\(name) is required" : ""
   }
+
 
   static func positive(_ value: Int?, _ name: String) -> String {
     if value == nil || value! > 0 {
@@ -46,6 +48,13 @@ public enum PleatValidator {
 
   static func positive(_ value: Double?, _ name: String) -> String {
     if value == nil || value! > 0.0 {
+      return ""
+    }
+    return "\(name) must be positive"
+  }
+
+  static func positive(_ value: Value?, _ name: String) -> String {
+    if value == nil || value!.asDouble > 0.0 {
       return ""
     }
     return "\(name) must be positive"
