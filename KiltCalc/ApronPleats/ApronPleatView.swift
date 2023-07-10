@@ -5,7 +5,7 @@ struct ApronPleatView: View {
     VStack {
       Text("TBD")
         .font(.largeTitle)
-      
+
       Text(UIApplication.version)
     }
   }

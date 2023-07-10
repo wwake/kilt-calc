@@ -38,7 +38,6 @@ public enum PleatValidator {
     value == nil ? "\(name) is required" : ""
   }
 
-
   static func positive(_ value: Int?, _ name: String) -> String {
     if value == nil || value! > 0 {
       return ""
