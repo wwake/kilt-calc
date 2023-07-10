@@ -1,5 +1,3 @@
-import Foundation
-
 extension String {
   fileprivate func and(_ other: String) -> String {
     if !self.isEmpty { return self }
