@@ -17,12 +17,34 @@ struct PleatView: View {
 
   @FocusState private var focusedField: PleatField?
 
-  func field(_ label: String, focus: PleatField, _ boundDouble: Binding<Double?>, _ message: String) -> some View {
+  func field(_ label: String, focus: PleatField, _ boundValue: Binding<Double?>, _ message: String) -> some View {
     VStack {
       LabeledContent {
-        TextField(label, value: boundDouble, format: .number)
+        TextField(label, value: boundValue, format: .number)
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
+          .focused($focusedField, equals: focus)
+      } label: {
+        Text(label)
+          .bold()
+      }
+      .padding(message.isEmpty ? 0 : 8)
+      .border(Color.red, width: message.isEmpty ? 0 : 1)
+
+      if !message.isEmpty {
+        Text(message)
+          .font(.footnote)
+          .foregroundColor(Color.red)
+      }
+    }
+  }
+
+  func field(_ label: String, focus: PleatField, _ boundValue: Binding<Int?>, _ message: String) -> some View {
+    VStack {
+      LabeledContent {
+        TextField(label, value: boundValue, format: .number)
+          .multilineTextAlignment(.trailing)
+          .keyboardType(.numberPad)
           .focused($focusedField, equals: focus)
       } label: {
         Text(label)

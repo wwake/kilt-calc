@@ -25,10 +25,6 @@ public enum PleatValidator {
     positive(value1, name).and(smaller(value1, name, value2))
   }
 
-  static func positiveInteger(_ value: Double?, _ name: String) -> String {
-    positive(value, name).and(integral(value, name))
-  }
-
   static func required(_ value: Double?, _ name: String) -> String {
     if value == nil {
       return "\(name) is required"
@@ -36,8 +32,15 @@ public enum PleatValidator {
     return ""
   }
 
-  static func positive(_ value: Double?, _ name: String) -> String {
+  static func positive(_ value: Int?, _ name: String) -> String {
     if value == nil || value! > 0 {
+      return ""
+    }
+    return "\(name) must be positive"
+  }
+
+  static func positive(_ value: Double?, _ name: String) -> String {
+    if value == nil || value! > 0.0 {
       return ""
     }
     return "\(name) must be positive"
@@ -48,13 +51,6 @@ public enum PleatValidator {
       return ""
     }
     return "\(name) too large"
-  }
-
-  static func integral(_ value: Double?, _ name: String) -> String {
-    if value == nil || value!.isInteger {
-      return ""
-    }
-    return "\(name) must not have a fraction"
   }
 }
 
@@ -92,10 +88,13 @@ public class PleatDesigner: ObservableObject {
       return
     }
 
-    updateInProgress = true
-    pleatWidth = pleatFabric! / 3
-    pleatCount = hipToHipMeasure! / pleatWidth!
-    updateInProgress = false
+    if !updateInProgress {
+      updateInProgress = true
+      let tentativePleat = pleatFabric! / 3
+      pleatCount = Int(round(hipToHipMeasure! / tentativePleat))
+      pleatWidth = hipToHipMeasure! / Double(pleatCount!)
+      updateInProgress = false
+    }
   }
 
   @Published public var hipToHipMeasure: Double? {
@@ -133,7 +132,7 @@ public class PleatDesigner: ObservableObject {
     return sett! * settsPerPleat!
   }
 
-  @Published public var pleatCount: Double? {
+  @Published public var pleatCount: Int? {
     didSet {
       if needsRequiredValues || pleatCount == nil {
         return
@@ -141,25 +140,25 @@ public class PleatDesigner: ObservableObject {
 
       if !updateInProgress {
         updateInProgress = true
-        pleatWidth = hipToHipMeasure! / pleatCount!
+        hipToHipMeasure = Double(pleatCount!) * pleatWidth!
         updateInProgress = false
       }
     }
   }
 
   public var pleatCountError: String {
-    PleatValidator.positiveInteger(pleatCount, "Pleat count")
+    PleatValidator.positive(pleatCount, "Pleat count")
   }
 
   @Published public var pleatWidth: Double? {
     didSet {
-      if needsRequiredValues || pleatWidth == nil {
+      if needsRequiredValues || pleatWidth == nil || pleatCount == nil {
         return
       }
 
       if !updateInProgress {
         updateInProgress = true
-        pleatCount = hipToHipMeasure! / pleatWidth!
+        hipToHipMeasure = Double(pleatCount!) * pleatWidth!
         updateInProgress = false
       }
     }
@@ -188,6 +187,6 @@ public class PleatDesigner: ObservableObject {
 
   public var totalFabric: Double? {
     if needsRequiredValues || pleatCount == nil { return nil }
-    return pleatFabric! * pleatCount!
+    return pleatFabric! * Double(pleatCount!)
   }
 }

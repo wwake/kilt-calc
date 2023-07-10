@@ -1,8 +1,8 @@
+* [off camera] Hip can flex, #pleats stays a whole number (user feedback)
 
 * [bonus session] Debugged issue with yard-feet-inch formatter not working
 * Use new formatter approach throughout calculator & UI
 * Refactor!! :)
-* Hip can flex, #pleats stays a whole number (user feedback)
 Editing fractions in TextField
 
 Unfocus keyboard when tapping away, or Done button on it
