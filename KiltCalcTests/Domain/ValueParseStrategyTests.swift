@@ -53,6 +53,8 @@ final class ValueParseStrategyTests: XCTestCase {
       EG("1.2.3in", expect: .error("too many '.'")),
 
       EG("314.1/2in", expect: .inches(314.5), "explicit fraction"),
+      EG("314.1/2⊕in", expect: .inches(314.5), "explicit fraction"),
+      EG("314.1/2⊖in", expect: .inches(314.5), "explicit fraction"),
     ]) {
       EGAssertEqual(try ValueParseStrategy().parse($0.input), $0)
     }
@@ -69,6 +71,8 @@ final class ValueParseStrategyTests: XCTestCase {
       EG("1•2•3in", expect: .error("too many '.'")),
 
       EG("314•1/2in", expect: .inches(314.5), "explicit fraction"),
+      EG("314•11/8in", expect: .inches(315.375), "explicit fraction"),
+      EG("314•8/16in", expect: .inches(314.5), "explicit fraction"),
     ]) {
       EGAssertEqual(try ValueParseStrategy().parse($0.input), $0)
     }

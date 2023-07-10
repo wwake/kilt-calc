@@ -14,6 +14,8 @@ public struct ValueParseStrategy: ParseStrategy {
   static func parse(_ rawInput: String) -> Value {
     var input = rawInput
     input.replace("•", with: ".")
+    input.replace("⊕", with: "")
+    input.replace("⊖", with: "")
 
     do {
       let numbers = try splitNumbers(input)
