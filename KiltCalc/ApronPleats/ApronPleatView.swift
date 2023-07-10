@@ -2,8 +2,12 @@ import SwiftUI
 
 struct ApronPleatView: View {
   var body: some View {
-    Text("TBD")
-      .font(.largeTitle)
+    VStack {
+      Text("TBD")
+        .font(.largeTitle)
+      
+      Text(UIApplication.version)
+    }
   }
 }
 

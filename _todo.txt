@@ -1,6 +1,6 @@
+* [bonus session] Debugged issue with yard-feet-inch formatter not working
 * [off camera] Hip can flex, #pleats stays a whole number (user feedback)
 
-* [bonus session] Debugged issue with yard-feet-inch formatter not working
 * Use new formatter approach throughout calculator & UI
 * Refactor!! :)
 Editing fractions in TextField
@@ -9,7 +9,7 @@ Unfocus keyboard when tapping away, or Done button on it
 
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
 
-* Compute labeled picture from form changes
+* Compute labeled picture from form changes (animate?)
 
 * A/P: Apron/Pleat
 
