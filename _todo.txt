@@ -1,7 +1,6 @@
-* Input vs output format
-* How to show error
 * Convert pleat designer to work in Value, not int/double
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
+* How to show error
 * Use new formatter approach throughout calculator & UI
 
 * Refactor!! :)
@@ -45,6 +44,8 @@ EGTest
 CALC-23-28: 2023-07-10 - Textfield with Fractions
 * [bonus session] Debugged issue with yard-feet-inch formatter not working
 * [off camera] Hip can flex, #pleats stays a whole number (user feedback)
+* Failed attempt to make the field() generic over int or double
+* Input vs output format: must be able to re-parse any output - fixed problems with circled + and -, and bullet point
 
 CALC-23-27: 2023-07-06 - Fractions on the Pleat Tab
 * Make Value's parser conform to ParseStrategy
