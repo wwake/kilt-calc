@@ -149,6 +149,11 @@ extension Value {
       return value
     }
   }
+
+  var isError: Bool {
+    if case .error = self { return true }
+    return false
+  }
 }
 
 extension Value {

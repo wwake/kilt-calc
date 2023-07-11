@@ -11,6 +11,7 @@ public class PleatDesigner: ObservableObject {
 
   public var needsRequiredValues: Bool {
     hipToHipMeasure == nil || sett == nil || settsPerPleat == nil
+    || hipToHipMeasure!.isError || sett!.isError
   }
 
   fileprivate func establishNonRequiredVariables() {
@@ -23,7 +24,7 @@ public class PleatDesigner: ObservableObject {
     if !updateInProgress {
       updateInProgress = true
       let tentativePleat = pleatFabric! / 3
-      pleatCount = Int(round(hipToHipMeasure!.asDouble / tentativePleat))
+        pleatCount = Int(round(hipToHipMeasure!.asDouble / tentativePleat))
       pleatWidth = hipToHipMeasure!.asDouble / Double(pleatCount!)
       updateInProgress = false
     }
