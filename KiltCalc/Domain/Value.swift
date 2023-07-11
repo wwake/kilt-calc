@@ -140,7 +140,7 @@ extension Value {
     }
   }
 
-  var asDouble: Double {
+  public var asDouble: Double {
     switch self {
     case .error:
       return 0.0
@@ -150,9 +150,23 @@ extension Value {
     }
   }
 
-  var isError: Bool {
+  public var isError: Bool {
     if case .error = self { return true }
     return false
+  }
+
+  public func round() -> Value {
+    // .number(round(countAsValue.asDouble))
+    switch self {
+    case .error:
+      return self
+
+    case let .number(value):
+      return .number(Darwin.round(value))
+
+      case let .inches(value):
+      return .inches(Darwin.round(value))
+    }
   }
 }
 

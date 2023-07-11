@@ -4,7 +4,8 @@
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :) - or "/" above numeric pad
 * How to show error
 * Use new formatter approach throughout calculator & UI
-* May need 8th-fraction formatter or accept unitless values as int
+* May need 8th-fraction formatter or accept unitless values as inches
+* Should Value really have .error types?
 
 * Refactor!! :)
 Editing fractions in TextField
