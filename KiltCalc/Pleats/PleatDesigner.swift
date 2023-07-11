@@ -23,8 +23,10 @@ public class PleatDesigner: ObservableObject {
 
     if !updateInProgress {
       updateInProgress = true
-      let tentativePleat = pleatFabric! / 3
-        pleatCount = Int(round(hipToHipMeasure!.asDouble / tentativePleat))
+      let tentativePleat = pleatFabric! / .number(3)
+
+      let countAsValue = hipToHipMeasure! / tentativePleat
+      pleatCount = Int(round(countAsValue.asDouble))
       pleatWidth = hipToHipMeasure!.asDouble / Double(pleatCount!)
       updateInProgress = false
     }
@@ -60,9 +62,9 @@ public class PleatDesigner: ObservableObject {
     PleatValidator.requiredPositive(settsPerPleat, "Setts/pleat")
   }
 
-  public var pleatFabric: Double? {
+  public var pleatFabric: Value? {
     if needsRequiredValues { return nil }
-    return sett!.asDouble * settsPerPleat!.asDouble
+    return sett! * settsPerPleat!
   }
 
   @Published public var pleatCount: Int? {
@@ -103,7 +105,7 @@ public class PleatDesigner: ObservableObject {
 
   public var gap: Double? {
     if needsRequiredValues || pleatWidth == nil { return nil }
-    return (3 * pleatWidth! - pleatFabric!) / 2.0
+    return (3 * pleatWidth! - pleatFabric!.asDouble) / 2.0
   }
 
   public var absoluteGap: Double? {
@@ -120,6 +122,6 @@ public class PleatDesigner: ObservableObject {
 
   public var totalFabric: Double? {
     if needsRequiredValues || pleatCount == nil { return nil }
-    return pleatFabric! * Double(pleatCount!)
+    return pleatFabric!.asDouble * Double(pleatCount!)
   }
 }
