@@ -1,5 +1,5 @@
-* Convert pleat designer to work in Value, not int/double
 * Make round() a method on value, abs, <, isPositive
+* Make gap and total fabric show up as fractions
 * Check that pleatCount is integral
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :) - or "/" above numeric pad
 * How to show error
@@ -44,6 +44,9 @@ EGTest
 * Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-29: 2023-07-11 - Calculate Pleats Using Values
+* Convert pleat designer to work in Value, not int/double
 
 CALC-23-28: 2023-07-10 - Textfield with Fractions
 * [bonus session] Debugged issue with yard-feet-inch formatter not working
