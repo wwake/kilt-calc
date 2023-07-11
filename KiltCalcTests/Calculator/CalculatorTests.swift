@@ -189,7 +189,7 @@ final class CalculatorTests: XCTestCase {
 
       EG("((3+2)=", expect: "error - unbalanced parentheses"),
       EG("1+(3+4))=", expect: "error - unbalanced parentheses"),
-      EG(")1+2=", expect: "error - unbalanced parentheses or missing operators"),
+      EG(")1+2=", expect: "error - unbalanced parentheses"),
       EG(")1+2(=", expect: "error - unbalanced parentheses"),
     ]) {
       if $0.expect.starts(with: /[-0-9]/) {

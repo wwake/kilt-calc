@@ -61,7 +61,7 @@ public class Expression {
 
       case .unary(let theOperator):
         if operands.isEmpty {
-          operands.push(.error("no value found"))
+          throw "no value found"
         }
         evaluateUnary(theOperator)
 
@@ -80,8 +80,7 @@ public class Expression {
         evaluateAtLeast(1)
 
         if operators.isEmpty {
-          operands.clear()
-          operands.push(.error("error - unbalanced parentheses"))
+          throw "error - unbalanced parentheses"
         } else {
           _ = operators.pop()
         }
