@@ -27,7 +27,7 @@ public class PleatDesigner: ObservableObject {
 
       let countAsValue = hipToHipMeasure! / tentativePleat
       pleatCount = .number(round(countAsValue.asDouble))
-      pleatWidth = hipToHipMeasure!.asDouble / pleatCount!.asDouble
+      pleatWidth = hipToHipMeasure! / pleatCount!
       updateInProgress = false
     }
   }
@@ -69,13 +69,13 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var pleatCount: Value? {
     didSet {
-      if needsRequiredValues || pleatCount == nil {
+      if needsRequiredValues || pleatCount == nil || pleatCount!.isError {
         return
       }
 
       if !updateInProgress {
         updateInProgress = true
-        hipToHipMeasure = .inches(pleatCount!.asDouble * pleatWidth!)
+        hipToHipMeasure = pleatCount! * pleatWidth!
         updateInProgress = false
       }
     }
@@ -85,15 +85,15 @@ public class PleatDesigner: ObservableObject {
     PleatValidator.positive(pleatCount, "Pleat count")
   }
 
-  @Published public var pleatWidth: Double? {
+  @Published public var pleatWidth: Value? {
     didSet {
-      if needsRequiredValues || pleatWidth == nil || pleatCount == nil {
+      if needsRequiredValues || pleatWidth == nil || pleatCount == nil || pleatWidth!.isError || pleatCount!.isError {
         return
       }
 
       if !updateInProgress {
         updateInProgress = true
-        hipToHipMeasure = .inches(pleatCount!.asDouble * pleatWidth!)
+        hipToHipMeasure = pleatCount! * pleatWidth!
         updateInProgress = false
       }
     }
@@ -104,8 +104,8 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var gap: Double? {
-    if needsRequiredValues || pleatWidth == nil { return nil }
-    return (3 * pleatWidth! - pleatFabric!.asDouble) / 2.0
+    if needsRequiredValues || pleatWidth == nil || pleatWidth!.isError { return nil }
+    return (3 * pleatWidth!.asDouble - pleatFabric!.asDouble) / 2.0
   }
 
   public var absoluteGap: Value? {
