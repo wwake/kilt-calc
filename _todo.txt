@@ -1,4 +1,5 @@
-* Should Value really have .error types?
+* Make Expression.evaluate() just throw rather than push errors on stack
+* Should Value really have .error types? Ok for computation but not I/O
 * Use new formatter approach throughout calculator & UI
 * May need 8th-fraction formatter or accept unitless values as inches
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :) - or "/" above numeric pad
@@ -47,6 +48,7 @@ CALC-23-29: 2023-07-11 - Calculate Pleats Using Values
 * Make round() a method on value, abs, isPositive
 * Make gap and total fabric show up as fractions
 * Force pleatCount to be integral
+* Make Expression evaluate() throw errors rather than push error values on the stack [part of eliminating Value.error()]
 
 CALC-23-28: 2023-07-10 - Textfield with Fractions
 * [bonus session] Debugged issue with yard-feet-inch formatter not working
