@@ -108,12 +108,12 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var absoluteGap: Value? {
-    if gap == nil { return nil }
+    if gap == nil || gap!.isError { return nil }
     return .inches(abs(gap!.asDouble))
   }
 
   public var gapLabel: String {
-    if gap == nil || gap!.asDouble >= 0 {
+    if gap == nil || gap!.isError || gap!.asDouble >= 0 {
       return "Gap"
     }
     return "Overlap"

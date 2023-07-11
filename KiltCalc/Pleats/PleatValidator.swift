@@ -28,30 +28,12 @@ public enum PleatValidator {
     required(value, name).and(positive(value, name))
   }
 
-  static func requiredPositive(_ value: Double?, _ name: String) -> String {
-    required(value, name).and(positive(value, name))
-  }
-
   static func positiveSmaller(_ value1: Value?, _ name: String, _ value2: Value?) -> String {
     positive(value1, name).and(smaller(value1, name, value2))
   }
 
   static func required<T>(_ value: T?, _ name: String) -> String {
     value == nil ? "\(name) is required" : ""
-  }
-
-  static func positive(_ value: Int?, _ name: String) -> String {
-    if value == nil || value! > 0 {
-      return ""
-    }
-    return "\(name) must be positive"
-  }
-
-  static func positive(_ value: Double?, _ name: String) -> String {
-    if value == nil || value! > 0.0 {
-      return ""
-    }
-    return "\(name) must be positive"
   }
 
   static func positive(_ value: Value?, _ name: String) -> String {

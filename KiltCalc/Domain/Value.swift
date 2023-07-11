@@ -156,7 +156,6 @@ extension Value {
   }
 
   public func round() -> Value {
-    // .number(round(countAsValue.asDouble))
     switch self {
     case .error:
       return self
@@ -164,7 +163,7 @@ extension Value {
     case let .number(value):
       return .number(Darwin.round(value))
 
-      case let .inches(value):
+    case let .inches(value):
       return .inches(Darwin.round(value))
     }
   }
