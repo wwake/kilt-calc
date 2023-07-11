@@ -11,7 +11,7 @@ public class PleatDesigner: ObservableObject {
 
   public var needsRequiredValues: Bool {
     hipToHipMeasure == nil || sett == nil || settsPerPleat == nil
-    || hipToHipMeasure!.isError || sett!.isError
+    || hipToHipMeasure!.isError || sett!.isError || settsPerPleat!.isError
   }
 
   fileprivate func establishNonRequiredVariables() {
@@ -50,7 +50,7 @@ public class PleatDesigner: ObservableObject {
     PleatValidator.requiredPositive(sett, "Sett")
   }
 
-  @Published public var settsPerPleat: Double? = 1.0 {
+  @Published public var settsPerPleat: Value? = .number(1.0) {
     didSet {
       establishNonRequiredVariables()
     }
@@ -62,7 +62,7 @@ public class PleatDesigner: ObservableObject {
 
   public var pleatFabric: Double? {
     if needsRequiredValues { return nil }
-    return sett!.asDouble * settsPerPleat!
+    return sett!.asDouble * settsPerPleat!.asDouble
   }
 
   @Published public var pleatCount: Int? {

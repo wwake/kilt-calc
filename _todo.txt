@@ -7,6 +7,7 @@
 * Refactor!! :)
 Editing fractions in TextField
 
+* Remember the last tab and go back to it on startup
 
 * Compute labeled picture from form changes (animate?)
 
