@@ -1,6 +1,5 @@
-
 * Convert pleat designer to work in Value, not int/double
-* Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :)
+* Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :) - or "/" above numeric pad
 * How to show error
 * Use new formatter approach throughout calculator & UI
 * May need 8th-fraction formatter or accept unitless values as int

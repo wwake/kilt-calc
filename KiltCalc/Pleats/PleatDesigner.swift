@@ -39,7 +39,7 @@ public class PleatDesigner: ObservableObject {
     PleatValidator.requiredPositive(hipToHipMeasure, "Hip measure")
   }
 
-  @Published public var sett: Double? {
+  @Published public var sett: Value? {
     didSet {
       establishNonRequiredVariables()
     }
@@ -61,7 +61,7 @@ public class PleatDesigner: ObservableObject {
 
   public var pleatFabric: Double? {
     if needsRequiredValues { return nil }
-    return sett! * settsPerPleat!
+    return sett!.asDouble * settsPerPleat!
   }
 
   @Published public var pleatCount: Int? {
