@@ -204,6 +204,15 @@ final class PleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.gap, .number(0))
   }
 
+  func test_setPleatCount_ForcedToInteger() {
+    let designer = PleatDesigner()
+    designer.hipToHipMeasure = .inches(21)
+    designer.sett = .inches(5)
+    designer.pleatCount = .number(10.5)
+
+    XCTAssertEqual(designer.pleatCount, .number(11))
+  }
+
   func test_setPleatWidthToNil_SetsGapToNil() {
     let designer = PleatDesigner()
     designer.hipToHipMeasure = .inches(20)

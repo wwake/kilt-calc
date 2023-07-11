@@ -74,6 +74,7 @@ public class PleatDesigner: ObservableObject {
 
       if !updateInProgress {
         updateInProgress = true
+        pleatCount = pleatCount!.round()
         hipToHipMeasure = pleatCount! * pleatWidth!
         updateInProgress = false
       }
@@ -109,11 +110,11 @@ public class PleatDesigner: ObservableObject {
 
   public var absoluteGap: Value? {
     if gap == nil || gap!.isError { return nil }
-    return .inches(abs(gap!.asDouble))
+    return gap!.abs()
   }
 
   public var gapLabel: String {
-    if gap == nil || gap!.isError || gap!.asDouble >= 0 {
+    if gap == nil || gap!.isError || gap!.isNonNegative() {
       return "Gap"
     }
     return "Overlap"

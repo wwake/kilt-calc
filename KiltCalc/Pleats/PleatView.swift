@@ -87,7 +87,7 @@ struct PleatView: View {
     if value == nil {
       return "?"
     }
-    return "\(value!.asDouble.formatted())"
+    return "\(value!.formatted(.inches))"
   }
 
   var body: some View {
@@ -145,7 +145,7 @@ struct PleatView: View {
           }
 
           Text(designer.message)
-            .font(.title)
+            .font(.headline)
             .multilineTextAlignment(.center)
             .padding(.bottom, 4)
 

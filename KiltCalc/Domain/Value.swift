@@ -167,6 +167,29 @@ extension Value {
       return .inches(Darwin.round(value))
     }
   }
+
+  public func abs() -> Value {
+    switch self {
+    case .error:
+      return self
+
+    case let .number(value):
+      return .number(Swift.abs(value))
+
+    case let .inches(value):
+      return .inches(Swift.abs(value))
+    }
+  }
+
+  public func isNonNegative() -> Bool {
+    switch self {
+    case .error:
+      return false
+
+    case let .number(value), let .inches(value):
+      return value >= 0
+    }
+  }
 }
 
 extension Value {
