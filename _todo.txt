@@ -1,5 +1,5 @@
 * Convert pleat designer to work in Value, not int/double
-* Make round() a method on value, abs, <
+* Make round() a method on value, abs, <, isPositive
 * Check that pleatCount is integral
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :) - or "/" above numeric pad
 * How to show error

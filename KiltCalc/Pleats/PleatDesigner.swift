@@ -103,25 +103,25 @@ public class PleatDesigner: ObservableObject {
     PleatValidator.positiveSmaller(pleatWidth, "Pleat width", pleatFabric)
   }
 
-  public var gap: Double? {
+  public var gap: Value? {
     if needsRequiredValues || pleatWidth == nil || pleatWidth!.isError { return nil }
-    return (3 * pleatWidth!.asDouble - pleatFabric!.asDouble) / 2.0
+    return (.number(3) * pleatWidth! - pleatFabric!) / .number(2.0)
   }
 
   public var absoluteGap: Value? {
     if gap == nil { return nil }
-    return .inches(abs(gap!))
+    return .inches(abs(gap!.asDouble))
   }
 
   public var gapLabel: String {
-    if gap == nil || gap! >= 0 {
+    if gap == nil || gap!.asDouble >= 0 {
       return "Gap"
     }
     return "Overlap"
   }
 
   public var totalFabric: Value? {
-    if needsRequiredValues || pleatCount == nil { return nil }
+    if needsRequiredValues || pleatCount == nil || pleatCount!.isError { return nil }
     return pleatFabric! * pleatCount!
   }
 }
