@@ -72,10 +72,20 @@ public class Calculator: ObservableObject {
   }
 
   private func equals() {
-    result = Expression(input).evaluate()
+    do {
+      result = try Expression(input).evaluate()
 
-    if case let .error(message) = result {
-      errorMessage = message
+      if case let .error(message) = result {
+        errorMessage = message
+        return
+      }
+    } catch let error where error is String {
+      result = .error(error as! String)
+      errorMessage = error as! String
+      return
+    } catch {
+      result = .error("Internal error")
+      errorMessage = "Internal error"
       return
     }
 
@@ -98,9 +108,20 @@ public class Calculator: ObservableObject {
   }
 
   fileprivate func memoryCombine(_ op: (Value, Value) -> Value, _ opName: String) {
-    result = Expression(input).evaluate()
-    if case let .error(message) = result {
-      errorMessage = message
+    do {
+      result = try Expression(input).evaluate()
+
+      if case let .error(message) = result {
+        errorMessage = message
+        return
+      }
+    } catch let error where error is String {
+      result = .error(error as! String)
+      errorMessage = error as! String
+      return
+    } catch {
+      result = .error("Internal error")
+      errorMessage = "Internal error"
       return
     }
 

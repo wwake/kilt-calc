@@ -4,14 +4,16 @@ enum ValueParseError: Error {
   case error(String)
 }
 
+extension String: Error { }
+
 public struct ValueParseStrategy: ParseStrategy {
   static let formatter = NumberFormatter()
 
   public func parse(_ value: String) throws -> Value {
-    Self.parse(value)
+    try Self.parse(value)
   }
 
-  static func parse(_ rawInput: String) -> Value {
+  static func parse(_ rawInput: String) throws -> Value {
     var input = rawInput
     input.replace("•", with: ".")
     input.replace("⊕", with: "")
@@ -26,7 +28,7 @@ public struct ValueParseStrategy: ParseStrategy {
       }
 
       if numbers.count != units.count {
-        return .error("numbers and units don't match")
+        throw "numbers and units don't match"
       }
 
       var inches = 0.0
@@ -37,6 +39,8 @@ public struct ValueParseStrategy: ParseStrategy {
       return Value.inches(inches)
     } catch ValueParseError.error(let errorString) {
       return .error(errorString)
+    } catch let error where error is String {
+      return .error(error as! String)
     } catch {
       return .error("internal error")
     }

@@ -31,13 +31,13 @@ public class Expression {
     return input[index]
   }
 
-  public func evaluate() -> Value {
+  public func evaluate() throws -> Value {
     if input.isEmpty {
       return Value.number(0)
     }
 
     if input.last.isBinaryOperator() {
-      return .error("expression can't end with an operator")
+      throw "expression can't end with an operator"
     }
 
     input.add(.ending)
