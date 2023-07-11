@@ -83,11 +83,11 @@ struct PleatView: View {
     }
   }
 
-  func formatOptional(_ value: Double?) -> String {
+  func formatOptional(_ value: Value?) -> String {
     if value == nil {
       return "?"
     }
-    return "\(value!)"
+    return "\(value!.asDouble.formatted())"
   }
 
   var body: some View {

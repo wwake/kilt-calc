@@ -108,9 +108,9 @@ public class PleatDesigner: ObservableObject {
     return (3 * pleatWidth! - pleatFabric!.asDouble) / 2.0
   }
 
-  public var absoluteGap: Double? {
+  public var absoluteGap: Value? {
     if gap == nil { return nil }
-    return abs(gap!)
+    return .inches(abs(gap!))
   }
 
   public var gapLabel: String {
@@ -120,8 +120,8 @@ public class PleatDesigner: ObservableObject {
     return "Overlap"
   }
 
-  public var totalFabric: Double? {
+  public var totalFabric: Value? {
     if needsRequiredValues || pleatCount == nil { return nil }
-    return pleatFabric!.asDouble * pleatCount!.asDouble
+    return pleatFabric! * pleatCount!
   }
 }

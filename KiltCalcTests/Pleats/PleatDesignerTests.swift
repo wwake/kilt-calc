@@ -174,7 +174,7 @@ final class PleatDesignerTests: XCTestCase {
 
     XCTAssertEqual(designer.pleatWidth, 2)
     XCTAssertEqual(designer.gap, 0.5)
-    XCTAssertEqual(designer.absoluteGap, 0.5)
+    XCTAssertEqual(designer.absoluteGap, .inches(0.5))
     XCTAssertEqual(designer.gapLabel, "Gap")
     XCTAssertEqual(designer.pleatCount, .number(12))
     XCTAssertEqual(designer.hipToHipMeasure, .inches(24))
@@ -187,7 +187,7 @@ final class PleatDesignerTests: XCTestCase {
     designer.pleatWidth = 1.75
 
     XCTAssertEqual(designer.gap, -0.375)
-    XCTAssertEqual(designer.absoluteGap, 0.375)
+    XCTAssertEqual(designer.absoluteGap, .inches(0.375))
     XCTAssertEqual(designer.gapLabel, "Overlap")
   }
 
@@ -237,7 +237,7 @@ final class PleatDesignerTests: XCTestCase {
     let designer = PleatDesigner()
     designer.hipToHipMeasure = .inches(20)
     designer.sett = .inches(6)
-    XCTAssertEqual(designer.totalFabric, 60)
+    XCTAssertEqual(designer.totalFabric, .inches(60))
   }
 
   func test_Message_None() {
