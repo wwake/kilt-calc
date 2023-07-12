@@ -43,7 +43,7 @@ EGTest
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
 
-CALC-23-29: 2023-07-11 - Calculate Pleats Using Values
+CALC-23-28B: 2023-07-11 - Calculate Pleats Using Values
 * Convert pleat designer to work in Value, not int/double
 * Make round() a method on value, abs, isPositive
 * Make gap and total fabric show up as fractions
