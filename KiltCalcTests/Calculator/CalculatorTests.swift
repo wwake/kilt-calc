@@ -339,6 +339,12 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.errorMessage, "error - unbalanced parentheses")
   }
 
+    func test_EmptyParends() {
+      let calc = Calculator()
+      _ = display("1-()=", calc)
+      XCTAssertEqual(calc.errorMessage, "error - unbalanced parentheses")
+    }
+
   func test_UnitDisplayMode() {
     check([
  //     EG("63in=", expect: "63 in", "default is inches"),

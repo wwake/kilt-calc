@@ -10,7 +10,7 @@ public class Expression {
   }
 
   fileprivate func evaluateAtLeast(_ precedence: Int) {
-    while !operators.isEmpty && operators.top.precedence >= precedence {
+      while !operators.isEmpty && operators.top.precedence >= precedence && operands.count >= 2 {
       let top = operators.pop()
       let b = operands.pop()
       let a = operands.pop()
