@@ -17,9 +17,12 @@ struct PleatView: View {
 
   @FocusState private var focusedField: PleatField?
 
+    @State private var myNumber: Int = 0
+    
   func field(_ label: String, focus: PleatField, _ boundValue: Binding<Value?>, _ message: String) -> some View {
     VStack {
-      LabeledContent {
+        
+    LabeledContent {
         TextField(label, value: boundValue, format: .inches)
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
@@ -51,6 +54,8 @@ struct PleatView: View {
       ScrollView(.vertical) {
         VStack {
           Form {
+              TextField(value: $myNumber, format: .number, label: {Label("ok", systemImage: "circle")})
+
             LabeledContent {
               TextField("Title", text: $designer.notes, prompt: Text("Name, tartan, or other notes"))
                 .focused($focusedField, equals: .title)
