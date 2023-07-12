@@ -354,7 +354,7 @@ final class PleatDesignerTests: XCTestCase {
     
     func test_PleatWidthTooBigErrorMessage() {
         let designer = PleatDesigner()
-        
+
         check([
             eg((9.9, 10.0), expect: ""),
             eg((10.0, 10.0), expect: "Pleat width too large"),
@@ -365,7 +365,7 @@ final class PleatDesignerTests: XCTestCase {
             EGAssertEqual(designer.pleatWidthError, $0)
         }
     }
-    
+
     func test_PleatCountNil_GetsNoMessage() {
         let designer = PleatDesigner()
         designer.pleatCount = nil

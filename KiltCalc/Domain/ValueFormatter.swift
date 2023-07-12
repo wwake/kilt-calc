@@ -78,7 +78,7 @@ public struct FractionFormatter {
 
   public func format(_ aNumber: (Double)) -> String {
     if aNumber.isNaN || aNumber.isInfinite {
-      return formatter.string(from: NSNumber(value: aNumber)) ?? "internal error"
+      return formatter.string(from: NSNumber(value: aNumber)) ?? "internal error: ValueFormatter.format()"
     }
 
     let splitNumber = SplitDouble(aNumber)

@@ -152,7 +152,7 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.display, "33")
   }
 
-  func test_UnitsAndOperations() {
+  func test_LegalUnitsAndOperations() {
     check([
       EG("1=", expect: "1"),
       EG("1yd 5ft 11in =", expect: "2 yd 2 ft 11 in", "all units"),
@@ -167,7 +167,6 @@ final class CalculatorTests: XCTestCase {
       EG("ft 3 in 2=", expect: "1 yd 2 in", "Units may precede numbers"),
       EG("2 yd ft", expect: "2 ft", "Last unit takes precedence"),
       EG("2 yd ft =", expect: "2 ft", "Last unit takes precedence"),
-      EG("5 ft 2 =", expect: "numbers and units don't match", "more numbers than units"),
 
       EG("5 ft 2 in <<12 in=", expect: "2 yd", "Backspace"),
       EG("<<12 in=", expect: "1 ft", "Backspace at start"),
@@ -186,21 +185,25 @@ final class CalculatorTests: XCTestCase {
       EG("(2*(((12):4)+2))=", expect: "10"),
       EG("(11 in-1 in)*3=", expect: "2 ft 6 in"),
       EG("7in + (11 in+1 in)*3=", expect: "1 yd 7 in"),
-
-      EG("((3+2)=", expect: "error - unbalanced parentheses"),
-      EG("1+(3+4))=", expect: "error - unbalanced parentheses"),
-      EG(")1+2=", expect: "error - unbalanced parentheses"),
-      EG(")1+2(=", expect: "error - unbalanced parentheses"),
     ]) {
-      if $0.expect.starts(with: /[-0-9]/) {
         EGAssertEqual(display("Y" + $0.input), $0)
-      } else {
-        let calc = Calculator()
-        _ = display($0.input, calc)
-        XCTAssertEqual(calc.errorMessage, $0.expect, file: $0.file, line: $0.line)
-      }
     }
   }
+
+    func test_ErrorUnitsAndOperations() {
+      check([
+        EG("5 ft 2 =", expect: "numbers and units don't match", "more numbers than units"),
+
+        EG("((3+2)=", expect: "error - unbalanced parentheses"),
+        EG("1+(3+4))=", expect: "error - unbalanced parentheses"),
+        EG(")1+2=", expect: "error - unbalanced parentheses"),
+        EG(")1+2(=", expect: "error - unbalanced parentheses"),
+      ]) {
+          let calc = Calculator()
+          _ = display($0.input, calc)
+          XCTAssertEqual(calc.errorMessage, $0.expect, file: $0.file, line: $0.line)
+      }
+    }
 
   func test_Evaluation() {
     check([

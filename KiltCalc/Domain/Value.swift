@@ -196,10 +196,10 @@ extension Value {
   static func parse(_ input: String) -> Value {
     do {
       return try parseStrategy.parse(input)
-    } catch ValueParseError.error(let errorString) {
+    } catch let errorString as String {
       return .error(errorString)
     } catch {
-      return .error("internal error")
+      return .error("internal error - Value.parse()")
     }
   }
 }

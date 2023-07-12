@@ -42,6 +42,8 @@ EGTest
 * Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+* For a test that can throw, can we continue after EGAssert throws?
+* Have EGAssertThrows?
 
 CALC-23-29: 2023-07-12 - Throw or Value.error?
 * Make Expression.evaluate() just throw rather than push errors on stack

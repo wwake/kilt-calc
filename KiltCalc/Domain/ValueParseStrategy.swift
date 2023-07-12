@@ -19,7 +19,7 @@ public struct ValueParseStrategy: ParseStrategy {
     input.replace("⊕", with: "")
     input.replace("⊖", with: "")
 
-    do {
+//    do {
       let numbers = try splitNumbers(input)
       let units = try splitUnits(input)
 
@@ -37,13 +37,11 @@ public struct ValueParseStrategy: ParseStrategy {
       }
 
       return Value.inches(inches)
-//    } catch ValueParseError.error(let errorString) {
-//      return .error(errorString)
-    } catch let error as String {
-      return .error(error as String)
-    } catch {
-      return .error("internal error")
-    }
+//    } catch let error as String {
+//      return .error(error as String)
+//    } catch {
+//      return .error("internal error")
+//    }
   }
 
   static func splitNumbers(_ input: String) throws -> [Double] {

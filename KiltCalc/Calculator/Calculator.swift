@@ -33,7 +33,6 @@ public class Calculator: ObservableObject {
       return trimmedInput
     }
     return result.formatted(imperialFormatType)
-    // valueFormatter.format(imperialFormat.formatter, result)
   }
 
   func clear() {
@@ -83,7 +82,7 @@ public class Calculator: ObservableObject {
       errorMessage = error as String
       return
     } catch {
-      errorMessage = "Internal error"
+      errorMessage = "Internal error: Calculator.equals()"
       return
     }
 
@@ -117,7 +116,7 @@ public class Calculator: ObservableObject {
       errorMessage = error as String
       return
     } catch {
-      errorMessage = "Internal error"
+      errorMessage = "Internal error: Calculator.memoryCombine()"
       return
     }
 

@@ -37,11 +37,11 @@ public enum PleatValidator {
           return "\(name) is required"
       }
       if value!.isError {
-          var result: String? = nil
+          var result: String?
           if case let .error(message) = value! {
               result = message
           }
-          return result ?? "internal error"
+          return result ?? "internal error: PleatValidator.required()"
       }
       return ""
   }
