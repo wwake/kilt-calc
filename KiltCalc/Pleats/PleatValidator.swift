@@ -32,8 +32,18 @@ public enum PleatValidator {
     positive(value1, name).and(smaller(value1, name, value2))
   }
 
-  static func required<T>(_ value: T?, _ name: String) -> String {
-    value == nil ? "\(name) is required" : ""
+  static func required(_ value: Value?, _ name: String) -> String {
+      if value == nil {
+          return "\(name) is required"
+      }
+      if value!.isError {
+          var result: String? = nil
+          if case let .error(message) = value! {
+              result = message
+          }
+          return result ?? "internal error"
+      }
+      return ""
   }
 
   static func positive(_ value: Value?, _ name: String) -> String {

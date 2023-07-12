@@ -1,4 +1,4 @@
-* Make Expression.evaluate() just throw rather than push errors on stack
+* Handle parser errors in pleat designer textfields
 * Should Value really have .error types? Ok for computation but not I/O
 * Use new formatter approach throughout calculator & UI
 * May need 8th-fraction formatter or accept unitless values as inches
@@ -42,6 +42,9 @@ EGTest
 * Update EGTest with EGAssert
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
+
+CALC-23-29: 2023-07-12 - Throw or Value.error?
+* Make Expression.evaluate() just throw rather than push errors on stack
 
 CALC-23-28B: 2023-07-11 - Calculate Pleats Using Values
 * Convert pleat designer to work in Value, not int/double
