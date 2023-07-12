@@ -79,9 +79,9 @@ public class Calculator: ObservableObject {
         errorMessage = message
         return
       }
-    } catch let error where error is String {
-      result = .error(error as! String)
-      errorMessage = error as! String
+    } catch let error as String {
+      result = .error(error as String)
+      errorMessage = error as String
       return
     } catch {
       result = .error("Internal error")
@@ -115,9 +115,9 @@ public class Calculator: ObservableObject {
         errorMessage = message
         return
       }
-    } catch let error where error is String {
-      result = .error(error as! String)
-      errorMessage = error as! String
+    } catch let error as String {
+      result = .error(error as String)
+      errorMessage = error as String
       return
     } catch {
       result = .error("Internal error")
