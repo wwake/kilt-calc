@@ -4,6 +4,8 @@
 * May need 8th-fraction formatter or accept unitless values as inches
 * Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :) - or "/" above numeric pad
 
+https://stackoverflow.com/questions/61073146/swiftui-validate-input-in-textfields
+
 * Refactor!! :)
 Editing fractions in TextField
 
@@ -47,6 +49,7 @@ EGTest
 
 CALC-23-29: 2023-07-12 - Throw or Value.error?
 * Make Expression.evaluate() just throw rather than push errors on stack
+* Made ValueParseStrategy throw exception string when it finds an error
 
 CALC-23-28B: 2023-07-11 - Calculate Pleats Using Values
 * Convert pleat designer to work in Value, not int/double

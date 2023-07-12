@@ -53,7 +53,7 @@ public class Expression {
           pending.append(entry.description)
           entry = nextEntry()
         }
-        operands.push(Value.parse(pending))
+        operands.push(try Value.parse(pending))
 
       case .value(let value, _):
         operands.push(value)

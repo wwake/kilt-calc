@@ -193,14 +193,8 @@ extension Value {
 }
 
 extension Value {
-  static func parse(_ input: String) -> Value {
-    do {
-      return try parseStrategy.parse(input)
-    } catch let errorString as String {
-      return .error(errorString)
-    } catch {
-      return .error("internal error - Value.parse()")
-    }
+  static func parse(_ input: String) throws -> Value {
+    try parseStrategy.parse(input)
   }
 }
 
