@@ -98,11 +98,11 @@ public class Expression {
     evaluateAtLeast(1)
 
     if operators.count != 0 {
-      return .error("error - unbalanced parentheses")
+      throw "error - unbalanced parentheses"
     }
 
     if operands.count != 1 {
-      return .error("error - unbalanced parentheses or missing operators")
+      throw "error - unbalanced parentheses or missing operators"
     }
 
     return operands.pop()
