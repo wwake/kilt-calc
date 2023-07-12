@@ -80,11 +80,9 @@ public class Calculator: ObservableObject {
         return
       }
     } catch let error as String {
-      result = .error(error as String)
       errorMessage = error as String
       return
     } catch {
-      result = .error("Internal error")
       errorMessage = "Internal error"
       return
     }
@@ -116,11 +114,9 @@ public class Calculator: ObservableObject {
         return
       }
     } catch let error as String {
-      result = .error(error as String)
       errorMessage = error as String
       return
     } catch {
-      result = .error("Internal error")
       errorMessage = "Internal error"
       return
     }
