@@ -31,6 +31,25 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
+  @Published public var hipString = "" {
+    didSet {
+      do {
+        if hipString.isEmpty {
+          hipToHipMeasure = nil
+          hipValidationError = hipError  // => ""
+          return
+        }
+
+        hipToHipMeasure = try Value.parse(hipString)
+        hipValidationError = hipError
+      } catch let error as String {
+        hipValidationError = error
+      } catch {}
+    }
+  }
+
+  private(set) var hipValidationError = ""
+
   @Published public var hipToHipMeasure: Value? {
     didSet {
       establishNonRequiredVariables()
@@ -38,7 +57,9 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var hipError: String {
-    PleatValidator.requiredPositive(hipToHipMeasure, "Hip measure")
+    let pleatValidation = PleatValidator.requiredPositive(hipToHipMeasure, "Hip measure")
+    if !pleatValidation.isEmpty { return pleatValidation }
+    return hipValidationError
   }
 
   @Published public var sett: Value? {
