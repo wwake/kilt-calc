@@ -198,13 +198,13 @@ extension Value {
   }
 }
 
+enum ValueFormatType: Codable {
+  case inches
+  case yardFeetInches
+}
+
 extension Value {
   public struct ValueFormatStyle: ParseableFormatStyle {
-    enum ValueFormatType: Codable {
-      case inches
-      case yardFeetInches
-    }
-
     var type: ValueFormatType
 
     init(_ type: ValueFormatType) {
