@@ -7,13 +7,8 @@ extension Shape {
 }
 
 private struct BoxPleatShape: Shape {
-  var gap: CGFloat
   var pleat: CGFloat
-
-  init(pleat: CGFloat, gap: CGFloat) {
-    self.pleat = pleat
-    self.gap = gap
-  }
+  var gap: CGFloat
 
   func path(in rect: CGRect) -> Path {
     var path = Path()
@@ -141,11 +136,6 @@ private struct KnifePleatShape: Shape {
     let leftPleat = rect.midX - pleat / 2
     let rightPleat = leftPleat + pleat
 
-    let x1_4 = rect.minX + (rect.midX - rect.minX) / 2
-    let x1_3 = rect.minX + (rect.maxX - rect.minX) / 3
-    let x2_3 = rect.minX + 2 * (rect.maxX - rect.minX) / 3
-    let x3_4 = rect.midX + (rect.maxX - rect.midX) / 2
-
     var path = Path()
     path.move(to: CGPoint(x: rect.minX, y: rect.midY))
     path.addLine(to: CGPoint(x: leftPleat, y: rect.minY))
@@ -153,7 +143,7 @@ private struct KnifePleatShape: Shape {
     path.addLine(to: CGPoint(x: rightPleat, y: rect.minY))
     path.addLine(to: CGPoint(x: leftPleat, y: rect.maxY))
     path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-    path.addLine(to: CGPoint(x: x2_3, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rightPleat, y: rect.maxY))
     return path
   }
 }
