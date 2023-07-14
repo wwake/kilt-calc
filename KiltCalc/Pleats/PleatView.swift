@@ -142,7 +142,7 @@ field2()
             .multilineTextAlignment(.center)
             .padding(.bottom, 4)
 
-          PleatDrawing(pleat: 200, gap: 40)
+          BoxPleatDrawing(pleat: 200, gap: 40)
 
           Spacer()
           Spacer()

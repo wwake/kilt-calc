@@ -106,7 +106,7 @@ private struct VerticalLine: Shape {
   }
 }
 
-struct PleatDrawing: View {
+struct BoxPleatDrawing: View {
   var pleat: CGFloat
   var gap: CGFloat
 
@@ -134,8 +134,8 @@ struct PleatDrawing: View {
   }
 }
 
-struct PleatDrawing_Previews: PreviewProvider {
+struct BoxPleatDrawing_Previews: PreviewProvider {
   static var previews: some View {
-    PleatDrawing(pleat: 150, gap: 22)
+    BoxPleatDrawing(pleat: 150, gap: 22)
   }
 }

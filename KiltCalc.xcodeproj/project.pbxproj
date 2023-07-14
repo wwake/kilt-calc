@@ -12,7 +12,7 @@
 		91184E972A4E00A500D5841E /* PleatDesignerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91184E962A4E00A500D5841E /* PleatDesignerTests.swift */; };
 		91184E9A2A4E017E00D5841E /* PleatDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91184E992A4E017E00D5841E /* PleatDesigner.swift */; };
 		911857A72A4CB50F0020F16E /* PleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A62A4CB50F0020F16E /* PleatView.swift */; };
-		911857A92A4CC0C20020F16E /* PleatDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A82A4CC0C20020F16E /* PleatDrawing.swift */; };
+		911857A92A4CC0C20020F16E /* BoxPleatDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */; };
 		916AF6602A252460009484DA /* ImperialUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF65F2A252460009484DA /* ImperialUnit.swift */; };
 		916AF6632A267528009484DA /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6622A267528009484DA /* Stack.swift */; };
 		916AF6652A267B8F009484DA /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6642A267B8F009484DA /* Operator.swift */; };
@@ -66,7 +66,7 @@
 		91184E962A4E00A500D5841E /* PleatDesignerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatDesignerTests.swift; sourceTree = "<group>"; };
 		91184E992A4E017E00D5841E /* PleatDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatDesigner.swift; sourceTree = "<group>"; };
 		911857A62A4CB50F0020F16E /* PleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatView.swift; sourceTree = "<group>"; };
-		911857A82A4CC0C20020F16E /* PleatDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatDrawing.swift; sourceTree = "<group>"; };
+		911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxPleatDrawing.swift; sourceTree = "<group>"; };
 		916AF65F2A252460009484DA /* ImperialUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialUnit.swift; sourceTree = "<group>"; };
 		916AF6622A267528009484DA /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		916AF6642A267B8F009484DA /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			children = (
 				91184E992A4E017E00D5841E /* PleatDesigner.swift */,
 				91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */,
-				911857A82A4CC0C20020F16E /* PleatDrawing.swift */,
+				911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */,
 				911857A62A4CB50F0020F16E /* PleatView.swift */,
 			);
 			path = Pleats;
@@ -430,7 +430,7 @@
 				91F2AF502A438909008A1063 /* ButtonModifier.swift in Sources */,
 				916AF6652A267B8F009484DA /* Operator.swift in Sources */,
 				91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */,
-				911857A92A4CC0C20020F16E /* PleatDrawing.swift in Sources */,
+				911857A92A4CC0C20020F16E /* BoxPleatDrawing.swift in Sources */,
 				9190F7AF2A29331F0008E40A /* InputBuffer.swift in Sources */,
 				91B0F2B82A53737C00423289 /* ApronPleatView.swift in Sources */,
 				918628CD2A2FC57300FA781D /* ValueFormatter.swift in Sources */,
