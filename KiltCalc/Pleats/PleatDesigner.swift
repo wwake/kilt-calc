@@ -36,7 +36,7 @@ public class PleatDesigner: ObservableObject {
       do {
         if hipString.isEmpty {
           hipToHipMeasure = nil
-          hipValidationError = hipError  // => ""
+          hipValidationError = hipError // => ""
           return
         }
 
