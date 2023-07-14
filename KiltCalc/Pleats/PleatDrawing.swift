@@ -135,15 +135,12 @@ struct BoxPleatDrawing: View {
 }
 
 private struct KnifePleatShape: Shape {
-  var gap: CGFloat
   var pleat: CGFloat
 
-  init(pleat: CGFloat, gap: CGFloat) {
-    self.pleat = pleat
-    self.gap = gap
-  }
-
   func path(in rect: CGRect) -> Path {
+    let leftPleat = rect.midX - pleat / 2
+    let rightPleat = leftPleat + pleat
+
     let x1_4 = rect.minX + (rect.midX - rect.minX) / 2
     let x1_3 = rect.minX + (rect.maxX - rect.minX) / 3
     let x2_3 = rect.minX + 2 * (rect.maxX - rect.minX) / 3
@@ -151,10 +148,10 @@ private struct KnifePleatShape: Shape {
 
     var path = Path()
     path.move(to: CGPoint(x: rect.minX, y: rect.midY))
-    path.addLine(to: CGPoint(x: x1_3, y: rect.minY))
+    path.addLine(to: CGPoint(x: leftPleat, y: rect.minY))
     path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-    path.addLine(to: CGPoint(x: x2_3, y: rect.minY))
-    path.addLine(to: CGPoint(x: x1_3, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rightPleat, y: rect.minY))
+    path.addLine(to: CGPoint(x: leftPleat, y: rect.maxY))
     path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
     path.addLine(to: CGPoint(x: x2_3, y: rect.maxY))
     return path
@@ -171,24 +168,12 @@ struct KnifePleatDrawing: View {
       Text("pleat")
 
       DimensionLine()
-        .frame(width: pleat - 20, height: 10)
+        .frame(width: pleat, height: 10)
         .padding([.bottom], 8)
 
-      KnifePleatShape(pleat: pleat, gap: gap)
+      KnifePleatShape(pleat: pleat)
         .stroke(Color.green, lineWidth: 4.0)
         .frame(height: 50)
-
-//      HStack {
-//        VStack {
-//          DimensionLine()
-//            .frame(width: pleat - 35, height: 10)
-//            .padding([.top], 8)
-//          Text("depth")
-//        }
-//        Spacer()
-//      }
-
-      // Text("0 in")
     }
     .padding()
   }
