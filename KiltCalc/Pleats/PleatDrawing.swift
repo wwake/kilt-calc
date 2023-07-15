@@ -165,7 +165,6 @@ struct KnifePleatDrawing: View {
         .stroke(Color.green, lineWidth: 4.0)
         .frame(height: 50)
     }
-    .padding()
   }
 }
 
