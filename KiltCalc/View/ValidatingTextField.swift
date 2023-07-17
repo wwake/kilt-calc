@@ -5,7 +5,13 @@ struct ValidatingTextField: View {
   @Binding var bound: Value?
 
   @State var input: String = ""
-  @State var errorMessage: String = ""
+  @State var errorMessage: String
+
+  init(label: String, bound: Binding<Value?>) {
+    self.label = label
+    self._bound = bound
+    errorMessage = "\(label) is missing"
+  }
 
   static func updateBoundValue(label: String, input: String) -> (Value?, String) {
     if input.isEmpty {
