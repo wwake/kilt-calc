@@ -62,10 +62,6 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  public var settError: String {
-    PleatValidator.requiredPositive(sett, "Sett")
-  }
-
   @Published public var settsPerPleat: Value? = .number(1.0) {
     didSet {
       establishNonRequiredVariables()
