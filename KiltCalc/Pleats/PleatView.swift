@@ -65,11 +65,13 @@ struct PleatView: View {
                 bound: $designer.hipToHipMeasure,
                 validator: PleatValidator.positive
               )
+
               ValidatingTextField(
                 label: "Sett",
                 bound: $designer.sett,
                 validator: PleatValidator.positive
               )
+
               ValidatingTextField(
                 label: "Setts/Pleat",
                 bound: $designer.settsPerPleat,

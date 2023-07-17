@@ -68,10 +68,6 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  public var settsPerPleatError: String {
-    PleatValidator.requiredPositive(settsPerPleat, "Setts/pleat")
-  }
-
   public var pleatFabric: Value? {
     if needsRequiredValues { return nil }
     return sett! * settsPerPleat!

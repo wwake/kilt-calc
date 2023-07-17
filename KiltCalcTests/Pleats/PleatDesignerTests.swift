@@ -278,24 +278,6 @@ final class PleatDesignerTests: XCTestCase {
     }
   }
 
-  func test_SettsPerPleatNil_GetsErrorMessage() {
-    let designer = PleatDesigner()
-    designer.settsPerPleat = nil
-    XCTAssertEqual(designer.settsPerPleatError, "Setts/pleat is required")
-  }
-
-  func test_SettsPerPleatErrorMessage() {
-    check([
-      eg(20.0, expect: ""),
-      eg(0, expect: "Must be positive"),
-      eg(-20.0, expect: "Must be positive"),
-    ]) {
-      let designer = PleatDesigner()
-      designer.settsPerPleat = .number($0.input)
-      EGAssertEqual(designer.settsPerPleatError, $0)
-    }
-  }
-
   func test_PleatWidthNil_HasNoErrorMessage() {
     let designer = PleatDesigner()
     designer.pleatWidth = nil
