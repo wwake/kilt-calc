@@ -24,6 +24,7 @@
 		91B0F2B82A53737C00423289 /* ApronPleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B72A53737C00423289 /* ApronPleatView.swift */; };
 		91B0F2BA2A5373FA00423289 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B92A5373FA00423289 /* CalculatorView.swift */; };
 		91D4CF3F2A5C9DF800A03B63 /* PleatValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */; };
+		91DF08972A65C6AE00B4D64F /* ValidatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DF08962A65C6AE00B4D64F /* ValidatingTextField.swift */; };
 		91E3C59E2A1BE8FB0098BAFC /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */; };
 		91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A02A1BF40F0098BAFC /* Key.swift */; };
 		91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C5A22A1BF4280098BAFC /* Keypad.swift */; };
@@ -79,6 +80,7 @@
 		91B0F2B92A5373FA00423289 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KiltCalcUnitTests.xctestplan; sourceTree = "<group>"; };
 		91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatValidator.swift; sourceTree = "<group>"; };
+		91DF08962A65C6AE00B4D64F /* ValidatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatingTextField.swift; sourceTree = "<group>"; };
 		91E3C59D2A1BE8FB0098BAFC /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		91E3C5A02A1BF40F0098BAFC /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		91E3C5A22A1BF4280098BAFC /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				91F2AF4F2A438909008A1063 /* ButtonModifier.swift */,
 				91E7B6CD2A0D4428004A757A /* ContentView.swift */,
 				91F2AF4D2A4382CC008A1063 /* HistoryView.swift */,
+				91DF08962A65C6AE00B4D64F /* ValidatingTextField.swift */,
 				91F2AF512A438932008A1063 /* ValueModifier.swift */,
 			);
 			path = View;
@@ -436,6 +439,7 @@
 				918628CD2A2FC57300FA781D /* ValueFormatter.swift in Sources */,
 				91E3C5B32A1EAAD10098BAFC /* Value.swift in Sources */,
 				911857A72A4CB50F0020F16E /* PleatView.swift in Sources */,
+				91DF08972A65C6AE00B4D64F /* ValidatingTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
