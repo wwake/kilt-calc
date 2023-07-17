@@ -7,7 +7,10 @@ struct ValidatingTextField: View {
   @State var input: String = ""
   @State var errorMessage: String = ""
 
-  static func updateBoundValue(_ input: String) -> (Value?, String) {
+  static func updateBoundValue(label: String, input: String) -> (Value?, String) {
+    if input.isEmpty {
+      return (nil, "\(label) is missing")
+    }
     do {
       let value = try Value.parse(input)
       return (value, "")
@@ -19,7 +22,7 @@ struct ValidatingTextField: View {
   }
 
   func updateBoundAndError(_ input: String) {
-    (bound, errorMessage) = Self.updateBoundValue(input)
+    (bound, errorMessage) = Self.updateBoundValue(label: label, input: input)
   }
 
   var body: some View {
