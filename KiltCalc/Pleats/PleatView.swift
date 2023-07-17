@@ -60,10 +60,21 @@ struct PleatView: View {
             }
 
             Section("Required") {
-              field2()
-              field("Hip to Hip (rear)", focus: .hipToHip, $designer.hipToHipMeasure, designer.hipError)
-              field("Sett", focus: .sett, $designer.sett, designer.settError)
-              field("Setts/Pleat", focus: .settsPerPleat, $designer.settsPerPleat, designer.settsPerPleatError)
+              ValidatingTextField(
+                label: "Hip to Hip (rear)",
+                bound: $designer.hipToHipMeasure,
+                validator: PleatValidator.positive
+              )
+              ValidatingTextField(
+                label: "Sett",
+                bound: $designer.sett,
+                validator: PleatValidator.positive
+              )
+              ValidatingTextField(
+                label: "Setts/Pleat",
+                bound: $designer.settsPerPleat,
+                validator: PleatValidator.positive
+              )
             }
 
             Section("Adjustable") {

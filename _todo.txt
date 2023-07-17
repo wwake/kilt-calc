@@ -1,6 +1,6 @@
-* Handle parser errors in pleat designer textfields
-  - split parser validation and value validation, but have an error string that shows whichever is present
-  - experimenting on hip stuff in PleatView and PleatDesigner
+* Replace existing fields: Hip, sett, setts/pleat, pleats, pleat width
+* Handle switch in focus to display final value
+
 
 Fix error message (trailing ')') - simple fractions only (at most one '/'
 * Should Value really have .error types? Ok for computation but not I/O
@@ -53,6 +53,8 @@ EGTest
 
 CALC-23-31: 2023-07-17
 * Create a ValidatingTextfield
+* Handle parser errors in pleat designer textfields
+  - split parser validation and value validation, but have an error string that shows whichever is present
 
 CALC-23-30: 2023-07-13 - Throw in PleatDesigner
 * Devise an approach to validating a field - catching both parse errors and semantic errors

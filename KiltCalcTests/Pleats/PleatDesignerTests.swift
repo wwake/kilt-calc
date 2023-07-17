@@ -29,8 +29,6 @@ final class PleatDesignerTests: XCTestCase {
     designer.sett = .inches(6)
     designer.pleatWidth = .inches(2)
     XCTAssertEqual(designer.pleatCount, nil)
-    XCTAssertEqual(designer.hipError, "missing denominator")
-    XCTAssertEqual(designer.hipError, "missing denominator")
   }
 
   func test_WhenSettIsMissing_ThenOutputVariablesAreNil() {
@@ -277,24 +275,6 @@ final class PleatDesignerTests: XCTestCase {
       designer.sett = .inches(6)
       designer.pleatWidth = .inches($0.input)
       EGAssertEqual(designer.message, $0)
-    }
-  }
-
-  func test_HipNilErrorMessage() {
-    let designer = PleatDesigner()
-    designer.hipToHipMeasure = nil
-    XCTAssertEqual(designer.hipError, "Hip measure is required")
-  }
-
-  func test_HipErrorMessage() {
-    check([
-      eg(20, expect: ""),
-      eg(0, expect: "Must be positive"),
-      eg(-20, expect: "Must be positive"),
-    ]) {
-      let designer = PleatDesigner()
-      designer.hipToHipMeasure = .inches($0.input)
-      EGAssertEqual(designer.hipError, $0)
     }
   }
 

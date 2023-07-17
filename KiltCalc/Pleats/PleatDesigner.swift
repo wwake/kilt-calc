@@ -56,12 +56,6 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  public var hipError: String {
-    let pleatValidation = PleatValidator.requiredPositive(hipToHipMeasure, "Hip measure")
-    if !pleatValidation.isEmpty { return pleatValidation }
-    return hipValidationError
-  }
-
   @Published public var sett: Value? {
     didSet {
       establishNonRequiredVariables()
