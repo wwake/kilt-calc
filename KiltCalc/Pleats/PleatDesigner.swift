@@ -103,7 +103,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var pleatCountError: String {
-    PleatValidator.positive(pleatCount, "Pleat count")
+    PleatValidator.positive(pleatCount)
   }
 
   @Published public var pleatWidth: Value? {

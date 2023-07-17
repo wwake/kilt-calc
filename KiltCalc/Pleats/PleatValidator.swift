@@ -25,11 +25,11 @@ public enum PleatValidator {
   }
 
   static func requiredPositive(_ value: Value?, _ name: String) -> String {
-    required(value, name).and(positive(value, name))
+    required(value, name).and(positive(value))
   }
 
   static func positiveSmaller(_ value1: Value?, _ name: String, _ value2: Value?) -> String {
-    positive(value1, name).and(smaller(value1, name, value2))
+    positive(value1).and(smaller(value1, name, value2))
   }
 
   static func required(_ value: Value?, _ name: String) -> String {
@@ -46,7 +46,7 @@ public enum PleatValidator {
       return ""
   }
 
-  static func positive(_ value: Value?, _ name: String) -> String {
+  static func positive(_ value: Value?) -> String {
     if value == nil || value!.asDouble > 0.0 {
       return ""
     }
