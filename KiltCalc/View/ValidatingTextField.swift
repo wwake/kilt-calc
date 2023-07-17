@@ -7,16 +7,19 @@ struct ValidatingTextField: View {
   @State var input: String = ""
   @State var errorMessage: String = ""
 
-  func updateBoundValue(_ input: String) {
+  static func updateBoundValue(_ input: String) -> (Value?, String) {
     do {
       let value = try Value.parse(input)
-      bound = value
-      errorMessage = ""
+      return (value, "")
     } catch {
-      bound = nil
       let knownError = error as? String
-      errorMessage = knownError != nil ? knownError!.description : "\(error)"
+      let message = knownError != nil ? knownError!.description : "\(error)"
+      return (nil, message)
     }
+  }
+
+  func updateBoundAndError(_ input: String) {
+    (bound, errorMessage) = Self.updateBoundValue(input)
   }
 
   var body: some View {
@@ -25,7 +28,7 @@ struct ValidatingTextField: View {
         TextField(label, text: $input)
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
-          .onChange(of: input, perform: updateBoundValue)
+          .onChange(of: input, perform: updateBoundAndError)
       } label: {
         Text(label)
           .bold()
