@@ -1,10 +1,10 @@
 import Foundation
 
-enum ValueParseError: Error {
-  case error(String)
+extension String: Error {
+  var description: String {
+    self
+  }
 }
-
-extension String: Error { }
 
 public struct ValueParseStrategy: ParseStrategy {
   static let formatter = NumberFormatter()
@@ -19,29 +19,23 @@ public struct ValueParseStrategy: ParseStrategy {
     input.replace("⊕", with: "")
     input.replace("⊖", with: "")
 
-//    do {
-      let numbers = try splitNumbers(input)
-      let units = try splitUnits(input)
+    let numbers = try splitNumbers(input)
+    let units = try splitUnits(input)
 
-      if numbers.count == 1 && units.count == 0 {
-        return .number(numbers[0])
-      }
+    if numbers.count == 1 && units.count == 0 {
+      return .number(numbers[0])
+    }
 
-      if numbers.count != units.count {
-        throw "numbers and units don't match"
-      }
+    if numbers.count != units.count {
+      throw "numbers and units don't match"
+    }
 
-      var inches = 0.0
-      zip(numbers, units).forEach { number, unit in
-        inches += ImperialUnit.asInches(number, String(unit))
-      }
+    var inches = 0.0
+    zip(numbers, units).forEach { number, unit in
+      inches += ImperialUnit.asInches(number, String(unit))
+    }
 
-      return Value.inches(inches)
-//    } catch let error as String {
-//      return .error(error as String)
-//    } catch {
-//      return .error("internal error")
-//    }
+    return Value.inches(inches)
   }
 
   static func splitNumbers(_ input: String) throws -> [Double] {

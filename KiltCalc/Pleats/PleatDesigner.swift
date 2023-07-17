@@ -41,7 +41,7 @@ public class PleatDesigner: ObservableObject {
         }
 
         hipToHipMeasure = try Value.parse(hipString)
-        hipValidationError = "" 
+        hipValidationError = ""
       } catch let error as String {
         hipValidationError = error
       } catch {}

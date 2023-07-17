@@ -1,6 +1,48 @@
 import Combine
 import SwiftUI
 
+struct ValidatingTextField: View {
+  var label: String
+  @State var input: String = ""
+  @State var errorMessage: String = ""
+  @Binding var bound: Value?
+
+  func field2() -> some View {
+    VStack {
+      LabeledContent {
+        TextField(label, text: $input)
+          .multilineTextAlignment(.trailing)
+          .keyboardType(.decimalPad)
+          .onChange(of: input) { input in
+            do {
+              let value = try Value.parse(input)
+              bound = value
+              errorMessage = ""
+            } catch {
+              let knownError = error as? String
+              errorMessage = knownError != nil ? knownError!.description : "\(error)"
+            }
+          }
+      } label: {
+        Text(label)
+          .bold()
+      }
+      .padding(errorMessage.isEmpty ? 0 : 8)
+      .border(Color.red, width: errorMessage.isEmpty ? 0 : 1)
+
+      if !errorMessage.isEmpty {
+        Text(errorMessage)
+          .font(.footnote)
+          .foregroundColor(Color.red)
+      }
+    }
+  }
+
+  var body: some View {
+    field2()
+  }
+}
+
 struct PleatView: View {
   @StateObject private var designer = PleatDesigner()
 
@@ -13,15 +55,15 @@ struct PleatView: View {
 
   func field(_ label: String, focus: PleatField, _ boundValue: Binding<Value?>, _ message: String) -> some View {
     VStack {
-    LabeledContent {
+      LabeledContent {
         TextField(label, value: boundValue, format: .inches)
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
           .focused($focusedField, equals: focus)
-    } label: {
-      Text(label)
-        .bold()
-    }
+      } label: {
+        Text(label)
+          .bold()
+      }
       .padding(message.isEmpty ? 0 : 8)
       .border(Color.red, width: message.isEmpty ? 0 : 1)
 
@@ -34,37 +76,38 @@ struct PleatView: View {
   }
 
   func field2() -> some View {
-    VStack {
-      LabeledContent {
-        TextField("Hip2", text: $designer.hipString)
-          .multilineTextAlignment(.trailing)
-          .keyboardType(.decimalPad)
-          .focused($focusedField, equals: .hip2)
-          .onChange(of: focusedField) { isFocused in
-            if designer.hipString.isEmpty { return }
-            if isFocused != .hip2 {
-              print("focus moved")
-              do {
-                print("hip2 = \(designer.hipString)")
-                designer.hipString = try Value.parse(designer.hipString).formatted(.inches)
-              } catch {
-                print("can't happen")
-              }
-            }
-          }
-      } label: {
-        Text("Hip2")
-          .bold()
-      }
-      .padding(designer.hipError.isEmpty ? 0 : 8)
-      .border(Color.red, width: designer.hipError.isEmpty ? 0 : 1)
-
-      if !designer.hipError.isEmpty {
-        Text(designer.hipError)
-          .font(.footnote)
-          .foregroundColor(Color.red)
-      }
-    }
+    ValidatingTextField(label: "Hip2", bound: $designer.hipToHipMeasure)
+    //    VStack {
+    //      LabeledContent {
+    //        TextField("Hip2", text: $designer.hipString)
+    //          .multilineTextAlignment(.trailing)
+    //          .keyboardType(.decimalPad)
+    //          .focused($focusedField, equals: .hip2)
+    //          .onChange(of: focusedField) { isFocused in
+    //            if designer.hipString.isEmpty { return }
+    //            if isFocused != .hip2 {
+    //              print("focus moved")
+    //              do {
+    //                print("hip2 = \(designer.hipString)")
+    //                designer.hipString = try Value.parse(designer.hipString).formatted(.inches)
+    //              } catch {
+    //                print("can't happen")
+    //              }
+    //            }
+    //          }
+    //      } label: {
+    //        Text("Hip2")
+    //          .bold()
+    //      }
+    //      .padding(designer.hipError.isEmpty ? 0 : 8)
+    //      .border(Color.red, width: designer.hipError.isEmpty ? 0 : 1)
+    //
+    //      if !designer.hipError.isEmpty {
+    //        Text(designer.hipError)
+    //          .font(.footnote)
+    //          .foregroundColor(Color.red)
+    //      }
+    //    }
   }
 
   func formatOptional(_ value: Value?) -> String {
@@ -90,7 +133,7 @@ struct PleatView: View {
             }
 
             Section("Required") {
-field2()
+              field2()
               field("Hip to Hip (rear)", focus: .hipToHip, $designer.hipToHipMeasure, designer.hipError)
               field("Sett", focus: .sett, $designer.sett, designer.settError)
               field("Setts/Pleat", focus: .settsPerPleat, $designer.settsPerPleat, designer.settsPerPleatError)
