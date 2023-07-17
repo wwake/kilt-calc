@@ -34,7 +34,7 @@ struct PleatView: View {
   }
 
   func field2() -> some View {
-    ValidatingTextField(label: "Hip2", bound: $designer.hipToHipMeasure, validator: { _ in "" })
+    ValidatingTextField(label: "Hip2", bound: $designer.hipToHipMeasure, validator: PleatValidator.positive)
   }
 
   func formatOptional(_ value: Value?) -> String {
