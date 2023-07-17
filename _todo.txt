@@ -1,7 +1,9 @@
+
 * Handle parser errors in pleat designer textfields
   - split parser validation and value validation, but have an error string that shows whichever is present
   - experimenting on hip stuff in PleatView and PleatDesigner
   - try creating a ValidatingTextfield
+
 Fix error message (trailing ')') - simple fractions only (at most one '/'
 * Should Value really have .error types? Ok for computation but not I/O
 * Use new formatter approach throughout calculator & UI

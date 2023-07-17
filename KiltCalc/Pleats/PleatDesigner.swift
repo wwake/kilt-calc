@@ -36,12 +36,12 @@ public class PleatDesigner: ObservableObject {
       do {
         if hipString.isEmpty {
           hipToHipMeasure = nil
-          hipValidationError = hipError // => ""
+          hipValidationError = ""
           return
         }
 
         hipToHipMeasure = try Value.parse(hipString)
-        hipValidationError = hipError
+        hipValidationError = "" 
       } catch let error as String {
         hipValidationError = error
       } catch {}

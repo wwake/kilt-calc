@@ -9,13 +9,6 @@ struct PleatView: View {
     case title, hip2, hipToHip, sett, settsPerPleat, numberOfPleats, pleatWidth
   }
 
-      @State private var title = ""
-  @State private var hipToHip = ""
-  @State private var sett = ""
-  @State private var settsPerPleat = ""
-  @State private var numberOfPleats = ""
-  @State private var pleatWidth = ""
-
   @FocusState private var focusedField: PleatField?
 
   func field(_ label: String, focus: PleatField, _ boundValue: Binding<Value?>, _ message: String) -> some View {
