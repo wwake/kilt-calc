@@ -34,38 +34,7 @@ struct PleatView: View {
   }
 
   func field2() -> some View {
-    ValidatingTextField(label: "Hip2", bound: $designer.hipToHipMeasure)
-    //    VStack {
-    //      LabeledContent {
-    //        TextField("Hip2", text: $designer.hipString)
-    //          .multilineTextAlignment(.trailing)
-    //          .keyboardType(.decimalPad)
-    //          .focused($focusedField, equals: .hip2)
-    //          .onChange(of: focusedField) { isFocused in
-    //            if designer.hipString.isEmpty { return }
-    //            if isFocused != .hip2 {
-    //              print("focus moved")
-    //              do {
-    //                print("hip2 = \(designer.hipString)")
-    //                designer.hipString = try Value.parse(designer.hipString).formatted(.inches)
-    //              } catch {
-    //                print("can't happen")
-    //              }
-    //            }
-    //          }
-    //      } label: {
-    //        Text("Hip2")
-    //          .bold()
-    //      }
-    //      .padding(designer.hipError.isEmpty ? 0 : 8)
-    //      .border(Color.red, width: designer.hipError.isEmpty ? 0 : 1)
-    //
-    //      if !designer.hipError.isEmpty {
-    //        Text(designer.hipError)
-    //          .font(.footnote)
-    //          .foregroundColor(Color.red)
-    //      }
-    //    }
+    ValidatingTextField(label: "Hip2", bound: $designer.hipToHipMeasure, validator: { _ in "" })
   }
 
   func formatOptional(_ value: Value?) -> String {
