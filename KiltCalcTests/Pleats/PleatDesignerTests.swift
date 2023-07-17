@@ -289,8 +289,8 @@ final class PleatDesignerTests: XCTestCase {
   func test_HipErrorMessage() {
     check([
       eg(20, expect: ""),
-      eg(0, expect: "Hip measure must be positive"),
-      eg(-20, expect: "Hip measure must be positive"),
+      eg(0, expect: "Must be positive"),
+      eg(-20, expect: "Must be positive"),
     ]) {
       let designer = PleatDesigner()
       designer.hipToHipMeasure = .inches($0.input)
@@ -307,8 +307,8 @@ final class PleatDesignerTests: XCTestCase {
   func test_SettErrorMessage() {
     check([
       eg(20, expect: ""),
-      eg(0, expect: "Sett must be positive"),
-      eg(-20, expect: "Sett must be positive"),
+      eg(0, expect: "Must be positive"),
+      eg(-20, expect: "Must be positive"),
     ]) {
       let designer = PleatDesigner()
       designer.sett = .inches($0.input)
@@ -325,8 +325,8 @@ final class PleatDesignerTests: XCTestCase {
   func test_SettsPerPleatErrorMessage() {
     check([
       eg(20.0, expect: ""),
-      eg(0, expect: "Setts/pleat must be positive"),
-      eg(-20.0, expect: "Setts/pleat must be positive"),
+      eg(0, expect: "Must be positive"),
+      eg(-20.0, expect: "Must be positive"),
     ]) {
       let designer = PleatDesigner()
       designer.settsPerPleat = .number($0.input)
@@ -343,8 +343,8 @@ final class PleatDesignerTests: XCTestCase {
   func test_PleatWidthErrorMessage() {
     check([
       eg(20.0, expect: ""),
-      eg(0, expect: "Pleat width must be positive"),
-      eg(-20.0, expect: "Pleat width must be positive"),
+      eg(0, expect: "Must be positive"),
+      eg(-20.0, expect: "Must be positive"),
     ]) {
       let designer = PleatDesigner()
       designer.pleatWidth = .inches($0.input)
@@ -375,8 +375,8 @@ final class PleatDesignerTests: XCTestCase {
   func test_PleatCountErrorMessage() {
     check([
       eg(20, expect: ""),
-      eg(0, expect: "Pleat count must be positive"),
-      eg(-20, expect: "Pleat count must be positive"),
+      eg(0, expect: "Must be positive"),
+      eg(-20, expect: "Must be positive"),
     ]) {
       let designer = PleatDesigner()
       designer.pleatCount = .number($0.input)

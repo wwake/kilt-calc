@@ -50,7 +50,7 @@ public enum PleatValidator {
     if value == nil || value!.asDouble > 0.0 {
       return ""
     }
-    return "\(name) must be positive"
+    return "Must be positive"
   }
 
   static func smaller(_ value1: Value?, _ name: String, _ value2: Value?) -> String {
