@@ -1,6 +1,5 @@
-* Replace existing fields: pleats, pleat width
+* Replace existing fields: pleat width
 * Handle switch in focus to display final value
-* Should #pleats & pleat width have warnings before they're active?
 * Delete PleatDesigner.hipString (dead code)
 * Fields don't adjust when the bound value changes
 
@@ -69,7 +68,9 @@ EGTest
 
 CALC-23-32: 2023-07-18 - Working on Validation
 * Setts/pleat should have initial value
-
+* Replace existing fields: pleats
+* Make ValidatingTextField know whether it's disabled
+  + Should #pleats & pleat width have warnings before they're active? No
 
 CALC-23-31: 2023-07-17
 * Create a ValidatingTextField

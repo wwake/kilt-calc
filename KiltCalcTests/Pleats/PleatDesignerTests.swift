@@ -309,22 +309,4 @@ final class PleatDesignerTests: XCTestCase {
       EGAssertEqual(designer.pleatWidthError, $0)
     }
   }
-
-  func test_PleatCountNil_GetsNoMessage() {
-    let designer = PleatDesigner()
-    designer.pleatCount = nil
-    XCTAssertEqual(designer.pleatCountError, "")
-  }
-
-  func test_PleatCountErrorMessage() {
-    check([
-      eg(20, expect: ""),
-      eg(0, expect: "Must be positive"),
-      eg(-20, expect: "Must be positive"),
-    ]) {
-      let designer = PleatDesigner()
-      designer.pleatCount = .number($0.input)
-      EGAssertEqual(designer.pleatCountError, $0)
-    }
-  }
 }

@@ -88,10 +88,6 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  public var pleatCountError: String {
-    PleatValidator.positive(pleatCount)
-  }
-
   @Published public var pleatWidth: Value? {
     didSet {
       if needsRequiredValues || pleatWidth == nil || pleatCount == nil || pleatWidth!.isError || pleatCount!.isError {
