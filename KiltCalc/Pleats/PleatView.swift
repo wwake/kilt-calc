@@ -80,17 +80,18 @@ struct PleatView: View {
             }
 
             Section("Adjustable") {
-//              ValidatingTextField(
-//                label: "#Pleats",
-//                bound: $designer.pleatCount,
-//                validator: PleatValidator.positive
-//              )
-//              .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-//              .disabled(designer.needsRequiredValues)
+              ValidatingTextField(
+                label: "#Pleats",
+                bound: $designer.pleatCount,
+                validator: PleatValidator.positive,
+                disabled: designer.needsRequiredValues
+              )
+     //         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+          //    .disabled(designer.needsRequiredValues)
 
-              field("#Pleats", focus: .numberOfPleats, $designer.pleatCount, designer.pleatCountError)
-                .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-                .disabled(designer.needsRequiredValues)
+//              field("#Pleats", focus: .numberOfPleats, $designer.pleatCount, designer.pleatCountError)
+//                .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+//                .disabled(designer.needsRequiredValues)
 
               field("Pleat Width", focus: .pleatWidth, $designer.pleatWidth, designer.pleatWidthError)
                 .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)

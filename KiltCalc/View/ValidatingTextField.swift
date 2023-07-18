@@ -4,13 +4,15 @@ struct ValidatingTextField: View {
   var label: String
   @Binding var bound: Value?
   var validator: (Value?) -> String
+  var disabled: Bool
 
   @State var input: String
   @State var errorMessage: String
 
-  init(label: String, bound: Binding<Value?>, validator: @escaping (Value?) -> String) {
+  init(label: String, bound: Binding<Value?>, validator: @escaping (Value?) -> String, disabled: Bool = false) {
     self.label = label
     self.validator = validator
+    self.disabled = disabled
 
     self._bound = bound
     if bound.wrappedValue == nil {
@@ -56,13 +58,15 @@ struct ValidatingTextField: View {
           .bold()
       }
       .padding(errorMessage.isEmpty ? 0 : 8)
-      .border(Color.red, width: errorMessage.isEmpty ? 0 : 1)
+      .border(Color.red, width: disabled || errorMessage.isEmpty ? 0 : 1)
 
-      if !errorMessage.isEmpty {
+      if !disabled && !errorMessage.isEmpty {
         Text(errorMessage)
           .font(.footnote)
           .foregroundColor(Color.red)
       }
     }
+    .foregroundColor(disabled ? Color.gray : Color.black)
+    .disabled(disabled)
   }
 }

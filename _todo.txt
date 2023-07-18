@@ -1,5 +1,3 @@
-* Setts/pleat should have initial value
-
 * Replace existing fields: pleats, pleat width
 * Handle switch in focus to display final value
 * Should #pleats & pleat width have warnings before they're active?
@@ -68,6 +66,10 @@ EGTest
 * Let check use varargs rather than []
 * For a test that can throw, can we continue after EGAssert throws?
 * Have EGAssertThrows?
+
+CALC-23-32: 2023-07-18 - Working on Validation
+* Setts/pleat should have initial value
+
 
 CALC-23-31: 2023-07-17
 * Create a ValidatingTextField
