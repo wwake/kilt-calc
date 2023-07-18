@@ -57,7 +57,7 @@ struct ValidatingTextField: View {
         Text(label)
           .bold()
       }
-      .padding(errorMessage.isEmpty ? 0 : 8)
+      .padding(disabled || errorMessage.isEmpty ? 0 : 8)
       .border(Color.red, width: disabled || errorMessage.isEmpty ? 0 : 1)
 
       if !disabled && !errorMessage.isEmpty {
