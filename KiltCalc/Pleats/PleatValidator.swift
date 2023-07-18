@@ -57,6 +57,6 @@ public enum PleatValidator {
     if value1 == nil || value2 == nil || value1!.isError || value2!.isError || value1!.asDouble < value2!.asDouble {
       return ""
     }
-    return "\(name) too large"
+    return "Value too large"
   }
 }

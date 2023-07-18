@@ -301,7 +301,7 @@ final class PleatDesignerTests: XCTestCase {
 
     check([
       eg((9.9, 10.0), expect: ""),
-      eg((10.0, 10.0), expect: "Pleat width too large"),
+      eg((10.0, 10.0), expect: "Value too large"),
     ]) {
       designer.hipToHipMeasure = .inches(15)
       designer.sett = .inches($0.input.1)
