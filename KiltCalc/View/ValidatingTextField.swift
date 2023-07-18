@@ -9,7 +9,14 @@ struct ValidatingTextField: View {
   @State var input: String
   @State var errorMessage: String
 
-  init(label: String, bound: Binding<Value?>, validator: @escaping (Value?) -> String, disabled: Bool = false) {
+  init(
+    label: String,
+    bound: Binding<Value?>,
+    validator: @escaping (Value?) -> String,
+    focusTracker: FocusState<PleatViewFocus?>.Binding,
+    focusState: PleatViewFocus,
+    disabled: Bool = false
+  ) {
     self.label = label
     self.validator = validator
     self.disabled = disabled
@@ -20,6 +27,16 @@ struct ValidatingTextField: View {
       errorMessage = "Value is required"
     } else {
       input = bound.wrappedValue!.formatted(.inches)
+      errorMessage = ""
+    }
+  }
+
+  func updateForExternalChange(_ value: Value?) {
+    if value == nil {
+      input = ""
+      errorMessage = "Value is required"
+    } else {
+      input = value!.formatted(.inches)
       errorMessage = ""
     }
   }
@@ -53,6 +70,7 @@ struct ValidatingTextField: View {
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
           .onChange(of: input, perform: updateBoundAndError)
+          .onChange(of: bound, perform: updateForExternalChange)
       } label: {
         Text(label)
           .bold()

@@ -1,17 +1,17 @@
 import Combine
 import SwiftUI
 
+// see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
+enum PleatViewFocus: Int, CaseIterable, Equatable {
+  case title, hipToHip, sett, settsPerPleat, numberOfPleats, pleatWidth
+}
+
 struct PleatView: View {
   @StateObject private var designer = PleatDesigner()
 
-  // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
-  enum PleatField: Int, CaseIterable, Equatable {
-    case title, hip2, hipToHip, sett, settsPerPleat, numberOfPleats, pleatWidth
-  }
+  @FocusState private var focusedField: PleatViewFocus?
 
-  @FocusState private var focusedField: PleatField?
-
-  func field(_ label: String, focus: PleatField, _ boundValue: Binding<Value?>, _ message: String) -> some View {
+  func field(_ label: String, focus: PleatViewFocus, _ boundValue: Binding<Value?>, _ message: String) -> some View {
     VStack {
       LabeledContent {
         TextField(label, value: boundValue, format: .inches)
@@ -31,10 +31,6 @@ struct PleatView: View {
           .foregroundColor(Color.red)
       }
     }
-  }
-
-  func field2() -> some View {
-    ValidatingTextField(label: "Hip2", bound: $designer.hipToHipMeasure, validator: PleatValidator.positive)
   }
 
   func formatOptional(_ value: Value?) -> String {
@@ -63,19 +59,25 @@ struct PleatView: View {
               ValidatingTextField(
                 label: "Hip to Hip (rear)",
                 bound: $designer.hipToHipMeasure,
-                validator: PleatValidator.positive
+                validator: PleatValidator.positive,
+                focusTracker: $focusedField,
+                focusState: .hipToHip
               )
 
               ValidatingTextField(
                 label: "Sett",
                 bound: $designer.sett,
-                validator: PleatValidator.positive
+                validator: PleatValidator.positive,
+                focusTracker: $focusedField,
+                focusState: .sett
               )
 
               ValidatingTextField(
                 label: "Setts/Pleat",
                 bound: $designer.settsPerPleat,
-                validator: PleatValidator.positive
+                validator: PleatValidator.positive,
+                focusTracker: $focusedField,
+                focusState: .settsPerPleat
               )
             }
 
@@ -84,6 +86,8 @@ struct PleatView: View {
                 label: "#Pleats",
                 bound: $designer.pleatCount,
                 validator: PleatValidator.positive,
+                focusTracker: $focusedField,
+                focusState: .numberOfPleats,
                 disabled: designer.needsRequiredValues
               )
 
@@ -91,6 +95,8 @@ struct PleatView: View {
                 label: "Pleat Width",
                 bound: $designer.pleatWidth,
                 validator: PleatValidator.positiveSmaller2(designer.pleatFabric),
+                focusTracker: $focusedField,
+                focusState: .pleatWidth,
                 disabled: designer.needsRequiredValues
               )
             }

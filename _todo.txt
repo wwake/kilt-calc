@@ -1,7 +1,7 @@
-* Delete PleatDesigner.hipString (dead code)
 * Fields don't adjust when the bound value changes
 * Handle switch in focus to display final value
 * Duplication in PleatValidator.requiredSmaller
+* How do we update pleat count when pleat width changes? What if pleat count is nil?
 
           .focused($focusedField, equals: .hip2)
           .onChange(of: focusedField) { isFocused in
@@ -72,6 +72,7 @@ CALC-23-32: 2023-07-18 - Working on Validation
 * Make ValidatingTextField know whether it's disabled
   + Should #pleats & pleat width have warnings before they're active? No
 * Replace existing fields: pleat width
+* Delete PleatDesigner.hipString (dead code)
 
 CALC-23-31: 2023-07-17
 * Create a ValidatingTextField
