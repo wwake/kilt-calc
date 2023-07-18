@@ -5,14 +5,21 @@ struct ValidatingTextField: View {
   @Binding var bound: Value?
   var validator: (Value?) -> String
 
-  @State var input: String = ""
+  @State var input: String
   @State var errorMessage: String
 
   init(label: String, bound: Binding<Value?>, validator: @escaping (Value?) -> String) {
     self.label = label
-    self._bound = bound
-    errorMessage = "\(label) is missing"
     self.validator = validator
+
+    self._bound = bound
+    if bound.wrappedValue == nil {
+      input = ""
+      errorMessage = "\(label) is missing"
+    } else {
+      input = bound.wrappedValue!.formatted(.inches)
+      errorMessage = ""
+    }
   }
 
   static func updateBoundValue(

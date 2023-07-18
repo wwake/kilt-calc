@@ -1,6 +1,24 @@
-* Replace existing fields: Hip, sett, setts/pleat, pleats, pleat width
-* Handle switch in focus to display final value
+* Setts/pleat should have initial value
 
+* Replace existing fields: pleats, pleat width
+* Handle switch in focus to display final value
+* Should #pleats & pleat width have warnings before they're active?
+* Delete PleatDesigner.hipString (dead code)
+* Fields don't adjust when the bound value changes
+
+          .focused($focusedField, equals: .hip2)
+          .onChange(of: focusedField) { isFocused in
+            if designer.hipString.isEmpty { return }
+            if isFocused != .hip2 {
+              print("focus moved")
+              do {
+                print("hip2 = \(designer.hipString)")
+                designer.hipString = try Value.parse(designer.hipString).formatted(.inches)
+              } catch {
+                print("can't happen")
+              }
+            }
+          }
 
 Fix error message (trailing ')') - simple fractions only (at most one '/'
 * Should Value really have .error types? Ok for computation but not I/O
@@ -52,9 +70,10 @@ EGTest
 * Have EGAssertThrows?
 
 CALC-23-31: 2023-07-17
-* Create a ValidatingTextfield
+* Create a ValidatingTextField
 * Handle parser errors in pleat designer textfields
   - split parser validation and value validation, but have an error string that shows whichever is present
+* Make existing fields use ValidatingTextField: Hip, sett, setts/pleat
 
 CALC-23-30: 2023-07-13 - Throw in PleatDesigner
 * Devise an approach to validating a field - catching both parse errors and semantic errors
