@@ -30,6 +30,6 @@ final class ValidatingTextFieldTests: XCTestCase {
       label: "My Label", input: "", validator: { _ in "wrong message" }
     )
     XCTAssertEqual(value, nil)
-    XCTAssertEqual(message, "My Label is missing")
+    XCTAssertEqual(message, "Value is required")
   }
 }

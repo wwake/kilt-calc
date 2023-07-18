@@ -17,7 +17,7 @@ struct ValidatingTextField: View {
     self._bound = bound
     if bound.wrappedValue == nil {
       input = ""
-      errorMessage = "\(label) is missing"
+      errorMessage = "Value is required"
     } else {
       input = bound.wrappedValue!.formatted(.inches)
       errorMessage = ""
@@ -30,7 +30,7 @@ struct ValidatingTextField: View {
     validator: @escaping (Value?) -> String
   ) -> (Value?, String) {
     if input.isEmpty {
-      return (nil, "\(label) is missing")
+      return (nil, "Value is required")
     }
     do {
       let value = try Value.parse(input)

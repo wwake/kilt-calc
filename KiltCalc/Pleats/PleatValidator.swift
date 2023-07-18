@@ -24,26 +24,8 @@ public enum PleatValidator {
     return "Box Pleat with Too-Large Gap"
   }
 
-  static func requiredPositive(_ value: Value?, _ name: String) -> String {
-    required(value, name).and(positive(value))
-  }
-
   static func positiveSmaller(_ value1: Value?, _ value2: Value?) -> String {
     positive(value1).and(smaller(value1, value2))
-  }
-
-  static func required(_ value: Value?, _ name: String) -> String {
-      if value == nil {
-          return "\(name) is required"
-      }
-      if value!.isError {
-          var result: String?
-          if case let .error(message) = value! {
-              result = message
-          }
-          return result ?? "internal error: PleatValidator.required()"
-      }
-      return ""
   }
 
   static func positive(_ value: Value?) -> String {
