@@ -103,7 +103,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var pleatWidthError: String {
-    PleatValidator.positiveSmaller(pleatWidth, "Pleat width", pleatFabric)
+    PleatValidator.positiveSmaller(pleatWidth, pleatFabric)
   }
 
   public var gap: Value? {
