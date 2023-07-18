@@ -86,16 +86,13 @@ struct PleatView: View {
                 validator: PleatValidator.positive,
                 disabled: designer.needsRequiredValues
               )
-     //         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-          //    .disabled(designer.needsRequiredValues)
 
-//              field("#Pleats", focus: .numberOfPleats, $designer.pleatCount, designer.pleatCountError)
-//                .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-//                .disabled(designer.needsRequiredValues)
-
-              field("Pleat Width", focus: .pleatWidth, $designer.pleatWidth, designer.pleatWidthError)
-                .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-                .disabled(designer.needsRequiredValues)
+              ValidatingTextField(
+                label: "Pleat Width",
+                bound: $designer.pleatWidth,
+                validator: PleatValidator.positiveSmaller2(designer.pleatFabric),
+                disabled: designer.needsRequiredValues
+              )
             }
 
             Section {
@@ -122,7 +119,7 @@ struct PleatView: View {
             }
           }
 
-          Text(designer.message)
+          Text(designer.pleatType)
             .font(.headline)
             .multilineTextAlignment(.center)
             .padding(.bottom, 4)

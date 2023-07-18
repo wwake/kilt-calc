@@ -259,7 +259,7 @@ final class PleatDesignerTests: XCTestCase {
 
   func test_Message_None() {
     let designer = PleatDesigner()
-    XCTAssertEqual(designer.message, "Type Can't Be Determined")
+    XCTAssertEqual(designer.pleatType, "Type Can't Be Determined")
   }
 
   func test_Message() {
@@ -274,39 +274,7 @@ final class PleatDesignerTests: XCTestCase {
       designer.hipToHipMeasure = .inches(20)
       designer.sett = .inches(6)
       designer.pleatWidth = .inches($0.input)
-      EGAssertEqual(designer.message, $0)
-    }
-  }
-
-  func test_PleatWidthNil_HasNoErrorMessage() {
-    let designer = PleatDesigner()
-    designer.pleatWidth = nil
-    XCTAssertEqual(designer.pleatWidthError, "")
-  }
-
-  func test_PleatWidthErrorMessage() {
-    check([
-      eg(20.0, expect: ""),
-      eg(0, expect: "Must be positive"),
-      eg(-20.0, expect: "Must be positive"),
-    ]) {
-      let designer = PleatDesigner()
-      designer.pleatWidth = .inches($0.input)
-      EGAssertEqual(designer.pleatWidthError, $0)
-    }
-  }
-
-  func test_PleatWidthTooBigErrorMessage() {
-    let designer = PleatDesigner()
-
-    check([
-      eg((9.9, 10.0), expect: ""),
-      eg((10.0, 10.0), expect: "Value too large"),
-    ]) {
-      designer.hipToHipMeasure = .inches(15)
-      designer.sett = .inches($0.input.1)
-      designer.pleatWidth = .inches($0.input.0)
-      EGAssertEqual(designer.pleatWidthError, $0)
+      EGAssertEqual(designer.pleatType, $0)
     }
   }
 }

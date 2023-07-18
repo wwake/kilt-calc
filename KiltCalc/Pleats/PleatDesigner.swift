@@ -5,7 +5,7 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var notes = ""
 
-  public var message: String {
+  public var pleatType: String {
     PleatValidator.gapMessage(gap)
   }
 
@@ -30,25 +30,6 @@ public class PleatDesigner: ObservableObject {
       updateInProgress = false
     }
   }
-
-  @Published public var hipString = "" {
-    didSet {
-      do {
-        if hipString.isEmpty {
-          hipToHipMeasure = nil
-          hipValidationError = ""
-          return
-        }
-
-        hipToHipMeasure = try Value.parse(hipString)
-        hipValidationError = ""
-      } catch let error as String {
-        hipValidationError = error
-      } catch {}
-    }
-  }
-
-  private(set) var hipValidationError = ""
 
   @Published public var hipToHipMeasure: Value? {
     didSet {
@@ -100,10 +81,6 @@ public class PleatDesigner: ObservableObject {
         updateInProgress = false
       }
     }
-  }
-
-  public var pleatWidthError: String {
-    PleatValidator.positiveSmaller(pleatWidth, pleatFabric)
   }
 
   public var gap: Value? {
