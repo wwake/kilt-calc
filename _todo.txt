@@ -1,7 +1,10 @@
+
+* Failing test case: hip=20, sett=6 => 20/2.  Change pleat width to 3, it changes hip to 30 and #pleats to 15 AND pleat width to 2 - but expected #pleats = 10
 * Fields don't adjust when the bound value changes
 * Handle switch in focus to display final value
 * Duplication in PleatValidator.requiredSmaller
 * How do we update pleat count when pleat width changes? What if pleat count is nil?
+* Consider https://developer.apple.com/documentation/swiftui/view/focused(_:) with a local focus state.
 
           .focused($focusedField, equals: .hip2)
           .onChange(of: focusedField) { isFocused in
@@ -67,12 +70,14 @@ EGTest
 * Have EGAssertThrows?
 
 CALC-23-32: 2023-07-18 - Working on Validation
-* Setts/pleat should have initial value
+* Setts/pleat gets an initial value
 * Replace existing fields: pleats
 * Make ValidatingTextField know whether it's disabled
   + Should #pleats & pleat width have warnings before they're active? No
+* Update how pleat count updates pleat width
 * Replace existing fields: pleat width
 * Delete PleatDesigner.hipString (dead code)
+* Make ValidatingTextField track its focus state
 
 CALC-23-31: 2023-07-17
 * Create a ValidatingTextField

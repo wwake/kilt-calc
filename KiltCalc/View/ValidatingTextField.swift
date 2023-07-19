@@ -4,6 +4,8 @@ struct ValidatingTextField: View {
   var label: String
   @Binding var bound: Value?
   var validator: (Value?) -> String
+  var focusTracker: FocusState<PleatViewFocus?>.Binding
+  var focusState: PleatViewFocus
   var disabled: Bool
 
   @State var input: String
@@ -29,9 +31,14 @@ struct ValidatingTextField: View {
       input = bound.wrappedValue!.formatted(.inches)
       errorMessage = ""
     }
+
+    self.focusTracker = focusTracker
+    self.focusState = focusState
   }
 
   func updateForExternalChange(_ value: Value?) {
+    if focusTracker.wrappedValue == focusState { return }
+
     if value == nil {
       input = ""
       errorMessage = "Value is required"
@@ -39,6 +46,11 @@ struct ValidatingTextField: View {
       input = value!.formatted(.inches)
       errorMessage = ""
     }
+  }
+
+  func updateForInternalChange(_ input: String) {
+    if focusTracker.wrappedValue != focusState { return }
+    (bound, errorMessage) = Self.updateBoundValue(label: label, input: input, validator: validator)
   }
 
   static func updateBoundValue(
@@ -59,17 +71,14 @@ struct ValidatingTextField: View {
     }
   }
 
-  func updateBoundAndError(_ input: String) {
-    (bound, errorMessage) = Self.updateBoundValue(label: label, input: input, validator: validator)
-  }
-
   var body: some View {
     VStack {
       LabeledContent {
         TextField(label, text: $input)
+          .focused(focusTracker, equals: focusState)
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
-          .onChange(of: input, perform: updateBoundAndError)
+          .onChange(of: input, perform: updateForInternalChange)
           .onChange(of: bound, perform: updateForExternalChange)
       } label: {
         Text(label)

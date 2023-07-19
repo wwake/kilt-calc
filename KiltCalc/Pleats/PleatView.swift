@@ -9,7 +9,11 @@ enum PleatViewFocus: Int, CaseIterable, Equatable {
 struct PleatView: View {
   @StateObject private var designer = PleatDesigner()
 
-  @FocusState private var focusedField: PleatViewFocus?
+  @FocusState private var focusedField: PleatViewFocus? {
+    didSet {
+      print("Focus changed - \(String(describing: oldValue)) -> \(String(describing: focusedField))")
+    }
+  }
 
   func field(_ label: String, focus: PleatViewFocus, _ boundValue: Binding<Value?>, _ message: String) -> some View {
     VStack {
