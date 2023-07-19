@@ -1,7 +1,5 @@
-* "/" key added to keyboard
 * Need to validate even on external changes (in ValidatingTextField)
 * Check out developer-apple-com/documentation/uikit/keyboards_and_input/creating_a_custom_keyboard
-
 
 * "Value too large" - > "no fabric for fold""
 
@@ -78,6 +76,7 @@ CALC-23-33: 2023-07-19
 * Delete dead code in PleatValidator.requiredSmaller
 * Handle switch in focus to display final value
 * Make ValidatingTextField only track its own focus state
+* "/" key added to keyboard
 
 CALC-23-32: 2023-07-18 - Working on Validation
 * Setts/pleat gets an initial value
