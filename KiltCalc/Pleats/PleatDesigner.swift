@@ -85,6 +85,7 @@ public class PleatDesigner: ObservableObject {
 
       if !updateInProgress {
         updateInProgress = true
+        pleatCount = (hipToHipMeasure! / pleatWidth!).round()
         hipToHipMeasure = pleatCount! * pleatWidth!
         updateInProgress = false
       }

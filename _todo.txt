@@ -1,5 +1,6 @@
-
-* How do we update pleat count when pleat width changes? What if pleat count is nil?
+* Make pleat width update pleat count and possibly hip measure
+* "Value too large" - > "no fabric for fold""
+* Need to validate even on external changes (in ValidatingTextField)
 * Handle switch in focus to display final value
 * Duplication in PleatValidator.requiredSmaller
 * Consider https://developer.apple.com/documentation/swiftui/view/focused(_:) with a local focus state.
@@ -71,6 +72,8 @@ CALC-23-33: 2023-07-19
 * Add focus tracking back to each field so internal & external update correctly
   + Failing test case: hip=20, sett=6 => 20/2.  Change pleat width to 3, it changes hip to 30 and #pleats to 15 AND pleat width to 2 - but expected #pleats = 10 - Fixed
   + Fields don't adjust when the bound value changes - Fixed
+* Make pleat count update pleat width and possibly hip measure
+  + How do we update pleat count when pleat width changes? What if pleat count is nil? - check for pleat > fabric
 
 CALC-23-32: 2023-07-18 - Working on Validation
 * Setts/pleat gets an initial value
