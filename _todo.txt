@@ -1,7 +1,6 @@
-* Handle switch in focus to display final value
-* Need to validate even on external changes (in ValidatingTextField)
 * "/" key added to keyboard
-* Consider https://developer.apple.com/documentation/swiftui/view/focused(_:) with a local focus state - can't do this when we need to force keypad to go away
+* Need to validate even on external changes (in ValidatingTextField)
+* Check out developer-apple-com/documentation/uikit/keyboards_and_input/creating_a_custom_keyboard
 
 
 * "Value too large" - > "no fabric for fold""
@@ -77,6 +76,8 @@ CALC-23-33: 2023-07-19
   + How do we update pleat count when pleat width changes? What if pleat count is nil? - check for pleat > fabric
 * Make pleat width update pleat count and possibly hip measure
 * Delete dead code in PleatValidator.requiredSmaller
+* Handle switch in focus to display final value
+* Make ValidatingTextField only track its own focus state
 
 CALC-23-32: 2023-07-18 - Working on Validation
 * Setts/pleat gets an initial value

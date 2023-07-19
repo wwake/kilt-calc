@@ -8,12 +8,9 @@ enum PleatViewFocus: Int, CaseIterable, Equatable {
 
 struct PleatView: View {
   @StateObject private var designer = PleatDesigner()
+  @State private var slashIsPressed = false
 
-  @FocusState private var focusedField: PleatViewFocus? {
-    didSet {
-      print("Focus changed - \(String(describing: oldValue)) -> \(String(describing: focusedField))")
-    }
-  }
+  @FocusState private var focusedField: PleatViewFocus?
 
   func field(_ label: String, focus: PleatViewFocus, _ boundValue: Binding<Value?>, _ message: String) -> some View {
     VStack {
@@ -63,21 +60,24 @@ struct PleatView: View {
               ValidatingTextField(
                 label: "Hip to Hip (rear)",
                 bound: $designer.hipToHipMeasure,
-                validator: PleatValidator.positive
+                validator: PleatValidator.positive,
+                slashIsPressed: $slashIsPressed
               )
               .focused($focusedField, equals: .hipToHip)
 
               ValidatingTextField(
                 label: "Sett",
                 bound: $designer.sett,
-                validator: PleatValidator.positive
+                validator: PleatValidator.positive,
+                slashIsPressed: $slashIsPressed
               )
               .focused($focusedField, equals: .sett)
 
               ValidatingTextField(
                 label: "Setts/Pleat",
                 bound: $designer.settsPerPleat,
-                validator: PleatValidator.positive
+                validator: PleatValidator.positive,
+                slashIsPressed: $slashIsPressed
               )
               .focused($focusedField, equals: .settsPerPleat)
             }
@@ -87,6 +87,7 @@ struct PleatView: View {
                 label: "#Pleats",
                 bound: $designer.pleatCount,
                 validator: PleatValidator.positive,
+                slashIsPressed: $slashIsPressed,
                 disabled: designer.needsRequiredValues
               )
               .focused($focusedField, equals: .numberOfPleats)
@@ -95,6 +96,7 @@ struct PleatView: View {
                 label: "Pleat Width",
                 bound: $designer.pleatWidth,
                 validator: PleatValidator.positiveSmaller(designer.pleatFabric),
+                slashIsPressed: $slashIsPressed,
                 disabled: designer.needsRequiredValues
               )
               .focused($focusedField, equals: .pleatWidth)
@@ -118,8 +120,15 @@ struct PleatView: View {
           .frame(height: 650)
           .toolbar {
             ToolbarItem(placement: .keyboard) {
-              Button("Done") {
-                focusedField = nil
+              HStack {
+                Button("Done") {
+                  focusedField = nil
+                }
+                Spacer()
+                Button(action: { slashIsPressed = true }) {
+                  Text("/")
+                    .bold()
+                }
               }
             }
           }
