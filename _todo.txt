@@ -1,4 +1,3 @@
-* Make pleat width update pleat count and possibly hip measure
 * "Value too large" - > "no fabric for fold""
 * Need to validate even on external changes (in ValidatingTextField)
 * Handle switch in focus to display final value
@@ -74,6 +73,7 @@ CALC-23-33: 2023-07-19
   + Fields don't adjust when the bound value changes - Fixed
 * Make pleat count update pleat width and possibly hip measure
   + How do we update pleat count when pleat width changes? What if pleat count is nil? - check for pleat > fabric
+* Make pleat width update pleat count and possibly hip measure
 
 CALC-23-32: 2023-07-18 - Working on Validation
 * Setts/pleat gets an initial value

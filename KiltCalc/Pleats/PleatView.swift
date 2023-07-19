@@ -98,7 +98,7 @@ struct PleatView: View {
               ValidatingTextField(
                 label: "Pleat Width",
                 bound: $designer.pleatWidth,
-                validator: PleatValidator.positiveSmaller2(designer.pleatFabric),
+                validator: PleatValidator.positiveSmaller(designer.pleatFabric),
                 focusTracker: $focusedField,
                 focusState: .pleatWidth,
                 disabled: designer.needsRequiredValues
