@@ -8,6 +8,8 @@ struct ValidatingTextField: View {
   var focusState: PleatViewFocus
   var disabled: Bool
 
+  @FocusState private var isFocused: Bool
+
   @State var input: String
   @State var errorMessage: String
 
@@ -53,6 +55,12 @@ struct ValidatingTextField: View {
     (bound, errorMessage) = Self.updateBoundValue(label: label, input: input, validator: validator)
   }
 
+  func exitField(_ isFocused: Bool) {
+    if bound != nil {
+      input = bound!.formatted(.inches)
+    }
+  }
+
   static func updateBoundValue(
     label: String,
     input: String,
@@ -76,10 +84,12 @@ struct ValidatingTextField: View {
       LabeledContent {
         TextField(label, text: $input)
           .focused(focusTracker, equals: focusState)
+          .focused($isFocused)
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
           .onChange(of: input, perform: updateForInternalChange)
           .onChange(of: bound, perform: updateForExternalChange)
+          .onChange(of: isFocused, perform: exitField)
       } label: {
         Text(label)
           .bold()

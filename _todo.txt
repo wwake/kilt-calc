@@ -1,8 +1,10 @@
-* "Value too large" - > "no fabric for fold""
-* Need to validate even on external changes (in ValidatingTextField)
 * Handle switch in focus to display final value
-* Duplication in PleatValidator.requiredSmaller
-* Consider https://developer.apple.com/documentation/swiftui/view/focused(_:) with a local focus state.
+* Need to validate even on external changes (in ValidatingTextField)
+* "/" key added to keyboard
+* Consider https://developer.apple.com/documentation/swiftui/view/focused(_:) with a local focus state - can't do this when we need to force keypad to go away
+
+
+* "Value too large" - > "no fabric for fold""
 
           .focused($focusedField, equals: .hip2)
           .onChange(of: focusedField) { isFocused in
@@ -74,6 +76,7 @@ CALC-23-33: 2023-07-19
 * Make pleat count update pleat width and possibly hip measure
   + How do we update pleat count when pleat width changes? What if pleat count is nil? - check for pleat > fabric
 * Make pleat width update pleat count and possibly hip measure
+* Delete dead code in PleatValidator.requiredSmaller
 
 CALC-23-32: 2023-07-18 - Working on Validation
 * Setts/pleat gets an initial value
