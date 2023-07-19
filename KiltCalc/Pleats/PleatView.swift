@@ -126,8 +126,15 @@ struct PleatView: View {
                 }
                 Spacer()
                 Button(action: { slashIsPressed = true }) {
-                  Text("/")
-                    .bold()
+                  HStack {
+                    Spacer()
+                    Text("/")
+                      .bold()
+                    Spacer()
+                  }
+                  .padding(2)
+                  .background(Color.white)
+                  .frame(width: 100)
                 }
               }
             }
