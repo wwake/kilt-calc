@@ -64,10 +64,12 @@ public class PleatDesigner: ObservableObject {
         updateInProgress = true
         pleatCount = pleatCount!.round()
 
-        if pleatWidth != nil {
-          hipToHipMeasure = pleatCount! * pleatWidth!
+        let possiblePleatWidth = hipToHipMeasure! / pleatCount!
+        if possiblePleatWidth.asDouble <= pleatFabric!.asDouble {
+          pleatWidth = possiblePleatWidth
         } else {
-          pleatWidth = hipToHipMeasure! / pleatCount!
+          pleatWidth = pleatFabric!
+          hipToHipMeasure = pleatCount! * pleatWidth!
         }
 
         updateInProgress = false
