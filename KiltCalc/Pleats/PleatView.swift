@@ -63,26 +63,23 @@ struct PleatView: View {
               ValidatingTextField(
                 label: "Hip to Hip (rear)",
                 bound: $designer.hipToHipMeasure,
-                validator: PleatValidator.positive,
-                focusTracker: $focusedField,
-                focusState: .hipToHip
+                validator: PleatValidator.positive
               )
+              .focused($focusedField, equals: .hipToHip)
 
               ValidatingTextField(
                 label: "Sett",
                 bound: $designer.sett,
-                validator: PleatValidator.positive,
-                focusTracker: $focusedField,
-                focusState: .sett
+                validator: PleatValidator.positive
               )
+              .focused($focusedField, equals: .sett)
 
               ValidatingTextField(
                 label: "Setts/Pleat",
                 bound: $designer.settsPerPleat,
-                validator: PleatValidator.positive,
-                focusTracker: $focusedField,
-                focusState: .settsPerPleat
+                validator: PleatValidator.positive
               )
+              .focused($focusedField, equals: .settsPerPleat)
             }
 
             Section("Adjustable") {
@@ -90,19 +87,17 @@ struct PleatView: View {
                 label: "#Pleats",
                 bound: $designer.pleatCount,
                 validator: PleatValidator.positive,
-                focusTracker: $focusedField,
-                focusState: .numberOfPleats,
                 disabled: designer.needsRequiredValues
               )
+              .focused($focusedField, equals: .numberOfPleats)
 
               ValidatingTextField(
                 label: "Pleat Width",
                 bound: $designer.pleatWidth,
                 validator: PleatValidator.positiveSmaller(designer.pleatFabric),
-                focusTracker: $focusedField,
-                focusState: .pleatWidth,
                 disabled: designer.needsRequiredValues
               )
+              .focused($focusedField, equals: .pleatWidth)
             }
 
             Section {

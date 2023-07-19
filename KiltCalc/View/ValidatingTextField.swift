@@ -4,8 +4,6 @@ struct ValidatingTextField: View {
   var label: String
   @Binding var bound: Value?
   var validator: (Value?) -> String
-  var focusTracker: FocusState<PleatViewFocus?>.Binding
-  var focusState: PleatViewFocus
   var disabled: Bool
 
   @FocusState private var isFocused: Bool
@@ -17,8 +15,6 @@ struct ValidatingTextField: View {
     label: String,
     bound: Binding<Value?>,
     validator: @escaping (Value?) -> String,
-    focusTracker: FocusState<PleatViewFocus?>.Binding,
-    focusState: PleatViewFocus,
     disabled: Bool = false
   ) {
     self.label = label
@@ -33,13 +29,10 @@ struct ValidatingTextField: View {
       input = bound.wrappedValue!.formatted(.inches)
       errorMessage = ""
     }
-
-    self.focusTracker = focusTracker
-    self.focusState = focusState
   }
 
   func updateForExternalChange(_ value: Value?) {
-    if focusTracker.wrappedValue == focusState { return }
+    if isFocused { return }
 
     if value == nil {
       input = ""
@@ -51,7 +44,7 @@ struct ValidatingTextField: View {
   }
 
   func updateForInternalChange(_ input: String) {
-    if focusTracker.wrappedValue != focusState { return }
+    if !isFocused { return }
     (bound, errorMessage) = Self.updateBoundValue(label: label, input: input, validator: validator)
   }
 
@@ -83,7 +76,6 @@ struct ValidatingTextField: View {
     VStack {
       LabeledContent {
         TextField(label, text: $input)
-          .focused(focusTracker, equals: focusState)
           .focused($isFocused)
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
