@@ -17,7 +17,7 @@
             }
           }
 
-Fix error message (trailing ')') - simple fractions only (at most one '/'
+Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
 * Use new formatter approach throughout calculator & UI
 * May need 8th-fraction formatter or accept unitless values as inches
@@ -25,7 +25,6 @@ Fix error message (trailing ')') - simple fractions only (at most one '/'
 
 https://stackoverflow.com/questions/61073146/swiftui-validate-input-in-textfields
 
-* Refactor!! :)
 Editing fractions in TextField
 
 * Remember the last tab and go back to it on startup
