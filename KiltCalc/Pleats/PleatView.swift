@@ -154,7 +154,7 @@ struct PleatView: View {
             pleatText: formatOptional(designer.pleatWidth),
             pleat: 200,
             gapText: formatOptional(designer.gap),
-            gap: designer.gapRatio
+            gapRatio: designer.gapRatio
           )
 
           Spacer()
