@@ -37,7 +37,7 @@ struct PleatView: View {
             Section("Required") {
               ValidatingTextField(
                 label: "Ideal Hip (in)",
-                bound: $designer.hipToHipMeasure,
+                bound: $designer.idealHip,
                 validator: PleatValidator.positive,
                 slashIsPressed: $slashIsPressed
               )

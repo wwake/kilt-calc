@@ -10,8 +10,8 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var needsRequiredValues: Bool {
-    hipToHipMeasure == nil || sett == nil || settsPerPleat == nil
-    || hipToHipMeasure!.isError || sett!.isError || settsPerPleat!.isError
+    idealHip == nil || sett == nil || settsPerPleat == nil
+    || idealHip!.isError || sett!.isError || settsPerPleat!.isError
   }
 
   fileprivate func establishNonRequiredVariables() {
@@ -24,14 +24,14 @@ public class PleatDesigner: ObservableObject {
     if !updateInProgress {
       updateInProgress = true
       let tentativePleatWidth = pleatFabric! / .number(3)
-      let countAsValue = hipToHipMeasure! / tentativePleatWidth
+      let countAsValue = idealHip! / tentativePleatWidth
       pleatCount = countAsValue.round()
-      pleatWidth = hipToHipMeasure! / pleatCount!
+      pleatWidth = idealHip! / pleatCount!
       updateInProgress = false
     }
   }
 
-  @Published public var hipToHipMeasure: Value? {
+  @Published public var idealHip: Value? {
     didSet {
       establishNonRequiredVariables()
     }
@@ -43,8 +43,8 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var hipWasAdjusted: Bool {
-    if hipToHipMeasure == nil || adjustedHip == nil { return false }
-    return hipToHipMeasure! != adjustedHip!
+    if idealHip == nil || adjustedHip == nil { return false }
+    return idealHip! != adjustedHip!
   }
 
   @Published public var sett: Value? {
@@ -74,12 +74,11 @@ public class PleatDesigner: ObservableObject {
         updateInProgress = true
         pleatCount = pleatCount!.round()
 
-        let possiblePleatWidth = hipToHipMeasure! / pleatCount!
+        let possiblePleatWidth = idealHip! / pleatCount!
         if possiblePleatWidth.asDouble <= pleatFabric!.asDouble {
           pleatWidth = possiblePleatWidth
         } else {
           pleatWidth = pleatFabric!
-          hipToHipMeasure = pleatCount! * pleatWidth!
         }
 
         updateInProgress = false
@@ -95,8 +94,7 @@ public class PleatDesigner: ObservableObject {
 
       if !updateInProgress {
         updateInProgress = true
-        pleatCount = (hipToHipMeasure! / pleatWidth!).round()
-        hipToHipMeasure = pleatCount! * pleatWidth!
+        pleatCount = (idealHip! / pleatWidth!).round()
         updateInProgress = false
       }
     }
