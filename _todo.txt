@@ -1,7 +1,6 @@
-* Remove Title from Pleats page
+* Make a pleat drawing for original hip and count
 * Make pleat width drawing adjustable (ideally animated)
 * Make a tartan drawing for sett & setts/pleat
-* Make a pleat drawing for original hip and count
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
@@ -55,6 +54,7 @@ CALC-23-34: 2023-07-24
 * Need to validate even on external changes (in ValidatingTextField) - couldn't figure out a test case to demonstrate this possibility
 * Store original hip
 * Calculate pleat or pleat-width adjustment using original hip
+* Remove Title from Pleats page
 
 
 CALC-23-33: 2023-07-19

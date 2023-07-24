@@ -89,7 +89,13 @@ struct PleatView: View {
                 Text("Adjusted Hip Size (in)")
               }
               .bold(designer.hipWasAdjusted)
-              .foregroundColor(designer.hipWasAdjusted ? Color.red : Color.black)
+              .foregroundColor(
+                designer.adjustedHip == nil
+                ? Color.gray
+                : (designer.hipWasAdjusted
+                   ? Color.red
+                   : Color.black)
+              )
             }
             .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
           }
