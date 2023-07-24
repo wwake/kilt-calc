@@ -8,16 +8,16 @@ extension Shape {
 
 private struct BoxPleatShape: Shape {
   var pleat: CGFloat
-  var gap: CGFloat
+  var gapRatio: CGFloat
 
   func path(in rect: CGRect) -> Path {
     var path = Path()
 
     path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
-    path.addLine(to: CGPoint(x: rect.midX - gap / 2, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rect.midX - (pleat * gapRatio) / 2, y: rect.maxY))
     path.addLine(to: CGPoint(x: rect.midX - pleat / 2, y: rect.minY))
     path.addLine(to: CGPoint(x: rect.midX + pleat / 2, y: rect.minY))
-    path.addLine(to: CGPoint(x: rect.midX + gap / 2, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rect.midX + (pleat * gapRatio) / 2, y: rect.maxY))
     path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
     return path
   }
@@ -116,7 +116,7 @@ struct BoxPleatDrawing: View {
         .frame(width: pleat, height: 10)
         .padding([.bottom], 8)
 
-      BoxPleatShape(pleat: pleat, gap: gap)
+      BoxPleatShape(pleat: pleat, gapRatio: gap)
         .stroke(Color.green, lineWidth: 4.0)
         .frame(height: 50)
 
@@ -173,7 +173,7 @@ struct PleatDrawing_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
       Spacer()
-      BoxPleatDrawing(pleatText: "2 in", pleat: 150, gapText: "1/8 in", gap: 22)
+      BoxPleatDrawing(pleatText: "2 in", pleat: 150, gapText: "1/8 in", gap: 0.125)
       Spacer()
       KnifePleatDrawing(pleat: 150, gap: 22)
       Spacer()

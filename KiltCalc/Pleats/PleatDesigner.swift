@@ -108,6 +108,11 @@ public class PleatDesigner: ObservableObject {
     return gap!.abs()
   }
 
+  public var gapRatio: Double {
+    if gap == nil || pleatWidth == nil { return 0.0 }
+    return gap!.asDouble / pleatWidth!.asDouble
+  }
+
   public var gapLabel: String {
     if gap == nil || gap!.isError || gap!.isNonNegative() {
       return "Gap"
