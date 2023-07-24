@@ -24,16 +24,6 @@ struct PleatView: View {
       ScrollView(.vertical) {
         VStack {
           Form {
-            LabeledContent {
-              TextField("Title", text: $designer.notes, prompt: Text("Name, tartan, or other notes"))
-
-                .focused($focusedField, equals: .title)
-                .lineLimit(3)
-            } label: {
-              Text("Title")
-                .bold()
-            }
-
             Section("Required") {
               ValidatingTextField(
                 label: "Ideal Hip (in)",

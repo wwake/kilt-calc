@@ -1,23 +1,7 @@
-* Store original hip
-* Calculate pleat or pleat-width adjustment using original hip
-
-* Check out developer-apple-com/documentation/uikit/keyboards_and_input/creating_a_custom_keyboard
-
-* "Value too large" - > "no fabric for fold""
-
-          .focused($focusedField, equals: .hip2)
-          .onChange(of: focusedField) { isFocused in
-            if designer.hipString.isEmpty { return }
-            if isFocused != .hip2 {
-              print("focus moved")
-              do {
-                print("hip2 = \(designer.hipString)")
-                designer.hipString = try Value.parse(designer.hipString).formatted(.inches)
-              } catch {
-                print("can't happen")
-              }
-            }
-          }
+* Remove Title from Pleats page
+* Make pleat width drawing adjustable (ideally animated)
+* Make a tartan drawing for sett & setts/pleat
+* Make a pleat drawing for original hip and count
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
@@ -69,6 +53,9 @@ EGTest
 
 CALC-23-34: 2023-07-24
 * Need to validate even on external changes (in ValidatingTextField) - couldn't figure out a test case to demonstrate this possibility
+* Store original hip
+* Calculate pleat or pleat-width adjustment using original hip
+
 
 CALC-23-33: 2023-07-19
 * Add focus tracking back to each field so internal & external update correctly

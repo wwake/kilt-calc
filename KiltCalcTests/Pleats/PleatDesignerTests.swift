@@ -6,7 +6,6 @@ import XCTest
 final class PleatDesignerTests: XCTestCase {
   func test_initializesCorrectly() throws {
     let designer = PleatDesigner()
-    XCTAssertEqual(designer.notes, "")
     XCTAssertEqual(designer.idealHip, nil)
     XCTAssertEqual(designer.sett, nil)
     XCTAssertEqual(designer.settsPerPleat, .number(1.0))

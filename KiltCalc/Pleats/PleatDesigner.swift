@@ -3,8 +3,6 @@ import Foundation
 public class PleatDesigner: ObservableObject {
   private var updateInProgress = false
 
-  @Published public var notes = ""
-
   public var pleatType: String {
     PleatValidator.gapMessage(gap)
   }
