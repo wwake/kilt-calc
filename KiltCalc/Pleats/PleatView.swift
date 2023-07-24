@@ -6,6 +6,36 @@ enum PleatViewFocus: Int, CaseIterable, Equatable {
   case title, hipToHip, sett, settsPerPleat, numberOfPleats, pleatWidth
 }
 
+struct AdjustedHipStyle: ViewModifier {
+  let adjustedHip: Value?
+  let hipWasAdjusted: Bool
+
+  init(_ adjustedHip: Value?, _ hipWasAdjusted: Bool) {
+    self.adjustedHip = adjustedHip
+    self.hipWasAdjusted = hipWasAdjusted
+  }
+
+  func body(content: Content) -> some View {
+    var color = Color.black
+
+    if adjustedHip == nil {
+      color = Color.gray
+    } else if hipWasAdjusted {
+      color = Color.red
+    }
+
+    return content
+      .bold(hipWasAdjusted)
+      .foregroundColor(color)
+  }
+}
+
+extension View {
+  func adjustedHipStyle(_ adjustedHip: Value?, _ hipWasAdjusted: Bool) -> some View {
+    modifier(AdjustedHipStyle(adjustedHip, hipWasAdjusted))
+  }
+}
+
 struct PleatView: View {
   @StateObject private var designer = PleatDesigner()
   @State private var slashIsPressed = false
@@ -88,14 +118,7 @@ struct PleatView: View {
               } label: {
                 Text("Adjusted Hip Size (in)")
               }
-              .bold(designer.hipWasAdjusted)
-              .foregroundColor(
-                designer.adjustedHip == nil
-                ? Color.gray
-                : (designer.hipWasAdjusted
-                   ? Color.red
-                   : Color.black)
-              )
+              .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
             }
             .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
           }
