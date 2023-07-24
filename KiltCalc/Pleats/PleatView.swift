@@ -150,7 +150,12 @@ struct PleatView: View {
             .multilineTextAlignment(.center)
             .padding(.bottom, 4)
 
-          BoxPleatDrawing(pleat: 200, gap: 40)
+          BoxPleatDrawing(
+            pleatText: formatOptional(designer.pleatWidth),
+            pleat: 200,
+            gapText: formatOptional(designer.gap),
+            gap: 40
+          )
 
           Spacer()
           Spacer()

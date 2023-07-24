@@ -102,13 +102,15 @@ private struct VerticalLine: Shape {
 }
 
 struct BoxPleatDrawing: View {
+  var pleatText: String
   var pleat: CGFloat
+
+  var gapText: String
   var gap: CGFloat
 
   var body: some View {
     VStack(alignment: .center) {
-      // Text("2 in")
-      Text("pleat")
+      Text("pleat: \(pleatText)")
 
       DimensionLine()
         .frame(width: pleat, height: 10)
@@ -122,8 +124,7 @@ struct BoxPleatDrawing: View {
         .frame(width: gap, height: 10)
         .padding([.top], 8)
 
-      Text("gap")
-      // Text("0 in")
+      Text("gap: \(gapText)")
     }
     .padding()
   }
@@ -172,7 +173,7 @@ struct PleatDrawing_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
       Spacer()
-      BoxPleatDrawing(pleat: 150, gap: 22)
+      BoxPleatDrawing(pleatText: "2 in", pleat: 150, gapText: "1/8 in", gap: 22)
       Spacer()
       KnifePleatDrawing(pleat: 150, gap: 22)
       Spacer()

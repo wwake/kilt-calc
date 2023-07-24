@@ -1,5 +1,5 @@
-* Make a pleat drawing for original hip and count
 * Make pleat width drawing adjustable (ideally animated)
+* Make a pleat drawing for original hip and count
 * Make a tartan drawing for sett & setts/pleat
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
