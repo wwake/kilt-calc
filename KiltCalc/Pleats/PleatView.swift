@@ -36,7 +36,7 @@ struct PleatView: View {
 
             Section("Required") {
               ValidatingTextField(
-                label: "Hip to Hip (rear)",
+                label: "Ideal Hip (in)",
                 bound: $designer.hipToHipMeasure,
                 validator: PleatValidator.positive,
                 slashIsPressed: $slashIsPressed
@@ -92,6 +92,14 @@ struct PleatView: View {
               } label: {
                 Text("Total Fabric for Pleats (in)")
               }
+
+              LabeledContent {
+                Text(formatOptional(designer.adjustedHip))
+              } label: {
+                Text("Adjusted Hip Size (in)")
+              }
+              .bold(designer.hipWasAdjusted)
+              .foregroundColor(designer.hipWasAdjusted ? Color.red : Color.black)
             }
             .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
           }
