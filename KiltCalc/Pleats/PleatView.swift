@@ -12,28 +12,6 @@ struct PleatView: View {
 
   @FocusState private var focusedField: PleatViewFocus?
 
-  func field(_ label: String, focus: PleatViewFocus, _ boundValue: Binding<Value?>, _ message: String) -> some View {
-    VStack {
-      LabeledContent {
-        TextField(label, value: boundValue, format: .inches)
-          .multilineTextAlignment(.trailing)
-          .keyboardType(.decimalPad)
-          .focused($focusedField, equals: focus)
-      } label: {
-        Text(label)
-          .bold()
-      }
-      .padding(message.isEmpty ? 0 : 8)
-      .border(Color.red, width: message.isEmpty ? 0 : 1)
-
-      if !message.isEmpty {
-        Text(message)
-          .font(.footnote)
-          .foregroundColor(Color.red)
-      }
-    }
-  }
-
   func formatOptional(_ value: Value?) -> String {
     if value == nil {
       return "?"
