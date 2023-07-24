@@ -1,5 +1,5 @@
-* Need to validate even on external changes (in ValidatingTextField)
-* Need to store original hip
+* Store original hip
+* Calculate pleat or pleat-width adjustment using original hip
 
 * Check out developer-apple-com/documentation/uikit/keyboards_and_input/creating_a_custom_keyboard
 
@@ -66,6 +66,9 @@ EGTest
 * Let check use varargs rather than []
 * For a test that can throw, can we continue after EGAssert throws?
 * Have EGAssertThrows?
+
+CALC-23-34: 2023-07-24
+* Need to validate even on external changes (in ValidatingTextField) - couldn't figure out a test case to demonstrate this possibility
 
 CALC-23-33: 2023-07-19
 * Add focus tracking back to each field so internal & external update correctly

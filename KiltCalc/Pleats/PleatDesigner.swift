@@ -37,6 +37,11 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
+  public var adjustedHip: Value? {
+    if pleatCount == nil || pleatWidth == nil { return nil }
+    return pleatCount! * pleatWidth!
+  }
+
   @Published public var sett: Value? {
     didSet {
       establishNonRequiredVariables()
