@@ -28,6 +28,7 @@
 		91A7DC232A7057750084BBD2 /* HorizontalLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A7DC222A7057750084BBD2 /* HorizontalLine.swift */; };
 		91A7DC252A7057970084BBD2 /* VerticalLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A7DC242A7057970084BBD2 /* VerticalLine.swift */; };
 		91A7DC272A7057C90084BBD2 /* KnifePleatDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A7DC262A7057C90084BBD2 /* KnifePleatDrawing.swift */; };
+		91A7DC292A7058800084BBD2 /* PleatCountDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A7DC282A7058800084BBD2 /* PleatCountDrawing.swift */; };
 		91B0F2B82A53737C00423289 /* ApronPleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B72A53737C00423289 /* ApronPleatView.swift */; };
 		91B0F2BA2A5373FA00423289 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B92A5373FA00423289 /* CalculatorView.swift */; };
 		91D4CF3F2A5C9DF800A03B63 /* PleatValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */; };
@@ -91,6 +92,7 @@
 		91A7DC222A7057750084BBD2 /* HorizontalLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLine.swift; sourceTree = "<group>"; };
 		91A7DC242A7057970084BBD2 /* VerticalLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLine.swift; sourceTree = "<group>"; };
 		91A7DC262A7057C90084BBD2 /* KnifePleatDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnifePleatDrawing.swift; sourceTree = "<group>"; };
+		91A7DC282A7058800084BBD2 /* PleatCountDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatCountDrawing.swift; sourceTree = "<group>"; };
 		91B0F2B72A53737C00423289 /* ApronPleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApronPleatView.swift; sourceTree = "<group>"; };
 		91B0F2B92A5373FA00423289 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KiltCalcUnitTests.xctestplan; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				91184E992A4E017E00D5841E /* PleatDesigner.swift */,
 				91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */,
 				911857A62A4CB50F0020F16E /* PleatView.swift */,
+				91A7DC282A7058800084BBD2 /* PleatCountDrawing.swift */,
 			);
 			path = Pleats;
 			sourceTree = "<group>";
@@ -190,7 +193,6 @@
 			children = (
 				916AF6622A267528009484DA /* Stack.swift */,
 				9190F7AE2A29331F0008E40A /* InputBuffer.swift */,
-				91A7DC192A70556F0084BBD2 /* Shape+flipped.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -198,10 +200,11 @@
 		91A7DC1B2A7056DC0084BBD2 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				91A7DC202A7057500084BBD2 /* ArrowHead.swift */,
 				91A7DC1C2A7056EF0084BBD2 /* DimensionLine.swift */,
 				91A7DC1E2A70571B0084BBD2 /* DoubleArrow.swift */,
-				91A7DC202A7057500084BBD2 /* ArrowHead.swift */,
 				91A7DC222A7057750084BBD2 /* HorizontalLine.swift */,
+				91A7DC192A70556F0084BBD2 /* Shape+flipped.swift */,
 				91A7DC242A7057970084BBD2 /* VerticalLine.swift */,
 			);
 			path = Drawing;
@@ -460,6 +463,7 @@
 				916AF6632A267528009484DA /* Stack.swift in Sources */,
 				918628C92A2E6FF000FA781D /* Entry.swift in Sources */,
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
+				91A7DC292A7058800084BBD2 /* PleatCountDrawing.swift in Sources */,
 				91E7B6CC2A0D4428004A757A /* KiltCalcApp.swift in Sources */,
 				91B0F2BA2A5373FA00423289 /* CalculatorView.swift in Sources */,
 				91184E9A2A4E017E00D5841E /* PleatDesigner.swift in Sources */,
