@@ -10,14 +10,41 @@ private struct BoxPleatShape: Shape {
   var pleat: CGFloat
   var gapRatio: CGFloat
 
+  var leftFoldHeight: CGFloat {
+    var overlapRatio = abs(gapRatio)
+    if overlapRatio > 0.75 {
+      overlapRatio = 0.75
+    }
+    return 1.0 - 0.15 - overlapRatio
+  }
+
+  var rightFoldX: CGFloat {
+    if gapRatio < -1.0 {
+      return pleat
+    }
+    return pleat * -gapRatio
+  }
+
   func path(in rect: CGRect) -> Path {
     var path = Path()
 
     path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
-    path.addLine(to: CGPoint(x: rect.midX - (pleat * gapRatio) / 2, y: rect.maxY))
+
+    if gapRatio >= 0 {
+      path.addLine(to: CGPoint(x: rect.midX - (pleat * gapRatio) / 2, y: rect.maxY))
+    } else {
+      path.addLine(to: CGPoint(x: rect.midX, y: leftFoldHeight * rect.maxY))
+    }
+
     path.addLine(to: CGPoint(x: rect.midX - pleat / 2, y: rect.minY))
     path.addLine(to: CGPoint(x: rect.midX + pleat / 2, y: rect.minY))
-    path.addLine(to: CGPoint(x: rect.midX + (pleat * gapRatio) / 2, y: rect.maxY))
+
+    if gapRatio >= 0 {
+      path.addLine(to: CGPoint(x: rect.midX + (pleat * gapRatio) / 2, y: rect.maxY))
+    } else {
+      path.addLine(to: CGPoint(x: rect.midX - rightFoldX, y: rect.maxY))
+    }
+
     path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
     return path
   }
@@ -171,9 +198,13 @@ struct KnifePleatDrawing: View {
 
 struct PleatDrawing_Previews: PreviewProvider {
   static var previews: some View {
-    VStack {
+    ScrollView {
       Spacer()
-      BoxPleatDrawing(pleatText: "2 in", pleat: 150, gapText: "1/8 in", gapRatio: 0.25)
+      ForEach(-4..<2) {
+        Text("\(CGFloat($0) / 2.0)")
+        BoxPleatDrawing(pleatText: "2 in", pleat: 150, gapText: "1/8 in", gapRatio: CGFloat($0) / 2.0)
+        Divider()
+      }
       Spacer()
       KnifePleatDrawing(pleat: 150, gap: 22)
       Spacer()

@@ -1,4 +1,5 @@
-* Make pleat width drawing adjustable (ideally animated)
+
+* Make pleat width drawing adjustable (ideally animated): overlaps
 * Make a pleat drawing for original hip and count
 * Make a tartan drawing for sett & setts/pleat
 
@@ -6,15 +7,10 @@ Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
 * Use new formatter approach throughout calculator & UI
 * May need 8th-fraction formatter or accept unitless values as inches
-* Should 1.2.3 produce 1-2/3? Fits with decimal pad, just as non-standard as / :) - or "/" above numeric pad
-
-https://stackoverflow.com/questions/61073146/swiftui-validate-input-in-textfields
 
 Editing fractions in TextField
 
 * Remember the last tab and go back to it on startup
-
-* Compute labeled picture from form changes (animate?)
 
 * A/P: Apron/Pleat
 
@@ -55,9 +51,10 @@ CALC-23-34: 2023-07-24
 * Store original hip
 * Calculate pleat or pleat-width adjustment using original hip
 * Remove Title from Pleats page
-
+* Make pleat width drawing adjustable (ideally animated): gaps
 
 CALC-23-33: 2023-07-19
+* https://stackoverflow.com/questions/61073146/swiftui-validate-input-in-textfields
 * Add focus tracking back to each field so internal & external update correctly
   + Failing test case: hip=20, sett=6 => 20/2.  Change pleat width to 3, it changes hip to 30 and #pleats to 15 AND pleat width to 2 - but expected #pleats = 10 - Fixed
   + Fields don't adjust when the bound value changes - Fixed
