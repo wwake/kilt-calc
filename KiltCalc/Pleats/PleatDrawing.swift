@@ -161,7 +161,7 @@ struct BoxPleatDrawing: View {
         .frame(height: 50)
 
       DimensionLine()
-        .frame(width: pleat * gapRatio, height: 10)
+        .frame(width: pleat * abs(gapRatio), height: 10)
         .padding([.top], 8)
 
       Text("gap: \(gapText)")
@@ -213,7 +213,7 @@ struct PleatDrawing_Previews: PreviewProvider {
   static var previews: some View {
     ScrollView {
       Spacer()
-      ForEach(-4..<2) {
+      ForEach(0..<2) {
         Text("\(CGFloat($0) / 2.0)")
         BoxPleatDrawing(pleatText: "2 in", pleat: 150, gapText: "1/8 in", gapRatio: CGFloat($0) / 2.0)
         Divider()
