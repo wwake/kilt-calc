@@ -150,7 +150,7 @@ struct BoxPleatDrawing: View {
 
   var body: some View {
     VStack(alignment: .center) {
-      Text("pleat: \(pleatText)")
+      Text(pleatText)
 
       DimensionLine()
         .frame(width: pleat, height: 10)
@@ -164,7 +164,7 @@ struct BoxPleatDrawing: View {
         .frame(width: pleat * abs(gapRatio), height: 10)
         .padding([.top], 8)
 
-      Text("gap: \(gapText)")
+      Text(gapText)
     }
     .padding()
   }
@@ -195,7 +195,6 @@ struct KnifePleatDrawing: View {
 
   var body: some View {
     VStack(alignment: .center) {
-      // Text("2 in")
       Text("pleat")
 
       DimensionLine()
@@ -213,9 +212,9 @@ struct PleatDrawing_Previews: PreviewProvider {
   static var previews: some View {
     ScrollView {
       Spacer()
-      ForEach(0..<2) {
+      ForEach(-4..<2) {
         Text("\(CGFloat($0) / 2.0)")
-        BoxPleatDrawing(pleatText: "2 in", pleat: 150, gapText: "1/8 in", gapRatio: CGFloat($0) / 2.0)
+        BoxPleatDrawing(pleatText: "Pleat: 2 in", pleat: 150, gapText: "Gap: 1/8 in", gapRatio: CGFloat($0) / 2.0)
         Divider()
       }
 

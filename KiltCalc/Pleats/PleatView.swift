@@ -151,9 +151,9 @@ struct PleatView: View {
             .padding(.bottom, 4)
 
           BoxPleatDrawing(
-            pleatText: formatOptional(designer.pleatWidth),
+            pleatText: "Pleat: \( formatOptional(designer.pleatWidth))",
             pleat: 200,
-            gapText: formatOptional(designer.gap),
+            gapText: "\(designer.gapLabel): \( formatOptional(designer.gap))",
             gapRatio: designer.gapRatio
           )
 
