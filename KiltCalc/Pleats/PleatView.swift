@@ -153,7 +153,7 @@ struct PleatView: View {
           BoxPleatDrawing(
             pleatText: "Pleat: \( formatOptional(designer.pleatWidth))",
             pleat: 200,
-            gapText: "\(designer.gapLabel): \( formatOptional(designer.gap))",
+            gapText: "Gap: \( formatOptional(designer.gap))",
             gapRatio: designer.gapRatio
           )
 

@@ -11,7 +11,7 @@ private struct BoxPleatShape: Shape {
   var gapRatio: CGFloat
 
   var leftFoldHeight: CGFloat {
-    var overlapRatio = abs(gapRatio)
+    let overlapRatio = abs(gapRatio)
     if overlapRatio > 0.75 {
       return 0.1
     }
@@ -160,11 +160,13 @@ struct BoxPleatDrawing: View {
         .stroke(Color.green, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
         .frame(height: 50)
 
-      DimensionLine()
-        .frame(width: pleat * abs(gapRatio), height: 10)
-        .padding([.top], 8)
+      if gapRatio >= 0 {
+        DimensionLine()
+          .frame(width: pleat * gapRatio, height: 10)
+          .padding([.top], 8)
 
-      Text(gapText)
+        Text(gapText)
+      }
     }
     .padding()
   }
