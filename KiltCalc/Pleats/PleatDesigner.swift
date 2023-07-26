@@ -22,10 +22,9 @@ public class PleatDesigner: ObservableObject {
 
     if !updateInProgress {
       updateInProgress = true
-      let tentativePleatWidth = pleatFabric! / .number(3)
-      let countAsValue = idealHip! / tentativePleatWidth
-      pleatCount = countAsValue.round()
-      pleatWidth = idealHip! / pleatCount!
+      equations.setRequired(hip: idealHip!.asDouble, fabric: pleatFabric!.asDouble)
+      pleatCount = .number(equations.count)
+      pleatWidth = .inches(equations.width)
       updateInProgress = false
     }
   }

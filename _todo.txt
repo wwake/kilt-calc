@@ -1,4 +1,4 @@
-
+* Extract a system of equations from PleatDesigner
 * Make pleat width drawing adjustable (ideally animated): overlaps
 * Make a pleat drawing for original hip and count
 * Make a tartan drawing for sett & setts/pleat

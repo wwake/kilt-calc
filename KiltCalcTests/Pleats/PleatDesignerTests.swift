@@ -4,6 +4,11 @@ import XCTest
 
 @MainActor
 final class PleatDesignerTests: XCTestCase {
+  func checkValueEquality(_ actual: Value?, _ expected: Value?, accuracy: Double = 0.0) {
+    if actual == nil && expected == nil { return }
+    XCTAssertEqual(actual!.asDouble, expected!.asDouble, accuracy: accuracy)
+  }
+
   func test_initializesCorrectly() throws {
     let designer = PleatDesigner()
     XCTAssertEqual(designer.idealHip, nil)
@@ -97,8 +102,8 @@ final class PleatDesignerTests: XCTestCase {
 
     XCTAssertEqual(designer.pleatFabric, .inches(5.0))
     XCTAssertEqual(designer.pleatCount, .number(5))
-    XCTAssertEqual(designer.pleatWidth, .inches(8.0 / 5.0))
-    XCTAssertEqual(designer.gap!.asDouble, -0.1, accuracy: 0.000001)
+    checkValueEquality(designer.pleatWidth, .inches(8.0 / 5.0))
+    checkValueEquality(designer.gap, .inches(-0.1), accuracy: 0.000001)
   }
 
   func test_HipSetButSettError_SetsPleatFabricNil() {
