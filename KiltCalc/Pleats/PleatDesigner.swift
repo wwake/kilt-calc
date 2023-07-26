@@ -20,13 +20,9 @@ public class PleatDesigner: ObservableObject {
       return
     }
 
-    if !updateInProgress {
-      updateInProgress = true
-      equations.setRequired(hip: idealHip!.asDouble, fabric: pleatFabric!.asDouble) {
-        pleatCount = .number(equations.count)
-        pleatWidth = .inches(equations.width)
-      }
-      updateInProgress = false
+    equations.setRequired(hip: idealHip!.asDouble, fabric: pleatFabric!.asDouble) {
+      pleatCount = .number(equations.count)
+      pleatWidth = .inches(equations.width)
     }
   }
 
@@ -69,13 +65,9 @@ public class PleatDesigner: ObservableObject {
         return
       }
 
-      if !updateInProgress {
-        updateInProgress = true
-        equations.setCount(pleatCount!.asDouble) {
-          pleatCount = .number(equations.count)
-          pleatWidth = .inches(equations.width)
-        }
-        updateInProgress = false
+      equations.setCount(pleatCount!.asDouble) {
+        pleatCount = .number(equations.count)
+        pleatWidth = .inches(equations.width)
       }
     }
   }
