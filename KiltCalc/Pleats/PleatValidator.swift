@@ -6,12 +6,12 @@ extension String {
 }
 
 public enum PleatValidator {
-  static func gapMessage(_ gap: Value?) -> String {
+  static func gapMessage(_ gap: Double?) -> String {
     if gap == nil {
       return "Type Can't Be Determined"
     }
 
-    let gapDouble = gap!.asDouble
+    let gapDouble = gap!
     if gapDouble.isZero {
       return "Box Pleat"
     } else if gapDouble < 0 && gapDouble > -0.5 {

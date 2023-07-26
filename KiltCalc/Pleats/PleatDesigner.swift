@@ -80,23 +80,23 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  public var gap: Value? {
+  public var gap: Double? {
     if needsRequiredValues || pleatWidth == nil || pleatWidth!.isError { return nil }
-    return (.number(3) * pleatWidth! - .inches(pleatFabric!)) / .number(2.0)
+    return (3 * pleatWidth!.asDouble - pleatFabric!) / 2.0
   }
 
   public var absoluteGap: Double? {
-    if gap == nil || gap!.isError { return nil }
-    return abs(gap!.asDouble)
+    if gap == nil { return nil }
+    return abs(gap!)
   }
 
   public var gapRatio: Double {
     if gap == nil || pleatWidth == nil { return 0.0 }
-    return gap!.asDouble / pleatWidth!.asDouble
+    return gap! / pleatWidth!.asDouble
   }
 
   public var gapLabel: String {
-    if gap == nil || gap!.isError || gap!.isNonNegative() {
+    if gap == nil || gap! >= 0 {
       return "Gap"
     }
     return "Overlap"
