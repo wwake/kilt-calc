@@ -2,6 +2,7 @@ import Foundation
 
 public class PleatDesigner: ObservableObject {
   private var updateInProgress = false
+  private var equations = PleatEquations()
 
   public var pleatType: String {
     PleatValidator.gapMessage(gap)
