@@ -1,7 +1,6 @@
 import Foundation
 
 public class PleatDesigner: ObservableObject {
-  private var updateInProgress = false
   private var equations = PleatEquations()
 
   public var pleatType: String {
@@ -78,13 +77,9 @@ public class PleatDesigner: ObservableObject {
         return
       }
 
-      if !updateInProgress {
-        updateInProgress = true
-        equations.setWidth(pleatWidth!.asDouble) {
-          pleatCount = .number(equations.count)
-          pleatWidth = .inches(equations.width)
-        }
-        updateInProgress = false
+      equations.setWidth(pleatWidth!.asDouble) {
+        pleatCount = .number(equations.count)
+        pleatWidth = .inches(equations.width)
       }
     }
   }
