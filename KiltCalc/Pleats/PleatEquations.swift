@@ -6,29 +6,22 @@ public class PleatEquations {
   private(set) var count: Double = 1
   private(set) var width: Double = 1
 
-  func setRequired(hip: Double, fabric: Double) {
-    self.hip = hip
-    self.fabric = fabric
+  func setRequired(hip newHip: Double, fabric newFabric: Double) {
+    hip = newHip
+    fabric = newFabric
 
     let tentativePleatWidth = fabric / 3.0
-    let countAsValue = hip / tentativePleatWidth
-    count = round(countAsValue)
+    count = round(hip / tentativePleatWidth)
     width = hip / count
   }
 
-  func setCount(_ count: Double) {
-    self.count = round(count)
-
-    let possiblePleatWidth = hip / self.count
-    if possiblePleatWidth <= fabric {
-      width = possiblePleatWidth
-    } else {
-      width = fabric
-    }
+  func setCount(_ newCount: Double) {
+    count = round(newCount)
+    width = min(fabric, hip / count)
   }
 
-  func setWidth(_ width: Double) {
-    self.width = width
+  func setWidth(_ newWidth: Double) {
+    width = newWidth
     count = round(hip / width)
   }
 }
