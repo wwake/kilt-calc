@@ -14,7 +14,7 @@ public class PleatDesigner: ObservableObject {
 
   fileprivate func updateCountAndWidth() {
     pleatCount = .number(equations.count)
-    pleatWidth = .inches(equations.width)
+    pleatWidth = .number(equations.width)
   }
 
   fileprivate func establishNonRequiredVariables() {
