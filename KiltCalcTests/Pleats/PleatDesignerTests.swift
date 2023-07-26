@@ -4,7 +4,7 @@ import XCTest
 
 @MainActor
 final class PleatDesignerTests: XCTestCase {
-  func checkValueEquality(_ actual: Value?, _ expected: Value?, accuracy: Double = 0.0) {
+  private func checkValueEquality(_ actual: Value?, _ expected: Value?, accuracy: Double = 0.0) {
     if actual == nil && expected == nil { return }
     XCTAssertEqual(actual!.asDouble, expected!.asDouble, accuracy: accuracy)
   }

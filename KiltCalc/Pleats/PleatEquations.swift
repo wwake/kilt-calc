@@ -26,4 +26,9 @@ public class PleatEquations {
       width = fabric
     }
   }
+
+  func setWidth(_ width: Double) {
+    self.width = width
+    count = round(hip / width)
+  }
 }
