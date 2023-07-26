@@ -70,15 +70,9 @@ public class PleatDesigner: ObservableObject {
 
       if !updateInProgress {
         updateInProgress = true
-        pleatCount = pleatCount!.round()
-
-        let possiblePleatWidth = idealHip! / pleatCount!
-        if possiblePleatWidth.asDouble <= pleatFabric!.asDouble {
-          pleatWidth = possiblePleatWidth
-        } else {
-          pleatWidth = pleatFabric!
-        }
-
+        equations.setCount(pleatCount!.asDouble)
+        pleatCount = .number(equations.count)
+        pleatWidth = .inches(equations.width)
         updateInProgress = false
       }
     }

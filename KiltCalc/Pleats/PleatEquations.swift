@@ -15,4 +15,15 @@ public class PleatEquations {
     count = round(countAsValue)
     width = hip / count
   }
+
+  func setCount(_ count: Double) {
+    self.count = round(count)
+
+    let possiblePleatWidth = hip / self.count
+    if possiblePleatWidth <= fabric {
+      width = possiblePleatWidth
+    } else {
+      width = fabric
+    }
+  }
 }
