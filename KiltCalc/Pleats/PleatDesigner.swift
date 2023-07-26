@@ -85,9 +85,9 @@ public class PleatDesigner: ObservableObject {
     return (.number(3) * pleatWidth! - .inches(pleatFabric!)) / .number(2.0)
   }
 
-  public var absoluteGap: Value? {
+  public var absoluteGap: Double? {
     if gap == nil || gap!.isError { return nil }
-    return gap!.abs()
+    return abs(gap!.asDouble)
   }
 
   public var gapRatio: Double {

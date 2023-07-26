@@ -187,7 +187,7 @@ final class PleatDesignerTests: XCTestCase {
 
     XCTAssertEqual(designer.pleatWidth, .inches(3))
     XCTAssertEqual(designer.gap, .inches(1.5))
-    XCTAssertEqual(designer.absoluteGap, .inches(1.5))
+    XCTAssertEqual(designer.absoluteGap, 1.5)
     XCTAssertEqual(designer.gapRatio, 1.5 / 3)
     XCTAssertEqual(designer.gapLabel, "Gap")
     XCTAssertEqual(designer.pleatCount, .number(7))
@@ -202,7 +202,7 @@ final class PleatDesignerTests: XCTestCase {
     designer.pleatWidth = .inches(1.75)
 
     XCTAssertEqual(designer.gap, .inches(-0.375))
-    XCTAssertEqual(designer.absoluteGap, .inches(0.375))
+    XCTAssertEqual(designer.absoluteGap, 0.375)
     XCTAssertEqual(designer.gapLabel, "Overlap")
   }
 
