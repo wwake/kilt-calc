@@ -12,6 +12,11 @@ public class PleatDesigner: ObservableObject {
     || idealHip!.isError || sett!.isError || settsPerPleat!.isError
   }
 
+  fileprivate func updateCountAndWidth() {
+    pleatCount = .number(equations.count)
+    pleatWidth = .inches(equations.width)
+  }
+
   fileprivate func establishNonRequiredVariables() {
     if needsRequiredValues {
       pleatWidth = nil
@@ -19,10 +24,7 @@ public class PleatDesigner: ObservableObject {
       return
     }
 
-    equations.setRequired(hip: idealHip!.asDouble, fabric: pleatFabric!.asDouble) {
-      pleatCount = .number(equations.count)
-      pleatWidth = .inches(equations.width)
-    }
+    equations.setRequired(hip: idealHip!.asDouble, fabric: pleatFabric!.asDouble, action: updateCountAndWidth)
   }
 
   @Published public var idealHip: Value? {
@@ -64,10 +66,7 @@ public class PleatDesigner: ObservableObject {
         return
       }
 
-      equations.setCount(pleatCount!.asDouble) {
-        pleatCount = .number(equations.count)
-        pleatWidth = .inches(equations.width)
-      }
+      equations.setCount(pleatCount!.asDouble, action: updateCountAndWidth)
     }
   }
 
@@ -77,10 +76,7 @@ public class PleatDesigner: ObservableObject {
         return
       }
 
-      equations.setWidth(pleatWidth!.asDouble) {
-        pleatCount = .number(equations.count)
-        pleatWidth = .inches(equations.width)
-      }
+      equations.setWidth(pleatWidth!.asDouble, action: updateCountAndWidth)
     }
   }
 
