@@ -102,8 +102,8 @@ public class PleatDesigner: ObservableObject {
     return "Overlap"
   }
 
-  public var totalFabric: Value? {
+  public var totalFabric: Double? {
     if needsRequiredValues || pleatCount == nil || pleatCount!.isError { return nil }
-    return .inches(pleatFabric!) * pleatCount!
+    return pleatFabric! * pleatCount!.asDouble
   }
 }

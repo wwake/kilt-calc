@@ -320,7 +320,7 @@ final class PleatDesignerTests: XCTestCase {
     let designer = PleatDesigner()
     designer.idealHip = .inches(20)
     designer.sett = .inches(6)
-    XCTAssertEqual(designer.totalFabric, .inches(60))
+    XCTAssertEqual(designer.totalFabric, 60)
   }
 
   func test_Message_None() {

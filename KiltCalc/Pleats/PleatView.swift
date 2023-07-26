@@ -42,6 +42,13 @@ struct PleatView: View {
 
   @FocusState private var focusedField: PleatViewFocus?
 
+  func formatOptional(_ value: Double?) -> String {
+    if value == nil {
+      return "?"
+    }
+    return value!.formatted()
+  }
+
   func formatOptional(_ value: Value?) -> String {
     if value == nil {
       return "?"
