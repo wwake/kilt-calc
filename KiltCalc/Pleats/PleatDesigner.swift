@@ -71,9 +71,10 @@ public class PleatDesigner: ObservableObject {
 
       if !updateInProgress {
         updateInProgress = true
-        equations.setCount(pleatCount!.asDouble)
-        pleatCount = .number(equations.count)
-        pleatWidth = .inches(equations.width)
+        equations.setCount(pleatCount!.asDouble) {
+          pleatCount = .number(equations.count)
+          pleatWidth = .inches(equations.width)
+        }
         updateInProgress = false
       }
     }
@@ -87,8 +88,10 @@ public class PleatDesigner: ObservableObject {
 
       if !updateInProgress {
         updateInProgress = true
-        equations.setWidth(pleatWidth!.asDouble)
-        pleatCount = .number(equations.count)
+        equations.setWidth(pleatWidth!.asDouble) {
+          pleatCount = .number(equations.count)
+          pleatWidth = .inches(equations.width)
+        }
         updateInProgress = false
       }
     }
