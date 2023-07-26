@@ -24,7 +24,7 @@ public class PleatDesigner: ObservableObject {
       return
     }
 
-    equations.setRequired(hip: idealHip!.asDouble, fabric: pleatFabric!.asDouble, action: updateCountAndWidth)
+    equations.setRequired(hip: idealHip!.asDouble, fabric: pleatFabric!, action: updateCountAndWidth)
   }
 
   @Published public var idealHip: Value? {
@@ -55,9 +55,9 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  public var pleatFabric: Value? {
+  public var pleatFabric: Double? {
     if needsRequiredValues { return nil }
-    return sett! * settsPerPleat!
+    return sett!.asDouble * settsPerPleat!.asDouble
   }
 
   @Published public var pleatCount: Value? {
@@ -82,7 +82,7 @@ public class PleatDesigner: ObservableObject {
 
   public var gap: Value? {
     if needsRequiredValues || pleatWidth == nil || pleatWidth!.isError { return nil }
-    return (.number(3) * pleatWidth! - pleatFabric!) / .number(2.0)
+    return (.number(3) * pleatWidth! - .inches(pleatFabric!)) / .number(2.0)
   }
 
   public var absoluteGap: Value? {
@@ -104,6 +104,6 @@ public class PleatDesigner: ObservableObject {
 
   public var totalFabric: Value? {
     if needsRequiredValues || pleatCount == nil || pleatCount!.isError { return nil }
-    return pleatFabric! * pleatCount!
+    return .inches(pleatFabric!) * pleatCount!
   }
 }

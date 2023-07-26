@@ -100,7 +100,7 @@ final class PleatDesignerTests: XCTestCase {
     designer.idealHip = .inches(8)
     designer.sett = .inches(5)
 
-    XCTAssertEqual(designer.pleatFabric, .inches(5.0))
+    XCTAssertEqual(designer.pleatFabric, 5.0)
     XCTAssertEqual(designer.pleatCount, .number(5))
     checkValueEquality(designer.pleatWidth, .inches(8.0 / 5.0))
     checkValueEquality(designer.gap, .inches(-0.1), accuracy: 0.000001)
@@ -150,7 +150,7 @@ final class PleatDesignerTests: XCTestCase {
     designer.sett = .inches(6)
     designer.settsPerPleat = .number(1.5)
 
-    XCTAssertEqual(designer.pleatFabric, .inches(9.0))
+    XCTAssertEqual(designer.pleatFabric, 9.0)
     XCTAssertEqual(designer.pleatWidth!.asDouble, 2.666667, accuracy: 0.00001)
     XCTAssertEqual(designer.gap!.asDouble, -0.5, accuracy: 0.000001)
   }
@@ -212,7 +212,7 @@ final class PleatDesignerTests: XCTestCase {
     designer.sett = .inches(5)
     designer.pleatCount = .number(10)
 
-    XCTAssertEqual(designer.pleatFabric, .inches(5))
+    XCTAssertEqual(designer.pleatFabric, 5)
     XCTAssertEqual(designer.pleatCount, .number(10))
     XCTAssertEqual(designer.pleatWidth!.asDouble, 2)
     XCTAssertEqual(designer.idealHip!.asDouble, 20)
@@ -270,7 +270,7 @@ final class PleatDesignerTests: XCTestCase {
     designer.settsPerPleat = .number(2)
     designer.idealHip = .inches(20)
 
-    XCTAssertEqual(designer.pleatFabric, .inches(12))
+    XCTAssertEqual(designer.pleatFabric, 12)
     XCTAssertEqual(designer.pleatWidth, .inches(4))
     XCTAssertEqual(designer.gap, .number(0))
     XCTAssertEqual(designer.pleatCount, .number(5))

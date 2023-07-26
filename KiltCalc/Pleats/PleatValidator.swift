@@ -24,9 +24,10 @@ public enum PleatValidator {
     return "Box Pleat with Too-Large Gap"
   }
 
-  static func positiveSmaller(_ bigger: Value?) -> ((Value?) -> String) {
+  static func positiveSmaller(_ bigger: Double?) -> ((Value?) -> String) {
     { value in
-      let smallerFn = smaller(value, bigger)
+      if bigger == nil { return "" }
+      let smallerFn = smaller(value, .inches(bigger!))
       return positive(value).and(smallerFn(value))
     }
   }
