@@ -66,7 +66,7 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var pleatWidth: Value? {
     didSet {
-      if needsRequiredValues || pleatWidth == nil { 
+      if needsRequiredValues || pleatWidth == nil {
         return
       }
 
@@ -75,7 +75,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var gap: Double? {
-    if needsRequiredValues || pleatWidth == nil || pleatWidth!.isError { return nil }
+    if needsRequiredValues || pleatWidth == nil { return nil }
     return (3 * pleatWidth!.asDouble - pleatFabric!) / 2.0
   }
 
