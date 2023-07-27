@@ -66,7 +66,7 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var pleatWidth: Value? {
     didSet {
-      if needsRequiredValues || pleatWidth == nil || pleatWidth!.isError {
+      if needsRequiredValues || pleatWidth == nil { 
         return
       }
 
