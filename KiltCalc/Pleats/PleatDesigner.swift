@@ -8,7 +8,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   fileprivate func updateCountAndWidth() {
-    pleatCount = .number(equations.count)
+    pleatCount = .number(Double(equations.count))
     pleatWidth = .number(equations.width)
   }
 

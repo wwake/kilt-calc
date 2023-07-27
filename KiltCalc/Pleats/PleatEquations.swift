@@ -5,7 +5,7 @@ public class PleatEquations {
 
   private var hip: Double = 1
   private var fabric: Double = 1
-  private(set) var count: Double = 1
+  private(set) var count: Int = 1
   private(set) var width: Double = 1
 
   func setRequired(hip newHip: Double, fabric newFabric: Double, action: () -> Void) {
@@ -15,8 +15,8 @@ public class PleatEquations {
     fabric = newFabric
 
     let tentativePleatWidth = fabric / 3.0
-    count = round(hip / tentativePleatWidth)
-    width = hip / count
+    count = Int(round(hip / tentativePleatWidth))
+    width = hip / Double(count)
 
     lockedAction(action)
   }
@@ -24,8 +24,8 @@ public class PleatEquations {
   func setCount(_ newCount: Double, action: () -> Void) {
     if locked { return}
 
-    count = round(newCount)
-    width = min(fabric, hip / count)
+    count = Int(round(newCount))
+    width = min(fabric, hip / Double(count))
 
     lockedAction(action)
   }
@@ -34,7 +34,7 @@ public class PleatEquations {
     if locked { return}
 
     width = newWidth
-    count = round(hip / width)
+    count = Int(round(hip / width))
 
     lockedAction(action)
   }
