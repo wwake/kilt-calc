@@ -60,39 +60,45 @@ struct PleatView: View {
     NavigationView {
       List {
         Section("Tartan") {
-          ValidatingTextField(
-            label: "Sett",
-            bound: $designer.sett,
-            validator: PleatValidator.positive,
-            slashIsPressed: $slashIsPressed
-          )
-          .focused($focusedField, equals: .sett)
+          VStack {
+            ValidatingTextField(
+              label: "Sett",
+              bound: $designer.sett,
+              validator: PleatValidator.positive,
+              slashIsPressed: $slashIsPressed
+            )
+            .focused($focusedField, equals: .sett)
 
-          ValidatingTextField(
-            label: "Setts/Pleat",
-            bound: $designer.settsPerPleat,
-            validator: PleatValidator.positive,
-            slashIsPressed: $slashIsPressed
-          )
-          .focused($focusedField, equals: .settsPerPleat)
+            TartanDrawing()
+
+            ValidatingTextField(
+              label: "Setts/Pleat",
+              bound: $designer.settsPerPleat,
+              validator: PleatValidator.positive,
+              slashIsPressed: $slashIsPressed
+            )
+            .focused($focusedField, equals: .settsPerPleat)
+          }
         }
 
         Section("Pleats") {
-          ValidatingTextField(
-            label: "Ideal Hip (in)",
-            bound: $designer.idealHip,
-            validator: PleatValidator.positive,
-            slashIsPressed: $slashIsPressed
-          )
-          .focused($focusedField, equals: .hipToHip)
+          VStack {
+            ValidatingTextField(
+              label: "Ideal Hip (in)",
+              bound: $designer.idealHip,
+              validator: PleatValidator.positive,
+              slashIsPressed: $slashIsPressed
+            )
+            .focused($focusedField, equals: .hipToHip)
 
-          PleatCountDrawing(count: designer.pleatCount)
+            PleatCountDrawing(count: designer.pleatCount)
 
-          HStack {
-            Stepper("#Pleats", value: $designer.pleatCount, in: 3...30)
-            Text("\(designer.pleatCount)")
+            HStack {
+              Stepper("#Pleats", value: $designer.pleatCount, in: 3...30)
+              Text("\(designer.pleatCount)")
+            }
+            .disabled(designer.needsRequiredValues)
           }
-          .disabled(designer.needsRequiredValues)
         }
         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
 
