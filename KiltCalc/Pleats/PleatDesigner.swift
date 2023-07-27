@@ -15,7 +15,6 @@ public class PleatDesigner: ObservableObject {
   fileprivate func establishNonRequiredVariables() {
     if needsRequiredValues {
       pleatWidth = nil
-// pleatCountOld = nil
       return
     }
 
@@ -62,16 +61,6 @@ public class PleatDesigner: ObservableObject {
       }
 
       equations.setCount(pleatCount, action: updateCountAndWidth)
-    }
-  }
-
-  @Published public var pleatCountOld: Value? {
-    didSet {
-//      if needsRequiredValues || pleatCountOld == nil || pleatCountOld!.isError {
-//        return
-//      }
-//
-//      equations.setCount(pleatCountOld!.asDouble, action: updateCountAndWidth)
     }
   }
 
