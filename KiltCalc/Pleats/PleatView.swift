@@ -93,14 +93,6 @@ struct PleatView: View {
                 Text("\(designer.pleatCount)")
               }
               .disabled(designer.needsRequiredValues)
-//              ValidatingTextField(
-//                label: "#Pleats",
-//                bound: $designer.pleatCountOld,
-//                validator: PleatValidator.positive,
-//                slashIsPressed: $slashIsPressed,
-//                disabled: designer.needsRequiredValues
-//              )
-//              .focused($focusedField, equals: .numberOfPleats)
 
               ValidatingTextField(
                 label: "Pleat Width",
