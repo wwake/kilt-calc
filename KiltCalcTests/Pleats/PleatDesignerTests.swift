@@ -13,7 +13,7 @@ final class PleatDesignerTests: XCTestCase {
     let designer = PleatDesigner()
     XCTAssertEqual(designer.idealHip, nil)
     XCTAssertEqual(designer.sett, nil)
-    XCTAssertEqual(designer.settsPerPleat, .number(1.0))
+    XCTAssertEqual(designer.settsPerPleat, 1.0)
     XCTAssertEqual(designer.pleatWidth, nil)
     XCTAssertEqual(designer.pleatCount, 10)
     XCTAssertEqual(designer.gap, nil)
@@ -22,18 +22,8 @@ final class PleatDesignerTests: XCTestCase {
   func test_WhenSettIsMissing_ThenOutputVariablesAreNil() {
     let designer = PleatDesigner()
     designer.idealHip = .inches(10)
-    designer.settsPerPleat = .number(2)
+    designer.settsPerPleat = 2
     designer.sett = nil
-
-    XCTAssertEqual(designer.pleatWidth, nil)
-    XCTAssertEqual(designer.gap, nil)
-  }
-
-  func test_WhenSettsPerPleatIsMissing_ThenOutputVariablesAreNil() {
-    let designer = PleatDesigner()
-    designer.idealHip = .inches(10)
-    designer.sett = .inches(5)
-    designer.settsPerPleat = nil
 
     XCTAssertEqual(designer.pleatWidth, nil)
     XCTAssertEqual(designer.gap, nil)
@@ -41,7 +31,7 @@ final class PleatDesignerTests: XCTestCase {
 
   func test_WhenHipIsMissing_ThenOutputVariablesAreNil() {
     let designer = PleatDesigner()
-    designer.settsPerPleat = .number(2)
+    designer.settsPerPleat = 2
     designer.sett = .inches(7)
     designer.idealHip = nil
 
@@ -68,32 +58,11 @@ final class PleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.gap!, -0.1, accuracy: 0.000001)
   }
 
-  func test_setSettWithSettsPerPleatNil_SetsNilFor_PleatWidth_Gap() {
-    let designer = PleatDesigner()
-    designer.idealHip = .inches(8)
-    designer.settsPerPleat = nil
-    designer.sett = .inches(5)
-    XCTAssertEqual(designer.pleatFabric, nil)
-    XCTAssertEqual(designer.pleatWidth, nil)
-    XCTAssertEqual(designer.gap, nil)
-  }
-
-  func test_setSettToNil_Makes_PleatFabric_PleatWidth_Gap_Nil() {
-    let designer = PleatDesigner()
-    designer.idealHip = .inches(8)
-    designer.sett = .inches(5)
-    designer.sett = nil
-
-    XCTAssertEqual(designer.pleatFabric, nil)
-    XCTAssertEqual(designer.pleatWidth, nil)
-    XCTAssertEqual(designer.gap, nil)
-  }
-
   func test_setSettsPerPleatUpdatesPleatWidth_Gap_PleatCount() {
     let designer = PleatDesigner()
     designer.idealHip = .inches(8)
     designer.sett = .inches(6)
-    designer.settsPerPleat = .number(1)
+    designer.settsPerPleat = 1
     XCTAssertEqual(designer.pleatWidth, .number(2))
     XCTAssertEqual(designer.gap, 0)
     XCTAssertEqual(designer.pleatCount, 4)
@@ -103,30 +72,18 @@ final class PleatDesignerTests: XCTestCase {
     let designer = PleatDesigner()
     designer.idealHip = .inches(8)
     designer.sett = .inches(6)
-    designer.settsPerPleat = .number(1.5)
+    designer.settsPerPleat = 1.5
 
     XCTAssertEqual(designer.pleatFabric, 9.0)
     XCTAssertEqual(designer.pleatWidth!.asDouble, 2.666667, accuracy: 0.00001)
     XCTAssertEqual(designer.gap!, -0.5, accuracy: 0.000001)
   }
 
-  func test_setSettsPerPleatToNil_Makes_PleatFabric_PleatWidth_Gap_Nil() {
-    let designer = PleatDesigner()
-    designer.idealHip = .inches(8)
-    designer.sett = .inches(5)
-    designer.settsPerPleat = .number(2)
-    designer.settsPerPleat = nil
-
-    XCTAssertEqual(designer.pleatFabric, nil)
-    XCTAssertEqual(designer.pleatWidth, nil)
-    XCTAssertEqual(designer.gap, nil)
-  }
-
   func test_setSettsPerPleat_WithSettNil_MakesPleatFabric_PleatWidth_Gap_BeNil() {
     let designer = PleatDesigner()
     designer.idealHip = .inches(8)
     designer.sett = nil
-    designer.settsPerPleat = .number(1)
+    designer.settsPerPleat = 1
 
     XCTAssertEqual(designer.pleatFabric, nil)
     XCTAssertEqual(designer.pleatWidth, nil)
@@ -213,7 +170,7 @@ final class PleatDesignerTests: XCTestCase {
   func test_setHip_UpdatesAdjustableOutput() {
     let designer = PleatDesigner()
     designer.sett = .inches(6)
-    designer.settsPerPleat = .number(2)
+    designer.settsPerPleat = 2
     designer.idealHip = .inches(20)
 
     XCTAssertEqual(designer.pleatFabric, 12)
@@ -225,7 +182,7 @@ final class PleatDesignerTests: XCTestCase {
   func test_AdjustedHipWidth_IsPleatsTimesPleatWidth() {
     let designer = PleatDesigner()
     designer.sett = .inches(6)
-    designer.settsPerPleat = .number(1)
+    designer.settsPerPleat = 1
     designer.idealHip = .inches(20)
 
     designer.pleatCount = 1
@@ -238,7 +195,7 @@ final class PleatDesignerTests: XCTestCase {
   func test_WhenPleatWidthNil_AdjustedHipWidthIsNil() {
     let designer = PleatDesigner()
     designer.sett = .inches(6)
-    designer.settsPerPleat = .number(1)
+    designer.settsPerPleat = 1
     designer.idealHip = .inches(20)
 
     designer.pleatWidth = nil

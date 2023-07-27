@@ -1,7 +1,6 @@
 import Combine
 import SwiftUI
 
-// see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
 enum PleatViewFocus: Int, CaseIterable, Equatable {
   case hipToHip, sett, settsPerPleat, numberOfPleats, pleatWidth
 }
@@ -140,6 +139,8 @@ struct PleatView: View {
         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
       }
       .toolbar {
+        // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
+
         ToolbarItem(placement: .keyboard) {
           HStack {
             Button("Done") {
