@@ -3,7 +3,7 @@ import SwiftUI
 
 // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
 enum PleatViewFocus: Int, CaseIterable, Equatable {
-  case title, hipToHip, sett, settsPerPleat, numberOfPleats, pleatWidth
+  case hipToHip, sett, settsPerPleat, numberOfPleats, pleatWidth
 }
 
 struct AdjustedHipStyle: ViewModifier {

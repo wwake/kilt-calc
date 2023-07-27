@@ -1,4 +1,5 @@
-* Changing pleat designer calculations to use doubles as much as possible
+* Make pleat designer calculations use doubles as much as possible
+* Make count an int in pleat equations and designer
 * Do we need to check for error values in pleat designer?
 
 * Make pleat width drawing adjustable (ideally animated): overlaps
@@ -48,8 +49,14 @@ EGTest
 * For a test that can throw, can we continue after EGAssert throws?
 * Have EGAssertThrows?
 
-CALC-23-35: 2023-07-25
+CALC-23-37: 2023-07-27 - Simplify PleatDesigner Types
+
+CALC-23-36: 2023-07-26 - Reify the Pleat Equations
 * Extract a system of equations from PleatDesigner
+* Convert to double in PleatDesigner: gap, absoluteGap, pleatFabric, totalFabric [Value isn't pulling its weight]
+
+CALC-23-35: 2023-07-25 - Military Box Pleat
+* Make drawings for tartan and pleats, as well as adjusting military-style box pleat picture
 
 CALC-23-34: 2023-07-24
 * Need to validate even on external changes (in ValidatingTextField) - couldn't figure out a test case to demonstrate this possibility
