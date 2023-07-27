@@ -91,26 +91,10 @@ struct PleatView: View {
             Text("\(designer.pleatCount)")
           }
           .disabled(designer.needsRequiredValues)
-
-          ValidatingTextField(
-            label: "Pleat Width",
-            bound: $designer.pleatWidth,
-            validator: PleatValidator.positiveSmaller(designer.pleatFabric),
-            slashIsPressed: $slashIsPressed,
-            disabled: designer.needsRequiredValues
-          )
-          .focused($focusedField, equals: .pleatWidth)
-          .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
         }
         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
 
         Section {
-          LabeledContent {
-            Text(formatOptional(designer.absoluteGap))
-          } label: {
-            Text(designer.gapLabel)
-          }
-
           LabeledContent {
             Text(formatOptional(designer.totalFabric))
           } label: {
