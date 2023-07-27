@@ -14,6 +14,7 @@
 		911857A72A4CB50F0020F16E /* PleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A62A4CB50F0020F16E /* PleatView.swift */; };
 		911857A92A4CC0C20020F16E /* BoxPleatDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */; };
 		9133987E2A71981100C181AE /* PleatEquations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133987D2A71981100C181AE /* PleatEquations.swift */; };
+		913398802A72E95400C181AE /* PleatValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133987F2A72E95400C181AE /* PleatValidatorTests.swift */; };
 		916AF6602A252460009484DA /* ImperialUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF65F2A252460009484DA /* ImperialUnit.swift */; };
 		916AF6632A267528009484DA /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6622A267528009484DA /* Stack.swift */; };
 		916AF6652A267B8F009484DA /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6642A267B8F009484DA /* Operator.swift */; };
@@ -81,6 +82,7 @@
 		911857A62A4CB50F0020F16E /* PleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatView.swift; sourceTree = "<group>"; };
 		911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxPleatDrawing.swift; sourceTree = "<group>"; };
 		9133987D2A71981100C181AE /* PleatEquations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatEquations.swift; sourceTree = "<group>"; };
+		9133987F2A72E95400C181AE /* PleatValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatValidatorTests.swift; sourceTree = "<group>"; };
 		916AF65F2A252460009484DA /* ImperialUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialUnit.swift; sourceTree = "<group>"; };
 		916AF6622A267528009484DA /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		916AF6642A267B8F009484DA /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				91184E962A4E00A500D5841E /* PleatDesignerTests.swift */,
+				9133987F2A72E95400C181AE /* PleatValidatorTests.swift */,
 			);
 			path = Pleats;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				918628CB2A2FC4D600FA781D /* ValueFormatterTests.swift in Sources */,
 				91183F652A573FD0009F4D47 /* ValueParseStrategyTests.swift in Sources */,
 				91184E972A4E00A500D5841E /* PleatDesignerTests.swift in Sources */,
+				913398802A72E95400C181AE /* PleatValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,11 +14,11 @@ public enum PleatValidator {
     let gapDouble = gap!
     if gapDouble.isZero {
       return "Box Pleat"
-    } else if gapDouble < 0 && gapDouble > -0.5 {
+    } else if gapDouble < 0 && gapDouble >= -0.5 {
       return "Box Pleat with Overlap"
     } else if gapDouble <= -0.5 {
       return "Military Box Pleat"
-    } else if gapDouble > 0 && gapDouble < 0.5 {
+    } else if gapDouble > 0 && gapDouble <= 0.5 {
       return "Box Pleat with Gap"
     }
     return "Box Pleat with Too-Large Gap"

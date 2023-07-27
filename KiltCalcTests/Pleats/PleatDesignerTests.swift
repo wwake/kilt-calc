@@ -327,20 +327,4 @@ final class PleatDesignerTests: XCTestCase {
     let designer = PleatDesigner()
     XCTAssertEqual(designer.pleatType, "Type Can't Be Determined")
   }
-
-  func test_Message() {
-    check([
-      eg(2, expect: "Box Pleat"),
-      eg(2.1, expect: "Box Pleat with Gap"),
-      eg(1.7, expect: "Box Pleat with Overlap"),
-      eg(1.5, expect: "Military Box Pleat"),
-      eg(3, expect: "Box Pleat with Too-Large Gap"),
-    ]) {
-      let designer = PleatDesigner()
-      designer.idealHip = .inches(20)
-      designer.sett = .inches(6)
-      designer.pleatWidth = .inches($0.input)
-      EGAssertEqual(designer.pleatType, $0)
-    }
-  }
 }

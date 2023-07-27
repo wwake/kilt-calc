@@ -152,7 +152,7 @@ struct PleatView: View {
             }
           }
 
-          Text(designer.pleatType)
+          Text(PleatValidator.gapMessage(designer.gap))
             .font(.headline)
             .multilineTextAlignment(.center)
             .padding(.bottom, 4)
