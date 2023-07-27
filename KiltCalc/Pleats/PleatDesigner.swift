@@ -5,7 +5,6 @@ public class PleatDesigner: ObservableObject {
 
   public var needsRequiredValues: Bool {
     idealHip == nil || sett == nil || settsPerPleat == nil
-    || idealHip!.isError || sett!.isError || settsPerPleat!.isError
   }
 
   fileprivate func updateCountAndWidth() {
