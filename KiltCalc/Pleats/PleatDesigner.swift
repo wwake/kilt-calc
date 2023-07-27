@@ -3,10 +3,6 @@ import Foundation
 public class PleatDesigner: ObservableObject {
   private var equations = PleatEquations()
 
-  public var pleatType: String {
-    PleatValidator.gapMessage(gap)
-  }
-
   public var needsRequiredValues: Bool {
     idealHip == nil || sett == nil || settsPerPleat == nil
     || idealHip!.isError || sett!.isError || settsPerPleat!.isError
