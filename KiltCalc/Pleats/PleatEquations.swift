@@ -21,10 +21,10 @@ public class PleatEquations {
     lockedAction(action)
   }
 
-  func setCount(_ newCount: Double, action: () -> Void) {
+  func setCount(_ newCount: Int, action: () -> Void) {
     if locked { return}
 
-    count = Int(round(newCount))
+    count = newCount
     width = min(fabric, hip / Double(count))
 
     lockedAction(action)

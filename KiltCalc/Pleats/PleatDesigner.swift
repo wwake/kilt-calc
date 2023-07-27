@@ -8,14 +8,14 @@ public class PleatDesigner: ObservableObject {
   }
 
   fileprivate func updateCountAndWidth() {
-    pleatCount = .number(Double(equations.count))
+    pleatCount = equations.count
     pleatWidth = .number(equations.width)
   }
 
   fileprivate func establishNonRequiredVariables() {
     if needsRequiredValues {
       pleatWidth = nil
-      pleatCount = nil
+// pleatCountOld = nil
       return
     }
 
@@ -29,8 +29,8 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var adjustedHip: Value? {
-    if pleatCount == nil || pleatWidth == nil { return nil }
-    return pleatCount! * pleatWidth!
+    if pleatWidth == nil { return nil }
+    return .number(Double(pleatCount)) * pleatWidth!
   }
 
   public var hipWasAdjusted: Bool {
@@ -55,19 +55,29 @@ public class PleatDesigner: ObservableObject {
     return sett!.asDouble * settsPerPleat!.asDouble
   }
 
-  @Published public var pleatCount: Value? {
+  @Published public var pleatCount: Int = 10 {
     didSet {
-      if needsRequiredValues || pleatCount == nil || pleatCount!.isError {
+      if needsRequiredValues {
         return
       }
 
-      equations.setCount(pleatCount!.asDouble, action: updateCountAndWidth)
+      equations.setCount(pleatCount, action: updateCountAndWidth)
+    }
+  }
+
+  @Published public var pleatCountOld: Value? {
+    didSet {
+//      if needsRequiredValues || pleatCountOld == nil || pleatCountOld!.isError {
+//        return
+//      }
+//
+//      equations.setCount(pleatCountOld!.asDouble, action: updateCountAndWidth)
     }
   }
 
   @Published public var pleatWidth: Value? {
     didSet {
-      if needsRequiredValues || pleatWidth == nil || pleatCount == nil || pleatWidth!.isError || pleatCount!.isError {
+      if needsRequiredValues || pleatWidth == nil || pleatWidth!.isError {
         return
       }
 
@@ -98,7 +108,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var totalFabric: Double? {
-    if needsRequiredValues || pleatCount == nil || pleatCount!.isError { return nil }
-    return pleatFabric! * pleatCount!.asDouble
+    if needsRequiredValues { return nil }
+    return pleatFabric! * Double(pleatCount)
   }
 }

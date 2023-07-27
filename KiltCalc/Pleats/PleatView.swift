@@ -88,14 +88,19 @@ struct PleatView: View {
             }
 
             Section("Adjustable") {
-              ValidatingTextField(
-                label: "#Pleats",
-                bound: $designer.pleatCount,
-                validator: PleatValidator.positive,
-                slashIsPressed: $slashIsPressed,
-                disabled: designer.needsRequiredValues
-              )
-              .focused($focusedField, equals: .numberOfPleats)
+              HStack {
+                Stepper("#Pleats", value: $designer.pleatCount)
+                Text("\(designer.pleatCount)")
+              }
+              .disabled(designer.needsRequiredValues)
+//              ValidatingTextField(
+//                label: "#Pleats",
+//                bound: $designer.pleatCountOld,
+//                validator: PleatValidator.positive,
+//                slashIsPressed: $slashIsPressed,
+//                disabled: designer.needsRequiredValues
+//              )
+//              .focused($focusedField, equals: .numberOfPleats)
 
               ValidatingTextField(
                 label: "Pleat Width",
@@ -106,6 +111,7 @@ struct PleatView: View {
               )
               .focused($focusedField, equals: .pleatWidth)
             }
+            .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
 
             Section {
               LabeledContent {
