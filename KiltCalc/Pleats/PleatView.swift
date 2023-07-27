@@ -55,7 +55,6 @@ struct PleatView: View {
     }
     return "\(value!.formatted(.inches))"
   }
-  @State private var stepsInPleat: Double = 1.0
 
   var body: some View {
     NavigationView {
@@ -72,27 +71,11 @@ struct PleatView: View {
 
             TartanDrawing()
 
-            Slider(value: $stepsInPleat, in: 0...2, step: 0.25)
-              .onChange(
-                of: stepsInPleat,
-                perform: { _ in
-                  if stepsInPleat < 0.5 {
-                    stepsInPleat = 0.5
-                  }
-                }
-              )
+            Slider(value: $designer.settsPerPleat, in: 0...2, step: 0.25)
               .padding([.leading, .trailing], 44)
 
-            ValidatingTextField(
-              label: "Setts/Pleat",
-              bound: $designer.settsPerPleat,
-              validator: PleatValidator.positive,
-              slashIsPressed: $slashIsPressed
-            )
-            .focused($focusedField, equals: .settsPerPleat)
+            Text("Setts in One Pleat: \(designer.settsPerPleat.formatted())")
           }
-
-          Text("\(stepsInPleat)")
         }
 
         Section("Pleats") {

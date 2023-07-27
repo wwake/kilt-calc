@@ -4,7 +4,7 @@ public class PleatDesigner: ObservableObject {
   private var equations = PleatEquations()
 
   public var needsRequiredValues: Bool {
-    idealHip == nil || sett == nil || settsPerPleat == nil
+    idealHip == nil || sett == nil
   }
 
   fileprivate func updateCountAndWidth() {
@@ -43,15 +43,22 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  @Published public var settsPerPleat: Value? = .number(1.0) {
+  @Published public var settsPerPleat: Double = 1.0 {
     didSet {
+      if settsPerPleat < 0.5 { settsPerPleat = 0.5 }
       establishNonRequiredVariables()
     }
   }
 
+//  @Published public var settsPerPleat: Value? = .number(1.0) {
+//    didSet {
+//      establishNonRequiredVariables()
+//    }
+//  }
+
   public var pleatFabric: Double? {
     if needsRequiredValues { return nil }
-    return sett!.asDouble * settsPerPleat!.asDouble
+    return sett!.asDouble * settsPerPleat
   }
 
   @Published public var pleatCount: Int = 10 {
