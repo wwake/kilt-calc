@@ -150,7 +150,6 @@ struct PleatView: View {
           }
         }
       }
-      .frame(height: 650)
       .toolbar {
         ToolbarItem(placement: .keyboard) {
           HStack {
