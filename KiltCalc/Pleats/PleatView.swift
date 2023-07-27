@@ -59,7 +59,7 @@ struct PleatView: View {
   var body: some View {
     NavigationView {
       List {
-        Section("Required") {
+        Section("Tartan") {
           ValidatingTextField(
             label: "Sett",
             bound: $designer.sett,
@@ -77,7 +77,7 @@ struct PleatView: View {
           .focused($focusedField, equals: .settsPerPleat)
         }
 
-        Section("Adjustable") {
+        Section("Pleats") {
           ValidatingTextField(
             label: "Ideal Hip (in)",
             bound: $designer.idealHip,
@@ -89,30 +89,14 @@ struct PleatView: View {
           PleatCountDrawing(count: designer.pleatCount)
 
           HStack {
-            Stepper("#Pleats", value: $designer.pleatCount)
+            Stepper("#Pleats", value: $designer.pleatCount, in: 3...30)
             Text("\(designer.pleatCount)")
           }
           .disabled(designer.needsRequiredValues)
         }
         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
 
-        Section {
-          LabeledContent {
-            Text(formatOptional(designer.totalFabric))
-          } label: {
-            Text("Total Fabric for Pleats (in)")
-          }
-
-          LabeledContent {
-            Text(formatOptional(designer.adjustedHip))
-          } label: {
-            Text("Adjusted Hip Size (in)")
-          }
-          .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
-        }
-        .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-
-        Section("Pleat") {
+        Section("Pleat Shape") {
           VStack {
             ValidatingTextField(
               label: "Pleat Width",
@@ -135,6 +119,22 @@ struct PleatView: View {
               .multilineTextAlignment(.center)
           }
         }
+
+        Section {
+          LabeledContent {
+            Text(formatOptional(designer.totalFabric))
+          } label: {
+            Text("Total Fabric for Pleats (in)")
+          }
+
+          LabeledContent {
+            Text(formatOptional(designer.adjustedHip))
+          } label: {
+            Text("Adjusted Hip Size (in)")
+          }
+          .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
+        }
+        .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
       }
       .toolbar {
         ToolbarItem(placement: .keyboard) {
