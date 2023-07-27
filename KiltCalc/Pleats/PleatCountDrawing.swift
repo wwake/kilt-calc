@@ -8,16 +8,16 @@ struct PleatCountDrawing: View {
       DimensionLine()
 
       Spacer()
-        .frame(height: 10)
+        .frame(height: 16)
 
-      Grid(horizontalSpacing: 4) {
+      Grid(horizontalSpacing: 2) {
         GridRow {
           ForEach(0..<count, id: \.self) { _ in
             Color("AccentColor")
           }
         }
       }
-      .frame(height: 50)
+      .frame(height: 100)
     }
   }
 }

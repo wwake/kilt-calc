@@ -61,14 +61,6 @@ struct PleatView: View {
       List {
         Section("Required") {
           ValidatingTextField(
-            label: "Ideal Hip (in)",
-            bound: $designer.idealHip,
-            validator: PleatValidator.positive,
-            slashIsPressed: $slashIsPressed
-          )
-          .focused($focusedField, equals: .hipToHip)
-
-          ValidatingTextField(
             label: "Sett",
             bound: $designer.sett,
             validator: PleatValidator.positive,
@@ -86,6 +78,16 @@ struct PleatView: View {
         }
 
         Section("Adjustable") {
+          ValidatingTextField(
+            label: "Ideal Hip (in)",
+            bound: $designer.idealHip,
+            validator: PleatValidator.positive,
+            slashIsPressed: $slashIsPressed
+          )
+          .focused($focusedField, equals: .hipToHip)
+
+          PleatCountDrawing(count: designer.pleatCount)
+
           HStack {
             Stepper("#Pleats", value: $designer.pleatCount)
             Text("\(designer.pleatCount)")
@@ -124,7 +126,7 @@ struct PleatView: View {
 
             BoxPleatDrawing(
               pleatPixels: 200,
-              gapText: "Gap: \( formatOptional(designer.gap))",
+              gapText: "Gap: \( formatOptional(designer.gap)) in",
               gapRatio: designer.gapRatio
             )
 
