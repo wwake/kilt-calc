@@ -58,41 +58,76 @@ struct PleatView: View {
 
   var body: some View {
     NavigationView {
-      ScrollView(.vertical) {
-        List {
-          Section("Required") {
-            ValidatingTextField(
-              label: "Ideal Hip (in)",
-              bound: $designer.idealHip,
-              validator: PleatValidator.positive,
-              slashIsPressed: $slashIsPressed
-            )
-            .focused($focusedField, equals: .hipToHip)
+      List {
+        Section("Required") {
+          ValidatingTextField(
+            label: "Ideal Hip (in)",
+            bound: $designer.idealHip,
+            validator: PleatValidator.positive,
+            slashIsPressed: $slashIsPressed
+          )
+          .focused($focusedField, equals: .hipToHip)
 
-            ValidatingTextField(
-              label: "Sett",
-              bound: $designer.sett,
-              validator: PleatValidator.positive,
-              slashIsPressed: $slashIsPressed
-            )
-            .focused($focusedField, equals: .sett)
+          ValidatingTextField(
+            label: "Sett",
+            bound: $designer.sett,
+            validator: PleatValidator.positive,
+            slashIsPressed: $slashIsPressed
+          )
+          .focused($focusedField, equals: .sett)
 
-            ValidatingTextField(
-              label: "Setts/Pleat",
-              bound: $designer.settsPerPleat,
-              validator: PleatValidator.positive,
-              slashIsPressed: $slashIsPressed
-            )
-            .focused($focusedField, equals: .settsPerPleat)
+          ValidatingTextField(
+            label: "Setts/Pleat",
+            bound: $designer.settsPerPleat,
+            validator: PleatValidator.positive,
+            slashIsPressed: $slashIsPressed
+          )
+          .focused($focusedField, equals: .settsPerPleat)
+        }
+
+        Section("Adjustable") {
+          HStack {
+            Stepper("#Pleats", value: $designer.pleatCount)
+            Text("\(designer.pleatCount)")
+          }
+          .disabled(designer.needsRequiredValues)
+
+          ValidatingTextField(
+            label: "Pleat Width",
+            bound: $designer.pleatWidth,
+            validator: PleatValidator.positiveSmaller(designer.pleatFabric),
+            slashIsPressed: $slashIsPressed,
+            disabled: designer.needsRequiredValues
+          )
+          .focused($focusedField, equals: .pleatWidth)
+          .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+        }
+        .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+
+        Section {
+          LabeledContent {
+            Text(formatOptional(designer.absoluteGap))
+          } label: {
+            Text(designer.gapLabel)
           }
 
-          Section("Adjustable") {
-            HStack {
-              Stepper("#Pleats", value: $designer.pleatCount)
-              Text("\(designer.pleatCount)")
-            }
-            .disabled(designer.needsRequiredValues)
+          LabeledContent {
+            Text(formatOptional(designer.totalFabric))
+          } label: {
+            Text("Total Fabric for Pleats (in)")
+          }
 
+          LabeledContent {
+            Text(formatOptional(designer.adjustedHip))
+          } label: {
+            Text("Adjusted Hip Size (in)")
+          }
+          .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
+        }
+        .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+
+        Section("Pleat") {
+          VStack {
             ValidatingTextField(
               label: "Pleat Width",
               bound: $designer.pleatWidth,
@@ -102,74 +137,37 @@ struct PleatView: View {
             )
             .focused($focusedField, equals: .pleatWidth)
             .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-          }
-          .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
 
-          Section {
-            LabeledContent {
-              Text(formatOptional(designer.absoluteGap))
-            } label: {
-              Text(designer.gapLabel)
-            }
+            BoxPleatDrawing(
+              pleatPixels: 200,
+              gapText: "Gap: \( formatOptional(designer.gap))",
+              gapRatio: designer.gapRatio
+            )
 
-            LabeledContent {
-              Text(formatOptional(designer.totalFabric))
-            } label: {
-              Text("Total Fabric for Pleats (in)")
-            }
-
-            LabeledContent {
-              Text(formatOptional(designer.adjustedHip))
-            } label: {
-              Text("Adjusted Hip Size (in)")
-            }
-            .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
-          }
-          .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-
-          Section {
-            VStack {
-              ValidatingTextField(
-                label: "Pleat Width",
-                bound: $designer.pleatWidth,
-                validator: PleatValidator.positiveSmaller(designer.pleatFabric),
-                slashIsPressed: $slashIsPressed,
-                disabled: designer.needsRequiredValues
-              )
-              .focused($focusedField, equals: .pleatWidth)
-              .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-
-              BoxPleatDrawing(
-                pleatPixels: 200,
-                gapText: "Gap: \( formatOptional(designer.gap))",
-                gapRatio: designer.gapRatio
-              )
-
-              Text(PleatValidator.gapMessage(designer.gap))
-                .font(.headline)
-                .multilineTextAlignment(.center)
-            }
+            Text(PleatValidator.gapMessage(designer.gap))
+              .font(.headline)
+              .multilineTextAlignment(.center)
           }
         }
-        .frame(height: 650)
-        .toolbar {
-          ToolbarItem(placement: .keyboard) {
-            HStack {
-              Button("Done") {
-                focusedField = nil
+      }
+      .frame(height: 650)
+      .toolbar {
+        ToolbarItem(placement: .keyboard) {
+          HStack {
+            Button("Done") {
+              focusedField = nil
+            }
+            Spacer()
+            Button(action: { slashIsPressed = true }) {
+              HStack {
+                Spacer()
+                Text("/")
+                  .bold()
+                Spacer()
               }
-              Spacer()
-              Button(action: { slashIsPressed = true }) {
-                HStack {
-                  Spacer()
-                  Text("/")
-                    .bold()
-                  Spacer()
-                }
-                .padding(2)
-                .background(Color.white)
-                .frame(width: 100)
-              }
+              .padding(2)
+              .background(Color.white)
+              .frame(width: 100)
             }
           }
         }
