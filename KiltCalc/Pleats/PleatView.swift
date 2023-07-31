@@ -140,7 +140,7 @@ struct PleatView: View {
         Section("Pleat Shape") {
           VStack {
             ValidatingTextField(
-              label: "Pleat Width",
+              label: "Width",
               bound: $designer.pleatWidth,
               validator: PleatValidator.positiveSmaller(designer.pleatFabric),
               slashIsPressed: $slashIsPressed,
