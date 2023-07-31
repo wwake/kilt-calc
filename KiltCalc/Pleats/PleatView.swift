@@ -152,7 +152,8 @@ struct PleatView: View {
             BoxPleatDrawing(
               pleatPixels: 200,
               gapRatio: designer.gapRatio,
-              drawGap: PleatValidator.gapMessage(designer.gap) != "Military Box Pleat",
+              drawGap:
+                !PleatValidator.isMilitaryBoxPleat(designer.gap),
               gapLabel: designer.gapLabel,
               gapText: "\( formatOptional(designer.absoluteGap)) in"
             )

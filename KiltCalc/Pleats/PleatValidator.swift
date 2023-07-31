@@ -27,6 +27,10 @@ public enum PleatValidator {
     return "Box Pleat with Too-Large Gap"
   }
 
+  static func isMilitaryBoxPleat(_ gap: Double?) -> Bool {
+    gapMessage(gap) == "Military Box Pleat"
+  }
+
   static func positiveSmaller(_ bigger: Double?) -> ((Value?) -> String) {
     { value in
       if bigger == nil { return "" }
