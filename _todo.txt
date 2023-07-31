@@ -1,8 +1,8 @@
+* Too much vertical space at top of Pleats page
 
 * Gap to show fractional inches
 * Pleat shape - tell how much overlap
 * Can we do a double formatter that handles fractions?
-* Too much vertical space at top of Pleats page
 
 * Highlight (somehow) the setts/pleat in the diagram
 

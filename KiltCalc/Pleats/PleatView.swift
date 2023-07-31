@@ -78,122 +78,121 @@ struct PleatView: View {
   }
 
   var body: some View {
-    NavigationView {
-      List {
-        Section("Tartan") {
-          VStack {
+    List {
+      Text("Pleats")
+        .font(.title)
+      Section("Tartan") {
+        VStack {
+          ValidatingTextField(
+            label: "Sett",
+            bound: $designer.sett,
+            validator: PleatValidator.positive,
+            slashIsPressed: $slashIsPressed
+          )
+          .focused($focusedField, equals: .sett)
+          .padding([.trailing], 116)
+
+          TartanDrawing()
+
+          Slider(value: $designer.settsPerPleat, in: 0...2, step: 0.25)
+            .padding([.leading, .trailing], 44)
+
+          Text("Setts in One Pleat: \(formatFraction(designer.settsPerPleat))")
+        }
+      }
+
+      Section("Pleats") {
+        VStack {
+          HStack {
+            Spacer()
+
             ValidatingTextField(
-              label: "Sett",
-              bound: $designer.sett,
+              label: "Ideal Hip",
+              bound: $designer.idealHip,
               validator: PleatValidator.positive,
               slashIsPressed: $slashIsPressed
             )
-            .focused($focusedField, equals: .sett)
-            .padding([.trailing], 116)
+            .focused($focusedField, equals: .hipToHip)
 
-            TartanDrawing()
-
-            Slider(value: $designer.settsPerPleat, in: 0...2, step: 0.25)
-              .padding([.leading, .trailing], 44)
-
-            Text("Setts in One Pleat: \(formatFraction(designer.settsPerPleat))")
+            Spacer()
           }
-        }
 
-        Section("Pleats") {
-          VStack {
-            HStack {
-              Spacer()
+          HStack {
+            Spacer()
+            Text("Adjusted Hip Size")
+            Text(formatOptional(designer.adjustedHip))
+            Text("in")
+            Spacer()
+          }
+          .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
 
-              ValidatingTextField(
-                label: "Ideal Hip",
-                bound: $designer.idealHip,
-                validator: PleatValidator.positive,
-                slashIsPressed: $slashIsPressed
-              )
-              .focused($focusedField, equals: .hipToHip)
-
-              Spacer()
-            }
-
-            HStack {
-              Spacer()
-              Text("Adjusted Hip Size")
-              Text(formatOptional(designer.adjustedHip))
-              Text("in")
-              Spacer()
-            }
-            .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
-
-            PleatCountDrawing(count: designer.pleatCount)
-              .overlay {
-                Stepper("#Pleats:   \(designer.pleatCount)", value: $designer.pleatCount, in: 3...30)
+          PleatCountDrawing(count: designer.pleatCount)
+            .overlay {
+              Stepper("#Pleats:   \(designer.pleatCount)", value: $designer.pleatCount, in: 3...30)
                 .frame(width: 200)
                 .padding([.leading, .trailing], 12)
                 .background(Color.white)
                 .disabled(designer.needsRequiredValues)
-              }
-          }
-        }
-        .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-
-        Section("Pleat Shape") {
-          VStack {
-            ValidatingTextField(
-              label: "Width",
-              bound: $designer.pleatWidth,
-              validator: PleatValidator.positiveSmaller(designer.pleatFabric),
-              slashIsPressed: $slashIsPressed,
-              disabled: designer.needsRequiredValues
-            )
-            .focused($focusedField, equals: .pleatWidth)
-            .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-
-            BoxPleatDrawing(
-              pleatPixels: 200,
-              gapText: "Gap: \( formatOptional(designer.gap)) in",
-              gapRatio: designer.gapRatio
-            )
-
-            Text(PleatValidator.gapMessage(designer.gap))
-              .font(.headline)
-              .multilineTextAlignment(.center)
-          }
-        }
-
-        Section {
-          LabeledContent {
-            Text(formatOptional(designer.totalFabric))
-          } label: {
-            Text("Total Fabric for Pleats (in)")
-          }
-        }
-        .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
-      }
-      .toolbar {
-        // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
-
-        ToolbarItem(placement: .keyboard) {
-          HStack {
-            Button("Done") {
-              focusedField = nil
             }
-            Spacer()
-            Button(action: { slashIsPressed = true }) {
-              HStack {
-                Spacer()
-                Text("/")
-                  .bold()
-                Spacer()
-              }
-              .padding(2)
-              .background(Color.white)
-              .frame(width: 100)
-            }
-          }
         }
       }
-      .navigationTitle("Pleats")
+      .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+
+      Section("Pleat Shape") {
+        VStack {
+          ValidatingTextField(
+            label: "Width",
+            bound: $designer.pleatWidth,
+            validator: PleatValidator.positiveSmaller(designer.pleatFabric),
+            slashIsPressed: $slashIsPressed,
+            disabled: designer.needsRequiredValues
+          )
+          .focused($focusedField, equals: .pleatWidth)
+          .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+
+          BoxPleatDrawing(
+            pleatPixels: 200,
+            gapText: "Gap: \( formatOptional(designer.gap)) in",
+            gapRatio: designer.gapRatio
+          )
+
+          Text(PleatValidator.gapMessage(designer.gap))
+            .font(.headline)
+            .multilineTextAlignment(.center)
+        }
+      }
+
+      Section {
+        LabeledContent {
+          Text(formatOptional(designer.totalFabric))
+        } label: {
+          Text("Total Fabric for Pleats (in)")
+        }
+      }
+      .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+    }
+    .toolbar {
+      // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
+
+      ToolbarItem(placement: .keyboard) {
+        HStack {
+          Button("Done") {
+            focusedField = nil
+          }
+          Spacer()
+          Button(action: { slashIsPressed = true }) {
+            HStack {
+              Spacer()
+              Text("/")
+                .bold()
+              Spacer()
+            }
+            .padding(2)
+            .background(Color.white)
+            .frame(width: 100)
+          }
+        }
+      }
     }
   }
 }
