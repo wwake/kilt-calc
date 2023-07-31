@@ -151,8 +151,9 @@ struct PleatView: View {
 
             BoxPleatDrawing(
               pleatPixels: 200,
-              gapText: "Gap: \( formatOptional(designer.gap)) in",
-              gapRatio: designer.gapRatio
+              gapRatio: designer.gapRatio,
+              gapLabel: designer.gapLabel,
+              gapText: "\( formatOptional(designer.absoluteGap)) in"
             )
 
             Text(PleatValidator.gapMessage(designer.gap))

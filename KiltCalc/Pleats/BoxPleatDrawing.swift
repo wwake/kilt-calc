@@ -59,9 +59,9 @@ private struct BoxPleatShape: Shape {
 
 struct BoxPleatDrawing: View {
   var pleatPixels: CGFloat
-
-  var gapText: String
   var gapRatio: CGFloat
+  var gapLabel: String
+  var gapText: String
 
   var body: some View {
     VStack(alignment: .center) {
@@ -73,13 +73,11 @@ struct BoxPleatDrawing: View {
         .stroke(Color.green, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
         .frame(height: 50)
 
-      if gapRatio >= 0 {
         DimensionLine()
-          .frame(width: pleatPixels * gapRatio, height: 10)
+          .frame(width: pleatPixels * abs(gapRatio), height: 10)
           .padding([.top], 8)
 
-        Text(gapText)
-      }
+        Text("\(gapLabel): \(gapText)")
     }
     .padding()
   }
@@ -91,7 +89,12 @@ struct BoxPleatDrawing_Previews: PreviewProvider {
       Spacer()
       ForEach(-4..<2) {
         Text("\(CGFloat($0) / 2.0)")
-        BoxPleatDrawing(pleatPixels: 150, gapText: "Gap: 1/8 in", gapRatio: CGFloat($0) / 2.0)
+        BoxPleatDrawing(
+          pleatPixels: 150,
+          gapRatio: CGFloat($0) / 2.0,
+          gapLabel: "Gap",
+          gapText: "1/8 in"
+        )
         Divider()
       }
     }
