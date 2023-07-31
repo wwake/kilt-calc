@@ -126,12 +126,13 @@ struct PleatView: View {
             .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
 
             PleatCountDrawing(count: designer.pleatCount)
-
-            HStack {
-              Stepper("#Pleats", value: $designer.pleatCount, in: 3...30)
-              Text("\(designer.pleatCount)")
-            }
-            .disabled(designer.needsRequiredValues)
+              .overlay {
+                Stepper("#Pleats:   \(designer.pleatCount)", value: $designer.pleatCount, in: 3...30)
+                .frame(width: 200)
+                .padding([.leading, .trailing], 12)
+                .background(Color.white)
+                .disabled(designer.needsRequiredValues)
+              }
           }
         }
         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)

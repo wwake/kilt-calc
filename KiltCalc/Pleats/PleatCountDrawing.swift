@@ -17,7 +17,7 @@ struct PleatCountDrawing: View {
           }
         }
       }
-      .frame(height: 100)
+      .frame(height: 75)
     }
   }
 }
