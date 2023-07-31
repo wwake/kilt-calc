@@ -1,10 +1,8 @@
-* Too much vertical space at top of Pleats page
-
 * Gap to show fractional inches
 * Pleat shape - tell how much overlap
-* Can we do a double formatter that handles fractions?
-
 * Highlight (somehow) the setts/pleat in the diagram
+* Can we do a Double formatter that handles fractions?
+
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
@@ -55,6 +53,7 @@ CALC-23-38: 2023-07-31 - Visual Pleats
 * Fraction output for setts/pleat
 * Move the Adjusted hip size just after ideal hip
 * Overlay pleats onto image (no longer a LabeledContent)
+* Too much vertical space at top of Pleats page
 
 
 CALC-23-37: 2023-07-27 - Simplify PleatDesigner Types
