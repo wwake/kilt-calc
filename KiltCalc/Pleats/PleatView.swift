@@ -81,6 +81,7 @@ struct PleatView: View {
     List {
       Text("Pleats")
         .font(.title)
+
       Section("Tartan") {
         VStack {
           ValidatingTextField(
