@@ -27,7 +27,7 @@ struct TartanDrawing: View {
           )
       }
     }
-    .frame(height: 100)
+    .frame(height: 75)
   }
 }
 

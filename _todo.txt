@@ -1,7 +1,12 @@
-* Make a pleat drawing for original hip and count
-* Make a tartan drawing for sett & setts/pleat
-* Can we do a double formatter that handles fractions?
+* Overlay pleats onto image (no longer a LabeledContent)
+* Pleat stepper not working
 
+* Fraction entry for all fields
+* Pleat shape - tell how much overlap
+* Can we do a double formatter that handles fractions?
+* Too much vertical space at top of Pleats page
+
+* Highlight (somehow) the setts/pleat in the diagram
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
@@ -46,10 +51,20 @@ EGTest
 * For a test that can throw, can we continue after EGAssert throws?
 * Have EGAssertThrows?
 
+CALC-23-38: 2023-07-31 - Visual Pleats
+* Disclosure box on tartan? Next release:)
+* Sett to take ~1/2 the width (no longer a LabeledContent?)
+* Fraction output for setts/pleat
+* Move the Adjusted hip size just after ideal hip
+
+
 CALC-23-37: 2023-07-27 - Simplify PleatDesigner Types
 * Make count an int in pleat equations and designer
 * Make pleat designer calculations use doubles where we don't need value-style parsing
 * Do we need to check for error values in pleat designer? No
+* Make a pleat drawing for original hip and count
+* Make a tartan drawing for sett & setts/pleat
+* Convert settsPerPleat to a Double with a slider.
 
 CALC-23-36: 2023-07-26 - Reify the Pleat Equations
 * Extract a system of equations from PleatDesigner

@@ -55,6 +55,28 @@ struct PleatView: View {
     return "\(value!.formatted(.inches))"
   }
 
+  func formatFraction(_ value: Double) -> String {
+    switch value {
+    case 0.5:
+      return "½"
+
+    case 0.75:
+      return "¾"
+
+    case 1.25:
+      return "1\u{2022}¼"
+
+    case 1.5:
+      return "1\u{2022}½"
+
+    case 1.75:
+      return "1\u{2022}¾"
+
+    default:
+      return value.formatted()
+    }
+  }
+
   var body: some View {
     NavigationView {
       List {
@@ -67,25 +89,41 @@ struct PleatView: View {
               slashIsPressed: $slashIsPressed
             )
             .focused($focusedField, equals: .sett)
+            .padding([.trailing], 116)
 
             TartanDrawing()
 
             Slider(value: $designer.settsPerPleat, in: 0...2, step: 0.25)
               .padding([.leading, .trailing], 44)
 
-            Text("Setts in One Pleat: \(designer.settsPerPleat.formatted())")
+            Text("Setts in One Pleat: \(formatFraction(designer.settsPerPleat))")
           }
         }
 
         Section("Pleats") {
           VStack {
-            ValidatingTextField(
-              label: "Ideal Hip (in)",
-              bound: $designer.idealHip,
-              validator: PleatValidator.positive,
-              slashIsPressed: $slashIsPressed
-            )
-            .focused($focusedField, equals: .hipToHip)
+            HStack {
+              Spacer()
+
+              ValidatingTextField(
+                label: "Ideal Hip",
+                bound: $designer.idealHip,
+                validator: PleatValidator.positive,
+                slashIsPressed: $slashIsPressed
+              )
+              .focused($focusedField, equals: .hipToHip)
+
+              Spacer()
+            }
+
+            HStack {
+              Spacer()
+              Text("Adjusted Hip Size")
+              Text(formatOptional(designer.adjustedHip))
+              Text("in")
+              Spacer()
+            }
+            .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
 
             PleatCountDrawing(count: designer.pleatCount)
 
@@ -128,13 +166,6 @@ struct PleatView: View {
           } label: {
             Text("Total Fabric for Pleats (in)")
           }
-
-          LabeledContent {
-            Text(formatOptional(designer.adjustedHip))
-          } label: {
-            Text("Adjusted Hip Size (in)")
-          }
-          .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
         }
         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
       }

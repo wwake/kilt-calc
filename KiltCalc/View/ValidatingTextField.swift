@@ -83,8 +83,13 @@ struct ValidatingTextField: View {
 
   var body: some View {
     VStack {
-      LabeledContent {
+      HStack {
+        Text(label)
+          .bold()
+
         TextField(label, text: $input)
+          .frame(width: 100)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
           .focused($isFocused)
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
@@ -92,9 +97,8 @@ struct ValidatingTextField: View {
           .onChange(of: bound, perform: updateForExternalChange)
           .onChange(of: isFocused, perform: exitField)
           .onChange(of: slashIsPressed, perform: enterSlash)
-      } label: {
-        Text(label)
-          .bold()
+
+        Text("in")
       }
       .padding(disabled || errorMessage.isEmpty ? 0 : 8)
       .border(Color.red, width: disabled || errorMessage.isEmpty ? 0 : 1)

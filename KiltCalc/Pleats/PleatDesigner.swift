@@ -50,12 +50,6 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-//  @Published public var settsPerPleat: Value? = .number(1.0) {
-//    didSet {
-//      establishNonRequiredVariables()
-//    }
-//  }
-
   public var pleatFabric: Double? {
     if needsRequiredValues { return nil }
     return sett!.asDouble * settsPerPleat
