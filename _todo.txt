@@ -1,4 +1,3 @@
-* Gap to show fractional inches
 * Highlight (somehow) the setts/pleat in the diagram
 * Can we do a Double formatter that handles fractions?
 * Should we make a type for pleat types? (now PleatValidator knows)
@@ -56,6 +55,7 @@ CALC-23-38: 2023-07-31 - Visual Pleats
 * Overlay pleats onto image (no longer a LabeledContent)
 * Too much vertical space at top of Pleats page
 * Pleat shape - tell how much overlap (except military box pleat)
+* Gap and total fabric to show fractional inches
 
 
 CALC-23-37: 2023-07-27 - Simplify PleatDesigner Types

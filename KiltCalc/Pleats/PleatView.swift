@@ -45,7 +45,7 @@ struct PleatView: View {
     if value == nil {
       return "?"
     }
-    return value!.formatted()
+    return Value.inches(value!).formatted(.inches)
   }
 
   func formatOptional(_ value: Value?) -> String {
@@ -155,7 +155,7 @@ struct PleatView: View {
               drawGap:
                 !PleatValidator.isMilitaryBoxPleat(designer.gap),
               gapLabel: designer.gapLabel,
-              gapText: "\( formatOptional(designer.absoluteGap)) in"
+              gapText: "\( formatOptional(designer.absoluteGap))"
             )
 
             Text(PleatValidator.gapMessage(designer.gap))
@@ -168,7 +168,7 @@ struct PleatView: View {
           LabeledContent {
             Text(formatOptional(designer.totalFabric))
           } label: {
-            Text("Total Fabric for Pleats (in)")
+            Text("Total Fabric for Pleats")
           }
         }
         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
