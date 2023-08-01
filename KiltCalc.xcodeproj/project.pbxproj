@@ -13,7 +13,7 @@
 		91184E9A2A4E017E00D5841E /* BoxPleatDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91184E992A4E017E00D5841E /* BoxPleatDesigner.swift */; };
 		911857A72A4CB50F0020F16E /* PleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A62A4CB50F0020F16E /* PleatView.swift */; };
 		911857A92A4CC0C20020F16E /* BoxPleatDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */; };
-		9133987E2A71981100C181AE /* PleatEquations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133987D2A71981100C181AE /* PleatEquations.swift */; };
+		9133987E2A71981100C181AE /* BoxPleatEquations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133987D2A71981100C181AE /* BoxPleatEquations.swift */; };
 		913398802A72E95400C181AE /* PleatValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133987F2A72E95400C181AE /* PleatValidatorTests.swift */; };
 		916AF6602A252460009484DA /* ImperialUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF65F2A252460009484DA /* ImperialUnit.swift */; };
 		916AF6632A267528009484DA /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6622A267528009484DA /* Stack.swift */; };
@@ -81,7 +81,7 @@
 		91184E992A4E017E00D5841E /* BoxPleatDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxPleatDesigner.swift; sourceTree = "<group>"; };
 		911857A62A4CB50F0020F16E /* PleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatView.swift; sourceTree = "<group>"; };
 		911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxPleatDrawing.swift; sourceTree = "<group>"; };
-		9133987D2A71981100C181AE /* PleatEquations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatEquations.swift; sourceTree = "<group>"; };
+		9133987D2A71981100C181AE /* BoxPleatEquations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxPleatEquations.swift; sourceTree = "<group>"; };
 		9133987F2A72E95400C181AE /* PleatValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatValidatorTests.swift; sourceTree = "<group>"; };
 		916AF65F2A252460009484DA /* ImperialUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialUnit.swift; sourceTree = "<group>"; };
 		916AF6622A267528009484DA /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 				911857A62A4CB50F0020F16E /* PleatView.swift */,
 				91A7DC282A7058800084BBD2 /* PleatCountDrawing.swift */,
 				91A7DC2A2A705C570084BBD2 /* TartanDrawing.swift */,
-				9133987D2A71981100C181AE /* PleatEquations.swift */,
+				9133987D2A71981100C181AE /* BoxPleatEquations.swift */,
 			);
 			path = Pleats;
 			sourceTree = "<group>";
@@ -476,7 +476,7 @@
 				918628C92A2E6FF000FA781D /* Entry.swift in Sources */,
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
 				91A7DC292A7058800084BBD2 /* PleatCountDrawing.swift in Sources */,
-				9133987E2A71981100C181AE /* PleatEquations.swift in Sources */,
+				9133987E2A71981100C181AE /* BoxPleatEquations.swift in Sources */,
 				91E7B6CC2A0D4428004A757A /* KiltCalcApp.swift in Sources */,
 				91B0F2BA2A5373FA00423289 /* CalculatorView.swift in Sources */,
 				91184E9A2A4E017E00D5841E /* BoxPleatDesigner.swift in Sources */,
