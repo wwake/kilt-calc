@@ -2,7 +2,7 @@ import Combine
 import SwiftUI
 
 enum PleatViewFocus: Int, CaseIterable, Equatable {
-  case hipToHip, sett, settsPerPleat, numberOfPleats, pleatWidth
+  case idealHip, sett, pleatWidth
 }
 
 struct AdjustedHipStyle: ViewModifier {
@@ -84,7 +84,7 @@ struct PleatView: View {
           VStack {
             ValidatingTextField(
               label: "Sett",
-              bound: $designer.sett,
+              value: $designer.sett,
               validator: PleatValidator.positive,
               slashIsPressed: $slashIsPressed
             )
@@ -93,7 +93,9 @@ struct PleatView: View {
 
             TartanDrawing(highlight: designer.settsPerPleat)
 
-            Slider(value: $designer.settsPerPleat, in: 0...2, step: 0.25)
+            Slider(value: $designer.settsPerPleat, in: 0...2, step: 0.25, onEditingChanged: {_ in
+                  focusedField = nil
+                })
               .padding([.leading, .trailing], 44)
 
             Text("Setts in One Pleat: \(formatFraction(designer.settsPerPleat))")
@@ -107,11 +109,11 @@ struct PleatView: View {
 
               ValidatingTextField(
                 label: "Ideal Hip",
-                bound: $designer.idealHip,
+                value: $designer.idealHip,
                 validator: PleatValidator.positive,
                 slashIsPressed: $slashIsPressed
               )
-              .focused($focusedField, equals: .hipToHip)
+              .focused($focusedField, equals: .idealHip)
 
               Spacer()
             }
@@ -127,7 +129,13 @@ struct PleatView: View {
 
             PleatCountDrawing(count: designer.pleatCount)
               .overlay {
-                Stepper("#Pleats:   \(designer.pleatCount)", value: $designer.pleatCount, in: 3...30)
+                Stepper(
+                  "#Pleats:   \(designer.pleatCount)",
+                  value: $designer.pleatCount,
+                  in: 3...30,
+                  onEditingChanged: {_ in
+                      focusedField = nil
+                  })
                   .frame(width: 200)
                   .padding([.leading, .trailing], 12)
                   .background(Color.white)
@@ -141,7 +149,7 @@ struct PleatView: View {
           VStack {
             ValidatingTextField(
               label: "Width",
-              bound: $designer.pleatWidth,
+              value: $designer.pleatWidth,
               validator: PleatValidator.positiveSmaller(designer.pleatFabric),
               slashIsPressed: $slashIsPressed,
               disabled: designer.needsRequiredValues

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ValidatingTextField: View {
   var label: String
-  @Binding var bound: Value?
+  @Binding var value: Value?
   var validator: (Value?) -> String
   @Binding var slashIsPressed: Bool
   var disabled: Bool
@@ -14,7 +14,7 @@ struct ValidatingTextField: View {
 
   init(
     label: String,
-    bound: Binding<Value?>,
+    value: Binding<Value?>,
     validator: @escaping (Value?) -> String,
     slashIsPressed: Binding<Bool>,
     disabled: Bool = false
@@ -24,19 +24,18 @@ struct ValidatingTextField: View {
     self._slashIsPressed = slashIsPressed
     self.disabled = disabled
 
-    self._bound = bound
-    if bound.wrappedValue == nil {
+    self._value = value
+    if value.wrappedValue == nil {
       input = ""
       errorMessage = "Value is required"
     } else {
-      input = bound.wrappedValue!.formatted(.inches)
+      input = value.wrappedValue!.formatted(.inches)
       errorMessage = ""
     }
   }
 
   func updateForExternalChange(_ value: Value?) {
     if isFocused { return }
-
     if value == nil {
       input = ""
       errorMessage = "Value is required"
@@ -48,12 +47,13 @@ struct ValidatingTextField: View {
 
   func updateForInternalChange(_ input: String) {
     if !isFocused { return }
-    (bound, errorMessage) = Self.updateBoundValue(label: label, input: input, validator: validator)
+    (value, errorMessage) = Self.updateBoundValue(label: label, input: input, validator: validator)
   }
 
   func exitField(_ isFocused: Bool) {
-    if bound != nil {
-      input = bound!.formatted(.inches)
+    if isFocused { return }
+    if value != nil {
+      input = value!.formatted(.inches)
     }
   }
 
@@ -94,7 +94,7 @@ struct ValidatingTextField: View {
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
           .onChange(of: input, perform: updateForInternalChange)
-          .onChange(of: bound, perform: updateForExternalChange)
+          .onChange(of: value, perform: updateForExternalChange)
           .onChange(of: isFocused, perform: exitField)
           .onChange(of: slashIsPressed, perform: enterSlash)
 
