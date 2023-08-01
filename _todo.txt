@@ -1,4 +1,6 @@
-* Highlight (somehow) the setts/pleat in the diagram
+
+* Highlight the setts/pleat in the diagram
+* Animate drawings
 * Can we do a Double formatter that handles fractions?
 * Should we make a type for pleat types? (now PleatValidator knows)
 

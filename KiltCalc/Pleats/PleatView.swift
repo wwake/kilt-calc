@@ -91,7 +91,7 @@ struct PleatView: View {
             .focused($focusedField, equals: .sett)
             .padding([.trailing], 116)
 
-            TartanDrawing()
+            TartanDrawing(highlight: designer.settsPerPleat)
 
             Slider(value: $designer.settsPerPleat, in: 0...2, step: 0.25)
               .padding([.leading, .trailing], 44)

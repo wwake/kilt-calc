@@ -79,7 +79,7 @@ struct BoxPleatDrawing: View {
         DimensionLine()
           .frame(width: pleatPixels * abs(gapRatio), height: 10)
           .padding([.top], 8)
-        
+
         Text("\(gapLabel): \(gapText)")
       }
     }
