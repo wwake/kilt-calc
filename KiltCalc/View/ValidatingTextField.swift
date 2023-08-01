@@ -87,7 +87,7 @@ struct ValidatingTextField: View {
         Text(label)
           .bold()
 
-        TextField(label, text: $input)
+        TextField(label, text: $input.animation())
           .frame(width: 100)
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .focused($isFocused)

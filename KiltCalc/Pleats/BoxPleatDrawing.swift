@@ -46,6 +46,7 @@ private struct BoxPleatShape: Shape {
     path.addLine(to: CGPoint(x: rect.midX - rightFoldX, y: rect.maxY))
 
     path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+
     return path
   }
 

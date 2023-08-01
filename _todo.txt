@@ -1,10 +1,7 @@
-
-* Highlight the setts/pleat in the diagram
-* Animate drawings
-* Can we do a Double formatter that handles fractions?
+* Knife pleats
 * Should we make a type for pleat types? (now PleatValidator knows)
 
-* Knife pleats
+* Should we do a Double formatter that handles fractions? Not now.
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
@@ -49,6 +46,11 @@ EGTest
 * For a test that can throw, can we continue after EGAssert throws?
 * Have EGAssertThrows?
 
+CALC-23-39: 2023-08-01 - Visualizing Setts/Pleat
+* Highlight the setts/pleat in the diagram
+* Fix focus bug in ValidatingTextField (didn't update field from external source if it were still focused)
+* Animate drawings
+
 CALC-23-38: 2023-07-31 - Visual Pleats
 * Disclosure box on tartan? Next release:)
 * Sett to take ~1/2 the width (no longer a LabeledContent?)
@@ -58,7 +60,6 @@ CALC-23-38: 2023-07-31 - Visual Pleats
 * Too much vertical space at top of Pleats page
 * Pleat shape - tell how much overlap (except military box pleat)
 * Gap and total fabric to show fractional inches
-
 
 CALC-23-37: 2023-07-27 - Simplify PleatDesigner Types
 * Make count an int in pleat equations and designer

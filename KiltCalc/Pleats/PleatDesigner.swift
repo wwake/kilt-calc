@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 public class PleatDesigner: ObservableObject {
   private var equations = PleatEquations()
@@ -8,8 +9,10 @@ public class PleatDesigner: ObservableObject {
   }
 
   fileprivate func updateCountAndWidth() {
-    pleatCount = equations.count
-    pleatWidth = .number(equations.width)
+    withAnimation {
+      pleatCount = equations.count
+      pleatWidth = .number(equations.width)
+    }
   }
 
   fileprivate func establishNonRequiredVariables() {
@@ -77,7 +80,9 @@ public class PleatDesigner: ObservableObject {
 
   public var gap: Double? {
     if needsRequiredValues || pleatWidth == nil { return nil }
-    return (3 * pleatWidth!.asDouble - pleatFabric!) / 2.0
+    return withAnimation {
+      (3 * pleatWidth!.asDouble - pleatFabric!) / 2.0
+    }
   }
 
   public var absoluteGap: Double? {
@@ -87,7 +92,9 @@ public class PleatDesigner: ObservableObject {
 
   public var gapRatio: Double {
     if gap == nil || pleatWidth == nil { return 0.0 }
-    return gap! / pleatWidth!.asDouble
+    return withAnimation {
+      gap! / pleatWidth!.asDouble
+    }
   }
 
   public var gapLabel: String {
