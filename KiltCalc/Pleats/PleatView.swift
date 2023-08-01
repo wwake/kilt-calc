@@ -36,7 +36,7 @@ extension View {
 }
 
 struct PleatView: View {
-  @StateObject private var designer = PleatDesigner()
+  @StateObject private var designer = BoxPleatDesigner()
   @State private var slashIsPressed = false
 
   @FocusState private var focusedField: PleatViewFocus?
@@ -135,7 +135,8 @@ struct PleatView: View {
                   in: 3...30,
                   onEditingChanged: {_ in
                       focusedField = nil
-                  })
+                  }
+                )
                   .frame(width: 200)
                   .padding([.leading, .trailing], 12)
                   .background(Color.white)

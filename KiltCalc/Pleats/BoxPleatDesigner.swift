@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-public class PleatDesigner: ObservableObject {
+public class BoxPleatDesigner: ObservableObject {
   private var equations = PleatEquations()
 
   public var needsRequiredValues: Bool {
