@@ -63,6 +63,7 @@
 		91F2AF502A438909008A1063 /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2AF4F2A438909008A1063 /* ButtonModifier.swift */; };
 		91F2AF522A438932008A1063 /* ValueModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2AF512A438932008A1063 /* ValueModifier.swift */; };
 		91F7D1202A7AD45A0075123E /* AdjustedHipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */; };
+		91F7D1222A7AE0500075123E /* TartanDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1212A7AE0500075123E /* TartanDesign.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		91F2AF4F2A438909008A1063 /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
 		91F2AF512A438932008A1063 /* ValueModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueModifier.swift; sourceTree = "<group>"; };
 		91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustedHipStyle.swift; sourceTree = "<group>"; };
+		91F7D1212A7AE0500075123E /* TartanDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TartanDesign.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				91A7DC2A2A705C570084BBD2 /* TartanDrawing.swift */,
 				9133987D2A71981100C181AE /* BoxPleatEquations.swift */,
 				91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */,
+				91F7D1212A7AE0500075123E /* TartanDesign.swift */,
 			);
 			path = Pleats;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				91A7DC212A7057500084BBD2 /* ArrowHead.swift in Sources */,
 				9190F7AD2A292CA60008E40A /* Expression.swift in Sources */,
 				91D4CF3F2A5C9DF800A03B63 /* PleatValidator.swift in Sources */,
+				91F7D1222A7AE0500075123E /* TartanDesign.swift in Sources */,
 				91A7DC2B2A705C570084BBD2 /* TartanDrawing.swift in Sources */,
 				91A7DC1D2A7056EF0084BBD2 /* DimensionLine.swift in Sources */,
 				91F2AF4E2A4382CC008A1063 /* HistoryView.swift in Sources */,
