@@ -65,6 +65,7 @@
 		91F7D1202A7AD45A0075123E /* AdjustedHipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */; };
 		91F7D1222A7AE0500075123E /* TartanDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1212A7AE0500075123E /* TartanDesign.swift */; };
 		91F7D1242A7AE0970075123E /* TartanDesignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1232A7AE0970075123E /* TartanDesignTests.swift */; };
+		91F7D1262A7AE8390075123E /* PleatCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1252A7AE8390075123E /* PleatCountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustedHipStyle.swift; sourceTree = "<group>"; };
 		91F7D1212A7AE0500075123E /* TartanDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TartanDesign.swift; sourceTree = "<group>"; };
 		91F7D1232A7AE0970075123E /* TartanDesignTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TartanDesignTests.swift; sourceTree = "<group>"; };
+		91F7D1252A7AE8390075123E /* PleatCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatCountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 				9133987D2A71981100C181AE /* BoxPleatEquations.swift */,
 				91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */,
 				91F7D1212A7AE0500075123E /* TartanDesign.swift */,
+				91F7D1252A7AE8390075123E /* PleatCountView.swift */,
 			);
 			path = Pleats;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				91F2AF502A438909008A1063 /* ButtonModifier.swift in Sources */,
 				916AF6652A267B8F009484DA /* Operator.swift in Sources */,
 				91A7DC232A7057750084BBD2 /* HorizontalLine.swift in Sources */,
+				91F7D1262A7AE8390075123E /* PleatCountView.swift in Sources */,
 				91A7DC1F2A70571B0084BBD2 /* DoubleArrow.swift in Sources */,
 				91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */,
 				911857A92A4CC0C20020F16E /* BoxPleatDrawing.swift in Sources */,

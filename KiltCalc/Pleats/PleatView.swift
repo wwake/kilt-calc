@@ -21,13 +21,6 @@ struct PleatView: View {
     return Value.inches(value!).formatted(.inches)
   }
 
-  func formatOptional(_ value: Value?) -> String {
-    if value == nil {
-      return "?"
-    }
-    return "\(value!.formatted(.inches))"
-  }
-
   func formatFraction(_ value: Double) -> String {
     switch value {
     case 0.5:
@@ -124,7 +117,7 @@ struct PleatView: View {
       HStack {
         Spacer()
         Text("Adjusted Hip Size")
-        Text(formatOptional(boxPleatDesigner.adjustedHip))
+   //     Text(formatOptional(boxPleatDesigner.adjustedHip))
         Text("in")
         Spacer()
       }
@@ -164,7 +157,11 @@ struct PleatView: View {
         }
 
         Section("Pleats") {
-          pleatsView
+          PleatCountView(
+            boxPleatDesigner: boxPleatDesigner,
+            slashIsPressed: $slashIsPressed,
+            focusedField: $focusedField
+          )
         }
 
         Section("Pleat Shape") {
