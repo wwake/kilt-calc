@@ -13,7 +13,6 @@ final class BoxPleatDesignerTests: XCTestCase {
     let designer = BoxPleatDesigner()
     XCTAssertEqual(designer.idealHip, nil)
     XCTAssertEqual(designer.pleatFabric, nil)
-    XCTAssertEqual(designer.settsPerPleat, 1.0)
     XCTAssertEqual(designer.pleatWidth, nil)
     XCTAssertEqual(designer.pleatCount, 10)
     XCTAssertEqual(designer.gap, nil)
@@ -30,7 +29,6 @@ final class BoxPleatDesignerTests: XCTestCase {
 
   func test_WhenHipIsMissing_ThenOutputVariablesAreNil() {
     let designer = BoxPleatDesigner()
-    designer.settsPerPleat = 2
     designer.pleatFabric = 7
     designer.idealHip = nil
 

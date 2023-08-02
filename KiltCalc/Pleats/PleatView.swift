@@ -9,7 +9,13 @@ enum PleatViewFocus: Int, CaseIterable, Equatable {
 public class TartanDesign: ObservableObject {
   @Published public var sett: Value?
 
-  @Published public var settsPerPleat: Double = 1.0
+  @Published public var settsPerPleat: Double = 1.0 {
+    didSet {
+      if settsPerPleat < 0.5 {
+        settsPerPleat = 0.5
+      }
+    }
+  }
 
   public var pleatFabric: Double? {
     if sett == nil { return nil }
@@ -78,9 +84,9 @@ struct PleatView: View {
               designer.pleatFabric = tartan.pleatFabric
             }
 
-            TartanDrawing(highlight: designer.settsPerPleat)
+            TartanDrawing(highlight: tartan.settsPerPleat)
 
-            Slider(value: $designer.settsPerPleat, in: 0...2, step: 0.25, onEditingChanged: {_ in
+            Slider(value: $tartan.settsPerPleat, in: 0...2, step: 0.25, onEditingChanged: {_ in
                   focusedField = nil
                 })
               .padding([.leading, .trailing], 44)
@@ -88,7 +94,7 @@ struct PleatView: View {
                 designer.pleatFabric = tartan.pleatFabric
               }
 
-            Text("Setts in One Pleat: \(formatFraction(designer.settsPerPleat))")
+            Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
           }
         }
 
