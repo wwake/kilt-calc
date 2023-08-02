@@ -56,6 +56,11 @@ private struct BoxPleatShape: Shape {
     }
     return militaryBoxPleatPath(rect)
   }
+
+  var animatableData: Double {
+    get { gapRatio }
+    set { gapRatio = newValue }
+  }
 }
 
 struct BoxPleatDrawing: View {

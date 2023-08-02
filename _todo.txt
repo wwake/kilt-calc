@@ -1,3 +1,4 @@
+* AnimatableData in BoxPleatDrawing
 * Knife pleats
 * Should we make a type for pleat types? (now PleatValidator knows)
 
@@ -7,8 +8,6 @@ Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
 * Use new formatter approach throughout calculator & UI
 * May need 8th-fraction formatter or accept unitless values as inches
-
-Editing fractions in TextField
 
 * Remember the last tab and go back to it on startup
 
@@ -50,6 +49,7 @@ CALC-23-39: 2023-08-01 - Visualizing Setts/Pleat
 * Highlight the setts/pleat in the diagram
 * Fix focus bug in ValidatingTextField (didn't update field from external source if it were still focused)
 * Animate drawings
+* Rename several "Pleat*" classes to "BoxPleat*"
 
 CALC-23-38: 2023-07-31 - Visual Pleats
 * Disclosure box on tartan? Next release:)
