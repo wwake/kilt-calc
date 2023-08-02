@@ -1,16 +1,16 @@
 import SwiftUI
 
 public struct PleatCountView: View {
-  @ObservedObject var boxPleatDesigner: BoxPleatDesigner
+  @ObservedObject var designer: BoxPleatDesigner
   @Binding private var slashIsPressed: Bool
   private var focusedField: FocusState<PleatViewFocus?>.Binding
 
   init(
-    boxPleatDesigner: BoxPleatDesigner,
+    designer: BoxPleatDesigner,
     slashIsPressed: Binding<Bool>,
     focusedField: FocusState<PleatViewFocus?>.Binding
   ) {
-    self.boxPleatDesigner = boxPleatDesigner
+    self.designer = designer
     self._slashIsPressed = slashIsPressed
     self.focusedField = focusedField
   }
@@ -29,7 +29,7 @@ public struct PleatCountView: View {
 
         ValidatingTextField(
           label: "Ideal Hip",
-          value: $boxPleatDesigner.idealHip,
+          value: $designer.idealHip,
           validator: PleatValidator.positive,
           slashIsPressed: $slashIsPressed
         )
@@ -41,17 +41,17 @@ public struct PleatCountView: View {
       HStack {
         Spacer()
         Text("Adjusted Hip Size")
-        Text(formatOptional(boxPleatDesigner.adjustedHip))
+        Text(formatOptional(designer.adjustedHip))
         Text("in")
         Spacer()
       }
-      .adjustedHipStyle(boxPleatDesigner.adjustedHip, boxPleatDesigner.hipWasAdjusted)
+      .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
 
-      PleatCountDrawing(count: boxPleatDesigner.pleatCount)
+      PleatCountDrawing(count: designer.pleatCount)
         .overlay {
           Stepper(
-            "#Pleats:   \(boxPleatDesigner.pleatCount)",
-            value: $boxPleatDesigner.pleatCount,
+            "#Pleats:   \(designer.pleatCount)",
+            value: $designer.pleatCount,
             in: 3...30,
             onEditingChanged: {_ in
               self.focusedField.wrappedValue = nil
@@ -60,9 +60,9 @@ public struct PleatCountView: View {
           .frame(width: 200)
           .padding([.leading, .trailing], 12)
           .background(Color.white)
-          .disabled(boxPleatDesigner.needsRequiredValues)
+          .disabled(designer.needsRequiredValues)
         }
     }
-    .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+    .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
   }
 }
