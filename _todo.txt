@@ -1,4 +1,3 @@
-* Make tartan have its own state
 * Switch between box/military and knife pleats
 * Show depth dimension line on knife pleat
 * Should we make a type for pleat types? (now PleatValidator knows)
@@ -48,7 +47,11 @@ EGTest
 * Have EGAssertThrows?
 
 CALC-23-40: 2023-08-02 - Knife Pleats
+Box Pleats
 * AnimatableData in BoxPleatDrawing
+
+Knife Pleats
+* Make tartan have its own state
 
 
 CALC-23-39: 2023-08-01 - Visualizing Setts/Pleat

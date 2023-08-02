@@ -8,7 +8,7 @@ enum PleatViewFocus: Int, CaseIterable, Equatable {
 
 struct PleatView: View {
   @StateObject private var tartan = TartanDesign()
-  @StateObject private var designer = BoxPleatDesigner()
+  @StateObject private var boxPleatDesigner = BoxPleatDesigner()
 
   @State private var slashIsPressed = false
 
@@ -50,36 +50,74 @@ struct PleatView: View {
     }
   }
 
+  var tartanSection: some View {
+    Section("Tartan") {
+      VStack {
+        ValidatingTextField(
+          label: "Sett",
+          value: $tartan.sett,
+          validator: PleatValidator.positive,
+          slashIsPressed: $slashIsPressed
+        )
+        .focused($focusedField, equals: .sett)
+        .padding([.trailing], 116)
+        .onChange(of: tartan.sett) { _ in
+          boxPleatDesigner.pleatFabric = tartan.pleatFabric
+        }
+
+        TartanDrawing(highlight: tartan.settsPerPleat)
+
+        Slider(value: $tartan.settsPerPleat, in: 0...2, step: 0.25, onEditingChanged: {_ in
+          focusedField = nil
+        })
+        .padding([.leading, .trailing], 44)
+        .onChange(of: tartan.settsPerPleat) { _ in
+          boxPleatDesigner.pleatFabric = tartan.pleatFabric
+        }
+
+        Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
+      }
+    }
+  }
+
+  var boxPleat: some View {
+    VStack {
+      ValidatingTextField(
+        label: "Width",
+        value: $boxPleatDesigner.pleatWidth,
+        validator: PleatValidator.positiveSmaller(boxPleatDesigner.pleatFabric),
+        slashIsPressed: $slashIsPressed,
+        disabled: boxPleatDesigner.needsRequiredValues
+      )
+      .focused($focusedField, equals: .pleatWidth)
+      .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+
+      BoxPleatDrawing(
+        pleatPixels: 200,
+        gapRatio: boxPleatDesigner.gapRatio,
+        drawGap:
+          !PleatValidator.isMilitaryBoxPleat(boxPleatDesigner.gap),
+        gapLabel: boxPleatDesigner.gapLabel,
+        gapText: "\( formatOptional(boxPleatDesigner.absoluteGap))"
+      )
+
+      Text(PleatValidator.gapMessage(boxPleatDesigner.gap))
+        .font(.headline)
+        .multilineTextAlignment(.center)
+    }
+  }
+
+  enum PleatStyle: String, CaseIterable, Identifiable {
+    case box = "Box / Military", knife = "Knife"
+    var id: Self { self }
+  }
+
+  @State private var selectedPleat: PleatStyle = .box
+
   var body: some View {
     NavigationView {
       List {
-        Section("Tartan") {
-          VStack {
-            ValidatingTextField(
-              label: "Sett",
-              value: $tartan.sett,
-              validator: PleatValidator.positive,
-              slashIsPressed: $slashIsPressed
-            )
-            .focused($focusedField, equals: .sett)
-            .padding([.trailing], 116)
-            .onChange(of: tartan.sett) { _ in
-              designer.pleatFabric = tartan.pleatFabric
-            }
-
-            TartanDrawing(highlight: tartan.settsPerPleat)
-
-            Slider(value: $tartan.settsPerPleat, in: 0...2, step: 0.25, onEditingChanged: {_ in
-                  focusedField = nil
-                })
-              .padding([.leading, .trailing], 44)
-              .onChange(of: tartan.settsPerPleat) { _ in
-                designer.pleatFabric = tartan.pleatFabric
-              }
-
-            Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
-          }
-        }
+        tartanSection
 
         Section("Pleats") {
           VStack {
@@ -88,7 +126,7 @@ struct PleatView: View {
 
               ValidatingTextField(
                 label: "Ideal Hip",
-                value: $designer.idealHip,
+                value: $boxPleatDesigner.idealHip,
                 validator: PleatValidator.positive,
                 slashIsPressed: $slashIsPressed
               )
@@ -100,17 +138,17 @@ struct PleatView: View {
             HStack {
               Spacer()
               Text("Adjusted Hip Size")
-              Text(formatOptional(designer.adjustedHip))
+              Text(formatOptional(boxPleatDesigner.adjustedHip))
               Text("in")
               Spacer()
             }
-            .adjustedHipStyle(designer.adjustedHip, designer.hipWasAdjusted)
+            .adjustedHipStyle(boxPleatDesigner.adjustedHip, boxPleatDesigner.hipWasAdjusted)
 
-            PleatCountDrawing(count: designer.pleatCount)
+            PleatCountDrawing(count: boxPleatDesigner.pleatCount)
               .overlay {
                 Stepper(
-                  "#Pleats:   \(designer.pleatCount)",
-                  value: $designer.pleatCount,
+                  "#Pleats:   \(boxPleatDesigner.pleatCount)",
+                  value: $boxPleatDesigner.pleatCount,
                   in: 3...30,
                   onEditingChanged: {_ in
                       focusedField = nil
@@ -119,47 +157,37 @@ struct PleatView: View {
                   .frame(width: 200)
                   .padding([.leading, .trailing], 12)
                   .background(Color.white)
-                  .disabled(designer.needsRequiredValues)
+                  .disabled(boxPleatDesigner.needsRequiredValues)
               }
           }
+        .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
         }
-        .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
 
         Section("Pleat Shape") {
-          VStack {
-            ValidatingTextField(
-              label: "Width",
-              value: $designer.pleatWidth,
-              validator: PleatValidator.positiveSmaller(designer.pleatFabric),
-              slashIsPressed: $slashIsPressed,
-              disabled: designer.needsRequiredValues
-            )
-            .focused($focusedField, equals: .pleatWidth)
-            .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+          Picker("Pleat Type", selection: $selectedPleat) {
+            ForEach(PleatStyle.allCases) { style in
+              Text(style.rawValue)
+            }
+          }
+          .pickerStyle(.segmented)
 
-            BoxPleatDrawing(
-              pleatPixels: 200,
-              gapRatio: designer.gapRatio,
-              drawGap:
-                !PleatValidator.isMilitaryBoxPleat(designer.gap),
-              gapLabel: designer.gapLabel,
-              gapText: "\( formatOptional(designer.absoluteGap))"
-            )
+          switch selectedPleat {
+          case .box:
+            boxPleat
 
-            Text(PleatValidator.gapMessage(designer.gap))
-              .font(.headline)
-              .multilineTextAlignment(.center)
+          case .knife:
+            Text("TBD")
           }
         }
 
         Section {
           LabeledContent {
-            Text(formatOptional(designer.totalFabric))
+            Text(formatOptional(boxPleatDesigner.totalFabric))
           } label: {
             Text("Total Fabric for Pleats")
           }
         }
-        .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
+        .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
       }
       .toolbar {
         // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
