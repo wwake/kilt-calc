@@ -66,6 +66,7 @@
 		91F7D1222A7AE0500075123E /* TartanDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1212A7AE0500075123E /* TartanDesign.swift */; };
 		91F7D1242A7AE0970075123E /* TartanDesignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1232A7AE0970075123E /* TartanDesignTests.swift */; };
 		91F7D1262A7AE8390075123E /* PleatCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1252A7AE8390075123E /* PleatCountView.swift */; };
+		91F7D1282A7AF0E60075123E /* PleatDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1272A7AF0E60075123E /* PleatDesigner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		91F7D1212A7AE0500075123E /* TartanDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TartanDesign.swift; sourceTree = "<group>"; };
 		91F7D1232A7AE0970075123E /* TartanDesignTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TartanDesignTests.swift; sourceTree = "<group>"; };
 		91F7D1252A7AE8390075123E /* PleatCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatCountView.swift; sourceTree = "<group>"; };
+		91F7D1272A7AF0E60075123E /* PleatDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatDesigner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 				91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */,
 				91F7D1212A7AE0500075123E /* TartanDesign.swift */,
 				91F7D1252A7AE8390075123E /* PleatCountView.swift */,
+				91F7D1272A7AF0E60075123E /* PleatDesigner.swift */,
 			);
 			path = Pleats;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				916AF6632A267528009484DA /* Stack.swift in Sources */,
 				918628C92A2E6FF000FA781D /* Entry.swift in Sources */,
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
+				91F7D1282A7AF0E60075123E /* PleatDesigner.swift in Sources */,
 				91A7DC292A7058800084BBD2 /* PleatCountDrawing.swift in Sources */,
 				9133987E2A71981100C181AE /* BoxPleatEquations.swift in Sources */,
 				91E7B6CC2A0D4428004A757A /* KiltCalcApp.swift in Sources */,
