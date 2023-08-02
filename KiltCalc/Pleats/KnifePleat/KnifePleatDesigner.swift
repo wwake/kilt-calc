@@ -1,7 +1,7 @@
 import Foundation
 
 public class KnifePleatDesigner: PleatDesigner {
-  public var needsRequiredValues: Bool = false
+  public var needsRequiredValues: Bool = true
 
   public var idealHip: Value? = nil
 
@@ -15,13 +15,13 @@ public class KnifePleatDesigner: PleatDesigner {
 
   public var pleatWidth: Value? = nil
 
+  public var totalFabric: Double? = nil
+
   public var gap: Double? = nil
 
   public var absoluteGap: Double? = nil
 
-  public var gapRatio: Double = 1.0
+  public var gapRatio: Double = 0.0
 
   public var gapLabel: String = ""
-
-  public var totalFabric: Double? = nil
 }
