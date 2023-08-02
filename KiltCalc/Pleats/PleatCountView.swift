@@ -1,12 +1,12 @@
 import SwiftUI
 
-public struct PleatCountView<PD>: View where PD: PleatDesigner {
-  @ObservedObject var designer: PD
+public struct PleatCountView<DESIGNER: PleatDesigner>: View {
+  @ObservedObject var designer: DESIGNER
   @Binding private var slashIsPressed: Bool
   private var focusedField: FocusState<PleatViewFocus?>.Binding
 
   init(
-    designer: PD,
+    designer: DESIGNER,
     slashIsPressed: Binding<Bool>,
     focusedField: FocusState<PleatViewFocus?>.Binding
   ) {
