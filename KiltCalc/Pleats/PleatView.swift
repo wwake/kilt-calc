@@ -7,17 +7,9 @@ enum PleatViewFocus: Int, CaseIterable, Equatable {
 }
 
 public class TartanDesign: ObservableObject {
-  @Published public var sett: Value? {
-    didSet {
-      // establishNonRequiredVariables()
-    }
-  }
+  @Published public var sett: Value?
 
-  @Published public var settsPerPleat: Double = 1.0 {
-    didSet {
-      // establishNonRequiredVariables()
-    }
-  }
+  @Published public var settsPerPleat: Double = 1.0
 
   public var pleatFabric: Double? {
     if sett == nil { return nil }
@@ -76,12 +68,15 @@ struct PleatView: View {
           VStack {
             ValidatingTextField(
               label: "Sett",
-              value: $designer.sett,
+              value: $tartan.sett,
               validator: PleatValidator.positive,
               slashIsPressed: $slashIsPressed
             )
             .focused($focusedField, equals: .sett)
             .padding([.trailing], 116)
+            .onChange(of: tartan.sett) { newValue in
+              designer.sett = newValue
+            }
 
             TartanDrawing(highlight: designer.settsPerPleat)
 
@@ -89,6 +84,9 @@ struct PleatView: View {
                   focusedField = nil
                 })
               .padding([.leading, .trailing], 44)
+              .onChange(of: tartan.settsPerPleat) { newValue in
+                designer.settsPerPleat = newValue
+              }
 
             Text("Setts in One Pleat: \(formatFraction(designer.settsPerPleat))")
           }
