@@ -1,42 +1,34 @@
 import Combine
+import Foundation
 import SwiftUI
 
 enum PleatViewFocus: Int, CaseIterable, Equatable {
   case idealHip, sett, pleatWidth
 }
 
-struct AdjustedHipStyle: ViewModifier {
-  let adjustedHip: Value?
-  let hipWasAdjusted: Bool
-
-  init(_ adjustedHip: Value?, _ hipWasAdjusted: Bool) {
-    self.adjustedHip = adjustedHip
-    self.hipWasAdjusted = hipWasAdjusted
-  }
-
-  func body(content: Content) -> some View {
-    var color = Color.black
-
-    if adjustedHip == nil {
-      color = Color.gray
-    } else if hipWasAdjusted {
-      color = Color.red
+public class TartanDesign: ObservableObject {
+  @Published public var sett: Value? {
+    didSet {
+      // establishNonRequiredVariables()
     }
-
-    return content
-      .bold(hipWasAdjusted)
-      .foregroundColor(color)
   }
-}
 
-extension View {
-  func adjustedHipStyle(_ adjustedHip: Value?, _ hipWasAdjusted: Bool) -> some View {
-    modifier(AdjustedHipStyle(adjustedHip, hipWasAdjusted))
+  @Published public var settsPerPleat: Double = 1.0 {
+    didSet {
+      // establishNonRequiredVariables()
+    }
+  }
+
+  public var pleatFabric: Double? {
+    if sett == nil { return nil }
+    return sett!.asDouble * settsPerPleat
   }
 }
 
 struct PleatView: View {
+  @StateObject private var tartan = TartanDesign()
   @StateObject private var designer = BoxPleatDesigner()
+
   @State private var slashIsPressed = false
 
   @FocusState private var focusedField: PleatViewFocus?
