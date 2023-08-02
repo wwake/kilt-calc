@@ -64,6 +64,7 @@
 		91F2AF522A438932008A1063 /* ValueModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2AF512A438932008A1063 /* ValueModifier.swift */; };
 		91F7D1202A7AD45A0075123E /* AdjustedHipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */; };
 		91F7D1222A7AE0500075123E /* TartanDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1212A7AE0500075123E /* TartanDesign.swift */; };
+		91F7D1242A7AE0970075123E /* TartanDesignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1232A7AE0970075123E /* TartanDesignTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		91F2AF512A438932008A1063 /* ValueModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueModifier.swift; sourceTree = "<group>"; };
 		91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustedHipStyle.swift; sourceTree = "<group>"; };
 		91F7D1212A7AE0500075123E /* TartanDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TartanDesign.swift; sourceTree = "<group>"; };
+		91F7D1232A7AE0970075123E /* TartanDesignTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TartanDesignTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			children = (
 				91184E962A4E00A500D5841E /* BoxPleatDesignerTests.swift */,
 				9133987F2A72E95400C181AE /* PleatValidatorTests.swift */,
+				91F7D1232A7AE0970075123E /* TartanDesignTests.swift */,
 			);
 			path = Pleats;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				918628CB2A2FC4D600FA781D /* ValueFormatterTests.swift in Sources */,
 				91183F652A573FD0009F4D47 /* ValueParseStrategyTests.swift in Sources */,
 				91184E972A4E00A500D5841E /* BoxPleatDesignerTests.swift in Sources */,
+				91F7D1242A7AE0970075123E /* TartanDesignTests.swift in Sources */,
 				913398802A72E95400C181AE /* PleatValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
