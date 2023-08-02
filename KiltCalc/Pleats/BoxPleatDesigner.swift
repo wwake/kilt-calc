@@ -40,12 +40,6 @@ public class BoxPleatDesigner: ObservableObject {
     return idealHip! != adjustedHip!
   }
 
-  @Published public var sett: Value? {
-    didSet {
-      establishNonRequiredVariables()
-    }
-  }
-
   @Published public var settsPerPleat: Double = 1.0 {
     didSet {
       if settsPerPleat < 0.5 { settsPerPleat = 0.5 }
