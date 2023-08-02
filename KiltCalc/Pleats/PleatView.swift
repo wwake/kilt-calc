@@ -50,8 +50,7 @@ struct PleatView: View {
     }
   }
 
-  var tartanSection: some View {
-    Section("Tartan") {
+  var tartanView: some View {
       VStack {
         ValidatingTextField(
           label: "Sett",
@@ -77,7 +76,6 @@ struct PleatView: View {
 
         Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
       }
-    }
   }
 
   var boxPleat: some View {
@@ -107,6 +105,50 @@ struct PleatView: View {
     }
   }
 
+  var pleatsView: some View {
+    VStack {
+      HStack {
+        Spacer()
+
+        ValidatingTextField(
+          label: "Ideal Hip",
+          value: $boxPleatDesigner.idealHip,
+          validator: PleatValidator.positive,
+          slashIsPressed: $slashIsPressed
+        )
+        .focused($focusedField, equals: .idealHip)
+
+        Spacer()
+      }
+
+      HStack {
+        Spacer()
+        Text("Adjusted Hip Size")
+        Text(formatOptional(boxPleatDesigner.adjustedHip))
+        Text("in")
+        Spacer()
+      }
+      .adjustedHipStyle(boxPleatDesigner.adjustedHip, boxPleatDesigner.hipWasAdjusted)
+
+      PleatCountDrawing(count: boxPleatDesigner.pleatCount)
+        .overlay {
+          Stepper(
+            "#Pleats:   \(boxPleatDesigner.pleatCount)",
+            value: $boxPleatDesigner.pleatCount,
+            in: 3...30,
+            onEditingChanged: {_ in
+              focusedField = nil
+            }
+          )
+          .frame(width: 200)
+          .padding([.leading, .trailing], 12)
+          .background(Color.white)
+          .disabled(boxPleatDesigner.needsRequiredValues)
+        }
+    }
+    .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+  }
+
   enum PleatStyle: String, CaseIterable, Identifiable {
     case box = "Box / Military", knife = "Knife"
     var id: Self { self }
@@ -117,50 +159,12 @@ struct PleatView: View {
   var body: some View {
     NavigationView {
       List {
-        tartanSection
+        Section("Tartan") {
+          tartanView
+        }
 
         Section("Pleats") {
-          VStack {
-            HStack {
-              Spacer()
-
-              ValidatingTextField(
-                label: "Ideal Hip",
-                value: $boxPleatDesigner.idealHip,
-                validator: PleatValidator.positive,
-                slashIsPressed: $slashIsPressed
-              )
-              .focused($focusedField, equals: .idealHip)
-
-              Spacer()
-            }
-
-            HStack {
-              Spacer()
-              Text("Adjusted Hip Size")
-              Text(formatOptional(boxPleatDesigner.adjustedHip))
-              Text("in")
-              Spacer()
-            }
-            .adjustedHipStyle(boxPleatDesigner.adjustedHip, boxPleatDesigner.hipWasAdjusted)
-
-            PleatCountDrawing(count: boxPleatDesigner.pleatCount)
-              .overlay {
-                Stepper(
-                  "#Pleats:   \(boxPleatDesigner.pleatCount)",
-                  value: $boxPleatDesigner.pleatCount,
-                  in: 3...30,
-                  onEditingChanged: {_ in
-                      focusedField = nil
-                  }
-                )
-                  .frame(width: 200)
-                  .padding([.leading, .trailing], 12)
-                  .background(Color.white)
-                  .disabled(boxPleatDesigner.needsRequiredValues)
-              }
-          }
-        .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+          pleatsView
         }
 
         Section("Pleat Shape") {
