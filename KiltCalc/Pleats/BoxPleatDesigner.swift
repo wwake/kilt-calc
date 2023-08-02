@@ -5,7 +5,7 @@ public class BoxPleatDesigner: ObservableObject {
   private var equations = BoxPleatEquations()
 
   public var needsRequiredValues: Bool {
-    idealHip == nil || sett == nil
+    idealHip == nil || pleatFabric == nil
   }
 
   fileprivate func updateCountAndWidth() {
@@ -53,9 +53,10 @@ public class BoxPleatDesigner: ObservableObject {
     }
   }
 
-  public var pleatFabric: Double? {
-    if needsRequiredValues { return nil }
-    return sett!.asDouble * settsPerPleat
+  @Published public var pleatFabric: Double? {
+    didSet {
+      establishNonRequiredVariables()
+    }
   }
 
   @Published public var pleatCount: Int = 10 {

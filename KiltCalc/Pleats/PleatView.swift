@@ -74,8 +74,8 @@ struct PleatView: View {
             )
             .focused($focusedField, equals: .sett)
             .padding([.trailing], 116)
-            .onChange(of: tartan.sett) { newValue in
-              designer.sett = newValue
+            .onChange(of: tartan.sett) { _ in
+              designer.pleatFabric = tartan.pleatFabric
             }
 
             TartanDrawing(highlight: designer.settsPerPleat)
@@ -84,8 +84,8 @@ struct PleatView: View {
                   focusedField = nil
                 })
               .padding([.leading, .trailing], 44)
-              .onChange(of: tartan.settsPerPleat) { newValue in
-                designer.settsPerPleat = newValue
+              .onChange(of: tartan.settsPerPleat) { _ in
+                designer.pleatFabric = tartan.pleatFabric
               }
 
             Text("Setts in One Pleat: \(formatFraction(designer.settsPerPleat))")
