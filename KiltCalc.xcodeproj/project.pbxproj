@@ -67,6 +67,8 @@
 		91F7D1242A7AE0970075123E /* TartanDesignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1232A7AE0970075123E /* TartanDesignTests.swift */; };
 		91F7D1262A7AE8390075123E /* PleatCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1252A7AE8390075123E /* PleatCountView.swift */; };
 		91F7D1282A7AF0E60075123E /* PleatDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D1272A7AF0E60075123E /* PleatDesigner.swift */; };
+		91F7D12C2A7AF1870075123E /* KnifePleatDesignerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D12B2A7AF1870075123E /* KnifePleatDesignerTests.swift */; };
+		91F7D12E2A7AF1CC0075123E /* KnifePleatDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D12D2A7AF1CC0075123E /* KnifePleatDesigner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +144,8 @@
 		91F7D1232A7AE0970075123E /* TartanDesignTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TartanDesignTests.swift; sourceTree = "<group>"; };
 		91F7D1252A7AE8390075123E /* PleatCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatCountView.swift; sourceTree = "<group>"; };
 		91F7D1272A7AF0E60075123E /* PleatDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatDesigner.swift; sourceTree = "<group>"; };
+		91F7D12B2A7AF1870075123E /* KnifePleatDesignerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnifePleatDesignerTests.swift; sourceTree = "<group>"; };
+		91F7D12D2A7AF1CC0075123E /* KnifePleatDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnifePleatDesigner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				91184E962A4E00A500D5841E /* BoxPleatDesignerTests.swift */,
+				91F7D12B2A7AF1870075123E /* KnifePleatDesignerTests.swift */,
 				9133987F2A72E95400C181AE /* PleatValidatorTests.swift */,
 				91F7D1232A7AE0970075123E /* TartanDesignTests.swift */,
 			);
@@ -363,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				91A7DC262A7057C90084BBD2 /* KnifePleatDrawing.swift */,
+				91F7D12D2A7AF1CC0075123E /* KnifePleatDesigner.swift */,
 			);
 			path = KnifePleat;
 			sourceTree = "<group>";
@@ -505,6 +511,7 @@
 				91A7DC272A7057C90084BBD2 /* KnifePleatDrawing.swift in Sources */,
 				916AF6632A267528009484DA /* Stack.swift in Sources */,
 				918628C92A2E6FF000FA781D /* Entry.swift in Sources */,
+				91F7D12E2A7AF1CC0075123E /* KnifePleatDesigner.swift in Sources */,
 				91E3C5A32A1BF4280098BAFC /* Keypad.swift in Sources */,
 				91F7D1282A7AF0E60075123E /* PleatDesigner.swift in Sources */,
 				91A7DC292A7058800084BBD2 /* PleatCountDrawing.swift in Sources */,
@@ -551,6 +558,7 @@
 				91E3C5AD2A1D39A30098BAFC /* EGTest+extensions.swift in Sources */,
 				91E3C5B92A1FE1F20098BAFC /* ImperialFormatterTests.swift in Sources */,
 				91F2AF322A40E685008A1063 /* EntryTests.swift in Sources */,
+				91F7D12C2A7AF1870075123E /* KnifePleatDesignerTests.swift in Sources */,
 				91DF089A2A65CAE700B4D64F /* ValidatingTextFieldTests.swift in Sources */,
 				91E3C59E2A1BE8FB0098BAFC /* CalculatorTests.swift in Sources */,
 				91E3C5B52A1EAB4A0098BAFC /* ValueTests.swift in Sources */,
