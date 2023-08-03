@@ -1,8 +1,18 @@
 import Foundation
+import SwiftUI
 
 public class KnifePleatDesigner: PleatDesigner {
+  private var equations = BoxPleatEquations()
+
   public var needsRequiredValues: Bool {
     idealHip == nil || pleatFabric == nil
+  }
+
+  fileprivate func updateCountAndWidth() {
+    withAnimation {
+      pleatCount = equations.count
+      pleatWidth = .number(equations.width)
+    }
   }
 
   private func establishNonRequiredVariables() {
@@ -10,8 +20,7 @@ public class KnifePleatDesigner: PleatDesigner {
       return
     }
 
-    pleatWidth = .inches(1)
-    pleatCount = Int(round(idealHip!.asDouble))
+    equations.startKnifePleat(hip: idealHip!.asDouble, fabric: pleatFabric!, action: updateCountAndWidth)
   }
 
   public var idealHip: Value? {
@@ -36,13 +45,20 @@ public class KnifePleatDesigner: PleatDesigner {
     }
   }
 
-  public var pleatCount: Int = 10
+  public var pleatCount: Int = 10 {
+    didSet {
+      equations.setCount(pleatCount, action: updateCountAndWidth)
+//      pleatWidth = .inches(idealHip!.asDouble / Double(pleatCount))
+    }
+  }
 
   public var pleatWidth: Value? {
     didSet {
       if idealHip == nil || pleatWidth == nil || pleatWidth!.asDouble.isZero { return }
 
-      pleatCount = Int(round(idealHip!.asDouble / pleatWidth!.asDouble))
+      equations.setWidth(pleatWidth!.asDouble, action: updateCountAndWidth)
+
+//      pleatCount = Int(round(idealHip!.asDouble / pleatWidth!.asDouble))
     }
   }
 

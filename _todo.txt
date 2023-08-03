@@ -1,5 +1,5 @@
-
 * Develop a KnifePleatDesigner
+  + Enforce physical limits
 * Switch between box/military and knife pleats
 * Show depth dimension line on knife pleat
 * Should we make a type for pleat types? (now PleatValidator knows)

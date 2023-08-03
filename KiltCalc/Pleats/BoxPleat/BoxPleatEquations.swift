@@ -8,15 +8,27 @@ public class BoxPleatEquations {
   private(set) var count: Int = 1
   private(set) var width: Double = 1
 
-  func setRequired(hip newHip: Double, fabric newFabric: Double, action: () -> Void) {
+  func startBoxPleat(hip newHip: Double, fabric newFabric: Double, action: () -> Void) {
     if locked { return}
 
-    hip = newHip
-    fabric = newFabric
+    self.hip = newHip
+    self.fabric = newFabric
 
     let tentativePleatWidth = fabric / 3.0
     count = Int(round(hip / tentativePleatWidth))
     width = hip / Double(count)
+
+    lockedAction(action)
+  }
+
+  func startKnifePleat(hip newHip: Double, fabric newFabric: Double, action: () -> Void) {
+    if locked { return}
+
+    self.hip = newHip
+    self.fabric = newFabric
+
+    width = 1.0
+    count = Int(round(hip))
 
     lockedAction(action)
   }
