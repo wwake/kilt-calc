@@ -13,13 +13,13 @@ public class KnifePleatDesigner: PleatDesigner {
 
   public var pleatCount: Int = 10
 
-  public var pleatWidth: Value? = nil
+  public var pleatWidth: Value?
 
   public var totalFabric: Double? = nil
 
-  public var gap: Double? = nil
+  public var gap: Double?
 
-  public var absoluteGap: Double? = nil
+  public var absoluteGap: Double?
 
   public var gapRatio: Double = 0.0
 

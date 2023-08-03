@@ -24,4 +24,30 @@ final class KnifePleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.gapRatio, 0.0)
     XCTAssertEqual(designer.gapLabel, "")
   }
+
+  func test_WhenPleatFabricIsMissing_ThenOutputVariablesAreNil() {
+    let designer = KnifePleatDesigner()
+    designer.idealHip = .inches(10)
+    designer.pleatFabric = nil
+
+    XCTAssertEqual(designer.pleatWidth, nil)
+    XCTAssertEqual(designer.gap, nil)
+  }
+
+  func test_WhenHipIsMissing_ThenOutputVariablesAreNil() {
+    let designer = KnifePleatDesigner()
+    designer.pleatFabric = 7
+    designer.idealHip = nil
+
+    XCTAssertEqual(designer.pleatWidth, nil)
+    XCTAssertEqual(designer.gap, nil)
+  }
+
+//  func test_getPleatCount_WhenPredecessorValuesPresent() {
+//    let designer = KnifePleatDesigner()
+//    designer.idealHip = .inches(20)
+//    designer.pleatFabric = 6
+//    designer.pleatWidth = .inches(1)
+//    XCTAssertEqual(designer.pleatCount, 20)
+//  }
 }

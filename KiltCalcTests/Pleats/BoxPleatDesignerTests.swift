@@ -44,7 +44,7 @@ final class BoxPleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.pleatCount, 10)
   }
 
-  func test_setSettUpdates_PleatFabric_PleatWidth_Gap_PleatCount_WithGap() {
+  func test_setPleatFabric_Updates_PleatWidth_Gap_PleatCount() {
     let designer = BoxPleatDesigner()
     designer.idealHip = .inches(8)
     designer.pleatFabric = 5

@@ -1,3 +1,5 @@
+
+* Develop a KnifePleatDesigner
 * Switch between box/military and knife pleats
 * Show depth dimension line on knife pleat
 * Should we make a type for pleat types? (now PleatValidator knows)
@@ -52,7 +54,9 @@ Box Pleats
 
 Knife Pleats
 * Make tartan have its own state
-
+* Split out views from PleatView
+* Extract protocol PleatDesigner
+* Start implementing KnifePleatDesigner
 
 CALC-23-39: 2023-08-01 - Visualizing Setts/Pleat
 * Highlight the setts/pleat in the diagram
