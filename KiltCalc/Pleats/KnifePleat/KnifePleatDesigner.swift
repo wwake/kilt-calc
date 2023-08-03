@@ -17,6 +17,7 @@ public class KnifePleatDesigner: PleatDesigner {
 
   private func establishNonRequiredVariables() {
     if needsRequiredValues {
+      pleatWidth = nil
       return
     }
 
@@ -47,13 +48,16 @@ public class KnifePleatDesigner: PleatDesigner {
 
   public var pleatCount: Int = 10 {
     didSet {
+      if needsRequiredValues {
+        return
+      }
       equations.setCount(pleatCount, action: updateCountAndWidth)
     }
   }
 
   public var pleatWidth: Value? {
     didSet {
-      if idealHip == nil || pleatWidth == nil || pleatWidth!.asDouble.isZero { return }
+      if needsRequiredValues || pleatWidth == nil || pleatWidth!.asDouble.isZero { return }
 
       equations.setWidth(pleatWidth!.asDouble, action: updateCountAndWidth)
     }
