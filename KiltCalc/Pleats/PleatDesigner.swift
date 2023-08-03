@@ -30,7 +30,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   func initialWidth() -> Double {
-    1.0
+    fatalError("Subclass responsibility to provide initialWidth")
   }
 
   @Published public var idealHip: Value? {
