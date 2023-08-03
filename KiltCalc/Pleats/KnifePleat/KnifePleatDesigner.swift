@@ -20,9 +20,15 @@ public class KnifePleatDesigner: PleatDesigner {
     }
   }
 
-  public var adjustedHip: Value? = nil
+  public var adjustedHip: Value? {
+    if pleatWidth == nil { return nil }
+    return .number(Double(pleatCount)) * pleatWidth!
+  }
 
-  public var hipWasAdjusted: Bool = false
+  public var hipWasAdjusted: Bool {
+    if idealHip == nil || adjustedHip == nil { return false }
+    return idealHip! != adjustedHip!
+  }
 
   public var pleatFabric: Double? {
     didSet {
