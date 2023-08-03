@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 public class KnifePleatDesigner: PleatDesigner {
-  private var equations = BoxPleatEquations()
+  private var equations = PleatEquations()
 
   public var needsRequiredValues: Bool {
     idealHip == nil || pleatFabric == nil
@@ -48,7 +48,6 @@ public class KnifePleatDesigner: PleatDesigner {
   public var pleatCount: Int = 10 {
     didSet {
       equations.setCount(pleatCount, action: updateCountAndWidth)
-//      pleatWidth = .inches(idealHip!.asDouble / Double(pleatCount))
     }
   }
 
@@ -57,8 +56,6 @@ public class KnifePleatDesigner: PleatDesigner {
       if idealHip == nil || pleatWidth == nil || pleatWidth!.asDouble.isZero { return }
 
       equations.setWidth(pleatWidth!.asDouble, action: updateCountAndWidth)
-
-//      pleatCount = Int(round(idealHip!.asDouble / pleatWidth!.asDouble))
     }
   }
 

@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 public class BoxPleatDesigner: ObservableObject, PleatDesigner {
-  private var equations = BoxPleatEquations()
+  private var equations = PleatEquations()
 
   public var needsRequiredValues: Bool {
     idealHip == nil || pleatFabric == nil

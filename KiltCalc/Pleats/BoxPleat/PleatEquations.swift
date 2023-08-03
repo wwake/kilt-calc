@@ -1,6 +1,6 @@
 import Foundation
 
-public class BoxPleatEquations {
+public class PleatEquations {
   private var locked = false
 
   private var hip: Double = 1
