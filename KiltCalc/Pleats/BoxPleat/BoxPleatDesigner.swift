@@ -21,7 +21,12 @@ public class BoxPleatDesigner: ObservableObject, PleatDesigner {
       return
     }
 
-    equations.startBoxPleat(hip: idealHip!.asDouble, fabric: pleatFabric!, action: updateCountAndWidth)
+    equations.startPleat(
+      hip: idealHip!.asDouble,
+      fabric: pleatFabric!,
+      initialWidth: pleatFabric! / 3.0,
+      action: updateCountAndWidth
+    )
   }
 
   @Published public var idealHip: Value? {

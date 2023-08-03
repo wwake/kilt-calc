@@ -8,7 +8,7 @@ public class PleatEquations {
   private(set) var count: Int = 1
   private(set) var width: Double = 1
 
-  fileprivate func startPleat(_ newHip: Double, _ newFabric: Double, _ initialWidth: Double, _ action: () -> Void) {
+  public func startPleat(hip newHip: Double, fabric newFabric: Double, initialWidth: Double, action: () -> Void) {
     if locked { return}
 
     self.hip = newHip
@@ -18,16 +18,6 @@ public class PleatEquations {
     width = hip / Double(count)
 
     lockedAction(action)
-  }
-
-  func startBoxPleat(hip newHip: Double, fabric newFabric: Double, action: () -> Void) {
-    let initialWidth = newFabric / 3.0
-    startPleat(newHip, newFabric, initialWidth, action)
-  }
-
-  func startKnifePleat(hip newHip: Double, fabric newFabric: Double, action: () -> Void) {
-    let initialWidth = 1.0
-    startPleat(newHip, newFabric, initialWidth, action)
   }
 
   func setCount(_ newCount: Int, action: () -> Void) {

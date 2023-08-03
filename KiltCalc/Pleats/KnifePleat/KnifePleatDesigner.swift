@@ -21,7 +21,12 @@ public class KnifePleatDesigner: PleatDesigner {
       return
     }
 
-    equations.startKnifePleat(hip: idealHip!.asDouble, fabric: pleatFabric!, action: updateCountAndWidth)
+    equations.startPleat(
+      hip: idealHip!.asDouble,
+      fabric: pleatFabric!,
+      initialWidth: 1.0,
+      action: updateCountAndWidth
+    )
   }
 
   public var idealHip: Value? {
