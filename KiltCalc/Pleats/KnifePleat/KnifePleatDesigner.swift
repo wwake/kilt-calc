@@ -1,9 +1,24 @@
 import Foundation
 
 public class KnifePleatDesigner: PleatDesigner {
-  public var needsRequiredValues: Bool = true
+  public var needsRequiredValues: Bool {
+    idealHip == nil || pleatFabric == nil
+  }
 
-  public var idealHip: Value? = nil
+  private func establishNonRequiredVariables() {
+    if needsRequiredValues {
+      return
+    }
+
+    pleatWidth = .inches(1)
+    pleatCount = Int(round(idealHip!.asDouble))
+  }
+
+  public var idealHip: Value? {
+    didSet {
+      establishNonRequiredVariables()
+    }
+  }
 
   public var adjustedHip: Value? = nil
 
@@ -21,7 +36,11 @@ public class KnifePleatDesigner: PleatDesigner {
     }
   }
 
-  public var totalFabric: Double? = nil
+  public var totalFabric: Double? {
+    if pleatFabric == nil { return nil }
+
+    return pleatFabric! * Double(pleatCount)
+  }
 
   public var gap: Double?
 
