@@ -43,10 +43,20 @@ final class KnifePleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.gap, nil)
   }
 
-  func test_countAndWidthSet_WhenHipAndFabricAreSet() {
+  func test_countAndWidthSet_WhenFabricThenHipAreSet() {
     let designer = KnifePleatDesigner()
     designer.pleatFabric = 7
     designer.idealHip = .inches(20)
+
+    XCTAssertEqual(designer.pleatWidth, .inches(1))
+    XCTAssertEqual(designer.pleatCount, 20)
+    XCTAssertEqual(designer.totalFabric, 140)
+  }
+
+  func test_countAndWidthSet_WhenHipThenFabricAreSet() {
+    let designer = KnifePleatDesigner()
+    designer.idealHip = .inches(20)
+    designer.pleatFabric = 7
 
     XCTAssertEqual(designer.pleatWidth, .inches(1))
     XCTAssertEqual(designer.pleatCount, 20)
@@ -74,15 +84,19 @@ final class KnifePleatDesignerTests: XCTestCase {
     let designer = KnifePleatDesigner()
     designer.idealHip = .inches(20)
     designer.pleatFabric = 6
+    XCTAssertEqual(designer.pleatCount, 20)
+
     designer.pleatWidth = nil
-    XCTAssertEqual(designer.pleatCount, 10)
+    XCTAssertEqual(designer.pleatCount, 20)
   }
 
   func test_getPleatCount_WhenPleatWidthIs0() {
     let designer = KnifePleatDesigner()
     designer.idealHip = .inches(20)
     designer.pleatFabric = 6
+    XCTAssertEqual(designer.pleatCount, 20)
+
     designer.pleatWidth = .inches(0)
-    XCTAssertEqual(designer.pleatCount, 10)
+    XCTAssertEqual(designer.pleatCount, 20)
   }
 }

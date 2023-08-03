@@ -24,7 +24,11 @@ public class KnifePleatDesigner: PleatDesigner {
 
   public var hipWasAdjusted: Bool = false
 
-  public var pleatFabric: Double? = nil
+  public var pleatFabric: Double? {
+    didSet {
+      establishNonRequiredVariables()
+    }
+  }
 
   public var pleatCount: Int = 10
 
