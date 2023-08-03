@@ -205,6 +205,7 @@
 			children = (
 				91F7D1292A7AF12E0075123E /* BoxPleat */,
 				91F7D12A2A7AF1360075123E /* KnifePleat */,
+				91F7D1272A7AF0E60075123E /* PleatDesigner.swift */,
 				91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */,
 				911857A62A4CB50F0020F16E /* PleatView.swift */,
 				91A7DC282A7058800084BBD2 /* PleatCountDrawing.swift */,
@@ -212,7 +213,6 @@
 				91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */,
 				91F7D1212A7AE0500075123E /* TartanDesign.swift */,
 				91F7D1252A7AE8390075123E /* PleatCountView.swift */,
-				91F7D1272A7AF0E60075123E /* PleatDesigner.swift */,
 			);
 			path = Pleats;
 			sourceTree = "<group>";
