@@ -101,12 +101,26 @@ final class KnifePleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.pleatCount, 20)
   }
 
+  func test_initialPleatWidthAdjusted_WhenCountIsRounded() {
+    let designer = KnifePleatDesigner()
+    designer.idealHip = .inches(1.5)
+    designer.pleatFabric = 6
+    XCTAssertEqual(designer.pleatCount, 2)
+    XCTAssertEqual(designer.pleatWidth, .number(0.75))
+  }
+
   func test_adjustedHip() {
     let designer = KnifePleatDesigner()
-    designer.idealHip = .inches(20.5)
-    designer.pleatFabric = 6
-    XCTAssertEqual(designer.pleatCount, 21)
-    XCTAssertEqual(designer.adjustedHip, .number(21))
+    designer.idealHip = .inches(20)
+    designer.pleatFabric = 4
+    XCTAssertEqual(designer.pleatCount, 20)
+    XCTAssertEqual(designer.pleatWidth, .number(1))
+
+    designer.pleatWidth = .number(1.5)
+
+    XCTAssertEqual(designer.pleatCount, 13)
+    XCTAssertEqual(designer.pleatWidth, .number(1.5))
+    XCTAssertEqual(designer.adjustedHip, .number(19.5))
     XCTAssertEqual(designer.hipWasAdjusted, true)
   }
 
