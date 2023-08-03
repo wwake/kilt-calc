@@ -1,21 +1,23 @@
 import Foundation
 import SwiftUI
 
-public class BoxPleatDesigner: ObservableObject, PleatDesigner {
-  private var equations = PleatEquations()
+public class BoxPleatDesigner: PleatDesigner {}
+
+public class PleatDesigner: ObservableObject { //}, PleatDesigner {
+  var equations = PleatEquations()
 
   public var needsRequiredValues: Bool {
     idealHip == nil || pleatFabric == nil
   }
 
-  fileprivate func updateCountAndWidth() {
+  func updateCountAndWidth() {
     withAnimation {
       pleatCount = equations.count
       pleatWidth = .number(equations.width)
     }
   }
 
-  fileprivate func establishNonRequiredVariables() {
+  func establishNonRequiredVariables() {
     if needsRequiredValues {
       pleatWidth = nil
       return
@@ -63,7 +65,7 @@ public class BoxPleatDesigner: ObservableObject, PleatDesigner {
 
   @Published public var pleatWidth: Value? {
     didSet {
-      if needsRequiredValues || pleatWidth == nil {
+      if needsRequiredValues || pleatWidth == nil || pleatWidth!.asDouble.isZero {
         return
       }
 

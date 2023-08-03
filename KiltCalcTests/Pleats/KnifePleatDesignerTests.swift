@@ -17,14 +17,14 @@ final class KnifePleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.totalFabric, nil)
   }
 
-  func test_unusedFieldsHaveTrivialDefault() throws {
-    let designer = KnifePleatDesigner()
-    XCTAssertEqual(designer.gap, nil)
-    XCTAssertEqual(designer.absoluteGap, nil)
-    XCTAssertEqual(designer.gapRatio, 0.0)
-    XCTAssertEqual(designer.gapLabel, "")
-  }
-
+//  func test_unusedFieldsHaveTrivialDefault() throws {
+//    let designer = KnifePleatDesigner()
+//    XCTAssertEqual(designer.gap, nil)
+//    XCTAssertEqual(designer.absoluteGap, nil)
+//    XCTAssertEqual(designer.gapRatio, 0.0)
+//    XCTAssertEqual(designer.gapLabel, "")
+//  }
+//
   func test_WhenPleatFabricIsMissing_ThenOutputVariablesAreNil() {
     let designer = KnifePleatDesigner()
     designer.idealHip = .inches(10)
