@@ -64,7 +64,7 @@ public class KnifePleatDesigner: PleatDesigner {
   }
 
   public var totalFabric: Double? {
-    if pleatFabric == nil { return nil }
+    if needsRequiredValues { return nil }
 
     return pleatFabric! * Double(pleatCount)
   }
