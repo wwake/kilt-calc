@@ -13,7 +13,13 @@ public class KnifePleatDesigner: PleatDesigner {
 
   public var pleatCount: Int = 10
 
-  public var pleatWidth: Value?
+  public var pleatWidth: Value? {
+    didSet {
+      if idealHip == nil || pleatWidth == nil || pleatWidth!.asDouble.isZero { return }
+
+      pleatCount = Int(round(idealHip!.asDouble / pleatWidth!.asDouble))
+    }
+  }
 
   public var totalFabric: Double? = nil
 
