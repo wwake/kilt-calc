@@ -1,4 +1,6 @@
-* Develop a KnifePleatDesigner
+
+* Add static methods to PleatDesigner - static func box(_ pd: PleatDesigner) -> Double, pass as initialWidth function
+* Refactor so subclasses of PleatDesigner aren't needed
   + Enforce physical limits
 * Switch between box/military and knife pleats
 * Show depth dimension line on knife pleat
@@ -47,6 +49,10 @@ EGTest
 * Let check use varargs rather than []
 * For a test that can throw, can we continue after EGAssert throws?
 * Have EGAssertThrows?
+
+CALC-23-41: 2023-08-03 - Knife Pleat Designer
+* Develop a KnifePleatDesigner
+* Refactor so KnifePleatDesigner and BoxPleatDesigner are each a trivial subclass of PleatDesigner
 
 CALC-23-40: 2023-08-02 - Knife Pleats
 Box Pleats

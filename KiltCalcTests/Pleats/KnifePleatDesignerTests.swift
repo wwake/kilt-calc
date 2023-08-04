@@ -4,6 +4,7 @@ import XCTest
 @MainActor
 final class KnifePleatDesignerTests: XCTestCase {
   private let designer = KnifePleatDesigner()
+//  private let designer = PleatDesigner(initialWidth: PleatDesigner.knifePleatInitialWidth)
 
   func test_initializesCorrectly() throws {
     XCTAssertEqual(designer.needsRequiredValues, true)
