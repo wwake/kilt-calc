@@ -222,6 +222,10 @@ struct PleatView: View {
       }
       .navigationTitle("Pleats")
     }
+    .onAppear {
+      boxPleatDesigner.tartan = tartan
+      knifePleatDesigner.tartan = tartan
+    }
   }
 }
 
