@@ -8,7 +8,7 @@ enum PleatViewFocus: Int, CaseIterable, Equatable {
 
 struct PleatView: View {
   @StateObject private var tartan = TartanDesign()
-  @StateObject private var boxPleatDesigner = BoxPleatDesigner()
+  @StateObject private var boxPleatDesigner = PleatDesigner(PleatDesigner.boxPleat)
 
   @State private var slashIsPressed = false
 

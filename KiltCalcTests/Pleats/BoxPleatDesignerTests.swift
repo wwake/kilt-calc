@@ -4,7 +4,7 @@ import XCTest
 
 @MainActor
 final class BoxPleatDesignerTests: XCTestCase {
-  let designer = BoxPleatDesigner()
+  private let designer = PleatDesigner(PleatDesigner.boxPleat)
 
   private func checkValueEquality(_ actual: Value?, _ expected: Value?, accuracy: Double = 0.0) {
     if actual == nil && expected == nil { return }
