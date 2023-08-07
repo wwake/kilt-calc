@@ -6,15 +6,21 @@ enum PleatViewFocus: Int, CaseIterable, Equatable {
   case idealHip, sett, pleatWidth
 }
 
-struct PleatView: View {
-  @StateObject private var tartan = TartanDesign()
+public struct PleatView: View {
+  @ObservedObject public var tartan = TartanDesign()
 
-  @StateObject private var boxPleatDesigner = PleatDesigner(PleatDesigner.boxPleat)
-  @StateObject private var knifePleatDesigner = PleatDesigner(PleatDesigner.knifePleat)
+  @StateObject private var boxPleatDesigner: PleatDesigner
+
+  @StateObject private var knifePleatDesigner: PleatDesigner
 
   @State private var slashIsPressed = false
 
   @FocusState private var focusedField: PleatViewFocus?
+
+  init(tartan: TartanDesign) {
+    _boxPleatDesigner = StateObject(wrappedValue: PleatDesigner(tartan, PleatDesigner.boxPleat))
+    _knifePleatDesigner = StateObject(wrappedValue: PleatDesigner(tartan, PleatDesigner.knifePleat))
+  }
 
   func formatOptional(_ value: Double?) -> String {
     if value == nil {
@@ -56,8 +62,8 @@ struct PleatView: View {
         .focused($focusedField, equals: .sett)
         .padding([.trailing], 116)
         .onChange(of: tartan.sett) { _ in
-//          boxPleatDesigner.pleatFabric = tartan.pleatFabric
-//          knifePleatDesigner.pleatFabric = tartan.pleatFabric
+          boxPleatDesigner.pleatFabric = tartan.pleatFabric
+          knifePleatDesigner.pleatFabric = tartan.pleatFabric
         }
 
         TartanDrawing(highlight: tartan.settsPerPleat)
@@ -67,8 +73,8 @@ struct PleatView: View {
         })
         .padding([.leading, .trailing], 44)
         .onChange(of: tartan.settsPerPleat) { _ in
-//          boxPleatDesigner.pleatFabric = tartan.pleatFabric
-//          knifePleatDesigner.pleatFabric = tartan.pleatFabric
+          boxPleatDesigner.pleatFabric = tartan.pleatFabric
+          knifePleatDesigner.pleatFabric = tartan.pleatFabric
         }
 
         Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
@@ -127,7 +133,7 @@ struct PleatView: View {
 
   @State private var selectedPleat: PleatStyle = .box
 
-  var body: some View {
+  public var body: some View {
     NavigationView {
       List {
         Section("Tartan") {
@@ -230,7 +236,9 @@ struct PleatView: View {
 }
 
 struct PleatView_Previews: PreviewProvider {
+  static var tartan = TartanDesign()
+
   static var previews: some View {
-    PleatView()
+    PleatView(tartan: tartan)
   }
 }

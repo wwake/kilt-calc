@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import SwiftUI
 
@@ -6,9 +7,19 @@ public class PleatDesigner: ObservableObject {
 
   public var tartan: TartanDesign?
 
-  init(_ pleatInitialWidth: @escaping (PleatDesigner) -> () -> Double) {
+  var cancellable : AnyCancellable?
+
+  init(_ tartan: TartanDesign, _ pleatInitialWidth: @escaping (PleatDesigner) -> () -> Double) {
+    self.tartan = tartan
+
     defer {
       self.initialWidth = pleatInitialWidth(self)
+//      self.element = element
+//      self.cancellable = self.element.$value.sink(
+//        receiveValue: { [weak self] _ in
+//          self?.objectWillChange.send()
+//        }
+//      )
     }
   }
 

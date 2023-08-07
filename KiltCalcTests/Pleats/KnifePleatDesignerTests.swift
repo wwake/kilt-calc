@@ -3,7 +3,7 @@ import XCTest
 
 @MainActor
 final class KnifePleatDesignerTests: XCTestCase {
-  private let designer = PleatDesigner(PleatDesigner.knifePleat)
+  private let designer = PleatDesigner(TartanDesign(), PleatDesigner.knifePleat)
 
   func test_initializesCorrectly() throws {
     XCTAssertEqual(designer.needsRequiredValues, true)

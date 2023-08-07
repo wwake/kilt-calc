@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
+  @StateObject var tartan = TartanDesign()
 
   var body: some View {
     TabView {
@@ -26,7 +27,7 @@ struct ContentView: View {
         Label("Apron/Pleat", systemImage: "circle.bottomhalf.filled")
       }
 
-      PleatView()
+      PleatView(tartan: tartan)
       .tabItem {
         Label("Pleats", systemImage: "rectangle.split.3x1")
       }
@@ -36,6 +37,8 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+  var tartan = TartanDesign()
+
   static var previews: some View {
     ContentView(calculator: Calculator())
   }

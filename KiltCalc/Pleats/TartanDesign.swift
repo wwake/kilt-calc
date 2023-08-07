@@ -1,18 +1,24 @@
 import Foundation
 
 public class TartanDesign: ObservableObject {
-  @Published public var sett: Value?
+  @Published public var sett: Value? {
+    didSet {
+      setPleatFabric()
+    }
+  }
 
   @Published public var settsPerPleat: Double = 1.0 {
     didSet {
       if settsPerPleat < 0.5 {
         settsPerPleat = 0.5
       }
+      setPleatFabric()
     }
   }
 
-  public var pleatFabric: Double? {
-    if sett == nil { return nil }
-    return sett!.asDouble * settsPerPleat
+  func setPleatFabric() {
+    pleatFabric = sett == nil ? nil : sett!.asDouble * settsPerPleat
   }
+
+  @Published private(set) var pleatFabric: Double?
 }
