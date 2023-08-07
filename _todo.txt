@@ -1,7 +1,5 @@
-
-* Add static methods to PleatDesigner - static func box(_ pd: PleatDesigner) -> Double, pass as initialWidth function
 * Refactor so subclasses of PleatDesigner aren't needed
-  + Enforce physical limits
+  + Enforce physical limits?
 * Switch between box/military and knife pleats
 * Show depth dimension line on knife pleat
 * Should we make a type for pleat types? (now PleatValidator knows)
@@ -49,6 +47,9 @@ EGTest
 * Let check use varargs rather than []
 * For a test that can throw, can we continue after EGAssert throws?
 * Have EGAssertThrows?
+
+CALC-23-42: 2023-08-07 - Knife Pleat Integration
+* Add static methods to PleatDesigner - static func box(_ pd: PleatDesigner) () -> -> Double, pass as initialWidth function
 
 CALC-23-41: 2023-08-03 - Knife Pleat Designer
 * Develop a KnifePleatDesigner
