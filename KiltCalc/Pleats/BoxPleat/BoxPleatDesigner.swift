@@ -1,5 +1,8 @@
 public class BoxPleatDesigner: PleatDesigner {
-  override func initialWidth() -> Double {
-    pleatFabric! / 3.0
+  init() {
+    super.init(PleatDesigner.boxPleat)
   }
+//  override func initialWidth() -> Double {
+//    pleatFabric! / 3.0
+//  }
 }

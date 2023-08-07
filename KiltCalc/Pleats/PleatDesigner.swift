@@ -2,23 +2,39 @@ import Foundation
 import SwiftUI
 
 public class PleatDesigner: ObservableObject {
-  init(initialWidth: () -> Double = { 42.0 }) {
+  public var initialWidth: () -> Double = { 0.0 }
 
+  init(_ pleatInitialWidth: @escaping (PleatDesigner) -> () -> Double) {
+    defer {
+      self.initialWidth = pleatInitialWidth(self)
+    }
+  }
+
+  static var boxPleat: (PleatDesigner) -> () -> Double = { designer in
+    {
+      designer.pleatFabric! / 3.0
+    }
+  }
+
+  static var knifePleat: (PleatDesigner) -> () -> Double = { _ in
+    {
+      1.0
+    }
   }
 
   var equations = PleatEquations()
 
-  func initialWidth() -> Double {
-    fatalError("Subclass responsibility to provide initialWidth")
-  }
+//  func initialWidth() -> Double {
+//    fatalError("Subclass responsibility to provide initialWidth")
+//  }
 
-  func boxPleatInitialWidth() -> () -> Double {
-    { self.pleatFabric! / 3.0 }
-  }
-
-  func knifePleatInitialWidth() -> () -> Double {
-    { 1.0 }
-  }
+//  func boxPleatInitialWidth() -> () -> Double {
+//    { self.pleatFabric! / 3.0 }
+//  }
+//
+//  func knifePleatInitialWidth() -> () -> Double {
+//    { 1.0 }
+//  }
 
   public var needsRequiredValues: Bool {
     idealHip == nil || pleatFabric == nil

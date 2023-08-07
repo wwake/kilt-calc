@@ -1,5 +1,8 @@
 public class KnifePleatDesigner: PleatDesigner {
-  override func initialWidth() -> Double {
-    1.0
+  init() {
+    super.init(PleatDesigner.knifePleat)
   }
+//  override func initialWidth() -> Double {
+//    1.0
+//  }
 }
