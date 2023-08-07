@@ -35,7 +35,7 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  func establishNonRequiredVariables() {
+  func establishPleatVariables() {
     if needsRequiredValues {
       pleatWidth = nil
       return
@@ -51,7 +51,7 @@ public class PleatDesigner: ObservableObject {
 
   @Published public var idealHip: Value? {
     didSet {
-      establishNonRequiredVariables()
+      establishPleatVariables()
     }
   }
 
@@ -65,9 +65,10 @@ public class PleatDesigner: ObservableObject {
     return idealHip! != adjustedHip!
   }
 
-  @Published public var pleatFabric: Double? {
+  public var pleatFabric: Double? {
+    // tartan?.pleatFabric
     didSet {
-      establishNonRequiredVariables()
+      establishPleatVariables()
     }
   }
 

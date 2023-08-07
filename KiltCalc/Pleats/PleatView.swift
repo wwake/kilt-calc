@@ -56,8 +56,8 @@ struct PleatView: View {
         .focused($focusedField, equals: .sett)
         .padding([.trailing], 116)
         .onChange(of: tartan.sett) { _ in
-          boxPleatDesigner.pleatFabric = tartan.pleatFabric
-          knifePleatDesigner.pleatFabric = tartan.pleatFabric
+//          boxPleatDesigner.pleatFabric = tartan.pleatFabric
+//          knifePleatDesigner.pleatFabric = tartan.pleatFabric
         }
 
         TartanDrawing(highlight: tartan.settsPerPleat)
@@ -67,8 +67,8 @@ struct PleatView: View {
         })
         .padding([.leading, .trailing], 44)
         .onChange(of: tartan.settsPerPleat) { _ in
-          boxPleatDesigner.pleatFabric = tartan.pleatFabric
-          knifePleatDesigner.pleatFabric = tartan.pleatFabric
+//          boxPleatDesigner.pleatFabric = tartan.pleatFabric
+//          knifePleatDesigner.pleatFabric = tartan.pleatFabric
         }
 
         Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
