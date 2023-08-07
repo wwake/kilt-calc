@@ -135,21 +135,37 @@ struct PleatView: View {
         }
 
         Section("Pleats") {
-          PleatCountView(
-            designer: boxPleatDesigner,
-            slashIsPressed: $slashIsPressed,
-            focusedField: $focusedField
-          )
-        }
+          switch selectedPleat {
+          case .box:
+            PleatCountView(
+              designer: boxPleatDesigner,
+              slashIsPressed: $slashIsPressed,
+              focusedField: $focusedField
+            )
+            .onChange(of: boxPleatDesigner.idealHip) { value in
+              knifePleatDesigner.idealHip = value
+            }
 
-        Section("Pleat Shape") {
-          Picker("Pleat Type", selection: $selectedPleat) {
-            ForEach(PleatStyle.allCases) { style in
-              Text(style.rawValue)
+          case .knife:
+            PleatCountView(
+              designer: knifePleatDesigner,
+              slashIsPressed: $slashIsPressed,
+              focusedField: $focusedField
+            )
+            .onChange(of: knifePleatDesigner.idealHip) { value in
+              boxPleatDesigner.idealHip = value
             }
           }
-          .pickerStyle(.segmented)
+        }
 
+        Picker("Pleat Type", selection: $selectedPleat) {
+          ForEach(PleatStyle.allCases) { style in
+            Text(style.rawValue)
+          }
+        }
+        .pickerStyle(.segmented)
+
+        Section("Pleat Shape") {
           switch selectedPleat {
           case .box:
             boxPleat
@@ -159,14 +175,27 @@ struct PleatView: View {
           }
         }
 
-        Section {
-          LabeledContent {
-            Text(formatOptional(boxPleatDesigner.totalFabric))
-          } label: {
-            Text("Total Fabric for Pleats")
+        switch selectedPleat {
+        case .box:
+          Section {
+            LabeledContent {
+              Text(formatOptional(boxPleatDesigner.totalFabric))
+            } label: {
+              Text("Total Fabric for Pleats")
+            }
           }
+          .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+
+        case .knife:
+          Section {
+            LabeledContent {
+              Text(formatOptional(knifePleatDesigner.totalFabric))
+            } label: {
+              Text("Total Fabric for Pleats")
+            }
+          }
+          .foregroundColor(knifePleatDesigner.needsRequiredValues ? Color.gray : Color.black)
         }
-        .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
       }
       .toolbar {
         // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
