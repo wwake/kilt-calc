@@ -199,16 +199,17 @@
 		91184E982A4E016800D5841E /* Pleats */ = {
 			isa = PBXGroup;
 			children = (
-				91F7D1292A7AF12E0075123E /* BoxPleat */,
-				91F7D12A2A7AF1360075123E /* KnifePleat */,
+				91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */,
+				911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */,
+				91A7DC262A7057C90084BBD2 /* KnifePleatDrawing.swift */,
+				91A7DC282A7058800084BBD2 /* PleatCountDrawing.swift */,
+				91F7D1252A7AE8390075123E /* PleatCountView.swift */,
 				91F7D1272A7AF0E60075123E /* PleatDesigner.swift */,
+				9133987D2A71981100C181AE /* PleatEquations.swift */,
 				91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */,
 				911857A62A4CB50F0020F16E /* PleatView.swift */,
-				91A7DC282A7058800084BBD2 /* PleatCountDrawing.swift */,
-				91A7DC2A2A705C570084BBD2 /* TartanDrawing.swift */,
-				91F7D11F2A7AD45A0075123E /* AdjustedHipStyle.swift */,
 				91F7D1212A7AE0500075123E /* TartanDesign.swift */,
-				91F7D1252A7AE8390075123E /* PleatCountView.swift */,
+				91A7DC2A2A705C570084BBD2 /* TartanDrawing.swift */,
 			);
 			path = Pleats;
 			sourceTree = "<group>";
@@ -348,23 +349,6 @@
 				91E3C5AC2A1D39A30098BAFC /* EGTest+extensions.swift */,
 			);
 			path = KiltCalcTests;
-			sourceTree = "<group>";
-		};
-		91F7D1292A7AF12E0075123E /* BoxPleat */ = {
-			isa = PBXGroup;
-			children = (
-				911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */,
-				9133987D2A71981100C181AE /* PleatEquations.swift */,
-			);
-			path = BoxPleat;
-			sourceTree = "<group>";
-		};
-		91F7D12A2A7AF1360075123E /* KnifePleat */ = {
-			isa = PBXGroup;
-			children = (
-				91A7DC262A7057C90084BBD2 /* KnifePleatDrawing.swift */,
-			);
-			path = KnifePleat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
