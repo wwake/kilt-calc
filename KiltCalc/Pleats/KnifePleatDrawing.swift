@@ -20,18 +20,17 @@ private struct KnifePleatShape: Shape {
 }
 
 struct KnifePleatDrawing: View {
-  var pleat: CGFloat
-  var gap: CGFloat
+  var pleatPixels: CGFloat
 
   var body: some View {
     VStack(alignment: .center) {
       Text("pleat")
 
       DimensionLine()
-        .frame(width: pleat, height: 10)
+        .frame(width: pleatPixels, height: 10)
         .padding([.bottom], 8)
 
-      KnifePleatShape(pleat: pleat)
+      KnifePleatShape(pleat: pleatPixels)
         .stroke(Color.green, lineWidth: 4.0)
         .frame(height: 50)
     }
@@ -40,6 +39,6 @@ struct KnifePleatDrawing: View {
 
 struct KnifePleatDrawing_Previews: PreviewProvider {
   static var previews: some View {
-    KnifePleatDrawing(pleat: 150, gap: 22)
+    KnifePleatDrawing(pleatPixels: 150)
   }
 }

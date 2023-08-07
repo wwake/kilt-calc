@@ -8,7 +8,9 @@ enum PleatViewFocus: Int, CaseIterable, Equatable {
 
 struct PleatView: View {
   @StateObject private var tartan = TartanDesign()
+
   @StateObject private var boxPleatDesigner = PleatDesigner(PleatDesigner.boxPleat)
+  @StateObject private var knifePleatDesigner = PleatDesigner(PleatDesigner.knifePleat)
 
   @State private var slashIsPressed = false
 
@@ -55,6 +57,7 @@ struct PleatView: View {
         .padding([.trailing], 116)
         .onChange(of: tartan.sett) { _ in
           boxPleatDesigner.pleatFabric = tartan.pleatFabric
+          knifePleatDesigner.pleatFabric = tartan.pleatFabric
         }
 
         TartanDrawing(highlight: tartan.settsPerPleat)
@@ -65,6 +68,7 @@ struct PleatView: View {
         .padding([.leading, .trailing], 44)
         .onChange(of: tartan.settsPerPleat) { _ in
           boxPleatDesigner.pleatFabric = tartan.pleatFabric
+          knifePleatDesigner.pleatFabric = tartan.pleatFabric
         }
 
         Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
@@ -95,6 +99,24 @@ struct PleatView: View {
       Text(PleatValidator.gapMessage(boxPleatDesigner.gap))
         .font(.headline)
         .multilineTextAlignment(.center)
+    }
+  }
+
+  var knifePleat: some View {
+    VStack {
+      ValidatingTextField(
+        label: "Width",
+        value: $knifePleatDesigner.pleatWidth,
+        validator: PleatValidator.positiveSmaller(knifePleatDesigner.pleatFabric),
+        slashIsPressed: $slashIsPressed,
+        disabled: knifePleatDesigner.needsRequiredValues
+      )
+      .focused($focusedField, equals: .pleatWidth)
+      .foregroundColor(knifePleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+
+      KnifePleatDrawing(
+        pleatPixels: 200
+      )
     }
   }
 
@@ -133,7 +155,7 @@ struct PleatView: View {
             boxPleat
 
           case .knife:
-            Text("TBD")
+            knifePleat
           }
         }
 
