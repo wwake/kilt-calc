@@ -10,31 +10,17 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  static var boxPleat: (PleatDesigner) -> () -> Double = { designer in
-    {
+  static var boxPleat: (PleatDesigner) -> () -> Double = { designer in {
       designer.pleatFabric! / 3.0
     }
   }
 
-  static var knifePleat: (PleatDesigner) -> () -> Double = { _ in
-    {
+  static var knifePleat: (PleatDesigner) -> () -> Double = { _ in {
       1.0
     }
   }
 
   var equations = PleatEquations()
-
-//  func initialWidth() -> Double {
-//    fatalError("Subclass responsibility to provide initialWidth")
-//  }
-
-//  func boxPleatInitialWidth() -> () -> Double {
-//    { self.pleatFabric! / 3.0 }
-//  }
-//
-//  func knifePleatInitialWidth() -> () -> Double {
-//    { 1.0 }
-//  }
 
   public var needsRequiredValues: Bool {
     idealHip == nil || pleatFabric == nil
