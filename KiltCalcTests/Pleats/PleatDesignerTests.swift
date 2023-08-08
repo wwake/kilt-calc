@@ -47,4 +47,25 @@ final class PleatDesignerTests: XCTestCase {
 
     XCTAssertEqual(designer.needsRequiredValues, false)
   }
+
+  func test_depthIsHalfOfFabricLessPleatWidth() {
+    designer.idealHip = Value.inches(20)
+    designer.pleatFabric = 10
+    designer.pleatWidth = .inches(4)
+    XCTAssertEqual(designer.depth, .inches(3))
+  }
+
+  func test_depthIsNil_WhenFabricNil() {
+    designer.idealHip = Value.inches(20)
+    designer.pleatFabric = nil
+    designer.pleatWidth = .inches(4)
+    XCTAssertEqual(designer.depth, nil)
+  }
+
+  func test_depthIsNil_WhenPleatWidthNil() {
+    designer.idealHip = Value.inches(20)
+    designer.pleatFabric = 8
+    designer.pleatWidth = nil
+    XCTAssertEqual(designer.depth, nil)
+  }
 }

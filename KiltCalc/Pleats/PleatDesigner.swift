@@ -116,6 +116,11 @@ public class PleatDesigner: ObservableObject {
     return "Overlap"
   }
 
+  public var depth: Value? {
+    if pleatFabric == nil || pleatWidth == nil { return nil }
+    return .inches((pleatFabric! - pleatWidth!.asDouble) / 2)
+  }
+
   public var totalFabric: Double? {
     if needsRequiredValues { return nil }
     return pleatFabric! * Double(pleatCount)

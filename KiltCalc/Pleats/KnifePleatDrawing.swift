@@ -21,7 +21,7 @@ private struct KnifePleatShape: Shape {
 
 struct KnifePleatDrawing: View {
   let pleatPixels: CGFloat = 150.0
-  var depthText: String = ""
+  var depthText: String
 
   var body: some View {
     GeometryReader { geometry in
