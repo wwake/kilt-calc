@@ -9,14 +9,14 @@ enum PleatViewFocus: Int, CaseIterable, Equatable {
 public struct PleatView: View {
   @ObservedObject public var tartan = TartanDesign()
 
-  @StateObject private var boxPleatDesigner: PleatDesigner
+  @StateObject private var designer: PleatDesigner
 
   @State private var slashIsPressed = false
 
   @FocusState private var focusedField: PleatViewFocus?
 
   init(tartan: TartanDesign) {
-    _boxPleatDesigner = StateObject(wrappedValue: PleatDesigner(PleatDesigner.boxPleat))
+    _designer = StateObject(wrappedValue: PleatDesigner(PleatDesigner.boxPleat))
   }
 
   func formatOptional(_ value: Double?) -> String {
@@ -68,11 +68,8 @@ public struct PleatView: View {
 
       Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
     }
-    .onChange(of: tartan.sett) { _ in
-      boxPleatDesigner.pleatFabric = tartan.pleatFabric
-    }
-    .onChange(of: tartan.settsPerPleat) { _ in
-      boxPleatDesigner.pleatFabric = tartan.pleatFabric
+    .onChange(of: tartan.pleatFabric) { _ in
+      designer.pleatFabric = tartan.pleatFabric
     }
   }
 
@@ -80,21 +77,21 @@ public struct PleatView: View {
     VStack {
       BoxPleatDrawing(
         pleatPixels: 200,
-        gapRatio: boxPleatDesigner.gapRatio,
+        gapRatio: designer.gapRatio,
         drawGap:
-          !PleatValidator.isMilitaryBoxPleat(boxPleatDesigner.gap),
-        gapLabel: boxPleatDesigner.gapLabel,
-        gapText: "\( formatOptional(boxPleatDesigner.absoluteGap))"
+          !PleatValidator.isMilitaryBoxPleat(designer.gap),
+        gapLabel: designer.gapLabel,
+        gapText: "\( formatOptional(designer.absoluteGap))"
       )
 
-      Text(PleatValidator.gapMessage(boxPleatDesigner.gap))
+      Text(PleatValidator.gapMessage(designer.gap))
         .font(.headline)
         .multilineTextAlignment(.center)
     }
   }
 
   var knifePleat: some View {
-      KnifePleatDrawing(pleatPixels: 200)
+    KnifePleatDrawing(pleatPixels: 200)
   }
 
   enum PleatStyle: String, CaseIterable, Identifiable {
@@ -113,7 +110,7 @@ public struct PleatView: View {
 
         Section("Pleats") {
           PleatCountView(
-            designer: boxPleatDesigner,
+            designer: designer,
             slashIsPressed: $slashIsPressed,
             focusedField: $focusedField
           )
@@ -127,19 +124,19 @@ public struct PleatView: View {
         .pickerStyle(.segmented)
         .onChange(of: selectedPleat) { _ in
           let initialWidth = selectedPleat == .box ? PleatDesigner.boxPleat : PleatDesigner.knifePleat
-          boxPleatDesigner.initialWidth = initialWidth(boxPleatDesigner)
+          designer.initialWidth = initialWidth(designer)
         }
 
         Section("Pleat Shape") {
           ValidatingTextField(
             label: "Width",
-            value: $boxPleatDesigner.pleatWidth,
-            validator: PleatValidator.positiveSmaller(boxPleatDesigner.pleatFabric),
+            value: $designer.pleatWidth,
+            validator: PleatValidator.positiveSmaller(designer.pleatFabric),
             slashIsPressed: $slashIsPressed,
-            disabled: boxPleatDesigner.needsRequiredValues
+            disabled: designer.needsRequiredValues
           )
           .focused($focusedField, equals: .pleatWidth)
-          .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+          .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
 
           switch selectedPleat {
           case .box:
@@ -152,12 +149,12 @@ public struct PleatView: View {
 
         Section {
           LabeledContent {
-            Text(formatOptional(boxPleatDesigner.totalFabric))
+            Text(formatOptional(designer.totalFabric))
           } label: {
             Text("Total Fabric for Pleats")
           }
         }
-        .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+        .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
       }
     }
     .toolbar {
