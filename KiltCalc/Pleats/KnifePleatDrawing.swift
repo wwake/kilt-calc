@@ -20,7 +20,7 @@ private struct KnifePleatShape: Shape {
 }
 
 struct KnifePleatDrawing: View {
-  let pleatPixels: CGFloat = 150.0
+  let pleatPixels: CGFloat = 125
   var depthText: String
 
   var body: some View {
@@ -40,10 +40,9 @@ struct KnifePleatDrawing: View {
           .frame(width: geometry.size.width / 2 - pleatPixels / 2)
           .frame(height: 10)
           .padding([.top], 4)
-          .padding([.leading], 1)
         Text("Depth: \(depthText)")
           .padding([.top], 4)
-          .padding([.leading], 20)
+          .padding([.leading], 16)
       }
     }
     .frame(height: 180)
