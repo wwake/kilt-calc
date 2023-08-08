@@ -11,15 +11,12 @@ public struct PleatView: View {
 
   @StateObject private var boxPleatDesigner: PleatDesigner
 
- // @StateObject private var knifePleatDesigner: PleatDesigner
-
   @State private var slashIsPressed = false
 
   @FocusState private var focusedField: PleatViewFocus?
 
   init(tartan: TartanDesign) {
     _boxPleatDesigner = StateObject(wrappedValue: PleatDesigner(PleatDesigner.boxPleat))
-//    _knifePleatDesigner = StateObject(wrappedValue: PleatDesigner(PleatDesigner.knifePleat))
   }
 
   func formatOptional(_ value: Double?) -> String {
@@ -73,11 +70,9 @@ public struct PleatView: View {
       }
       .onChange(of: tartan.sett) { _ in
         boxPleatDesigner.pleatFabric = tartan.pleatFabric
- //       knifePleatDesigner.pleatFabric = tartan.pleatFabric
       }
       .onChange(of: tartan.settsPerPleat) { _ in
         boxPleatDesigner.pleatFabric = tartan.pleatFabric
- //       knifePleatDesigner.pleatFabric = tartan.pleatFabric
       }
   }
 
@@ -112,16 +107,12 @@ public struct PleatView: View {
     VStack {
       ValidatingTextField(
         label: "Width",
-//        value: $knifePleatDesigner.pleatWidth,
         value: $boxPleatDesigner.pleatWidth,
-//        validator: PleatValidator.positiveSmaller(knifePleatDesigner.pleatFabric),
         validator: PleatValidator.positiveSmaller(boxPleatDesigner.pleatFabric),
         slashIsPressed: $slashIsPressed,
-//        disabled: knifePleatDesigner.needsRequiredValues
         disabled: boxPleatDesigner.needsRequiredValues
       )
       .focused($focusedField, equals: .pleatWidth)
-//      .foregroundColor(knifePleatDesigner.needsRequiredValues ? Color.gray : Color.black)
       .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
 
       KnifePleatDrawing(
