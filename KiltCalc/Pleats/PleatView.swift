@@ -145,28 +145,11 @@ public struct PleatView: View {
         }
 
         Section("Pleats") {
-          switch selectedPleat {
-          case .box:
             PleatCountView(
               designer: boxPleatDesigner,
               slashIsPressed: $slashIsPressed,
               focusedField: $focusedField
             )
-            .onChange(of: boxPleatDesigner.idealHip) { value in
- //             knifePleatDesigner.idealHip = value
-            }
-
-          case .knife:
-            PleatCountView(
-//              designer: knifePleatDesigner,
-              designer: boxPleatDesigner,
-              slashIsPressed: $slashIsPressed,
-              focusedField: $focusedField
-            )
-//            .onChange(of: knifePleatDesigner.idealHip) { value in
-//              boxPleatDesigner.idealHip = value
-//            }
-          }
         }
 
         Picker("Pleat Type", selection: $selectedPleat) {
@@ -178,7 +161,6 @@ public struct PleatView: View {
         .onChange(of: selectedPleat) { _ in
           let initialWidth = selectedPleat == .box ? PleatDesigner.boxPleat : PleatDesigner.knifePleat
           boxPleatDesigner.initialWidth = initialWidth(boxPleatDesigner)
- //         knifePleatDesigner.initialWidth = initialWidth(knifePleatDesigner)
         }
 
         Section("Pleat Shape") {
@@ -205,13 +187,11 @@ public struct PleatView: View {
         case .knife:
           Section {
             LabeledContent {
-//              Text(formatOptional(knifePleatDesigner.totalFabric))
               Text(formatOptional(boxPleatDesigner.totalFabric))
             } label: {
               Text("Total Fabric for Pleats")
             }
           }
- //         .foregroundColor(knifePleatDesigner.needsRequiredValues ? Color.gray : Color.black)
           .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
         }
       }
