@@ -6,6 +6,7 @@
 * Should we make a type for pleat types? (now PleatValidator knows)
 Knife pleats
 
+
 * Should we do a Double formatter that handles fractions? Not now.
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
@@ -48,6 +49,9 @@ EGTest
 * Let check use varargs rather than []
 * For a test that can throw, can we continue after EGAssert throws?
 * Have EGAssertThrows?
+
+* Figure out ObservableObjects being observed by other ObservableObjects
+
 
 CALC-23-42: 2023-08-07 - Knife Pleat Integration
 * Add static methods to PleatDesigner - static func box(_ pd: PleatDesigner) () -> -> Double, pass as initialWidth function

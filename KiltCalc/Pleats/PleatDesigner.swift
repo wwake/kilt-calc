@@ -7,19 +7,11 @@ public class PleatDesigner: ObservableObject {
 
   public var tartan: TartanDesign?
 
-  var cancellable : AnyCancellable?
-
   init(_ tartan: TartanDesign, _ pleatInitialWidth: @escaping (PleatDesigner) -> () -> Double) {
     self.tartan = tartan
 
     defer {
       self.initialWidth = pleatInitialWidth(self)
-//      self.element = element
-//      self.cancellable = self.element.$value.sink(
-//        receiveValue: { [weak self] _ in
-//          self?.objectWillChange.send()
-//        }
-//      )
     }
   }
 
@@ -77,7 +69,6 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var pleatFabric: Double? {
-    // tartan?.pleatFabric
     didSet {
       establishPleatVariables()
     }
