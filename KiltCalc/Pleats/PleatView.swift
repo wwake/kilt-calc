@@ -171,7 +171,9 @@ public struct PleatView: View {
         }
         .pickerStyle(.segmented)
         .onChange(of: selectedPleat) { _ in
-          print("now \(selectedPleat)")
+          let initialWidth = selectedPleat == .box ? PleatDesigner.boxPleat : PleatDesigner.knifePleat
+          boxPleatDesigner.initialWidth = initialWidth(boxPleatDesigner)
+          knifePleatDesigner.initialWidth = initialWidth(knifePleatDesigner)
         }
 
         Section("Pleat Shape") {
@@ -231,10 +233,6 @@ public struct PleatView: View {
       }
       .navigationTitle("Pleats")
     }
-//    .onAppear {
-//      boxPleatDesigner.tartan = tartan
-//      knifePleatDesigner.tartan = tartan
-//    }
   }
 }
 
