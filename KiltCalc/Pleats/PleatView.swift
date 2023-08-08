@@ -18,8 +18,8 @@ public struct PleatView: View {
   @FocusState private var focusedField: PleatViewFocus?
 
   init(tartan: TartanDesign) {
-    _boxPleatDesigner = StateObject(wrappedValue: PleatDesigner(tartan, PleatDesigner.boxPleat))
-    _knifePleatDesigner = StateObject(wrappedValue: PleatDesigner(tartan, PleatDesigner.knifePleat))
+    _boxPleatDesigner = StateObject(wrappedValue: PleatDesigner(PleatDesigner.boxPleat))
+    _knifePleatDesigner = StateObject(wrappedValue: PleatDesigner(PleatDesigner.knifePleat))
   }
 
   func formatOptional(_ value: Double?) -> String {
@@ -61,10 +61,6 @@ public struct PleatView: View {
         )
         .focused($focusedField, equals: .sett)
         .padding([.trailing], 116)
-        .onChange(of: tartan.sett) { _ in
-          boxPleatDesigner.pleatFabric = tartan.pleatFabric
-          knifePleatDesigner.pleatFabric = tartan.pleatFabric
-        }
 
         TartanDrawing(highlight: tartan.settsPerPleat)
 
@@ -72,12 +68,16 @@ public struct PleatView: View {
           focusedField = nil
         })
         .padding([.leading, .trailing], 44)
-        .onChange(of: tartan.settsPerPleat) { _ in
-          boxPleatDesigner.pleatFabric = tartan.pleatFabric
-          knifePleatDesigner.pleatFabric = tartan.pleatFabric
-        }
 
         Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
+      }
+      .onChange(of: tartan.sett) { _ in
+        boxPleatDesigner.pleatFabric = tartan.pleatFabric
+        knifePleatDesigner.pleatFabric = tartan.pleatFabric
+      }
+      .onChange(of: tartan.settsPerPleat) { _ in
+        boxPleatDesigner.pleatFabric = tartan.pleatFabric
+        knifePleatDesigner.pleatFabric = tartan.pleatFabric
       }
   }
 
@@ -170,6 +170,9 @@ public struct PleatView: View {
           }
         }
         .pickerStyle(.segmented)
+        .onChange(of: selectedPleat) { _ in
+          print("now \(selectedPleat)")
+        }
 
         Section("Pleat Shape") {
           switch selectedPleat {
@@ -228,10 +231,10 @@ public struct PleatView: View {
       }
       .navigationTitle("Pleats")
     }
-    .onAppear {
-      boxPleatDesigner.tartan = tartan
-      knifePleatDesigner.tartan = tartan
-    }
+//    .onAppear {
+//      boxPleatDesigner.tartan = tartan
+//      knifePleatDesigner.tartan = tartan
+//    }
   }
 }
 

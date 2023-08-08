@@ -5,11 +5,7 @@ import SwiftUI
 public class PleatDesigner: ObservableObject {
   public var initialWidth: () -> Double = { 0.0 }
 
-  public var tartan: TartanDesign?
-
-  init(_ tartan: TartanDesign, _ pleatInitialWidth: @escaping (PleatDesigner) -> () -> Double) {
-    self.tartan = tartan
-
+  init(_ pleatInitialWidth: @escaping (PleatDesigner) -> () -> Double) {
     defer {
       self.initialWidth = pleatInitialWidth(self)
     }
