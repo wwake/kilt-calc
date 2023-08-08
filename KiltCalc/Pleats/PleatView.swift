@@ -26,28 +26,6 @@ public struct PleatView: View {
     return Value.inches(value!).formatted(.inches)
   }
 
-  var tartanView: some View {
-    VStack {
-      ValidatingTextField(
-        label: "Sett",
-        value: $tartan.sett,
-        validator: PleatValidator.positive,
-        slashIsPressed: $slashIsPressed
-      )
-      .focused($focusedField, equals: .sett)
-      .padding([.trailing], 116)
-
-      TartanDrawing(highlight: tartan.settsPerPleat)
-
-      Slider(value: $tartan.settsPerPleat, in: 0...2, step: 0.25, onEditingChanged: {_ in
-        focusedField = nil
-      })
-      .padding([.leading, .trailing], 44)
-
-      Text("Setts in One Pleat: \(tartan.settsPerPleat.formatFraction())")
-    }
-  }
-
   var boxPleat: some View {
     VStack {
       BoxPleatDrawing(
@@ -80,7 +58,11 @@ public struct PleatView: View {
     NavigationView {
       List {
         Section("Tartan") {
-          tartanView
+          TartanView(
+            tartan: tartan,
+            slashIsPressed: $slashIsPressed,
+            focusedField: $focusedField
+          )
             .onChange(of: tartan.pleatFabric) { _ in
               designer.pleatFabric = tartan.pleatFabric
             }
