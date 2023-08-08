@@ -49,45 +49,35 @@ public struct PleatView: View {
   }
 
   var tartanView: some View {
-      VStack {
-        ValidatingTextField(
-          label: "Sett",
-          value: $tartan.sett,
-          validator: PleatValidator.positive,
-          slashIsPressed: $slashIsPressed
-        )
-        .focused($focusedField, equals: .sett)
-        .padding([.trailing], 116)
+    VStack {
+      ValidatingTextField(
+        label: "Sett",
+        value: $tartan.sett,
+        validator: PleatValidator.positive,
+        slashIsPressed: $slashIsPressed
+      )
+      .focused($focusedField, equals: .sett)
+      .padding([.trailing], 116)
 
-        TartanDrawing(highlight: tartan.settsPerPleat)
+      TartanDrawing(highlight: tartan.settsPerPleat)
 
-        Slider(value: $tartan.settsPerPleat, in: 0...2, step: 0.25, onEditingChanged: {_ in
-          focusedField = nil
-        })
-        .padding([.leading, .trailing], 44)
+      Slider(value: $tartan.settsPerPleat, in: 0...2, step: 0.25, onEditingChanged: {_ in
+        focusedField = nil
+      })
+      .padding([.leading, .trailing], 44)
 
-        Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
-      }
-      .onChange(of: tartan.sett) { _ in
-        boxPleatDesigner.pleatFabric = tartan.pleatFabric
-      }
-      .onChange(of: tartan.settsPerPleat) { _ in
-        boxPleatDesigner.pleatFabric = tartan.pleatFabric
-      }
+      Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
+    }
+    .onChange(of: tartan.sett) { _ in
+      boxPleatDesigner.pleatFabric = tartan.pleatFabric
+    }
+    .onChange(of: tartan.settsPerPleat) { _ in
+      boxPleatDesigner.pleatFabric = tartan.pleatFabric
+    }
   }
 
   var boxPleat: some View {
     VStack {
-      ValidatingTextField(
-        label: "Width",
-        value: $boxPleatDesigner.pleatWidth,
-        validator: PleatValidator.positiveSmaller(boxPleatDesigner.pleatFabric),
-        slashIsPressed: $slashIsPressed,
-        disabled: boxPleatDesigner.needsRequiredValues
-      )
-      .focused($focusedField, equals: .pleatWidth)
-      .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
-
       BoxPleatDrawing(
         pleatPixels: 200,
         gapRatio: boxPleatDesigner.gapRatio,
@@ -104,21 +94,7 @@ public struct PleatView: View {
   }
 
   var knifePleat: some View {
-    VStack {
-      ValidatingTextField(
-        label: "Width",
-        value: $boxPleatDesigner.pleatWidth,
-        validator: PleatValidator.positiveSmaller(boxPleatDesigner.pleatFabric),
-        slashIsPressed: $slashIsPressed,
-        disabled: boxPleatDesigner.needsRequiredValues
-      )
-      .focused($focusedField, equals: .pleatWidth)
-      .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
-
-      KnifePleatDrawing(
-        pleatPixels: 200
-      )
-    }
+      KnifePleatDrawing(pleatPixels: 200)
   }
 
   enum PleatStyle: String, CaseIterable, Identifiable {
@@ -136,11 +112,11 @@ public struct PleatView: View {
         }
 
         Section("Pleats") {
-            PleatCountView(
-              designer: boxPleatDesigner,
-              slashIsPressed: $slashIsPressed,
-              focusedField: $focusedField
-            )
+          PleatCountView(
+            designer: boxPleatDesigner,
+            slashIsPressed: $slashIsPressed,
+            focusedField: $focusedField
+          )
         }
 
         Picker("Pleat Type", selection: $selectedPleat) {
@@ -155,6 +131,16 @@ public struct PleatView: View {
         }
 
         Section("Pleat Shape") {
+          ValidatingTextField(
+            label: "Width",
+            value: $boxPleatDesigner.pleatWidth,
+            validator: PleatValidator.positiveSmaller(boxPleatDesigner.pleatFabric),
+            slashIsPressed: $slashIsPressed,
+            disabled: boxPleatDesigner.needsRequiredValues
+          )
+          .focused($focusedField, equals: .pleatWidth)
+          .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+
           switch selectedPleat {
           case .box:
             boxPleat
@@ -164,53 +150,40 @@ public struct PleatView: View {
           }
         }
 
-        switch selectedPleat {
-        case .box:
-          Section {
-            LabeledContent {
-              Text(formatOptional(boxPleatDesigner.totalFabric))
-            } label: {
-              Text("Total Fabric for Pleats")
-            }
-          }
-          .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
-
-        case .knife:
-          Section {
-            LabeledContent {
-              Text(formatOptional(boxPleatDesigner.totalFabric))
-            } label: {
-              Text("Total Fabric for Pleats")
-            }
-          }
-          .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
-        }
-      }
-      .toolbar {
-        // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
-
-        ToolbarItem(placement: .keyboard) {
-          HStack {
-            Button("Done") {
-              focusedField = nil
-            }
-            Spacer()
-            Button(action: { slashIsPressed = true }) {
-              HStack {
-                Spacer()
-                Text("/")
-                  .bold()
-                Spacer()
-              }
-              .padding(2)
-              .background(Color.white)
-              .frame(width: 100)
-            }
+        Section {
+          LabeledContent {
+            Text(formatOptional(boxPleatDesigner.totalFabric))
+          } label: {
+            Text("Total Fabric for Pleats")
           }
         }
+        .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
       }
-      .navigationTitle("Pleats")
     }
+    .toolbar {
+      // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
+
+      ToolbarItem(placement: .keyboard) {
+        HStack {
+          Button("Done") {
+            focusedField = nil
+          }
+          Spacer()
+          Button(action: { slashIsPressed = true }) {
+            HStack {
+              Spacer()
+              Text("/")
+                .bold()
+              Spacer()
+            }
+            .padding(2)
+            .background(Color.white)
+            .frame(width: 100)
+          }
+        }
+      }
+    }
+    .navigationTitle("Pleats")
   }
 }
 
