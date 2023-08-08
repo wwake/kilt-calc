@@ -20,25 +20,38 @@ private struct KnifePleatShape: Shape {
 }
 
 struct KnifePleatDrawing: View {
-  var pleatPixels: CGFloat
+  let pleatPixels: CGFloat = 150.0
+  var depthText: String = ""
 
   var body: some View {
-    VStack(alignment: .center) {
-      Text("pleat")
+    GeometryReader { geometry in
+      VStack(alignment: .leading) {
+        VStack(alignment: .center) {
+          DimensionLine()
+            .frame(width: pleatPixels, height: 10)
+            .padding([.bottom], 8)
 
-      DimensionLine()
-        .frame(width: pleatPixels, height: 10)
-        .padding([.bottom], 8)
+          KnifePleatShape(pleat: pleatPixels)
+            .stroke(Color.green, lineWidth: 4.0)
+            .frame(height: 50)
+        }
 
-      KnifePleatShape(pleat: pleatPixels)
-        .stroke(Color.green, lineWidth: 4.0)
-        .frame(height: 50)
+        DimensionLine()
+          .frame(width: geometry.size.width / 2 - pleatPixels / 2)
+          .frame(height: 10)
+          .padding([.top], 4)
+          .padding([.leading], 1)
+        Text("Depth: \(depthText)")
+          .padding([.top], 4)
+          .padding([.leading], 20)
+      }
     }
+    .frame(height: 180)
   }
 }
 
 struct KnifePleatDrawing_Previews: PreviewProvider {
   static var previews: some View {
-    KnifePleatDrawing(pleatPixels: 150)
+    KnifePleatDrawing(depthText: "2 in")
   }
 }

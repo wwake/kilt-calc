@@ -91,7 +91,7 @@ public struct PleatView: View {
   }
 
   var knifePleat: some View {
-    KnifePleatDrawing(pleatPixels: 200)
+    KnifePleatDrawing()
   }
 
   enum PleatStyle: String, CaseIterable, Identifiable {
