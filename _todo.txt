@@ -1,4 +1,5 @@
-* Extract subviews as separate Views
+* Move gap analysis to BoxPleatDrawing
+* Inline box pleat and knife pleat
 Knife pleats
 
 * How much is a skosh?   6/8+ could be 6/8..<6/8+1/32
@@ -56,7 +57,7 @@ CALC-23-43: 2023-08-08 - Try, Try Again
 * Make sure initial width set for knife pleats
 + Check that physical limits on knife pleat are enforced - yes
 * Enforce hip > 0
-
+* Extract tartan subview as separate Views
 
 CALC-23-42: 2023-08-07 - Knife Pleat Integration
 * Add static methods to PleatDesigner - static func box(_ pd: PleatDesigner) () -> -> Double, pass as initialWidth function
