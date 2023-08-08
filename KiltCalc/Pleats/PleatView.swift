@@ -11,7 +11,7 @@ public struct PleatView: View {
 
   @StateObject private var boxPleatDesigner: PleatDesigner
 
-  @StateObject private var knifePleatDesigner: PleatDesigner
+ // @StateObject private var knifePleatDesigner: PleatDesigner
 
   @State private var slashIsPressed = false
 
@@ -19,7 +19,7 @@ public struct PleatView: View {
 
   init(tartan: TartanDesign) {
     _boxPleatDesigner = StateObject(wrappedValue: PleatDesigner(PleatDesigner.boxPleat))
-    _knifePleatDesigner = StateObject(wrappedValue: PleatDesigner(PleatDesigner.knifePleat))
+//    _knifePleatDesigner = StateObject(wrappedValue: PleatDesigner(PleatDesigner.knifePleat))
   }
 
   func formatOptional(_ value: Double?) -> String {
@@ -73,11 +73,11 @@ public struct PleatView: View {
       }
       .onChange(of: tartan.sett) { _ in
         boxPleatDesigner.pleatFabric = tartan.pleatFabric
-        knifePleatDesigner.pleatFabric = tartan.pleatFabric
+ //       knifePleatDesigner.pleatFabric = tartan.pleatFabric
       }
       .onChange(of: tartan.settsPerPleat) { _ in
         boxPleatDesigner.pleatFabric = tartan.pleatFabric
-        knifePleatDesigner.pleatFabric = tartan.pleatFabric
+ //       knifePleatDesigner.pleatFabric = tartan.pleatFabric
       }
   }
 
@@ -112,13 +112,17 @@ public struct PleatView: View {
     VStack {
       ValidatingTextField(
         label: "Width",
-        value: $knifePleatDesigner.pleatWidth,
-        validator: PleatValidator.positiveSmaller(knifePleatDesigner.pleatFabric),
+//        value: $knifePleatDesigner.pleatWidth,
+        value: $boxPleatDesigner.pleatWidth,
+//        validator: PleatValidator.positiveSmaller(knifePleatDesigner.pleatFabric),
+        validator: PleatValidator.positiveSmaller(boxPleatDesigner.pleatFabric),
         slashIsPressed: $slashIsPressed,
-        disabled: knifePleatDesigner.needsRequiredValues
+//        disabled: knifePleatDesigner.needsRequiredValues
+        disabled: boxPleatDesigner.needsRequiredValues
       )
       .focused($focusedField, equals: .pleatWidth)
-      .foregroundColor(knifePleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+//      .foregroundColor(knifePleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+      .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
 
       KnifePleatDrawing(
         pleatPixels: 200
@@ -149,18 +153,19 @@ public struct PleatView: View {
               focusedField: $focusedField
             )
             .onChange(of: boxPleatDesigner.idealHip) { value in
-              knifePleatDesigner.idealHip = value
+ //             knifePleatDesigner.idealHip = value
             }
 
           case .knife:
             PleatCountView(
-              designer: knifePleatDesigner,
+//              designer: knifePleatDesigner,
+              designer: boxPleatDesigner,
               slashIsPressed: $slashIsPressed,
               focusedField: $focusedField
             )
-            .onChange(of: knifePleatDesigner.idealHip) { value in
-              boxPleatDesigner.idealHip = value
-            }
+//            .onChange(of: knifePleatDesigner.idealHip) { value in
+//              boxPleatDesigner.idealHip = value
+//            }
           }
         }
 
@@ -173,7 +178,7 @@ public struct PleatView: View {
         .onChange(of: selectedPleat) { _ in
           let initialWidth = selectedPleat == .box ? PleatDesigner.boxPleat : PleatDesigner.knifePleat
           boxPleatDesigner.initialWidth = initialWidth(boxPleatDesigner)
-          knifePleatDesigner.initialWidth = initialWidth(knifePleatDesigner)
+ //         knifePleatDesigner.initialWidth = initialWidth(knifePleatDesigner)
         }
 
         Section("Pleat Shape") {
@@ -200,12 +205,14 @@ public struct PleatView: View {
         case .knife:
           Section {
             LabeledContent {
-              Text(formatOptional(knifePleatDesigner.totalFabric))
+//              Text(formatOptional(knifePleatDesigner.totalFabric))
+              Text(formatOptional(boxPleatDesigner.totalFabric))
             } label: {
               Text("Total Fabric for Pleats")
             }
           }
-          .foregroundColor(knifePleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+ //         .foregroundColor(knifePleatDesigner.needsRequiredValues ? Color.gray : Color.black)
+          .foregroundColor(boxPleatDesigner.needsRequiredValues ? Color.gray : Color.black)
         }
       }
       .toolbar {
