@@ -26,28 +26,6 @@ public struct PleatView: View {
     return Value.inches(value!).formatted(.inches)
   }
 
-  func formatFraction(_ value: Double) -> String {
-    switch value {
-    case 0.5:
-      return "½"
-
-    case 0.75:
-      return "¾"
-
-    case 1.25:
-      return "1\u{2022}¼"
-
-    case 1.5:
-      return "1\u{2022}½"
-
-    case 1.75:
-      return "1\u{2022}¾"
-
-    default:
-      return value.formatted()
-    }
-  }
-
   var tartanView: some View {
     VStack {
       ValidatingTextField(
@@ -66,10 +44,7 @@ public struct PleatView: View {
       })
       .padding([.leading, .trailing], 44)
 
-      Text("Setts in One Pleat: \(formatFraction(tartan.settsPerPleat))")
-    }
-    .onChange(of: tartan.pleatFabric) { _ in
-      designer.pleatFabric = tartan.pleatFabric
+      Text("Setts in One Pleat: \(tartan.settsPerPleat.formatFraction())")
     }
   }
 
@@ -106,6 +81,9 @@ public struct PleatView: View {
       List {
         Section("Tartan") {
           tartanView
+            .onChange(of: tartan.pleatFabric) { _ in
+              designer.pleatFabric = tartan.pleatFabric
+            }
         }
 
         Section("Pleats") {

@@ -15,6 +15,8 @@
 		9133987E2A71981100C181AE /* PleatEquations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133987D2A71981100C181AE /* PleatEquations.swift */; };
 		913398802A72E95400C181AE /* PleatValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133987F2A72E95400C181AE /* PleatValidatorTests.swift */; };
 		9164E9C92A82C693000BEA4F /* PleatDesignerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9164E9C82A82C693000BEA4F /* PleatDesignerTests.swift */; };
+		9164E9CB2A82D83C000BEA4F /* TartanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9164E9CA2A82D83C000BEA4F /* TartanView.swift */; };
+		9164E9CD2A82D8CD000BEA4F /* Double+format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9164E9CC2A82D8CD000BEA4F /* Double+format.swift */; };
 		916AF6602A252460009484DA /* ImperialUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF65F2A252460009484DA /* ImperialUnit.swift */; };
 		916AF6632A267528009484DA /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6622A267528009484DA /* Stack.swift */; };
 		916AF6652A267B8F009484DA /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AF6642A267B8F009484DA /* Operator.swift */; };
@@ -89,6 +91,8 @@
 		9133987D2A71981100C181AE /* PleatEquations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatEquations.swift; sourceTree = "<group>"; };
 		9133987F2A72E95400C181AE /* PleatValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatValidatorTests.swift; sourceTree = "<group>"; };
 		9164E9C82A82C693000BEA4F /* PleatDesignerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatDesignerTests.swift; sourceTree = "<group>"; };
+		9164E9CA2A82D83C000BEA4F /* TartanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TartanView.swift; sourceTree = "<group>"; };
+		9164E9CC2A82D8CD000BEA4F /* Double+format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+format.swift"; sourceTree = "<group>"; };
 		916AF65F2A252460009484DA /* ImperialUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImperialUnit.swift; sourceTree = "<group>"; };
 		916AF6622A267528009484DA /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		916AF6642A267B8F009484DA /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 				911857A62A4CB50F0020F16E /* PleatView.swift */,
 				91F7D1212A7AE0500075123E /* TartanDesign.swift */,
 				91A7DC2A2A705C570084BBD2 /* TartanDrawing.swift */,
+				9164E9CC2A82D8CD000BEA4F /* Double+format.swift */,
 			);
 			path = Pleats;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 		91E7B6BF2A0D4428004A757A = {
 			isa = PBXGroup;
 			children = (
+				9164E9CA2A82D83C000BEA4F /* TartanView.swift */,
 				91E7B6F72A0D4FC0004A757A /* _todo.txt */,
 				91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */,
 				91E7B6FB2A0D5189004A757A /* README.md */,
@@ -512,6 +518,7 @@
 				916AF6602A252460009484DA /* ImperialUnit.swift in Sources */,
 				91E3C5A52A1BF69F0098BAFC /* Calculator.swift in Sources */,
 				91F2AF502A438909008A1063 /* ButtonModifier.swift in Sources */,
+				9164E9CB2A82D83C000BEA4F /* TartanView.swift in Sources */,
 				916AF6652A267B8F009484DA /* Operator.swift in Sources */,
 				91A7DC232A7057750084BBD2 /* HorizontalLine.swift in Sources */,
 				91F7D1262A7AE8390075123E /* PleatCountView.swift in Sources */,
@@ -521,6 +528,7 @@
 				9190F7AF2A29331F0008E40A /* InputBuffer.swift in Sources */,
 				91B0F2B82A53737C00423289 /* ApronPleatView.swift in Sources */,
 				91A7DC2D2A705E800084BBD2 /* CGRect+percent.swift in Sources */,
+				9164E9CD2A82D8CD000BEA4F /* Double+format.swift in Sources */,
 				918628CD2A2FC57300FA781D /* ValueFormatter.swift in Sources */,
 				91A7DC1A2A70556F0084BBD2 /* Shape+flipped.swift in Sources */,
 				91E3C5B32A1EAAD10098BAFC /* Value.swift in Sources */,
