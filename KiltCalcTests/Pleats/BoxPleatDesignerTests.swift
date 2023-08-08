@@ -11,30 +11,6 @@ final class BoxPleatDesignerTests: XCTestCase {
     XCTAssertEqual(actual!.asDouble, expected!.asDouble, accuracy: accuracy)
   }
 
-  func test_initializesCorrectly() throws {
-    XCTAssertEqual(designer.idealHip, nil)
-    XCTAssertEqual(designer.pleatFabric, nil)
-    XCTAssertEqual(designer.pleatWidth, nil)
-    XCTAssertEqual(designer.pleatCount, 10)
-    XCTAssertEqual(designer.gap, nil)
-  }
-
-  func test_WhenPleatFabricIsMissing_ThenOutputVariablesAreNil() {
-    designer.idealHip = .inches(10)
-    designer.pleatFabric = nil
-
-    XCTAssertEqual(designer.pleatWidth, nil)
-    XCTAssertEqual(designer.gap, nil)
-  }
-
-  func test_WhenHipIsMissing_ThenOutputVariablesAreNil() {
-    designer.pleatFabric = 7
-    designer.idealHip = nil
-
-    XCTAssertEqual(designer.pleatWidth, nil)
-    XCTAssertEqual(designer.gap, nil)
-  }
-
   func test_getPleatCount_WhenPredecessorValuesPresent() {
     designer.idealHip = .inches(20)
     designer.pleatFabric = 6

@@ -1,8 +1,6 @@
-
-* Revert
-* Make sure initial width set for knife pleats
+* Enforce hip > 0
+* Enforce pleat count > 0 (e.g if pleat width is too big)
 * Show depth dimension line on knife pleat
-  + Enforce physical limits?
 * Should we make a type for pleat types? (now PleatValidator knows)
 Knife pleats
 
@@ -51,6 +49,12 @@ EGTest
 * Have EGAssertThrows?
 
 * Figure out ObservableObjects being observed by other ObservableObjects
+
+CALC-23-43: 2023-08-08 - Try, Try Again
+* Revert (give up on ObservableObjects observing ObservableObjects)
+* Fold both box and knife pleat into the same designer
+* Make sure initial width set for knife pleats
++ Check that physical limits on knife pleat are enforced - yes
 
 
 CALC-23-42: 2023-08-07 - Knife Pleat Integration
