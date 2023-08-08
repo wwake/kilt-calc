@@ -1,3 +1,5 @@
+
+* Revert
 * Make sure initial width set for knife pleats
 * Show depth dimension line on knife pleat
   + Enforce physical limits?
