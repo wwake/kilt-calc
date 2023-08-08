@@ -39,13 +39,14 @@ struct KnifePleatDrawing: View {
         DimensionLine()
           .frame(width: geometry.size.width / 2 - pleatPixels / 2)
           .frame(height: 10)
-          .padding([.top], 4)
+          .padding([.top], 8)
         Text("Depth: \(depthText)")
           .padding([.top], 4)
-          .padding([.leading], 16)
+          .padding([.leading], 8)
       }
     }
-    .frame(height: 180)
+    .frame(height: 150)
+    .padding()
   }
 }
 

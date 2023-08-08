@@ -81,7 +81,7 @@ public struct PleatView: View {
         drawGap:
           !PleatValidator.isMilitaryBoxPleat(designer.gap),
         gapLabel: designer.gapLabel,
-        gapText: "\( formatOptional(designer.absoluteGap))"
+        gapText: formatOptional(designer.absoluteGap)
       )
 
       Text(PleatValidator.gapMessage(designer.gap))
@@ -91,7 +91,7 @@ public struct PleatView: View {
   }
 
   var knifePleat: some View {
-    KnifePleatDrawing(depthText: "")
+    KnifePleatDrawing(depthText: formatOptional(designer.depth))
   }
 
   enum PleatStyle: String, CaseIterable, Identifiable {
