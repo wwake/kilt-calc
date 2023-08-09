@@ -42,6 +42,8 @@ public struct Gap {
   }
 }
 
+extension Gap: Equatable {}
+
 public class PleatDesigner: ObservableObject {
   public var initialWidth: () -> Double = { 0.0 }
   private(set) var gap: Gap?
