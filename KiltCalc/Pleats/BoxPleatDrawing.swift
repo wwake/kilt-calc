@@ -63,13 +63,19 @@ private struct BoxPleatShape: Shape {
   }
 }
 
+private func formatOptional(_ value: Double?) -> String {
+  if value == nil {
+    return "?"
+  }
+  return Value.inches(value!).formatted(.inches)
+}
+
 struct BoxPleatDrawing: View {
   var pleatPixels: CGFloat
 
   var gap: Gap?
   var gapRatio: CGFloat
   var gapLabel: String
-  var gapText: String
 
   var body: some View {
     if gap == nil {
@@ -90,7 +96,7 @@ struct BoxPleatDrawing: View {
             .frame(width: pleatPixels * abs(gapRatio), height: 10)
             .padding([.top], 8)
 
-          Text("\(gapLabel): \(gapText)")
+          Text("\(gapLabel): \(formatOptional(gap?.absoluteGap))")
         }
 
         Text(PleatValidator.gapMessage(gap!.size))
@@ -114,8 +120,7 @@ struct BoxPleatDrawing_Previews: PreviewProvider {
           pleatPixels: 150,
           gap: gap,
           gapRatio: CGFloat($0) / 2.0,
-          gapLabel: "Gap",
-          gapText: "1/8 in"
+          gapLabel: "Gap"
         )
         Divider()
       }
