@@ -4,6 +4,11 @@ private struct BoxPleatShape: Shape {
   var pleat: CGFloat
   var gapRatio: CGFloat
 
+  init(pleat: Double, gapRatio: Double) {
+    self.pleat = CGFloat(pleat)
+    self.gapRatio = CGFloat(gapRatio)
+  }
+
   var leftFoldHeight: CGFloat {
     let overlapRatio = abs(gapRatio)
     if overlapRatio > 0.75 {
@@ -71,7 +76,7 @@ private func formatOptional(_ value: Double?) -> String {
 }
 
 struct BoxPleatDrawing: View {
-  private let pleatPixels: CGFloat = 150
+  private let pleatPixels = 150.0
 
   var gap: Gap?
 
@@ -85,7 +90,7 @@ struct BoxPleatDrawing: View {
           .frame(width: pleatPixels, height: 10)
           .padding([.bottom], 8)
 
-        BoxPleatShape(pleat: pleatPixels, gapRatio: CGFloat(gap!.ratio))
+        BoxPleatShape(pleat: pleatPixels, gapRatio: gap!.ratio)
           .stroke(Color.green, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
           .frame(height: 50)
 
