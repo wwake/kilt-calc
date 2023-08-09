@@ -74,7 +74,6 @@ struct BoxPleatDrawing: View {
   private let pleatPixels: CGFloat = 150
 
   var gap: Gap?
-  var gapRatio: Double
 
   var body: some View {
     if gap == nil {
@@ -86,13 +85,13 @@ struct BoxPleatDrawing: View {
           .frame(width: pleatPixels, height: 10)
           .padding([.bottom], 8)
 
-        BoxPleatShape(pleat: pleatPixels, gapRatio: gapRatio)
+        BoxPleatShape(pleat: pleatPixels, gapRatio: CGFloat(gap!.ratio))
           .stroke(Color.green, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
           .frame(height: 50)
 
         if gap!.shouldDraw {
           DimensionLine()
-            .frame(width: pleatPixels * abs(gapRatio), height: 10)
+            .frame(width: pleatPixels * abs(gap!.ratio), height: 10)
             .padding([.top], 8)
 
           Text("\(gap!.label): \(formatOptional(gap!.absoluteSize))")
@@ -116,8 +115,7 @@ struct BoxPleatDrawing_Previews: PreviewProvider {
       ForEach(-4..<2) {
         Text("\(CGFloat($0) / 2.0)")
         BoxPleatDrawing(
-          gap: gap,
-          gapRatio: Double($0) / 2.0
+          gap: gap
         )
         .padding()
         Divider()

@@ -27,10 +27,7 @@ public struct PleatView: View {
   }
 
   var boxPleat: some View {
-    BoxPleatDrawing(
-      gap: designer.gap,
-      gapRatio: designer.gapRatio
-    )
+    BoxPleatDrawing(gap: designer.gap)
   }
 
   var knifePleat: some View {
