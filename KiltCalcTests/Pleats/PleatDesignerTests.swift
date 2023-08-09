@@ -16,7 +16,7 @@ final class PleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.pleatCount, 10)
     XCTAssertEqual(designer.pleatWidth, nil)
     XCTAssertEqual(designer.totalFabric, nil)
-    XCTAssertEqual(designer.gap, nil)
+    XCTAssertEqual(designer.gapSize, nil)
   }
 
   func test_WhenPleatFabricIsMissing_ThenOutputVariablesAreNil() {
@@ -24,14 +24,14 @@ final class PleatDesignerTests: XCTestCase {
     designer.pleatFabric = nil
 
     XCTAssertEqual(designer.pleatWidth, nil)
-    XCTAssertEqual(designer.gap, nil)
+    XCTAssertEqual(designer.gapSize, nil)
   }
   func test_WhenHipIsMissing_ThenOutputVariablesAreNil() {
     designer.pleatFabric = 7
     designer.idealHip = nil
 
     XCTAssertEqual(designer.pleatWidth, nil)
-    XCTAssertEqual(designer.gap, nil)
+    XCTAssertEqual(designer.gapSize, nil)
   }
 
   func test_whenHipIsLessThanOne_NeedsRequiredValuesIsTrue() {

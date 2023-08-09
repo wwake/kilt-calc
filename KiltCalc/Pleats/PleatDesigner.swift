@@ -2,8 +2,17 @@ import Combine
 import Foundation
 import SwiftUI
 
+public struct Gap {
+  private var designer: PleatDesigner
+
+  init(designer: PleatDesigner) {
+    self.designer = designer
+  }
+}
+
 public class PleatDesigner: ObservableObject {
   public var initialWidth: () -> Double = { 0.0 }
+  private(set) var gap: Gap?
 
   init(_ pleatInitialWidth: @escaping (PleatDesigner) -> () -> Double) {
     defer {
@@ -37,6 +46,7 @@ public class PleatDesigner: ObservableObject {
   func establishPleatVariables() {
     if needsRequiredValues {
       pleatWidth = nil
+      gap = nil
       return
     }
 
@@ -46,9 +56,17 @@ public class PleatDesigner: ObservableObject {
       initialWidth: initialWidth(),
       action: updateCountAndWidth
     )
+
+    gap = Gap(designer: self)
   }
 
   @Published public var idealHip: Value? {
+    didSet {
+      establishPleatVariables()
+    }
+  }
+
+  public var pleatFabric: Double? {
     didSet {
       establishPleatVariables()
     }
@@ -64,33 +82,31 @@ public class PleatDesigner: ObservableObject {
     return idealHip! != adjustedHip!
   }
 
-  public var pleatFabric: Double? {
-    didSet {
-      establishPleatVariables()
-    }
-  }
-
   @Published public var pleatCount: Int = 10 {
     didSet {
       if needsRequiredValues {
+        gap = nil
         return
       }
 
       equations.setCount(pleatCount, action: updateCountAndWidth)
+      gap = Gap(designer: self)
     }
   }
 
   @Published public var pleatWidth: Value? {
     didSet {
       if needsRequiredValues || pleatWidth == nil || pleatWidth!.asDouble.isZero {
+        gap = nil
         return
       }
 
       equations.setWidth(pleatWidth!.asDouble, action: updateCountAndWidth)
+      gap = Gap(designer: self)
     }
   }
 
-  public var gap: Double? {
+  public var gapSize: Double? {
     if needsRequiredValues || pleatWidth == nil { return nil }
     return withAnimation {
       (3 * pleatWidth!.asDouble - pleatFabric!) / 2.0
@@ -98,19 +114,19 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var absoluteGap: Double? {
-    if gap == nil { return nil }
-    return abs(gap!)
+    if gapSize == nil { return nil }
+    return abs(gapSize!)
   }
 
   public var gapRatio: Double {
-    if gap == nil || pleatWidth == nil { return 0.0 }
+    if gapSize == nil || pleatWidth == nil { return 0.0 }
     return withAnimation {
-      gap! / pleatWidth!.asDouble
+      gapSize! / pleatWidth!.asDouble
     }
   }
 
   public var gapLabel: String {
-    if gap == nil || gap! >= 0 {
+    if gapSize == nil || gapSize! >= 0 {
       return "Gap"
     }
     return "Overlap"

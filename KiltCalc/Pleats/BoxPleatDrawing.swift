@@ -66,7 +66,8 @@ private struct BoxPleatShape: Shape {
 struct BoxPleatDrawing: View {
   var pleatPixels: CGFloat
 
-  var gap: Double?
+  var gap: Gap?
+  var size: Double?
   var gapRatio: CGFloat
   var drawGap: Bool
   var gapLabel: String
@@ -90,7 +91,7 @@ struct BoxPleatDrawing: View {
         Text("\(gapLabel): \(gapText)")
       }
 
-      Text(PleatValidator.gapMessage(gap))
+      Text(PleatValidator.gapMessage(size))
         .font(.headline)
         .multilineTextAlignment(.center)
     }
@@ -106,7 +107,7 @@ struct BoxPleatDrawing_Previews: PreviewProvider {
         Text("\(CGFloat($0) / 2.0)")
         BoxPleatDrawing(
           pleatPixels: 150,
-          gap: 0.5,
+          size: 0.5,
           gapRatio: CGFloat($0) / 2.0,
           drawGap: true,
           gapLabel: "Gap",
