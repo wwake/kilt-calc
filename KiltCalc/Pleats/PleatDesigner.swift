@@ -8,6 +8,10 @@ public struct Gap {
   init(designer: PleatDesigner) {
     self.designer = designer
   }
+
+  var size: Double? {
+    designer.gapSize
+  }
 }
 
 public class PleatDesigner: ObservableObject {

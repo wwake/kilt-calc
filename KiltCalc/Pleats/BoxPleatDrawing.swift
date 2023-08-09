@@ -74,32 +74,39 @@ struct BoxPleatDrawing: View {
   var gapText: String
 
   var body: some View {
-    VStack(alignment: .center) {
-      DimensionLine()
-        .frame(width: pleatPixels, height: 10)
-        .padding([.bottom], 8)
-
-      BoxPleatShape(pleat: pleatPixels, gapRatio: gapRatio)
-        .stroke(Color.green, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
-        .frame(height: 50)
-
-      if drawGap {
+    if gap == nil {
+      Text("Not enough information yet")
+        .padding()
+    } else {
+      VStack(alignment: .center) {
         DimensionLine()
-          .frame(width: pleatPixels * abs(gapRatio), height: 10)
-          .padding([.top], 8)
+          .frame(width: pleatPixels, height: 10)
+          .padding([.bottom], 8)
 
-        Text("\(gapLabel): \(gapText)")
+        BoxPleatShape(pleat: pleatPixels, gapRatio: gapRatio)
+          .stroke(Color.green, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+          .frame(height: 50)
+
+        if drawGap {
+          DimensionLine()
+            .frame(width: pleatPixels * abs(gapRatio), height: 10)
+            .padding([.top], 8)
+
+          Text("\(gapLabel): \(gapText)")
+        }
+
+        Text(PleatValidator.gapMessage(size))
+          .font(.headline)
+          .multilineTextAlignment(.center)
       }
-
-      Text(PleatValidator.gapMessage(size))
-        .font(.headline)
-        .multilineTextAlignment(.center)
+      .padding()
     }
-    .padding()
   }
 }
 
 struct BoxPleatDrawing_Previews: PreviewProvider {
+  static var gap = Gap(designer: PleatDesigner(PleatDesigner.boxPleat))
+
   static var previews: some View {
     ScrollView {
       Spacer()
@@ -107,6 +114,7 @@ struct BoxPleatDrawing_Previews: PreviewProvider {
         Text("\(CGFloat($0) / 2.0)")
         BoxPleatDrawing(
           pleatPixels: 150,
+          gap: gap,
           size: 0.5,
           gapRatio: CGFloat($0) / 2.0,
           drawGap: true,
