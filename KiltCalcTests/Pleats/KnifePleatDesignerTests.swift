@@ -11,7 +11,7 @@ final class KnifePleatDesignerTests: XCTestCase {
 
     XCTAssertEqual(designer.pleatWidth, .number(1))
     XCTAssertEqual(designer.pleatCount, 20)
-    XCTAssertEqual(designer.totalFabric, 140)
+    XCTAssertEqual(designer.totalFabric, "140 in")
     XCTAssertEqual(designer.adjustedHip, .number(20))
   }
 
@@ -21,7 +21,7 @@ final class KnifePleatDesignerTests: XCTestCase {
 
     XCTAssertEqual(designer.pleatWidth, .number(1))
     XCTAssertEqual(designer.pleatCount, 20)
-    XCTAssertEqual(designer.totalFabric, 140)
+    XCTAssertEqual(designer.totalFabric, "140 in")
   }
 
   func test_getPleatCount_WhenPredecessorValuesPresent() {
@@ -29,7 +29,7 @@ final class KnifePleatDesignerTests: XCTestCase {
     designer.pleatFabric = 6
     designer.pleatWidth = .inches(1)
     XCTAssertEqual(designer.pleatCount, 20)
-    XCTAssertEqual(designer.totalFabric, 120)
+    XCTAssertEqual(designer.totalFabric, "120 in")
   }
 
   func test_getPleatCount_WhenPredecessorValuesChangedToNil() {

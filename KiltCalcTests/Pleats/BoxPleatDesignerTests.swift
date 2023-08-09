@@ -154,13 +154,13 @@ final class BoxPleatDesignerTests: XCTestCase {
   }
 
   func test_WhenRequiredFieldsNotSet_totalFabricIsNil() {
-    XCTAssertEqual(designer.totalFabric, nil)
+    XCTAssertEqual(designer.totalFabric, "?")
   }
 
   func test_WhenRequiredFieldsPresent_totalFabricIsCalculated() {
     designer.idealHip = .inches(20)
     designer.pleatFabric = 6
 
-    XCTAssertEqual(designer.totalFabric, 60)
+    XCTAssertEqual(designer.totalFabric, "60 in")
   }
 }

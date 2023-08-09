@@ -15,7 +15,7 @@ final class PleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.pleatFabric, nil)
     XCTAssertEqual(designer.pleatCount, 10)
     XCTAssertEqual(designer.pleatWidth, nil)
-    XCTAssertEqual(designer.totalFabric, nil)
+    XCTAssertEqual(designer.totalFabric, "?")
     XCTAssertEqual(designer.gap, nil)
   }
 

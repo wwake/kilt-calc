@@ -71,36 +71,31 @@ private struct BoxPleatShape: Shape {
 struct BoxPleatDrawing: View {
   private let pleatPixels = 150.0
 
-  var gap: Gap?
+  var gap: Gap
 
   var body: some View {
-    if gap == nil {
-      Text("Not enough information yet")
-        .padding()
-    } else {
-      VStack(alignment: .center) {
+    VStack(alignment: .center) {
+      DimensionLine()
+        .frame(width: pleatPixels, height: 10)
+        .padding([.bottom], 8)
+
+      BoxPleatShape(pleat: pleatPixels, gapRatio: gap.ratio)
+        .stroke(Color.green, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+        .frame(height: 50)
+
+      if gap.shouldDraw {
         DimensionLine()
-          .frame(width: pleatPixels, height: 10)
-          .padding([.bottom], 8)
+          .frame(width: pleatPixels * abs(gap.ratio), height: 10)
+          .padding([.top], 8)
 
-        BoxPleatShape(pleat: pleatPixels, gapRatio: gap!.ratio)
-          .stroke(Color.green, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
-          .frame(height: 50)
-
-        if gap!.shouldDraw {
-          DimensionLine()
-            .frame(width: pleatPixels * abs(gap!.ratio), height: 10)
-            .padding([.top], 8)
-
-          Text(gap!.label)
-        }
-
-        Text(PleatValidator.gapMessage(gap!.size))
-          .font(.headline)
-          .multilineTextAlignment(.center)
+        Text(gap.label)
       }
-      .padding()
+
+      Text(PleatValidator.gapMessage(gap.size))
+        .font(.headline)
+        .multilineTextAlignment(.center)
     }
+    .padding()
   }
 }
 

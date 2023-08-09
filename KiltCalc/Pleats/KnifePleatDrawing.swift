@@ -19,21 +19,12 @@ private struct KnifePleatShape: Shape {
   }
 }
 
-private func formatOptional(_ value: Double?) -> String {
-  if value == nil {
-    return "?"
-  }
-  return Value.inches(value!).formatted(.inches)
-}
-
 struct KnifePleatDrawing: View {
   let pleatPixels: CGFloat = 125
-  var depth: Double?
-  var depthText = ""
+  var depthText: String
 
-  init(depth: Double?) {
-    self.depth = depth
-    depthText = formatOptional(depth)
+  init(depth: Double) {
+    self.depthText = Value.inches(depth).formatted(.inches)
   }
 
   var body: some View {

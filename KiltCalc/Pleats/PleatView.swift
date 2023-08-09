@@ -19,13 +19,6 @@ public struct PleatView: View {
     _designer = StateObject(wrappedValue: PleatDesigner(PleatDesigner.boxPleat))
   }
 
-  func formatOptional(_ value: Double?) -> String {
-    if value == nil {
-      return "?"
-    }
-    return Value.inches(value!).formatted(.inches)
-  }
-
   enum PleatStyle: String, CaseIterable, Identifiable {
     case box = "Box / Military", knife = "Knife"
     var id: Self { self }
@@ -79,16 +72,26 @@ public struct PleatView: View {
 
           switch selectedPleat {
           case .box:
-            BoxPleatDrawing(gap: designer.gap)
+            if designer.gap == nil {
+              Text("No enough information yet")
+                .padding()
+            } else {
+              BoxPleatDrawing(gap: designer.gap!)
+            }
 
           case .knife:
-            KnifePleatDrawing(depth: designer.depth)
+            if designer.depth == nil {
+              Text("No enough information yet")
+                .padding()
+            } else {
+              KnifePleatDrawing(depth: designer.depth!)
+            }
           }
         }
 
         Section {
           LabeledContent {
-            Text(formatOptional(designer.totalFabric))
+            Text(designer.totalFabric)
           } label: {
             Text("Total Fabric for Pleats")
           }

@@ -110,8 +110,9 @@ public class PleatDesigner: ObservableObject {
     return (pleatFabric! - pleatWidth!.asDouble) / 2
   }
 
-  public var totalFabric: Double? {
-    if needsRequiredValues { return nil }
-    return pleatFabric! * Double(pleatCount)
+  public var totalFabric: String {
+    if needsRequiredValues { return "?" }
+    let total = pleatFabric! * Double(pleatCount)
+    return Value.inches(total).formatted(.inches)
   }
 }
