@@ -71,7 +71,7 @@ private func formatOptional(_ value: Double?) -> String {
 }
 
 struct BoxPleatDrawing: View {
-  var pleatPixels: CGFloat
+  private let pleatPixels: CGFloat = 150
 
   var gap: Gap?
   var gapRatio: CGFloat
@@ -117,11 +117,11 @@ struct BoxPleatDrawing_Previews: PreviewProvider {
       ForEach(-4..<2) {
         Text("\(CGFloat($0) / 2.0)")
         BoxPleatDrawing(
-          pleatPixels: 150,
           gap: gap,
           gapRatio: CGFloat($0) / 2.0,
           gapLabel: "Gap"
         )
+        .padding()
         Divider()
       }
     }

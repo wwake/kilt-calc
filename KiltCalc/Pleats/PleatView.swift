@@ -28,7 +28,6 @@ public struct PleatView: View {
 
   var boxPleat: some View {
     BoxPleatDrawing(
-      pleatPixels: 200,
       gap: designer.gap,
       gapRatio: designer.gapRatio,
       gapLabel: designer.gapLabel
