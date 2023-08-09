@@ -147,18 +147,6 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  public var gapSize: Double? {
-    gap?.size
-  }
-
-  public var gapRatio: Double {
-    gap?.ratio ?? 0.0
-  }
-
-  public var gapLabel: String {
-    gap?.label ?? "Gap"
-  }
-
   public var depth: Double? {
     if pleatFabric == nil || pleatWidth == nil { return nil }
     return (pleatFabric! - pleatWidth!.asDouble) / 2
