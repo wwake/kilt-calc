@@ -153,10 +153,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var gapLabel: String {
-    if gapSize == nil || gapSize! >= 0 {
-      return "Gap"
-    }
-    return "Overlap"
+    gap?.label ?? "Gap"
   }
 
   public var depth: Double? {
