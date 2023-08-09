@@ -96,7 +96,7 @@ struct BoxPleatDrawing: View {
             .frame(width: pleatPixels * abs(gapRatio), height: 10)
             .padding([.top], 8)
 
-          Text("\(gapLabel): \(formatOptional(gap?.absoluteGap))")
+          Text("\(gapLabel): \(formatOptional(gap?.absoluteSize))")
         }
 
         Text(PleatValidator.gapMessage(gap!.size))

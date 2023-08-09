@@ -17,7 +17,7 @@ public struct Gap {
     }
   }
 
-  public var absoluteGap: Double? {
+  public var absoluteSize: Double? {
     if size == nil { return nil }
     return abs(size!)
   }
@@ -135,7 +135,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var absoluteGap: Double? {
-    gap?.absoluteGap
+    gap?.absoluteSize
   }
 
   public var gapRatio: Double {
