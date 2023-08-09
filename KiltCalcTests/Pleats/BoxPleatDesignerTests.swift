@@ -63,9 +63,8 @@ final class BoxPleatDesignerTests: XCTestCase {
 
     XCTAssertEqual(designer.pleatWidth, .number(3))
     XCTAssertEqual(designer.gapSize, 1.5)
-    XCTAssertEqual(designer.absoluteGap, 1.5)
     XCTAssertEqual(designer.gapRatio, 1.5 / 3)
-    XCTAssertEqual(designer.gapLabel, "Gap")
+    XCTAssertEqual(designer.gapLabel, "Gap: 1•4/8 in")
     XCTAssertEqual(designer.pleatCount, 7)
     XCTAssertEqual(designer.idealHip, .inches(20))
     XCTAssertEqual(designer.adjustedHip, .number(21))
@@ -77,8 +76,7 @@ final class BoxPleatDesignerTests: XCTestCase {
     designer.pleatWidth = .inches(1.75)
 
     XCTAssertEqual(designer.gapSize, -0.375)
-    XCTAssertEqual(designer.absoluteGap, 0.375)
-    XCTAssertEqual(designer.gapLabel, "Overlap")
+    XCTAssertEqual(designer.gapLabel, "Overlap: 3/8 in")
   }
 
   func test_setPleatCount_SetsPleatWidth_Gap() {

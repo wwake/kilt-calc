@@ -68,13 +68,6 @@ private struct BoxPleatShape: Shape {
   }
 }
 
-private func formatOptional(_ value: Double?) -> String {
-  if value == nil {
-    return "?"
-  }
-  return Value.inches(value!).formatted(.inches)
-}
-
 struct BoxPleatDrawing: View {
   private let pleatPixels = 150.0
 
@@ -99,7 +92,7 @@ struct BoxPleatDrawing: View {
             .frame(width: pleatPixels * abs(gap!.ratio), height: 10)
             .padding([.top], 8)
 
-          Text("\(gap!.label): \(formatOptional(gap!.absoluteSize))")
+          Text(gap!.label)
         }
 
         Text(PleatValidator.gapMessage(gap!.size))

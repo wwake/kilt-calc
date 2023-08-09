@@ -27,10 +27,8 @@ public struct Gap {
   }
 
   public var label: String {
-    if size == nil || size! >= 0 {
-      return "Gap"
-    }
-    return "Overlap"
+    let name = size == nil || size! >= 0 ? "Gap" : "Overlap"
+    return "\(name): \(formatOptional(absoluteSize))"
   }
 
   public var ratio: Double {
@@ -38,6 +36,13 @@ public struct Gap {
     return withAnimation {
       size! / pleatWidth!.asDouble
     }
+  }
+
+  private func formatOptional(_ value: Double?) -> String {
+    if value == nil {
+      return "?"
+    }
+    return Value.inches(value!).formatted(.inches)
   }
 }
 
@@ -146,10 +151,6 @@ public class PleatDesigner: ObservableObject {
 
   public var gapSize: Double? {
     gap?.size
-  }
-
-  public var absoluteGap: Double? {
-    gap?.absoluteSize
   }
 
   public var gapRatio: Double {
