@@ -27,21 +27,15 @@ public struct PleatView: View {
   }
 
   var boxPleat: some View {
-    VStack {
-      BoxPleatDrawing(
-        pleatPixels: 200,
-        gap: designer.gap,
-        gapRatio: designer.gapRatio,
-        drawGap:
-          !PleatValidator.isMilitaryBoxPleat(designer.gap),
-        gapLabel: designer.gapLabel,
-        gapText: formatOptional(designer.absoluteGap)
-      )
-
-      Text(PleatValidator.gapMessage(designer.gap))
-        .font(.headline)
-        .multilineTextAlignment(.center)
-    }
+    BoxPleatDrawing(
+      pleatPixels: 200,
+      gap: designer.gap,
+      gapRatio: designer.gapRatio,
+      drawGap:
+        !PleatValidator.isMilitaryBoxPleat(designer.gap),
+      gapLabel: designer.gapLabel,
+      gapText: formatOptional(designer.absoluteGap)
+    )
   }
 
   var knifePleat: some View {
@@ -64,9 +58,9 @@ public struct PleatView: View {
             slashIsPressed: $slashIsPressed,
             focusedField: $focusedField
           )
-            .onChange(of: tartan.pleatFabric) { _ in
-              designer.pleatFabric = tartan.pleatFabric
-            }
+          .onChange(of: tartan.pleatFabric) { _ in
+            designer.pleatFabric = tartan.pleatFabric
+          }
         }
 
         Section("Pleats") {

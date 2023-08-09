@@ -1,4 +1,4 @@
-* Move gap analysis to BoxPleatDrawing
+* Separate gap object?
 * Inline box pleat and knife pleat
 Knife pleats
 
@@ -50,6 +50,10 @@ EGTest
 * Have EGAssertThrows?
 
 * Figure out ObservableObjects being observed by other ObservableObjects
+
+CALC-23-44: 2023-08-09 - Wrap Up Pleat Designer
+* Move gap analysis to BoxPleatDrawing
+
 
 CALC-23-43: 2023-08-08 - Try, Try Again
 * Revert (give up on ObservableObjects observing ObservableObjects)

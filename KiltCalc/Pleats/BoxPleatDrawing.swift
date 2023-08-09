@@ -89,6 +89,10 @@ struct BoxPleatDrawing: View {
 
         Text("\(gapLabel): \(gapText)")
       }
+
+      Text(PleatValidator.gapMessage(gap))
+        .font(.headline)
+        .multilineTextAlignment(.center)
     }
     .padding()
   }
