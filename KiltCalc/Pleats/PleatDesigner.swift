@@ -17,18 +17,14 @@ public struct Gap {
     }
   }
 
-  public var absoluteSize: Double? {
-    if size == nil { return nil }
-    return abs(size!)
-  }
-
   public var shouldDraw: Bool {
     !PleatValidator.isMilitaryBoxPleat(size)
   }
 
   public var label: String {
-    let name = size == nil || size! >= 0 ? "Gap" : "Overlap"
-    return "\(name): \(formatOptional(absoluteSize))"
+    if size == nil { return "" }
+    let name = size! >= 0 ? "Gap" : "Overlap"
+    return "\(name): \(formatOptional(abs(size!)))"
   }
 
   public var ratio: Double {
