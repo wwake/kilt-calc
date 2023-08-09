@@ -19,9 +19,22 @@ private struct KnifePleatShape: Shape {
   }
 }
 
+private func formatOptional(_ value: Double?) -> String {
+  if value == nil {
+    return "?"
+  }
+  return Value.inches(value!).formatted(.inches)
+}
+
 struct KnifePleatDrawing: View {
   let pleatPixels: CGFloat = 125
-  var depthText: String
+  var depth: Double?
+  var depthText = ""
+
+  init(depth: Double?) {
+    self.depth = depth
+    depthText = formatOptional(depth)
+  }
 
   var body: some View {
     GeometryReader { geometry in
@@ -52,6 +65,6 @@ struct KnifePleatDrawing: View {
 
 struct KnifePleatDrawing_Previews: PreviewProvider {
   static var previews: some View {
-    KnifePleatDrawing(depthText: "2 in")
+    KnifePleatDrawing(depth: 2)
   }
 }

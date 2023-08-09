@@ -26,14 +26,6 @@ public struct PleatView: View {
     return Value.inches(value!).formatted(.inches)
   }
 
-  var boxPleat: some View {
-    BoxPleatDrawing(gap: designer.gap)
-  }
-
-  var knifePleat: some View {
-    KnifePleatDrawing(depthText: formatOptional(designer.depth))
-  }
-
   enum PleatStyle: String, CaseIterable, Identifiable {
     case box = "Box / Military", knife = "Knife"
     var id: Self { self }
@@ -87,10 +79,10 @@ public struct PleatView: View {
 
           switch selectedPleat {
           case .box:
-            boxPleat
+            BoxPleatDrawing(gap: designer.gap)
 
           case .knife:
-            knifePleat
+            KnifePleatDrawing(depth: designer.depth)
           }
         }
 
