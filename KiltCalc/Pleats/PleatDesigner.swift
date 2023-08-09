@@ -16,6 +16,10 @@ public struct Gap {
       (3 * pleatWidth!.asDouble - pleatFabric!) / 2.0
     }
   }
+
+  public var shouldDraw: Bool {
+    !PleatValidator.isMilitaryBoxPleat(size)
+  }
 }
 
 public class PleatDesigner: ObservableObject {
@@ -122,10 +126,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var gapSize: Double? {
-    if needsRequiredValues || pleatWidth == nil { return nil }
-    return withAnimation {
-      (3 * pleatWidth!.asDouble - pleatFabric!) / 2.0
-    }
+    gap?.size
   }
 
   public var absoluteGap: Double? {

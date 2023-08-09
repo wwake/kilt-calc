@@ -31,8 +31,6 @@ public struct PleatView: View {
       pleatPixels: 200,
       gap: designer.gap,
       gapRatio: designer.gapRatio,
-      drawGap:
-        !PleatValidator.isMilitaryBoxPleat(designer.gapSize),
       gapLabel: designer.gapLabel,
       gapText: formatOptional(designer.absoluteGap)
     )
