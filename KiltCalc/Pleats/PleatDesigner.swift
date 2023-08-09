@@ -3,14 +3,18 @@ import Foundation
 import SwiftUI
 
 public struct Gap {
-  private var designer: PleatDesigner
+  public var pleatWidth: Value?
+  public var pleatFabric: Double?
 
-  init(designer: PleatDesigner) {
-    self.designer = designer
+  private var needsRequiredValues: Bool {
+    pleatWidth == nil || pleatFabric == nil
   }
 
-  var size: Double? {
-    designer.gapSize
+  public var size: Double? {
+    if needsRequiredValues { return nil }
+    return withAnimation {
+      (3 * pleatWidth!.asDouble - pleatFabric!) / 2.0
+    }
   }
 }
 
@@ -61,7 +65,14 @@ public class PleatDesigner: ObservableObject {
       action: updateCountAndWidth
     )
 
-    gap = Gap(designer: self)
+    setGap()
+  }
+
+  private func setGap() {
+    gap = Gap(
+      pleatWidth: pleatWidth,
+      pleatFabric: pleatFabric
+    )
   }
 
   @Published public var idealHip: Value? {
@@ -94,7 +105,7 @@ public class PleatDesigner: ObservableObject {
       }
 
       equations.setCount(pleatCount, action: updateCountAndWidth)
-      gap = Gap(designer: self)
+      setGap()
     }
   }
 
@@ -106,7 +117,7 @@ public class PleatDesigner: ObservableObject {
       }
 
       equations.setWidth(pleatWidth!.asDouble, action: updateCountAndWidth)
-      gap = Gap(designer: self)
+      setGap()
     }
   }
 

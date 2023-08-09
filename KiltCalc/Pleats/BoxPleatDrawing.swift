@@ -67,7 +67,6 @@ struct BoxPleatDrawing: View {
   var pleatPixels: CGFloat
 
   var gap: Gap?
-  var size: Double?
   var gapRatio: CGFloat
   var drawGap: Bool
   var gapLabel: String
@@ -95,7 +94,7 @@ struct BoxPleatDrawing: View {
           Text("\(gapLabel): \(gapText)")
         }
 
-        Text(PleatValidator.gapMessage(size))
+        Text(PleatValidator.gapMessage(gap!.size))
           .font(.headline)
           .multilineTextAlignment(.center)
       }
@@ -105,7 +104,7 @@ struct BoxPleatDrawing: View {
 }
 
 struct BoxPleatDrawing_Previews: PreviewProvider {
-  static var gap = Gap(designer: PleatDesigner(PleatDesigner.boxPleat))
+  static var gap = Gap(pleatWidth: .inches(2), pleatFabric: 6)
 
   static var previews: some View {
     ScrollView {
@@ -115,7 +114,6 @@ struct BoxPleatDrawing_Previews: PreviewProvider {
         BoxPleatDrawing(
           pleatPixels: 150,
           gap: gap,
-          size: 0.5,
           gapRatio: CGFloat($0) / 2.0,
           drawGap: true,
           gapLabel: "Gap",
