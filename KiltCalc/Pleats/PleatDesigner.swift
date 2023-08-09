@@ -10,8 +10,8 @@ public struct Gap {
     pleatWidth == nil || pleatFabric == nil
   }
 
-  public var size: Double? {
-    if needsRequiredValues { return nil }
+  public var size: Double {
+    if needsRequiredValues { return 0.0 }
     return withAnimation {
       (3 * pleatWidth!.asDouble - pleatFabric!) / 2.0
     }
@@ -22,15 +22,14 @@ public struct Gap {
   }
 
   public var label: String {
-    if size == nil { return "" }
-    let name = size! >= 0 ? "Gap" : "Overlap"
-    return "\(name): \(formatOptional(abs(size!)))"
+    let name = size >= 0 ? "Gap" : "Overlap"
+    return "\(name): \(formatOptional(abs(size)))"
   }
 
   public var ratio: Double {
-    if size == nil || pleatWidth == nil { return 0.0 }
+    if pleatWidth == nil { return 0.0 }
     return withAnimation {
-      size! / pleatWidth!.asDouble
+      size / pleatWidth!.asDouble
     }
   }
 

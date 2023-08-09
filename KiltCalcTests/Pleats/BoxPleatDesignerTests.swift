@@ -25,7 +25,7 @@ final class BoxPleatDesignerTests: XCTestCase {
     XCTAssertEqual(designer.pleatFabric, 5.0)
     XCTAssertEqual(designer.pleatCount, 5)
     checkValueEquality(designer.pleatWidth, .inches(8.0 / 5.0))
-    XCTAssertEqual(designer.gap!.size!, -0.1, accuracy: 0.000001)
+    XCTAssertEqual(designer.gap!.size, -0.1, accuracy: 0.000001)
   }
 
   func test_setSettsPerPleatUpdatesPleatWidth_Gap_PleatCount() {
@@ -43,7 +43,7 @@ final class BoxPleatDesignerTests: XCTestCase {
 
     XCTAssertEqual(designer.pleatFabric, 9.0)
     XCTAssertEqual(designer.pleatWidth!.asDouble, 2.666667, accuracy: 0.00001)
-    XCTAssertEqual(designer.gap!.size!, -0.5, accuracy: 0.000001)
+    XCTAssertEqual(designer.gap!.size, -0.5, accuracy: 0.000001)
   }
 
   func test_setSettsPerPleat_WithSettNil_MakesPleatFabric_PleatWidth_Gap_BeNil() {
