@@ -25,6 +25,13 @@ public struct Gap {
   public var shouldDraw: Bool {
     !PleatValidator.isMilitaryBoxPleat(size)
   }
+
+  public var label: String {
+    if size == nil || size! >= 0 {
+      return "Gap"
+    }
+    return "Overlap"
+  }
 }
 
 public class PleatDesigner: ObservableObject {

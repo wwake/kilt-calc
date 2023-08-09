@@ -75,7 +75,6 @@ struct BoxPleatDrawing: View {
 
   var gap: Gap?
   var gapRatio: CGFloat
-  var gapLabel: String
 
   var body: some View {
     if gap == nil {
@@ -96,7 +95,7 @@ struct BoxPleatDrawing: View {
             .frame(width: pleatPixels * abs(gapRatio), height: 10)
             .padding([.top], 8)
 
-          Text("\(gapLabel): \(formatOptional(gap?.absoluteSize))")
+          Text("\(gap!.label): \(formatOptional(gap!.absoluteSize))")
         }
 
         Text(PleatValidator.gapMessage(gap!.size))
@@ -118,8 +117,7 @@ struct BoxPleatDrawing_Previews: PreviewProvider {
         Text("\(CGFloat($0) / 2.0)")
         BoxPleatDrawing(
           gap: gap,
-          gapRatio: CGFloat($0) / 2.0,
-          gapLabel: "Gap"
+          gapRatio: CGFloat($0) / 2.0
         )
         .padding()
         Divider()
