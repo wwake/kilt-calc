@@ -32,6 +32,13 @@ public struct Gap {
     }
     return "Overlap"
   }
+
+  public var ratio: Double {
+    if size == nil || pleatWidth == nil { return 0.0 }
+    return withAnimation {
+      size! / pleatWidth!.asDouble
+    }
+  }
 }
 
 public class PleatDesigner: ObservableObject {
@@ -146,10 +153,7 @@ public class PleatDesigner: ObservableObject {
   }
 
   public var gapRatio: Double {
-    if gapSize == nil || pleatWidth == nil { return 0.0 }
-    return withAnimation {
-      gapSize! / pleatWidth!.asDouble
-    }
+    gap?.ratio ?? 0.0
   }
 
   public var gapLabel: String {

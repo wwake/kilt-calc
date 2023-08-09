@@ -74,7 +74,7 @@ struct BoxPleatDrawing: View {
   private let pleatPixels: CGFloat = 150
 
   var gap: Gap?
-  var gapRatio: CGFloat
+  var gapRatio: Double
 
   var body: some View {
     if gap == nil {
@@ -117,7 +117,7 @@ struct BoxPleatDrawing_Previews: PreviewProvider {
         Text("\(CGFloat($0) / 2.0)")
         BoxPleatDrawing(
           gap: gap,
-          gapRatio: CGFloat($0) / 2.0
+          gapRatio: Double($0) / 2.0
         )
         .padding()
         Divider()
