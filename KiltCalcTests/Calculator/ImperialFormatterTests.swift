@@ -9,7 +9,28 @@ final class ImperialFormatterTests: XCTestCase {
       EG(13, expect: "13 in"),
       EG(39, expect: "39 in"),
     ]) {
-      XCTAssertEqual(ImperialFormatter.asInches(FractionFormatter(), $0.input), $0.expect, file: $0.file, line: $0.line)
+      EGAssertEqual(
+        ImperialFormatter.asInches(FractionFormatter(), $0.input),
+        $0
+      )
+    }
+  }
+
+  func test_asFractionAndDecimal() throws {
+    check([
+      //     EG(0.0, expect: "0 in"),
+      //      EG(1, expect: "1 in"),
+      //      EG(12, expect: "1 ft"),
+      //      EG(13, expect: "1 ft 1 in"),
+      //      EG(36, expect: "1 yd"),
+      //      EG(39, expect: "1 yd 3 in"),
+      //      EG(60, expect: "1 yd 2 ft"),
+      //      EG(63, expect: "1 yd 2 ft 3 in"),
+    ]) {
+      EGAssertEqual(
+        ImperialFormatter.asYardFeetInches(FractionFormatter(), $0.input),
+        $0
+      )
     }
   }
 
@@ -24,11 +45,9 @@ final class ImperialFormatterTests: XCTestCase {
       EG(60, expect: "1 yd 2 ft"),
       EG(63, expect: "1 yd 2 ft 3 in"),
     ]) {
-      XCTAssertEqual(
+      EGAssertEqual(
         ImperialFormatter.asYardFeetInches(FractionFormatter(), $0.input),
-        $0.expect,
-        file: $0.file,
-        line: $0.line
+        $0
       )
     }
   }
@@ -44,11 +63,9 @@ final class ImperialFormatterTests: XCTestCase {
       EG(-48, expect: "-1 yd -1 ft"),
       EG(-50, expect: "-1 yd -1 ft -2 in"),
     ]) {
-      XCTAssertEqual(
+      EGAssertEqual(
         ImperialFormatter.asYardFeetInches(FractionFormatter(), $0.input),
-        $0.expect,
-        file: $0.file,
-        line: $0.line
+        $0
       )
     }
   }
