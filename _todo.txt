@@ -1,9 +1,19 @@
-Knife pleats
+
+* Remember the last tab and go back to it on startup
+* Decimal inches formatter in calculator
+
+EGTest
+* Update EGTest to take new check() with try from ContentViewTests
+* Update EGTest with EGAssert
+* Add EGAssert(actual, eg)
+* Let check use varargs rather than []
+* For a test that can throw, can we continue after EGAssert throws?
+* Have EGAssertThrows?
+
 
 * How much is a skosh?   6/8+ could be 6/8..<6/8+1/32
   If it's .7500001 we call it 6/8+
 
-* Decimal inches formatter in calculator
 * Should we do a Double formatter that handles fractions? Not now.
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
@@ -11,7 +21,6 @@ Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Use new formatter approach throughout calculator & UI
 * May need 8th-fraction formatter or accept unitless values as inches
 
-* Remember the last tab and go back to it on startup
 
 * A/P: Apron/Pleat
 
@@ -19,7 +28,6 @@ Fix error message (trailing ')') - simple fractions only (at most one '/')
 
 * Idea: show memory value in history too
 
-* Comma in long numbers
 
 History
 * Print history
@@ -39,14 +47,6 @@ Syntax
 * Accessibility
 * I18N
 
-EGTest
-* Update EGTest to take new check() with try from ContentViewTests
-* Update EGTest with EGAssert
-* Add EGAssert(actual, eg)
-* Let check use varargs rather than []
-* For a test that can throw, can we continue after EGAssert throws?
-* Have EGAssertThrows?
-
 * Figure out ObservableObjects being observed by other ObservableObjects
 
 CALC-23-44: 2023-08-09 - Wrap Up Pleat Designer
@@ -54,7 +54,6 @@ Knife Pleats:
 * Move gap analysis to BoxPleatDrawing
 * Create a separate gap object, using that instead of values on PleatDesigner
 * Inline box pleat and knife pleat
-
 
 CALC-23-43: 2023-08-08 - Try, Try Again
 * Revert (give up on ObservableObjects observing ObservableObjects)
