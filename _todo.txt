@@ -7,6 +7,9 @@
 |      +++++++++++++++ --------------       |
 2/16   2/16+1/64 2/16+2/64  2/16+3/64      3/16
 
+* FractionFormatter.format - let its computation move into SplitDouble.fractionParts
+  "MudShark666: I think the you only needed the check before the +- bit"
+
 EGTest
 * Update EGTest to take new check() with try from ContentViewTests
 * Update EGTest with EGAssert

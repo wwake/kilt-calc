@@ -53,16 +53,15 @@ public struct FractionFormatter {
     self.formatter = formatter
   }
 
-  fileprivate func findAdjustment(_ aNumber: Double, _ split: SplitDouble) -> String {
-    let computed = split.asDouble
-    if abs(computed - aNumber) < Self.skoshCutoff {
+  fileprivate func findAdjustment(_ original: Double, _ rounded: Double) -> String {
+    if abs(rounded - original) < Self.skoshCutoff {
       return ""
     }
 
-    if computed < aNumber {
+    if rounded < original {
       return Self.skoshPlus
     }
-    if computed > aNumber {
+    if rounded > original {
       return Self.skoshMinus
     }
     return ""
@@ -107,7 +106,7 @@ public struct FractionFormatter {
 
     let adjustment = findAdjustment(
       aNumber,
-      SplitDouble(signum: signum, wholeNumber: wholeNumber, numerator: numerator, denominator: denominator)
+      SplitDouble(signum: signum, wholeNumber: wholeNumber, numerator: numerator, denominator: denominator).asDouble
     )
 
     return signMarker + formattedNumber + adjustment
