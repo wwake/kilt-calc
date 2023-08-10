@@ -40,6 +40,7 @@ public struct FractionFormatter {
   static let fractionSeparator = "\u{2022}"
   static let skoshPlus = "⊕"
   static let skoshMinus = "⊖"
+  static let skoshCutoff = 1.0 / 64
 
   let roundingDenominator = 16
   let formatter: NumberFormatter
@@ -54,6 +55,10 @@ public struct FractionFormatter {
 
   fileprivate func findAdjustment(_ aNumber: Double, _ split: SplitDouble) -> String {
     let computed = split.asDouble
+    if abs(computed - aNumber) < Self.skoshCutoff {
+      return ""
+    }
+
     if computed < aNumber {
       return Self.skoshPlus
     }
@@ -89,10 +94,11 @@ public struct FractionFormatter {
     let signum = splitNumber.signum
     var wholeNumber = splitNumber.wholeNumber
 
-    let (numerator, denominator) = splitNumber.fractionParts(roundingDenominator)
+    var (numerator, denominator) = splitNumber.fractionParts(roundingDenominator)
 
     if numerator == denominator {
       wholeNumber += 1
+      numerator = 0
     }
 
     let signMarker = signum < 0 ? "-" : ""
