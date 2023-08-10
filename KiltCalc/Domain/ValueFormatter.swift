@@ -23,7 +23,7 @@ public struct SplitDouble {
     Double(signum) * (Double(wholeNumber) + fraction)
   }
 
-  fileprivate func fractionParts(_ roundingDenominator: Int) -> (Int, Int) {
+  public func fractionParts(_ roundingDenominator: Int) -> (Int, Int) {
     var denominator = roundingDenominator
     var numerator = Int(round(fraction * Double(denominator)))
 
@@ -37,6 +37,10 @@ public struct SplitDouble {
 }
 
 public struct FractionFormatter {
+  static let fractionSeparator = "\u{2022}"
+  static let skoshPlus = "⊕"
+  static let skoshMinus = "⊖"
+
   let roundingDenominator = 16
   let formatter: NumberFormatter
 
@@ -51,10 +55,10 @@ public struct FractionFormatter {
   fileprivate func findAdjustment(_ aNumber: Double, _ split: SplitDouble) -> String {
     let computed = split.asDouble
     if computed < aNumber {
-      return "⊕"
+      return Self.skoshPlus
     }
     if computed > aNumber {
-      return "⊖"
+      return Self.skoshMinus
     }
     return ""
   }
@@ -69,7 +73,7 @@ public struct FractionFormatter {
 
     if hasFraction {
       if wholeNumber != 0 {
-        result += "\u{2022}"
+        result += Self.fractionSeparator
       }
       result += "\(numerator)/\(denominator)"
     }

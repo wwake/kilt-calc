@@ -16,24 +16,6 @@ final class ImperialFormatterTests: XCTestCase {
     }
   }
 
-  func test_asFractionAndDecimal() throws {
-    check([
-      //     EG(0.0, expect: "0 in"),
-      //      EG(1, expect: "1 in"),
-      //      EG(12, expect: "1 ft"),
-      //      EG(13, expect: "1 ft 1 in"),
-      //      EG(36, expect: "1 yd"),
-      //      EG(39, expect: "1 yd 3 in"),
-      //      EG(60, expect: "1 yd 2 ft"),
-      //      EG(63, expect: "1 yd 2 ft 3 in"),
-    ]) {
-      EGAssertEqual(
-        ImperialFormatter.asYardFeetInches(FractionFormatter(), $0.input),
-        $0
-      )
-    }
-  }
-
   func test_asYardsFeetInches() throws {
     check([
       EG(0, expect: "0 in"),

@@ -1,5 +1,12 @@
 * Decimal inches formatter in calculator
 
+|+++++++++++++++++++++ ---------------------|
+2/16   2/16+1/64 2/16+2/64  2/16+3/64      3/16
+
+
+|      +++++++++++++++ --------------       |
+2/16   2/16+1/64 2/16+2/64  2/16+3/64      3/16
+
 EGTest
 * Update EGTest to take new check() with try from ContentViewTests
 * Update EGTest with EGAssert
