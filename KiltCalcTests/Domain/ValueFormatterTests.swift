@@ -44,7 +44,22 @@ final class ValueFormatterTests: XCTestCase {
       EG(Value.number(0.0 / 0), expect: "result can't be determined"),
       EG(Value.inches(0.0 / 0), expect: "result can't be determined"),
     ]) {
-      XCTAssertEqual(formatter.format(ImperialFormatter.asInches, $0.input), $0.expect, file: $0.file, line: $0.line)
+      EGAssertEqual(formatter.format(ImperialFormatter.asInches, $0.input), $0)
     }
   }
+
+//  func test_skoshSize() {
+//    check([
+//      EG(Value.number(9.0 / 0), expect: "result too large"),
+//      EG(Value.inches(9.0 / 0), expect: "result too large"),
+//
+//      EG(Value.number(-9.0 / 0), expect: "result too large"),
+//      EG(Value.inches(-9.0 / 0), expect: "result too large"),
+//
+//      EG(Value.number(0.0 / 0), expect: "result can't be determined"),
+//      EG(Value.inches(0.0 / 0), expect: "result can't be determined"),
+//    ]) {
+//      EGAssertEqual(formatter.format(ImperialFormatter.asInches, $0.input), $0)
+//    }
+//  }
 }

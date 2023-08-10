@@ -23,7 +23,7 @@ public struct SplitDouble {
     Double(signum) * (Double(wholeNumber) + fraction)
   }
 
-  public func fractionParts(_ roundingDenominator: Int) -> (Int, Int) {
+  fileprivate func fractionParts(_ roundingDenominator: Int) -> (Int, Int) {
     var denominator = roundingDenominator
     var numerator = Int(round(fraction * Double(denominator)))
 
