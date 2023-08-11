@@ -98,31 +98,31 @@ public struct PleatView: View {
         }
         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
       }
-    }
-    .toolbar {
-      // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
+      .toolbar {
+        // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
 
-      ToolbarItem(placement: .keyboard) {
-        HStack {
-          Button("Done") {
-            focusedField = nil
-          }
-          Spacer()
-          Button(action: { slashIsPressed = true }) {
-            HStack {
-              Spacer()
-              Text("/")
-                .bold()
-              Spacer()
+        ToolbarItem(placement: .keyboard) {
+          HStack {
+            Button("Done") {
+              focusedField = nil
             }
-            .padding(2)
-            .background(Color.white)
-            .frame(width: 100)
+            Spacer()
+            Button(action: { slashIsPressed = true }) {
+              HStack {
+                Spacer()
+                Text("/")
+                  .bold()
+                Spacer()
+              }
+              .padding(2)
+              .background(Color.white)
+              .frame(width: 100)
+            }
           }
         }
       }
+      .navigationTitle("Pleats")
     }
-    .navigationTitle("Pleats")
   }
 }
 
