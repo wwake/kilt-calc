@@ -186,24 +186,24 @@ final class CalculatorTests: XCTestCase {
       EG("(11 in-1 in)*3=", expect: "2 ft 6 in"),
       EG("7in + (11 in+1 in)*3=", expect: "1 yd 7 in"),
     ]) {
-        EGAssertEqual(display("Y" + $0.input), $0)
+      EGAssertEqual(display("Y" + $0.input), $0)
     }
   }
 
-    func test_ErrorUnitsAndOperations() {
-      check([
-        EG("5 ft 2 =", expect: "numbers and units don't match", "more numbers than units"),
+  func test_ErrorUnitsAndOperations() {
+    check([
+      EG("5 ft 2 =", expect: "numbers and units don't match", "more numbers than units"),
 
-        EG("((3+2)=", expect: "error - unbalanced parentheses"),
-        EG("1+(3+4))=", expect: "error - unbalanced parentheses"),
-        EG(")1+2=", expect: "error - unbalanced parentheses"),
-        EG(")1+2(=", expect: "error - unbalanced parentheses"),
-      ]) {
-          let calc = Calculator()
-          _ = display($0.input, calc)
-          XCTAssertEqual(calc.errorMessage, $0.expect, file: $0.file, line: $0.line)
-      }
+      EG("((3+2)=", expect: "error - unbalanced parentheses"),
+      EG("1+(3+4))=", expect: "error - unbalanced parentheses"),
+      EG(")1+2=", expect: "error - unbalanced parentheses"),
+      EG(")1+2(=", expect: "error - unbalanced parentheses"),
+    ]) {
+      let calc = Calculator()
+      _ = display($0.input, calc)
+      EGAssertEqual(calc.errorMessage, $0)
     }
+  }
 
   func test_Evaluation() {
     check([
@@ -342,15 +342,15 @@ final class CalculatorTests: XCTestCase {
     XCTAssertEqual(calc.errorMessage, "error - unbalanced parentheses")
   }
 
-    func test_EmptyParends() {
-      let calc = Calculator()
-      _ = display("1-()=", calc)
-      XCTAssertEqual(calc.errorMessage, "error - unbalanced parentheses")
-    }
+  func test_EmptyParends() {
+    let calc = Calculator()
+    _ = display("1-()=", calc)
+    XCTAssertEqual(calc.errorMessage, "error - unbalanced parentheses")
+  }
 
   func test_UnitDisplayMode() {
     check([
- //     EG("63in=", expect: "63 in", "default is inches"),
+      //     EG("63in=", expect: "63 in", "default is inches"),
       EG("Y63in=", expect: "1 yd 2 ft 3 in", "yd-ft-in"),
       EG("Y63in=I", expect: "63 in", "can change mode"),
     ]) {
