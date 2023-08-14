@@ -12,6 +12,9 @@
 		91184E972A4E00A500D5841E /* BoxPleatDesignerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91184E962A4E00A500D5841E /* BoxPleatDesignerTests.swift */; };
 		911857A72A4CB50F0020F16E /* PleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A62A4CB50F0020F16E /* PleatView.swift */; };
 		911857A92A4CC0C20020F16E /* BoxPleatDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */; };
+		9125A2472A8AB47800A67156 /* Skosh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9125A2462A8AB47800A67156 /* Skosh.swift */; };
+		9125A2492A8AB49C00A67156 /* RoundedFraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9125A2482A8AB49C00A67156 /* RoundedFraction.swift */; };
+		9125A24B2A8AB4C200A67156 /* FractionFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9125A24A2A8AB4C200A67156 /* FractionFormatter.swift */; };
 		9133987E2A71981100C181AE /* PleatEquations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133987D2A71981100C181AE /* PleatEquations.swift */; };
 		913398802A72E95400C181AE /* PleatValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133987F2A72E95400C181AE /* PleatValidatorTests.swift */; };
 		913EC0C62A84289400B15218 /* Gap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913EC0C52A84289400B15218 /* Gap.swift */; };
@@ -89,6 +92,9 @@
 		91184E962A4E00A500D5841E /* BoxPleatDesignerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxPleatDesignerTests.swift; sourceTree = "<group>"; };
 		911857A62A4CB50F0020F16E /* PleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatView.swift; sourceTree = "<group>"; };
 		911857A82A4CC0C20020F16E /* BoxPleatDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxPleatDrawing.swift; sourceTree = "<group>"; };
+		9125A2462A8AB47800A67156 /* Skosh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skosh.swift; sourceTree = "<group>"; };
+		9125A2482A8AB49C00A67156 /* RoundedFraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedFraction.swift; sourceTree = "<group>"; };
+		9125A24A2A8AB4C200A67156 /* FractionFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractionFormatter.swift; sourceTree = "<group>"; };
 		9133987D2A71981100C181AE /* PleatEquations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatEquations.swift; sourceTree = "<group>"; };
 		9133987F2A72E95400C181AE /* PleatValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatValidatorTests.swift; sourceTree = "<group>"; };
 		913EC0C52A84289400B15218 /* Gap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gap.swift; sourceTree = "<group>"; };
@@ -179,6 +185,9 @@
 				91E3C5B22A1EAAD10098BAFC /* Value.swift */,
 				918628CC2A2FC57300FA781D /* ValueFormatter.swift */,
 				91183F612A573E7A009F4D47 /* ValueParseStrategy.swift */,
+				9125A2462A8AB47800A67156 /* Skosh.swift */,
+				9125A2482A8AB49C00A67156 /* RoundedFraction.swift */,
+				9125A24A2A8AB4C200A67156 /* FractionFormatter.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -514,6 +523,7 @@
 				91183F622A573E7A009F4D47 /* ValueParseStrategy.swift in Sources */,
 				91A7DC212A7057500084BBD2 /* ArrowHead.swift in Sources */,
 				9190F7AD2A292CA60008E40A /* Expression.swift in Sources */,
+				9125A24B2A8AB4C200A67156 /* FractionFormatter.swift in Sources */,
 				91D4CF3F2A5C9DF800A03B63 /* PleatValidator.swift in Sources */,
 				91F7D1222A7AE0500075123E /* TartanDesign.swift in Sources */,
 				91A7DC2B2A705C570084BBD2 /* TartanDrawing.swift in Sources */,
@@ -527,10 +537,12 @@
 				91A7DC232A7057750084BBD2 /* HorizontalLine.swift in Sources */,
 				91F7D1262A7AE8390075123E /* PleatCountView.swift in Sources */,
 				91A7DC1F2A70571B0084BBD2 /* DoubleArrow.swift in Sources */,
+				9125A2472A8AB47800A67156 /* Skosh.swift in Sources */,
 				91E3C5A12A1BF40F0098BAFC /* Key.swift in Sources */,
 				911857A92A4CC0C20020F16E /* BoxPleatDrawing.swift in Sources */,
 				9190F7AF2A29331F0008E40A /* InputBuffer.swift in Sources */,
 				91B0F2B82A53737C00423289 /* ApronPleatView.swift in Sources */,
+				9125A2492A8AB49C00A67156 /* RoundedFraction.swift in Sources */,
 				91A7DC2D2A705E800084BBD2 /* CGRect+percent.swift in Sources */,
 				9164E9CD2A82D8CD000BEA4F /* Double+format.swift in Sources */,
 				918628CD2A2FC57300FA781D /* ValueFormatter.swift in Sources */,
