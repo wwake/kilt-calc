@@ -1,5 +1,11 @@
 import Foundation
 
+public enum Skosh: String {
+  case nothing = ""
+  case plus = "⊕"
+  case minus = "⊖"
+}
+
 public struct SplitDouble {
   public var signum: Int
   public var wholeNumber: Int
@@ -54,17 +60,16 @@ public struct FractionFormatter {
   }
 
   fileprivate func findAdjustment(_ original: Double, _ rounded: Double) -> String {
-    if abs(rounded - original) < Self.skoshCutoff {
-      return ""
-    }
+    var skosh: Skosh = .nothing
 
-    if rounded < original {
-      return Self.skoshPlus
+    if abs(rounded - original) < Self.skoshCutoff {
+      skosh = .nothing
+    } else if rounded < original {
+      skosh = .plus
+    } else if rounded > original {
+      skosh = .minus
     }
-    if rounded > original {
-      return Self.skoshMinus
-    }
-    return ""
+    return skosh.rawValue
   }
 
   fileprivate func formatWholeAndFraction(_ wholeNumber: Int, _ numerator: Int, _ denominator: Int) -> String {

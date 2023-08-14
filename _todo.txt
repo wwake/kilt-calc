@@ -1,11 +1,3 @@
-* Decimal inches formatter in calculator
-
-|+++++++++++++++++++++ ---------------------|
-2/16   2/16+1/64 2/16+2/64  2/16+3/64      3/16
-
-
-|      +++++++++++++++ --------------       |
-2/16   2/16+1/64 2/16+2/64  2/16+3/64      3/16
 
 * FractionFormatter.format - let its computation move into SplitDouble.fractionParts
   "MudShark666: I think the you only needed the check before the +- bit"
@@ -58,7 +50,17 @@ Syntax
 * Figure out ObservableObjects being observed by other ObservableObjects
 
 CALC-23-45: 2023-08-09 - Formatting and EGTest
-* Remember the last tab and go back to it on startup
+* Remember the last tab and go back to it on startup [should have done this weeks ago]
+* Decimal inches formatter in calculator [dropped]
+* Adjust how skosh is set
+Was this:
+|+++++++++++++++++++++ ---------------------|
+2/16   2/16+1/64 2/16+2/64  2/16+3/64      3/16
+
+Now this:
+|      +++++++++++++++ --------------       |
+2/16   2/16+1/64 2/16+2/64  2/16+3/64      3/16
+
 
 CALC-23-44: 2023-08-09 - Wrap Up Pleat Designer
 Knife Pleats:
