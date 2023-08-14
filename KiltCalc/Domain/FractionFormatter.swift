@@ -4,7 +4,6 @@ public struct FractionFormatter {
   static let fractionSeparator = "\u{2022}"
   static let skoshPlus = "⊕"
   static let skoshMinus = "⊖"
-  static let skoshCutoff = 1.0 / 64
 
   let roundingDenominator = 16
   let formatter: NumberFormatter
