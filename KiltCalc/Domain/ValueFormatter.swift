@@ -7,6 +7,8 @@ public enum Skosh: String {
 }
 
 public struct SplitDouble {
+  static let skoshCutoff = 1.0 / 64
+
   public var signum: Int
   public var wholeNumber: Int
   public var fraction: Double
@@ -40,6 +42,20 @@ public struct SplitDouble {
 
     return (numerator, denominator)
   }
+
+  fileprivate func skosh(versus original: Double) -> Skosh {
+    let rounded = self.asDouble
+    var skosh: Skosh = .nothing
+
+    if abs(rounded - original) < Self.skoshCutoff {
+      skosh = .nothing
+    } else if rounded < original {
+      skosh = .plus
+    } else if rounded > original {
+      skosh = .minus
+    }
+    return skosh
+  }
 }
 
 public struct FractionFormatter {
@@ -59,19 +75,6 @@ public struct FractionFormatter {
     self.formatter = formatter
   }
 
-  fileprivate func findAdjustment(_ original: Double, _ rounded: Double) -> String {
-    var skosh: Skosh = .nothing
-
-    if abs(rounded - original) < Self.skoshCutoff {
-      skosh = .nothing
-    } else if rounded < original {
-      skosh = .plus
-    } else if rounded > original {
-      skosh = .minus
-    }
-    return skosh.rawValue
-  }
-
   fileprivate func formatWholeAndFraction(_ wholeNumber: Int, _ numerator: Int, _ denominator: Int) -> String {
     let hasFraction = numerator != 0 && numerator != denominator
 
@@ -89,12 +92,12 @@ public struct FractionFormatter {
     return result
   }
 
-  public func format(_ aNumber: (Double)) -> String {
-    if aNumber.isNaN || aNumber.isInfinite {
-      return formatter.string(from: NSNumber(value: aNumber)) ?? "internal error: ValueFormatter.format()"
+  public func format(_ original: (Double)) -> String {
+    if original.isNaN || original.isInfinite {
+      return formatter.string(from: NSNumber(value: original)) ?? "internal error: ValueFormatter.format()"
     }
 
-    let splitNumber = SplitDouble(aNumber)
+    let splitNumber = SplitDouble(original)
     let signum = splitNumber.signum
     var wholeNumber = splitNumber.wholeNumber
 
@@ -109,12 +112,11 @@ public struct FractionFormatter {
 
     let formattedNumber = formatWholeAndFraction(wholeNumber, numerator, denominator)
 
-    let adjustment = findAdjustment(
-      aNumber,
-      SplitDouble(signum: signum, wholeNumber: wholeNumber, numerator: numerator, denominator: denominator).asDouble
-    )
+    let adjustedNumber = SplitDouble(signum: signum, wholeNumber: wholeNumber, numerator: numerator, denominator: denominator)
 
-    return signMarker + formattedNumber + adjustment
+    let skosh = adjustedNumber.skosh(versus: original).rawValue
+
+    return signMarker + formattedNumber + skosh
   }
 }
 
