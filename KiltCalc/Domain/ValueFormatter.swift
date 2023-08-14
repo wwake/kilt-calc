@@ -6,14 +6,17 @@ public enum Skosh: String {
   case minus = "⊖"
 }
 
-public struct SplitDouble {
+public struct RoundedFraction {
   static let skoshCutoff = 1.0 / 64
 
+  public var original: Double
   public var signum: Int
   public var wholeNumber: Int
   public var fraction: Double
 
   public init(_ aNumber: Double) {
+    original = aNumber
+
     let (wholePart, fractionPart) = modf(aNumber)
 
     signum = aNumber < 0 ? -1 : 1
@@ -21,7 +24,8 @@ public struct SplitDouble {
     fraction = abs(fractionPart)
   }
 
-  public init(signum: Int, wholeNumber: Int, numerator: Int, denominator: Int) {
+  public init(original: Double, signum: Int, wholeNumber: Int, numerator: Int, denominator: Int) {
+    self.original = original
     self.signum = signum
     self.wholeNumber = abs(wholeNumber)
     self.fraction = abs(Double(numerator) / Double(denominator))
@@ -43,7 +47,7 @@ public struct SplitDouble {
     return (numerator, denominator)
   }
 
-  fileprivate func skosh(versus original: Double) -> Skosh {
+  fileprivate func skosh() -> Skosh {
     let rounded = self.asDouble
     var skosh: Skosh = .nothing
 
@@ -97,7 +101,7 @@ public struct FractionFormatter {
       return formatter.string(from: NSNumber(value: original)) ?? "internal error: ValueFormatter.format()"
     }
 
-    let splitNumber = SplitDouble(original)
+    let splitNumber = RoundedFraction(original)
     let signum = splitNumber.signum
     var wholeNumber = splitNumber.wholeNumber
 
@@ -108,13 +112,12 @@ public struct FractionFormatter {
       numerator = 0
     }
 
-    let signMarker = signum < 0 ? "-" : ""
-
     let formattedNumber = formatWholeAndFraction(wholeNumber, numerator, denominator)
 
-    let adjustedNumber = SplitDouble(signum: signum, wholeNumber: wholeNumber, numerator: numerator, denominator: denominator)
+    let adjustedNumber = RoundedFraction(original: original, signum: signum, wholeNumber: wholeNumber, numerator: numerator, denominator: denominator)
 
-    let skosh = adjustedNumber.skosh(versus: original).rawValue
+    let signMarker = adjustedNumber.signum < 0 ? "-" : ""
+    let skosh = adjustedNumber.skosh().rawValue
 
     return signMarker + formattedNumber + skosh
   }
