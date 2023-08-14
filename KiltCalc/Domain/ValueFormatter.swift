@@ -8,10 +8,15 @@ public enum Skosh: String {
 
 public struct RoundedFraction {
   static let skoshCutoff = 1.0 / 64
+  let roundingDenominator = 16
 
   public var original: Double
+
   public var signum: Int
   public var wholeNumber: Int
+  public var numerator: Int = 0
+  public var denominator: Int = 0
+
   public var fraction: Double
 
   public init(_ aNumber: Double) {
@@ -22,17 +27,17 @@ public struct RoundedFraction {
     signum = aNumber < 0 ? -1 : 1
     wholeNumber = abs(Int(wholePart))
     fraction = abs(fractionPart)
-  }
 
-  public init(original: Double, signum: Int, wholeNumber: Int, numerator: Int, denominator: Int) {
-    self.original = original
-    self.signum = signum
-    self.wholeNumber = abs(wholeNumber)
-    self.fraction = abs(Double(numerator) / Double(denominator))
+    (numerator, denominator) = self.fractionParts(roundingDenominator)
+
+    if numerator == denominator {
+      wholeNumber += 1
+      numerator = 0
+    }
   }
 
   public var asDouble: Double {
-    Double(signum) * (Double(wholeNumber) + fraction)
+    Double(signum) * (Double(wholeNumber) + Double(numerator) / Double(denominator))
   }
 
   fileprivate func fractionParts(_ roundingDenominator: Int) -> (Int, Int) {
@@ -49,6 +54,7 @@ public struct RoundedFraction {
 
   fileprivate func skosh() -> Skosh {
     let rounded = self.asDouble
+
     var skosh: Skosh = .nothing
 
     if abs(rounded - original) < Self.skoshCutoff {
@@ -105,19 +111,10 @@ public struct FractionFormatter {
     let signum = splitNumber.signum
     var wholeNumber = splitNumber.wholeNumber
 
-    var (numerator, denominator) = splitNumber.fractionParts(roundingDenominator)
+    let formattedNumber = formatWholeAndFraction(splitNumber.wholeNumber, splitNumber.numerator, splitNumber.denominator)
 
-    if numerator == denominator {
-      wholeNumber += 1
-      numerator = 0
-    }
-
-    let formattedNumber = formatWholeAndFraction(wholeNumber, numerator, denominator)
-
-    let adjustedNumber = RoundedFraction(original: original, signum: signum, wholeNumber: wholeNumber, numerator: numerator, denominator: denominator)
-
-    let signMarker = adjustedNumber.signum < 0 ? "-" : ""
-    let skosh = adjustedNumber.skosh().rawValue
+    let signMarker = splitNumber.signum < 0 ? "-" : ""
+    let skosh = splitNumber.skosh().rawValue
 
     return signMarker + formattedNumber + skosh
   }
