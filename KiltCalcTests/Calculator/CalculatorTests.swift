@@ -358,6 +358,31 @@ final class CalculatorTests: XCTestCase {
     }
   }
 
+  func test_ExactValues() {
+    check([
+      EG("0=", expect: "0", "zero whole number"),
+      EG("1=", expect: "1", "positive whole number"),
+      EG("1~=", expect: "-1", "negative whole number"),
+      EG("1/8=", expect: "1/8", "exact fraction"),
+      EG("1/8~=", expect: "-1/8", "exact fraction"),
+      EG("5.4/16=", expect: "5\u{2022}2/8", "whole number with exact fraction"),
+      EG("5.7/16~=", expect: "-5\u{2022}7/16", "negative whole number with exact fraction"),
+    ]) {
+      EGAssertEqual(display($0.input), $0)
+    }
+  }
+
+  func test_BoundaryCasesForRounding() {
+    check([
+      EG("1/65=", expect: "0", "rounded to 0 with no skosh"),
+      EG("1/64=", expect: "0⊕", "rounded to 0 with plus skosh"),
+      EG("63/64=", expect: "1⊖", "rounded to 1 with minus skosh"),
+      EG("127/128=", expect: "1", "rounded to 1 with no skosh"),
+    ]) {
+      EGAssertEqual(display($0.input), $0)
+    }
+  }
+
   func test_Rounding() {
     check([
       EG("3:8=", expect: "3/8", "round to 8ths w/no int part"),

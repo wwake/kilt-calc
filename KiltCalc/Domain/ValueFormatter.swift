@@ -48,6 +48,10 @@ public struct RoundedFraction {
     }
   }
 
+  public var hasFraction: Bool {
+    numerator != 0
+  }
+
   private var asDouble: Double {
     Double(signum) * (Double(wholeNumber) + Double(numerator) / Double(denominator))
   }
@@ -82,19 +86,17 @@ public struct FractionFormatter {
     self.formatter = formatter
   }
 
-  fileprivate func formatWholeAndFraction(_ wholeNumber: Int, _ numerator: Int, _ denominator: Int) -> String {
-    let hasFraction = numerator != 0 && numerator != denominator
-
+  fileprivate func formatWholeAndFraction(_ value: RoundedFraction) -> String {
     var result = ""
-    if wholeNumber != 0 || !hasFraction {
-      result += "\(wholeNumber)"
+    if value.wholeNumber != 0 || !value.hasFraction {
+      result += "\(value.wholeNumber)"
     }
 
-    if hasFraction {
-      if wholeNumber != 0 {
+    if value.hasFraction {
+      if value.wholeNumber != 0 {
         result += Self.fractionSeparator
       }
-      result += "\(numerator)/\(denominator)"
+      result += "\(value.numerator)/\(value.denominator)"
     }
     return result
   }
@@ -104,14 +106,13 @@ public struct FractionFormatter {
       return formatter.string(from: NSNumber(value: original)) ?? "internal error: ValueFormatter.format()"
     }
 
-    let splitNumber = RoundedFraction(original)
-    let signum = splitNumber.signum
-    var wholeNumber = splitNumber.wholeNumber
+    let roundedFraction = RoundedFraction(original)
 
-    let formattedNumber = formatWholeAndFraction(splitNumber.wholeNumber, splitNumber.numerator, splitNumber.denominator)
+    let signMarker = roundedFraction.signum < 0 ? "-" : ""
 
-    let signMarker = splitNumber.signum < 0 ? "-" : ""
-    let skosh = splitNumber.skosh.rawValue
+    let formattedNumber = formatWholeAndFraction(roundedFraction)
+
+    let skosh = roundedFraction.skosh.rawValue
 
     return signMarker + formattedNumber + skosh
   }
