@@ -109,9 +109,7 @@ public struct FractionFormatter {
     let roundedFraction = RoundedFraction(original)
 
     let signMarker = roundedFraction.signum < 0 ? "-" : ""
-
     let formattedNumber = formatWholeAndFraction(roundedFraction)
-
     let skosh = roundedFraction.skosh.rawValue
 
     return signMarker + formattedNumber + skosh
