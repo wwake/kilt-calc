@@ -55,16 +55,13 @@ public struct RoundedFraction {
   fileprivate func skosh() -> Skosh {
     let rounded = self.asDouble
 
-    var skosh: Skosh = .nothing
-
     if abs(rounded - original) < Self.skoshCutoff {
-      skosh = .nothing
-    } else if rounded < original {
-      skosh = .plus
-    } else if rounded > original {
-      skosh = .minus
+      return .nothing
+    } else if original < rounded {
+      return .minus
+    } else {
+      return .plus
     }
-    return skosh
   }
 }
 
