@@ -17,7 +17,7 @@ public struct RoundedFraction {
   public var numerator: Int = 0
   public var denominator: Int = 0
 
-  public var fraction: Double
+  public var originalFraction: Double
 
   public init(_ aNumber: Double) {
     original = aNumber
@@ -26,7 +26,7 @@ public struct RoundedFraction {
 
     signum = aNumber < 0 ? -1 : 1
     wholeNumber = abs(Int(wholePart))
-    fraction = abs(fractionPart)
+    originalFraction = abs(fractionPart)
 
     (numerator, denominator) = self.fractionParts(roundingDenominator)
 
@@ -36,23 +36,7 @@ public struct RoundedFraction {
     }
   }
 
-  public var asDouble: Double {
-    Double(signum) * (Double(wholeNumber) + Double(numerator) / Double(denominator))
-  }
-
-  fileprivate func fractionParts(_ roundingDenominator: Int) -> (Int, Int) {
-    var denominator = roundingDenominator
-    var numerator = Int(round(fraction * Double(denominator)))
-
-    if numerator.isMultiple(of: 2) {
-      numerator /= 2
-      denominator /= 2
-    }
-
-    return (numerator, denominator)
-  }
-
-  fileprivate func skosh() -> Skosh {
+  public var skosh: Skosh {
     let rounded = self.asDouble
 
     if abs(rounded - original) < Self.skoshCutoff {
@@ -62,6 +46,22 @@ public struct RoundedFraction {
     } else {
       return .plus
     }
+  }
+
+  public var asDouble: Double {
+    Double(signum) * (Double(wholeNumber) + Double(numerator) / Double(denominator))
+  }
+
+  fileprivate func fractionParts(_ roundingDenominator: Int) -> (Int, Int) {
+    var denominator = roundingDenominator
+    var numerator = Int(round(originalFraction * Double(denominator)))
+
+    if numerator.isMultiple(of: 2) {
+      numerator /= 2
+      denominator /= 2
+    }
+
+    return (numerator, denominator)
   }
 }
 
@@ -111,7 +111,7 @@ public struct FractionFormatter {
     let formattedNumber = formatWholeAndFraction(splitNumber.wholeNumber, splitNumber.numerator, splitNumber.denominator)
 
     let signMarker = splitNumber.signum < 0 ? "-" : ""
-    let skosh = splitNumber.skosh().rawValue
+    let skosh = splitNumber.skosh.rawValue
 
     return signMarker + formattedNumber + skosh
   }
