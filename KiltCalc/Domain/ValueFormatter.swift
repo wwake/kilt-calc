@@ -17,7 +17,7 @@ public struct RoundedFraction {
   public var numerator: Int = 0
   public var denominator: Int = 0
 
-  public var originalFraction: Double
+  private var originalFraction: Double
 
   public init(_ aNumber: Double) {
     original = aNumber
@@ -28,7 +28,7 @@ public struct RoundedFraction {
     wholeNumber = abs(Int(wholePart))
     originalFraction = abs(fractionPart)
 
-    (numerator, denominator) = self.fractionParts(roundingDenominator)
+    (numerator, denominator) = self.fractionParts()
 
     if numerator == denominator {
       wholeNumber += 1
@@ -48,11 +48,11 @@ public struct RoundedFraction {
     }
   }
 
-  public var asDouble: Double {
+  private var asDouble: Double {
     Double(signum) * (Double(wholeNumber) + Double(numerator) / Double(denominator))
   }
 
-  fileprivate func fractionParts(_ roundingDenominator: Int) -> (Int, Int) {
+  fileprivate func fractionParts() -> (Int, Int) {
     var denominator = roundingDenominator
     var numerator = Int(round(originalFraction * Double(denominator)))
 
