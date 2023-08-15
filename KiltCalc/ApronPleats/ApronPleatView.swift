@@ -3,10 +3,8 @@ import SwiftUI
 struct ApronPleatView: View {
   var body: some View {
     VStack {
-      Text("TBD")
-        .font(.largeTitle)
-
-      Text(UIApplication.version)
+      MeasurementTable()
+        .padding()
     }
   }
 }

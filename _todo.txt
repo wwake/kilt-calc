@@ -1,11 +1,11 @@
+* Actual/Ideal table
+* Button to send hip info to pleat designer
+Apron/Pleat Scenarios
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
 * Use new formatter approach throughout calculator & UI
 * May need 8th-fraction formatter or accept unitless values as inches
-
-
-* A/P: Apron/Pleat
 
 * Save scenarios
 
