@@ -44,7 +44,6 @@ final class ValueParseStrategyTests: XCTestCase {
       EG("1.2.3", expect: "too many '.'"),
     ]) {
       let expected = $0.expect
-      let example = $0
 
       XCTAssertThrowsError(
         try ValueParseStrategy().parse($0.input),

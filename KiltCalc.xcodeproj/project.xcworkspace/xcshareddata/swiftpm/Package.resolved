@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/wwake/EGTest.git",
       "state" : {
-        "revision" : "62afc9076a1f6e85c90f0cf9d82be2aed93b5e7b",
-        "version" : "0.3.1"
+        "revision" : "c0ec5c0d7129ac5f745dc0f8afee5537a19eb71b",
+        "version" : "0.4.1"
       }
     }
   ],
