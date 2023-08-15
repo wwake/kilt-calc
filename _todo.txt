@@ -1,7 +1,6 @@
-* Update EGTest with EGAssert
+* Update EGTest to take new check() with try
 EGTest
 
-* Update EGTest to take new check() with try from ContentViewTests
 * Add EGAssert(actual, eg)
 * Let check use varargs rather than []
 * For a test that can throw, can we continue after EGAssert throws?
@@ -41,13 +40,20 @@ Syntax
 
 * Figure out ObservableObjects being observed by other ObservableObjects
 
+CALC-23-47: 2023-08-15 - Upgrade EGTest
+* Create EGAssertThrowsError()
+
 CALC-23-46: 2023-08-14 - Improve ValueFormatter
+Formatting
 * FractionFormatter.format - let its computation move into SplitDouble.fractionParts
   "MudShark666: I think the you only needed the check before the +- bit"
 * How much is a skosh?   6/8+ could be 6/8..<6/8+1/32
   If it's .7500001 we call it 6/8+
-
 * Should we do a Double formatter that handles fractions? Not now.
+
+EGTest
+* Update EGTest with EGAssert
+
 
 CALC-23-45: 2023-08-09 - Formatting and EGTest
 * Remember the last tab and go back to it on startup [should have done this weeks ago]
