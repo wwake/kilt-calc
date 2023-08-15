@@ -1,4 +1,5 @@
-* Actual/Ideal table
+* Kilt Measurements table
+* A/P Scenario tables
 * Button to send hip info to pleat designer
 Apron/Pleat Scenarios
 
@@ -33,9 +34,14 @@ Syntax
 * Figure out ObservableObjects being observed by other ObservableObjects
 
 CALC-23-47: 2023-08-15 - Upgrade EGTest
+EGTest
 * Create EGAssertThrowsError()
 * Update EGTest to take new check() with try
 * Let check() use varargs rather than []
+
+Apron/Pleats
+* Created a MeasurementView with a grid (table)
+* Created KiltMeasures, enforced rule about ideal hips >= waist
 
 CALC-23-46: 2023-08-14 - Improve ValueFormatter
 Formatting
