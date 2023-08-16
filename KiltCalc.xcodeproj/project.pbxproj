@@ -46,6 +46,8 @@
 		91AE924A2A8D5222002DEF12 /* ApronPleatSplitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE92492A8D5222002DEF12 /* ApronPleatSplitTests.swift */; };
 		91AE924C2A8D555F002DEF12 /* ScenarioSplitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE924B2A8D555F002DEF12 /* ScenarioSplitTests.swift */; };
 		91AE924E2A8D5996002DEF12 /* ApronPleatSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE924D2A8D5996002DEF12 /* ApronPleatSplit.swift */; };
+		91AE92502A8D5C7E002DEF12 /* MeasuringPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE924F2A8D5C7E002DEF12 /* MeasuringPoint.swift */; };
+		91AE92522A8D5C9D002DEF12 /* ScenarioSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE92512A8D5C9D002DEF12 /* ScenarioSplit.swift */; };
 		91B0F2B82A53737C00423289 /* ApronPleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B72A53737C00423289 /* ApronPleatView.swift */; };
 		91B0F2BA2A5373FA00423289 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B92A5373FA00423289 /* CalculatorView.swift */; };
 		91D4CF3F2A5C9DF800A03B63 /* PleatValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */; };
@@ -132,6 +134,8 @@
 		91AE92492A8D5222002DEF12 /* ApronPleatSplitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApronPleatSplitTests.swift; sourceTree = "<group>"; };
 		91AE924B2A8D555F002DEF12 /* ScenarioSplitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioSplitTests.swift; sourceTree = "<group>"; };
 		91AE924D2A8D5996002DEF12 /* ApronPleatSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApronPleatSplit.swift; sourceTree = "<group>"; };
+		91AE924F2A8D5C7E002DEF12 /* MeasuringPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasuringPoint.swift; sourceTree = "<group>"; };
+		91AE92512A8D5C9D002DEF12 /* ScenarioSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioSplit.swift; sourceTree = "<group>"; };
 		91B0F2B72A53737C00423289 /* ApronPleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApronPleatView.swift; sourceTree = "<group>"; };
 		91B0F2B92A5373FA00423289 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KiltCalcUnitTests.xctestplan; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 				91AE923F2A8C0FA1002DEF12 /* MeasurementTable.swift */,
 				91AE92442A8C1418002DEF12 /* KiltMeasures.swift */,
 				91AE924D2A8D5996002DEF12 /* ApronPleatSplit.swift */,
+				91AE924F2A8D5C7E002DEF12 /* MeasuringPoint.swift */,
+				91AE92512A8D5C9D002DEF12 /* ScenarioSplit.swift */,
 			);
 			path = ApronPleats;
 			sourceTree = "<group>";
@@ -564,6 +570,8 @@
 				91F7D1222A7AE0500075123E /* TartanDesign.swift in Sources */,
 				91A7DC2B2A705C570084BBD2 /* TartanDrawing.swift in Sources */,
 				91A7DC1D2A7056EF0084BBD2 /* DimensionLine.swift in Sources */,
+				91AE92522A8D5C9D002DEF12 /* ScenarioSplit.swift in Sources */,
+				91AE92502A8D5C7E002DEF12 /* MeasuringPoint.swift in Sources */,
 				91F2AF4E2A4382CC008A1063 /* HistoryView.swift in Sources */,
 				916AF6602A252460009484DA /* ImperialUnit.swift in Sources */,
 				91E3C5A52A1BF69F0098BAFC /* Calculator.swift in Sources */,
