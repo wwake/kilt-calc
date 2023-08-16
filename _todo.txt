@@ -1,6 +1,9 @@
-* A/P Split tables
+* MeasurementTable should know about nullable values
+* A/P Split tables and scenario view
 * Button to send hip info to pleat designer
 Apron/Pleat Scenarios
+
+MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask!
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O

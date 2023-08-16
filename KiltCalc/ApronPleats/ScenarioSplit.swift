@@ -15,3 +15,5 @@ public struct ScenarioSplit {
     fieldToSplit[field]?.givePleat(amount)
   }
 }
+
+extension ScenarioSplit: Hashable {}

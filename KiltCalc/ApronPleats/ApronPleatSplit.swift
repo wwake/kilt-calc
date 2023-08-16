@@ -18,3 +18,5 @@ public struct ApronPleatSplit {
     pleatSteals = amount
   }
 }
+
+extension ApronPleatSplit: Equatable, Hashable {}
