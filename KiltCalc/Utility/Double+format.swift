@@ -1,6 +1,9 @@
 extension Double {
   func formatFraction() -> String {
     switch self {
+    case 0.25:
+      return "¼"
+
     case 0.5:
       return "½"
 
