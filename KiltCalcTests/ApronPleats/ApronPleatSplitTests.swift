@@ -2,21 +2,23 @@
 import XCTest
 
 struct ApronPleatSplit {
-  let total: Double
-  var apron: Double
-  var pleat: Double
+  let equalSplit: Double
   var pleatSteals: Double = 0.0
 
+  var apron: Double {
+    equalSplit - pleatSteals
+  }
+
+  var pleat: Double {
+    equalSplit + pleatSteals
+  }
+
   init(_ total: Double) {
-    self.total = total
-    self.apron = total / 2.0
-    self.pleat = total / 2.0
+    self.equalSplit = total / 2.0
   }
 
   mutating func givePleat(_ amount: Double) {
     pleatSteals = amount
-    apron -= pleatSteals
-    pleat += pleatSteals
   }
 }
 
