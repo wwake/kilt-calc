@@ -10,7 +10,7 @@ public class KiltMeasures: ObservableObject {
   }
 
   public var idealHips: Double? {
-    if actualWaist == nil || actualHips == nil {
+    if !allowsScenarios {
       return nil
     }
 
