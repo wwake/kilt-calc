@@ -7,8 +7,7 @@ struct ApronPleatView: View {
 
   func changeScenarios(_ newAllowsScenarios: Bool) {
     if newAllowsScenarios {
-      scenarios.append(ScenarioSplit([.waist: measures.actualWaist!, .hips: measures.actualHips!]))
-// create an initial scenario
+      scenarios.append(ScenarioSplit([.waist: measures.idealWaist!, .hips: measures.idealHips!]))
     } else {
       scenarios.clear()
     }
