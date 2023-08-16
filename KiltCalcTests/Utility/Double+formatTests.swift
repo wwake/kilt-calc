@@ -13,7 +13,8 @@ final class Double_formatTests: XCTestCase {
       eg(1, expect: "1"),
       eg(1.25, expect: "1\u{2022}¼"),
       eg(1.5, expect: "1\u{2022}½"),
-      eg(1.75, expect: "1\u{2022}¾")
+      eg(1.75, expect: "1\u{2022}¾"),
+      eg(2.25, expect: "2\u{2022}¼")
     ) {
       EGAssertEqual($0.input.formatFraction(), $0)
     }

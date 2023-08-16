@@ -1,26 +1,31 @@
+import Foundation
+
 extension Double {
   func formatFraction() -> String {
-    switch self {
+    let (whole, part) = modf(self)
+    let wholeInt = Int(whole)
+
+    var fractionString = ""
+
+    switch part {
     case 0.25:
-      return "¼"
+      fractionString = "¼"
 
     case 0.5:
-      return "½"
+      fractionString = "½"
 
     case 0.75:
-      return "¾"
-
-    case 1.25:
-      return "1\u{2022}¼"
-
-    case 1.5:
-      return "1\u{2022}½"
-
-    case 1.75:
-      return "1\u{2022}¾"
+      fractionString = "¾"
 
     default:
-      return self.formatted()
+      fractionString = part.formatted()
     }
+
+    if wholeInt == 0 {
+      return fractionString
+    } else if part == 0 {
+      return "\(wholeInt)"
+    }
+    return "\(wholeInt)\u{2022}\(fractionString)"
   }
 }
