@@ -1,3 +1,4 @@
+* FormatFraction() should work with whole + fraction
 * Kilt Measurements table
 * A/P Split tables
 * Button to send hip info to pleat designer

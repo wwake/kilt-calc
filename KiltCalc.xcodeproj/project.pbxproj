@@ -232,7 +232,7 @@
 				911857A62A4CB50F0020F16E /* PleatView.swift */,
 				91F7D1212A7AE0500075123E /* TartanDesign.swift */,
 				91A7DC2A2A705C570084BBD2 /* TartanDrawing.swift */,
-				9164E9CC2A82D8CD000BEA4F /* Double+format.swift */,
+				9164E9CA2A82D83C000BEA4F /* TartanView.swift */,
 				913EC0C52A84289400B15218 /* Gap.swift */,
 			);
 			path = Pleats;
@@ -241,6 +241,7 @@
 		916AF6612A267517009484DA /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				9164E9CC2A82D8CD000BEA4F /* Double+format.swift */,
 				916AF6622A267528009484DA /* Stack.swift */,
 				9190F7AE2A29331F0008E40A /* InputBuffer.swift */,
 			);
@@ -326,7 +327,6 @@
 		91E7B6BF2A0D4428004A757A = {
 			isa = PBXGroup;
 			children = (
-				9164E9CA2A82D83C000BEA4F /* TartanView.swift */,
 				91E7B6F72A0D4FC0004A757A /* _todo.txt */,
 				91E3C5A82A1C668D0098BAFC /* .swiftlint.yml */,
 				91E7B6FB2A0D5189004A757A /* README.md */,

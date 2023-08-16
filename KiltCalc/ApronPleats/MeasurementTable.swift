@@ -23,9 +23,10 @@ struct MeasurementTable: View {
           .bold()
 
         TextField("actualWaist", value: $measures.actualWaist, format: .number)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
 
-        Text("\(measures.idealWaist)")
+        Text("\(measures.idealWaist.formatFraction())")
       }
 
       Divider()
@@ -35,9 +36,10 @@ struct MeasurementTable: View {
           .bold()
 
         TextField("actualHips", value: $measures.actualHips, format: .number)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
 
-        Text("\(measures.idealHips)")
+        Text("\(measures.idealHips.formatFraction())")
       }
 
       Divider()
@@ -47,9 +49,10 @@ struct MeasurementTable: View {
           .bold()
 
         TextField("actualLength", value: $measures.actualLength, format: .number)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
 
-        Text("\(measures.idealLength)")
+        Text("\(measures.idealLength.formatFraction())")
       }
     }
     .padding()
