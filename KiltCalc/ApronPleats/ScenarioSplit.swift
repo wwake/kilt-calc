@@ -1,4 +1,4 @@
-struct ScenarioSplit {
+public struct ScenarioSplit {
   var fieldToSplit: [MeasuringPoint: ApronPleatSplit]
 
   init(_ fieldToSize: [MeasuringPoint: Double]) {

@@ -1,4 +1,4 @@
-struct ApronPleatSplit {
+public struct ApronPleatSplit {
   let equalSplit: Double
   var pleatSteals: Double = 0.0
 
