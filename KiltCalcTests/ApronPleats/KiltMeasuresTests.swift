@@ -4,6 +4,16 @@ import XCTest
 
 @MainActor
 final class KiltMeasuresTests: XCTestCase {
+  func test_StartingValuesNil() {
+    let m = KiltMeasures()
+    XCTAssertNil(m.actualWaist)
+    XCTAssertNil(m.actualHips)
+    XCTAssertNil(m.actualLength)
+    XCTAssertNil(m.idealWaist)
+    XCTAssertNil(m.idealHips)
+    XCTAssertNil(m.idealLength)
+  }
+
   func test_DerivedValuesThatAreAlwaysCopies() throws {
     let m = KiltMeasures()
     m.actualWaist = 30
@@ -22,7 +32,7 @@ final class KiltMeasuresTests: XCTestCase {
       let m = KiltMeasures()
       m.actualWaist = $0.input.0
       m.actualHips = $0.input.1
-      EGAssertEqual(m.idealHips, $0)
+      EGAssertEqual(m.idealHips!, $0)
     }
   }
 }

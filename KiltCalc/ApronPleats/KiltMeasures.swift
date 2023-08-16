@@ -1,21 +1,25 @@
 import Foundation
 
 public class KiltMeasures: ObservableObject {
-  @Published public var actualWaist = 0.0
-  @Published public var actualHips = 0.0
-  @Published public var actualLength = 0.0
+  @Published public var actualWaist: Double?
+  @Published public var actualHips: Double?
+  @Published public var actualLength: Double?
 
-  public var idealWaist: Double {
+  public var idealWaist: Double? {
     actualWaist
   }
 
-  public var idealHips: Double {
-    actualWaist > actualHips
+  public var idealHips: Double? {
+    if actualWaist == nil || actualHips == nil {
+      return nil
+    }
+
+    return actualWaist! > actualHips!
     ? actualWaist
     : actualHips
   }
 
-  public var idealLength: Double {
+  public var idealLength: Double? {
     actualLength
   }
 }

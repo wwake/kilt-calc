@@ -5,6 +5,11 @@ struct MeasurementTable: View {
 
   @StateObject var measures = KiltMeasures()
 
+  func optionalQuarters(_ value: Double?) -> String {
+    if value == nil { return "?" }
+    return value!.formatQuarter()
+  }
+
   var body: some View {
     Grid {
       GridRow {
@@ -26,7 +31,7 @@ struct MeasurementTable: View {
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
 
-        Text("\(measures.idealWaist.formatQuarter())")
+        Text("\(optionalQuarters(measures.idealWaist))")
       }
 
       Divider()
@@ -39,7 +44,7 @@ struct MeasurementTable: View {
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
 
-        Text("\(measures.idealHips.formatQuarter())")
+        Text("\(optionalQuarters(measures.idealHips))")
       }
 
       Divider()
@@ -52,7 +57,7 @@ struct MeasurementTable: View {
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
 
-        Text("\(measures.idealLength.formatQuarter())")
+        Text("\(optionalQuarters(measures.idealLength))")
       }
     }
     .padding()
