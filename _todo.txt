@@ -1,4 +1,3 @@
-* MeasurementTable should know about nullable values
 * A/P Split tables and scenario view
 * Button to send hip info to pleat designer
 Apron/Pleat Scenarios
@@ -39,6 +38,7 @@ CALC-23-48: 2023-08-16 - Apron/Pleat Splits
 * Kilt Measurements table
 * Improve formatting of TextField on Measurements
 * FormatFraction() should work with whole + fraction
+* MeasurementTable should know about nullable values
 
 CALC-23-47: 2023-08-15 - Upgrade EGTest
 EGTest

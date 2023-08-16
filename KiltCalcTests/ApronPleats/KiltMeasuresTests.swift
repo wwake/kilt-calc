@@ -35,4 +35,13 @@ final class KiltMeasuresTests: XCTestCase {
       EGAssertEqual(m.idealHips!, $0)
     }
   }
+
+  func test_allowsScenarios() {
+    let m = KiltMeasures()
+    XCTAssertEqual(m.allowsScenarios, false)
+    m.actualWaist = 22
+    XCTAssertEqual(m.allowsScenarios, false)
+    m.actualHips = 27
+    XCTAssertEqual(m.allowsScenarios, true)
+  }
 }

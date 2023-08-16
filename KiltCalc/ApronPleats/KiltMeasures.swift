@@ -22,4 +22,8 @@ public class KiltMeasures: ObservableObject {
   public var idealLength: Double? {
     actualLength
   }
+
+  public var allowsScenarios: Bool {
+    actualWaist != nil && actualHips != nil
+  }
 }

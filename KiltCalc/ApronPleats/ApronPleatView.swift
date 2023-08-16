@@ -1,15 +1,19 @@
 import SwiftUI
 
 struct ApronPleatView: View {
+  @StateObject var measures = KiltMeasures()
+
   @StateObject var scenarios = Scenarios()
 
   var body: some View {
     VStack {
-      MeasurementTable()
+      MeasurementTable(measures: measures)
         .padding()
 
-      ForEach(scenarios.scenarios, id: \.self) { scenario in
-        ScenarioView(scenario: scenario)
+      if measures.allowsScenarios {
+        ForEach(scenarios.scenarios, id: \.self) { scenario in
+          ScenarioView(scenario: scenario)
+        }
       }
     }
   }

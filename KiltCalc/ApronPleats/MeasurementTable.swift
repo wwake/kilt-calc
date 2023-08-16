@@ -3,7 +3,7 @@ import SwiftUI
 struct MeasurementTable: View {
   let textfieldWidth = 50.0
 
-  @StateObject var measures = KiltMeasures()
+  @ObservedObject var measures: KiltMeasures
 
   func optionalQuarters(_ value: Double?) -> String {
     if value == nil { return "?" }
@@ -67,7 +67,9 @@ struct MeasurementTable: View {
 }
 
 struct MeasurementTable_Previews: PreviewProvider {
+  static var measures = KiltMeasures()
+
   static var previews: some View {
-    MeasurementTable()
+    MeasurementTable(measures: Self.measures)
   }
 }
