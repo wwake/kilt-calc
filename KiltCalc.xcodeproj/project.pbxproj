@@ -44,6 +44,7 @@
 		91AE92452A8C1418002DEF12 /* KiltMeasures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE92442A8C1418002DEF12 /* KiltMeasures.swift */; };
 		91AE92482A8D482D002DEF12 /* Double+formatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE92472A8D482D002DEF12 /* Double+formatTests.swift */; };
 		91AE924A2A8D5222002DEF12 /* ApronPleatSplitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE92492A8D5222002DEF12 /* ApronPleatSplitTests.swift */; };
+		91AE924C2A8D555F002DEF12 /* ScenarioSplitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE924B2A8D555F002DEF12 /* ScenarioSplitTests.swift */; };
 		91B0F2B82A53737C00423289 /* ApronPleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B72A53737C00423289 /* ApronPleatView.swift */; };
 		91B0F2BA2A5373FA00423289 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B92A5373FA00423289 /* CalculatorView.swift */; };
 		91D4CF3F2A5C9DF800A03B63 /* PleatValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */; };
@@ -128,6 +129,7 @@
 		91AE92442A8C1418002DEF12 /* KiltMeasures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KiltMeasures.swift; sourceTree = "<group>"; };
 		91AE92472A8D482D002DEF12 /* Double+formatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+formatTests.swift"; sourceTree = "<group>"; };
 		91AE92492A8D5222002DEF12 /* ApronPleatSplitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApronPleatSplitTests.swift; sourceTree = "<group>"; };
+		91AE924B2A8D555F002DEF12 /* ScenarioSplitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioSplitTests.swift; sourceTree = "<group>"; };
 		91B0F2B72A53737C00423289 /* ApronPleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApronPleatView.swift; sourceTree = "<group>"; };
 		91B0F2B92A5373FA00423289 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KiltCalcUnitTests.xctestplan; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			children = (
 				91AE92422A8C114C002DEF12 /* KiltMeasuresTests.swift */,
 				91AE92492A8D5222002DEF12 /* ApronPleatSplitTests.swift */,
+				91AE924B2A8D555F002DEF12 /* ScenarioSplitTests.swift */,
 			);
 			path = ApronPleats;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				91AE92432A8C114C002DEF12 /* KiltMeasuresTests.swift in Sources */,
 				91AE924A2A8D5222002DEF12 /* ApronPleatSplitTests.swift in Sources */,
 				91F7D1242A7AE0970075123E /* TartanDesignTests.swift in Sources */,
+				91AE924C2A8D555F002DEF12 /* ScenarioSplitTests.swift in Sources */,
 				913398802A72E95400C181AE /* PleatValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
