@@ -23,7 +23,7 @@ public struct TartanView: View {
       })
       .padding([.leading, .trailing], 44)
 
-      Text("Setts in One Pleat: \(tartan.settsPerPleat.formatFraction())")
+      Text("Setts in One Pleat: \(tartan.settsPerPleat.formatQuarter())")
     }
   }
 }

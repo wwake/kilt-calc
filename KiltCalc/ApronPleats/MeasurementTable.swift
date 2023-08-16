@@ -26,7 +26,7 @@ struct MeasurementTable: View {
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
 
-        Text("\(measures.idealWaist.formatFraction())")
+        Text("\(measures.idealWaist.formatQuarter())")
       }
 
       Divider()
@@ -39,7 +39,7 @@ struct MeasurementTable: View {
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
 
-        Text("\(measures.idealHips.formatFraction())")
+        Text("\(measures.idealHips.formatQuarter())")
       }
 
       Divider()
@@ -52,7 +52,7 @@ struct MeasurementTable: View {
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
 
-        Text("\(measures.idealLength.formatFraction())")
+        Text("\(measures.idealLength.formatQuarter())")
       }
     }
     .padding()

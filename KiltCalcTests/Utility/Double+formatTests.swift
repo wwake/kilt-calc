@@ -16,7 +16,18 @@ final class Double_formatTests: XCTestCase {
       eg(1.75, expect: "1\u{2022}¾"),
       eg(2.25, expect: "2\u{2022}¼")
     ) {
-      EGAssertEqual($0.input.formatFraction(), $0)
+      EGAssertEqual($0.input.formatQuarter(), $0)
+    }
+  }
+
+  func test_fractionsThatArentQuarters() {
+    check(
+      eg(0.001, expect: "0"),
+      eg(0.999, expect: "1"),
+      eg(0.74, expect: "¾"),
+      eg(0.76, expect: "¾")
+    ) {
+      EGAssertEqual($0.input.formatQuarter(), $0)
     }
   }
 }
