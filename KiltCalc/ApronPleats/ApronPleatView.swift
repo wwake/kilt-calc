@@ -5,10 +5,22 @@ struct ApronPleatView: View {
 
   @StateObject var scenarios = Scenarios()
 
+  func changeScenarios(_ newAllowsScenarios: Bool) {
+    if newAllowsScenarios {
+      scenarios.append(ScenarioSplit([.waist: measures.actualWaist!, .hips: measures.actualHips!]))
+// create an initial scenario
+    } else {
+      scenarios.clear()
+    }
+  }
+
   var body: some View {
     VStack {
       MeasurementTable(measures: measures)
         .padding()
+        .onChange(of: measures.allowsScenarios) {
+          changeScenarios($0)
+        }
 
       if measures.allowsScenarios {
         ForEach(scenarios.scenarios, id: \.self) { scenario in
