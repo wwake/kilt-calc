@@ -1,5 +1,5 @@
 * Kilt Measurements table
-* A/P Scenario tables
+* A/P Split tables
 * Button to send hip info to pleat designer
 Apron/Pleat Scenarios
 

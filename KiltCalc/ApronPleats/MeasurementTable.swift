@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct MeasurementTable: View {
+  let textfieldWidth = 50.0
+
   @StateObject var measures = KiltMeasures()
 
   var body: some View {
@@ -21,6 +23,7 @@ struct MeasurementTable: View {
           .bold()
 
         TextField("actualWaist", value: $measures.actualWaist, format: .number)
+          .frame(width: textfieldWidth)
 
         Text("\(measures.idealWaist)")
       }
@@ -32,6 +35,7 @@ struct MeasurementTable: View {
           .bold()
 
         TextField("actualHips", value: $measures.actualHips, format: .number)
+          .frame(width: textfieldWidth)
 
         Text("\(measures.idealHips)")
       }
@@ -43,6 +47,7 @@ struct MeasurementTable: View {
           .bold()
 
         TextField("actualLength", value: $measures.actualLength, format: .number)
+          .frame(width: textfieldWidth)
 
         Text("\(measures.idealLength)")
       }
