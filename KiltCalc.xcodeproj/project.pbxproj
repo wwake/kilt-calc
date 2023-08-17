@@ -50,6 +50,7 @@
 		91AE92522A8D5C9D002DEF12 /* ScenarioSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE92512A8D5C9D002DEF12 /* ScenarioSplit.swift */; };
 		91AE92542A8D5D0D002DEF12 /* Scenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE92532A8D5D0D002DEF12 /* Scenarios.swift */; };
 		91AE92562A8D5E7E002DEF12 /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE92552A8D5E7E002DEF12 /* ScenarioView.swift */; };
+		91AE92582A8EA3EE002DEF12 /* ScenariosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE92572A8EA3EE002DEF12 /* ScenariosTests.swift */; };
 		91B0F2B82A53737C00423289 /* ApronPleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B72A53737C00423289 /* ApronPleatView.swift */; };
 		91B0F2BA2A5373FA00423289 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B92A5373FA00423289 /* CalculatorView.swift */; };
 		91D4CF3F2A5C9DF800A03B63 /* PleatValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */; };
@@ -140,6 +141,7 @@
 		91AE92512A8D5C9D002DEF12 /* ScenarioSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioSplit.swift; sourceTree = "<group>"; };
 		91AE92532A8D5D0D002DEF12 /* Scenarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenarios.swift; sourceTree = "<group>"; };
 		91AE92552A8D5E7E002DEF12 /* ScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
+		91AE92572A8EA3EE002DEF12 /* ScenariosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosTests.swift; sourceTree = "<group>"; };
 		91B0F2B72A53737C00423289 /* ApronPleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApronPleatView.swift; sourceTree = "<group>"; };
 		91B0F2B92A5373FA00423289 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KiltCalcUnitTests.xctestplan; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				91AE92422A8C114C002DEF12 /* KiltMeasuresTests.swift */,
 				91AE92492A8D5222002DEF12 /* ApronPleatSplitTests.swift */,
 				91AE924B2A8D555F002DEF12 /* ScenarioSplitTests.swift */,
+				91AE92572A8EA3EE002DEF12 /* ScenariosTests.swift */,
 			);
 			path = ApronPleats;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				91E3C5B92A1FE1F20098BAFC /* ImperialFormatterTests.swift in Sources */,
 				91AE92482A8D482D002DEF12 /* Double+formatTests.swift in Sources */,
 				91F2AF322A40E685008A1063 /* EntryTests.swift in Sources */,
+				91AE92582A8EA3EE002DEF12 /* ScenariosTests.swift in Sources */,
 				91F7D12C2A7AF1870075123E /* KnifePleatDesignerTests.swift in Sources */,
 				91DF089A2A65CAE700B4D64F /* ValidatingTextFieldTests.swift in Sources */,
 				91E3C59E2A1BE8FB0098BAFC /* CalculatorTests.swift in Sources */,

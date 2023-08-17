@@ -5,6 +5,12 @@ public class KiltMeasures: ObservableObject {
   @Published public var actualHips: Double?
   @Published public var actualLength: Double?
 
+  init(actualWaist: Double? = nil, actualHips: Double? = nil, actualLength: Double? = nil) {
+    self.actualWaist = actualWaist
+    self.actualHips = actualHips
+    self.actualLength = actualLength
+  }
+
   public var idealWaist: Double? {
     actualWaist
   }

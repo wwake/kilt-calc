@@ -8,7 +8,12 @@ public class Scenarios: ObservableObject {
   }
 
   public func append(_ measures: KiltMeasures) {
+    if measures.idealWaist == nil || measures.idealHips == nil {
+      return
+    }
+
     let scenario = ScenarioSplit([.waist: measures.idealWaist!, .hips: measures.idealHips!])
+
     scenarios.append(scenario)
   }
 
