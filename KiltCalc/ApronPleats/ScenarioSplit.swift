@@ -1,4 +1,7 @@
-public struct ScenarioSplit {
+import Foundation
+
+public struct ScenarioSplit: Identifiable {
+  public var id = UUID()
   var fieldToSplit: [MeasuringPoint: ApronPleatSplit]
 
   init(_ fieldToSize: [MeasuringPoint: Double]) {

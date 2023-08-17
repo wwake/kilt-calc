@@ -7,14 +7,15 @@ public class Scenarios: ObservableObject {
     scenarios = []
   }
 
-  public func append(_ scenario: ScenarioSplit) {
+  public func append(_ measures: KiltMeasures) {
+    let scenario = ScenarioSplit([.waist: measures.idealWaist!, .hips: measures.idealHips!])
     scenarios.append(scenario)
   }
 
   func changeScenarios(_ newAllowsScenarios: Bool, _ measures: KiltMeasures) {
     clear()
     if newAllowsScenarios {
-      append(ScenarioSplit([.waist: measures.idealWaist!, .hips: measures.idealHips!]))
+      append(measures)
     }
   }
 }

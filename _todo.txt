@@ -1,7 +1,8 @@
-* Monitor waist and hips; changes => change in scenarios
+* Button to add scenario
 * Button to keep scenario
 * A/P Split tables and scenario view
 * Button to send hip info to pleat designer
+* Should KiltMeasures become a struct?
 Apron/Pleat Scenarios
 
 MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask!
@@ -35,6 +36,9 @@ Syntax
 * I18N
 
 * Figure out ObservableObjects being observed by other ObservableObjects
+
+CALC-23-49: 2023-08-17 - Managing Scenarios
+* Monitor waist and hips; changes => change in scenarios
 
 CALC-23-48: 2023-08-16 - Apron/Pleat Splits
 * Kilt Measurements table
