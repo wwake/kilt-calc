@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MeasurementTable: View {
-  let textfieldWidth = 50.0
+  let textfieldWidth = 64.0
 
   @ObservedObject var measures: KiltMeasures
 

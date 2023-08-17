@@ -16,6 +16,7 @@ struct ApronPleatView: View {
   var body: some View {
     VStack {
       MeasurementTable(measures: measures)
+        .background(.thinMaterial)
         .padding()
         .onChange(of: measures.allowsScenarios) {
           changeScenarios($0)
