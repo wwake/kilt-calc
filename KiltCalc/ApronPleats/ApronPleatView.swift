@@ -24,6 +24,8 @@ struct ApronPleatView: View {
         if measures.allowsScenarios {
           ForEach(scenarios.scenarios) { scenario in
             ScenarioView(scenario: scenario)
+              .background(.thinMaterial)
+              .padding()
           }
         }
       }
@@ -37,6 +39,7 @@ struct ApronPleatView: View {
           .opacity(measures.allowsScenarios ? 1.0 : 0.0)
         }
       }
+      .navigationTitle("Apron/Pleat Splits")
     }
   }
 }

@@ -1,6 +1,8 @@
-* Button to add scenario
-* Button to keep scenario
+* Show the table
+* Add a slider
 * A/P Split tables and scenario view
+* Draw kilt shapes
+* Button to keep scenario
 * Button to send hip info to pleat designer
 * Should KiltMeasures become a struct?
 Apron/Pleat Scenarios
@@ -39,6 +41,7 @@ Syntax
 
 CALC-23-49: 2023-08-17 - Managing Scenarios
 * Monitor waist and hips; changes => change in scenarios
+* Button to add scenario
 
 CALC-23-48: 2023-08-16 - Apron/Pleat Splits
 * Kilt Measurements table

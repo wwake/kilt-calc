@@ -4,7 +4,42 @@ struct ScenarioView: View {
   var scenario: ScenarioSplit
 
   var body: some View {
-    Text("ScenarioView: waist apron= \(scenario[.waist]?.apron ?? 0)")
+    VStack {
+      Grid {
+        GridRow {
+          Text("")
+
+          Text("Apron")
+            .bold()
+
+          Text("Pleats")
+            .bold()
+        }
+        Divider()
+
+        GridRow {
+          Text("Waist")
+            .bold()
+
+          Text("\(scenario[.waist]!.apron.formatQuarter())")
+
+          Text("\(scenario[.waist]!.pleat.formatQuarter())")
+        }
+
+        Divider()
+
+        GridRow {
+          Text("Hips")
+            .bold()
+
+          Text("\(scenario[.hips]!.apron.formatQuarter())")
+
+          Text("\(scenario[.hips]!.pleat.formatQuarter())")
+        }
+      }
+      .padding()
+      .border(Color.black, width: 2)
+    }
   }
 }
 
