@@ -56,16 +56,22 @@ struct ScenarioView: View {
               scenario[.hips]?.givePleat($0)
             }
         }
+
+        if scenario.warnings.count > 0 {
+          Divider()
+
+          VStack {
+            ForEach(scenario.warnings, id: \.self) {
+              Text($0)
+                .foregroundColor(.red)
+            }
+          }
+          .padding()
+          .border(.red, width: 2)
+        }
       }
       .padding()
       .border(Color.black, width: 2)
-
-      ForEach(scenario.warnings, id: \.self) {
-        Text($0)
-          .foregroundColor(.red)
-      }
-      .padding()
-      .border(.red, width: 2)
     }
   }
 }

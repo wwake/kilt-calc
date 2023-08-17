@@ -32,6 +32,10 @@ final class ScenarioSplitTests: XCTestCase {
   func testWarnIfApronBiggerThanPleatAtWaist() {
     var scenario = ScenarioSplit([.waist: 30, .hips: 34])
     scenario.givePleat(.waist, -0.25)
-    XCTAssertEqual(scenario.warnings, ["Pleats should be bigger than apron at waist"])
+    scenario.givePleat(.hips, -0.5)
+    XCTAssertEqual(scenario.warnings, [
+      "Pleats should be bigger than apron at waist",
+      "Pleats should be bigger than apron at hips",
+    ])
   }
 }
