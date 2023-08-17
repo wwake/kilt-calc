@@ -4,6 +4,14 @@ public struct ScenarioSplit: Identifiable {
   public var id = UUID()
   var fieldToSplit: [MeasuringPoint: ApronPleatSplit]
 
+  var warnings: [String] {
+    var result: [String] = []
+    if self[.waist]!.pleat < self[.waist]!.apron {
+      result.append("Pleats should be bigger than apron at waist")
+    }
+    return result
+  }
+
   init(_ fieldToSize: [MeasuringPoint: Double]) {
     fieldToSplit = fieldToSize.mapValues {
       ApronPleatSplit($0)
@@ -11,7 +19,12 @@ public struct ScenarioSplit: Identifiable {
   }
 
   subscript(_ field: MeasuringPoint) -> ApronPleatSplit? {
-    fieldToSplit[field]
+    get {
+      fieldToSplit[field]
+    }
+    set(newValue) {
+      fieldToSplit[field] = newValue
+    }
   }
 
   mutating func givePleat(_ field: MeasuringPoint, _ amount: Double) {

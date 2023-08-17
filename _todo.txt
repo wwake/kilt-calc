@@ -1,6 +1,8 @@
-* Show the table
-* Add a slider
-* A/P Split tables and scenario view
+  + Pleats > Apron  [but waist vs hips]
+  + apron width at hips >= apron width at waist
+  + Prefer <4" between waist and hip at apron
+  + and more
+* Guideline analysis
 * Draw kilt shapes
 * Button to keep scenario
 * Button to send hip info to pleat designer
@@ -42,6 +44,10 @@ Syntax
 CALC-23-49: 2023-08-17 - Managing Scenarios
 * Monitor waist and hips; changes => change in scenarios
 * Button to add scenario
+* A/P Split tables and scenario view
+  + Show the table
+  + Add a slider, adjusting the split
+
 
 CALC-23-48: 2023-08-16 - Apron/Pleat Splits
 * Kilt Measurements table

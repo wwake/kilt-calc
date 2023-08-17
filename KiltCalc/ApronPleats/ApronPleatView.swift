@@ -22,7 +22,7 @@ struct ApronPleatView: View {
           }
 
         if measures.allowsScenarios {
-          ForEach(scenarios.scenarios) { scenario in
+          ForEach($scenarios.scenarios) { scenario in
             ScenarioView(scenario: scenario)
               .background(.thinMaterial)
               .padding()
