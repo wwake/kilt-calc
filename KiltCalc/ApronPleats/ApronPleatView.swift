@@ -22,7 +22,7 @@ struct ApronPleatView: View {
           }
 
         if measures.allowsScenarios {
-          ForEach(scenarios.scenarios, id: \.self) { scenario in
+          ForEach(scenarios.scenarios) { scenario in
             ScenarioView(scenario: scenario)
           }
         }
