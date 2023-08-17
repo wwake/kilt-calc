@@ -44,4 +44,13 @@ final class KiltMeasuresTests: XCTestCase {
     m.actualHips = 27
     XCTAssertEqual(m.allowsScenarios, true)
   }
+
+//  func test_changingActualWaist_MeansIdealValuesChange() {
+//    let m = KiltMeasures()
+//    XCTAssertEqual(m.idealValues, [nil, nil])
+//    m.actualWaist = 20
+//    XCTAssertEqual(m.idealValues, [20, nil])
+//    m.actualHips = 30
+//    XCTAssertEqual(m.idealValues, [20, 30])
+//  }
 }

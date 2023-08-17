@@ -1,5 +1,4 @@
-
-* Monitor Ideal waist and hips; changes => change in scenarios
+* Monitor waist and hips; changes => change in scenarios
 * Button to keep scenario
 * A/P Split tables and scenario view
 * Button to send hip info to pleat designer
