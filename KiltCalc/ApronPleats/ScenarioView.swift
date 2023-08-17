@@ -59,6 +59,13 @@ struct ScenarioView: View {
       }
       .padding()
       .border(Color.black, width: 2)
+
+      ForEach(scenario.warnings, id: \.self) {
+        Text($0)
+          .foregroundColor(.red)
+      }
+      .padding()
+      .border(.red, width: 2)
     }
   }
 }
