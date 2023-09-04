@@ -11,7 +11,7 @@ struct ApronPleatView: View {
         VStack {
           Text("Measurements")
             .font(.title2)
-          
+
           MeasurementTable(measures: measures)
             .background(.thinMaterial)
             .padding()
@@ -24,13 +24,13 @@ struct ApronPleatView: View {
             .onChange(of: measures.idealHips) { _ in
               scenarios.changeScenarios(measures.allowsScenarios, measures)
             }
-          
+
           if measures.allowsScenarios {
             Divider()
-            
+
             Text("Splits")
               .font(.title2)
-            
+
             ForEach($scenarios.scenarios) { scenario in
               ScenarioView(scenario: scenario)
                 .background(.thinMaterial)

@@ -12,6 +12,10 @@ public struct ScenarioSplit: Identifiable {
     if self[.hips]!.pleat < self[.hips]!.apron {
       result.append("Pleats should be bigger than apron at hips.")
     }
+    if self[.hips]!.apron < self[.waist]!.apron {
+      result.append("Apron at hips should be at least as big as apron at waist.")
+    }
+
     return result
   }
 
