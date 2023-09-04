@@ -34,8 +34,8 @@ final class ScenarioSplitTests: XCTestCase {
     scenario.givePleat(.waist, -0.25)
     scenario.givePleat(.hips, -0.5)
     XCTAssertEqual(scenario.warnings, [
-      "Pleats should be bigger than apron at waist",
-      "Pleats should be bigger than apron at hips",
+      "Pleats should be bigger than apron at waist.",
+      "Pleats should be bigger than apron at hips.",
     ])
   }
 }

@@ -57,21 +57,21 @@ struct ScenarioView: View {
             }
         }
 
-        if scenario.warnings.count > 0 {
+        if scenario.hasWarnings {
           Divider()
 
           VStack {
             ForEach(scenario.warnings, id: \.self) {
               Text($0)
+                .font(.body)
+                .fixedSize(horizontal: false, vertical: true)
                 .foregroundColor(.red)
             }
           }
-          .padding()
-          .border(.red, width: 2)
         }
       }
       .padding()
-      .border(Color.black, width: 2)
+      .border(scenario.hasWarnings ? .red : .black, width: 2)
     }
   }
 }

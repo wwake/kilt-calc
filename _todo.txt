@@ -1,9 +1,10 @@
+* Make warning messages wrap
+* ScrollView
 
   + apron width at hips >= apron width at waist
   + Prefer <4" between waist and hip at apron
   + and more
 * Guideline analysis
-* ScrollView
 * Button to keep scenario
 * Draw kilt shapes
 * Button to send hip info to pleat designer
@@ -50,7 +51,6 @@ CALC-23-49: 2023-08-17 - Managing Scenarios
   + Add a slider, adjusting the split
 * Guideline analysis
   + Pleats > Apron  [at waist and hips]
-
 
 CALC-23-48: 2023-08-16 - Apron/Pleat Splits
 * Kilt Measurements table

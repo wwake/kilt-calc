@@ -7,12 +7,16 @@ public struct ScenarioSplit: Identifiable {
   var warnings: [String] {
     var result: [String] = []
     if self[.waist]!.pleat < self[.waist]!.apron {
-      result.append("Pleats should be bigger than apron at waist")
+      result.append("Pleats should be bigger than apron at waist.")
     }
     if self[.hips]!.pleat < self[.hips]!.apron {
-      result.append("Pleats should be bigger than apron at hips")
+      result.append("Pleats should be bigger than apron at hips.")
     }
     return result
+  }
+
+  var hasWarnings: Bool {
+    warnings.count > 0
   }
 
   init(_ fieldToSize: [MeasuringPoint: Double]) {
