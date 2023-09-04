@@ -1,10 +1,10 @@
-  + Prefer <4" between waist and hip at apron
   + and more
 * Guideline analysis
 * Button to keep scenario
 * Draw kilt shapes
 * Button to send hip info to pleat designer
 * Should KiltMeasures become a struct?
+* Should Apron/Pleat be a list with sections?
 Apron/Pleat Scenarios
 
 MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask!
@@ -44,6 +44,7 @@ Apron/Pleat screen:
 * Make warning messages wrap, left-justified
 * ScrollView on splits
 * Warn if apron width at hips < apron width at waist
+* Warn if >4" difference between waist and hip at apron
 
 CALC-23-49: 2023-08-17 - Managing Scenarios
 * Monitor waist and hips; changes => change in scenarios
