@@ -10,7 +10,7 @@ struct ApronPleatView: View {
       ScrollView {
         VStack {
           Text("Measurements")
-            .font(.title2)
+            .font(.title2.smallCaps())
 
           MeasurementTable(measures: measures)
             .background(.thinMaterial)
@@ -29,7 +29,7 @@ struct ApronPleatView: View {
             Divider()
 
             Text("Splits")
-              .font(.title2)
+              .font(.title2.smallCaps())
 
             ForEach($scenarios.scenarios) { scenario in
               ScenarioView(scenario: scenario)
