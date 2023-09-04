@@ -60,10 +60,9 @@ struct ScenarioView: View {
         if scenario.hasWarnings {
           Divider()
 
-          VStack {
+          VStack(alignment: .leading) {
             ForEach(scenario.warnings, id: \.self) {
               Text($0)
-                .font(.body)
                 .fixedSize(horizontal: false, vertical: true)
                 .foregroundColor(.red)
             }
