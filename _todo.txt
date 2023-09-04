@@ -1,4 +1,3 @@
-  + apron width at hips >= apron width at waist
   + Prefer <4" between waist and hip at apron
   + and more
 * Guideline analysis
@@ -44,6 +43,7 @@ CALC-23-50: 2023-09-04 - Apron/Pleat Scenarios
 Apron/Pleat screen:
 * Make warning messages wrap, left-justified
 * ScrollView on splits
+* Warn if apron width at hips < apron width at waist
 
 CALC-23-49: 2023-08-17 - Managing Scenarios
 * Monitor waist and hips; changes => change in scenarios

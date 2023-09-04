@@ -47,12 +47,29 @@ final class ScenarioSplitTests: XCTestCase {
   }
 
   func testDontWarnIfApronAtHipEqualsApronAtWaist() {
-    var scenario = ScenarioSplit([.waist: 32, .hips: 32])
+    let scenario = ScenarioSplit([.waist: 32, .hips: 32])
     XCTAssertEqual(scenario.warnings, [])
   }
 
   func testDontWarnIfApronAtHipBiggerThanApronAtWaist() {
-    var scenario = ScenarioSplit([.waist: 28, .hips: 32])
+    let scenario = ScenarioSplit([.waist: 28, .hips: 32])
+    XCTAssertEqual(scenario.warnings, [])
+  }
+
+  func testWarnIfTooMuchDifferenceBetweenWaistAndHipAtApron() {
+    let scenario = ScenarioSplit([.waist: 24, .hips: 32.1])
+    XCTAssertEqual(scenario.warnings, [
+      "Prefer at most 4” difference between waist and hip in the apron.",
+    ])
+  }
+
+  func testDontWarnIfAtMaxDifferenceBetweenWaistAndHipAtApron() {
+    let scenario = ScenarioSplit([.waist: 24, .hips: 32])
+    XCTAssertEqual(scenario.warnings, [])
+  }
+
+  func testDontWarnIfDifferenceBetweenWaistAndHipAtApronIsSmallEnough() {
+    let scenario = ScenarioSplit([.waist: 24, .hips: 31])
     XCTAssertEqual(scenario.warnings, [])
   }
 }

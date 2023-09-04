@@ -2,6 +2,8 @@ import Foundation
 
 public struct ScenarioSplit: Identifiable {
   public var id = UUID()
+  let maxApronDifferenceInches = 4.0
+
   var fieldToSplit: [MeasuringPoint: ApronPleatSplit]
 
   var warnings: [String] {
@@ -16,6 +18,9 @@ public struct ScenarioSplit: Identifiable {
       result.append("Apron at hips should be at least as big as apron at waist.")
     }
 
+    if abs(self[.hips]!.apron - self[.waist]!.apron) > maxApronDifferenceInches {
+      result.append("Prefer at most 4” difference between waist and hip in the apron.")
+    }
     return result
   }
 
