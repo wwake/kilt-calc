@@ -1,4 +1,3 @@
-* Make warning messages wrap
 * ScrollView
 
   + apron width at hips >= apron width at waist
@@ -42,6 +41,10 @@ Syntax
 * I18N
 
 * Figure out ObservableObjects being observed by other ObservableObjects
+
+CALC-23-50: 2023-09-04 - Apron/Pleat Scenarios
+Apron/Pleat screen:
+* Make warning messages wrap, left-justified
 
 CALC-23-49: 2023-08-17 - Managing Scenarios
 * Monitor waist and hips; changes => change in scenarios

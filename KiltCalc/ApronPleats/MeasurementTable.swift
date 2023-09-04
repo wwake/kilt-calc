@@ -14,54 +14,54 @@ struct MeasurementTable: View {
     Grid {
       GridRow {
         Text("")
-
+        
         Text("Actual")
           .bold()
-
+        
         Text("Ideal")
           .bold()
       }
       Divider()
-
+      
       GridRow {
         Text("Waist")
           .bold()
-
+        
         TextField("actualWaist", value: $measures.actualWaist, format: .number)
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
-
+        
         Text("\(optionalQuarters(measures.idealWaist))")
       }
-
+      
       Divider()
-
+      
       GridRow {
         Text("Hips")
           .bold()
-
+        
         TextField("actualHips", value: $measures.actualHips, format: .number)
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
-
+        
         Text("\(optionalQuarters(measures.idealHips))")
       }
-
+      
       Divider()
-
+      
       GridRow {
         Text("Length")
           .bold()
-
+        
         TextField("actualLength", value: $measures.actualLength, format: .number)
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
-
+        
         Text("\(optionalQuarters(measures.idealLength))")
       }
     }
     .padding()
-
+    
     .border(Color.black, width: 2)
   }
 }

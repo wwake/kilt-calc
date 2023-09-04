@@ -8,6 +8,9 @@ struct ApronPleatView: View {
   var body: some View {
     NavigationStack {
       VStack {
+        Text("Measurements")
+          .font(.title2)
+
         MeasurementTable(measures: measures)
           .background(.thinMaterial)
           .padding()
@@ -22,7 +25,12 @@ struct ApronPleatView: View {
           }
 
         if measures.allowsScenarios {
+          Divider()
+
           ForEach($scenarios.scenarios) { scenario in
+            Text("Splits")
+              .font(.title2)
+
             ScenarioView(scenario: scenario)
               .background(.thinMaterial)
               .padding()
