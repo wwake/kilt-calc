@@ -1,10 +1,9 @@
-  + and more
+* Are sliders backwards?
 * Guideline analysis
 * Button to keep scenario
-* Draw kilt shapes
 * Button to send hip info to pleat designer
+* Draw kilt shapes
 * Should KiltMeasures become a struct?
-* Should Apron/Pleat be a list with sections?
 Apron/Pleat Scenarios
 
 MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask!

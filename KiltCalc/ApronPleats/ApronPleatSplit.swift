@@ -14,8 +14,8 @@ public struct ApronPleatSplit {
     self.equalSplit = total / 2.0
   }
 
-  mutating func givePleat(_ amount: Double) {
-    pleatSteals = amount
+  mutating func giveApron(_ amount: Double) {
+    pleatSteals = -amount
   }
 }
 

@@ -7,6 +7,7 @@ struct ScenarioView: View {
 
   var body: some View {
     VStack {
+
       Grid {
         GridRow {
           Text("")
@@ -24,7 +25,7 @@ struct ScenarioView: View {
           Slider(value: $waistSplit, in: -2...2, step: 0.25)
             .gridCellColumns(2)
             .onChange(of: waistSplit) {
-              scenario[.waist]?.givePleat($0)
+              scenario[.waist]?.giveApron($0)
             }
         }
 
@@ -53,7 +54,7 @@ struct ScenarioView: View {
           Slider(value: $hipsSplit, in: -2...2, step: 0.25)
             .gridCellColumns(2)
             .onChange(of: hipsSplit) {
-              scenario[.hips]?.givePleat($0)
+              scenario[.hips]?.giveApron($0)
             }
         }
 

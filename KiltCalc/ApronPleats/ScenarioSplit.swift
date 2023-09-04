@@ -44,7 +44,7 @@ public struct ScenarioSplit: Identifiable {
   }
 
   mutating func givePleat(_ field: MeasuringPoint, _ amount: Double) {
-    fieldToSplit[field]?.givePleat(amount)
+    fieldToSplit[field]?.giveApron(amount)
   }
 }
 

@@ -11,7 +11,7 @@ final class ApronPleatSplitTests: XCTestCase {
 
   func test_SplitMaintainsTotal() throws {
     var split = ApronPleatSplit(40)
-    split.givePleat(0.5)
+    split.giveApron(-0.5)
     XCTAssertEqual(split.apron, 19.5)
     XCTAssertEqual(split.pleat, 20.5)
   }
