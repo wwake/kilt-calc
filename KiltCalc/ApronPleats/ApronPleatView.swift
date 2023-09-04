@@ -7,33 +7,35 @@ struct ApronPleatView: View {
 
   var body: some View {
     NavigationStack {
-      VStack {
-        Text("Measurements")
-          .font(.title2)
-
-        MeasurementTable(measures: measures)
-          .background(.thinMaterial)
-          .padding()
-          .onChange(of: measures.allowsScenarios) {
-            scenarios.changeScenarios($0, measures)
-          }
-          .onChange(of: measures.idealWaist) { _ in
-            scenarios.changeScenarios(measures.allowsScenarios, measures)
-          }
-          .onChange(of: measures.idealHips) { _ in
-            scenarios.changeScenarios(measures.allowsScenarios, measures)
-          }
-
-        if measures.allowsScenarios {
-          Divider()
-
-          ForEach($scenarios.scenarios) { scenario in
+      ScrollView {
+        VStack {
+          Text("Measurements")
+            .font(.title2)
+          
+          MeasurementTable(measures: measures)
+            .background(.thinMaterial)
+            .padding()
+            .onChange(of: measures.allowsScenarios) {
+              scenarios.changeScenarios($0, measures)
+            }
+            .onChange(of: measures.idealWaist) { _ in
+              scenarios.changeScenarios(measures.allowsScenarios, measures)
+            }
+            .onChange(of: measures.idealHips) { _ in
+              scenarios.changeScenarios(measures.allowsScenarios, measures)
+            }
+          
+          if measures.allowsScenarios {
+            Divider()
+            
             Text("Splits")
               .font(.title2)
-
-            ScenarioView(scenario: scenario)
-              .background(.thinMaterial)
-              .padding()
+            
+            ForEach($scenarios.scenarios) { scenario in
+              ScenarioView(scenario: scenario)
+                .background(.thinMaterial)
+                .padding()
+            }
           }
         }
       }
