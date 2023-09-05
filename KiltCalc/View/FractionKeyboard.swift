@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct FractionKeyboard: ViewModifier {
+fileprivate struct FractionKeyboard: ViewModifier {
   @Binding var slashIsPressed: Bool
   var focusedField: FocusState<FocusedField?>.Binding
 
