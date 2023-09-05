@@ -9,9 +9,6 @@ struct MeasurementTable: View {
 
   @FocusState private var focusedField: FocusedField?
 
-//  @Binding var slashIsPressed: Bool
-//  var focusedField: FocusState<PleatViewFocus?>.Binding
-
   func optionalQuarters(_ value: Double?) -> String {
     if value == nil { return "?" }
     return value!.formatQuarter()
@@ -35,6 +32,7 @@ struct MeasurementTable: View {
           validator: { _ in "" },
           slashIsPressed: $slashIsPressed
         )
+        .focused($focusedField, equals: .apronPleatWaist)
 
         Text("\(optionalQuarters(measures.idealWaist))")
       }
@@ -48,6 +46,7 @@ struct MeasurementTable: View {
           validator: { _ in "" },
           slashIsPressed: $slashIsPressed
         )
+        .focused($focusedField, equals: .apronPleatHips)
 
         Text("\(optionalQuarters(measures.idealHips))")
       }
@@ -61,10 +60,12 @@ struct MeasurementTable: View {
           validator: { _ in "" },
           slashIsPressed: $slashIsPressed
         )
+        .focused($focusedField, equals: .apronPleatLength)
 
         Text("\(optionalQuarters(measures.idealLength))")
       }
     }
+    .fractionKeyboard(slashIsPressed: $slashIsPressed, focusedField: $focusedField)
     .padding()
 
     .border(Color.black, width: 2)
