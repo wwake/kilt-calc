@@ -8,7 +8,7 @@ public class KiltMeasures: ObservableObject {
   init(actualWaist: Double? = nil, actualHips: Double? = nil, actualLength: Double? = nil) {
     self.actualWaist = actualWaist == nil ? nil : Value.inches(actualWaist!)
     self.actualHips = actualHips == nil ? nil : Value.inches(actualHips!)
-    self.actualLength = actualLength == nil ? nil : Value.inches(actualHips!)
+    self.actualLength = actualLength == nil ? nil : Value.inches(actualLength!)
   }
 
   public var idealWaist: Double? {
@@ -20,9 +20,7 @@ public class KiltMeasures: ObservableObject {
       return nil
     }
 
-    return actualWaist!.asDouble > actualHips!.asDouble
-    ? actualWaist!.asDouble
-    : actualHips!.asDouble
+    return max(actualWaist!, actualHips!).asDouble
   }
 
   public var idealLength: Double? {

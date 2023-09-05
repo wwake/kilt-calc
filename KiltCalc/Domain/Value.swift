@@ -10,6 +10,12 @@ public enum Value: Equatable {
   public static var imperialFormatter = ImperialFormatter.inches
 }
 
+extension Value: Comparable {
+  public static func <(lhs: Value, rhs: Value) -> Bool {
+    lhs.asDouble < rhs.asDouble
+  }
+}
+
 extension Value {
   static func + (lhs: Value, rhs: Value) -> Value {
     lhs.plus(rhs)
