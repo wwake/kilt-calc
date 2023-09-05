@@ -12,7 +12,7 @@ public class KiltMeasures: ObservableObject {
   }
 
   public var actualWaistDouble: Double? {
-      actualWaist?.asDouble ?? nil
+      actualWaist?.asDouble
   }
 
   public var idealWaist: Double? {
