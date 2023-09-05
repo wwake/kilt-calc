@@ -6,7 +6,7 @@ import XCTest
 final class KiltMeasuresTests: XCTestCase {
   func test_StartingValuesNil() {
     let m = KiltMeasures()
-    XCTAssertNil(m.actualWaist)
+    XCTAssertNil(m.actualWaistDouble)
     XCTAssertNil(m.actualHips)
     XCTAssertNil(m.actualLength)
     XCTAssertNil(m.idealWaist)
@@ -16,7 +16,7 @@ final class KiltMeasuresTests: XCTestCase {
 
   func test_DerivedValuesThatAreAlwaysCopies() throws {
     let m = KiltMeasures()
-    m.actualWaist = 30
+    m.actualWaist = Value.inches(30)
     m.actualLength = 25
 
     XCTAssertEqual(m.idealWaist, 30)
@@ -30,7 +30,7 @@ final class KiltMeasuresTests: XCTestCase {
       eg((30.0, 29.0), expect: 30.0, "hip < waist")
     ) {
       let m = KiltMeasures()
-      m.actualWaist = $0.input.0
+      m.actualWaist = Value.inches($0.input.0)
       m.actualHips = $0.input.1
       EGAssertEqual(m.idealHips!, $0)
     }
@@ -39,7 +39,7 @@ final class KiltMeasuresTests: XCTestCase {
   func test_allowsScenarios() {
     let m = KiltMeasures()
     XCTAssertEqual(m.allowsScenarios, false)
-    m.actualWaist = 22
+    m.actualWaist = Value.inches(22)
     XCTAssertEqual(m.allowsScenarios, false)
     m.actualHips = 27
     XCTAssertEqual(m.allowsScenarios, true)

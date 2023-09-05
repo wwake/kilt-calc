@@ -1,10 +1,10 @@
-* Refactor ApronPleatSplit
 * Accept fractions on measurements
 * Button to keep scenario
 * Button to send hip info to pleat designer
 * Should KiltMeasures become a struct?
 * Draw kilt shapes
 * Guideline analysis
+* Consider whether ValidatingTextField needs full Value, or just Double
 Apron/Pleat Scenarios
 
 MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask!
@@ -38,6 +38,9 @@ Syntax
 * I18N
 
 * Figure out ObservableObjects being observed by other ObservableObjects
+
+CALC-23-51: 2023-09-05 - More Apron/Pleat
+* Refactor ApronPleatSplit - flip signs so we work with apronGains rather than pleatSteals.
 
 CALC-23-50: 2023-09-04 - Apron/Pleat Scenarios
 Apron/Pleat screen:

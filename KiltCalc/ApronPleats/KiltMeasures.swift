@@ -1,18 +1,22 @@
 import Foundation
 
 public class KiltMeasures: ObservableObject {
-  @Published public var actualWaist: Double?
+  @Published public var actualWaist: Value?
   @Published public var actualHips: Double?
   @Published public var actualLength: Double?
 
   init(actualWaist: Double? = nil, actualHips: Double? = nil, actualLength: Double? = nil) {
-    self.actualWaist = actualWaist
+    self.actualWaist = actualWaist == nil ? nil : Value.inches(actualWaist!)
     self.actualHips = actualHips
     self.actualLength = actualLength
   }
 
+  public var actualWaistDouble: Double? {
+      actualWaist?.asDouble ?? nil
+  }
+
   public var idealWaist: Double? {
-    actualWaist
+    actualWaistDouble
   }
 
   public var idealHips: Double? {
@@ -20,8 +24,8 @@ public class KiltMeasures: ObservableObject {
       return nil
     }
 
-    return actualWaist! > actualHips!
-    ? actualWaist
+    return actualWaistDouble! > actualHips!
+    ? actualWaistDouble
     : actualHips
   }
 
@@ -30,6 +34,6 @@ public class KiltMeasures: ObservableObject {
   }
 
   public var allowsScenarios: Bool {
-    actualWaist != nil && actualHips != nil
+    actualWaistDouble != nil && actualHips != nil
   }
 }

@@ -5,6 +5,13 @@ struct MeasurementTable: View {
 
   @ObservedObject var measures: KiltMeasures
 
+  @State private var slashIsPressed = false
+
+  @FocusState private var focusedField: PleatViewFocus?
+
+//  @Binding var slashIsPressed: Bool
+//  var focusedField: FocusState<PleatViewFocus?>.Binding
+
   func optionalQuarters(_ value: Double?) -> String {
     if value == nil { return "?" }
     return value!.formatQuarter()
@@ -27,9 +34,16 @@ struct MeasurementTable: View {
         Text("Waist")
           .bold()
 
-        TextField("actualWaist", value: $measures.actualWaist, format: .number)
-          .textFieldStyle(RoundedBorderTextFieldStyle())
-          .frame(width: textfieldWidth)
+//        TextField("actualWaist", value: $measures.actualWaistDouble, format: .number)
+//          .textFieldStyle(RoundedBorderTextFieldStyle())
+//          .frame(width: textfieldWidth)
+
+        ValidatingTextField(
+          label: "Waist",
+          value: $measures.actualWaist,
+          validator: { _ in "" },
+          slashIsPressed: $slashIsPressed
+        )
 
         Text("\(optionalQuarters(measures.idealWaist))")
       }
