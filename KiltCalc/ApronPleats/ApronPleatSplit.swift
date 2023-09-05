@@ -1,13 +1,13 @@
 public struct ApronPleatSplit {
   let equalSplit: Double
-  var pleatSteals: Double = 0.0
+  var apronGains: Double = 0.0
 
   var apron: Double {
-    equalSplit - pleatSteals
+    equalSplit + apronGains
   }
 
   var pleat: Double {
-    equalSplit + pleatSteals
+    equalSplit - apronGains
   }
 
   init(_ total: Double) {
@@ -15,7 +15,7 @@ public struct ApronPleatSplit {
   }
 
   mutating func giveApron(_ amount: Double) {
-    pleatSteals = -amount
+    apronGains = amount
   }
 }
 

@@ -1,9 +1,10 @@
-* Are sliders backwards?
-* Guideline analysis
+* Refactor ApronPleatSplit
+* Accept fractions on measurements
 * Button to keep scenario
 * Button to send hip info to pleat designer
-* Draw kilt shapes
 * Should KiltMeasures become a struct?
+* Draw kilt shapes
+* Guideline analysis
 Apron/Pleat Scenarios
 
 MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask!
@@ -44,6 +45,7 @@ Apron/Pleat screen:
 * ScrollView on splits
 * Warn if apron width at hips < apron width at waist
 * Warn if >4" difference between waist and hip at apron
+* Reverse sliders to give or take from apron (more natural)
 
 CALC-23-49: 2023-08-17 - Managing Scenarios
 * Monitor waist and hips; changes => change in scenarios

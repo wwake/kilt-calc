@@ -7,7 +7,6 @@ struct ScenarioView: View {
 
   var body: some View {
     VStack {
-
       Grid {
         GridRow {
           Text("")
