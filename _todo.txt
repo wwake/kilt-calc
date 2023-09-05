@@ -1,4 +1,4 @@
-* Accept fractions on measurements
+* Handle FocusedField between views
 * Button to keep scenario
 * Button to send hip info to pleat designer
 * Should KiltMeasures become a struct?
@@ -8,6 +8,7 @@
 Apron/Pleat Scenarios
 
 MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask!
+
 
 Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
@@ -41,6 +42,7 @@ Syntax
 
 CALC-23-51: 2023-09-05 - More Apron/Pleat
 * Refactor ApronPleatSplit - flip signs so we work with apronGains rather than pleatSteals.
+* Accept fractions on measurements - made a FractionKeyboard view modifier
 
 CALC-23-50: 2023-09-04 - Apron/Pleat Scenarios
 Apron/Pleat screen:

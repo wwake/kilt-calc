@@ -1,5 +1,11 @@
 import SwiftUI
 
+private enum MeasurementFocus: Int, CaseIterable, Equatable {
+  case waistField,
+       hipsField,
+       lengthField
+}
+
 struct MeasurementTable: View {
   let textfieldWidth = 64.0
 
@@ -7,7 +13,7 @@ struct MeasurementTable: View {
 
   @State private var slashIsPressed = false
 
-  @FocusState private var focusedField: FocusedField?
+  @FocusState private var focusedField: MeasurementFocus?
 
   func optionalQuarters(_ value: Double?) -> String {
     if value == nil { return "?" }
@@ -32,7 +38,7 @@ struct MeasurementTable: View {
           validator: { _ in "" },
           slashIsPressed: $slashIsPressed
         )
-        .focused($focusedField, equals: .apronPleatWaist)
+        .focused($focusedField, equals: .waistField)
 
         Text("\(optionalQuarters(measures.idealWaist))")
       }
@@ -46,7 +52,7 @@ struct MeasurementTable: View {
           validator: { _ in "" },
           slashIsPressed: $slashIsPressed
         )
-        .focused($focusedField, equals: .apronPleatHips)
+        .focused($focusedField, equals: .hipsField)
 
         Text("\(optionalQuarters(measures.idealHips))")
       }
@@ -60,7 +66,7 @@ struct MeasurementTable: View {
           validator: { _ in "" },
           slashIsPressed: $slashIsPressed
         )
-        .focused($focusedField, equals: .apronPleatLength)
+        .focused($focusedField, equals: .lengthField)
 
         Text("\(optionalQuarters(measures.idealLength))")
       }

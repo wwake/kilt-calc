@@ -9,7 +9,7 @@ public struct PleatView: View {
 
   @State private var slashIsPressed = false
 
-  @FocusState private var focusedField: FocusedField?
+  @FocusState private var focusedField: PleatCountFocus?
 
   init(tartan: TartanDesign) {
     _designer = StateObject(wrappedValue: PleatDesigner(PleatDesigner.boxPleat))

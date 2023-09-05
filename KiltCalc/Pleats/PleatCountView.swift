@@ -1,14 +1,20 @@
 import SwiftUI
 
+enum PleatCountFocus: Int, CaseIterable, Equatable {
+  case idealHip,
+       sett,
+       pleatWidth
+}
+
 public struct PleatCountView<DESIGNER: PleatDesigner>: View {
   @ObservedObject var designer: DESIGNER
   @Binding private var slashIsPressed: Bool
-  private var focusedField: FocusState<FocusedField?>.Binding
+  private var focusedField: FocusState<PleatCountFocus?>.Binding
 
   init(
     designer: DESIGNER,
     slashIsPressed: Binding<Bool>,
-    focusedField: FocusState<FocusedField?>.Binding
+    focusedField: FocusState<PleatCountFocus?>.Binding
   ) {
     self.designer = designer
     self._slashIsPressed = slashIsPressed

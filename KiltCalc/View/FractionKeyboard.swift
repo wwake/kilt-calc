@@ -1,8 +1,8 @@
 import SwiftUI
 
-private struct FractionKeyboard: ViewModifier {
+private struct FractionKeyboard<FOCUS: Hashable>: ViewModifier {
   @Binding var slashIsPressed: Bool
-  var focusedField: FocusState<FocusedField?>.Binding
+  var focusedField: FocusState<FOCUS?>.Binding
 
   func body(content: Content) -> some View {
     content
@@ -33,9 +33,9 @@ private struct FractionKeyboard: ViewModifier {
 }
 
 extension View {
-  func fractionKeyboard(
+  func fractionKeyboard<FOCUS>(
     slashIsPressed: Binding<Bool>,
-    focusedField: FocusState<FocusedField?>.Binding
+    focusedField: FocusState<FOCUS?>.Binding
   ) -> some View {
     modifier(FractionKeyboard(slashIsPressed: slashIsPressed, focusedField: focusedField))
   }
