@@ -1,5 +1,5 @@
-* Button to keep scenario
-* Button to send hip info to pleat designer
+* Double-check rules - book examples seemed to consistently violate them
+* Failed to make button to send hip info to pleat designer
 * Should KiltMeasures become a struct?
 * Draw kilt shapes
 * Guideline analysis
@@ -44,6 +44,8 @@ CALC-23-51: 2023-09-05 - More Apron/Pleat
 * Accept fractions on measurements - made a FractionKeyboard view modifier
 * Make a toolbar view modifier that brings up the FractionKeyboard
 * Tweak output for ideal values
+* Tried and failed to add a button to switch tabs - getting a message about attribute cycles
+* Tried some example apron/pleat combos out of the book
 
 CALC-23-50: 2023-09-04 - Apron/Pleat Scenarios
 Apron/Pleat screen:
