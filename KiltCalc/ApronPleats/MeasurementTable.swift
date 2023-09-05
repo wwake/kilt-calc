@@ -42,12 +42,12 @@ struct MeasurementTable: View {
       Divider()
 
       GridRow {
-        Text("Hips")
-          .bold()
-
-        TextField("actualHips", value: $measures.actualHipsDouble, format: .number)
-          .textFieldStyle(RoundedBorderTextFieldStyle())
-          .frame(width: textfieldWidth)
+        ValidatingTextField(
+          label: "Hips",
+          value: $measures.actualHips,
+          validator: { _ in "" },
+          slashIsPressed: $slashIsPressed
+        )
 
         Text("\(optionalQuarters(measures.idealHips))")
       }
@@ -55,12 +55,12 @@ struct MeasurementTable: View {
       Divider()
 
       GridRow {
-        Text("Length")
-          .bold()
-
-        TextField("actualLength", value: $measures.actualLength, format: .number)
-          .textFieldStyle(RoundedBorderTextFieldStyle())
-          .frame(width: textfieldWidth)
+        ValidatingTextField(
+          label: "Length",
+          value: $measures.actualLength,
+          validator: { _ in "" },
+          slashIsPressed: $slashIsPressed
+        )
 
         Text("\(optionalQuarters(measures.idealLength))")
       }

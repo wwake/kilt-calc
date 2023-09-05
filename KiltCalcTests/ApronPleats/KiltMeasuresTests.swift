@@ -17,7 +17,7 @@ final class KiltMeasuresTests: XCTestCase {
   func test_DerivedValuesThatAreAlwaysCopies() throws {
     let m = KiltMeasures()
     m.actualWaist = Value.inches(30)
-    m.actualLength = 25
+    m.actualLength = Value.inches(25)
 
     XCTAssertEqual(m.idealWaist, 30)
     XCTAssertEqual(m.idealLength, 25)
