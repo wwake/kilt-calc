@@ -16,8 +16,8 @@ struct MeasurementTable: View {
   @FocusState private var focusedField: MeasurementFocus?
 
   func optionalQuarters(_ value: Double?) -> String {
-    if value == nil { return "?" }
-    return value!.formatQuarter()
+    if value == nil { return "" }
+    return "\(value!.formatQuarter()) in"
   }
 
   var body: some View {

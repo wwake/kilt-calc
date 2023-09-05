@@ -4,10 +4,10 @@ private struct FractionKeyboard<FOCUS: Hashable>: ViewModifier {
   @Binding var slashIsPressed: Bool
   var focusedField: FocusState<FOCUS?>.Binding
 
+  // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
   func body(content: Content) -> some View {
     content
       .toolbar {
-        // see https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
 
         ToolbarItem(placement: .keyboard) {
           HStack {
