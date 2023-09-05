@@ -1,4 +1,3 @@
-* Handle FocusedField between views
 * Button to keep scenario
 * Button to send hip info to pleat designer
 * Should KiltMeasures become a struct?
@@ -43,6 +42,8 @@ Syntax
 CALC-23-51: 2023-09-05 - More Apron/Pleat
 * Refactor ApronPleatSplit - flip signs so we work with apronGains rather than pleatSteals.
 * Accept fractions on measurements - made a FractionKeyboard view modifier
+* Make a toolbar view modifier that brings up the FractionKeyboard
+* Tweak output for ideal values
 
 CALC-23-50: 2023-09-04 - Apron/Pleat Scenarios
 Apron/Pleat screen:

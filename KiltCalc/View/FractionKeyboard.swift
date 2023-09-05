@@ -8,7 +8,6 @@ private struct FractionKeyboard<FOCUS: Hashable>: ViewModifier {
   func body(content: Content) -> some View {
     content
       .toolbar {
-
         ToolbarItem(placement: .keyboard) {
           HStack {
             Button("Done") {
