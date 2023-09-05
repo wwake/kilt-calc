@@ -6,7 +6,7 @@ import XCTest
 final class KiltMeasuresTests: XCTestCase {
   func test_StartingValuesNil() {
     let m = KiltMeasures()
-    XCTAssertNil(m.actualWaistDouble)
+    XCTAssertNil(m.actualWaist)
     XCTAssertNil(m.actualHips)
     XCTAssertNil(m.actualLength)
     XCTAssertNil(m.idealWaist)
@@ -31,7 +31,7 @@ final class KiltMeasuresTests: XCTestCase {
     ) {
       let m = KiltMeasures()
       m.actualWaist = Value.inches($0.input.0)
-      m.actualHips = $0.input.1
+      m.actualHips = Value.inches($0.input.1)
       EGAssertEqual(m.idealHips!, $0)
     }
   }
@@ -41,7 +41,7 @@ final class KiltMeasuresTests: XCTestCase {
     XCTAssertEqual(m.allowsScenarios, false)
     m.actualWaist = Value.inches(22)
     XCTAssertEqual(m.allowsScenarios, false)
-    m.actualHips = 27
+    m.actualHips = Value.inches(27)
     XCTAssertEqual(m.allowsScenarios, true)
   }
 

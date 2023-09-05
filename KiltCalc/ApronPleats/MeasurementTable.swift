@@ -20,8 +20,6 @@ struct MeasurementTable: View {
   var body: some View {
     Grid {
       GridRow {
-        Text("")
-
         Text("Actual")
           .bold()
 
@@ -31,13 +29,6 @@ struct MeasurementTable: View {
       Divider()
 
       GridRow {
-        Text("Waist")
-          .bold()
-
-//        TextField("actualWaist", value: $measures.actualWaistDouble, format: .number)
-//          .textFieldStyle(RoundedBorderTextFieldStyle())
-//          .frame(width: textfieldWidth)
-
         ValidatingTextField(
           label: "Waist",
           value: $measures.actualWaist,
@@ -54,7 +45,7 @@ struct MeasurementTable: View {
         Text("Hips")
           .bold()
 
-        TextField("actualHips", value: $measures.actualHips, format: .number)
+        TextField("actualHips", value: $measures.actualHipsDouble, format: .number)
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .frame(width: textfieldWidth)
 
