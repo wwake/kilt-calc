@@ -7,7 +7,7 @@ struct MeasurementTable: View {
 
   @State private var slashIsPressed = false
 
-  @FocusState private var focusedField: PleatViewFocus?
+  @FocusState private var focusedField: FocusedField?
 
 //  @Binding var slashIsPressed: Bool
 //  var focusedField: FocusState<PleatViewFocus?>.Binding

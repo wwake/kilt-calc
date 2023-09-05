@@ -11,7 +11,7 @@ public enum Value: Equatable {
 }
 
 extension Value: Comparable {
-  public static func <(lhs: Value, rhs: Value) -> Bool {
+  public static func < (lhs: Value, rhs: Value) -> Bool {
     lhs.asDouble < rhs.asDouble
   }
 }

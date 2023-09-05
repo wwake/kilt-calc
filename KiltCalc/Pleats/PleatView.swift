@@ -2,10 +2,6 @@ import Combine
 import Foundation
 import SwiftUI
 
-enum PleatViewFocus: Int, CaseIterable, Equatable {
-  case idealHip, sett, pleatWidth
-}
-
 public struct PleatView: View {
   @ObservedObject public var tartan = TartanDesign()
 
@@ -13,7 +9,7 @@ public struct PleatView: View {
 
   @State private var slashIsPressed = false
 
-  @FocusState private var focusedField: PleatViewFocus?
+  @FocusState private var focusedField: FocusedField?
 
   init(tartan: TartanDesign) {
     _designer = StateObject(wrappedValue: PleatDesigner(PleatDesigner.boxPleat))

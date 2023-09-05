@@ -3,7 +3,7 @@ import SwiftUI
 public struct TartanView: View {
   @ObservedObject var tartan: TartanDesign
   @Binding var slashIsPressed: Bool
-  var focusedField: FocusState<PleatViewFocus?>.Binding
+  var focusedField: FocusState<FocusedField?>.Binding
 
   public var body: some View {
     VStack {
@@ -13,7 +13,7 @@ public struct TartanView: View {
         validator: PleatValidator.positive,
         slashIsPressed: $slashIsPressed
       )
-      .focused(focusedField, equals: PleatViewFocus.sett)
+      .focused(focusedField, equals: FocusedField.sett)
       .padding([.trailing], 116)
 
       TartanDrawing(highlight: tartan.settsPerPleat)
@@ -29,7 +29,7 @@ public struct TartanView: View {
 }
 
 struct TartanView_Previews: PreviewProvider {
-  @FocusState private static var focusedField: PleatViewFocus?
+  @FocusState private static var focusedField: FocusedField?
 
   static var previews: some View {
     TartanView(tartan: TartanDesign(), slashIsPressed: .constant(false), focusedField: $focusedField)
