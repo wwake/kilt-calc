@@ -9,7 +9,7 @@ private enum MeasurementFocus: Int, CaseIterable, Equatable {
 struct MeasurementTable: View {
   let textfieldWidth = 64.0
 
-  @ObservedObject var measures: KiltMeasures
+  @Binding var measures: KiltMeasures
 
   @State private var slashIsPressed = false
 
@@ -79,9 +79,9 @@ struct MeasurementTable: View {
 }
 
 struct MeasurementTable_Previews: PreviewProvider {
-  static var measures = KiltMeasures()
+  @State static var measures = KiltMeasures()
 
   static var previews: some View {
-    MeasurementTable(measures: Self.measures)
+    MeasurementTable(measures: Self.$measures)
   }
 }

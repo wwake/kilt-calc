@@ -1,9 +1,9 @@
 import Foundation
 
-public class KiltMeasures: ObservableObject {
-  @Published public var actualWaist: Value?
-  @Published public var actualHips: Value?
-  @Published public var actualLength: Value?
+public struct KiltMeasures {
+  public var actualWaist: Value?
+  public var actualHips: Value?
+  public var actualLength: Value?
 
   init(actualWaist: Double? = nil, actualHips: Double? = nil, actualLength: Double? = nil) {
     self.actualWaist = actualWaist == nil ? nil : Value.inches(actualWaist!)

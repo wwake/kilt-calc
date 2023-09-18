@@ -4,7 +4,7 @@ struct ApronPleatView: View {
   @Binding var topLevelTab: TopLevelTab
   @ObservedObject var designer: PleatDesigner
 
-  @StateObject var measures = KiltMeasures()
+  @State var measures = KiltMeasures()
 
   @StateObject var scenarios = Scenarios()
 
@@ -15,7 +15,7 @@ struct ApronPleatView: View {
           Text("Measurements")
             .font(.title2.smallCaps())
 
-          MeasurementTable(measures: measures)
+          MeasurementTable(measures: $measures)
             .background(.thinMaterial)
             .padding()
             .onChange(of: measures.allowsScenarios) { _ in
