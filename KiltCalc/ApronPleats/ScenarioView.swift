@@ -75,6 +75,7 @@ struct ScenarioView: View {
         HStack {
           Spacer()
           Button("→ Pleats") {
+            designer.idealHip = Value.number(scenario[.hips]!.pleat)
             topLevelTab = .pleats
           }
         }
