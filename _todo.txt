@@ -1,3 +1,5 @@
+* Give Apron/Pleat a background like Calculator tab
+
 * Double-check rules - book examples seemed to consistently violate them
 * Guideline analysis
 * Save scenarios [?]

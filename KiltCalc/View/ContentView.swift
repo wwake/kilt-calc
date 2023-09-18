@@ -28,19 +28,18 @@ struct ContentView: View {
       }
       .tag(TopLevelTab.calculator)
 
-      ZStack {
-        Image(decorative: "Background")
-          .resizable()
-          .ignoresSafeArea()
-
-        ApronPleatView(topLevelTab: $topLevelTab, designer: designer)
-      }
+      ApronPleatView(topLevelTab: $topLevelTab, designer: designer)
       .tabItem {
         Label("Apron/Pleat", systemImage: "circle.bottomhalf.filled")
       }
       .tag(TopLevelTab.apronPleat)
 
-      PleatView(tartan: tartan, designer: designer)
+      ZStack {
+        Image(decorative: "Background")
+          .resizable()
+          .ignoresSafeArea()
+        PleatView(tartan: tartan, designer: designer)
+      }
       .tabItem {
         Label("Pleats", systemImage: "rectangle.split.3x1")
       }

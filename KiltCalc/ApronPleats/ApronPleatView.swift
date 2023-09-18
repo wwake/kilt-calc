@@ -42,6 +42,11 @@ struct ApronPleatView: View {
           }
         }
       }
+      .background(
+        Image(decorative: "Background")
+        .resizable()
+        .ignoresSafeArea()
+      )
       .toolbar {
         ToolbarItem(placement: .primaryAction) {
           Button(action: {

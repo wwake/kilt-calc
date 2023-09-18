@@ -94,6 +94,12 @@ public struct PleatView: View {
         }
         .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
       }
+      .scrollContentBackground(.hidden)
+      .background(
+        Image(decorative: "Background")
+        .resizable()
+        .ignoresSafeArea()
+      )
       .fractionKeyboard(slashIsPressed: $slashIsPressed, focusedField: $focusedField)
       .navigationTitle("Pleats")
     }
