@@ -6,7 +6,7 @@ enum TopLevelTab: Int {
   case pleats
 }
 
-struct ContentView: View {
+public struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @ObservedObject var designer: PleatDesigner
 
@@ -15,7 +15,7 @@ struct ContentView: View {
   @AppStorage("topLevelTab")
   var topLevelTab: TopLevelTab = .calculator
 
-  var body: some View {
+  public var body: some View {
     TabView(selection: $topLevelTab) {
       ZStack {
         Image(decorative: "Background")

@@ -29,7 +29,6 @@ struct ApronPleatView: View {
           Section("Splits") {
             ForEach($scenarios.scenarios) { scenario in
               ScenarioView(scenario: scenario, topLevelTab: $topLevelTab, designer: designer)
-                .padding([.top, .bottom], 6)
             }
           }
         }
