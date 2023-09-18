@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum TopLevelTab: String {
+enum TopLevelTab: Int {
   case calculator
   case apronPleat
   case pleats
@@ -9,6 +9,7 @@ enum TopLevelTab: String {
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @StateObject var tartan = TartanDesign()
+  @StateObject private var designer = PleatDesigner(PleatDesigner.boxPleat)
 
   @AppStorage("topLevelTab")
   var topLevelTab: TopLevelTab = .calculator
@@ -38,7 +39,7 @@ struct ContentView: View {
       }
       .tag(TopLevelTab.apronPleat)
 
-      PleatView(tartan: tartan)
+      PleatView(tartan: tartan, designer: designer)
       .tabItem {
         Label("Pleats", systemImage: "rectangle.split.3x1")
       }

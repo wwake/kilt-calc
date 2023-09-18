@@ -3,17 +3,13 @@ import Foundation
 import SwiftUI
 
 public struct PleatView: View {
-  @ObservedObject public var tartan = TartanDesign()
+  @ObservedObject public var tartan: TartanDesign
 
-  @StateObject private var designer: PleatDesigner
+  @ObservedObject public var designer: PleatDesigner
 
   @State private var slashIsPressed = false
 
   @FocusState private var focusedField: PleatCountFocus?
-
-  init(tartan: TartanDesign) {
-    _designer = StateObject(wrappedValue: PleatDesigner(PleatDesigner.boxPleat))
-  }
 
   enum PleatStyle: String, CaseIterable, Identifiable {
     case box = "Box / Military", knife = "Knife"
@@ -21,6 +17,10 @@ public struct PleatView: View {
   }
 
   @State private var selectedPleat: PleatStyle = .box
+
+  func setHip(_ value: Value) {
+    designer.idealHip = value
+  }
 
   public var body: some View {
     NavigationView {
@@ -102,8 +102,9 @@ public struct PleatView: View {
 
 struct PleatView_Previews: PreviewProvider {
   static var tartan = TartanDesign()
+  static var designer = PleatDesigner(PleatDesigner.boxPleat)
 
   static var previews: some View {
-    PleatView(tartan: tartan)
+    PleatView(tartan: tartan, designer: designer)
   }
 }
