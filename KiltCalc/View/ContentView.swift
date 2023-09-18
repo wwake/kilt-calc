@@ -10,7 +10,8 @@ struct ContentView: View {
   @ObservedObject var calculator: Calculator
   @StateObject var tartan = TartanDesign()
 
-  @AppStorage("topLevelTab") var topLevelTab: TopLevelTab = .calculator
+  @AppStorage("topLevelTab")
+  var topLevelTab: TopLevelTab = .calculator
 
   var body: some View {
     TabView(selection: $topLevelTab) {
@@ -30,7 +31,7 @@ struct ContentView: View {
           .resizable()
           .ignoresSafeArea()
 
-        ApronPleatView()
+        ApronPleatView(topLevelTab: $topLevelTab)
       }
       .tabItem {
         Label("Apron/Pleat", systemImage: "circle.bottomhalf.filled")

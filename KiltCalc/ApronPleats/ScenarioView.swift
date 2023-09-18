@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ScenarioView: View {
   @Binding var scenario: ScenarioSplit
+  @Binding var topLevelTab: TopLevelTab
+
   @State private var waistSplit: Double = 0
   @State private var hipsSplit: Double = 0
 
@@ -68,6 +70,13 @@ struct ScenarioView: View {
             }
           }
         }
+
+        HStack {
+          Spacer()
+          Button("→ Pleats") {
+            topLevelTab = .pleats
+          }
+        }
       }
       .padding()
       .border(scenario.hasWarnings ? .red : .black, width: 2)
@@ -77,8 +86,9 @@ struct ScenarioView: View {
 
 struct ScenarioView_Previews: PreviewProvider {
   @State static var split = ScenarioSplit([.waist: 22.0, .hips: 30.0])
+  @State static var topLevelTab = TopLevelTab.apronPleat
 
   static var previews: some View {
-    ScenarioView(scenario: $split)
+    ScenarioView(scenario: $split, topLevelTab: $topLevelTab)
   }
 }

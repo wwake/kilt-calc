@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ApronPleatView: View {
+  @Binding var topLevelTab: TopLevelTab
+
   @StateObject var measures = KiltMeasures()
 
   @StateObject var scenarios = Scenarios()
@@ -32,7 +34,7 @@ struct ApronPleatView: View {
               .font(.title2.smallCaps())
 
             ForEach($scenarios.scenarios) { scenario in
-              ScenarioView(scenario: scenario)
+              ScenarioView(scenario: scenario, topLevelTab: $topLevelTab)
                 .background(.thinMaterial)
                 .padding()
             }
@@ -55,7 +57,9 @@ struct ApronPleatView: View {
 }
 
 struct ApronPleatView_Previews: PreviewProvider {
+  @State static var topLevelTab: TopLevelTab = .apronPleat
+
   static var previews: some View {
-    ApronPleatView()
+    ApronPleatView(topLevelTab: Self.$topLevelTab)
   }
 }
