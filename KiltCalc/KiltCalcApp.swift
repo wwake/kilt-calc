@@ -15,10 +15,11 @@ extension UIApplication {
 @main
 struct KiltCalcApp: App {
   @StateObject var calculator = Calculator()
+  @StateObject private var designer = PleatDesigner(PleatDesigner.boxPleat)
 
   var body: some Scene {
     WindowGroup {
-      ContentView(calculator: calculator)
+      ContentView(calculator: calculator, designer: designer)
     }
   }
 }

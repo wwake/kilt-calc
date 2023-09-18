@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ApronPleatView: View {
   @Binding var topLevelTab: TopLevelTab
+  @ObservedObject var designer: PleatDesigner
 
   @StateObject var measures = KiltMeasures()
 
@@ -34,7 +35,7 @@ struct ApronPleatView: View {
               .font(.title2.smallCaps())
 
             ForEach($scenarios.scenarios) { scenario in
-              ScenarioView(scenario: scenario, topLevelTab: $topLevelTab)
+              ScenarioView(scenario: scenario, topLevelTab: $topLevelTab, designer: designer)
                 .background(.thinMaterial)
                 .padding()
             }
@@ -58,8 +59,9 @@ struct ApronPleatView: View {
 
 struct ApronPleatView_Previews: PreviewProvider {
   @State static var topLevelTab: TopLevelTab = .apronPleat
+  @StateObject static var designer = PleatDesigner(PleatDesigner.boxPleat)
 
   static var previews: some View {
-    ApronPleatView(topLevelTab: Self.$topLevelTab)
+    ApronPleatView(topLevelTab: Self.$topLevelTab, designer: designer)
   }
 }

@@ -8,8 +8,9 @@ enum TopLevelTab: Int {
 
 struct ContentView: View {
   @ObservedObject var calculator: Calculator
+  @ObservedObject var designer: PleatDesigner
+
   @StateObject var tartan = TartanDesign()
-  @StateObject private var designer = PleatDesigner(PleatDesigner.boxPleat)
 
   @AppStorage("topLevelTab")
   var topLevelTab: TopLevelTab = .calculator
@@ -32,7 +33,7 @@ struct ContentView: View {
           .resizable()
           .ignoresSafeArea()
 
-        ApronPleatView(topLevelTab: $topLevelTab)
+        ApronPleatView(topLevelTab: $topLevelTab, designer: designer)
       }
       .tabItem {
         Label("Apron/Pleat", systemImage: "circle.bottomhalf.filled")
@@ -51,8 +52,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   var tartan = TartanDesign()
+  @StateObject static var designer = PleatDesigner(PleatDesigner.boxPleat)
 
   static var previews: some View {
-    ContentView(calculator: Calculator())
+    ContentView(calculator: Calculator(), designer: designer)
   }
 }
