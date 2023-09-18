@@ -69,7 +69,7 @@ public struct PleatView: View {
           switch selectedPleat {
           case .box:
             if designer.gap == nil {
-              Text("No enough information yet")
+              Text("Not enough information yet")
                 .padding()
             } else {
               BoxPleatDrawing(gap: designer.gap!)
@@ -77,7 +77,7 @@ public struct PleatView: View {
 
           case .knife:
             if designer.depth == nil {
-              Text("No enough information yet")
+              Text("Not enough information yet")
                 .padding()
             } else {
               KnifePleatDrawing(depth: designer.depth!)

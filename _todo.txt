@@ -1,10 +1,14 @@
-* Double-check rules - book examples seemed to consistently violate them
-* Failed to make button to send hip info to pleat designer
+* Make button to send hip info to pleat designer
 * Should KiltMeasures become a struct?
-* Draw kilt shapes
+  * Figure out ObservableObjects being observed by other ObservableObjects
+* Double-check rules - book examples seemed to consistently violate them
 * Guideline analysis
 * Consider whether ValidatingTextField needs full Value, or just Double
+* Save scenarios [?]
+* Draw kilt shapes [?]
 Apron/Pleat Scenarios
+
+What state should carry between runs?
 
 MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask!
 
@@ -14,7 +18,6 @@ Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Use new formatter approach throughout calculator & UI
 * May need 8th-fraction formatter or accept unitless values as inches
 
-* Save scenarios
 
 * Idea: show memory value in history too
 
@@ -37,7 +40,6 @@ Syntax
 * Accessibility
 * I18N
 
-* Figure out ObservableObjects being observed by other ObservableObjects
 
 CALC-23-51: 2023-09-05 - More Apron/Pleat
 * Refactor ApronPleatSplit - flip signs so we work with apronGains rather than pleatSteals.
