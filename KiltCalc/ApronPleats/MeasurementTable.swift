@@ -73,8 +73,10 @@ struct MeasurementTable: View {
     }
     .fractionKeyboard(slashIsPressed: $slashIsPressed, focusedField: $focusedField)
     .padding()
-
-    .border(Color.black, width: 2)
+    .overlay(
+      RoundedRectangle(cornerRadius: 12)
+        .stroke(.black, lineWidth: 2)
+    )
   }
 }
 

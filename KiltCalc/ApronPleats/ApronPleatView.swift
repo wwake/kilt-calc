@@ -10,14 +10,10 @@ struct ApronPleatView: View {
 
   var body: some View {
     NavigationStack {
-      ScrollView {
-        VStack {
-          Text("Measurements")
-            .font(.title2.smallCaps())
-
+      List {
+        Section("Measurements") {
           MeasurementTable(measures: $measures)
             .background(.thinMaterial)
-            .padding()
             .onChange(of: measures.allowsScenarios) { _ in
               scenarios.changeScenarios(measures.allowsScenarios, measures)
             }
@@ -27,21 +23,18 @@ struct ApronPleatView: View {
             .onChange(of: measures.idealHips) { _ in
               scenarios.changeScenarios(measures.allowsScenarios, measures)
             }
+        }
 
-          if measures.allowsScenarios {
-            Divider()
-
-            Text("Splits")
-              .font(.title2.smallCaps())
-
+        if measures.allowsScenarios {
+          Section("Splits") {
             ForEach($scenarios.scenarios) { scenario in
               ScenarioView(scenario: scenario, topLevelTab: $topLevelTab, designer: designer)
                 .background(.thinMaterial)
-                .padding()
             }
           }
         }
       }
+      .scrollContentBackground(.hidden)
       .background(
         Image(decorative: "Background")
         .resizable()

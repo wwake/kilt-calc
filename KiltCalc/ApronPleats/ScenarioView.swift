@@ -81,7 +81,10 @@ struct ScenarioView: View {
         }
       }
       .padding()
-      .border(scenario.hasWarnings ? .red : .black, width: 2)
+      .overlay(
+        RoundedRectangle(cornerRadius: 12)
+          .stroke(scenario.hasWarnings ? .red : .black, lineWidth: 2)
+      )
     }
   }
 }
