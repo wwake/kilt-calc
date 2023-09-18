@@ -13,7 +13,7 @@ struct ApronPleatView: View {
       List {
         Section("Measurements") {
           MeasurementTable(measures: $measures)
-            .background(.thinMaterial)
+            .padding([.top, .bottom], 6)
             .onChange(of: measures.allowsScenarios) { _ in
               scenarios.changeScenarios(measures.allowsScenarios, measures)
             }
@@ -29,7 +29,7 @@ struct ApronPleatView: View {
           Section("Splits") {
             ForEach($scenarios.scenarios) { scenario in
               ScenarioView(scenario: scenario, topLevelTab: $topLevelTab, designer: designer)
-                .background(.thinMaterial)
+                .padding([.top, .bottom], 6)
             }
           }
         }

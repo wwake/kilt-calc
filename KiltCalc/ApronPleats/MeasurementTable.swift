@@ -29,7 +29,6 @@ struct MeasurementTable: View {
         Text("Ideal")
           .bold()
       }
-      Divider()
 
       GridRow {
         ValidatingTextField(
@@ -43,8 +42,6 @@ struct MeasurementTable: View {
         Text("\(optionalQuarters(measures.idealWaist))")
       }
 
-      Divider()
-
       GridRow {
         ValidatingTextField(
           label: "Hips",
@@ -56,8 +53,6 @@ struct MeasurementTable: View {
 
         Text("\(optionalQuarters(measures.idealHips))")
       }
-
-      Divider()
 
       GridRow {
         ValidatingTextField(
@@ -72,11 +67,6 @@ struct MeasurementTable: View {
       }
     }
     .fractionKeyboard(slashIsPressed: $slashIsPressed, focusedField: $focusedField)
-    .padding()
-    .overlay(
-      RoundedRectangle(cornerRadius: 12)
-        .stroke(.black, lineWidth: 2)
-    )
   }
 }
 

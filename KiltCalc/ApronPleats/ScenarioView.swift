@@ -40,8 +40,6 @@ struct ScenarioView: View {
           Text("\(scenario[.waist]!.pleat.formatQuarter())")
         }
 
-        Divider()
-
         GridRow {
           Text("Hips")
             .bold()
@@ -83,7 +81,7 @@ struct ScenarioView: View {
       .padding()
       .overlay(
         RoundedRectangle(cornerRadius: 12)
-          .stroke(scenario.hasWarnings ? .red : .black, lineWidth: 2)
+          .stroke(scenario.hasWarnings ? .red : .clear, lineWidth: 2)
       )
     }
   }
