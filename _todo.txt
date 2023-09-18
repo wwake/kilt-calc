@@ -1,9 +1,7 @@
-* Make button to send hip info to pleat designer
 * Should KiltMeasures become a struct?
   * Figure out ObservableObjects being observed by other ObservableObjects
 * Double-check rules - book examples seemed to consistently violate them
 * Guideline analysis
-* Consider whether ValidatingTextField needs full Value, or just Double
 * Save scenarios [?]
 * Draw kilt shapes [?]
 Apron/Pleat Scenarios
@@ -40,6 +38,8 @@ Syntax
 * Accessibility
 * I18N
 
+CALC-23-52: 2023-09-18 - Beta Prep
+* Make button to send hip info to pleat designer
 
 CALC-23-51: 2023-09-05 - More Apron/Pleat
 * Refactor ApronPleatSplit - flip signs so we work with apronGains rather than pleatSteals.

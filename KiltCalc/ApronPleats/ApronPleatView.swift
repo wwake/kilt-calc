@@ -18,8 +18,8 @@ struct ApronPleatView: View {
           MeasurementTable(measures: measures)
             .background(.thinMaterial)
             .padding()
-            .onChange(of: measures.allowsScenarios) {
-              scenarios.changeScenarios($0, measures)
+            .onChange(of: measures.allowsScenarios) { _ in
+              scenarios.changeScenarios(measures.allowsScenarios, measures)
             }
             .onChange(of: measures.idealWaist) { _ in
               scenarios.changeScenarios(measures.allowsScenarios, measures)
