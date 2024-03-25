@@ -58,7 +58,7 @@ public struct PleatCountView<DESIGNER: PleatDesigner>: View {
           Stepper(
             "#Pleats:   \(designer.pleatCount)",
             value: $designer.pleatCount,
-            in: 3...30,
+            in: 3...40,
             onEditingChanged: {_ in
               self.focusedField.wrappedValue = nil
             }

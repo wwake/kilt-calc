@@ -15,7 +15,7 @@ final class KiltMeasuresTests: XCTestCase {
   }
 
   func test_DerivedValuesThatAreAlwaysCopies() throws {
-    let m = KiltMeasures()
+    var m = KiltMeasures()
     m.actualWaist = Value.inches(30)
     m.actualLength = Value.inches(25)
 
@@ -29,7 +29,7 @@ final class KiltMeasuresTests: XCTestCase {
       eg((30.0, 30.0), expect: 30.0, "hip = waist"),
       eg((30.0, 29.0), expect: 30.0, "hip < waist")
     ) {
-      let m = KiltMeasures()
+      var m = KiltMeasures()
       m.actualWaist = Value.inches($0.input.0)
       m.actualHips = Value.inches($0.input.1)
       EGAssertEqual(m.idealHips!, $0)
@@ -37,7 +37,7 @@ final class KiltMeasuresTests: XCTestCase {
   }
 
   func test_allowsScenarios() {
-    let m = KiltMeasures()
+    var m = KiltMeasures()
     XCTAssertEqual(m.allowsScenarios, false)
     m.actualWaist = Value.inches(22)
     XCTAssertEqual(m.allowsScenarios, false)

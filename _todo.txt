@@ -1,4 +1,11 @@
 
+* Eliminate warnings
+* When switching box pleat vs knife pleat, reset to "ideal" pleat size
+* Apron/pleat sliders spread beyond width of screen
+* Provide a way to remove splits
+* Number keypad and Done and "/" - sometimes get stuck without Done button. grr
+Misc
+
 * Double-check rules - book examples seemed to consistently violate them
 * Guideline analysis
 * Save scenarios [?]
@@ -36,6 +43,8 @@ Syntax
 
 * Accessibility
 * I18N
+
+Packaging
 
 CALC-23-52: 2023-09-18 - Beta Prep
 * Make button to send hip info to pleat designer
