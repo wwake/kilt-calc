@@ -45,6 +45,7 @@ struct ApronPleatView: View {
             scenarios.append(measures)
           }) {
             Image(systemName: "plus")
+              .accessibilityLabel("Add Scenario")
           }
           .opacity(measures.allowsScenarios ? 1.0 : 0.0)
         }

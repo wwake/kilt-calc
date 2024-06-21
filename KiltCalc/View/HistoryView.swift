@@ -1,7 +1,8 @@
 import SwiftUI
 
 public struct HistoryView: View {
-  @Environment(\.dismiss) var dismiss
+  @Environment(\.dismiss)
+  var dismiss
 
   @ObservedObject var calculator: Calculator
 
@@ -25,7 +26,7 @@ public struct HistoryView: View {
       HStack {
         Spacer()
 
-        Button(role: .destructive) { // swiftlint:disable:this multiline_arguments
+        Button(role: .destructive) {
           calculator.clearAllHistory()
         } label: {
           Text("Clear")

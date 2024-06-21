@@ -64,7 +64,13 @@ struct ScenarioView: View {
           VStack(alignment: .leading) {
             ForEach(scenario.warnings, id: \.self) {
               Text($0)
-                .fixedSize(horizontal: false, vertical: true)
+                .frame(
+                    minWidth: 0,
+                    maxWidth: .infinity,
+                    minHeight: 0,
+                    maxHeight: .infinity,
+                    alignment: .topLeading
+                )
                 .foregroundColor(.red)
             }
           }

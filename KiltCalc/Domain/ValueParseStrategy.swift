@@ -73,12 +73,10 @@ public struct ValueParseStrategy: ParseStrategy {
 
     if let justNumberMatch = string.wholeMatch(of: /[0-9]+\.?[0-9]*/) {
       return try parseDouble(justNumberMatch.0)
-      // swiftlint:disable:previous implicit_return
     }
 
     if let numAndDenom = string.wholeMatch(of: /(?<whole>[0-9]+)\/(?<denom>[0-9]+)/) {
       return try parseFraction(numAndDenom.whole, numAndDenom.denom)
-      // swiftlint:disable:previous implicit_return
     }
 
     guard let numberMatch = string.wholeMatch(

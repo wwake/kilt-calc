@@ -38,6 +38,7 @@ struct CalculatorView: View {
               Image(systemName: "text.magnifyingglass")
                 .scaleEffect(0.5)
                 .padding([.leading], 20)
+                .accessibilityLabel("History")
             }
 
             Spacer()

@@ -46,6 +46,11 @@ Syntax
 
 Packaging
 
+2024-06-20:
+* Remove warnings (but leaving deprecated onChange)
+* Fix text width in Apron/Pleat split view (now wraps properly)
+* Re-distribute
+
 CALC-23-52: 2023-09-18 - Beta Prep
 * Make button to send hip info to pleat designer
 * Should KiltMeasures become a struct?
