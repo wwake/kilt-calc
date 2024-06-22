@@ -53,6 +53,7 @@
 		91AE92582A8EA3EE002DEF12 /* ScenariosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE92572A8EA3EE002DEF12 /* ScenariosTests.swift */; };
 		91B0F2B82A53737C00423289 /* ApronPleatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B72A53737C00423289 /* ApronPleatView.swift */; };
 		91B0F2BA2A5373FA00423289 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0F2B92A5373FA00423289 /* CalculatorView.swift */; };
+		91C248CF2C2670A700A1EEB3 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91C248CE2C2670A700A1EEB3 /* Property List.plist */; };
 		91CF2BC02AA7B9C200A61696 /* FractionKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CF2BBF2AA7B9C200A61696 /* FractionKeyboard.swift */; };
 		91D4CF3F2A5C9DF800A03B63 /* PleatValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */; };
 		91DF08972A65C6AE00B4D64F /* ValidatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DF08962A65C6AE00B4D64F /* ValidatingTextField.swift */; };
@@ -145,6 +146,7 @@
 		91AE92572A8EA3EE002DEF12 /* ScenariosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosTests.swift; sourceTree = "<group>"; };
 		91B0F2B72A53737C00423289 /* ApronPleatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApronPleatView.swift; sourceTree = "<group>"; };
 		91B0F2B92A5373FA00423289 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
+		91C248CE2C2670A700A1EEB3 /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
 		91CF2BBF2AA7B9C200A61696 /* FractionKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractionKeyboard.swift; sourceTree = "<group>"; };
 		91D34C702A4A0A6C002BC3CD /* KiltCalcUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KiltCalcUnitTests.xctestplan; sourceTree = "<group>"; };
 		91D4CF3E2A5C9DF800A03B63 /* PleatValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleatValidator.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				91E7B6FD2A0D522F004A757A /* LICENSE */,
 				91E7B6F92A0D507D004A757A /* KiltCalc.png */,
 				91E7B6F52A0D4E52004A757A /* KiltCalc.key */,
+				91C248CE2C2670A700A1EEB3 /* Property List.plist */,
 				91E7B6CA2A0D4428004A757A /* KiltCalc */,
 				91E7B6DB2A0D4430004A757A /* KiltCalcTests */,
 				91E7B6C92A0D4428004A757A /* Products */,
@@ -512,6 +515,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91C248CF2C2670A700A1EEB3 /* Property List.plist in Resources */,
 				91E3C5A92A1C668D0098BAFC /* .swiftlint.yml in Resources */,
 				91E7B6FC2A0D5189004A757A /* README.md in Resources */,
 				91E7B6FA2A0D507D004A757A /* KiltCalc.png in Resources */,
@@ -769,7 +773,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"KiltCalc/Preview Content\"";
 				DEVELOPMENT_TEAM = 7B9VB3YTHK;
 				ENABLE_PREVIEWS = YES;
@@ -803,7 +807,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"KiltCalc/Preview Content\"";
 				DEVELOPMENT_TEAM = 7B9VB3YTHK;
 				ENABLE_PREVIEWS = YES;
