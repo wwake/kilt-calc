@@ -1,14 +1,15 @@
 {
+  "originHash" : "bf769ee8de699dbba1f59512bd132a24221ec56d4bf5a6943fa477f46aeb9e0a",
   "pins" : [
     {
       "identity" : "egtest",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/wwake/EGTest.git",
       "state" : {
-        "revision" : "c0ec5c0d7129ac5f745dc0f8afee5537a19eb71b",
-        "version" : "0.4.1"
+        "revision" : "91017bd7a9e4beb6a78d96c73f1f83e1e0d5ead4",
+        "version" : "0.5.0"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
