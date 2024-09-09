@@ -1,3 +1,4 @@
+* Button feedback
 * Two MR in a row acts funny
 * If you finish a sum, you can't just do "+ 7 =" to add to it
 * When can you store to memory?

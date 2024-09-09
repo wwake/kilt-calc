@@ -121,7 +121,6 @@ struct ShrinkingButton: ButtonStyle {
       .clipShape(RoundedRectangle(cornerRadius: 15))
       .shadow(color: .gray, radius: 2, x: 3, y: 3)
       .scaleEffect(configuration.isPressed ? 0.9 : 1)
-      .animation(.easeInOut(duration: 0.2), value: configuration.isPressed)
   }
 }
 
