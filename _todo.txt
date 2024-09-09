@@ -1,8 +1,7 @@
-* Show the memory contents
 * Two MR in a row acts funny
 * If you finish a sum, you can't just do "+ 7 =" to add to it
+* When can you store to memory?
 * That annoying keyboard problem!
-* Default to inches for input?
 
 * "Caution" startup screen
 * "Z" key ??
@@ -55,6 +54,8 @@ CALC-24-01: 2024-09-08 - Restart the Project
 * MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask! Answer: they recalculate with the waist number and put the pleat count to what they had before. [Opportunity for improvement.]
 * Remove warnings (deprecated onChange, no longer use @MainActor on tests)
 * Upgrade EGTest to 0.5.0
+* Upgrade target to ios 17.5
+* Show the memory contents
 
 2024-06-20:
 * Remove warnings (but leaving deprecated onChange)

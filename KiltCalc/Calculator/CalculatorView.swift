@@ -80,6 +80,14 @@ struct CalculatorView: View {
             }
           }
         }
+
+        HStack {
+          Text("Memory =")
+          Text(calculator.memory.formatted(calculator.imperialFormatType))
+          Spacer()
+        }
+        .font(.caption)
+        .padding()
       }
       .font(.largeTitle)
       .padding()
