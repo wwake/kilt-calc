@@ -86,7 +86,7 @@ struct CalculatorView: View {
           Text(calculator.memory.formatted(calculator.imperialFormatType))
           Spacer()
         }
-        .font(.caption)
+        .font(.body)
         .padding()
       }
       .font(.largeTitle)
