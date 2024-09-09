@@ -1,7 +1,6 @@
 @testable import KiltCalc
 import XCTest
 
-@MainActor
 final class ScenariosTests: XCTestCase {
   func test_append() throws {
     let scenarios = Scenarios()

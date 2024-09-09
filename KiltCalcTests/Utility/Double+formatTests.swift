@@ -2,7 +2,6 @@ import EGTest
 @testable import KiltCalc
 import XCTest
 
-@MainActor
 final class Double_formatTests: XCTestCase {
   func test_fractionsDownTo1_4() throws {
     check(

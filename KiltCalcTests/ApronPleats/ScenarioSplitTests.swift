@@ -1,7 +1,6 @@
 @testable import KiltCalc
 import XCTest
 
-@MainActor
 final class ScenarioSplitTests: XCTestCase {
   func testWaistAndHipBothSplitInitially() {
     let scenario = ScenarioSplit([.waist: 30, .hips: 34])

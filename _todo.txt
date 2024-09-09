@@ -1,3 +1,13 @@
+* Remove warnings (deprecated onChange)
+* Upgrade anything?
+* Show the memory contents
+* Two MR in a row acts funny
+* If you finish a sum, you can't just do "+ 7 =" to add to it
+* That annoying keyboard problem!
+* Default to inches for input?
+
+* "Caution" startup screen
+* "Z" key ??
 
 * Eliminate warnings
 * When switching box pleat vs knife pleat, reset to "ideal" pleat size
@@ -14,14 +24,10 @@ Apron/Pleat Scenarios
 
 What state should carry between runs?
 
-MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask!
-
-
 Fix error message (trailing ')') - simple fractions only (at most one '/')
 * Should Value really have .error types? Ok for computation but not I/O
 * Use new formatter approach throughout calculator & UI
 * May need 8th-fraction formatter or accept unitless values as inches
-
 
 * Idea: show memory value in history too
 
@@ -45,6 +51,11 @@ Syntax
 * I18N
 
 Packaging
+
+CALC-24-01: 2024-09-08 - Restart the Project
+* Walkthrough features, explore problems
+* MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask! Answer: they recalculate with the waist number and put the pleat count to what they had before. [Opportunity for improvement.]
+
 
 2024-06-20:
 * Remove warnings (but leaving deprecated onChange)

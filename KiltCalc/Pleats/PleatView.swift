@@ -31,7 +31,7 @@ public struct PleatView: View {
             slashIsPressed: $slashIsPressed,
             focusedField: $focusedField
           )
-          .onChange(of: tartan.pleatFabric) { _ in
+          .onChange(of: tartan.pleatFabric) {
             designer.pleatFabric = tartan.pleatFabric
           }
         }
@@ -50,7 +50,7 @@ public struct PleatView: View {
           }
         }
         .pickerStyle(.segmented)
-        .onChange(of: selectedPleat) { _ in
+        .onChange(of: selectedPleat) {
           let initialWidth = selectedPleat == .box ? PleatDesigner.boxPleat : PleatDesigner.knifePleat
           designer.initialWidth = initialWidth(designer)
         }

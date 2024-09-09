@@ -1,7 +1,6 @@
 @testable import KiltCalc
 import XCTest
 
-@MainActor
 final class TartanDesignTests: XCTestCase {
   func test_initialization() throws {
     let tartan = TartanDesign()

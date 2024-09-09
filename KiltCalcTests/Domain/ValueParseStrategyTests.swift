@@ -2,7 +2,6 @@ import EGTest
 @testable import KiltCalc
 import XCTest
 
-@MainActor
 final class ValueParseStrategyTests: XCTestCase {
   func test_NoNumberIsError() throws {
     let input = ""

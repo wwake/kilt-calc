@@ -26,8 +26,8 @@ struct ScenarioView: View {
           Text("")
           Slider(value: $waistSplit, in: -2...2, step: 0.25)
             .gridCellColumns(2)
-            .onChange(of: waistSplit) {
-              scenario[.waist]?.giveApron($0)
+            .onChange(of: waistSplit) { _, split in
+              scenario[.waist]?.giveApron(split)
             }
         }
 
@@ -53,8 +53,8 @@ struct ScenarioView: View {
           Text("")
           Slider(value: $hipsSplit, in: -2...2, step: 0.25)
             .gridCellColumns(2)
-            .onChange(of: hipsSplit) {
-              scenario[.hips]?.giveApron($0)
+            .onChange(of: hipsSplit) { _, split in
+              scenario[.hips]?.giveApron(split)
             }
         }
 

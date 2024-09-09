@@ -1,7 +1,6 @@
 @testable import KiltCalc
 import XCTest
 
-@MainActor
 final class ValidatingTextFieldTests: XCTestCase {
   func test_successfulParseThatPassesValidation_ReturnsValueAndEmptyMessage() throws {
     let (value, message) = ValidatingTextField.updateBoundValue(label: "Label", input: "3.5", validator: { _ in "" })

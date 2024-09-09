@@ -14,13 +14,13 @@ struct ApronPleatView: View {
         Section("Measurements") {
           MeasurementTable(measures: $measures)
             .padding([.top, .bottom], 6)
-            .onChange(of: measures.allowsScenarios) { _ in
+            .onChange(of: measures.allowsScenarios) {
               scenarios.changeScenarios(measures.allowsScenarios, measures)
             }
-            .onChange(of: measures.idealWaist) { _ in
+            .onChange(of: measures.idealWaist) {
               scenarios.changeScenarios(measures.allowsScenarios, measures)
             }
-            .onChange(of: measures.idealHips) { _ in
+            .onChange(of: measures.idealHips) {
               scenarios.changeScenarios(measures.allowsScenarios, measures)
             }
         }

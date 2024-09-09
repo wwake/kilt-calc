@@ -2,7 +2,6 @@ import EGTest
 @testable import KiltCalc
 import XCTest
 
-@MainActor
 final class PleatValidatorTests: XCTestCase {
   func test_GapMessage() {
     check([

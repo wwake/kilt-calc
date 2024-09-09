@@ -1,7 +1,6 @@
 @testable import KiltCalc
 import XCTest
 
-@MainActor
 final class ApronPleatSplitTests: XCTestCase {
   func test_SplitStartsInHalf() throws {
     let split = ApronPleatSplit(40)

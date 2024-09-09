@@ -2,7 +2,6 @@ import EGTest
 @testable import KiltCalc
 import XCTest
 
-@MainActor
 final class KiltMeasuresTests: XCTestCase {
   func test_StartingValuesNil() {
     let m = KiltMeasures()

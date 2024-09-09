@@ -2,7 +2,6 @@ import EGTest
 @testable import KiltCalc
 import XCTest
 
-@MainActor
 final class BoxPleatDesignerTests: XCTestCase {
   private let designer = PleatDesigner(PleatDesigner.boxPleat)
 

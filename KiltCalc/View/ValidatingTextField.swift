@@ -34,31 +34,31 @@ struct ValidatingTextField: View {
     }
   }
 
-  func updateForExternalChange(_ value: Value?) {
+  func updateForExternalChange(_ oldValue: Value?, _ newValue: Value?) {
     if isFocused { return }
-    if value == nil {
+    if newValue == nil {
       input = ""
       errorMessage = "Value is required"
     } else {
-      input = value!.formatted(.inches)
+      input = newValue!.formatted(.inches)
       errorMessage = ""
     }
   }
 
-  func updateForInternalChange(_ input: String) {
+  func updateForInternalChange(_ oldInput: String, _ newInput: String) {
     if !isFocused { return }
-    (value, errorMessage) = Self.updateBoundValue(label: label, input: input, validator: validator)
+    (value, errorMessage) = Self.updateBoundValue(label: label, input: newInput, validator: validator)
   }
 
-  func exitField(_ isFocused: Bool) {
-    if isFocused { return }
+  func exitField(_ oldIsFocused: Bool, _ newIsFocused: Bool) {
+    if newIsFocused { return }
     if value != nil {
       input = value!.formatted(.inches)
     }
   }
 
-  func enterSlash(_ pressed: Bool) {
-    if !isFocused || !pressed { return }
+  func enterSlash(_ oldPressed: Bool, _ newPressed: Bool) {
+    if !isFocused || !newPressed { return }
     input.append("/")
     slashIsPressed = false
   }
@@ -93,10 +93,10 @@ struct ValidatingTextField: View {
           .focused($isFocused)
           .multilineTextAlignment(.trailing)
           .keyboardType(.decimalPad)
-          .onChange(of: input, perform: updateForInternalChange)
-          .onChange(of: value, perform: updateForExternalChange)
-          .onChange(of: isFocused, perform: exitField)
-          .onChange(of: slashIsPressed, perform: enterSlash)
+          .onChange(of: input, updateForInternalChange)
+          .onChange(of: value, updateForExternalChange)
+          .onChange(of: isFocused, exitField)
+          .onChange(of: slashIsPressed, enterSlash)
 
         Text("in")
       }
