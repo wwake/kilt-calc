@@ -29,15 +29,17 @@ public class Calculator: ObservableObject {
 
   public var display: String {
     let trimmedInput = input.toString().trimmingCharacters(in: .whitespaces)
-    if !input.isEmpty {
-      return trimmedInput
+
+    if input.isEmpty || input.isJustValue {
+      return result.formatted(imperialFormatType)
     }
-    return result.formatted(imperialFormatType)
+    return trimmedInput
   }
 
   func clear() {
     result = .number(0)
     input.clear()
+    input.add(.value(Value.number(0), "0"))
   }
 
   func clearAllHistory() {
@@ -86,10 +88,12 @@ public class Calculator: ObservableObject {
       return
     }
 
+    let description = valueFormatter.format(imperialFormat.formatter, result)
     history.append(HistoryItem(
-      "\(input.toString()) = \(valueFormatter.format(imperialFormat.formatter, result))"
+      "\(input.toString()) = \(description)"
     ))
     input.clear()
+    input.add(.value(result, description))
   }
 
   func memoryClear() {
@@ -164,7 +168,10 @@ public class Calculator: ObservableObject {
 
     case .digit:
       let previousEntry = input.isEmpty ? nil : input.last
-      if previousEntry != nil, previousEntry!.isUnaryOperator {
+      if previousEntry != nil, previousEntry!.isValue() {
+        input.removeLast()
+        operand(entry)
+      } else if previousEntry != nil, previousEntry!.isUnaryOperator {
         input.removeLastIf { _ in true }
         operand(entry)
         input.add(previousEntry!)

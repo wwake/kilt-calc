@@ -215,6 +215,22 @@ final class CalculatorTests: XCTestCase {
     }
   }
 
+  func test_use_result_in_next_expression() {
+    check([
+      EG("42=+7=", expect: "49~", "add to previous value"),
+      EG("42=7=", expect: "7~", "new digits clears previous value"),
+    ]) {
+      let sut = Calculator()
+      let formatter = ImperialFormatter.asInches
+      _ = display($0.input, sut)
+      let memory = ValueFormatter().format(formatter, sut.memory)
+      let result = sut.display
+      let errorMessage = sut.errorMessage
+
+      EGAssertEqual("\(result)~\(errorMessage)", $0)
+    }
+  }
+
   func test_EqualsSavesExpressionText() {
     let (history, display) = expressionResult("1+2=", Calculator())
     XCTAssertEqual(history.last!.item, "1+2 = 3")
@@ -439,11 +455,12 @@ final class CalculatorTests: XCTestCase {
     check([
       EG("1+2=", expect: ("0", "3", ""), "Result doesn't change memory"),
       EG("9M+18+MR=", expect: ("9", "27", ""), "MR includes value"),
-      EG("9M+MR7=", expect: ("9", "9 7", "error - unbalanced parentheses or missing operators")),
+      EG("9M+MR7=", expect: ("9", "7", "")),
       EG("7M+MRMR", expect: ("7", "7", ""), "MR overwrites last number and displays value"),
       EG("9M+7MR=", expect: ("9", "9", ""), "MR overwrites last number and displays value"),
       EG("9M+7inM+", expect: ("9", "7 in", "error - mixing inches and numbers; memory left unchanged")),
 
+      EG("54M+MR7=", expect: ("54", "7", "")),
       EG("9M+7M+=", expect: ("16", "0", "")),
       EG("9M+7M-=", expect: ("2", "0", "")),
     ]) {

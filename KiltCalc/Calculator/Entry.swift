@@ -34,13 +34,18 @@ public enum Entry {
     return "X"
   }
 
+  public func isValue() -> Bool {
+    if case .value = self { return true }
+    return false
+  }
+
   public func isBinaryOperator() -> Bool {
-    if case .binary = self { return true}
+    if case .binary = self { return true }
     return false
   }
 
   public var isUnaryOperator: Bool {
-    if case .unary = self { return true}
+    if case .unary = self { return true }
     return false
   }
 
