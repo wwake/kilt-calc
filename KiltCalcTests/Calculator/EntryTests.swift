@@ -7,6 +7,7 @@ final class EntryTests: XCTestCase {
     XCTAssertTrue(Entry.dot.isOperand())
     XCTAssertTrue(Entry.unit(.inch).isOperand())
     XCTAssertTrue(Entry.slash.isOperand())
+    XCTAssertTrue(Entry.value(Value.number(3.0), "3").isOperand())
     XCTAssertFalse(Entry.leftParend.isOperand())
   }
 }

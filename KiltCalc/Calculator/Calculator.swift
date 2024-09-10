@@ -135,6 +135,7 @@ public class Calculator: ObservableObject {
   }
 
   public func memoryRecall() {
+    input.removeLastWhile { $0.isOperand() }
     input.add(.value(
       memory,
       "\(valueFormatter.format(imperialFormat.formatter, memory)) "

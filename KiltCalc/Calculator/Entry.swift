@@ -54,6 +54,7 @@ public enum Entry {
     if case .dot = self { return true }
     if case .unit = self { return true }
     if case .slash = self { return true }
+    if case .value = self { return true }
     return false
   }
 }

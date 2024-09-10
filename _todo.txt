@@ -1,8 +1,9 @@
-* Button feedback
-* Two MR in a row acts funny
-* If you finish a sum, you can't just do "+ 7 =" to add to it
-* When can you store to memory?
-* That annoying keyboard problem!
+* Test removeLastWhile
+* when adding a digit, removeLastIf value?
+* After you calculate a value, be able to treat it as present in the next expression. Eg., "42=+7=" yields 49 (not "error")
+* When can you store to memory? [A: when the expression is legal]
+
+* That annoying keyboard problem! - compare our FractionKeyboard to https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-a-toolbar-to-the-keyboard
 
 * "Caution" startup screen
 * "Z" key ??
@@ -47,16 +48,21 @@ Syntax
 
 * Accessibility
 * I18N
+* Button feedback - currently shrinks only for medium press
 
 Packaging
 
-CALC-24-01: 2024-09-08 - Restart the Project
+CALC-24-02: 2024-09-10
+* Test isOperand (for value)
+
+CALC-24-01: 2024-09-09 - Restart the Project
 * Walkthrough features, explore problems
 * MudShark666: "I'm still a bit curious how the hip/waist measures is carried over to the pleat? The pleat designer only have a hip measure..." - Ask! Answer: they recalculate with the waist number and put the pleat count to what they had before. [Opportunity for improvement.]
 * Remove warnings (deprecated onChange, no longer use @MainActor on tests)
 * Upgrade EGTest to 0.5.0
 * Upgrade target to ios 17.5
 * Show the memory contents
+* Make MR replace latest digits (if any) before inserting value
 
 2024-06-20:
 * Remove warnings (but leaving deprecated onChange)

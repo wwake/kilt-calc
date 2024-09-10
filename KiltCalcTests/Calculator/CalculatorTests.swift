@@ -426,7 +426,7 @@ final class CalculatorTests: XCTestCase {
       EG("42M+MC", expect: "0", "Memory can clear"),
       EG("9M+C", expect: "9", "Clear doesn't clear Memory"),
 
-      EG("9M+18+MR=", expect: "9", "Clear doesn't clear Memory"),
+      EG("9M+18+MR=", expect: "9", "MR doesn't clear Memory"),
     ]) {
       let calc = Calculator()
       _ = display($0.input, calc)
@@ -438,10 +438,10 @@ final class CalculatorTests: XCTestCase {
   func test_MemoryPlusMinusAndResult() {
     check([
       EG("1+2=", expect: ("0", "3", ""), "Result doesn't change memory"),
-      EG("7M+MRMR", expect: ("7", "7 7", ""), "MR shows value"),
       EG("9M+18+MR=", expect: ("9", "27", ""), "MR includes value"),
       EG("9M+MR7=", expect: ("9", "9 7", "error - unbalanced parentheses or missing operators")),
-      EG("9M+7MR=", expect: ("9", "79", "error - unbalanced parentheses or missing operators")),
+      EG("7M+MRMR", expect: ("7", "7", ""), "MR overwrites last number and displays value"),
+      EG("9M+7MR=", expect: ("9", "9", ""), "MR overwrites last number and displays value"),
       EG("9M+7inM+", expect: ("9", "7 in", "error - mixing inches and numbers; memory left unchanged")),
 
       EG("9M+7M+=", expect: ("16", "0", "")),

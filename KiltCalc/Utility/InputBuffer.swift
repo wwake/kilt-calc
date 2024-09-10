@@ -31,6 +31,12 @@ public struct InputBuffer: Sequence {
     }
   }
 
+  public mutating func removeLastWhile(_ condition: (Entry) -> Bool) {
+    while !isEmpty && condition(last) {
+      elements.removeLast()
+    }
+  }
+
   public mutating func clear() {
     elements.removeAll()
   }
