@@ -55,7 +55,7 @@ public class Calculator: ObservableObject {
   }
 
   private func backspace() {
-    input.removeLastIf({ _ in true })
+    input.removeLast()
   }
 
   private func operand(_ entry: Entry) {
@@ -172,7 +172,7 @@ public class Calculator: ObservableObject {
         input.removeLast()
         operand(entry)
       } else if previousEntry != nil, previousEntry!.isUnaryOperator {
-        input.removeLastIf { _ in true }
+        input.removeLast()
         operand(entry)
         input.add(previousEntry!)
       } else {
