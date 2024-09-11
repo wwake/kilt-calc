@@ -1,5 +1,34 @@
 import SwiftUI
 
+private struct NewFractionKeyboard: ViewModifier {
+  @Binding var slashIsPressed: Bool
+
+  func body(content: Content) -> some View {
+    content
+      .toolbar {
+        ToolbarItem(placement: .keyboard) {
+          HStack {
+            Button("Done") {
+              //focusedField.wrappedValue = nil
+            }
+            Spacer()
+            Button(action: { slashIsPressed = true }) {
+              HStack {
+                Spacer()
+                Text("/")
+                  .bold()
+                Spacer()
+              }
+              .padding(2)
+              .background(Color.green)
+              .frame(width: 100)
+            }
+          }
+        }
+      }
+  }
+}
+
 private struct FractionKeyboard<FOCUS: Hashable>: ViewModifier {
   @Binding var slashIsPressed: Bool
   var focusedField: FocusState<FOCUS?>.Binding
@@ -8,7 +37,7 @@ private struct FractionKeyboard<FOCUS: Hashable>: ViewModifier {
   func body(content: Content) -> some View {
     content
       .toolbar {
-        ToolbarItem(placement: .keyboard) {
+        ToolbarItemGroup(placement: .keyboard) {
           HStack {
             Button("Done") {
               focusedField.wrappedValue = nil
@@ -21,8 +50,15 @@ private struct FractionKeyboard<FOCUS: Hashable>: ViewModifier {
                   .bold()
                 Spacer()
               }
-              .padding(2)
-              .background(Color.white)
+              .padding(4)
+              .background(
+                  RoundedRectangle(
+                      cornerRadius: 10,
+                      style: .continuous
+                  )
+                  .fill(.white)
+                  .stroke(.gray, lineWidth: 1)
+              )
               .frame(width: 100)
             }
           }
