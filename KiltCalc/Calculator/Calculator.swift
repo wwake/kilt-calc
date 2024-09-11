@@ -30,7 +30,7 @@ public class Calculator: ObservableObject {
   public var display: String {
     let trimmedInput = input.toString().trimmingCharacters(in: .whitespaces)
 
-    if input.isEmpty || input.isJustValue {
+    if input.isEmpty {
       return result.formatted(imperialFormatType)
     }
     return trimmedInput
@@ -39,7 +39,6 @@ public class Calculator: ObservableObject {
   func clear() {
     result = .number(0)
     input.clear()
-    input.add(.value(Value.number(0), "0"))
   }
 
   func clearAllHistory() {
@@ -93,7 +92,6 @@ public class Calculator: ObservableObject {
       "\(input.toString()) = \(description)"
     ))
     input.clear()
-    input.add(.value(result, description))
   }
 
   func memoryClear() {
@@ -146,7 +144,26 @@ public class Calculator: ObservableObject {
     ))
   }
 
+  fileprivate func shouldRetainResult(_ entry: Entry) -> Bool {
+    guard input.count == 0 else {
+      return false
+    }
+
+    switch entry {
+    case .equals, .binary, .memoryAdd, .memorySubtract:
+      return true
+
+    default:
+      return false
+    }
+  }
+
   public func enter(_ entry: Entry) {
+    if shouldRetainResult(entry) {
+      let description = valueFormatter.format(imperialFormat.formatter, result)
+      input.add(.value(result, description))
+    }
+
     switch entry {
     case .clear:
       clear()

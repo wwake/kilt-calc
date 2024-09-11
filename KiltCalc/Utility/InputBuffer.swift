@@ -31,15 +31,6 @@ public struct InputBuffer: Sequence {
     }
   }
 
-  public var isJustValue: Bool {
-    if count == 1 {
-      if case .value = last {
-        return true
-      }
-    }
-    return false
-  }
-
   public mutating func removeLastIf(_ condition: (Entry) -> Bool) {
     if !isEmpty && condition(last) {
       elements.removeLast()

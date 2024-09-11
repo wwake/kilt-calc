@@ -1,3 +1,5 @@
+* Insert previous result only for certain keystrokes
+  - equals, binary op, mem add (maybe), mem sub (maybe)
 * After you calculate a value, be able to treat it as present in the next expression. Eg., "42=+7=" yields 49 (not "error")
 * When can you store to memory? [A: when the expression is legal]
 

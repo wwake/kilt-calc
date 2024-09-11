@@ -215,10 +215,15 @@ final class CalculatorTests: XCTestCase {
     }
   }
 
-  func test_use_result_in_next_expression() {
+  func test_result_in_next_expression() {
     check([
-      EG("42=+7=", expect: "49~", "add to previous value"),
-      EG("42=7=", expect: "7~", "new digits clears previous value"),
+      EG("42=7=", expect: "7~0~", "new digits clears previous result"),
+      EG("42=M+17MR=", expect: "42~42~", "MR clears previous result"),
+      EG("42==", expect: "42~0~", "retain calculated after '='"),
+      EG("42=+7=", expect: "49~0~", "add to previous result"),
+      EG("42=M++3=", expect: "45~42~", "add to previous result"),
+      EG("42=M-+3=", expect: "45~-42~", "add to previous result"),
+      EG("42=M+MC+17=", expect: "59~0~", "MC doesn't affect previous result"),
     ]) {
       let sut = Calculator()
       let formatter = ImperialFormatter.asInches
@@ -227,7 +232,7 @@ final class CalculatorTests: XCTestCase {
       let result = sut.display
       let errorMessage = sut.errorMessage
 
-      EGAssertEqual("\(result)~\(errorMessage)", $0)
+      EGAssertEqual("\(result)~\(memory)~\(errorMessage)", $0)
     }
   }
 
@@ -461,8 +466,8 @@ final class CalculatorTests: XCTestCase {
       EG("9M+7inM+", expect: ("9", "7 in", "error - mixing inches and numbers; memory left unchanged")),
 
       EG("54M+MR7=", expect: ("54", "7", "")),
-      EG("9M+7M+=", expect: ("16", "0", "")),
-      EG("9M+7M-=", expect: ("2", "0", "")),
+      EG("9M+7M+=", expect: ("16", "7", "")),
+      EG("9M+7M-=", expect: ("2", "7", "")),
     ]) {
       let calc = Calculator()
       let formatter = ImperialFormatter.asInches
