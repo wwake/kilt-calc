@@ -30,11 +30,14 @@ public struct PleatCountView<DESIGNER: PleatDesigner>: View {
 
   public var body: some View {
     VStack {
+      Text("Per Pleat Split")
+        .font(.body)
+
       HStack {
         Spacer()
 
         ValidatingTextField(
-          label: "Ideal Hip",
+          label: "Hip or Waist",
           value: $designer.idealHip,
           validator: PleatValidator.positive,
           slashIsPressed: $slashIsPressed
@@ -43,10 +46,11 @@ public struct PleatCountView<DESIGNER: PleatDesigner>: View {
 
         Spacer()
       }
+      .padding([.bottom], 6)
 
       HStack {
         Spacer()
-        Text("Adjusted Hip Size")
+        Text("Adjusted Size")
         Text(formatOptional(designer.adjustedHip))
         Text("in")
         Spacer()
