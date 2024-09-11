@@ -16,24 +16,18 @@ private struct FractionKeyboard<FOCUS: Hashable>: ViewModifier {
               focusedField.wrappedValue = nil
             }
             Spacer()
-            Button(action: { slashIsPressed = true }) {
-              HStack {
-                Spacer()
-                Text("/")
-                  .bold()
-                Spacer()
-              }
-              .padding(4)
-              .background(
-                  RoundedRectangle(
-                      cornerRadius: 5,
-                      style: .continuous
-                  )
-                  .fill(.white)
-                  .stroke(.gray, lineWidth: 1)
-              )
-              .frame(width: 105)
+            Button("/") {
+              slashIsPressed = true
             }
+            .frame(width: 105)
+            .background(
+              RoundedRectangle(
+                cornerRadius: 5,
+                style: .continuous
+              )
+              .fill(.white)
+              .stroke(.gray, lineWidth: 1)
+            )
           }
         }
       }

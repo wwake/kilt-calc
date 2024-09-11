@@ -1,13 +1,13 @@
-* That annoying keyboard problem! - compare our FractionKeyboard to https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-a-toolbar-to-the-keyboard
+* "Caution" startup screen (sheet or alert?)
+* Tweak error messages to drop "error - "
 
-* "Caution" startup screen
+* ValidatingTextField works hard to track slashIsEntered; can we just pass $input to keyboard and avoid all that?
+
 * "Z" key ??
 
-* Eliminate warnings
 * When switching box pleat vs knife pleat, reset to "ideal" pleat size
 * Apron/pleat sliders spread beyond width of screen
 * Provide a way to remove splits
-* Number keypad and Done and "/" - sometimes get stuck without Done button. grr
 Misc
 
 * Double-check rules - book examples seemed to consistently violate them
@@ -53,7 +53,8 @@ CALC-24-03: 2024-09-11 - Input vs Result
 * After you calculate a value, be able to treat it as present in the next expression. Eg., "42=+7=" yields 49 (not "error")
 * When can you store to memory? [A: when the expression is legal]
 * "Ideal Hip" => "Per Pleat Split: Hip or Waist""
-
+* Made our toolbar hold a ToolbarItemGroup but we *still* have that annoying keyboard problem! - https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-a-toolbar-to-the-keyboard
+  + Problem: keyboard sometimes appears without toolbar; toolbar sometimes appears without keyboard.
 
 CALC-24-02: 2024-09-10 - Use Result as Initial Expression
 * Test isOperand (for value)
