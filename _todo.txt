@@ -1,6 +1,4 @@
-
 * "Caution" startup screen (sheet or alert?)
-* Error - enter hip 2.4/8; go to sett; if "done" and "/" are missing from toolbar, press 0. It blows up w/ divide by 0.
 * ValidatingTextField works hard to track slashIsEntered; can we just pass $input to it and avoid all that?
 
 * "Z" key ??
@@ -46,6 +44,9 @@ Syntax
 * Button feedback - currently shrinks only for medium press
 
 Packaging
+
+CALC-24-04: 2024-09-12 - First-Time Alert
+* Error - enter hip 2.4/8; go to sett; if "done" and "/" are missing from toolbar, press 0. It blows up w/ divide by 0.
 
 CALC-24-03: 2024-09-11 - Input vs Result
 * Insert previous result only for certain keystrokes

@@ -25,7 +25,10 @@ public class PleatDesigner: ObservableObject {
   var equations = PleatEquations()
 
   public var needsRequiredValues: Bool {
-    idealHip == nil || idealHip!.asDouble < 1 || pleatFabric == nil
+       idealHip == nil
+    || idealHip!.asDouble < 1
+    || pleatFabric == nil
+    || pleatFabric! < 1
   }
 
   func updateCountAndWidth() {

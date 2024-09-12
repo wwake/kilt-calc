@@ -12,6 +12,8 @@ public struct ContentView: View {
 
   @StateObject var tartan = TartanDesign()
 
+  @State var showCaution = true
+
   @AppStorage("topLevelTab")
   var topLevelTab: TopLevelTab = .calculator
 
@@ -44,6 +46,9 @@ public struct ContentView: View {
         Label("Pleats", systemImage: "rectangle.split.3x1")
       }
       .tag(TopLevelTab.pleats)
+    }
+    .sheet(isPresented: $showCaution) {
+      CautionView()
     }
     .preferredColorScheme(.light)
   }
