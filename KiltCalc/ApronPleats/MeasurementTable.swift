@@ -11,8 +11,6 @@ struct MeasurementTable: View {
 
   @Binding var measures: KiltMeasures
 
-  @State private var slashIsPressed = false
-
   @FocusState private var focusedField: MeasurementFocus?
 
   func optionalQuarters(_ value: Double?) -> String {

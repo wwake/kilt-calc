@@ -7,8 +7,6 @@ public struct PleatView: View {
 
   @ObservedObject public var designer: PleatDesigner
 
-  @State private var slashIsPressed = false
-
   @FocusState private var focusedField: PleatCountFocus?
 
   enum PleatStyle: String, CaseIterable, Identifiable {
@@ -28,7 +26,6 @@ public struct PleatView: View {
         Section("Tartan") {
           TartanView(
             tartan: tartan,
-            slashIsPressed: $slashIsPressed,
             focusedField: $focusedField
           )
           .onChange(of: tartan.pleatFabric) {
@@ -39,7 +36,6 @@ public struct PleatView: View {
         Section("Pleats") {
           PleatCountView(
             designer: designer,
-            slashIsPressed: $slashIsPressed,
             focusedField: $focusedField
           )
         }

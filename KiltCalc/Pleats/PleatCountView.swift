@@ -8,16 +8,13 @@ enum PleatCountFocus: Int, CaseIterable, Equatable {
 
 public struct PleatCountView<DESIGNER: PleatDesigner>: View {
   @ObservedObject var designer: DESIGNER
-  @Binding private var slashIsPressed: Bool
   private var focusedField: FocusState<PleatCountFocus?>.Binding
 
   init(
     designer: DESIGNER,
-    slashIsPressed: Binding<Bool>,
     focusedField: FocusState<PleatCountFocus?>.Binding
   ) {
     self.designer = designer
-    self._slashIsPressed = slashIsPressed
     self.focusedField = focusedField
   }
 

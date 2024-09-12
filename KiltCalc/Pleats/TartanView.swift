@@ -2,7 +2,6 @@ import SwiftUI
 
 public struct TartanView: View {
   @ObservedObject var tartan: TartanDesign
-  @Binding var slashIsPressed: Bool
   var focusedField: FocusState<PleatCountFocus?>.Binding
 
   public var body: some View {
@@ -36,6 +35,6 @@ struct TartanView_Previews: PreviewProvider {
   @FocusState private static var focusedField: PleatCountFocus?
 
   static var previews: some View {
-    TartanView(tartan: TartanDesign(), slashIsPressed: .constant(false), focusedField: $focusedField)
+    TartanView(tartan: TartanDesign(), focusedField: $focusedField)
   }
 }
