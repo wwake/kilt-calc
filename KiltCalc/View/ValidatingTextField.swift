@@ -77,6 +77,9 @@ struct ValidatingTextField: View {
       HStack {
         Text(label)
           .bold()
+          .lineLimit(1)
+          .minimumScaleFactor(0.75)
+          .frame(minWidth: 80)
 
         TextField(label, text: $input.animation())
           .frame(width: 100)

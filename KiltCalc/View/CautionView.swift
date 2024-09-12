@@ -26,12 +26,6 @@ public struct CautionView: View {
         .lineLimit(nil)
         .padding([.bottom], 6)
 
-        Text(verbatim: "There is a known issue with the numeric keyboard - if the 'Done' and '/' buttons disappear, " +
-             "please double-click the home button, flick away the open " +
-             "version, and click on the app icon again to reactivate it.")
-        .lineLimit(nil)
-        .padding([.bottom], 6)
-
         Text(verbatim: "I'd welcome any feedback or suggestions at bill@xp123.com")
           .lineLimit(nil)
           .padding([.bottom], 6)
