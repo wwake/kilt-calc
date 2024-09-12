@@ -1,17 +1,9 @@
 import SwiftUI
 
-private enum MeasurementFocus: Int, CaseIterable, Equatable {
-  case waistField,
-       hipsField,
-       lengthField
-}
-
 struct MeasurementTable: View {
   let textfieldWidth = 64.0
 
   @Binding var measures: KiltMeasures
-
-  @FocusState private var focusedField: MeasurementFocus?
 
   func optionalQuarters(_ value: Double?) -> String {
     if value == nil { return "" }
@@ -34,7 +26,6 @@ struct MeasurementTable: View {
           value: $measures.actualWaist,
           validator: { _ in "" }
         )
-        .focused($focusedField, equals: .waistField)
 
         Text("\(optionalQuarters(measures.idealWaist))")
       }
@@ -45,7 +36,6 @@ struct MeasurementTable: View {
           value: $measures.actualHips,
           validator: { _ in "" }
         )
-        .focused($focusedField, equals: .hipsField)
 
         Text("\(optionalQuarters(measures.idealHips))")
       }
@@ -56,7 +46,6 @@ struct MeasurementTable: View {
           value: $measures.actualLength,
           validator: { _ in "" }
         )
-        .focused($focusedField, equals: .lengthField)
 
         Text("\(optionalQuarters(measures.idealLength))")
       }

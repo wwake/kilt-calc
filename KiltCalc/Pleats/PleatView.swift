@@ -7,8 +7,6 @@ public struct PleatView: View {
 
   @ObservedObject public var designer: PleatDesigner
 
-  @FocusState private var focusedField: PleatCountFocus?
-
   enum PleatStyle: String, CaseIterable, Identifiable {
     case box = "Box / Military", knife = "Knife"
     var id: Self { self }
@@ -24,20 +22,14 @@ public struct PleatView: View {
     NavigationView {
       List {
         Section("Tartan") {
-          TartanView(
-            tartan: tartan,
-            focusedField: $focusedField
-          )
+          TartanView(tartan: tartan)
           .onChange(of: tartan.pleatFabric) {
             designer.pleatFabric = tartan.pleatFabric
           }
         }
 
         Section("Pleats") {
-          PleatCountView(
-            designer: designer,
-            focusedField: $focusedField
-          )
+          PleatCountView(designer: designer)
         }
 
         Picker("Pleat Type", selection: $selectedPleat) {
@@ -58,7 +50,6 @@ public struct PleatView: View {
             validator: PleatValidator.positiveSmaller(designer.pleatFabric),
             disabled: designer.needsRequiredValues
           )
-          .focused($focusedField, equals: .pleatWidth)
           .foregroundColor(designer.needsRequiredValues ? Color.gray : Color.black)
 
           switch selectedPleat {

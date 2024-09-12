@@ -8,14 +8,9 @@ enum PleatCountFocus: Int, CaseIterable, Equatable {
 
 public struct PleatCountView<DESIGNER: PleatDesigner>: View {
   @ObservedObject var designer: DESIGNER
-  private var focusedField: FocusState<PleatCountFocus?>.Binding
 
-  init(
-    designer: DESIGNER,
-    focusedField: FocusState<PleatCountFocus?>.Binding
-  ) {
+  init(designer: DESIGNER) {
     self.designer = designer
-    self.focusedField = focusedField
   }
 
   func formatOptional(_ value: Value?) -> String {
@@ -38,7 +33,6 @@ public struct PleatCountView<DESIGNER: PleatDesigner>: View {
           value: $designer.idealHip,
           validator: PleatValidator.positive
         )
-        .focused(focusedField, equals: .idealHip)
 
         Spacer()
       }
@@ -58,10 +52,7 @@ public struct PleatCountView<DESIGNER: PleatDesigner>: View {
           Stepper(
             "#Pleats:   \(designer.pleatCount)",
             value: $designer.pleatCount,
-            in: 3...40,
-            onEditingChanged: {_ in
-              self.focusedField.wrappedValue = nil
-            }
+            in: 3...40
           )
           .frame(width: 200)
           .padding([.leading, .trailing], 12)
