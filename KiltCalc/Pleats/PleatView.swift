@@ -60,7 +60,6 @@ public struct PleatView: View {
             label: "Width",
             value: $designer.pleatWidth,
             validator: PleatValidator.positiveSmaller(designer.pleatFabric),
-            slashIsPressed: $slashIsPressed,
             disabled: designer.needsRequiredValues
           )
           .focused($focusedField, equals: .pleatWidth)
@@ -100,7 +99,6 @@ public struct PleatView: View {
         .resizable()
         .ignoresSafeArea()
       )
-      .fractionKeyboard(slashIsPressed: $slashIsPressed, focusedField: $focusedField)
       .navigationTitle("Pleats")
     }
   }

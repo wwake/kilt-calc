@@ -7,14 +7,18 @@ public struct TartanView: View {
 
   public var body: some View {
     VStack {
-      ValidatingTextField(
-        label: "Sett",
-        value: $tartan.sett,
-        validator: PleatValidator.positive,
-        slashIsPressed: $slashIsPressed
-      )
-      .focused(focusedField, equals: PleatCountFocus.sett)
-      .padding([.trailing], 116)
+      HStack {
+        Spacer()
+
+        ValidatingTextField(
+          label: "Sett Size",
+          value: $tartan.sett,
+          validator: PleatValidator.positive
+        )
+        .focused(focusedField, equals: PleatCountFocus.sett)
+
+        Spacer()
+      }
 
       TartanDrawing(highlight: tartan.settsPerPleat)
 

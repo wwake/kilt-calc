@@ -34,8 +34,7 @@ struct MeasurementTable: View {
         ValidatingTextField(
           label: "Waist",
           value: $measures.actualWaist,
-          validator: { _ in "" },
-          slashIsPressed: $slashIsPressed
+          validator: { _ in "" }
         )
         .focused($focusedField, equals: .waistField)
 
@@ -46,8 +45,7 @@ struct MeasurementTable: View {
         ValidatingTextField(
           label: "Hips",
           value: $measures.actualHips,
-          validator: { _ in "" },
-          slashIsPressed: $slashIsPressed
+          validator: { _ in "" }
         )
         .focused($focusedField, equals: .hipsField)
 
@@ -58,15 +56,13 @@ struct MeasurementTable: View {
         ValidatingTextField(
           label: "Length",
           value: $measures.actualLength,
-          validator: { _ in "" },
-          slashIsPressed: $slashIsPressed
+          validator: { _ in "" }
         )
         .focused($focusedField, equals: .lengthField)
 
         Text("\(optionalQuarters(measures.idealLength))")
       }
     }
-    .fractionKeyboard(slashIsPressed: $slashIsPressed, focusedField: $focusedField)
   }
 }
 

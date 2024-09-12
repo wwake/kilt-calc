@@ -39,8 +39,7 @@ public struct PleatCountView<DESIGNER: PleatDesigner>: View {
         ValidatingTextField(
           label: "Hip or Waist",
           value: $designer.idealHip,
-          validator: PleatValidator.positive,
-          slashIsPressed: $slashIsPressed
+          validator: PleatValidator.positive
         )
         .focused(focusedField, equals: .idealHip)
 

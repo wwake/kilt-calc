@@ -4,7 +4,6 @@ struct ValidatingTextField: View {
   var label: String
   @Binding var value: Value?
   var validator: (Value?) -> String
-  @Binding var slashIsPressed: Bool
   var disabled: Bool
 
   @FocusState private var isFocused: Bool
@@ -16,12 +15,10 @@ struct ValidatingTextField: View {
     label: String,
     value: Binding<Value?>,
     validator: @escaping (Value?) -> String,
-    slashIsPressed: Binding<Bool>,
     disabled: Bool = false
   ) {
     self.label = label
     self.validator = validator
-    self._slashIsPressed = slashIsPressed
     self.disabled = disabled
 
     self._value = value
@@ -57,12 +54,6 @@ struct ValidatingTextField: View {
     }
   }
 
-  func enterSlash(_ oldPressed: Bool, _ newPressed: Bool) {
-    if !isFocused || !newPressed { return }
-    input.append("/")
-    slashIsPressed = false
-  }
-
   static func updateBoundValue(
     label: String,
     input: String,
@@ -92,11 +83,12 @@ struct ValidatingTextField: View {
           .textFieldStyle(RoundedBorderTextFieldStyle())
           .focused($isFocused)
           .multilineTextAlignment(.trailing)
-          .keyboardType(.decimalPad)
+          .keyboardType(.numbersAndPunctuation)
+          .autocorrectionDisabled()
+          .submitLabel(.done)
           .onChange(of: input, updateForInternalChange)
           .onChange(of: value, updateForExternalChange)
           .onChange(of: isFocused, exitField)
-          .onChange(of: slashIsPressed, enterSlash)
 
         Text("in")
       }

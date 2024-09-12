@@ -85,7 +85,7 @@ struct BoxPleatDrawing: View {
 
       if gap.shouldDraw {
         DimensionLine()
-          .frame(width: pleatPixels * abs(gap.ratio), height: 10)
+          .frame(width: min(0, pleatPixels * abs(gap.ratio)), height: 10)
           .padding([.top], 8)
 
         Text(gap.label)
