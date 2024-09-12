@@ -27,7 +27,7 @@ public struct ValueParseStrategy: ParseStrategy {
     }
 
     if numbers.count != units.count {
-      throw "numbers and units don't match"
+      throw "Numbers and units don't match"
     }
 
     var inches = 0.0
@@ -45,7 +45,7 @@ public struct ValueParseStrategy: ParseStrategy {
       .split(separator: unitCharacters)
       .map { try Self.parseNumber(String($0)) }
 
-    if numbers.isEmpty { throw "no value found" }
+    if numbers.isEmpty { throw "No value found" }
 
     return numbers
   }

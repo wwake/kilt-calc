@@ -192,12 +192,12 @@ final class CalculatorTests: XCTestCase {
 
   func test_ErrorUnitsAndOperations() {
     check([
-      EG("5 ft 2 =", expect: "numbers and units don't match", "more numbers than units"),
+      EG("5 ft 2 =", expect: "Numbers and units don't match", "more numbers than units"),
 
-      EG("((3+2)=", expect: "error - unbalanced parentheses"),
-      EG("1+(3+4))=", expect: "error - unbalanced parentheses"),
-      EG(")1+2=", expect: "error - unbalanced parentheses"),
-      EG(")1+2(=", expect: "error - unbalanced parentheses"),
+      EG("((3+2)=", expect: "Unbalanced parentheses"),
+      EG("1+(3+4))=", expect: "Unbalanced parentheses"),
+      EG(")1+2=", expect: "Unbalanced parentheses"),
+      EG(")1+2(=", expect: "Unbalanced parentheses"),
     ]) {
       let calc = Calculator()
       _ = display($0.input, calc)
@@ -318,12 +318,12 @@ final class CalculatorTests: XCTestCase {
 
   func test_invalidComputations() {
     check([
-      EG("3in6=", expect: "numbers and units don't match"),
-      EG("3+6in=", expect: "error - mixing inches and numbers"),
-      EG("3in+6=", expect: "error - mixing inches and numbers"),
-      EG("9*=", expect: "expression can't end with an operator"),
-      EG("6in~4=", expect: "numbers and units don't match", "digit after unary op on unit stays there"),
-      EG("~=", expect: "no value found"),
+      EG("3in6=", expect: "Numbers and units don't match"),
+      EG("3+6in=", expect: "Mixing inches and numbers"),
+      EG("3in+6=", expect: "Mixing inches and numbers"),
+      EG("9*=", expect: "Expression can't end with an operator"),
+      EG("6in~4=", expect: "Numbers and units don't match", "digit after unary op on unit stays there"),
+      EG("~=", expect: "No value found"),
     ]) {
       let calc = Calculator()
       _ = display($0.input, calc)
@@ -354,19 +354,19 @@ final class CalculatorTests: XCTestCase {
   func test_TooManyLeftParends() {
     let calc = Calculator()
     _ = display("(=", calc)
-    XCTAssertEqual(calc.errorMessage, "error - unbalanced parentheses")
+    XCTAssertEqual(calc.errorMessage, "Unbalanced parentheses")
   }
 
   func test_TooManyRightParends() {
     let calc = Calculator()
     _ = display(")=", calc)
-    XCTAssertEqual(calc.errorMessage, "error - unbalanced parentheses")
+    XCTAssertEqual(calc.errorMessage, "Unbalanced parentheses")
   }
 
   func test_EmptyParends() {
     let calc = Calculator()
     _ = display("1-()=", calc)
-    XCTAssertEqual(calc.errorMessage, "error - unbalanced parentheses")
+    XCTAssertEqual(calc.errorMessage, "Unbalanced parentheses")
   }
 
   func test_UnitDisplayMode() {
@@ -463,7 +463,7 @@ final class CalculatorTests: XCTestCase {
       EG("9M+MR7=", expect: ("9", "7", "")),
       EG("7M+MRMR", expect: ("7", "7", ""), "MR overwrites last number and displays value"),
       EG("9M+7MR=", expect: ("9", "9", ""), "MR overwrites last number and displays value"),
-      EG("9M+7inM+", expect: ("9", "7 in", "error - mixing inches and numbers; memory left unchanged")),
+      EG("9M+7inM+", expect: ("9", "7 in", "Mixing inches and numbers; memory left unchanged")),
 
       EG("54M+MR7=", expect: ("54", "7", "")),
       EG("9M+7M+=", expect: ("16", "7", "")),
@@ -509,7 +509,7 @@ final class CalculatorTests: XCTestCase {
 
     XCTAssertEqual(calc.display, "7 in +4")
     XCTAssertEqual(calc.memory, Value.number(0))
-    XCTAssertEqual(calc.errorMessage, "error - mixing inches and numbers")
+    XCTAssertEqual(calc.errorMessage, "Mixing inches and numbers")
 
     XCTAssertEqual(calc.history.count, 0)
   }
@@ -521,7 +521,7 @@ final class CalculatorTests: XCTestCase {
 
     XCTAssertEqual(calc.display, "4")
     XCTAssertEqual(calc.memory, Value.inches(7))
-    XCTAssertEqual(calc.errorMessage, "error - mixing inches and numbers; memory left unchanged")
+    XCTAssertEqual(calc.errorMessage, "Mixing inches and numbers; memory left unchanged")
 
     XCTAssertEqual(calc.history.count, 1)
   }

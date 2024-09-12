@@ -15,12 +15,12 @@ final class ValueTests: XCTestCase {
       EG((Value.number(5), Value.number(2)), expect: .number(7)),
       EG((Value.inches(50), Value.inches(2)), expect: .inches(52)),
 
-      EG((Value.number(5), Value.inches(2)), expect: .error("error - mixing inches and numbers")),
+      EG((Value.number(5), Value.inches(2)), expect: .error("Mixing inches and numbers")),
       EG((Value.number(0), Value.inches(2)), expect: .inches(2)),
       EG((Value.number(6), Value.inches(0)), expect: .number(6)),
       EG((Value.number(0), Value.inches(0)), expect: .number(0)),
 
-      EG((Value.inches(5), Value.number(2)), expect: .error("error - mixing inches and numbers")),
+      EG((Value.inches(5), Value.number(2)), expect: .error("Mixing inches and numbers")),
       EG((Value.inches(0), Value.number(2)), expect: .number(2)),
       EG((Value.inches(2), Value.number(0)), expect: .inches(2)),
       EG((Value.inches(0), Value.number(0)), expect: .number(0)),
@@ -43,12 +43,12 @@ final class ValueTests: XCTestCase {
       EG((Value.number(5), Value.number(2)), expect: .number(3)),
       EG((Value.inches(50), Value.inches(2)), expect: .inches(48)),
 
-      EG((Value.number(5), Value.inches(2)), expect: .error("error - mixing inches and numbers")),
+      EG((Value.number(5), Value.inches(2)), expect: .error("Mixing inches and numbers")),
       EG((Value.number(0), Value.inches(2)), expect: .inches(-2)),
       EG((Value.number(6), Value.inches(0)), expect: .number(6)),
       EG((Value.number(0), Value.inches(0)), expect: .number(0)),
 
-      EG((Value.inches(5), Value.number(2)), expect: .error("error - mixing inches and numbers")),
+      EG((Value.inches(5), Value.number(2)), expect: .error("Mixing inches and numbers")),
       EG((Value.inches(0), Value.number(2)), expect: .number(-2)),
       EG((Value.inches(2), Value.number(0)), expect: .inches(2)),
       EG((Value.inches(0), Value.number(0)), expect: .number(0)),
@@ -86,7 +86,7 @@ final class ValueTests: XCTestCase {
   func test_InchesTimesInches_isErrorExcept0() {
     XCTAssertEqual(
       Value.inches(5).times(Value.inches(3)),
-      Value.error("error - can't handle square inches")
+      Value.error("Can't handle square inches")
     )
 
     XCTAssertEqual(
@@ -126,7 +126,7 @@ final class ValueTests: XCTestCase {
   func test_NumberDividedByInches_isErrorExcept0() {
     XCTAssertEqual(
       Value.number(52).divide(Value.inches(2)),
-      Value.error("error - can't divide number by inches")
+      Value.error("Can't divide number by inches")
     )
     XCTAssertEqual(
       Value.number(0).divide(Value.inches(2)),

@@ -5,7 +5,7 @@ import XCTest
 final class ValueParseStrategyTests: XCTestCase {
   func test_NoNumberIsError() throws {
     let input = ""
-    let expected = "no value found"
+    let expected = "No value found"
 
     XCTAssertThrowsError(
       try ValueParseStrategy().parse(input),

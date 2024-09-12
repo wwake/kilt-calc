@@ -69,7 +69,7 @@ extension Value {
       } else if a == 0 {
         return other
       }
-      return .error("error - mixing inches and numbers")
+      return .error("Mixing inches and numbers")
 
     case let (.inches(a), .number(b)):
       if a == 0 {
@@ -77,7 +77,7 @@ extension Value {
       } else if b == 0 {
         return self
       }
-      return .error("error - mixing inches and numbers")
+      return .error("Mixing inches and numbers")
 
     case let (.inches(a), .inches(b)):
       if (a + b).isZero {
@@ -114,7 +114,7 @@ extension Value {
       if a.isZero || b.isZero {
         return .number(0)
       }
-      return .error("error - can't handle square inches")
+      return .error("Can't handle square inches")
     }
   }
 
@@ -133,7 +133,7 @@ extension Value {
       if a.isZero {
         return .number(0)
       }
-      return .error("error - can't divide number by inches")
+      return .error("Can't divide number by inches")
 
     case let (.inches(a), .number(b)):
       if a.isZero {

@@ -1,5 +1,5 @@
+
 * "Caution" startup screen (sheet or alert?)
-* Tweak error messages to drop "error - "
 
 * ValidatingTextField works hard to track slashIsEntered; can we just pass $input to keyboard and avoid all that?
 
@@ -55,6 +55,7 @@ CALC-24-03: 2024-09-11 - Input vs Result
 * "Ideal Hip" => "Per Pleat Split: Hip or Waist""
 * Made our toolbar hold a ToolbarItemGroup but we *still* have that annoying keyboard problem! - https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-a-toolbar-to-the-keyboard
   + Problem: keyboard sometimes appears without toolbar; toolbar sometimes appears without keyboard.
+* [off camera] Tweak error messages to drop "error - "
 
 CALC-24-02: 2024-09-10 - Use Result as Initial Expression
 * Test isOperand (for value)

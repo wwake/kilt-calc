@@ -37,7 +37,7 @@ public class Expression {
     }
 
     if input.last.isBinaryOperator() {
-      throw "expression can't end with an operator"
+      throw "Expression can't end with an operator"
     }
 
     input.add(.ending)
@@ -61,7 +61,7 @@ public class Expression {
 
       case .unary(let theOperator):
         if operands.isEmpty {
-          throw "no value found"
+          throw "No value found"
         }
         evaluateUnary(theOperator)
 
@@ -80,7 +80,7 @@ public class Expression {
         evaluateAtLeast(1)
 
         if operators.isEmpty {
-          throw "error - unbalanced parentheses"
+          throw "Unbalanced parentheses"
         } else {
           _ = operators.pop()
         }
@@ -98,11 +98,11 @@ public class Expression {
     evaluateAtLeast(1)
 
     if operators.count != 0 {
-      throw "error - unbalanced parentheses"
+      throw "Unbalanced parentheses"
     }
 
     if operands.count != 1 {
-      throw "error - unbalanced parentheses or missing operators"
+      throw "Unbalanced parentheses or missing operators"
     }
 
     return operands.pop()
