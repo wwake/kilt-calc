@@ -2,6 +2,14 @@
 
 * "Z" key ??
 
+Custom keyboard?
+https://stackoverflow.com/questions/57975634/is-there-any-way-to-set-inputview-for-textfield-in-swiftui/65895589#65895589
+https://developer.apple.com/documentation/uikit/keyboards_and_input/creating_a_custom_keyboard
+https://developer.apple.com/documentation/uikit/uiinputview
+https://developer.apple.com/documentation/uikit/uitextfield/1619620-inputview
+https://levelup.gitconnected.com/swiftui-create-app-specific-custom-keyboard-e080b4378029
+https://stackoverflow.com/questions/68502856/custom-textfield-keyboard-in-swiftui-with-uiviewrepresentable
+
 * When switching box pleat vs knife pleat, reset to "ideal" pleat size
 * Apron/pleat sliders spread beyond width of screen
 * Provide a way to remove splits
@@ -46,9 +54,9 @@ Packaging
 
 CALC-24-04: 2024-09-12 - First-Time Alert
 * Error - enter hip 2.4/8; go to sett; if "done" and "/" are missing from toolbar, press 0. It blows up w/ divide by 0.
-* "Caution" startup screen (sheet or alert?)
+* "Caution" screen at startup
 * Remove traces of our Keyboard class (including slashIsEntered and focusedField)
-* Use the numbers + symbols keyboard - not as attractive but it works consistently
+* Use the "numbers + symbols" keyboard - not as attractive but it works consistently
 * On Apron/Pleat split, putting a fraction in a field messes up the first column's display (fixed)
 
 CALC-24-03: 2024-09-11 - Input vs Result
