@@ -26,10 +26,13 @@ extension ImperialUnit: CustomStringConvertible {
     switch self {
     case .unspecified:
       return ""
+
     case .inch:
       return "in"
+
     case .foot:
       return "ft"
+
     case .yard:
       return "yd"
     }
