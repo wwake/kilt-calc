@@ -33,11 +33,11 @@ final class ValueParseStrategyTests: XCTestCase {
       EG("3/", expect: "missing denominator"),
       EG("314.1/", expect: "missing denominator"),
 
-      EG("1//", expect: "simple fractions only (at most one '/'"),
-      EG("1///", expect: "simple fractions only (at most one '/'"),
-      EG("314.1//", expect: "simple fractions only (at most one '/'"),
-      EG("3//4", expect: "simple fractions only (at most one '/'"),
-      EG("1/2/3", expect: "simple fractions only (at most one '/'"),
+      EG("1//", expect: "simple fractions only (at most one '/')"),
+      EG("1///", expect: "simple fractions only (at most one '/')"),
+      EG("314.1//", expect: "simple fractions only (at most one '/')"),
+      EG("3//4", expect: "simple fractions only (at most one '/')"),
+      EG("1/2/3", expect: "simple fractions only (at most one '/')"),
 
       EG("1..25", expect: "too many '.'"),
       EG("1.2.3", expect: "too many '.'"),
@@ -77,11 +77,11 @@ final class ValueParseStrategyTests: XCTestCase {
       EG("3/in", expect: "missing denominator"),
       EG("314.1/in", expect: "missing denominator"),
 
-      EG("1// in", expect: "simple fractions only (at most one '/'"),
-      EG("1///in", expect: "simple fractions only (at most one '/'"),
-      EG("314.1//in", expect: "simple fractions only (at most one '/'"),
-      EG("3//4in", expect: "simple fractions only (at most one '/'"),
-      EG("1/2/3in", expect: "simple fractions only (at most one '/'"),
+      EG("1// in", expect: "simple fractions only (at most one '/')"),
+      EG("1///in", expect: "simple fractions only (at most one '/')"),
+      EG("314.1//in", expect: "simple fractions only (at most one '/')"),
+      EG("3//4in", expect: "simple fractions only (at most one '/')"),
+      EG("1/2/3in", expect: "simple fractions only (at most one '/')"),
 
       EG("1..25in", expect: "too many '.'"),
       EG("1.2.3in", expect: "too many '.'"),
@@ -115,7 +115,7 @@ final class ValueParseStrategyTests: XCTestCase {
     try check([
       EG("314•1/in", expect: "missing denominator"),
 
-      EG("314•1//in", expect: "simple fractions only (at most one '/'"),
+      EG("314•1//in", expect: "simple fractions only (at most one '/')"),
 
       EG("1••25in", expect: "too many '.'"),
       EG("1•2•3in", expect: "too many '.'"),

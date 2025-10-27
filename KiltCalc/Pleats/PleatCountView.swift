@@ -29,7 +29,7 @@ public struct PleatCountView<DESIGNER: PleatDesigner>: View {
         Spacer()
 
         ValidatingTextField(
-          label: "Hip or Waist",
+          label: "Pleat Split at Hip",
           value: $designer.idealHip,
           validator: PleatValidator.positive
         )

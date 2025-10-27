@@ -1,6 +1,6 @@
 import Foundation
 
-extension String: Error {
+extension String: @retroactive Error {
   var description: String {
     self
   }
@@ -63,7 +63,7 @@ public struct ValueParseStrategy: ParseStrategy {
 
     let numberOfSlashes = string.filter { $0 == "/" }.count
     if numberOfSlashes > 1 {
-      throw "simple fractions only (at most one '/'"
+      throw "simple fractions only (at most one '/')"
     }
 
     let numberOfDots = string.filter { $0 == "." }.count

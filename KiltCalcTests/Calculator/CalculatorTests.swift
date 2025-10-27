@@ -2,7 +2,7 @@ import EGTest
 @testable import KiltCalc
 import XCTest
 
-extension HistoryItem: Equatable {
+extension HistoryItem: @retroactive Equatable {
   public static func == (lhs: HistoryItem, rhs: HistoryItem) -> Bool {
     lhs.item == rhs.item
   }
