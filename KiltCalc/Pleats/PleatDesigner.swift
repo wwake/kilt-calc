@@ -12,12 +12,14 @@ public class PleatDesigner: ObservableObject {
     }
   }
 
-  static var boxPleat: (PleatDesigner) -> () -> Double = { designer in {
+  static var boxPleat: (PleatDesigner) -> () -> Double = { designer in
+    {
       designer.pleatFabric! / 3.0
     }
   }
 
-  static var knifePleat: (PleatDesigner) -> () -> Double = { _ in {
+  static var knifePleat: (PleatDesigner) -> () -> Double = { _ in
+    {
       1.0
     }
   }
